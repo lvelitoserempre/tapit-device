@@ -1,0 +1,7 @@
+<div class="container" fxLayout="column" fxLayoutGap="50px" fxLayoutAlign="center stretch">
+    <div class="title" fxLayout="row" fxLayoutAlign="center center">
+        Eventos
+    </div>
+    <app-event-item *ngFor="let event of events" [event]="event" (subscribe)="onSubscribe($event)"></app-event-item>
+    <app-event-placeholder *ngIf="!events?.length && !isLoading"></app-event-placeholder>
+</div>

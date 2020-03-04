@@ -1,0 +1,5 @@
+export enum GenerateBookingResponse {
+    GENERATE_BOOKING_OK = '0',
+    GENERATE_BOOKING_SOLD_OUT = '1',
+    GENERATE_BOOKING_ALREADY_GENERATED_BY_USER = '2',
+}

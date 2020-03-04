@@ -1,0 +1,17 @@
+@import '~src/styles';
+
+a#terms {
+    &:link {
+        text-decoration: underline !important;
+        color: $dark-gray;
+    }
+
+    &:hover {
+        text-decoration: underline !important;
+    }
+
+    &:visited {
+        text-decoration: underline !important;
+        color: $dark-gray;
+    }
+}

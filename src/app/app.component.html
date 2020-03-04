@@ -1,0 +1,49 @@
+<div fxLayout="column" fxLayoutAlign="space-between" fxFill>
+    <!-- Toolbar -->
+    <div class="toolbar" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center center">
+        <img src="assets/images/logo.png">
+        <span class="fill-remaining-space"></span>
+        <span *ngIf="!isLoggedIn" class="nav-tool-items">
+            <button type="button" mat-flat-button class="btn-white-rounded" (click)="navigateTo('/login')">Iniciar sesión</button>
+        </span>
+        <span *ngIf="!isLoggedIn" class="nav-tool-items">
+            <button type="button" mat-flat-button class="btn-red-rounded" (click)="navigateTo('/signup')">Regístrate aquí</button>
+        </span>
+        <span *ngIf="isLoggedIn" class="nav-tool-items" fxLayout="row">
+            <div class="name-badge" fxLayoutAlign="center center">{{ userInitials | async }}</div>
+            <button mat-button [matMenuTriggerFor]="menu">
+                <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="logout()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Salir</span>
+                </button>
+            </mat-menu>
+        </span>
+    </div>
+    <!-- End Toolbar -->
+    <router-outlet></router-outlet>
+    <app-loader></app-loader>
+    <div class="footer" fxLayout="column" fxLayoutAlign="end stretch" fxlayoutGap="10px">
+        <div class="disclaimer" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.lt-md="center" fxLayoutGap="10px">
+            <div>SE PROHIBE EL EXPENDIO DE BEBIDAS EMBRIAGANTES A MENORES DE EDAD</div>
+            <div>EL EXCESO DE ALCOHOL ES PERJUDICIAL PARA LA SALUD</div> 
+        </div>
+        <div class="contact-info" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+            <img src="assets/images/logo_white.png">
+            <div>Todos los derechos reservados &copy;2019</div>
+            <div class="links" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center" fxLayoutAlign.lt-md="center center" fxLayoutGap="5px">
+                <a href="https://home.gettap.it/terminos" target="_blank" style="color: white;text-decoration:none">Términos y Condiciones</a>
+                <span fxHide.lt-md>|</span>
+                <a href="https://home.gettap.it/datos" target="_blank" style="color: white;text-decoration:none">Políticas de protección de datos personales</a>
+                <span fxHide.lt-md>|</span>
+                <a href="https://home.gettap.it/privacidad" target="_blank" style="color: white;text-decoration:none">Aviso de privacidad</a>
+                <span fxHide.lt-md>|</span>
+                <a href="https://home.gettap.it/cookies" target="_blank" style="color: white;text-decoration:none">Política de Cookies</a>
+                <span fxHide.lt-md>|</span>
+                <a href="mailto:hello@gettap.it" style="color: white;text-decoration:none">Contáctanos</a>   
+            </div>
+        </div>
+    </div>
+</div>

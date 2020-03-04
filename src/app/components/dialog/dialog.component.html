@@ -1,0 +1,17 @@
+<div class="dialog-container" mat-dialog-content>
+    <div class="icon" *ngIf="data.icon">
+        <img [src]="data.icon">
+    </div>
+    <h1 mat-dialog-title>{{ data.title }}</h1>
+    <h2 mat-dialog-title class="subtitle">{{ data.subtitle }}</h2>
+    <div class="content" mat-dialog-content>
+        <p>{{ data.message }}</p>
+    </div>
+    <div class="qr" *ngIf="data.qr">
+        <ngx-qrcode [qrc-value]="data.qr" qrc-class="aclaass" qrc-errorCorrectionLevel="M"></ngx-qrcode>
+    </div>
+    <mat-dialog-actions align="center">
+        <button *ngIf="data.buttonTwo" type="button" class="btn-white" mat-flat-button mat-dialog-close>{{ data.buttonTwo }}</button>
+        <button type="button" class="btn-red-rounded" mat-raised-button [mat-dialog-close]="true">{{ data.buttonOne }}</button>
+    </mat-dialog-actions>
+</div>
