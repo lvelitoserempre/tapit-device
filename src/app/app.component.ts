@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { AuthService } from './services/auth/auth.service';
-import { Router } from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import { LoaderService } from './services/loader/loader.service';
 import { UserAccountService } from './services/user-account/user-account.service';
 import { Subject } from 'rxjs';
+import { GoogleTagManagerService } from 'angular-google-tag-manager';
 
 @Component({
     selector: 'app-root',
@@ -13,7 +14,7 @@ import { Subject } from 'rxjs';
 /**
  * Main component
  */
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     title = 'ABInBevWeb';
 
@@ -24,7 +25,8 @@ export class AppComponent {
         private authService: AuthService,
         private userAccountService: UserAccountService,
         private router: Router,
-        private loaderService: LoaderService
+        private loaderService: LoaderService,
+        private gtmService: GoogleTagManagerService,
     ) {
         this.authService.listenUserStateChanges();
         this.userAccountService.listenUserAccountChanges();
@@ -58,5 +60,18 @@ export class AppComponent {
             .catch((error) => {
                 this.loaderService.hide();
             });
+    }
+
+    ngOnInit() {
+      // push GTM data layer for every visited page
+      this.router.events.forEach(item => {
+        if (item instanceof NavigationEnd) {
+          const gtmTag = {
+            event: 'page',
+            pageName: item.url
+          };
+          this.gtmService.pushTag(gtmTag);
+        }
+      });
     }
 }
