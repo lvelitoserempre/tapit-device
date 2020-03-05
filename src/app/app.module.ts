@@ -49,6 +49,7 @@ import { MAT_DATE_LOCALE } from '@angular/material';
   // Services
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+    { provide: 'googleTagManagerId', useValue: 'GTM-P3VW55B' }
   ],
   bootstrap: [ AppComponent ]
 })
