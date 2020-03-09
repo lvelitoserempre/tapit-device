@@ -13,6 +13,13 @@
           "abinbev-tapit"
         ]
       }
+    },
+    "rei-imagining-loyalty": {
+      "hosting": {
+        "prod": [
+          "abinbev-tapit"
+        ]
+      }
     }
   }
 }
