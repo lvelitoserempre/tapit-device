@@ -4,10 +4,10 @@
         <img src="assets/images/logo.png">
         <span class="fill-remaining-space"></span>
         <span *ngIf="!isLoggedIn" class="nav-tool-items">
-            <button type="button" mat-flat-button class="btn-white-rounded" (click)="navigateTo('/login')">Iniciar sesión</button>
+            <button type="button" mat-flat-button class="btn-red-rounded" (click)="navigateTo('/login')">Iniciar sesión</button>
         </span>
         <span *ngIf="!isLoggedIn" class="nav-tool-items">
-            <button type="button" mat-flat-button class="btn-red-rounded" (click)="navigateTo('/signup')">Regístrate aquí</button>
+            <!--<button type="button" mat-flat-button class="btn-red-rounded" (click)="navigateTo('/signup')">Regístrate aquí</button>-->
         </span>
         <span *ngIf="isLoggedIn" class="nav-tool-items" fxLayout="row">
             <div class="name-badge" fxLayoutAlign="center center">{{ userInitials | async }}</div>
@@ -28,7 +28,7 @@
     <div class="footer" fxLayout="column" fxLayoutAlign="end stretch" fxlayoutGap="10px">
         <div class="disclaimer" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.lt-md="center" fxLayoutGap="10px">
             <div>SE PROHIBE EL EXPENDIO DE BEBIDAS EMBRIAGANTES A MENORES DE EDAD</div>
-            <div>EL EXCESO DE ALCOHOL ES PERJUDICIAL PARA LA SALUD</div> 
+            <div>EL EXCESO DE ALCOHOL ES PERJUDICIAL PARA LA SALUD</div>
         </div>
         <div class="contact-info" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
             <img src="assets/images/logo_white.png">
@@ -42,7 +42,7 @@
                 <span fxHide.lt-md>|</span>
                 <a href="https://home.gettap.it/cookies" target="_blank" style="color: white;text-decoration:none">Política de Cookies</a>
                 <span fxHide.lt-md>|</span>
-                <a href="mailto:hello@gettap.it" style="color: white;text-decoration:none">Contáctanos</a>   
+                <a href="mailto:hello@gettap.it" style="color: white;text-decoration:none">Contáctanos</a>
             </div>
         </div>
     </div>

@@ -15,7 +15,6 @@
                     <mat-error *ngIf="loginForm.get('password').hasError('required')">{{ validationMessages.password.required }}</mat-error>
                 </mat-form-field>
                 <button fxFlexAlign="center" mat-raised-button type="submit" color="primary" class="btn-red-rounded" [disabled]="loginForm.invalid">Ingresar</button>
-                <div fxFlexAlign="center">¿No tienes una cuenta? <a routerLink="/signup">Regístrate</a></div>
             </form>
         </div>
         <img class="item" src="assets/images/image_login.png">
