@@ -1,0 +1,81 @@
+<div class="home-component" *ngIf="isLoggedIn">
+    <div class="container" fxLayout="column" fxLayoutGap="50px" fxLayoutAlign="center stretch">
+        <app-hero></app-hero>
+    </div>
+    <div class="container container-steps__outer">
+    <div class="container-steps__wrapper">
+        <h3 class="title container-steps__main-title" id="steps">
+        Poker Roja Gratis
+        </h3>
+        <img class="container-steps__bottle" src="/assets/images/steps/full-bottle.png" alt="">
+        <div class="container-steps__base">
+        <app-steps (stepAction)="onStepAction($event)"></app-steps>
+        </div>
+        <img class="container-steps__lid" src="/assets/images/steps/lid.png" alt="">
+    </div>
+    </div>
+    <!-- <div class="container" fxLayout="column" fxLayoutGap="50px" fxLayoutAlign="center stretch">
+        <app-qr-code></app-qr-code>
+    </div>
+    <div class="container" fxLayout="column" fxLayoutGap="50px" fxLayoutAlign="center stretch">
+        <h2 class="title" fxLayout="row" fxLayoutAlign="center center">
+            Eventos
+        </h2>
+        <app-event-item *ngFor="let event of events" [event]="event" (subscribe)="onSubscribe($event)"></app-event-item>
+        <app-event-placeholder *ngIf="!events?.length && !isLoading"></app-event-placeholder>
+    </div> -->
+    <div class="container" fxLayout="column" fxLayoutGap="50px" fxLayoutAlign="center stretch">
+        <app-map></app-map>
+    </div>
+    <div *ngIf="estereoPicnic" class="container container-carousel" fxLayout="column" fxLayoutGap="50px" fxLayoutAlign="center center">
+        <div class="container container-carousel__content"  fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.xs="center center">
+            <h2 class="title" fxLayout="column" fxLayoutAlign="center center" id="eventos">
+                    ¿Vas a Estereo Picnic con el parche?
+                <span>Espera noticias pronto</span>
+            </h2>
+            <ngx-slick-carousel fxLayout="row" class="carousel"
+                    #slickModal="slick-carousel"
+                    [config]="slideConfig" >
+                <div ngxSlickItem class="slide" *ngFor="let oneTimeEvent of oneTimeEvents">
+                    <div class="image-wrapper">
+                        <img src="{{oneTimeEvent.eventPhoto[0].imageLink}}" >
+                        <div class="slide-details" fxLayoutAlign="end center">
+                            <div>{{displayDay(oneTimeEvent.startDate)}}</div>
+                            <div class="slide-details__date">{{displayDate(oneTimeEvent.startDate)}}</div>
+                            <div>{{getHour(oneTimeEvent.startTime)}}</div>
+                        </div>
+                    </div>
+                    <h3 matLine> {{oneTimeEvent.name}} </h3>
+                    <h4 matLine fxLayout="row" fxLayoutAlign="stretch center"> {{oneTimeEvent.address}} </h4>
+                    <p matLine>
+                        <span> {{oneTimeEvent.slogan}} </span>
+                        <span class="demo-2"> -- {{oneTimeEvent.description}} </span>
+                    </p>
+                    <button (click)="onSubscribe(oneTimeEvent)" class="slide-button">Reservar</button>
+                </div>
+            </ngx-slick-carousel>
+            <img class="container-carousel__content-scroll" src="/assets/images/red-scroll.png" />
+            <img class="container-carousel__cap" src="/assets/images/tapa-carousel.png"/>
+        </div>
+    </div>
+    <div class="container container-share">
+    <div class="container-share__can-wrapper">
+        <img src="/assets/images/share/Bottle.png" alt="" class="container-share__can">
+    </div>
+    <div class="container-share__text-container">
+        <div class="container-share__title-wrapper">
+        <img src="/assets/images/share/Bottle.png" alt="" class="container-share__can-mobile">
+        <div class="container-share__title-wrapper--mobile">
+            <div class="container-share__title">Invita</div>
+            <div class="container-share__subtitle">a tus amigos</div>
+        </div>
+        </div>
+        <div class="container-share__text">Envía una Poker Roja gratis a esos amigos que el amor te robó.<br>Copia y comparte este link con el parche. </div>
+        <div class="container-share__input-container">
+        <input (focus)="selectAndCopy($event)" (click)="selectAndCopy($event)" type="text" id="container-share__input" class="container-share__input" readonly [value]="shareURL">
+        <label class="container-share__input-success" [ngClass]="{'container-share__input-success--visible': showLinkCopied}">El link ha sido copiado. <br>Ahora compártelo con tus amgios.</label>
+        <input type="hidden" [value]="userFirstName + ' quiere invitarte una Poker Roja gratis. Consíguela registrándote en con el código ' + userReferralCode + '. ' + shareURL" #urlHiddenInput>
+        </div>
+    </div>
+    </div>
+</div>

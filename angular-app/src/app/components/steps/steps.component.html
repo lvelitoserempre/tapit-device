@@ -1,0 +1,17 @@
+<div class="container container-steps" appMatchHeight="container-steps__title">
+    <div *ngFor="let step of steps; let i = index" class="container-steps__item">
+      <div class="container-steps__image-container">
+        <div class="container-steps__image-circle">
+          <img class="container-steps__image" [src]="step.image.path" [alt]="step.image.title">
+        </div>
+      </div>
+
+      <div class="container-steps__title-wrapper">
+        <!-- <span class="container-steps__counter">{{ i + 1 }}</span> -->
+        <h4 class="container-steps__title">{{ step.title }}</h4>
+      </div>
+
+      <p class="container-steps__description" [innerHTML]="step.description"></p>
+      <a *ngIf="step.cta" [href]="step.cta.href" class="container-steps__cta" [innerHTML]="step.cta.text" (click)="onStepAction($event, i + 1)"></a>
+    </div>
+</div>

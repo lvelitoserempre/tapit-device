@@ -1,0 +1,39 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import Plx from 'react-plx';
+
+export default function FooterSection() {
+
+    const social = i18next.t("Footer.Social", { returnObjects: true })
+
+    return (
+        <footer className='footer'>
+            <div className='container'>
+                <div className='row middle-xs'>
+                    <div className="row middle-xs col-sm-6 col-lg-4 col-lg-offset-2 col-sm-offset-0 footer__follow">
+                        <p>{i18next.t("Footer.TextFollow")}</p>
+                        <ul className='footer__social row center-xs middle-sm'>
+                            {social.map((item,index)=>{
+                                return(
+                                    <li className="row middle-xs" key={index}>
+                                        <a target="_blank" href={item.Url}>
+                                            <img src={item.Image} />
+                                        </a>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                    <div className="row col-sm-6 footer__copyright">
+                        <img src={i18next.t("Footer.Logo")} />
+                        <p>
+                            <small dangerouslySetInnerHTML={{__html: i18next.t("Footer.Copyright")}}/>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    )
+    
+
+}

@@ -1,0 +1,142 @@
+@import '~src/styles';
+@import "common/styles/variables";
+
+.container-toolbar {
+    position: relative;
+    z-index: 1;
+    div.toolbar {
+        padding: 30px 0;
+        flex: 1 0 auto !important;
+        max-width: $maxWidth;
+        width: 100%;
+        top: 0;
+        &-logged {
+            position: absolute;
+        }
+        img {
+            width: 250px;
+            &.logged-logo {
+                width: 115px;
+                height: 280px;
+            }
+        }
+        .nav-tool-items {
+            margin: 15px 0 0;
+        }
+        button {
+            max-width: 200px !important;
+            padding: 0 30px !important;
+            &.logout-button {
+                padding: 0 !important;
+                background-image: url('/assets/images/avatar-icon.png');
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+        }
+        .nav-fullName {
+            color: white;
+            text-transform: capitalize;
+        }
+        .fill-remaining-space {
+            flex: 1 1 auto;
+        }
+    
+        .name-badge {
+            width: 65px;
+            height: 50px;
+            color: white;
+            font-weight: $semi-bold;
+            font-size: 16px;
+            background-color: map_get($primary, 500);
+            border-radius: 30px;
+            text-transform: uppercase;
+            display: none;
+        }
+    }
+}
+.footer {
+    flex: 1 0 auto !important;
+    .disclaimer {
+        background-color: #eeeeee;
+        font-size: 18px;
+        font-weight: $semi-bold;
+        padding: 20px 5%;
+        margin-bottom: 10px;
+    }
+    
+    .contact-info {
+        background-color: black;
+        color: white;
+        padding: 20px 5%;
+    
+        img {
+            width: 150px;
+        }
+        
+        a:link, a:visited {
+            color: white;
+        }
+    }
+    .links {
+        a {
+            color: white;
+            text-decoration:none
+        }
+    }
+    &-logged {
+        background-color: #262424;
+        color: white;
+        font-size: 14px;
+        .links {
+            margin-bottom: 25px;
+            &-redes {
+                a {
+                    margin: 0 15px;
+                    img {
+                        width: 43px;
+                    }
+                }
+            }
+            a {
+                margin-right: 5px;
+                @media screen and (max-width: $maxWidthTablet) {
+                    margin: 5px 0;
+                }
+            }
+            .btn-red-poker {
+                cursor: pointer;
+                font-size: 20px;
+                margin-right: 30px;
+                @media screen and (max-width: $maxWidthTablet) {
+                    margin: 5px 0;
+                }
+            }
+            span {
+                color: $redColor;
+                margin-right: 5px; 
+            }
+        }
+        .disclaimer {
+            background-color: transparent;
+            border-top: 1px solid $redColor;
+            color: $redColor;
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: normal;
+            text-align: center;
+            width: 100%;
+            &-image {
+                color: $redColor;
+                font-size: 12px;
+                img {
+                    margin-left: 10px;
+                    width: 80px;
+                }
+            }
+        }
+        .contact-info {
+            background-color: transparent;
+            max-width: $maxWidth;
+            padding: 15px 0;
+        }
+    }
+}

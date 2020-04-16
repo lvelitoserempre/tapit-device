@@ -1,23 +1,20 @@
 {
   "projects": {
     "default": "re-imagining-loyalty-dev",
-    "prod": "rei-imagining-loyalty"
+    "production": "rei-imagining-loyalty"
   },
   "targets": {
     "re-imagining-loyalty-dev": {
       "hosting": {
-        "dev": [
-          "abinbev-tapit-dev"
-        ],
-        "prod": [
-          "abinbev-tapit"
+        "testing": [
+          "tapit-app-testing"
         ]
       }
     },
     "rei-imagining-loyalty": {
       "hosting": {
-        "prod": [
-          "abinbev-tapit"
+        "production": [
+          "tapit-app-production"
         ]
       }
     }

@@ -1,0 +1,27 @@
+.section {
+    &__beers {
+        margin: 0;
+        padding: 50px 0 80px;
+        &-container {
+            width: 100%;
+        }
+        &-slider {
+            &-image {
+                background-image: url('../assets/images/spacer.svg');
+                background-position: top right;
+                background-repeat: no-repeat;
+                &:focus {
+                    outline: none;
+                }
+                img {
+                    display: inline-block;
+                }
+            }
+            &-mouse {
+                display: block;
+                margin: 37px auto 0;
+            }
+        }
+    }
+    
+}

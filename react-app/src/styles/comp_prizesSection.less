@@ -1,0 +1,52 @@
+.section {
+    &__prizes {
+        margin: 0;
+        padding: 50px 0 0;
+        &-container {
+            width: calc(100% + 99px);
+            @media screen and (max-width: @md) {
+                width: 100%;
+            }
+        }
+        &-image {
+            margin: -400px -107px 0 0;
+            @media screen and (max-width: @lg) {
+                margin: -140px -107px 0 0;
+                img {
+                    width: 70%;
+                }
+            }
+            @media screen and (max-width: @md) {
+                margin: 20px 0 0;
+                img {
+                    width: calc(100% + 32px);
+                }
+            }
+        }
+        &-icons {
+            list-style-type: none;
+            margin: 10px 0 0;
+            padding: 0;
+            li {
+                border-left: 1px dashed;
+                padding: 0 20px;
+                &:first-child {
+                    border-left: none;
+                }
+                @media screen and (max-width: @md) {
+                    img {
+                        width: 9vw;
+                    }
+                }
+            }
+        }
+        &-orangeCircle {
+            background-color: @mainColor;
+            border-radius: 7px;
+            height: 7px;
+            margin: 3px 0;
+            width: 7px;
+        }
+    }
+    
+}

@@ -1,0 +1,11 @@
+/__tests__/__snapshots__
+/node_modules
+/package.json.lock
+/yarn.lock
+/yarn.error.lock
+
+# Ignore test-related files
+/coverage.data
+/coverage/
+test-report.html
+local-markup.html

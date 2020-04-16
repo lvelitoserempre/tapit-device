@@ -1,0 +1,71 @@
+@keyframes animateTop {
+    from {margin-top: -150px;}
+    to {margin-top: 0;}
+}
+.section {
+    &__start {
+        .section__button {
+            display: inline-block;
+            &-container {
+                @media screen and (max-width: @md) {
+                    text-align: center;
+                }
+            }
+        }
+        &__bottom-line {
+            display: block;
+            margin: 50px 0 0;
+            width: 100%;
+            &-animation {
+                display: inline-block;
+                opacity: 0;
+                img {
+                    vertical-align: middle;
+                }
+                &-line {
+                    width: 0;
+                }
+            }
+        }
+        &-content {
+            position: relative;
+            @media screen and (max-width: @md) {
+                margin-top: 30px;
+            }
+            &-cellphone {
+                animation: animateTop 1.5s;
+                transition: all 0.3s ease-in-out;
+                @media screen and (max-width: @md) {
+                    width: 100%;
+                }
+            }
+        }
+        &-bubble1 {
+            position: absolute;
+            right: 80px;
+            top: 130px;
+            width: 100px;
+            @media screen and (max-width: @xs) {
+                top: 20%;
+                width: 17%;
+            }
+            img {
+                width: 100%;
+            }
+        }
+        &-bubble2 {
+            left: 130px;
+            position: absolute;
+            top: 490px;
+            width: 160px;
+            @media screen and (max-width: @xs) {
+                left: 23%;
+                top: 70%;
+                width: 27%;
+            }
+            img {
+                width: 100%;
+            }
+        }
+    }
+}

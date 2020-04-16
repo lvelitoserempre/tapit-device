@@ -1,0 +1,182 @@
+a{
+    &:visited,
+    &:focus{
+        color: @mainColor;
+    }
+}
+
+::selection,
+::-webkit-selection,
+::-moz-selection,
+::-ms-selection,
+::-o-selection {
+    color: white;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: @mainFontBold;
+    font-weight: normal;
+}
+ul {
+    list-style-type: none;
+}
+.main {
+    font-family: @mainFont, sans-serif;
+    font-size: 34px;
+    margin: 0 auto;
+    max-width: 1366px;
+    overflow: hidden;
+    width: 100%;
+    @media screen and (max-width: @sm) {
+        font-size: 18px;
+    }
+    .loader {
+        background-color: red;
+        text-align: center;
+    }
+    header {
+        text-align: center;
+        img {
+            @media screen and (max-width: @xs) {
+                width: 100px;
+            }
+        }
+    }
+    &__bgGray {
+        background-image: url('../../assets/images/gray-bg.svg');
+        background-position: center 360px;
+        background-repeat: no-repeat;
+        @media screen and (max-width: @xs) {
+            background-image: url('../../assets/images/gray-bg-mobile.svg');
+            background-position: center 42vw;
+            background-size: 100% auto;
+        }
+    }
+    &__bgBlue {
+        background-image: url('../../assets/images/blue-bg.svg');
+        background-position: right top;
+        background-repeat: no-repeat;
+        @media screen and (max-width: @xs) {
+            background-image: url('../../assets/images/blue-bg-mobile.svg');
+            background-position: left bottom;
+            background-size: cover;
+        }
+    }
+    &__bgOrange {
+        background-image: url('../../assets/images/orange-bg.svg');
+        background-repeat: no-repeat;
+        color: white;
+        &.section {
+            .section {
+                &__title {
+                    color: white;
+                }
+            }
+        }
+    }
+    .section {
+        &__title {
+            color: black;
+            font-size: 75px;
+            font-family: @mainFontBold, sans-serif;
+            line-height: 75px;
+            span {
+                color: @mainColor;
+            }
+            @media screen and (max-width: @xs) {
+                font-size: 8.6vw;
+                line-height: 8.6vw;
+            }
+        }
+        &__text {
+            color: @grayColor;
+        }
+        &__button {
+            background-color: @mainColor;
+            border: none;
+            border-radius: 36px;
+            color: white;
+            font-family: @mainFontBold, sans-serif;
+            font-size: 34px;
+            padding: 30px 50px;
+            @media screen and (max-width: @xs) {
+                border-radius: 20px;
+                font-size: 20px;
+                padding: 20px 25px;
+            }
+        }
+    }
+}
+.slick-slider {
+    .slick-arrow {
+        bottom: -70px;
+        top: auto;
+        &.slick-next {
+            right: calc(50% - 50px);
+        }
+        &.slick-prev {
+            left: calc(50% - 50px);
+        }
+        
+        &.slick-prev,
+        &.slick-next {
+            color: white;
+            height: 28px;
+            width: 14px;
+        }
+        &.slick-prev:hover,
+        &.slick-prev:focus,
+        &.slick-next:hover,
+        &.slick-next:focus {
+            opacity: 0.8;
+        }
+        &.slick-next::before {
+            content: url('../../assets/images/next-arrow.svg');
+        }
+        &.slick-prev::before {
+            content: url('../../assets/images/prev-arrow.svg');
+        }
+    }
+    .slick-dots {
+        li {
+            height: 14px;
+            margin: 0 30px;
+            width: 14px;
+            &:after {
+                background-color: black;
+                content: '';
+                height: 1px;
+                left: 19px;
+                position: absolute;
+                top: 50%;
+                width: 50px;
+            }
+            &:last-child {
+                &:after {
+                    content: none;
+                }
+            }
+            &.slick-active {
+                button {
+                    background-color: @mainColor;
+                }
+            }
+            button {
+                background-color: @ligthGrayColor;
+                border-radius: 15px;
+                height: 14px;
+                padding: 2px;
+                width: 14px;
+                &::before {
+                    font-size: 11px;
+                    height: 17px;
+                    line-height: 19px;
+                    opacity: 0;
+                    width: 17px;
+                }
+                &:hover {
+                    background-color: @mainColor;
+                }
+            }
+        }
+    }
+}
