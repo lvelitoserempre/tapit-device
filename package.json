@@ -1,0 +1,16 @@
+{
+  "name": "tapit-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy-testing": "cd angular-app; npm run build; cd ../react-app; npm run build-prod; cd ../; firebase use default; firebase deploy --only hosting:tapit-app-testing",
+    "deploy-prod": "cd angular-app; npm run build-prod; cd ../react-app; npm run build-prod; cd ../; firebase use production; firebase deploy --only hosting:tapit-app-production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.globant.com/ABInBev/TapIt-Web"
+  },
+  "author": "",
+  "license": "ISC"
+}
