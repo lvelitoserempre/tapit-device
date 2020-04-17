@@ -12,15 +12,17 @@ export const environment = {
     measurementId: 'G-SJR2YLNKJS'
   },
   collections: {
-      userAccount: 'user_account_tap'
+    userAccount: 'user_account_tap'
   },
   functions: {
-      createUserReferralCode: 'createUserReferralCode',
-      sendEmailUserRegister: 'sendEmailUserRegister',
-      getEvents: 'getEventsForWeb',
-      generateBooking: 'generateBookingV2',
-      applyPromotionalCode: 'applyPromotionalCode',
-      getEventsOneTime: 'getEventsV2'
+    url: 'https://us-central1-rei-imagining-loyalty.cloudfunctions.net',
+    checkExistentUser: 'api-checkExistentUser',
+    createUserReferralCode: 'createUserReferralCode',
+    sendEmailUserRegister: 'sendEmailUserRegister',
+    getEvents: 'getEventsForWeb',
+    generateBooking: 'generateBookingV2',
+    applyPromotionalCode: 'applyPromotionalCode',
+    getEventsOneTime: 'getEventsV2'
   },
-  shareUrl: "https://www.cervezapoker.com/poker-roja/gratis/{0}"
+  shareUrl: 'https://www.cervezapoker.com/poker-roja/gratis/{0}'
 };

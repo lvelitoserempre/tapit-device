@@ -37,7 +37,9 @@ export default function Index() {
         (
             <div className="main d-flex align-items-start">
                 <header>
+                  <a href="/app">
                     <img src={i18next.t("Header.Logo")}/>
+                  </a>
                 </header>
                 <div className="main__bgGray">
                     <div className="container">
