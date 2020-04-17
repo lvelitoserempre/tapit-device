@@ -49,6 +49,17 @@ export default function PrizesSection(props) {
                         <img src={i18next.t("Section3.Image")} />
                     </div>
                 </Plx>
+                {!props.isMobile?
+                    <div className="section__prizes-bottomLine" >
+                        <div className="row middle-xs" >
+                            <div className="section__prizes-orangeCircle2" >
+                            </div>
+                            <div className="row center-xs" >
+                                <img src={lines[3]} />
+                            </div>
+                        </div>
+                    </div>
+                :null}
             </div>
             </div>
         </section>
