@@ -2,8 +2,21 @@
     &__download {
         margin: 0;
         padding: 50px 0 0;
+        @media screen and (max-width: @xs) {
+            padding-top: 0;
+        }
         &-container {
             width: 100%;
+        }
+        &-content {
+            background-image: url('../assets/images/download/TopLine.svg');
+            background-position: top center;
+            background-repeat: no-repeat;
+            padding-top: 20px;
+            @media screen and (max-width: @md) {
+                background-image: none;
+                padding-top: 0;
+            }
         }
         &-phone {
             background-image: url('../assets/images/download/white-circle.svg');

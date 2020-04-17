@@ -21,7 +21,7 @@ export default function DownloadSection(props) {
         });
     }
 
-    const bothAppsHtml = <div className='row center-xs'>
+    const bothAppsHtml = <div className='row center-xs section__download-content'>
                             <div className='row center-xs col-xs-12'>
                                 <div className="section__download-phone">
                                     <img src={i18next.t("Section6.LeftPhone")} />
@@ -43,7 +43,7 @@ export default function DownloadSection(props) {
                                 </div>
                             </div>
                         </div>
-    const iosHtml = <div className='row center-xs'>
+    const iosHtml = <div className='row center-xs section__download-content'>
                         <div className='row center-xs col-xs-12'>
                             <div className="section__download-phone">
                                 <img src={i18next.t("Section6.LeftPhone")} />
@@ -57,7 +57,7 @@ export default function DownloadSection(props) {
                             </div>
                         </div>
                     </div>
-    const androidHtml = <div className='row center-xs'>
+    const androidHtml = <div className='row center-xs section__download-content'>
                             <div className='row center-xs col-xs-12'>
                                 <div className="section__download-phone">
                                     <img src={i18next.t("Section6.RightPhone")} />

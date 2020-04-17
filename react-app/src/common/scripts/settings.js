@@ -37,18 +37,23 @@ i18next.init({
                 Section3: {
                     Title: '<span>Entre más cerveza tomes,</span> mejores premios',
                     Text: 'Accede a beneficios exclusivos como más cerveza, experiencias y productos de tu marca favorita.',
-                    Image: '../assets/images/phone-prizes.png',
+                    Image: '../assets/images/benefits/phone-prizes.png',
                     IconList: [
-                        '../assets/images/icon-beers.svg',
-                        '../assets/images/icon-Tickets.svg',
-                        '../assets/images/icon-Dinner.svg',
-                        '../assets/images/icon-Cap.svg'
+                        '../assets/images/benefits/icon-beers.svg',
+                        '../assets/images/benefits/icon-Tickets.svg',
+                        '../assets/images/benefits/icon-Dinner.svg',
+                        '../assets/images/benefits/icon-Cap.svg'
                     ],
                     Lines: [
-                        '../assets/images/verticalLine.svg',
-                        '../assets/images/horizontalLine.svg',
-                        '../assets/images/horizontalLine2.svg'
+                        '../assets/images/benefits/verticalLine.svg',
+                        '../assets/images/benefits/horizontalLine.svg',
+                        '../assets/images/benefits/horizontalLine2.svg',
+                        '../assets/images/benefits/bottomLine.svg'
                     ]
+                },
+                Section4: {
+                    Title: 'Compra tus cervezas y <span>productos de tus marcas favoritas</span>',
+                    Image: '../assets/images/marketplace/Truck.png',
                 },
                 Section5: {
                     BeersImages: [
