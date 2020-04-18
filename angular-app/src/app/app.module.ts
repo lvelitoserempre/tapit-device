@@ -22,6 +22,8 @@ import {MapComponent} from './components/map/map.component';
 import {QrCodeComponent} from './components/qr-code/qr-code.component';
 import {MatchHeightDirective} from './directives/match-height/match-height.directive';
 import {HttpClientModule} from '@angular/common/http';
+import { AppHeaderComponent } from './app-header/app-header.component';
+import { AppFooterComponent } from './app-footer/app-footer.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import {HttpClientModule} from '@angular/common/http';
     StepsComponent,
     MapComponent,
     QrCodeComponent,
-    MatchHeightDirective
+    MatchHeightDirective,
+    AppHeaderComponent,
+    AppFooterComponent
   ],
   entryComponents: [
     DialogComponent

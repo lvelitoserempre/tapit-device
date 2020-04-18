@@ -10,13 +10,7 @@ import { Subject } from 'rxjs';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-/**
- * Main component
- */
 export class AppComponent {
-
-    title = 'ABInBevWeb';
-
     userAccount = '';
     userInitials: Subject<string>;
 
@@ -31,15 +25,8 @@ export class AppComponent {
         this.userInitials = this.userAccountService.userInitials;
     }
 
-    /**
-     * Getter checking whether the user is logged in
-     */
     get isLoggedIn(): boolean { return this.authService.isLoggedIn; }
 
-    /**
-     * Navigates to the provided route
-     * @param route The route
-     */
     navigateTo(route: string) {
         this.router.navigate([route]);
     }

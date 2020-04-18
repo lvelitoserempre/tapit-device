@@ -1,0 +1,31 @@
+<div class="container container-toolbar" fxLayout="column" fxLayoutAlign="center center"
+     fxLayoutAlign.xs="center start">
+  <div class="toolbar toolbar-logged" fxLayout="row" *ngIf="isLoggedIn" fxLayoutGap="30px" fxLayoutAlign="center start">
+    <img class="logged-logo" src="assets/images/logo_poker_roja.png">
+    <span class="fill-remaining-space"></span>
+    <span class="nav-tool-items" fxLayout="row">
+                <div class="nav-fullName" fxFlexAlign="center">{{getName()}}</div>
+                <button mat-button [matMenuTriggerFor]="menu" class="logout-button" fxLayout="row"
+                        fxLayoutAlign="center center">
+                    <mat-icon></mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="logout()">
+                        <mat-icon>exit_to_app</mat-icon>
+                        <span>Salir</span>
+                    </button>
+                </mat-menu>
+            </span>
+  </div>
+  <div class="toolbar" fxLayout="row" *ngIf="!isLoggedIn" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px"
+       fxLayoutAlign="center start" fxLayoutAlign.xs="center center">
+    <img src="assets/images/logo.png">
+    <span class="fill-remaining-space"></span>
+    <span class="nav-tool-items">
+                <button type="button" mat-flat-button class="btn-white-rounded" (click)="navigateTo('/login')">Iniciar sesión</button>
+            </span>
+    <span class="nav-tool-items">
+                <button type="button" mat-flat-button class="btn-red-rounded" (click)="navigateTo('/signup')">Regístrate aquí</button>
+            </span>
+  </div>
+</div>

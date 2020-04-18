@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {SignUpFormModel} from 'src/app/models/sign-up-form.model';
 import {UserAccountService} from 'src/app/services/user-account/user-account.service';
@@ -17,13 +17,15 @@ import UserCredential = firebase.auth.UserCredential;
 import {from} from 'rxjs';
 import {mergeMap} from 'rxjs/operators';
 import {User} from 'firebase';
+import {MatDatepicker} from '@angular/material/datepicker';
+import {DurationInputArg2, Moment} from 'moment';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
+    {provide: MAT_DATE_LOCALE, useValue: 'es-CO'},
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,
@@ -33,10 +35,7 @@ import {User} from 'firebase';
   ],
 })
 export class SignUpComponent {
-
   signUpForm: FormGroup;
-  date = '';
-
   validationMessages = {
     birthDate: {
       required: 'Por favor, selecciona una fecha de nacimiento.',
@@ -70,14 +69,9 @@ export class SignUpComponent {
     this.signUpForm = this.formBuilder.group(new SignUpFormModel());
   }
 
-  addEventDate() {
-    const date = this.signUpForm.get('birthDate').value;
-    this.date = DateFormatter.format(date.toDate());
-    this.dateAdapter.setLocale('es');
-  }
-
   async onSubmit() {
     const form = this.signUpForm.value;
+    const date = this.signUpForm.get('birthDate').value as Moment;
 
     this.loaderService.show();
 
@@ -91,7 +85,9 @@ export class SignUpComponent {
         this.userAccountService.checkExistentUser({
           email: form.email,
           firstName: form.firstName,
-          lastName: form.lastName
+          lastName: form.lastName,
+          birthDate: date.toDate().getTime(),
+          phone: form.phone
         })))
       .subscribe(res => {
           this.loaderService.hide();

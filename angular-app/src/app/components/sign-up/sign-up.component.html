@@ -1,5 +1,5 @@
 <div class="container" fxLayout="column" fxLayoutGap="50px" fxLayoutAlign="center stretch">
-    
+
     <!-- Title -->
     <div class="title" fxLayout="row" fxLayoutAlign="center center">
         Registrarse
@@ -45,7 +45,7 @@
 
                 <!-- Birthdate -->
                 <mat-form-field>
-                    <input matInput readonly (click)="picker.open()" [matDatepicker]="picker" (dateInput)="addEventDate()" placeholder="Fecha de nacimiento" formControlName="birthDate" required>
+                    <input matInput readonly (click)="picker.open()" [matDatepicker]="picker" placeholder="Fecha de nacimiento" formControlName="birthDate" required>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                     <mat-error *ngIf="signUpForm.get('birthDate').hasError('required')">{{ validationMessages.birthDate.required }}</mat-error>
@@ -59,7 +59,7 @@
 
                 <!-- Terms and conditions -->
                 <div>Al crear una cuenta accedes a nuestros <a id="terms" href="https://home.gettap.it/terminos" target="blank">términos</a></div>
-                
+
                 <!-- Create account button -->
                 <button fxFlexAlign="center" mat-raised-button type="submit" color="primary" class="btn-red-rounded" [disabled]="signUpForm.invalid">Crear cuenta</button>
 

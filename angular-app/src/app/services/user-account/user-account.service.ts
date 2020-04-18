@@ -127,20 +127,16 @@ export class UserAccountService {
 
   checkExistentUser(user: UserAccount) {
     return from(auth().currentUser.getIdToken())
-      .pipe(mergeMap(token => {
-        return this.http.post(environment.functions.url + '/' + environment.functions.checkExistentUser,
-          {
-            email: user.email,
-            firstName: user.firstName,
-            lastName: user.lastName
-          },
+      .pipe(mergeMap(token =>
+        this.http.post(
+          environment.functions.url + '/' + environment.functions.checkExistentUser,
+          user,
           {
             headers: {
               Authorization: 'Bearer ' + token,
               ab_data: auth().currentUser.uid
             }
           }
-        );
-      }));
+        )));
   }
 }

@@ -1,0 +1,69 @@
+<div class="footer" fxLayout="column" fxLayoutAlign="end stretch" fxlayoutGap="10px" *ngIf="!isLoggedIn">
+  <div class="disclaimer" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.lt-md="center"
+       fxLayoutGap="10px">
+    <div>SE PROHIBE EL EXPENDIO DE BEBIDAS EMBRIAGANTES A MENORES DE EDAD</div>
+    <div>EL EXCESO DE ALCOHOL ES PERJUDICIAL PARA LA SALUD</div>
+  </div>
+  <div class="contact-info" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <img src="assets/images/logo_white.png">
+    <div>Todos los derechos reservados &copy;2019</div>
+    <div class="links" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center"
+         fxLayoutAlign.lt-md="center center" fxLayoutGap="5px">
+      <a href="https://home.gettap.it/terminosPokerRoja" target="_blank">Términos y Condiciones</a>
+      <span fxHide.lt-md>|</span>
+      <a href="https://home.gettap.it/datos" target="_blank">Políticas de protección de datos personales</a>
+      <span fxHide.lt-md>|</span>
+      <a href="https://home.gettap.it/privacidad" target="_blank">Aviso de privacidad</a>
+      <span fxHide.lt-md>|</span>
+      <a href="https://home.gettap.it/cookies" target="_blank">Política de Cookies</a>
+      <span fxHide.lt-md>|</span>
+      <a href="mailto:hello@gettap.it">Contáctanos</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer footer-logged" fxLayout="column" fxLayoutAlign="center center" fxlayoutGap="10px"
+     *ngIf="isLoggedIn">
+  <div class="contact-info" fxLayout="column" fxLayoutAlign="center center">
+    <div class="links" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center"
+         fxLayoutAlign.lt-md="center center">
+      <div class="btn-red-poker" (click)="gotoMap($event)" data-scroll="#map">Puntos de venta Poker</div>
+      <span fxHide.lt-md>|</span>
+      <a href="https://home.gettap.it/terminosPokerRoja" target="_blank">Términos y Condiciones</a>
+      <span fxHide.lt-md>|</span>
+      <a href="https://home.gettap.it/datos" target="_blank">Políticas de protección de datos personales</a>
+      <span fxHide.lt-md>|</span>
+      <a href="https://home.gettap.it/privacidad" target="_blank">Aviso de privacidad</a>
+      <span fxHide.lt-md>|</span>
+      <a href="https://home.gettap.it/cookies" target="_blank">Política de Cookies</a>
+      <span fxHide.lt-md>|</span>
+      <a href="mailto:hello@gettap.it">Contáctanos</a>
+    </div>
+    <div>ANHEUSER BUSCH INBEV &copy;2020</div>
+    <div>No compartir este contenido con menores de edad.</div>
+    <div style="margin: 25px 0 5px;">Síguenos en nuestras redes</div>
+    <div class="links links-redes" fxLayout="row" fxLayoutAlign="center center" fxLayoutAlign.lt-md="center center">
+      <a href="https://www.facebook.com/gettap.it/" target="_blank">
+        <img src="assets/images/redes-facebook.png"/>
+      </a>
+      <!-- <a href="https://twitter.com/CervezaAguila" target="_blank">
+          <img src="assets/images/redes-twitter.png" />
+      </a> -->
+      <!-- <a href="https://home.gettap.it/privacidad" target="_blank">
+          <img src="assets/images/redes-youtube.png" />
+      </a> -->
+      <a href="https://www.instagram.com/gettap.it/" target="_blank">
+        <img src="assets/images/redes-instagram.png"/>
+      </a>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" class="disclaimer-image">
+      <p fxFlexAlign="center">Powered by</p> <img src="assets/images/logo_white.png">
+    </div>
+  </div>
+  <div class="disclaimer" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center stretch" fxLayoutGap="10px">
+    <img fxFlexAlign="center" src="assets/images/bavaria-logo.png"/>
+    <div fxFlexAlign="center">EL EXCESO DE ALCOHOL ES PERJUDICIAL PARA LA SALUD.</div>
+    <div fxFlexAlign="center">SE PROHIBE EL EXPENDIO DE BEBIDAS EMBRIAGANTES A MENORES DE EDAD</div>
+    <img fxFlexAlign="center" src="assets/images/vive-logo.png"/>
+  </div>
+</div>
