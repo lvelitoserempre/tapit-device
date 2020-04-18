@@ -3,6 +3,7 @@
         margin: 0;
         padding: 50px 0 0;
         &-container {
+            position: relative;
             width: calc(100% + 99px);
             @media screen and (max-width: @md) {
                 width: 100%;
@@ -46,6 +47,18 @@
             height: 7px;
             margin: 3px 0;
             width: 7px;
+        }
+        &-orangeCircle2 {
+            background-color: @mainColor;
+            border-radius: 15px;
+            height: 15px;
+            margin: 3px 12px 0 0;
+            width: 15px;
+        }
+        &-bottomLine {
+            bottom: 100px;
+            position: absolute;
+            right: 500px;
         }
     }
     
