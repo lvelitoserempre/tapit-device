@@ -3,6 +3,22 @@ i18next.init({
     resources: {
         es: {
             translation: {
+                BillLayout: {
+                    Active: true,
+                    Header: {
+                        Logo: '../assets/images/billLayout/Tapit_Logo.svg',
+                        LogoPolas: '../assets/images/billLayout/PloasLogo.svg',
+                        UrlLogin: '/app/login',
+                        UrlSignup: '/app/signup',
+                        LoginText: 'Inicia sesión',
+                        SignupText: 'Regístrate'
+                    },
+                    Section1: {
+                        Title: 'Tapit y Polas Recargadas te traen experiencias increíbles',
+                        Text: 'Ahora tus facturas de cerveza pueden llevarte a experiencias digitales en vivo para que las disfrutes en casa.',
+                        Image: '../assets/images/billLayout/beer-phone.png',
+                    },
+                },
                 Header: {
                     Logo: '../assets/images/TopLogo.png'
                 },
