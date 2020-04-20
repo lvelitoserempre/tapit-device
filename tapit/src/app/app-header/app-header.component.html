@@ -1,0 +1,14 @@
+<div class="container container-toolbar" fxLayout="column" fxLayoutAlign="center center"
+     fxLayoutAlign.xs="center start">
+  <div class="toolbar" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px"
+       fxLayoutAlign="center start" fxLayoutAlign.xs="center center">
+    <img src="assets/images/logo.png">
+    <span class="fill-remaining-space"></span>
+    <span class="nav-tool-items">
+                <button type="button" mat-flat-button class="btn-white-rounded" (click)="navigateTo('/login')">Iniciar sesión</button>
+            </span>
+    <span class="nav-tool-items">
+                <button type="button" mat-flat-button class="btn-red-rounded" (click)="navigateTo('/signup')">Regístrate aquí</button>
+            </span>
+  </div>
+</div>

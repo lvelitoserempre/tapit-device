@@ -1,52 +1,7 @@
-// Custom Theming for Angular Material.
-// For more information: https://material.angular.io/guide/theming
-@import "~@angular/material/theming";
+@import "assets/styles/material.theme";
+@import "assets/styles/fonts";
+@import "assets/styles/variables";
 
-// Plus imports for other components in your app.
-// Import fonts
-@import "app/common/styles/fonts";
-
-@import "app/common/styles/variables";
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat-core;
-
-// Theme colors
-$primary: (50: #fceae8, 100: #f8c9c5, 200: #f3a69e, 300: #ee8277, 400: #ea6759, 500: #e64c3c, 600: #e34536, 700: #df3c2e, 800: #db3327, 900: #d5241a, A100: #ffffff, A200: #ffd7d5, A400: #ffa6a2, A700: #ff8e89, contrast: (50: #000000, 100: #000000, 200: #000000, 300: #000000, 400: #000000, 500: #ffffff, 600: #ffffff, 700: #ffffff, 800: #ffffff, 900: #ffffff, A100: #000000, A200: #000000, A400: #000000, A700: #000000));
-
-$accent: (50: #e2f8f3, 100: #b6ede1, 200: #86e2cd, 300: #56d6b9, 400: #31cdaa, 500: #0dc49b, 600: #0bbe93, 700: #09b689, 800: #07af7f, 900: #03a26d, A100: #ccffec, A200: #99ffd9, A400: #66ffc6, A700: #4dffbc, contrast: (50: #000000, 100: #000000, 200: #000000, 300: #000000, 400: #000000, 500: #000000, 600: #000000, 700: #ffffff, 800: #ffffff, 900: #ffffff, A100: #000000, A200: #000000, A400: #000000, A700: #000000));
-
-$warn: (50: #f1e0e0, 100: #dbb3b3, 200: #c48080, 300: #ac4d4d, 400: #9a2626, 500: #880000, 600: #800000, 700: #750000, 800: #6b0000, 900: #580000, A100: #ff8a8a, A200: #ff5757, A400: #ff2424, A700: #ff0a0a, contrast: (50: #000000, 100: #000000, 200: #000000, 300: #ffffff, 400: #ffffff, 500: #ffffff, 600: #ffffff, 700: #ffffff, 800: #ffffff, 900: #ffffff, A100: #000000, A200: #000000, A400: #ffffff, A700: #ffffff));
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$ABInBevWeb-primary: mat-palette($primary);
-$ABInBevWeb-accent: mat-palette($accent);
-
-// The warn palette is optional (defaults to red).
-$ABInBevWeb-warn: mat-palette($warn);
-
-// Create the theme object (a Sass map containing all of the palettes).
-$ABInBevWeb-theme: mat-light-theme($ABInBevWeb-primary, $ABInBevWeb-accent, $ABInBevWeb-warn);
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($ABInBevWeb-theme);
-
-// Colors
-$dark-gray: #2b2b2b;
-
-// Font weights
-$regular: 400;
-$medium: 500;
-$semi-bold: 600;
-$bold: 700;
-
-/* You can add global styles to this file, and also import other style files */
 html, body {
     height: 100%;
     margin: 0;
@@ -74,7 +29,7 @@ body {
         }
     }
     .container-steps__description {
-        a, 
+        a,
         a:link,
         a:visited {
             color: white;
@@ -96,7 +51,7 @@ body {
 
         a:link {
             text-decoration: none;
-            color: map_get($primary, 500);
+            color: map_get($primary-colors, 500);
         }
 
         a:hover {
@@ -105,7 +60,7 @@ body {
 
         a:visited {
             text-decoration: none;
-            color: map_get($primary, 500);
+            color: map_get($primary-colors, 500);
         }
     }
 }
@@ -141,7 +96,7 @@ body {
 }
 
 %btn-base {
-    background-color: map_get($primary, 500);
+    background-color: map_get($primary-colors, 500);
     color: white;
     font-family: Montserrat;
     font-size: 16px;
@@ -157,11 +112,11 @@ body {
     height: 50px;
 
     &:hover {
-        background: map_get($primary, 400);
+        background: map_get($primary-colors, 400);
     }
 
     &:active {
-        background: map_get($primary, 500);
+        background: map_get($primary-colors, 500);
         box-shadow: inset 0px 1px 1px fadeout(black, 90%);
     }
 
@@ -170,14 +125,14 @@ body {
     }
 
     &:disabled {
-        background: map_get($primary, 50) !important;
-        color: map_get($primary, 200) !important;
+        background: map_get($primary-colors, 50) !important;
+        color: map_get($primary-colors, 200) !important;
     }
 }
 
 .btn-red-rounded {
     @extend %btn-base;
-    border-radius: 30px;
+    border-radius: 30px !important;
 }
 
 .btn-red-squared {
@@ -189,7 +144,7 @@ body {
     @extend %btn-base;
     border-radius: 30px;
     background: white !important;
-    color: map_get($primary, 500) !important;
+    color: map_get($primary-colors, 500) !important;
     box-shadow: none !important;
 }
 .slick-slider {
@@ -290,14 +245,14 @@ body {
         position: relative;
         .ng-star-inserted {
             text-align: center;
-            a, 
+            a,
             a:link,
             a:visited {
                 color: white;
             }
-            
+
         }
-        
+
     }
     .cdk-overlay-pane {
         @media screen and (max-width: 470px){

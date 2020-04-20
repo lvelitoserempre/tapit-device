@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "tapit",
+      "public": "dist/tapit",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-@import "~src/styles";
+@import "src/assets/styles/colors";
 
 .container {
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.51) 27%, rgba(231, 231, 231, 0.67) 56%, #d8d8d8 100%);
@@ -49,11 +49,11 @@
                 text-decoration: underline !important;
                 color: $dark-gray !important;
             }
-        
+
             a:visited {
                 text-decoration: underline !important;
             }
-        
+
             a:visited {
                 text-decoration: underline !important;
                 color: $dark-gray !important;
