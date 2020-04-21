@@ -12,7 +12,7 @@ export default function StartSection() {
                 <h1 className="section__title" dangerouslySetInnerHTML={{__html: i18next.t("Section1.Title")}}></h1>
                 <p className="section__text">{i18next.t("Section1.Text")}</p>
                 <div className="section__button-container">
-                    <a type="button" className="section__button" >{i18next.t("Section1.Button")}</a>
+                    <a className="section__button" >{i18next.t("Section1.Button")}</a>
                 </div>
             </div>
             <div className="col-xs-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-0 middle-xs section__start-content">
