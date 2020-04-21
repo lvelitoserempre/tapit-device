@@ -20,7 +20,7 @@ export default function BeersSection(props) {
                 settings: {
                     slidesToShow: 3,
                 },
-                breakpoint: 400,
+                breakpoint: 576,
                 settings: {
                     slidesToShow: 2,
                 }
@@ -28,7 +28,12 @@ export default function BeersSection(props) {
         ]
     };
     return (
-        <section className='row section section__beers'>
+        <section className={`row section section__beers center-xs ${props.isBill?'section__beers-bg':''}`}>
+            {
+                props.isBill?
+                    <h2 className="section__title section__title-red">{i18next.t("Section5.Title")}</h2>
+                    :null
+            }
             <Plx className="section__beers-container">
                 <Slider {...settings} className="section__beers-slider">
                     {images.map((image,index)=>{

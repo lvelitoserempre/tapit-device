@@ -10,6 +10,7 @@ import DownloadSeccion from "./../components/downloadSection.component";
 import FooterSection from "./../components/footer.component";
 import MarketPlaceSection from "./../components/marketPlaceSection.component";
 import StartSectionBill from "./../components/billLayout/startSectionBill.component";
+import ComoParticiparSection from "./../components/billLayout/comoParticipar.component";
 
 export default function Index() {
     const [isMobile,setMobile] = useState(null);
@@ -33,17 +34,25 @@ export default function Index() {
         });
     }
 
+    const isBillLayout = i18next.t("BillLayout.Active")
+
     return (
         // title ?
         (
             <div className="main d-flex align-items-start">
             {
-                i18next.t("BillLayout.Active")?
+                isBillLayout?
                 <div>
                     <Header />
                     <div className="main__bgGray">
                         <div className="container">
-                            <StartSectionBill />
+                            <StartSectionBill isMobile={isMobile} />
+                        </div>
+                    </div>
+                    <div className="main__bgGray">
+                        <div className="container">
+                            <ComoParticiparSection />
+                            <BeersSection isBill={isBillLayout} isMobile={isMobile} />
                         </div>
                     </div>
                 </div>

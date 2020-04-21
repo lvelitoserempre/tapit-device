@@ -14,16 +14,30 @@
         }
         &__bottom-line {
             display: block;
-            margin: 50px 0 0;
+            margin: 50px 0 20px;
             width: 100%;
+            @media screen and (max-width: @sm) {
+                margin: 20px 0;
+            }
             &-animation {
                 display: inline-block;
-                opacity: 0;
+                // opacity: 0;
                 img {
                     vertical-align: middle;
                 }
                 &-line {
-                    width: 0;
+                    // width: 0;
+                    // if animation remove next lines
+                    img {
+                        @media screen and (max-width: @sm) {
+                            height: 1px;
+                            width: 100%;
+                        }
+                    }
+                    @media screen and (max-width: @sm) {
+                        width: 70%;
+                    }
+                    // end if
                 }
             }
         }
@@ -33,11 +47,22 @@
                 margin-top: 30px;
             }
             &-cellphone {
-                animation: animateTop 1.5s;
+                // animation: animateTop 1.5s;
                 transition: all 0.3s ease-in-out;
                 @media screen and (max-width: @md) {
                     width: 100%;
                 }
+            }
+            &-cellphone2 {
+                margin: 0 0 0 -70px;
+                @media screen and (max-width: @md) {
+                    margin: 0;
+                }
+            }
+            &-scroll {
+                position: absolute;
+                right: -38px;
+                top: 200px;
             }
         }
         &-bubble1 {
