@@ -18,16 +18,16 @@ h1,h2,h3,h4,h5,h6 {
 }
 ul {
     list-style-type: none;
+    padding: 0;
 }
 .main {
     font-family: @mainFont, sans-serif;
     font-size: 34px;
     margin: 0 auto;
-    max-width: 1366px;
     overflow: hidden;
     width: 100%;
     @media screen and (max-width: @sm) {
-        font-size: 18px;
+        font-size: 5vw;
     }
     .loader {
         background-color: red;
@@ -55,6 +55,8 @@ ul {
         background-image: url('../../assets/images/blue-bg.svg');
         background-position: right top;
         background-repeat: no-repeat;
+        margin: 0 auto;
+        width: 1366px;
         @media screen and (max-width: @xs) {
             background-image: url('../../assets/images/blue-bg-mobile.svg');
             background-position: left bottom;
@@ -63,6 +65,7 @@ ul {
     }
     &__bgOrange {
         background-image: url('../../assets/images/orange-bg.svg');
+        background-position: top center;
         background-repeat: no-repeat;
         color: white;
         @media screen and (max-width: @xs) {
@@ -73,6 +76,8 @@ ul {
             .section {
                 &__title {
                     color: white;
+                    font-size: 70px;
+                    line-height: 70px;
                 }
             }
         }
@@ -89,6 +94,13 @@ ul {
             @media screen and (max-width: @xs) {
                 font-size: 8.6vw;
                 line-height: 8.6vw;
+            }
+            &-red {
+                color: @redColor;
+                font-size: 70px;
+                @media screen and (max-width: @xs) {
+                    font-size: 8.3vw;
+                }
             }
         }
         &__text {
@@ -124,79 +136,5 @@ ul {
     }
     @media screen and (max-width: @md) {
         display: inherit;
-    }
-}
-.slick-slider {
-    .slick-arrow {
-        bottom: -70px;
-        top: auto;
-        &.slick-next {
-            right: calc(50% - 50px);
-        }
-        &.slick-prev {
-            left: calc(50% - 50px);
-        }
-        
-        &.slick-prev,
-        &.slick-next {
-            color: white;
-            height: 28px;
-            width: 14px;
-        }
-        &.slick-prev:hover,
-        &.slick-prev:focus,
-        &.slick-next:hover,
-        &.slick-next:focus {
-            opacity: 0.8;
-        }
-        &.slick-next::before {
-            content: url('../../assets/images/next-arrow.svg');
-        }
-        &.slick-prev::before {
-            content: url('../../assets/images/prev-arrow.svg');
-        }
-    }
-    .slick-dots {
-        li {
-            height: 14px;
-            margin: 0 30px;
-            width: 14px;
-            &:after {
-                background-color: black;
-                content: '';
-                height: 1px;
-                left: 19px;
-                position: absolute;
-                top: 50%;
-                width: 50px;
-            }
-            &:last-child {
-                &:after {
-                    content: none;
-                }
-            }
-            &.slick-active {
-                button {
-                    background-color: @mainColor;
-                }
-            }
-            button {
-                background-color: @ligthGrayColor;
-                border-radius: 15px;
-                height: 14px;
-                padding: 2px;
-                width: 14px;
-                &::before {
-                    font-size: 11px;
-                    height: 17px;
-                    line-height: 19px;
-                    opacity: 0;
-                    width: 17px;
-                }
-                &:hover {
-                    background-color: @mainColor;
-                }
-            }
-        }
     }
 }

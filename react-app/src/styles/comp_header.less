@@ -1,0 +1,49 @@
+.main {
+    .header {
+        background-image: url('../assets/images/header-bg.svg');
+        color: white;
+        font-size: 18px;
+        height: 186px;
+        position: relative;
+        @media screen and (max-width: @xs) {
+            background-image: url('../assets/images/header-bg-mobile.svg');
+            background-size: cover;
+            background-position: bottom center;
+            height: auto;
+        }
+        &__buttons {
+            li {
+                display: inherit;
+                margin: 10px 0;
+            }
+        }
+        &__button {
+            background-color: @mainColor;
+            border: 1px solid white;
+            border-radius: 15px;
+            color: white;
+            font-family: @mainFontBold, sans-serif;
+            font-size: 20px;
+            margin: 0 20px;
+            text-decoration: none;
+            padding: 15px;
+            @media screen and (max-width: @xs) {
+                border-radius: 20px;
+                font-size: 20px;
+                padding: 20px 25px;
+            }
+        }
+        &__logos {
+            img {
+                width: auto;
+            }
+            &-logo {
+                &-polas {
+                    border-left: 1px solid white;
+                    margin-left: 45px;
+                    padding-left: 45px;
+                }
+            }
+        }
+    }
+}

@@ -8,10 +8,15 @@ export default function FooterSection() {
 
     return (
         <footer className='footer'>
+            <div className="footer__legal">
+                <div className='row center-xs'>
+                    <img src={i18next.t("Footer.LegalImage")} />
+                </div>
+            </div>
             <div className='container'>
                 <div className='row middle-xs'>
-                    <div className="row middle-xs col-sm-6 col-lg-4 col-lg-offset-2 col-sm-offset-0 footer__follow">
-                        <p>{i18next.t("Footer.TextFollow")}</p>
+                    <div className="col-sm-3 col-lg-2 col-lg-offset-1 col-sm-offset-0 footer__follow">
+                        <p className="row center-xs">{i18next.t("Footer.TextFollow")}</p>
                         <ul className='footer__social row center-xs middle-sm'>
                             {social.map((item,index)=>{
                                 return(
@@ -29,6 +34,9 @@ export default function FooterSection() {
                         <p>
                             <small dangerouslySetInnerHTML={{__html: i18next.t("Footer.Copyright")}}/>
                         </p>
+                    </div>
+                    <div className="row col-sm-2 footer__polas">
+                        <img src={i18next.t("Footer.LogoPolas")} />
                     </div>
                 </div>
             </div>

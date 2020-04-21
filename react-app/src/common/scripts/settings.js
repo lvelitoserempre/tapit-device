@@ -3,6 +3,30 @@ i18next.init({
     resources: {
         es: {
             translation: {
+                BillLayout: {
+                    Active: true,
+                    Header: {
+                        Logo: '../assets/images/billLayout/Tapit_Logo.svg',
+                        LogoPolas: '../assets/images/billLayout/PloasLogo.svg',
+                        UrlLogin: '/app/login',
+                        UrlSignup: '/app/signup',
+                        LoginText: 'Inicia sesión',
+                        SignupText: 'Regístrate'
+                    },
+                    Section1: {
+                        Title: 'Tapit y Polas Recargadas te traen experiencias increíbles',
+                        Text: 'Ahora tus facturas de cerveza pueden llevarte a experiencias digitales en vivo para que las disfrutes en casa.',
+                        Image: '../assets/images/billLayout/beer-phone.png',
+                        ImageScroll: '../assets/images/scroll.svg'
+                    },
+                    Section2: {
+                        Title: '¿Cómo Participar?​',
+                        Text: 'Por compras de mínimo <b>6 cervezas</b> de las marcas de Bavaria realizadas en establecimientos de Grupo Éxito, Olímpica, Cencosud, o a través de Merqueo o Rappi <b>podrás obtener acceso a eventos exclusivos.</b>',
+                        Image: '../assets/images/billLayout/participa.png',
+                        ButtonText: 'PARTICIPA',
+                        ButtonUrl: '/app/login'
+                    }
+                },
                 Header: {
                     Logo: '../assets/images/TopLogo.png'
                 },
@@ -56,6 +80,7 @@ i18next.init({
                     Image: '../assets/images/marketplace/Truck.png',
                 },
                 Section5: {
+                    Title: 'Nuestras Marcas',
                     BeersImages: [
                         '../assets/images/beers/beer-Stella.png',
                         '../assets/images/beers/beer-Corona.png',
@@ -63,7 +88,9 @@ i18next.init({
                         '../assets/images/beers/beer-Club.png',
                         '../assets/images/beers/beer-Poker.png',
                         '../assets/images/beers/beer-Redds.png',
-                        '../assets/images/beers/beer-Stella.png',
+                        '../assets/images/beers/beer-Pilsen.png',
+                        '../assets/images/beers/beer-Aguila.png',
+                        '../assets/images/beers/beer-Costenita.png',
                     ]
                 },
                 Section6: {
@@ -88,7 +115,9 @@ i18next.init({
                             Url: 'facebook.com'
                         }
                     ],
+                    LegalImage: '../assets/images/footer/legal.png',
                     Logo: '../assets/images/footer/Logo-tapit.svg',
+                    LogoPolas: '../assets/images/footer/logo-polas.svg',
                     Copyright: 'Todos los derechos reservados © 2019 <br/>Términos y condiciones | Políticas de protección de datos personales <br/>Aviso de privacidad | Pólitica de cookies | Contáctanos '
                 },
                 Animations

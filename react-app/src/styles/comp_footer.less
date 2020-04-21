@@ -2,19 +2,22 @@
     background-color: @darkGrayColor;
     color: white;
     font-size: 18px;
-    padding: 100px 0;
+    padding: 0 0 100px;
     position: relative;
     @media screen and (max-width: @xs) {
-        padding: 30px 0;
+        padding: 0 0 30px;
     }
-    &:before {
-        border-top: 1px solid white;
-        content: '';
-        position: absolute;
-        top: 16px;
-        width: 100%;
+    &__legal {
+        padding: 15px 0;
+        border-bottom: 1px solid white;
+        margin: 0 0 70px;
+        @media screen and (max-width: @sm) {
+            img {
+                width: 95%;
+            }
+        }
         @media screen and (max-width: @xs) {
-            top: 10px;
+            margin: 0;
         }
     }
     &__social {
@@ -31,12 +34,16 @@
     }
     &__copyright {
         border-left: 1px solid white;
-        margin: 0;
-        padding: 10px 0 10px 50px;
+        border-right: 1px solid white;
+        margin: 0 50px 0 0;
+        padding: 10px 50px;
         @media screen and (max-width: @xs) {
+            border-bottom: 1px solid white;
             border-left: none;
+            border-right: none;
             border-top: 1px solid white;
-            padding: 20px 0 0;
+            margin: 0 0 20px;
+            padding: 20px 0;
             text-align: center;
             img {
                 margin: 0 auto;
@@ -57,6 +64,14 @@
             ul {
                 padding: 0;
                 width: 100%;
+            }
+        }
+    }
+    &__polas {
+        @media screen and (max-width: @xs) {
+            text-align: center;
+            img {
+                margin: 0 auto;
             }
         }
     }
