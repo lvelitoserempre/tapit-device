@@ -1,11 +1,9 @@
-<div class="container" fxLayout="column" fxLayoutGap="50px" fxLayoutAlign="center stretch">
+<div class="legacy-container" fxLayout="column" fxLayoutGap="50px" fxLayoutAlign="center stretch">
 
-    <!-- Title -->
-    <div class="title" fxLayout="row" fxLayoutAlign="center center">
+    <div class="legacy-title" fxLayout="row" fxLayoutAlign="center center">
         Registrarse
     </div>
 
-    <!-- Content -->
     <div class="content" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center center">
         <div class="item">
             <form class="form" fxLayout="column" fxLayoutGap="20px" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">

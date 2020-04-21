@@ -8,7 +8,8 @@
     "build-prod": "ng build --prod --aot --output-path=../dist/app --base-href=/app/",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "tw": "tailwind build ./src/tailwind.scss -c ./tailwind.config.js -o ./src/assets/styles/tailwind.css"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +35,7 @@
     "ngx-slick-carousel": "^0.4.7",
     "rxjs": "~6.4.0",
     "slick-carousel": "^1.8.1",
+    "tailwindcss": "^1.2.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

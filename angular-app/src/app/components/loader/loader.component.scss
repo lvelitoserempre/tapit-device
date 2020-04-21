@@ -1,6 +1,5 @@
-@import '~src/styles.scss';
+@import 'src/assets/styles/colors';
 
-// Loading spinner
 .loader {
     position: fixed;
     top: 0;
@@ -15,6 +14,6 @@
 
     // Spinner color
     .mat-spinner::ng-deep circle {
-        stroke: map_get($primary, 500);
+        stroke: map_get($primary-colors, 500);
     }
 }
