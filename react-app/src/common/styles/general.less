@@ -18,6 +18,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 ul {
     list-style-type: none;
+    padding: 0;
 }
 .main {
     font-family: @mainFont, sans-serif;
@@ -87,15 +88,18 @@ ul {
             font-size: 75px;
             font-family: @mainFontBold, sans-serif;
             line-height: 75px;
-            &-red {
-                color: @redColor;
-            }
             span {
                 color: @mainColor;
             }
             @media screen and (max-width: @xs) {
                 font-size: 8.6vw;
                 line-height: 8.6vw;
+            }
+            &-red {
+                color: @redColor;
+                @media screen and (max-width: @xs) {
+                    font-size: 8.3vw;
+                }
             }
         }
         &__text {
