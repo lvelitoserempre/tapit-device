@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
       const reader = new FileReader();
 
       reader.onload = () => {
-        console.log(reader.result);
         this.selectedImage = reader.result;
       };
 
