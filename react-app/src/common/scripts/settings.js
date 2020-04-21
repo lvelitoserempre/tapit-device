@@ -108,11 +108,11 @@ i18next.init({
                     Social: [
                         {
                             Image: '../assets/images/footer/logo-facebbok.svg',
-                            Url: 'facebook.com'
+                            Url: 'https://www.facebook.com/gettap.it/'
                         },
                         {
                             Image:'../assets/images/footer/logo-instagram.svg',
-                            Url: 'facebook.com'
+                            Url: 'https://www.instagram.com/tapit_beer/'
                         }
                     ],
                     LegalImage: '../assets/images/footer/legal.png',
