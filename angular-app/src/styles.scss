@@ -1,6 +1,7 @@
 @import "assets/styles/material.theme";
 @import "assets/styles/fonts";
 @import "assets/styles/variables";
+@import "assets/styles/tailwind.css";
 
 html, body {
     height: 100%;
@@ -18,7 +19,7 @@ body {
     .home-component {
         background-color: #2b2929;
         color: white;
-        .title {
+        .legacy-title {
             color: white;
             &-red {
                 color: $redColor;
@@ -43,7 +44,7 @@ body {
     box-sizing: border-box;
 }
 
-.container {
+.legacy-container {
     flex: 1 0 auto !important;
 
     .content {
@@ -65,7 +66,7 @@ body {
     }
 }
 
-.title {
+.legacy-title {
     font-family: 'gilroy', sans-serif;
     font-size: 60px;
     font-stretch: normal;

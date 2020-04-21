@@ -1,26 +1,4 @@
-import {Validators, FormBuilder} from '@angular/forms';
-import {UnderAgeValidator} from '../common/utils/validators';
-
-/**
- * Model for 'sign up' form
- */
-export class SignUpFormModel {
-  birthDate = [''];//, Validators.compose([Validators.required, UnderAgeValidator])];
-  code = null;
-  deviceId = null;
-  email = [''];//, [Validators.required, Validators.email]];
-  // The password field is not part of the final model
-  // Is required for user creation purposes only and
-  // will be removed before sending the final form
-  password = [''];//, Validators.compose([Validators.required, Validators.pattern(/^[a-zA-Z0-9]{6,}$/)])];
-  firstName = [''];//, Validators.required];
-  lastName = [''];//, Validators.required];
-  phone = [''];//, Validators.compose([Validators.required, Validators.pattern(/^[0-9]{10}$/),])];
-  player = new FormBuilder().group(new PlayerFormModel());
-  referralCode = null;
-  resetPass = false;
-  userPhoto = null;
-}
+import {FormBuilder} from '@angular/forms';
 
 /**
  * Model for 'points last week' form
