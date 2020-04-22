@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {EventDAO} from '../../event/event-dao.service';
+import {BillDAO} from '../../bill/bill-dao.service';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +11,9 @@ export class HomeComponent implements OnInit {
   @ViewChild('inputFile', {static: true})
   inputFile: ElementRef;
   events = [];
-  selectedImage: any;
+  selectedImage: { base64: string, fileType: string };
   selectedEvent: any;
+  billNumber: string;
   isMobile: boolean;
   beersImages = [
     '../assets/images/beers/beer-Stella.png',
@@ -25,7 +27,7 @@ export class HomeComponent implements OnInit {
     '../assets/images/beers/beer-Costenita.png'
   ];
 
-  constructor(private eventDAO: EventDAO) {
+  constructor(private eventDAO: EventDAO, private billDAO: BillDAO) {
   }
 
   ngOnInit(): void {
@@ -44,7 +46,10 @@ export class HomeComponent implements OnInit {
       const reader = new FileReader();
 
       reader.onload = () => {
-        this.selectedImage = reader.result;
+        this.selectedImage = {
+          base64: reader.result as string,
+          fileType: file.type
+        };
       };
 
       reader.readAsDataURL(file);
@@ -54,7 +59,12 @@ export class HomeComponent implements OnInit {
   }
 
   sendFile() {
-
+    this.billDAO.saveBill({
+      eventId: this.selectedEvent.id,
+      invoiceImageEncoded: this.selectedImage.base64.replace('data:image/png;base64,', ''),
+      type: this.selectedImage.fileType,
+      invoiceNumber: this.billNumber
+    }).subscribe(res => console.log(res), error => console.error(error))
   }
 
   slideConfig = {
@@ -65,18 +75,18 @@ export class HomeComponent implements OnInit {
     slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
-        {
-            breakpoint: 992,
-            settings: {
-                slidesToShow: 2,
-            }
-        },
-        {
-            breakpoint: 576,
-            settings: {
-                slidesToShow: 1,
-            }
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
         }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+        }
+      }
     ]
   };
   settings = {
@@ -103,19 +113,19 @@ export class HomeComponent implements OnInit {
 };
 
   detectMobile() {
-    const toMatch:any = [
-        /Android/i,
-        /webOS/i,
-        /iPhone/i,
-        /iPad/i,
-        /iPod/i,
-        /BlackBerry/i,
-        /Windows Phone/i
+    const toMatch: any = [
+      /Android/i,
+      /webOS/i,
+      /iPhone/i,
+      /iPad/i,
+      /iPod/i,
+      /BlackBerry/i,
+      /Windows Phone/i
     ];
     return toMatch.some((toMatchItem) => {
-        return navigator.userAgent.match(toMatchItem);
+      return navigator.userAgent.match(toMatchItem);
     });
-}
+  }
 
   selectEvent(i: number) {
     this.events.forEach(event => event.isSelected = false);
