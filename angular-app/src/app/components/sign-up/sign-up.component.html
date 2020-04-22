@@ -1,75 +1,93 @@
 <div class="legacy-container" fxLayout="column" fxLayoutGap="50px" fxLayoutAlign="center stretch">
 
-    <div class="legacy-title" fxLayout="row" fxLayoutAlign="center center">
-        Registrarse
-    </div>
+  <div class="legacy-title" fxLayout="row" fxLayoutAlign="center center">
+    Registrarse
+  </div>
 
-    <div class="content" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center center">
-        <div class="item">
-            <form class="form" fxLayout="column" fxLayoutGap="20px" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <div class="content" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px"
+       fxLayoutAlign="center center">
+    <div class="item">
+      <form class="form" fxLayout="column" fxLayoutGap="20px" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
 
-                <!-- First name -->
-                <mat-form-field>
-                    <input matInput type="text" placeholder="Nombre" formControlName="firstName" required>
-                    <mat-error *ngIf="signUpForm.get('firstName').hasError('required')">{{ validationMessages.firstName.required }}</mat-error>
-                    <mat-error *ngIf="signUpForm.get('firstName').hasError('minlength')">{{ validationMessages.firstName.minlength }}</mat-error>
-                </mat-form-field>
+        <!-- First name -->
+        <mat-form-field>
+          <input matInput type="text" placeholder="Nombre" formControlName="firstName" required>
+          <mat-error
+            *ngIf="signUpForm.get('firstName').hasError('required')">{{ validationMessages.firstName.required }}</mat-error>
+          <mat-error
+            *ngIf="signUpForm.get('firstName').hasError('minlength')">{{ validationMessages.firstName.minlength }}</mat-error>
+        </mat-form-field>
 
-                <!-- Last name -->
-                <mat-form-field>
-                    <input matInput type="text" placeholder="Apellido" formControlName="lastName" required>
-                    <mat-error *ngIf="signUpForm.get('lastName').hasError('required')">{{ validationMessages.lastName.required }}</mat-error>
-                    <mat-error *ngIf="signUpForm.get('lastName').hasError('minlength')">{{ validationMessages.lastName.minlength }}</mat-error>
-                </mat-form-field>
+        <!-- Last name -->
+        <mat-form-field>
+          <input matInput type="text" placeholder="Apellido" formControlName="lastName" required>
+          <mat-error
+            *ngIf="signUpForm.get('lastName').hasError('required')">{{ validationMessages.lastName.required }}</mat-error>
+          <mat-error
+            *ngIf="signUpForm.get('lastName').hasError('minlength')">{{ validationMessages.lastName.minlength }}</mat-error>
+        </mat-form-field>
 
-                <!-- Email -->
-                <mat-form-field>
-                    <input matInput type="text" placeholder="Email" formControlName="email" required>
-                    <mat-error *ngIf="signUpForm.get('email').hasError('required')">{{ validationMessages.email.required }}</mat-error>
-                    <mat-error *ngIf="signUpForm.get('email').hasError('email') && !signUpForm.get('email').hasError('required')">{{ validationMessages.email.email }}</mat-error>
-                </mat-form-field>
+        <!-- Email -->
+        <mat-form-field>
+          <input matInput type="text" placeholder="Email" formControlName="email" required>
+          <mat-error
+            *ngIf="signUpForm.get('email').hasError('required')">{{ validationMessages.email.required }}</mat-error>
+          <mat-error
+            *ngIf="signUpForm.get('email').hasError('email') && !signUpForm.get('email').hasError('required')">{{ validationMessages.email.email }}</mat-error>
+        </mat-form-field>
 
-                <!-- Password -->
-                <mat-form-field>
-                    <input matInput type="password" placeholder="Contraseña" formControlName="password" required>
-                    <mat-error *ngIf="signUpForm.get('password').hasError('required')">{{ validationMessages.password.required }}</mat-error>
-                    <mat-error *ngIf="signUpForm.get('password').hasError('minlength')">{{ validationMessages.password.minlength }}</mat-error>
-                </mat-form-field>
+        <!-- Password -->
+        <mat-form-field>
+          <input matInput type="password" placeholder="Contraseña" formControlName="password" required>
+          <mat-error
+            *ngIf="signUpForm.get('password').hasError('required')">{{ validationMessages.password.required }}</mat-error>
+          <mat-error
+            *ngIf="signUpForm.get('password').hasError('minlength')">{{ validationMessages.password.minlength }}</mat-error>
+        </mat-form-field>
 
-                <!-- Phone -->
-                <mat-form-field>
-                    <input matInput type="tel" placeholder="Número de celular" formControlName="phone" required>
-                    <mat-error *ngIf="signUpForm.get('phone').hasError('required')">{{ validationMessages.phone.required }}</mat-error>
-                    <mat-error *ngIf="signUpForm.get('phone').hasError('minlength')">{{ validationMessages.phone.minlength }}</mat-error>
-                    <mat-error *ngIf="signUpForm.get('phone').hasError('pattern')">{{ validationMessages.phone.pattern }}</mat-error>
-                </mat-form-field>
+        <!-- Phone -->
+        <mat-form-field>
+          <input matInput type="tel" placeholder="Número de celular" formControlName="phone" required>
+          <mat-error
+            *ngIf="signUpForm.get('phone').hasError('required')">{{ validationMessages.phone.required }}</mat-error>
+          <mat-error
+            *ngIf="signUpForm.get('phone').hasError('minlength')">{{ validationMessages.phone.minlength }}</mat-error>
+          <mat-error
+            *ngIf="signUpForm.get('phone').hasError('pattern')">{{ validationMessages.phone.pattern }}</mat-error>
+        </mat-form-field>
 
-                <!-- Birthdate -->
-                <mat-form-field>
-                    <input matInput readonly (click)="picker.open()" [matDatepicker]="picker" placeholder="Fecha de nacimiento" formControlName="birthDate" required>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    <mat-error *ngIf="signUpForm.get('birthDate').hasError('required')">{{ validationMessages.birthDate.required }}</mat-error>
-                    <mat-error *ngIf="signUpForm.get('birthDate').hasError('underAge') && !signUpForm.get('birthDate').hasError('required')">{{ validationMessages.birthDate.underAge }}</mat-error>
-                </mat-form-field>
+        <!-- Birthdate -->
+        <mat-form-field>
+          <input matInput readonly (click)="picker.open()" [matDatepicker]="picker" placeholder="Fecha de nacimiento"
+                 formControlName="birthDate" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error
+            *ngIf="signUpForm.get('birthDate').hasError('required')">{{ validationMessages.birthDate.required }}</mat-error>
+          <mat-error
+            *ngIf="signUpForm.get('birthDate').hasError('underAge') && !signUpForm.get('birthDate').hasError('required')">{{ validationMessages.birthDate.underAge }}</mat-error>
+        </mat-form-field>
 
-                <!-- Referral code -->
-                <mat-form-field>
-                    <input matInput type="text" placeholder="Código de referido" formControlName="referralCode">
-                </mat-form-field>
+        <!-- Referral code -->
+        <mat-form-field>
+          <input matInput type="text" placeholder="Código de referido" formControlName="referralCode">
+        </mat-form-field>
 
-                <!-- Terms and conditions -->
-                <div>Al crear una cuenta accedes a nuestros <a id="terms" href="https://home.gettap.it/terminos" target="blank">términos</a></div>
-
-                <!-- Create account button -->
-                <button fxFlexAlign="center" mat-raised-button type="submit" color="primary" class="btn-red-rounded" [disabled]="signUpForm.invalid">Crear cuenta</button>
-
-                <!-- Login link -->
-                <div fxFlexAlign="center">Si ya tienes una cuenta <a routerLink="/login">Ingresa</a></div>
-            </form>
+        <!-- Terms and conditions -->
+        <div>Al crear una cuenta accedes a nuestros <a id="terms" href="https://home.gettap.it/terminos" target="blank">términos</a>
         </div>
 
-        <!-- Right image -->
-        <img class="item" src="assets/images/image_signup.png">
+        <!-- Create account button -->
+        <button fxFlexAlign="center" mat-raised-button type="submit" color="primary" class="btn-red-rounded"
+                [disabled]="signUpForm.invalid">Crear cuenta
+        </button>
+
+        <!-- Login link -->
+        <div fxFlexAlign="center">Si ya tienes una cuenta <a routerLink="/login">Ingresa</a></div>
+      </form>
     </div>
+
+    <!-- Right image -->
+    <img class="item" src="assets/images/image_signup.png">
+  </div>
 </div>

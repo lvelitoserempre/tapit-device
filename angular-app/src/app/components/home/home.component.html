@@ -50,7 +50,7 @@
       <div class="sm:flex-1">
         <label for="bill" class="font-bold text-xl text-red-500 block mb-2">Número de factura*</label>
         <input id="bill" type="text"
-               class="text-center font-bold text-lg p-4 border border-orange-500 rounded-xl focus:outline-none">
+               class="text-center font-bold text-lg p-4 border border-orange-500 rounded-xl focus:outline-none" [(ngModel)]="billNumber">
 
         <div class="relative text-center max-w-md">
           <div class="inline-block align-middle w-1/5 p-1"><img src="assets/images/partners/exito.png"
@@ -77,13 +77,14 @@
         </div>
 
         <div class="mt-10" *ngIf="selectedImage">
-          <div class="inline-block max-w-sm text-center">
-            <img [src]="selectedImage" class="">
-            <a class="underline text-red-500 font-bold cursor-pointer" (click)="inputFile.click()">Subir de nuevo</a>
+          <div class="inline-block max-w-sm text-center align-bottom">
+            <img [src]="selectedImage.base64">
+            <a class="block underline text-red-500 font-bold cursor-pointer m-2" (click)="inputFile.click()">Subir de
+              nuevo</a>
           </div>
 
           <button
-            class="px-8 py-4 bg-orange-500 font-bold text-white rounded-xl inline-block mx-auto focus:outline-none"
+            class="ml-4 px-8 py-4 bg-orange-500 font-bold text-white rounded-xl inline-block mx-auto focus:outline-none align-bottom"
             (click)="sendFile()">ENVIAR
           </button>
         </div>
@@ -92,8 +93,12 @@
       </div>
 
       <div class="hidden sm:block sm:flex-1 relative max-w-sm">
-        <img src="./assets/images/bill.svg" class="w-full">
+        <img src="assets/images/bill.svg" class="w-full">
       </div>
     </div>
+
+    <img src="assets/images/line.svg" class="my-16">
+
   </section>
+
 </div>
