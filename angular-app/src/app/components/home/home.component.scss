@@ -2,14 +2,14 @@
   font-family: filson-soft;
 }
 
-.text-20xl {
+.sm\:text-20xl {
+  font-size: 15rem;
+  line-height: 8rem;
+}
+
+.text-15xl {
   font-size: 10rem;
   line-height: 6rem;
-
-  @media (min-width: 640px) {
-    font-size: 15rem;
-    line-height: 8rem;
-  }
 }
 
 .text-red-500 {
@@ -32,10 +32,6 @@
   border-radius: 1rem;
 }
 
-.event {
-  height: 20rem;
-}
-
 .bill-input-section {
   background: url("../../../assets/images/bg.svg") no-repeat;
   background-size: cover;
@@ -50,43 +46,47 @@
   // max-width: 1366px;
   padding-bottom: 60px;
   width: 100%;
+
   :focus {
-      outline: none;
+    outline: none;
   }
+
   &__slide {
-      height: 755px;
-      position: relative;
+    height: 30rem;
+    position: relative;
   }
+
   &__image {
-      height: 100%;
-      width: auto;
+    height: 100%;
+    width: auto;
   }
+
   &__title {
-      color: white;
-      border-left: 1px solid white;
-      border-top: 1px solid white;
-      font-size: 60px;
-      height: 310px;
-      left: 20px;
-      margin: 0;
-      opacity: 0.5;
-      padding: 12px;
-      position: absolute;
-      top: 20px;
-      width: calc(100% - 60px);
+    color: white;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    height: 310px;
+    left: 20px;
+    margin: 0;
+    opacity: 0.5;
+    padding: 12px;
+    position: absolute;
+    top: 20px;
+    width: calc(100% - 60px);
   }
+
   &__text {
-      bottom: 20px;
-      font-size: 41px;
-      left: 20px;
-      line-height: 40px;
-      position: absolute;
+    bottom: 20px;
+    left: 20px;
+    position: absolute;
   }
+
   &__name {
-      margin: 0;
+    margin: 0;
   }
+
   &__required {
-      color: white;
-      margin: 0;
+    color: white;
+    margin: 0;
   }
 }
