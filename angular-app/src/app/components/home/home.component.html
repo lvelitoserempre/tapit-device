@@ -34,14 +34,13 @@
         </div>
       </div>
     </ngx-slick-carousel>
-    <img *ngIf="isMobile" src="/assets/images/hand.svg" width="26" className="section__slider-mouse" />
-    <img *ngIf="!isMobile" src="/assets/images/mouse.svg" width="26" className="section__slider-mouse" />
+    <img *ngIf="isMobile" src="../assets/images/hand.svg" width="26" class="section__slider-mouse" />
+    <img *ngIf="!isMobile" src="../assets/images/mouse.svg" width="26" class="section__slider-mouse" />
   </section>
 
 <div class="container mx-auto px-2 py-10">
   <section class="flex mb-8">
     <h1 class="self-end text-20xl leading-none text-gray-400 font-bold">2</h1>
-
     <div class="flex-1 self-end p-2">
       <h3 class="text-red-500 text-2xl sm:text-5xl font-bold">Carga tu factura</h3>
       <p class="py-2 text-gray-700 sm:text-xl">Envíanos una imagen de la factura de tu compra de cerveza.</p>
@@ -104,5 +103,20 @@
         <img src="./assets/images/bill.svg" class="w-full">
       </div>
     </div>
+    <div class="row section section__beers center-xs section__beers-bg">
+      <h2 class="text-red-500 font-bold text-center text-2xl sm:text-6xl mb-10">Nuestras Marcas</h2>
+      <div class="section__beers-container">
+        <ngx-slick-carousel fxLayout="row" class="section__beers-slider"
+        #slickModal="slick-carousel"
+        [config]="settings" >
+          <div ngxSlickItem *ngFor="let beer of beersImages; let i=index;" class="section__beers-slider-image row">
+              <img [src]="beer" width="119"  />
+          </div>
+        </ngx-slick-carousel>
+      </div>
+      <img *ngIf="isMobile" src="../assets/images/hand.svg" width="26" class="section__slider-mouse" />
+      <img *ngIf="!isMobile" src="../assets/images/mouse.svg" width="26" class="section__slider-mouse" />
+    </div>
   </section>
+  
 </div>

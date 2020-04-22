@@ -13,6 +13,17 @@ export class HomeComponent implements OnInit {
   selectedImage: any;
   selectedEvent: any;
   isMobile: boolean;
+  beersImages = [
+    '../assets/images/beers/beer-Stella.png',
+    '../assets/images/beers/beer-Corona.png',
+    '../assets/images/beers/beer-Bud.png',
+    '../assets/images/beers/beer-Club.png',
+    '../assets/images/beers/beer-Poker.png',
+    '../assets/images/beers/beer-Redds.png',
+    '../assets/images/beers/beer-Pilsen.png',
+    '../assets/images/beers/beer-Aguila.png',
+    '../assets/images/beers/beer-Costenita.png'
+  ];
 
   constructor(private eventDAO: EventDAO) {
   }
@@ -68,6 +79,28 @@ export class HomeComponent implements OnInit {
         }
     ]
   };
+  settings = {
+    arrows: true,
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+            }
+        },
+        {
+          breakpoint: 576,
+          settings: {
+              slidesToShow: 2,
+          }
+      }
+    ]
+};
 
   detectMobile() {
     const toMatch:any = [
