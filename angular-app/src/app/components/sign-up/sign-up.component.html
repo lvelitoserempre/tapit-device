@@ -12,12 +12,14 @@
                 <mat-form-field>
                     <input matInput type="text" placeholder="Nombre" formControlName="firstName" required>
                     <mat-error *ngIf="signUpForm.get('firstName').hasError('required')">{{ validationMessages.firstName.required }}</mat-error>
+                    <mat-error *ngIf="signUpForm.get('firstName').hasError('minlength')">{{ validationMessages.firstName.minlength }}</mat-error>
                 </mat-form-field>
 
                 <!-- Last name -->
                 <mat-form-field>
-                    <input matInput type="text" placeholder="Apellidos" formControlName="lastName" required>
+                    <input matInput type="text" placeholder="Apellido" formControlName="lastName" required>
                     <mat-error *ngIf="signUpForm.get('lastName').hasError('required')">{{ validationMessages.lastName.required }}</mat-error>
+                    <mat-error *ngIf="signUpForm.get('lastName').hasError('minlength')">{{ validationMessages.lastName.minlength }}</mat-error>
                 </mat-form-field>
 
                 <!-- Email -->
@@ -31,13 +33,14 @@
                 <mat-form-field>
                     <input matInput type="password" placeholder="Contraseña" formControlName="password" required>
                     <mat-error *ngIf="signUpForm.get('password').hasError('required')">{{ validationMessages.password.required }}</mat-error>
-                    <mat-error *ngIf="signUpForm.get('password').hasError('pattern')">{{ validationMessages.password.pattern }}</mat-error>
+                    <mat-error *ngIf="signUpForm.get('password').hasError('minlength')">{{ validationMessages.password.minlength }}</mat-error>
                 </mat-form-field>
 
                 <!-- Phone -->
                 <mat-form-field>
                     <input matInput type="tel" placeholder="Número de celular" formControlName="phone" required>
                     <mat-error *ngIf="signUpForm.get('phone').hasError('required')">{{ validationMessages.phone.required }}</mat-error>
+                    <mat-error *ngIf="signUpForm.get('phone').hasError('minlength')">{{ validationMessages.phone.minlength }}</mat-error>
                     <mat-error *ngIf="signUpForm.get('phone').hasError('pattern')">{{ validationMessages.phone.pattern }}</mat-error>
                 </mat-form-field>
 

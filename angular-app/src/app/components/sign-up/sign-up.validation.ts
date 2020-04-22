@@ -2,19 +2,23 @@ import {UnderAgeValidator} from '../../common/utils/validators';
 import {Validators} from '@angular/forms';
 
 export const SignUpValidators = {
-  birthDate: ['', Validators.compose([Validators.required, UnderAgeValidator])],
-  email: ['', [Validators.required, Validators.email]],
-  password: ['', Validators.compose([Validators.required, Validators.pattern(/^[a-zA-Z0-9]{6,}$/)])],
-  firstName: ['', Validators.required],
-  lastName: ['', Validators.required],
-  phone: ['', Validators.compose([Validators.required, Validators.pattern(/^[0-9]{10}$/)])],
+  firstName: ['', Validators.minLength(3)],
+  lastName: ['', Validators.minLength(3)],
+  email: ['', Validators.email],
+  password: ['', Validators.minLength(6)],
+  birthDate: ['', [Validators.required, UnderAgeValidator]],
+  phone: ['', [Validators.minLength(10), Validators.pattern(/^\+?[0-9]+$/)]],
   referralCode: ['']
 };
 
 export const SignUpValidationMessages = {
-  birthDate: {
-    required: 'Por favor, selecciona una fecha de nacimiento.',
-    underAge: 'Debes ser mayor de 18 para poder registrarte.'
+  firstName: {
+    required: 'El nombre es obligatorio.',
+    minlength: 'El nombre debe tener almenos 3 caracteres.'
+  },
+  lastName: {
+    required: 'El apellido es obligatorio.',
+    minlength: 'El apellido debe tener almenos 3 caracteres.'
   },
   email: {
     required: 'El email es obligatorio.',
@@ -22,12 +26,15 @@ export const SignUpValidationMessages = {
   },
   password: {
     required: 'La contraseña es obligatoria.',
-    pattern: 'La contraseña debe de tener al menos 6 caracteres.'
+    minlength: 'La contraseña debe tener almenos 6 caracteres.'
   },
-  firstName: {required: 'El nombre es obligatorio.'},
-  lastName: {required: 'Los apellidos son obligatorios.'},
+  birthDate: {
+    required: 'Por favor, selecciona una fecha de nacimiento.',
+    underAge: 'Debes ser mayor de 18 para poder registrarte.'
+  },
   phone: {
     required: 'El número de teléfono es obligatorio.',
-    pattern: 'El teléfono tiene que tener 10 dígitos.'
+    pattern: 'El número de teléfono solo puede tener numeros.',
+    minlength: 'El número de teléfono debe tener almenos 10 dígitos.'
   }
 };
