@@ -9,6 +9,9 @@
     &__slide {
         height: 755px;
         position: relative;
+        @media screen and (max-width: @xs) {
+            height: 475px;
+        }
     }
     &__image {
         height: 100%;
@@ -27,6 +30,10 @@
         position: absolute;
         top: 20px;
         width: calc(100% - 60px);
+        @media screen and (max-width: @xs) {
+            font-size: 7.5vw;
+            line-height: 7.5vw;
+        }
     }
     &__text {
         bottom: 20px;
@@ -34,6 +41,10 @@
         left: 20px;
         line-height: 40px;
         position: absolute;
+        @media screen and (max-width: @xs) {
+            font-size: 7vw;
+            line-height: 7vw;
+        }
     }
     &__name {
         color: @redColor;
