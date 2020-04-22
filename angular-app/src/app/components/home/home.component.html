@@ -16,20 +16,29 @@
       </footer>
     </div>
   </section>
+</div>
+  <section class="block relative mb-20 events">
+      <ngx-slick-carousel fxLayout="row" class="carousel"
+      #slickModal="slick-carousel"
+      [config]="slideConfig" >
+      <div ngxSlickItem *ngFor="let event of events; let i=index;"
+          class="event overflow-hidden inline-block relative w-full sm:w-2/4 md:w-1/4 bg-black events__slide" (click)="selectEvent(i)">
+        <img [src]="event.image" class="h-full max-w-none mx-auto"/>
 
-  <section class="block relative mb-20">
-    <div *ngFor="let event of events; let i=index;"
-         class="event overflow-hidden inline-block relative w-full sm:w-2/4 md:w-1/4 bg-black" (click)="selectEvent(i)">
-      <img [src]="event.image" class="h-full max-w-none mx-auto"/>
+        <div class="absolute inset-0" [ngClass]="event.isSelected ? 'bg-black opacity-25' : 'bg-gray-100 bm-color'"></div>
 
-      <div class="absolute inset-0" [ngClass]="event.isSelected ? 'bg-black opacity-25' : 'bg-gray-100 bm-color'"></div>
-
-      <h3 class="absolute top-0 left-0 pl-2 text-white text-2xl font-bold">{{i + 1 | number : '2.0' }}</h3>
-      <h4 class="absolute bottom-0 left-0 pl-2 pb-8 text-red-500 text-lg font-bold">{{event.name}}</h4>
-      <h4 class="absolute bottom-0 left-0 pl-2 pb-2 text-white text-lg font-bold">{{event.requiredBeers}} Cervezas</h4>
-    </div>
+        <h3 class="text-white text-2xl font-bold events__title">{{i + 1 | number : '2.0' }}</h3>
+        <div class="events__text">
+          <h4 class="text-red-500 font-bold events__name">{{event.name}}</h4>
+          <h4 class="text-white font-bold events__required">{{event.requiredBeers}} Cervezas</h4>
+        </div>
+      </div>
+    </ngx-slick-carousel>
+    <img *ngIf="isMobile" src="/assets/images/hand.svg" width="26" className="section__slider-mouse" />
+    <img *ngIf="!isMobile" src="/assets/images/mouse.svg" width="26" className="section__slider-mouse" />
   </section>
 
+<div class="container mx-auto px-2 py-10">
   <section class="flex mb-8">
     <h1 class="self-end text-20xl leading-none text-gray-400 font-bold">2</h1>
 

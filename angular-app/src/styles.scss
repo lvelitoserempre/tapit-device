@@ -150,38 +150,17 @@ body {
 }
 .slick-slider {
     .slick-arrow {
+        bottom: -100px;
+        top: auto;
         &.slick-next {
-            right: -75px;
-            @media screen and (max-width: $maxWidthTablet){
-                right: 20px;
-                top: 30%;
-            }
-            @media screen and (max-width: 1170px){
-                right: calc(50% - 70px);
-                top: 57%;
-            }
-            @media screen and (max-width: 470px){
-                top: 43%;
-            }
+            right: calc(50% - 70px);
         }
         &.slick-prev {
-            left: -75px;
-            @media screen and (max-width: $maxWidthTablet){
-                left: 20px;
-                top: 30%;
-                z-index: 1;
-            }
-            @media screen and (max-width: 1170px){
-                left: calc(50% - 70px);
-                top: 57%;
-            }
-            @media screen and (max-width: 470px){
-                top: 43%;
-            }
+            left: calc(50% - 70px);
         }
         &.slick-prev,
         &.slick-next {
-            background-color: $redColor;
+            background-color: transparent;
             border-radius: 56px;
             color: white;
             height: 56px;
@@ -191,14 +170,14 @@ body {
         &.slick-prev:focus,
         &.slick-next:hover,
         &.slick-next:focus {
-            background-color: $redColor;
+            background-color: transparent;
             opacity: 0.8;
         }
         &.slick-next::before {
-            content: url('/assets/images/arrow-next.png');
+            content: url('../../react-app/src/assets/images/next-arrow.svg');
         }
         &.slick-prev::before {
-            content: url('/assets/images/arrow-prev.png');
+            content: url('../../react-app/src/assets/images/prev-arrow.svg');
         }
     }
     .slick-dots {
