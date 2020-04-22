@@ -25,6 +25,9 @@ i18next.init({
                         Image: '../assets/images/billLayout/participa.png',
                         ButtonText: 'PARTICIPA',
                         ButtonUrl: '/app/login'
+                    },
+                    SectionEvents: {
+                        Title: 'Pon las polas y nosotros te damos experiencias exclusivas',
                     }
                 },
                 Header: {
