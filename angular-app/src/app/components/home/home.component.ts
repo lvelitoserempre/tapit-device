@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   selectedImage: { base64: string, fileType: string };
   selectedEvent: any;
   billNumber: string;
+  isMobile: boolean;
 
   constructor(private eventDAO: EventDAO, private billDAO: BillDAO) {
   }
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
       this.events = events;
       this.events.forEach(event => event.isSelected = true);
     });
+    this.isMobile = this.detectMobile();
   }
 
   selectedBill(event: any) {
@@ -52,6 +54,44 @@ export class HomeComponent implements OnInit {
       type: this.selectedImage.fileType,
       invoiceNumber: this.billNumber
     }).subscribe(res => console.log(res), error => console.error(error))
+  }
+
+  slideConfig = {
+    arrows: true,
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
+  };
+
+  detectMobile() {
+    const toMatch: any = [
+      /Android/i,
+      /webOS/i,
+      /iPhone/i,
+      /iPad/i,
+      /iPod/i,
+      /BlackBerry/i,
+      /Windows Phone/i
+    ];
+    return toMatch.some((toMatchItem) => {
+      return navigator.userAgent.match(toMatchItem);
+    });
   }
 
   selectEvent(i: number) {

@@ -44,3 +44,49 @@
 .bm-color {
   mix-blend-mode: color;
 }
+
+.events {
+  margin: 0 auto;
+  // max-width: 1366px;
+  padding-bottom: 60px;
+  width: 100%;
+  :focus {
+      outline: none;
+  }
+  &__slide {
+      height: 755px;
+      position: relative;
+  }
+  &__image {
+      height: 100%;
+      width: auto;
+  }
+  &__title {
+      color: white;
+      border-left: 1px solid white;
+      border-top: 1px solid white;
+      font-size: 60px;
+      height: 310px;
+      left: 20px;
+      margin: 0;
+      opacity: 0.5;
+      padding: 12px;
+      position: absolute;
+      top: 20px;
+      width: calc(100% - 60px);
+  }
+  &__text {
+      bottom: 20px;
+      font-size: 41px;
+      left: 20px;
+      line-height: 40px;
+      position: absolute;
+  }
+  &__name {
+      margin: 0;
+  }
+  &__required {
+      color: white;
+      margin: 0;
+  }
+}
