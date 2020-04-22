@@ -39,8 +39,7 @@ export class SignUpComponent {
 
     from(this.authService.signUp(form.email, form.password))
       .pipe(mergeMap((userCredential: UserCredential) => {
-        this.authService.setUserInLocalStorage({
-          id: userCredential.user.uid,
+        this.userAccountService.setUserAccountInLocalStorage({
           firstName: form.firstName,
           lastName: form.lastName,
         });

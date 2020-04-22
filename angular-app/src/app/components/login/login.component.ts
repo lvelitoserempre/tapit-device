@@ -50,7 +50,6 @@ export class LoginComponent implements AfterViewInit {
           .then((doc) => {
             if (doc.exists) {
               const userAccount: UserAccount = doc.data() as UserAccount;
-              console.log(userAccount);
               this.userAccountService.setUserAccountInLocalStorage({
                 firstName: userAccount.firstName,
                 lastName: userAccount.lastName
