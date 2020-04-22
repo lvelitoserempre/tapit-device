@@ -10,13 +10,17 @@ export class HomeComponent implements OnInit {
   @ViewChild('inputFile', {static: true})
   inputFile: ElementRef;
   events = [];
-  selectedImage: any = '';
+  selectedImage: any;
+  selectedEvent: any;
 
   constructor(private eventDAO: EventDAO) {
   }
 
   ngOnInit(): void {
-    this.eventDAO.getEvents().subscribe(events => this.events = events);
+    this.eventDAO.getEvents().subscribe(events => {
+      this.events = events;
+      this.events.forEach(event => event.isSelected = true);
+    });
   }
 
   selectedBill(event: any) {
@@ -38,5 +42,11 @@ export class HomeComponent implements OnInit {
 
   sendFile() {
 
+  }
+
+  selectEvent(i: number) {
+    this.events.forEach(event => event.isSelected = false);
+    this.events[i].isSelected = true;
+    this.selectedEvent = this.events[i];
   }
 }
