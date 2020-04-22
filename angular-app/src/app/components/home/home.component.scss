@@ -40,7 +40,9 @@
 .bm-color {
   mix-blend-mode: color;
 }
-
+.ng-star-inserted {
+  width: 100%;
+}
 .events {
   margin: 0 auto;
   // max-width: 1366px;
@@ -90,3 +92,40 @@
     margin: 0;
   }
 }
+.section {
+  &__slider {
+    width: 100%;
+    &-mouse {
+      display: block;
+      margin: 37px auto 0;
+      width: 26px;
+    }
+  }
+  &__beers {
+    margin: 0;
+    padding: 50px 0 80px;
+    width: 100%;
+    &-container {
+        width: 100%;
+    }
+    &-slider {
+        &-image {
+            background-image: url('../../../../../dist/assets/images/spacer.svg');
+            background-position: top right;
+            background-repeat: no-repeat;
+            &:focus {
+                outline: none;
+            }
+            img {
+                display: block;
+                margin: 0 auto;
+            }
+        }
+        &-mouse {
+            display: block;
+            margin: 37px auto 0;
+        }
+    }
+}
+}
+
