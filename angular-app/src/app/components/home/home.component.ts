@@ -19,15 +19,15 @@ export class HomeComponent implements OnInit {
   billNumber: string;
   isMobile: boolean;
   beersImages = [
-    '../assets/images/beers/beer-Stella.png',
+    '../assets/images/beers/beer-Aguila.png',
+    '../assets/images/beers/beer-Poker.png',
+    '../assets/images/beers/beer-Club.png',
     '../assets/images/beers/beer-Corona.png',
     '../assets/images/beers/beer-Bud.png',
-    '../assets/images/beers/beer-Club.png',
-    '../assets/images/beers/beer-Poker.png',
+    '../assets/images/beers/beer-Stella.png',
     '../assets/images/beers/beer-Redds.png',
     '../assets/images/beers/beer-Pilsen.png',
-    '../assets/images/beers/beer-Aguila.png',
-    '../assets/images/beers/beer-Costenita.png'
+    '../assets/images/beers/beer-Costenita.png',
   ];
 
   constructor(private eventDAO: EventDAO, private billDAO: BillDAO, private router: Router, private loaderService: LoaderService,
