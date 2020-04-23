@@ -121,7 +121,7 @@ i18next.init({
                     LegalImage: '../assets/images/footer/legal.png',
                     Logo: '../assets/images/footer/Logo-tapit.svg',
                     LogoPolas: '../assets/images/footer/logo-polas.svg',
-                    Copyright: 'Todos los derechos reservados © 2019 <br/>Términos y condiciones | Políticas de protección de datos personales <br/>Aviso de privacidad | Pólitica de cookies | Contáctanos '
+                    Copyright: 'Todos los derechos reservados © 2020 <br/>Términos y condiciones | Políticas de protección de datos personales <br/>Aviso de privacidad | Pólitica de cookies | Contáctanos '
                 },
                 Animations
             }
