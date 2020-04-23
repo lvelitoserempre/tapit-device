@@ -62,7 +62,11 @@ export class HomeComponent implements OnInit {
 
       reader.readAsDataURL(file);
     } else {
-      alert('Muy grande');
+      this.dialogService.showErrorDialog({
+        message: 'Tu imagen ocupa mas de 5MB. Selecciona una imagen mas pequeña o de menos resolución',
+        buttonOne: 'INTENTA DE NUEVO'
+      });
+      this.selectedImage = null;
     }
   }
 
@@ -176,7 +180,7 @@ export class HomeComponent implements OnInit {
 
     if (!this.selectedImage) {
       this.dialogService.showErrorDialog({
-        message: 'Debes seleccionar un evento',
+        message: 'Debes seleccionar una imagen',
         buttonOne: 'INTENTA DE NUEVO'
       });
 
