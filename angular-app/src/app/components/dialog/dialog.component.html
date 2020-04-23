@@ -1,4 +1,4 @@
-<div mat-dialog-content class="max-w-xl">
+<div class="max-w-xl">
   <div class="flex">
     <div class="self-center">
       <div class="p-2 inline-block align-middle w-1/4">
@@ -7,10 +7,8 @@
 
       <div class="p-2 inline-block align-middle w-3/4">
         <p class="text-red-500 text-xl sm:text-2xl font-bold mb-4">{{data.message}}</p>
-        <mat-dialog-actions align="center">
-          <button class="bg-orange-500 px-3 py-2 text-white text-sm sm:text-lg font-bold rounded-xl focus:outline-none"
-                  [mat-dialog-close]="true">{{ data.buttonOne }}</button>
-        </mat-dialog-actions>
+        <button class="bg-orange-500 px-3 py-2 text-white text-sm sm:text-lg font-bold rounded-xl focus:outline-none block mx-auto"
+                [mat-dialog-close]="true">{{ data.buttonOne }}</button>
       </div>
     </div>
   </div>

@@ -36,6 +36,7 @@ export class EventDAO {
         requiredBeers: 8
       },
       {
+        id: '3',
         name: 'Nombre del evento 5',
         image: 'https://www.elespectador.com/sites/default/files/theatre_of_voices._2018_0.jpg',
         requiredBeers: 3
