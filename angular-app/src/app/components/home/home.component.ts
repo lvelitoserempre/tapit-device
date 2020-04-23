@@ -40,10 +40,6 @@ export class HomeComponent implements OnInit {
       this.events.forEach(event => event.isSelected = true);
     });
     this.isMobile = this.detectMobile();
-    this.dialogService.showErrorDialog({
-      message: 'Hubo un error al enviar el archivo',
-      buttonOne: 'INTENTA DE NUEVO'
-    });
   }
 
   selectedBill(event: any) {
