@@ -88,7 +88,7 @@
           <p class="text-xs text-gray-800 font-bold mt-2">Formatos válidos .jpg, .png máximo 5 megas.</p>
         </div>
 
-        <div class="mt-10" *ngIf="selectedImage">
+        <div class="mt-10 text-center" *ngIf="selectedImage">
           <div class="inline-block max-w-sm text-center align-bottom">
             <img [src]="selectedImage.base64">
             <a class="block underline text-red-500 font-bold cursor-pointer m-2" (click)="inputFile.click()">Subir de
@@ -96,7 +96,7 @@
           </div>
 
           <button
-            class="ml-4 px-8 py-4 bg-orange-500 font-bold text-white rounded-xl inline-block mx-auto focus:outline-none align-bottom"
+            class="sm:ml-4 px-8 py-4 bg-orange-500 font-bold text-white rounded-xl inline-block mx-auto focus:outline-none align-bottom"
             (click)="sendFile()">ENVIAR
           </button>
         </div>
