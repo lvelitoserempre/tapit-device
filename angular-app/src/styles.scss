@@ -4,261 +4,296 @@
 @import "assets/styles/tailwind.css";
 
 html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-family: gilroy, Arial, Helvetica, sans-serif;
-    font-weight: 400;
-    background-color: white;
-    .home-component {
-        background-color: #2b2929;
-        color: white;
-        .legacy-title {
-            color: white;
-            &-red {
-                color: $redColor;
-                span {
-                    color: white;
-                }
-            }
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: gilroy, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  background-color: white;
+
+  .home-component {
+    background-color: #2b2929;
+    color: white;
+
+    .legacy-title {
+      color: white;
+
+      &-red {
+        color: $redColor;
+
+        span {
+          color: white;
         }
+      }
     }
-    .container-steps__description {
-        a,
-        a:link,
-        a:visited {
-            color: white;
-            &:hover {
-              color: $redColor;
-            }
-        }
+  }
+
+  .container-steps__description {
+    a,
+    a:link,
+    a:visited {
+      color: white;
+
+      &:hover {
+        color: $redColor;
+      }
     }
+  }
 }
+
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .legacy-container {
-    flex: 1 0 auto !important;
+  flex: 1 0 auto !important;
 
-    .content {
-        width: 100%;
+  .content {
+    width: 100%;
 
-        a:link {
-            text-decoration: none;
-            color: map_get($primary-colors, 500);
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        a:visited {
-            text-decoration: none;
-            color: map_get($primary-colors, 500);
-        }
+    a:link {
+      text-decoration: none;
+      color: map_get($primary-colors, 500);
     }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a:visited {
+      text-decoration: none;
+      color: map_get($primary-colors, 500);
+    }
+  }
 }
 
 .legacy-title {
-    font-family: 'gilroy', sans-serif;
-    font-size: 60px;
-    font-stretch: normal;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: -0.72px;
-    text-align: center;
-    position: relative;
-    z-index: 0;
-    span {
-        color: $redColor;
-        font-family: "gilroy", sans-serif;
-        font-size: 25px;
-        font-weight: 300;
-        line-height: 2px;
-        text-align: left;
-        text-transform: uppercase;
-        width: 100%;
-    }
+  font-family: 'gilroy', sans-serif;
+  font-size: 60px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.72px;
+  text-align: center;
+  position: relative;
+  z-index: 0;
+
+  span {
+    color: $redColor;
+    font-family: "gilroy", sans-serif;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 2px;
+    text-align: left;
+    text-transform: uppercase;
+    width: 100%;
+  }
 }
 
 .item {
-    width: 50%;
-    min-width: 300px;
-    max-width: 500px;
-    height: auto;
+  width: 50%;
+  min-width: 300px;
+  max-width: 500px;
+  height: auto;
 }
 
 %btn-base {
-    background-color: map_get($primary-colors, 500);
-    color: white;
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: $semi-bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: center;
-    padding: 0 50px;
-    width: 100%;
-    max-width: 300px;
-    height: 50px;
+  background-color: map_get($primary-colors, 500);
+  color: white;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: $semi-bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  padding: 0 50px;
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
 
-    &:hover {
-        background: map_get($primary-colors, 400);
-    }
+  &:hover {
+    background: map_get($primary-colors, 400);
+  }
 
-    &:active {
-        background: map_get($primary-colors, 500);
-        box-shadow: inset 0px 1px 1px fadeout(black, 90%);
-    }
+  &:active {
+    background: map_get($primary-colors, 500);
+    box-shadow: inset 0px 1px 1px fadeout(black, 90%);
+  }
 
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 
-    &:disabled {
-        background: map_get($primary-colors, 50) !important;
-        color: map_get($primary-colors, 200) !important;
-    }
+  &:disabled {
+    background: map_get($primary-colors, 50) !important;
+    color: map_get($primary-colors, 200) !important;
+  }
 }
 
 .btn-red-rounded {
-    @extend %btn-base;
-    border-radius: 30px !important;
+  @extend %btn-base;
+  border-radius: 30px !important;
 }
 
 .btn-red-squared {
-    @extend %btn-base;
-    border-radius: 5px;
+  @extend %btn-base;
+  border-radius: 5px;
 }
 
 .btn-white-rounded {
-    @extend %btn-base;
-    border-radius: 30px;
-    background: white !important;
-    color: map_get($primary-colors, 500) !important;
-    box-shadow: none !important;
+  @extend %btn-base;
+  border-radius: 30px;
+  background: white !important;
+  color: map_get($primary-colors, 500) !important;
+  box-shadow: none !important;
 }
+
 .slick-slider {
-    .slick-arrow {
-        bottom: -100px;
-        top: auto;
-        &.slick-next {
-            right: calc(50% - 70px);
-        }
-        &.slick-prev {
-            left: calc(50% - 70px);
-        }
-        &.slick-prev,
-        &.slick-next {
-            background-color: transparent;
-            border-radius: 56px;
-            color: white;
-            height: 56px;
-            width: 56px;
-        }
-        &.slick-prev:hover,
-        &.slick-prev:focus,
-        &.slick-next:hover,
-        &.slick-next:focus {
-            background-color: transparent;
-            opacity: 0.8;
-        }
-        &.slick-next::before {
-            content: url('../../react-app/src/assets/images/next-arrow.svg');
-        }
-        &.slick-prev::before {
-            content: url('../../react-app/src/assets/images/prev-arrow.svg');
-        }
+  .slick-arrow {
+    bottom: -100px;
+    top: auto;
+
+    &.slick-next {
+      right: calc(50% - 70px);
     }
-    .slick-dots {
-        li {
-            &.slick-active {
-                button {
-                    &:before {
-                        color: $redColor;
-                        opacity: 1;
-                    }
-                }
-            }
-            button {
-                border-radius: 15px;
-                border: 2px solid white;
-                height: 17px;
-                padding: 2px;
-                width: 17px;
-                &::before {
-                    font-size: 11px;
-                    height: 17px;
-                    line-height: 19px;
-                    opacity: 0;
-                    width: 17px;
-                }
-                &:hover {
-                    &:before {
-                        color: $redColor;
-                    }
-                }
-            }
-        }
+
+    &.slick-prev {
+      left: calc(50% - 70px);
     }
+
+    &.slick-prev,
+    &.slick-next {
+      background-color: transparent;
+      border-radius: 56px;
+      color: white;
+      height: 56px;
+      width: 56px;
+    }
+
+    &.slick-prev:hover,
+    &.slick-prev:focus,
+    &.slick-next:hover,
+    &.slick-next:focus {
+      background-color: transparent;
+      opacity: 0.8;
+    }
+
+    &.slick-next::before {
+      content: url('../../react-app/src/assets/images/next-arrow.svg');
+    }
+
+    &.slick-prev::before {
+      content: url('../../react-app/src/assets/images/prev-arrow.svg');
+    }
+  }
+
+  .slick-dots {
+    li {
+      &.slick-active {
+        button {
+          &:before {
+            color: $redColor;
+            opacity: 1;
+          }
+        }
+      }
+
+      button {
+        border-radius: 15px;
+        border: 2px solid white;
+        height: 17px;
+        padding: 2px;
+        width: 17px;
+
+        &::before {
+          font-size: 11px;
+          height: 17px;
+          line-height: 19px;
+          opacity: 0;
+          width: 17px;
+        }
+
+        &:hover {
+          &:before {
+            color: $redColor;
+          }
+        }
+      }
+    }
+  }
 }
 
 // Modal styles
 .cdk-overlay-container {
-    .mat-dialog-container {
-        background-color: transparent;
-        background-image: url('/assets/images/bg-modal.jpg');
-        background-position: center;
-        border: 6px solid #262424;
-        border-radius: 25px;
-        padding: 0;
-        position: relative;
-        .ng-star-inserted {
-            text-align: center;
-            a,
-            a:link,
-            a:visited {
-                color: white;
-            }
-
-        }
-
+   .cdk-overlay-pane {
+    @media screen and (max-width: 470px) {
+      max-width: 90vw !important;
     }
-    .cdk-overlay-pane {
-        @media screen and (max-width: 470px){
-            max-width: 90vw !important;
-        }
-    }
+  }
 }
+
 .btn-yellow-rounded-line {
-    background-color: transparent;
-    border-radius: 25px;
-    border: 2px solid $yellowColor;
-    color: white;
-    padding: 5px 15px;
-    img {
-        margin: 0 0 0 10px;
-    }
+  background-color: transparent;
+  border-radius: 25px;
+  border: 2px solid $yellowColor;
+  color: white;
+  padding: 5px 15px;
+
+  img {
+    margin: 0 0 0 10px;
+  }
 }
+
 .btn-red-poker {
-    background-color: $redColor;
-    border-radius: 25px;
-    font-weight: 700;
-    padding: 15px;
+  background-color: $redColor;
+  border-radius: 25px;
+  font-weight: 700;
+  padding: 15px;
 }
+
 .aclaass {
-    margin: 130px 0 0 58px;
-    img {
-        width: 120px;
-    }
+  margin: 130px 0 0 58px;
+
+  img {
+    width: 120px;
+  }
+}
+
+.sm\:text-20xl {
+  font-size: 15rem;
+  line-height: 8rem;
+}
+
+.text-15xl {
+  font-size: 10rem;
+  line-height: 6rem;
+}
+
+.text-red-500 {
+  color: #DF051C;
+}
+
+.bg-orange-500 {
+  background: #FF5005;
+}
+
+.border-orange-500 {
+  border-color: #FF5005;
+}
+
+.text-gray-400 {
+  color: #E5E5E5;
+}
+
+.rounded-xl {
+  border-radius: 1rem;
 }

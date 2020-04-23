@@ -1,25 +1,17 @@
-<div class="dialog-container" [ngClass]="{'red-poker-dialog-share': data.isShareDialog}" mat-dialog-content fxLayout="column" fxLayoutAlign="center center">
-    <button mat-button mat-dialog-close class="dialog-container__close" ></button>
-    <div class="icon" *ngIf="data.icon && !data.qr">
-        <img [src]="data.icon">
+<div mat-dialog-content>
+  <div class="content flex">
+    <div class="self-center">
+      <div class="p-2 inline-block align-middle w-1/4">
+        <img src="assets/images/admiration-icon.svg" class="image w-full">
+      </div>
+
+      <div class="p-2 inline-block align-middle w-3/4">
+        <p class="text-red-500 text-xl sm:text-2xl font-bold mb-4">{{data.message}}</p>
+        <mat-dialog-actions align="center">
+          <button class="bg-orange-500 px-3 py-2 text-white text-sm sm:text-lg font-bold rounded-xl focus:outline-none"
+                  [mat-dialog-close]="true">{{ data.buttonOne }}</button>
+        </mat-dialog-actions>
+      </div>
     </div>
-    <div class="qr" *ngIf="data.qr">
-        <div class="icon" *ngIf="data.icon">
-            <img [src]="data.icon">
-        </div>
-        <ngx-qrcode [qrc-value]="data.qr" qrc-class="aclaass" qrc-errorCorrectionLevel="M"></ngx-qrcode>
-    </div>
-    <h1 mat-dialog-title *ngIf="data.title">{{ data.title }}</h1>
-    <h2 mat-dialog-title class="subtitle" [innerHTML]="data.subtitle">{{ data.subtitle }}</h2>
-    <div class="content" mat-dialog-content>
-        <p [innerHTML]="data.message"></p>
-    </div>
-    <mat-dialog-actions align="center">
-        <button *ngIf="data.buttonTwo" type="button" class="btn-white" mat-flat-button mat-dialog-close>{{ data.buttonTwo }}</button>
-        <button *ngIf="!data.isShareDialog && !data.buttonPoints" type="button" class="btn-yellow-rounded-line" mat-raised-button [mat-dialog-close]="true">{{ data.buttonOne }}</button>
-        <button *ngIf="!data.isShareDialog && data.buttonPoints" (click)="goToMap($event)" type="button" class="btn-yellow-rounded-line" data-scroll="#map" mat-raised-button [mat-dialog-close]="true">{{ data.buttonOne }}<img *ngIf="data.iconButton" [src]="data.iconButton"></button>
-        <button *ngIf="data.isShareDialog" type="button" class="btn-yellow-rounded-line btn-share" mat-raised-button (focus)="selectAndCopy($event)" (click)="selectAndCopy($event)">{{ data.buttonOne }}<img *ngIf="data.iconButton" [src]="data.iconButton"></button>
-        <label *ngIf="data.isShareDialog" class="btn-share__input-success" [ngClass]="{'btn-share__input-success--visible': showLinkCopied}">El link ha sido copiado.<br>Ahora compártelo con tus amgios.</label>
-    </mat-dialog-actions>
-    <p *ngIf="data.disclaimer" [innerHTML]="data.disclaimer" style="color: #f1c743"></p>
+  </div>
 </div>

@@ -3,7 +3,7 @@
  */
 export interface DialogConfigurationModel {
     icon?: string;
-    title: string;
+    title?: string;
     subtitle?: string;
     message: string;
     qr?: string;

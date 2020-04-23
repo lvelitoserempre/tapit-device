@@ -1,204 +1,205 @@
-import { Injectable } from '@angular/core';
-import { DialogConfigurationModel } from 'src/app/models/dialog-configuration.model';
-import { MatDialog, MatDialogRef } from '@angular/material';
-import { DialogComponent } from 'src/app/components/dialog/dialog.component';
-import { AuthError } from 'src/app/common/enums/auth-error.enum';
+import {Injectable} from '@angular/core';
+import {DialogConfigurationModel} from 'src/app/models/dialog-configuration.model';
+import {MatDialog, MatDialogRef} from '@angular/material';
+import {DialogComponent} from 'src/app/components/dialog/dialog.component';
+import {AuthError} from 'src/app/common/enums/auth-error.enum';
 
 const DIALOG_WIDTH = '500px'
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class DialogService {
 
-    constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {
+  }
 
-    /**
-     * Opens the too many login attempts error dialog and returns the dialog reference for further actions
-     */
-    openTooManyFailedAttemptsErrorDialog(): MatDialogRef<DialogComponent> {
-        // TODO: translate
-        const dialogConfig: DialogConfigurationModel = {
-            title: 'Error de autenticación',
-            message: 'Demasiados intentos fallidos. Por favor inténtalo de nuevo más tarde.',
-            buttonOne: 'Aceptar'
-        };
+  /**
+   * Opens the too many login attempts error dialog and returns the dialog reference for further actions
+   */
+  openTooManyFailedAttemptsErrorDialog(): MatDialogRef<DialogComponent> {
+    // TODO: translate
+    const dialogConfig: DialogConfigurationModel = {
+      title: 'Error de autenticación',
+      message: 'Demasiados intentos fallidos. Por favor inténtalo de nuevo más tarde.',
+      buttonOne: 'Aceptar'
+    };
 
-        return this.errorDialog(dialogConfig);
+    return this.showErrorDialog(dialogConfig);
+  }
+
+  /**
+   * Opens the wrong password error dialog and returns the dialog reference for further actions
+   */
+  openWrongPasswordErrorDialog(): MatDialogRef<DialogComponent> {
+    // TODO: translate
+    const dialogConfig: DialogConfigurationModel = {
+      title: 'Error de autenticación',
+      message: 'La contraseña no es correcta o el usuario no tiene una.',
+      buttonOne: 'Aceptar'
+    };
+
+    return this.showErrorDialog(dialogConfig);
+  }
+
+  /**
+   * Opens the user not found error dialog and returns the dialog reference for further actions
+   */
+  openUserNotFoundErrorDialog(): MatDialogRef<DialogComponent> {
+    // TODO: translate
+    const dialogConfig: DialogConfigurationModel = {
+      title: 'Error de autenticación',
+      message: 'No existe registro de usuario con este identificador. El usuario puede haber sido eliminado.',
+      buttonOne: 'Aceptar'
+    };
+
+    return this.showErrorDialog(dialogConfig);
+  }
+
+  /**
+   * Opens the sign up error dialog and returns the dialog reference for further actions
+   */
+  openSignUpErrorDialog(): MatDialogRef<DialogComponent> {
+    // TODO: translate
+    const dialogConfig: DialogConfigurationModel = {
+      title: 'Error en alta de usuario',
+      message: 'Se ha producido un error al crear el usuario. Por favor, revisa los datos del formulario.',
+      buttonOne: 'Aceptar'
+    };
+
+    return this.showErrorDialog(dialogConfig);
+  }
+
+  /**
+   * Opens the sign up email already in use error dialog and returns the dialog reference for further actions
+   */
+  openSignUpEmailAlreadyInUseErrorDialog() {
+    // TODO: translate
+    const dialogConfig: DialogConfigurationModel = {
+      title: 'Error en alta de usuario',
+      message: 'La dirección de correo electrónico se encuentra en uso por otra cuenta.\n¿Es posible que ya estés registrado/a?',
+      buttonOne: 'Aceptar'
+    };
+
+    return this.showErrorDialog(dialogConfig);
+  }
+
+  /**
+   * Opens the QR dialog and returns the dialog reference for further actions
+   */
+  openQRDialog(code: string): MatDialogRef<DialogComponent> {
+    // TODO: translate
+    const dialogConfig: DialogConfigurationModel = {
+      icon: 'assets/images/small-bottle.png',
+      title: null,
+      subtitle: 'Felicidades, ya puedes disfrutar de tu <br><b class="title-poker">Poker Roja Gratis.</b>',
+      message: 'Presenta este código QR en los puntos de venta autorizados.',
+      qr: code,
+      buttonOne: 'Ver puntos aliados de la promoción.',
+      buttonPoints: true,
+      disclaimer: '*Este código QR fue enviado al correo electrónico que registraste previamente.<br>*Consulta <a href="https://home.gettap.it/terminosPokerRoja" target="_blank">términos y condiciones</a>',
+    };
+
+    return this.showErrorDialog(dialogConfig);
+  }
+
+  openShareDialog(url: string): MatDialogRef<DialogComponent> {
+    const dialogConfig: DialogConfigurationModel = {
+      icon: 'assets/images/lata-modal-invitar.png',
+      title: null,
+      subtitle: 'Copia y comparte este link con el parche',
+      message: null,
+      buttonOne: url,
+      isShareDialog: true,
+      iconButton: 'assets/images/copy-text-icon-white.svg'
+    };
+
+    return this.showErrorDialog(dialogConfig);
+  }
+
+  /**
+   * Opens the booking sold out error dialog and returns the dialog reference for further actions
+   */
+  openEventBookingSoldOutErrorDialog(): MatDialogRef<DialogComponent> {
+    // TODO: translate
+    const dialogConfig: DialogConfigurationModel = {
+      title: 'Espera noticias pronto',
+      message: '',
+      buttonOne: 'Aceptar'
+    };
+
+    return this.showErrorDialog(dialogConfig);
+  }
+
+  /**
+   * Opens the code already generated by user error dialog and returns the dialog reference for further actions
+   */
+  openEventBookingAlreadyGeneratedByUserErrorDialog(): MatDialogRef<DialogComponent> {
+    // TODO: translate
+    const dialogConfig: DialogConfigurationModel = {
+      title: 'Código ya generado',
+      message: 'Revisa tu correo, <b>el código QR fue enviado al correo electrónico que registraste previamente.</b>',
+      buttonOne: 'Aceptar'
+    };
+
+    return this.showErrorDialog(dialogConfig);
+  }
+
+  /**
+   * Opens the code already redeemed by user error dialog and returns the dialog reference for further actions
+   */
+  openEventBookingAlreadyRedeemedErrorDialog(): MatDialogRef<DialogComponent> {
+    // TODO: translate
+    const dialogConfig: DialogConfigurationModel = {
+      title: 'Código ya redimido',
+      message: '<b>Ya has redimido tu cerveza gratis. Muchas gracias!</b>',
+      buttonOne: 'Aceptar'
+    };
+
+    return this.showErrorDialog(dialogConfig);
+  }
+
+  /**
+   * Opens the generate booking error dialog and returns the dialog reference for further actions
+   */
+  openGenerateBookingErrorDialog(): MatDialogRef<DialogComponent> {
+    // TODO: translate
+    const dialogConfig: DialogConfigurationModel = {
+      title: 'Error al generar su reserva',
+      message: 'Se ha producido un error al generar tu reserva. Por favor, vuelve a intentarlo.',
+      buttonOne: 'Aceptar'
+    };
+
+    return this.showErrorDialog(dialogConfig);
+  }
+
+  /**
+   * Handles the error thrown by firebase
+   * @param error The error object
+   */
+  manageError(error: any) {
+    if (error.code === AuthError.AUTH_ERROR_TOO_MANY_FAILED_ATTEMPTS) {
+      this.openTooManyFailedAttemptsErrorDialog();
+    } else if (error.code === AuthError.AUTH_ERROR_EMAIL_ALREADY_IN_USE) {
+      this.openSignUpEmailAlreadyInUseErrorDialog();
+    } else if (error.code === AuthError.AUTH_ERROR_USER_NOT_FOUND) {
+      this.openUserNotFoundErrorDialog();
+    } else if (error.code === AuthError.AUTH_ERROR_WRONG_PASSWORD) {
+      this.openWrongPasswordErrorDialog();
+    } else {
+      this.openSignUpErrorDialog();
     }
+    throw error;
+  }
 
-    /**
-     * Opens the wrong password error dialog and returns the dialog reference for further actions
-     */
-    openWrongPasswordErrorDialog(): MatDialogRef<DialogComponent> {
-        // TODO: translate
-        const dialogConfig: DialogConfigurationModel = {
-            title: 'Error de autenticación',
-            message: 'La contraseña no es correcta o el usuario no tiene una.',
-            buttonOne: 'Aceptar'
-        };
-
-        return this.errorDialog(dialogConfig);
-    }
-
-    /**
-     * Opens the user not found error dialog and returns the dialog reference for further actions
-     */
-    openUserNotFoundErrorDialog(): MatDialogRef<DialogComponent> {
-        // TODO: translate
-        const dialogConfig: DialogConfigurationModel = {
-            title: 'Error de autenticación',
-            message: 'No existe registro de usuario con este identificador. El usuario puede haber sido eliminado.',
-            buttonOne: 'Aceptar'
-        };
-
-        return this.errorDialog(dialogConfig);
-    }
-
-    /**
-     * Opens the sign up error dialog and returns the dialog reference for further actions
-     */
-    openSignUpErrorDialog(): MatDialogRef<DialogComponent> {
-        // TODO: translate
-        const dialogConfig: DialogConfigurationModel = {
-            title: 'Error en alta de usuario',
-            message: 'Se ha producido un error al crear el usuario. Por favor, revisa los datos del formulario.',
-            buttonOne: 'Aceptar'
-        };
-
-        return this.errorDialog(dialogConfig);
-    }
-
-    /**
-     * Opens the sign up email already in use error dialog and returns the dialog reference for further actions
-     */
-    openSignUpEmailAlreadyInUseErrorDialog() {
-        // TODO: translate
-        const dialogConfig: DialogConfigurationModel = {
-            title: 'Error en alta de usuario',
-            message: 'La dirección de correo electrónico se encuentra en uso por otra cuenta.\n¿Es posible que ya estés registrado/a?',
-            buttonOne: 'Aceptar'
-        };
-
-        return this.errorDialog(dialogConfig);
-    }
-
-    /**
-     * Opens the QR dialog and returns the dialog reference for further actions
-     */
-    openQRDialog(code: string): MatDialogRef<DialogComponent> {
-        // TODO: translate
-        const dialogConfig: DialogConfigurationModel = {
-            icon: 'assets/images/small-bottle.png',
-            title: null,
-            subtitle: 'Felicidades, ya puedes disfrutar de tu <br><b class="title-poker">Poker Roja Gratis.</b>',
-            message: 'Presenta este código QR en los puntos de venta autorizados.',
-            qr: code,
-            buttonOne: 'Ver puntos aliados de la promoción.',
-            buttonPoints: true,
-            disclaimer: '*Este código QR fue enviado al correo electrónico que registraste previamente.<br>*Consulta <a href="https://home.gettap.it/terminosPokerRoja" target="_blank">términos y condiciones</a>',
-        };
-
-        return this.errorDialog(dialogConfig);
-    }
-
-    openShareDialog(url: string): MatDialogRef<DialogComponent> {
-      const dialogConfig: DialogConfigurationModel = {
-        icon: 'assets/images/lata-modal-invitar.png',
-        title: null,
-        subtitle: 'Copia y comparte este link con el parche',
-        message: null,
-        buttonOne: url,
-        isShareDialog: true,
-        iconButton: 'assets/images/copy-text-icon-white.svg'
-      };
-
-      return this.errorDialog(dialogConfig);
-    }
-
-    /**
-     * Opens the booking sold out error dialog and returns the dialog reference for further actions
-     */
-    openEventBookingSoldOutErrorDialog(): MatDialogRef<DialogComponent> {
-        // TODO: translate
-        const dialogConfig: DialogConfigurationModel = {
-            title: 'Espera noticias pronto',
-            message: '',
-            buttonOne: 'Aceptar'
-        };
-
-        return this.errorDialog(dialogConfig);
-    }
-
-    /**
-     * Opens the code already generated by user error dialog and returns the dialog reference for further actions
-     */
-    openEventBookingAlreadyGeneratedByUserErrorDialog(): MatDialogRef<DialogComponent> {
-        // TODO: translate
-        const dialogConfig: DialogConfigurationModel = {
-            title: 'Código ya generado',
-            message: 'Revisa tu correo, <b>el código QR fue enviado al correo electrónico que registraste previamente.</b>',
-            buttonOne: 'Aceptar'
-        };
-
-        return this.errorDialog(dialogConfig);
-    }
-
-    /**
-     * Opens the code already redeemed by user error dialog and returns the dialog reference for further actions
-     */
-    openEventBookingAlreadyRedeemedErrorDialog(): MatDialogRef<DialogComponent> {
-        // TODO: translate
-        const dialogConfig: DialogConfigurationModel = {
-            title: 'Código ya redimido',
-            message: '<b>Ya has redimido tu cerveza gratis. Muchas gracias!</b>',
-            buttonOne: 'Aceptar'
-        };
-
-        return this.errorDialog(dialogConfig);
-    }
-
-    /**
-     * Opens the generate booking error dialog and returns the dialog reference for further actions
-     */
-    openGenerateBookingErrorDialog(): MatDialogRef<DialogComponent> {
-        // TODO: translate
-        const dialogConfig: DialogConfigurationModel = {
-            title: 'Error al generar su reserva',
-            message: 'Se ha producido un error al generar tu reserva. Por favor, vuelve a intentarlo.',
-            buttonOne: 'Aceptar'
-        };
-
-        return this.errorDialog(dialogConfig);
-    }
-
-    /**
-     * Handles the error thrown by firebase
-     * @param error The error object
-     */
-    manageError(error: any) {
-        if (error.code === AuthError.AUTH_ERROR_TOO_MANY_FAILED_ATTEMPTS) {
-            this.openTooManyFailedAttemptsErrorDialog();
-        } else if (error.code === AuthError.AUTH_ERROR_EMAIL_ALREADY_IN_USE) {
-            this.openSignUpEmailAlreadyInUseErrorDialog();
-        } else if (error.code === AuthError.AUTH_ERROR_USER_NOT_FOUND) {
-            this.openUserNotFoundErrorDialog();
-        } else if (error.code === AuthError.AUTH_ERROR_WRONG_PASSWORD) {
-            this.openWrongPasswordErrorDialog();
-        } else {
-            this.openSignUpErrorDialog();
-        }
-        throw error;
-    }
-
-    /**
-     * Opens an error dialog with the provided configuration
-     * @param config The dialog configuration
-     */
-    private errorDialog(config: DialogConfigurationModel): MatDialogRef<DialogComponent> {
-        return this.dialog.open(DialogComponent, {
-            width: DIALOG_WIDTH,
-            data: config
-        });
-    }
+  /**
+   * Opens an error dialog with the provided configuration
+   * @param config The dialog configuration
+   */
+  showErrorDialog(config: DialogConfigurationModel): MatDialogRef<DialogComponent> {
+    return this.dialog.open(DialogComponent, {
+      panelClass: ['border', 'border-orange-500'],
+      data: config
+    });
+  }
 }

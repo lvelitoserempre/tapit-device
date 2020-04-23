@@ -25,6 +25,7 @@ import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter
 } from '@angular/material-moment-adapter';
+import { FinalMessageComponent } from './components/final-message/final-message.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {
     AppHeroComponent,
     MatchHeightDirective,
     AppHeaderComponent,
-    AppFooterComponent
+    AppFooterComponent,
+    FinalMessageComponent
   ],
   entryComponents: [
     DialogComponent

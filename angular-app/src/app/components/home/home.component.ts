@@ -1,6 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {EventDAO} from '../../event/event-dao.service';
 import {BillDAO} from '../../bill/bill-dao.service';
+import {Router} from '@angular/router';
+import {DialogService} from '../../services/dialog/dialog.service';
+import {LoaderService} from '../../services/loader/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +30,8 @@ export class HomeComponent implements OnInit {
     '../assets/images/beers/beer-Costenita.png'
   ];
 
-  constructor(private eventDAO: EventDAO, private billDAO: BillDAO) {
+  constructor(private eventDAO: EventDAO, private billDAO: BillDAO, private router: Router, private loaderService: LoaderService,
+              private dialogService: DialogService) {
   }
 
   ngOnInit(): void {
@@ -36,6 +40,10 @@ export class HomeComponent implements OnInit {
       this.events.forEach(event => event.isSelected = true);
     });
     this.isMobile = this.detectMobile();
+    this.dialogService.showErrorDialog({
+      message: 'Hubo un error al enviar el archivo',
+      buttonOne: 'INTENTA DE NUEVO'
+    });
   }
 
   selectedBill(event: any) {
@@ -59,12 +67,26 @@ export class HomeComponent implements OnInit {
   }
 
   sendFile() {
-    this.billDAO.saveBill({
-      eventId: this.selectedEvent.id,
-      invoiceImageEncoded: this.selectedImage.base64.replace('data:image/png;base64,', ''),
-      type: this.selectedImage.fileType,
-      invoiceNumber: this.billNumber
-    }).subscribe(res => console.log(res), error => console.error(error))
+    if (this.isFormValid()) {
+      this.loaderService.show();
+
+      this.billDAO.saveBill({
+        eventId: this.selectedEvent.id,
+        invoiceImageEncoded: this.selectedImage.base64.replace('data:image/png;base64,', ''),
+        fileType: this.selectedImage.fileType,
+        invoiceNumber: this.billNumber
+      }).subscribe(res => {
+          this.loaderService.hide();
+          this.router.navigateByUrl('/final-message');
+        },
+        error => {
+          this.loaderService.hide();
+          this.dialogService.showErrorDialog({
+            message: 'Hubo un error al enviar el archivo',
+            buttonOne: 'INTENTA DE NUEVO'
+          });
+        });
+    }
   }
 
   slideConfig = {
@@ -97,20 +119,20 @@ export class HomeComponent implements OnInit {
     slidesToShow: 6,
     slidesToScroll: 1,
     responsive: [
-        {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 3,
-            }
-        },
-        {
-          breakpoint: 576,
-          settings: {
-              slidesToShow: 2,
-          }
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 2,
+        }
       }
     ]
-};
+  };
 
   detectMobile() {
     const toMatch: any = [
@@ -131,5 +153,36 @@ export class HomeComponent implements OnInit {
     this.events.forEach(event => event.isSelected = false);
     this.events[i].isSelected = true;
     this.selectedEvent = this.events[i];
+  }
+
+  private isFormValid() {
+    if (!this.selectedEvent) {
+      this.dialogService.showErrorDialog({
+        message: 'Debes seleccionar un evento',
+        buttonOne: 'INTENTA DE NUEVO'
+      });
+
+      return false;
+    }
+
+    if (!this.billNumber || this.billNumber.trim() === '') {
+      this.dialogService.showErrorDialog({
+        message: 'Debes ingresar el número de factura',
+        buttonOne: 'INTENTA DE NUEVO'
+      });
+
+      return false;
+    }
+
+    if (!this.selectedImage) {
+      this.dialogService.showErrorDialog({
+        message: 'Debes seleccionar un evento',
+        buttonOne: 'INTENTA DE NUEVO'
+      });
+
+      return false;
+    }
+
+    return true;
   }
 }
