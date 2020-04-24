@@ -78,8 +78,11 @@
         </div>
 
         <!-- Create account button -->
-        <button fxFlexAlign="center" mat-raised-button type="submit" color="primary" class="btn-red-rounded"
-                [disabled]="signUpForm.invalid">Crear cuenta
+        <button [disabled]="signUpForm.invalid"
+                class="px-8 py-4 bg-orange-500 font-bold text-white rounded-xl inline-block mx-auto focus:outline-none align-bottom"
+                color="primary"
+                type="submit">
+          CREAR CUENTA
         </button>
 
         <!-- Login link -->
@@ -88,6 +91,6 @@
     </div>
 
     <!-- Right image -->
-    <img class="item" src="assets/images/image_signup.png">
+    <img class="item" src="assets/images/signup.svg">
   </div>
 </div>
