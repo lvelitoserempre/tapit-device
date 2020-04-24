@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-export default function Header() {
-
+export default function Header(props) {
 
     return (
+        
         <header className='header'>
             <div className="container">
                 <div className="row middle-xs">
@@ -19,18 +19,28 @@ export default function Header() {
                         </ul>
                     </div>
                     <div className="col-xs-12 col-sm-6">
-                        <ul className="row center-xs end-sm header__buttons">
-                            <li>
-                                <a className="header__button" href={i18next.t("BillLayout.Header.UrlLogin")}>
-                                    {i18next.t("BillLayout.Header.LoginText")}
-                                </a>
-                            </li>
-                            <li>
-                                <a className="header__button" href={i18next.t("BillLayout.Header.UrlSignup")}>
-                                    {i18next.t("BillLayout.Header.SignupText")}
-                                </a>
-                            </li>
-                        </ul>
+                        {
+                            props.user?
+                            <ul className="row center-xs end-sm header__buttons">
+                                <li>
+                                    {`${props.user.firstName} ${props.user.lastName?props.user.lastName:''}`}
+                                </li>
+                            </ul>
+                            :
+                            <ul className="row center-xs end-sm header__buttons">
+                                <li>
+                                    <a className="header__button" href={i18next.t("BillLayout.Header.UrlLogin")}>
+                                        {i18next.t("BillLayout.Header.LoginText")}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a className="header__button" href={i18next.t("BillLayout.Header.UrlSignup")}>
+                                        {i18next.t("BillLayout.Header.SignupText")}
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                        
                     </div>
                 </div>
             </div>

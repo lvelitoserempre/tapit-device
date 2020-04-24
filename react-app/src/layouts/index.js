@@ -17,12 +17,19 @@ import EventsSection from "./../components/billLayout/events.component";
 export default function Index() {
     const [isMobile,setMobile] = useState(null);
     const [events,setEvents] = useState(null);
+    const [user,setUser] = useState(null);
 
     useEffect(() => {
         setMobile(detectMobile());
         if (!events) {
             initEvents();
         }
+        let localUser = JSON.parse(window.localStorage.getItem('user'));
+        if (localUser && !user) {
+            setUser(localUser);
+            window.location.href = window.location.origin + '/app/home'
+        }
+        
     });
 
     function detectMobile() {
@@ -47,7 +54,7 @@ export default function Index() {
         .then((data)=> {
             setEvents(data);
         });
-      }
+    }
 
     const isBillLayout = i18next.t("BillLayout.Active")
 
@@ -58,7 +65,7 @@ export default function Index() {
             {
                 isBillLayout?
                 <div>
-                    <Header />
+                    <Header user={user} />
                     <div className="main__bgGray">
                         <div className="container">
                             <StartSectionBill isMobile={isMobile} />
