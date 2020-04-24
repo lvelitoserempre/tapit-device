@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {DialogService} from '../../services/dialog/dialog.service';
 import {LoaderService} from '../../services/loader/loader.service';
 
+declare var ga;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -68,25 +70,38 @@ export class HomeComponent implements OnInit {
 
   sendFile() {
     if (this.isFormValid()) {
-      this.loaderService.show();
-
-      this.billDAO.saveBill({
+      const bill = {
         eventId: this.selectedEvent.id,
         invoiceImageEncoded: this.selectedImage.base64.replace('data:image/png;base64,', ''),
         fileType: this.selectedImage.fileType,
         invoiceNumber: this.billNumber
-      }).subscribe(res => {
-          this.loaderService.hide();
-          this.router.navigateByUrl('/final-message');
-        },
-        error => {
-          this.loaderService.hide();
-          this.dialogService.showErrorDialog({
-            message: 'Hubo un error al enviar el archivo',
-            buttonOne: 'INTENTA DE NUEVO'
+      };
+
+      this.loaderService.show();
+
+      this.billDAO.saveBill(bill)
+        .subscribe(res => {
+            this.sendStatsToGoogleAnalitycs();
+            this.loaderService.hide();
+            this.router.navigateByUrl('/final-message');
+          },
+          error => {
+            this.loaderService.hide();
+            this.dialogService.showErrorDialog({
+              message: 'Hubo un error al enviar el archivo',
+              buttonOne: 'INTENTA DE NUEVO'
+            });
           });
-        });
     }
+  }
+
+  private sendStatsToGoogleAnalitycs() {
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Polas-recargadas-Completed',
+      eventAction: this.selectedEvent.name,
+      eventLabel: this.billNumber
+    });
   }
 
   slideConfig = {

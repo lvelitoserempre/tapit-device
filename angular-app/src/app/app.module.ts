@@ -23,7 +23,7 @@ import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter
 } from '@angular/material-moment-adapter';
-import { FinalMessageComponent } from './components/final-message/final-message.component';
+import {FinalMessageComponent} from './components/final-message/final-message.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +59,7 @@ import { FinalMessageComponent } from './components/final-message/final-message.
       useClass: MomentDateAdapter,
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     },
-    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS}
   ],
   bootstrap: [AppComponent]
 })
