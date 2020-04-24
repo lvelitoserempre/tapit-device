@@ -24,6 +24,10 @@
   &__slide {
     height: 30rem;
     position: relative;
+
+    @media (min-width: 640px) {
+      height: 40rem;
+    }
   }
 
   &__image {
