@@ -1,33 +1,22 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth/auth.service';
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
+import {Observable, of} from 'rxjs';
+import {AuthService} from '../services/auth/auth.service';
+import {UserService} from '../user/user.service';
+import {map, take, takeLast} from 'rxjs/operators';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class AlreadyLoggedInGuard implements CanActivate {
 
-    constructor(
-        private authService: AuthService,
-        private router: Router
-    ) { }
+  constructor(private authService: AuthService, private router: Router, private userService: UserService) {
+  }
 
-    /**
-     * Check whether the user is logged in. If true, redirects to the home screen
-     * @param route Contains the information about a route associated with a loaded component.
-     * @param state The state of the router at a moment in time.
-     */
-    canActivate(
-        next: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-        if (this.authService.isLoggedIn) {
-            this.router.navigate(['/home']);
-        }
-
-        return true;
-    }
-
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> {
+    return of(true) || this.userService.getCurrentUser().pipe(take(1)).pipe(map(user => {
+      console.log('test');
+      return user ? this.router.parseUrl('/home') : true;
+    }));
+  }
 }

@@ -1,12 +1,10 @@
 import {AfterViewInit, Component} from '@angular/core';
-import {AuthService} from 'src/app/services/auth/auth.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {AuthFormModel} from 'src/app/models/auth-form.model';
 import {Router} from '@angular/router';
 import {LoaderService} from 'src/app/services/loader/loader.service';
-import {DialogService} from 'src/app/services/dialog/dialog.service';
-import {UserAccountService} from 'src/app/services/user-account/user-account.service';
-import {UserAccount} from 'src/app/models/user-account.model';
+import {UserService} from '../../user/user.service';
+import {DialogService} from '../../services/dialog/dialog.service';
 
 @Component({
   selector: 'app-login',
@@ -22,52 +20,34 @@ export class LoginComponent implements AfterViewInit {
   };
 
   constructor(
-    private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
     private loaderService: LoaderService,
     private dialogService: DialogService,
-    private userAccountService: UserAccountService
+    private userService: UserService
   ) {
     this.loginForm = this.formBuilder.group(this.loginFormModel);
   }
 
   ngAfterViewInit() {
-    this.loaderService.hide();
+    //this.loaderService.hide();
   }
 
   login() {
-    this.loaderService.show();
     const email = this.loginForm.get('email').value;
     const password = this.loginForm.get('password').value;
 
-    this.authService.login(email, password)
-      .then(async (user) => {
-        // Set the user info in local storage
-        this.authService.setUserInLocalStorage(user.user);
-        // Set the user account data in local storage
-        await this.userAccountService.getUserAccount(user.user.uid)
-          .then((doc) => {
-            if (doc.exists) {
-              const userAccount: UserAccount = doc.data() as UserAccount;
-              this.userAccountService.setUserAccountInLocalStorage({
-                firstName: userAccount.firstName,
-                lastName: userAccount.lastName
-              });
-            }
-          })
-          .catch((error) => {
-            this.loaderService.hide();
-            this.dialogService.manageError(error);
-          });
+    this.loaderService.show();
 
-        this.loaderService.hide();
-        this.router.navigate(['/home']);
-      })
-      .catch((error) => {
-        this.loaderService.hide();
-        this.dialogService.manageError(error);
-      });
+    this.userService.signIn(email, password)
+      .subscribe(res => {
+          this.loaderService.hide();
+          this.router.navigateByUrl('/home');
+        },
+        error => {
+          this.loaderService.hide();
+          this.dialogService.manageError(error);
+        });
   }
 
 }

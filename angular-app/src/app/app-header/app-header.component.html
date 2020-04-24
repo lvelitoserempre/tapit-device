@@ -1,57 +1,40 @@
-<div class="legacy-container container-toolbar" fxLayout="column" fxLayoutAlign="center center"
-     fxLayoutAlign.xs="center start">
-  <div class="toolbar" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px"
-       fxLayoutAlign="center center">
-    <img src="assets/images/logo.png">
-    <span class="fill-remaining-space"></span>
-    <span *ngIf="!isLoggedIn" class="nav-tool-items">
-            <button type="button" mat-flat-button class="btn-red-rounded"
-                    (click)="navigateTo('/login')">Iniciar sesión</button>
-        </span>
-    <span *ngIf="!isLoggedIn" class="nav-tool-items">
-            <button type="button" mat-flat-button class="btn-red-rounded" (click)="navigateTo('/signup')">Regístrate aquí</button>
-        </span>
-    <span *ngIf="isLoggedIn" class="nav-tool-items" fxLayout="row">
-            <div class="name-badge" fxLayoutAlign="center center">{{ userInitials | async }}</div>
-            <button mat-button [matMenuTriggerFor]="menu">
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="logout()">
-                    <mat-icon>exit_to_app</mat-icon>
-                    <span>Salir</span>
-                </button>
-            </mat-menu>
-        </span>
-  </div>
-</div>
 <header class='header'>
-    <div class="container mx-auto">
-        <div class="sm:flex sm:flex-row content-center items-center">
-            <div class="w-full sm:w-6/12">
-                <ul class="flex flex-row content-center items-center justify-center sm:justify-start header__logos">
-                    <li class="header__logos-logo-tapil">
-                        <img src="../assets/images/billLayout/Tapit_Logo.svg"/>
-                    </li>
-                    <li class="header__logos-logo-polas">
-                        <img src="../assets/images/billLayout/PloasLogo.svg"/>
-                    </li>
-                </ul>
-            </div>
-            <div class="w-full sm:w-6/12">
-                <ul class="sm:flex sm:flex-row justify-center sm:justify-end header__buttons">
-                    <li>
-                        <a class="header__button font-bold" href="/login">
-                            Inicia sesión
-                        </a>
-                    </li>
-                    <li>
-                        <a class="header__button font-bold" href="/signup">
-                            Regístrate
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+  <div class="container mx-auto">
+    <div class="sm:flex sm:flex-row content-center items-center">
+      <div class="w-full sm:w-6/12">
+        <ul class="flex flex-row content-center items-center justify-center sm:justify-start header__logos">
+          <li class="header__logos-logo-tapil">
+            <img src="../assets/images/billLayout/Tapit_Logo.svg"/>
+          </li>
+          <li class="header__logos-logo-polas">
+            <img src="../assets/images/billLayout/PloasLogo.svg"/>
+          </li>
+        </ul>
+      </div>
+      <div class="w-full sm:w-6/12">
+        <ul *ngIf="user" class="sm:flex sm:flex-row justify-center sm:justify-end header__buttons">
+          <li>
+            <p class="font-bold text-white m-auto capitalize">{{user.firstName + ' ' + user.lastName}}</p>
+          </li>
+          <li>
+            <a class="header__button font-bold" (click)="logout()">
+              Salir
+            </a>
+          </li>
+        </ul>
+        <ul *ngIf="!user" class="sm:flex sm:flex-row justify-center sm:justify-end header__buttons">
+          <li>
+            <a class="header__button font-bold" routerLink="/login">
+              Inicia sesión
+            </a>
+          </li>
+          <li>
+            <a class="header__button font-bold" routerLink="/signup">
+              Regístrate
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 </header>

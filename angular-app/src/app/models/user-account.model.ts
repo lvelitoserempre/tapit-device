@@ -38,6 +38,7 @@ export interface Player {
 }
 
 export interface UserAccount {
+  id?: string;
   birthDate?: number;
   code?: string;
   deviceId?: any;
