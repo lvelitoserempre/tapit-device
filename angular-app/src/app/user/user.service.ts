@@ -22,13 +22,10 @@ export class UserService {
     auth().onAuthStateChanged((user: User) => {
       if (user) {
         if (!this.wasNewUserSigningUp) {
-          firestore().collection('user_account_tap').doc(user.uid).get()
-            .then(userSnapshot => {
-              this.currentUser.next({id: userSnapshot.id, ...userSnapshot.data()});
-            });
+          this.getUser(user.uid).subscribe(userData => this.setCurrentUser(userData));
         }
       } else {
-        this.currentUser.next(null);
+        this.setCurrentUser(null);
       }
     });
   }
@@ -42,6 +39,18 @@ export class UserService {
 
   setCurrentUser(user: UserAccount) {
     this.currentUser.next(user);
+    this.saveUserToLocalStorage(user);
+  }
+
+  saveUserToLocalStorage(user: UserAccount) {
+    if (user) {
+      const userCopy = {...user};
+
+      delete userCopy.referralCode;
+      window.localStorage.setItem('user', JSON.stringify(userCopy));
+    } else {
+      window.localStorage.clear();
+    }
   }
 
   setCurrentUserById(userId: string) {

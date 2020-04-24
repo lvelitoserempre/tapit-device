@@ -14,8 +14,6 @@ import {LoaderComponent} from './components/loader/loader.component';
 import {LoginComponent} from './components/login/login.component';
 import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {MAT_DATE_LOCALE} from '@angular/material';
-import {AppHeroComponent} from './components/hero/hero.component';
-import {MatchHeightDirective} from './directives/match-height/match-height.directive';
 import {HttpClientModule} from '@angular/common/http';
 import {AppHeaderComponent} from './app-header/app-header.component';
 import {AppFooterComponent} from './app-footer/app-footer.component';
@@ -35,8 +33,6 @@ import { FinalMessageComponent } from './components/final-message/final-message.
     LoaderComponent,
     LoginComponent,
     SignUpComponent,
-    AppHeroComponent,
-    MatchHeightDirective,
     AppHeaderComponent,
     AppFooterComponent,
     FinalMessageComponent
