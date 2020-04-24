@@ -37,7 +37,11 @@ export class UserService {
       }));
   }
 
-  setCurrentUser(userId: string) {
+  setCurrentUser(user: UserAccount) {
+    this.currentUser.next(user);
+  }
+
+  setCurrentUserById(userId: string) {
     if (userId) {
       this.getUser(userId).subscribe(user => {
         this.currentUser.next(user);

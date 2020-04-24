@@ -1,4 +1,4 @@
-import {AfterViewInit, Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {AuthFormModel} from 'src/app/models/auth-form.model';
 import {Router} from '@angular/router';
@@ -11,7 +11,7 @@ import {DialogService} from '../../services/dialog/dialog.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements AfterViewInit {
+export class LoginComponent {
   loginForm: FormGroup;
   loginFormModel: AuthFormModel = new AuthFormModel();
   validationMessages = {
@@ -27,10 +27,6 @@ export class LoginComponent implements AfterViewInit {
     private userService: UserService
   ) {
     this.loginForm = this.formBuilder.group(this.loginFormModel);
-  }
-
-  ngAfterViewInit() {
-    //this.loaderService.hide();
   }
 
   login() {

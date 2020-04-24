@@ -36,14 +36,22 @@ export class SignUpComponent {
     this.loaderService.show();
 
     from(this.userService.signUp(form.email, form.password))
-      .pipe(mergeMap((userCredential: UserCredential) =>
-        this.userService.checkExistentUser({
-          email: form.email,
-          firstName: form.firstName,
-          lastName: form.lastName,
-          birthDate: date.toDate().getTime(),
-          phone: form.phone
-        })))
+      .pipe(mergeMap((user: UserCredential) => {
+          const userData = {
+            id: user.user.uid,
+            email: form.email,
+            firstName: form.firstName,
+            lastName: form.lastName,
+            birthDate: date.toDate().getTime(),
+            phone: form.phone
+          };
+
+          this.userService.setCurrentUser(userData);
+
+          delete userData.id;
+          return this.userService.checkExistentUser(userData);
+        }
+      ))
       .subscribe(res => {
           this.loaderService.hide();
           this.router.navigate(['/home']);

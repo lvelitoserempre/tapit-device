@@ -15,9 +15,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     auth().onAuthStateChanged((user: User) => {
       if (user) {
-        this.userService.setCurrentUser(user.uid);
+        this.userService.setCurrentUserById(user.uid);
       } else {
-        this.userService.setCurrentUser(null);
+        this.userService.setCurrentUserById(null);
       }
     });
   }
