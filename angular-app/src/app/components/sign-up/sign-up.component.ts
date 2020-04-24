@@ -1,14 +1,13 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {UserAccountService} from 'src/app/services/user-account/user-account.service';
 import {LoaderService} from 'src/app/services/loader/loader.service';
-import {AuthService} from 'src/app/services/auth/auth.service';
 import {Router} from '@angular/router';
 import {DialogService} from 'src/app/services/dialog/dialog.service';
 import {from} from 'rxjs';
 import {mergeMap} from 'rxjs/operators';
 import {Moment} from 'moment';
 import {SignUpValidationMessages, SignUpValidators} from './sign-up.validation';
+import {UserService} from '../../user/user.service';
 import UserCredential = firebase.auth.UserCredential;
 
 @Component({
@@ -22,10 +21,9 @@ export class SignUpComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userAccountService: UserAccountService,
-    private loaderService: LoaderService,
-    private authService: AuthService,
+    private userService: UserService,
     private router: Router,
+    private loaderService: LoaderService,
     private dialogService: DialogService
   ) {
     this.signUpForm = this.formBuilder.group(SignUpValidators);
@@ -37,17 +35,9 @@ export class SignUpComponent {
 
     this.loaderService.show();
 
-    from(this.authService.signUp(form.email, form.password))
-      .pipe(mergeMap((userCredential: UserCredential) => {
-        this.userAccountService.setUserAccountInLocalStorage({
-          firstName: form.firstName,
-          lastName: form.lastName,
-        });
-
-        return from(this.authService.login(form.email, form.password));
-      }))
-      .pipe(mergeMap(() =>
-        this.userAccountService.checkExistentUser({
+    from(this.userService.signUp(form.email, form.password))
+      .pipe(mergeMap((userCredential: UserCredential) =>
+        this.userService.checkExistentUser({
           email: form.email,
           firstName: form.firstName,
           lastName: form.lastName,

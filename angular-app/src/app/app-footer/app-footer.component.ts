@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../services/auth/auth.service';
-import {UserAccountService} from '../services/user-account/user-account.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,19 +7,10 @@ import {UserAccountService} from '../services/user-account/user-account.service'
 })
 export class AppFooterComponent implements OnInit {
 
-  constructor(
-    private authService: AuthService,
-    private userAccountService: UserAccountService,
-  ) {
-    this.authService.listenUserStateChanges();
-    this.userAccountService.listenUserAccountChanges();
+  constructor() {
   }
 
   ngOnInit() {
-  }
-
-  get isLoggedIn(): boolean {
-    return this.authService.isLoggedIn;
   }
 
 }

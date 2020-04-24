@@ -39,7 +39,7 @@ export class LoginComponent implements AfterViewInit {
 
     this.loaderService.show();
 
-    this.userService.signIn(email, password)
+    this.userService.login(email, password)
       .subscribe(res => {
           this.loaderService.hide();
           this.router.navigateByUrl('/home');
