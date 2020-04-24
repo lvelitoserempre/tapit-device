@@ -2,19 +2,22 @@
   <div class="container mx-auto">
     <div class="sm:flex sm:flex-row content-center items-center">
       <div class="w-full sm:w-6/12">
-        <ul class="flex flex-row content-center items-center justify-center sm:justify-start header__logos">
-          <li class="header__logos-logo-tapil">
-            <img src="../assets/images/billLayout/Tapit_Logo.svg"/>
-          </li>
-          <li class="header__logos-logo-polas">
-            <img src="../assets/images/billLayout/PloasLogo.svg"/>
-          </li>
-        </ul>
+        <a href="/">
+          <ul class="flex flex-row content-center items-center justify-center sm:justify-start header__logos">
+            <li class="header__logos-logo-tapil">
+              <img src="../assets/images/billLayout/Tapit_Logo.svg"/>
+            </li>
+            <li class="header__logos-logo-polas">
+              <img src="../assets/images/billLayout/PloasLogo.svg"/>
+            </li>
+          </ul>
+        </a>
       </div>
       <div class="w-full sm:w-6/12">
         <ul *ngIf="user" class="sm:flex sm:flex-row justify-center sm:justify-end header__buttons">
           <li>
-            <p class="font-bold text-white m-auto capitalize">{{(user.firstName || '') + ' ' + (user.lastName || '')}}</p>
+            <p
+              class="font-bold text-white m-auto capitalize">{{(user.firstName || '') + ' ' + (user.lastName || '')}}</p>
           </li>
           <li>
             <a class="header__button font-bold" (click)="logout()">
