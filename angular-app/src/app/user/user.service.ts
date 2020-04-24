@@ -15,7 +15,7 @@ export class UserService {
   private wasNewUserSigningUp = false;
 
   constructor(private http: HttpClient) {
-    this.currentUser = new ReplaySubject<UserAccount>(1);
+    this.currentUser = new ReplaySubject<UserAccount>(0);
   }
 
   setupLoggedUserObserver() {
