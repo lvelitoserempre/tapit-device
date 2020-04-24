@@ -14,7 +14,7 @@
       <div class="w-full sm:w-6/12">
         <ul *ngIf="user" class="sm:flex sm:flex-row justify-center sm:justify-end header__buttons">
           <li>
-            <p class="font-bold text-white m-auto capitalize">{{user.firstName + ' ' + user.lastName}}</p>
+            <p class="font-bold text-white m-auto capitalize">{{(user.firstName || '') + ' ' + (user.lastName || '')}}</p>
           </li>
           <li>
             <a class="header__button font-bold" (click)="logout()">

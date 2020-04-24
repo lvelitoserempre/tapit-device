@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from './user/user.service';
-import {auth, User} from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +12,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    auth().onAuthStateChanged((user: User) => {
-      if (user) {
-        this.userService.setCurrentUserById(user.uid);
-      } else {
-        this.userService.setCurrentUserById(null);
-      }
-    });
+    this.userService.setupLoggedUserObserver();
   }
 }

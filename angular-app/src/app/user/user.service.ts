@@ -12,6 +12,7 @@ import UserCredential = firebase.auth.UserCredential;
 })
 export class UserService {
   private currentUser: ReplaySubject<UserAccount>;
+  private wasNewUserSigningUp = false;
 
   constructor(private http: HttpClient) {
     this.currentUser = new ReplaySubject<UserAccount>(1);
@@ -20,10 +21,12 @@ export class UserService {
   setupLoggedUserObserver() {
     auth().onAuthStateChanged((user: User) => {
       if (user) {
-        firestore().collection('user_account_tap').doc(user.uid).get()
-          .then(userSnapshot => {
-            this.currentUser.next({id: userSnapshot.id, ...userSnapshot.data()});
-          });
+        if (!this.wasNewUserSigningUp) {
+          firestore().collection('user_account_tap').doc(user.uid).get()
+            .then(userSnapshot => {
+              this.currentUser.next({id: userSnapshot.id, ...userSnapshot.data()});
+            });
+        }
       } else {
         this.currentUser.next(null);
       }
@@ -60,11 +63,19 @@ export class UserService {
   }
 
   login(email: string, password: string): Observable<UserCredential> {
-    return from(auth().signInWithEmailAndPassword(email, password));
+    return from(auth().signInWithEmailAndPassword(email, password))
+      .pipe(map((userCredential: UserCredential) => {
+        this.wasNewUserSigningUp = false;
+        return userCredential;
+      }));
   }
 
   signUp(email: string, password: string): Observable<UserCredential> {
-    return from(auth().createUserWithEmailAndPassword(email, password));
+    return from(auth().createUserWithEmailAndPassword(email, password))
+      .pipe(map((userCredential: UserCredential) => {
+        this.wasNewUserSigningUp = true;
+        return userCredential;
+      }));
   }
 
   checkExistentUser(user: UserAccount) {
