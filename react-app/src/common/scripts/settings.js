@@ -121,7 +121,7 @@ i18next.init({
                     LegalImage: '../assets/images/footer/legal.png',
                     Logo: '../assets/images/footer/Logo-tapit.svg',
                     LogoPolas: '../assets/images/footer/logo-polas.svg',
-                    Copyright: 'Todos los derechos reservados © 2020 <br/>Términos y condiciones | Políticas de protección de datos personales <br/>Aviso de privacidad | Pólitica de cookies | Contáctanos '
+                    Copyright: 'Todos los derechos reservados © 2020 <br/><a href="https://home.gettap.it/terminosPokerRoja" target="_blank">Términos y Condiciones</a> | <a href="https://home.gettap.it/datos" target="_blank">Políticas de protección de datos personales</a> <br/><a href="https://home.gettap.it/privacidad" target="_blank">Aviso de privacidad</a> | <a href="https://home.gettap.it/cookies" target="_blank">Política de Cookies</a> | <a href="mailto:hello@gettap.it">Contáctanos</a>'
                 },
                 Animations
             }
