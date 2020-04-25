@@ -43,7 +43,8 @@ export class SignUpComponent {
             firstName: form.firstName,
             lastName: form.lastName,
             birthDate: date.toDate().getTime(),
-            phone: form.phone
+            phone: form.phone,
+            referredBy: form.referralCode
           };
 
           this.userService.setCurrentUser(userData);
