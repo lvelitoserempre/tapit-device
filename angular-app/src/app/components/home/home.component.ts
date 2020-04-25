@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
     if (this.isFormValid()) {
       const bill = {
         eventId: this.selectedEvent.id,
-        invoiceImageEncoded: this.selectedImage.base64.replace('data:image/png;base64,', ''),
+        invoiceImageEncoded: this.selectedImage.base64,
         fileType: this.selectedImage.fileType,
         invoiceNumber: this.billNumber
       };
