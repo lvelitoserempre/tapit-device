@@ -16,7 +16,7 @@
       ]
     },
     {
-      "site": "tapit-landing",
+      "site": "tapit-app-production",
       "public": "dist",
       "ignore": [
         "firebase.json",
