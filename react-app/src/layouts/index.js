@@ -19,7 +19,7 @@ export default function Index() {
     const [isMobile,setMobile] = useState(null);
     const [events,setEvents] = useState(null);
     const [user,setUser] = useState(null);
-    const [userDate,setUserDate] = useState(null);
+    const [userDate,setUserDate] = useState(window.localStorage.getItem('anonymousUserBirthDate'));
 
     useEffect(() => {
         setMobile(detectMobile());
@@ -29,13 +29,18 @@ export default function Index() {
         let localUser = JSON.parse(window.localStorage.getItem('user'));
         if (localUser && !user) {
             setUser(localUser);
-            window.location.href = window.location.origin + '/app/home'
+            window.location.href = window.location.origin + '/app/home';
         }
         let localDate = window.localStorage.getItem('anonymousUserBirthDate');
-        if (localDate && !userDate) {
-            setUserDate(localDate);
+        if (!localDate) {
+            document.body.style.overflow = "hidden";
         }
     });
+
+    function saveBirthDate(value) {
+        setUserDate(value);
+        document.body.style.overflow = "auto";
+    }
 
     function detectMobile() {
         const toMatch = [
@@ -69,7 +74,7 @@ export default function Index() {
             <div className="main d-flex align-items-start">
                 {
                     !userDate?
-                        <Agegate/>
+                        <Agegate saveBirthDate={()=>saveBirthDate()} />
                     :null
                 }
                 

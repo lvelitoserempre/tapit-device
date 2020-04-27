@@ -1,0 +1,50 @@
+.agegate {
+    background-color: rgba(255,255,255,0.5);
+    height: 100%;
+    left: 8px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    @media screen and (max-width: @xs) {
+        left: 16px;
+    }
+    &__content {
+        background-color: white;
+        border-radius: 20px;
+        padding: 30px;
+        @media screen and (max-width: @xs) {
+            border-radius: 0;
+        }
+        .section__button {
+            margin: 20px 0 0;
+        }
+        #day, #month {
+            width: 100px;
+            @media screen and (max-width: @xs) {
+                width: 18vw;
+            }
+        }
+        #year {
+            width: 150px;
+            @media screen and (max-width: @xs) {
+                width: 22vw;
+            }
+        }
+        input[type="number"] {
+            appearance: none;
+            -moz-appearance: textfield;
+            border: 1px solid @ligthGrayColor;
+            border-radius: 5px;
+            margin: 0 10px 10px;
+            padding: 0;
+            text-align: center;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            appearance: none;
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+}
