@@ -49,7 +49,7 @@ export class UserService {
       delete userCopy.referralCode;
       window.localStorage.setItem('user', JSON.stringify(userCopy));
     } else {
-      window.localStorage.clear();
+      window.localStorage.removeItem('user');
     }
   }
 

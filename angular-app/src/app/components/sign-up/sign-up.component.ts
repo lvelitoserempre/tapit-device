@@ -33,6 +33,8 @@ export class SignUpComponent {
     const form = this.signUpForm.value;
     const date = this.signUpForm.get('birthDate').value as Moment;
 
+    console.log(form.referralCode, 'errr');
+
     this.loaderService.show();
 
     from(this.userService.signUp(form.email, form.password))
@@ -48,6 +50,10 @@ export class SignUpComponent {
           };
 
           this.userService.setCurrentUser(userData);
+
+          if (!form.referredBy || !form.referredBy.trim()) {
+            delete userData.referredBy;
+          }
 
           delete userData.id;
           return this.userService.checkExistentUser(userData);
