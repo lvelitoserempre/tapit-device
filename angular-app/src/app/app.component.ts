@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
    * This method redirects the user to the root in production if the user has not entered his birth date
    */
   private redirectIfUserIsAChild() {
-    if (!window.localStorage.getItem('anonymousUserBirthDate') && window.location.host !== 'localhost') {
+    if (!window.localStorage.getItem('anonymousUserBirthDate') && window.location.hostname !== 'localhost') {
       window.location.replace(window.location.origin);
     }
   }
