@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./../styles/main.less";
 import events from "./../common/scripts/events";
 import Header from "./../components/header.component";
+import Agegate from "./../components/agegate.component"
 import StartSection from "./../components/startSection.component";
 import PointsSection from "./../components/pointsSection.component";
 import PrizesSection from "./../components/prizesSection.component";
@@ -18,6 +19,7 @@ export default function Index() {
     const [isMobile,setMobile] = useState(null);
     const [events,setEvents] = useState(null);
     const [user,setUser] = useState(null);
+    const [userDate,setUserDate] = useState(null);
 
     useEffect(() => {
         setMobile(detectMobile());
@@ -29,7 +31,10 @@ export default function Index() {
             setUser(localUser);
             window.location.href = window.location.origin + '/app/home'
         }
-        
+        let localDate = window.localStorage.getItem('anonymousUserBirthDate');
+        if (localDate && !userDate) {
+            setUserDate(localDate);
+        }
     });
 
     function detectMobile() {
@@ -62,51 +67,56 @@ export default function Index() {
         // title ?
         (
             <div className="main d-flex align-items-start">
-            {
-                isBillLayout?
-                <div>
-                    <Header user={user} />
-                    <div className="main__bgGray">
-                        <div className="container">
-                            <StartSectionBill isMobile={isMobile} />
-                        </div>
-                        <EventsSection events={events} isMobile={isMobile} />
-                    </div>
-                    <div className="main__bgGray">
-                        <div className="container">
-                            <ComoParticiparSection />
-                            <BeersSection isBill={isBillLayout} isMobile={isMobile} />
-                        </div>
-                    </div>
-                </div>
-                :
-                <div>
-                    <header>
-                    <a href="/app">
-                        <img src={i18next.t("Header.Logo")}/>
-                    </a>
-                    </header>
-                    <div className="main__bgGray">
-                        <div className="container">
-                            <StartSection />
-                            <PointsSection isMobile={isMobile} />
-                        </div>
-                    </div>
-                    <div className="main__bgBlue">
-                        <div className="container">
-                            <PrizesSection isMobile={isMobile} />
-                        </div>
-                    </div>
-                    <div className="main__bgGray">
-                        <div className="container">
-                            <MarketPlaceSection />
-                            <BeersSection isMobile={isMobile} />
-                        </div>
-                        <DownloadSeccion isMobile={isMobile} />
-                    </div>
-                </div>
-            }
+                {
+                    !userDate?
+                        <Agegate/>
+                    :null
+                }
                 
+                {
+                    isBillLayout?
+                    <div>
+                        <Header user={user} />
+                        <div className="main__bgGray">
+                            <div className="container">
+                                <StartSectionBill isMobile={isMobile} />
+                            </div>
+                            <EventsSection events={events} isMobile={isMobile} />
+                        </div>
+                        <div className="main__bgGray">
+                            <div className="container">
+                                <ComoParticiparSection />
+                                <BeersSection isBill={isBillLayout} isMobile={isMobile} />
+                            </div>
+                        </div>
+                    </div>
+                    :
+                    <div>
+                        <header>
+                        <a href="/app">
+                            <img src={i18next.t("Header.Logo")}/>
+                        </a>
+                        </header>
+                        <div className="main__bgGray">
+                            <div className="container">
+                                <StartSection />
+                                <PointsSection isMobile={isMobile} />
+                            </div>
+                        </div>
+                        <div className="main__bgBlue">
+                            <div className="container">
+                                <PrizesSection isMobile={isMobile} />
+                            </div>
+                        </div>
+                        <div className="main__bgGray">
+                            <div className="container">
+                                <MarketPlaceSection />
+                                <BeersSection isMobile={isMobile} />
+                            </div>
+                            <DownloadSeccion isMobile={isMobile} />
+                        </div>
+                    </div>
+                }
                 <FooterSection/>
             </div>
         )
