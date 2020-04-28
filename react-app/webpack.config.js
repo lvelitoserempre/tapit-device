@@ -16,7 +16,8 @@ const extractLess = new ExtractTextPlugin({
 const copyLibs = new CopyWebpackPlugin([
   {from: './src/common/scripts/', to: 'scripts/'},
   {from: './src/common/libs/', to: 'libs/'},
-  {from: './src/assets/', to: 'assets/'}
+  {from: './src/assets/', to: 'assets/'},
+  {from: './src/404.html', to: './'}
 ], {copyUnmodified: true})
 
 module.exports = {
