@@ -10,8 +10,8 @@
       ],
       "rewrites": [
         {
-          "source": "!/@(js|css)|terms/**",
-          "destination": "/index.html"
+          "source": "**",
+          "destination": "dist/index.html"
         },
         {
           "source": "/app/**",
