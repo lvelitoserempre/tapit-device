@@ -35,11 +35,12 @@ export default function Index() {
         if (!localDate) {
             document.body.style.overflow = "hidden";
         }
-    });
+    },[]);
 
     function saveBirthDate(value) {
         setUserDate(value);
         document.body.style.overflow = "auto";
+        document.getElementById('agegate').style.display = 'none';
     }
 
     function detectMobile() {
@@ -130,4 +131,4 @@ export default function Index() {
 }
 
 // Implementacion de este layout al HTML
-ReactDOM.render(<Index />, document.getElementById("index"));
+ReactDOM.render(<Index/>, document.getElementById("index"));

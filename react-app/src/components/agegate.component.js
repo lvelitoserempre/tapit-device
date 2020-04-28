@@ -11,12 +11,13 @@ export default function Agegate(props) {
         let currentYear = new Date();
         let born = new Date(year, month-1, day);
         let age = get_age(born,currentYear);
+        let dateToLocal = born.getTime();
         if (age < 18) {
             setAdult(false);
         } else {
             setAdult(true);
-            window.localStorage.setItem('anonymousUserBirthDate',born);
-            props.saveBirthDate(born);
+            window.localStorage.setItem('anonymousUserBirthDate',dateToLocal);
+            props.saveBirthDate(dateToLocal);
             console.log('saved');
         }
     }
@@ -30,7 +31,7 @@ export default function Agegate(props) {
     }
 
     return (
-        <div className='agegate row center-sm middle-sm'>
+        <div id='agegate' className='agegate row center-sm middle-sm'>
             <div className='agegate__content col-xs-12 col-lg-6 center-xs middle-xs row'>
                 <div>
                     <p className="section__text">¡Hola!</p>
