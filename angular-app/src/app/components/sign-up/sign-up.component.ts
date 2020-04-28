@@ -44,9 +44,10 @@ export class SignUpComponent {
             email: form.email,
             firstName: form.firstName,
             lastName: form.lastName,
-            birthDate: date.toDate().getTime(),
+            birthDate: date.toISOString(),
             phone: form.phone,
-            referredBy: form.referralCode
+            referredBy: form.referralCode,
+            origin: 'pola'
           };
 
           this.userService.setCurrentUser(userData);

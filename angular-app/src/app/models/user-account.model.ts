@@ -39,7 +39,7 @@ export interface Player {
 
 export interface UserAccount {
   id?: string;
-  birthDate?: number;
+  birthDate?: string;
   code?: string;
   deviceId?: any;
   email?: string;
