@@ -1,6 +1,25 @@
 {
   "hosting": [
     {
+      "site": "tapit-app-dev",
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "!/@(js|css)|terms/**",
+          "destination": "/index.html"
+        },
+        {
+          "source": "/app/**",
+          "destination": "/app/index.html"
+        }
+      ]
+    },
+    {
       "site": "tapit-app-testing",
       "public": "dist",
       "ignore": [
