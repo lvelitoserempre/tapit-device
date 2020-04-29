@@ -1,4 +1,4 @@
-let tagId = window.location.origin == i18next.t("PordEnvironment")?'':i18next.t("TagManagerDev");
+let tagId = window.location.origin == i18next.t("PordEnvironment")?i18next.t("TagManagerProd"):i18next.t("TagManagerDev");
 (function (w, d, s, l, i) {
     w[l] = w[l] || [];
     w[l].push({
