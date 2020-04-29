@@ -128,7 +128,10 @@ i18next.init({
                     "/",
                     "/app",
                     "/tyc",
-                ]
+                ],
+                TagManagerDev: 'GTM-NFCC7RC',
+                TagManagerProd: '',
+                PordEnvironment: 'https://tapit.com.co'
             }
         }
     }
