@@ -33,8 +33,6 @@ export class SignUpComponent {
     const form = this.signUpForm.value;
     const date = this.signUpForm.get('birthDate').value as Moment;
 
-    console.log(form.referralCode, 'errr');
-
     this.loaderService.show();
 
     from(this.userService.signUp(form.email, form.password))

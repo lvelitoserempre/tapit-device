@@ -24,5 +24,7 @@ export const environment = {
     applyPromotionalCode: 'applyPromotionalCode',
     getEventsOneTime: 'getEventsV2'
   },
-  shareUrl: 'https://dev-poker-prod.pantheonsite.io/cerveza-poker-roja-f2/{0}'
+  shareUrl: 'https://dev-poker-prod.pantheonsite.io/cerveza-poker-roja-f2/{0}',
+  googleAnalyticsId: 'UA-159252784-3',
+  googleTagManagerId: 'GTM-NFCC7RC'
 };

@@ -24,5 +24,7 @@ export const environment = {
     applyPromotionalCode: 'applyPromotionalCode',
     getEventsOneTime: 'getEventsV2'
   },
-  shareUrl: 'https://www.cervezapoker.com/poker-roja/gratis/{0}'
+  shareUrl: 'https://www.cervezapoker.com/poker-roja/gratis/{0}',
+  googleAnalyticsId: '',
+  googleTagManagerId: ''
 };
