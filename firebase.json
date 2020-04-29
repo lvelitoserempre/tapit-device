@@ -10,10 +10,6 @@
       ],
       "rewrites": [
         {
-          "source": "**",
-          "destination": "dist/index.html"
-        },
-        {
           "source": "/app/**",
           "destination": "/app/index.html"
         }

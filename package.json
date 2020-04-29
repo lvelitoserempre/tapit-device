@@ -2,7 +2,6 @@
   "name": "tapit-web",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "gulp serve-dist",
     "build": "cross-env environment=testing gulp build",
@@ -19,9 +18,7 @@
     "gulp": "^4.0.2",
     "gulp-copy": "^4.0.1",
     "gulp-live-server": "0.0.31",
-    "gulp-run": "^1.7.1"
-  },
-  "dependencies": {
+    "gulp-run": "^1.7.1",
     "cross-env": "^7.0.2"
   }
 }
