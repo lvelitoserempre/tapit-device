@@ -58,7 +58,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../../../../dist/assets/fonts/filson-soft-book.otf') format('opentype');
+  src: url('../../dist/assets/fonts/filson-soft-book.otf') format('opentype');
 }
 
 @font-face {
@@ -66,6 +66,6 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('../../../../dist/assets/fonts/FilsonSoft-Bold.woff') format('opentype'),
-        url('../../../../dist/assets/fonts/FilsonSoft-Bold.woff2') format('woff2');
+  src: url('../../dist/assets/fonts/FilsonSoft-Bold.woff') format('woff'),
+        url('../../dist/assets/fonts/FilsonSoft-Bold.woff2') format('woff2');
 }
