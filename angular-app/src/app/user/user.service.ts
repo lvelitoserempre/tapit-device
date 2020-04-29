@@ -7,6 +7,9 @@ import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import UserCredential = firebase.auth.UserCredential;
 
+declare var ga;
+declare var dataLayer;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -40,6 +43,7 @@ export class UserService {
   setCurrentUser(user: UserAccount) {
     this.currentUser.next(user);
     this.saveUserToLocalStorage(user);
+    this.sendStats(user);
   }
 
   saveUserToLocalStorage(user: UserAccount) {
@@ -100,5 +104,11 @@ export class UserService {
             }
           }
         )));
+  }
+
+  private sendStats(user: UserAccount) {
+    if (user) {
+      dataLayer.push({event: 'uidAvailable', uid: user.id});
+    }
   }
 }
