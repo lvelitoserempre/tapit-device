@@ -17,27 +17,27 @@ export default function StartSection() {
             </div>
             <div className="col-xs-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-0 middle-xs section__start-content">
                 <img className="section__start-content-cellphone" src={i18next.t("Section1.Image")}/>
-                <Plx className="section__start-bubble1" parallaxData={ animate.BubbleTop }>
+                <Plx className="section__start-bubble1" >
                     <img src={i18next.t("Section1.BubbleTop")}  />
                 </Plx>
-                <Plx className="section__start-bubble2" parallaxData={ animate.BubbleBottom }>
+                <Plx className="section__start-bubble2" >
                     <img src={i18next.t("Section1.BubbleBottom")} />
                 </Plx>
             </div>
             <div className="section__start__bottom-line row middle-xs col-xs-12">
-                <Plx className="section__start__bottom-line-animation" parallaxData={ animate.Bottle1 }>
+                <Plx className="section__start__bottom-line-animation" >
                     <img src="../assets/images/bottle.svg" width="16" />
                 </Plx>
-                <Plx className="section__start__bottom-line-animation" parallaxData={ animate.Bottle2 }>
+                <Plx className="section__start__bottom-line-animation" >
                     <img src="../assets/images/bottle.svg" width="16" />
                 </Plx>
-                <Plx className="section__start__bottom-line-animation" parallaxData={ animate.Bottle3 }>
+                <Plx className="section__start__bottom-line-animation" >
                     <img src="../assets/images/bottle.svg" width="16" />
                 </Plx>
-                <Plx className="section__start__bottom-line-animation section__start__bottom-line-animation-line" parallaxData={ animate.Line }>
+                <Plx className="section__start__bottom-line-animation section__start__bottom-line-animation-line" >
                     <img src="../assets/images/line.svg" width="854" />
                 </Plx>
-                <Plx className="section__start__bottom-line-animation" parallaxData={ animate.Elipse }>
+                <Plx className="section__start__bottom-line-animation" >
                     <img src="../assets/images/elipse.svg" width="16" />
                 </Plx>
             </div>

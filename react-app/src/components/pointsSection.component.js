@@ -31,7 +31,9 @@ export default function PointsSection(props) {
                     {pointsArr.map((point,index)=>{
 
                         const HtlmImage = <div className={`row col-xs-10 col-lg-5 col-xs-offset-1 col-lg-offset-0 middle-xs section__slider-image ${index == 1 && !props.isMobile?`section__slider-image-lay2`:null}`}>
-                                            <Plx className={"section__slider-image-"+index} parallaxData={ animate.Image }>
+                                            <Plx className={"section__slider-image-"+index} 
+                                                // parallaxData={ animate.Image }
+                                            >
                                                 <img src={point.Image} />
                                             </Plx>
                                         </div>

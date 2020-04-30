@@ -47,7 +47,7 @@
 }
 
 @font-face {
-  font-family: 'Helvetica Neue';
+  font-family: 'Helvetica Neue'; 
   src: url('assets/fonts/HelveticaNeueCondensed-CondensedRegular.woff2') format('woff2'),
   url('assets/fonts/HelveticaNeueCondensed-CondensedRegular.woff') format('woff');
   font-weight: normal;
@@ -58,7 +58,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('assets/fonts/filson-soft-book.otf') format('opentype');
+  src: url('../../dist/assets/fonts/filson-soft-book.otf') format('opentype');
 }
 
 @font-face {
@@ -66,5 +66,6 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('assets/fonts/filson-soft-bold.otf') format('opentype');
+  src: url('../../dist/assets/fonts/FilsonSoft-Bold.woff') format('woff'),
+        url('../../dist/assets/fonts/FilsonSoft-Bold.woff2') format('woff2');
 }

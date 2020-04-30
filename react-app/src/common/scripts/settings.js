@@ -4,7 +4,7 @@ i18next.init({
         es: {
             translation: {
                 BillLayout: {
-                    Active: true,
+                    Active: false,
                     Header: {
                         Logo: '../assets/images/billLayout/Tapit_Logo.svg',
                         LogoPolas: '../assets/images/billLayout/PloasLogo.svg',
@@ -121,14 +121,17 @@ i18next.init({
                     LegalImage: '../assets/images/footer/legal.png',
                     Logo: '../assets/images/footer/Logo-tapit.svg',
                     LogoPolas: '../assets/images/footer/logo-polas.svg',
-                    Copyright: 'Todos los derechos reservados © 2020 <br/><a href="https://home.gettap.it/terminosPokerRoja" target="_blank">Términos y Condiciones</a> | <a href="https://home.gettap.it/datos" target="_blank">Políticas de protección de datos personales</a> <br/><a href="https://home.gettap.it/privacidad" target="_blank">Aviso de privacidad</a> | <a href="https://home.gettap.it/cookies" target="_blank">Política de Cookies</a> | <a href="mailto:hello@gettap.it">Contáctanos</a>'
+                    Copyright: 'Todos los derechos reservados © 2020 <br/><a href="/terms.html" target="_blank">Términos y Condiciones</a> | <a href="/data-proteccion.html" target="_blank">Políticas de protección de datos personales</a> <br/><a href="/privacy.html" target="_blank">Aviso de privacidad</a> | <a href="/cookies.html" target="_blank">Política de Cookies</a> | <a href="mailto:hello@gettap.it">Contáctanos</a>'
                 },
                 Animations,
                 Redirection: [
                     "/",
                     "/app",
                     "/tyc",
-                ]
+                ],
+                TagManagerDev: 'GTM-NFCC7RC',
+                TagManagerProd: '',
+                PordEnvironment: 'https://tapit.com.co'
             }
         }
     }
