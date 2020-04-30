@@ -102,8 +102,8 @@ i18next.init({
                     RightPhone: '../assets/images/download/rightPhone.png',
                     appStore: '../assets/images/download/appStore.svg',
                     googlePlay: '../assets/images/download/googlePlay.svg',
-                    appStoreUrl: '#',
-                    googlePlayUrl: '#',
+                    appStoreUrl: 'https://apps.apple.com/us/app/tapit/id1481852424?ls=1',
+                    googlePlayUrl: 'https://play.google.com/store/apps/details?id=com.abinbev.tapit',
                     Disclaimer: 'Prohíbase el expendio de bebidas embriagantes a personas menores de edad.<br/> El exeso de alcohol es perjudicial para la salud'
                 },
                 Footer: {
