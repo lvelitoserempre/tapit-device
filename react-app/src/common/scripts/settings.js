@@ -130,7 +130,7 @@ i18next.init({
                     "/tyc",
                 ],
                 TagManagerDev: 'GTM-NFCC7RC',
-                TagManagerProd: '',
+                TagManagerProd: 'GTM-MKLL6C7',
                 PordEnvironment: 'https://tapit.com.co'
             }
         }
