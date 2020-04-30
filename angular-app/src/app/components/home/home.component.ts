@@ -4,8 +4,7 @@ import {BillDAO} from '../../bill/bill-dao.service';
 import {Router} from '@angular/router';
 import {DialogService} from '../../services/dialog/dialog.service';
 import {LoaderService} from '../../services/loader/loader.service';
-
-declare var ga;
+import {AnalyticsService} from '../../services/anaylitics/analytics.service';
 
 @Component({
   selector: 'app-home',
@@ -33,7 +32,7 @@ export class HomeComponent implements OnInit {
   ];
 
   constructor(private eventDAO: EventDAO, private billDAO: BillDAO, private router: Router, private loaderService: LoaderService,
-              private dialogService: DialogService) {
+              private dialogService: DialogService, private analyticsService: AnalyticsService) {
   }
 
   ngOnInit(): void {
@@ -41,7 +40,9 @@ export class HomeComponent implements OnInit {
       this.events = events;
       this.events.forEach(event => event.isSelected = true);
     });
+
     this.isMobile = this.detectMobile();
+    this.analyticsService.sendUserId();
   }
 
   selectedBill(event: any) {
@@ -81,7 +82,7 @@ export class HomeComponent implements OnInit {
 
       this.billDAO.saveBill(bill)
         .subscribe(res => {
-            this.sendStatsToGoogleAnalitycs();
+            this.sendEventAndBillToAnalytics();
             this.loaderService.hide();
             this.router.navigateByUrl('/final-message');
           },
@@ -95,8 +96,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  private sendStatsToGoogleAnalitycs() {
-    ga('send', {
+  private sendEventAndBillToAnalytics() {
+    this.analyticsService.sendCustomEvent({
       hitType: 'event',
       eventCategory: 'Polas-recargadas-Completed',
       eventAction: this.selectedEvent.name,
