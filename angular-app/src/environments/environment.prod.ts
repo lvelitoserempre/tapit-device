@@ -25,6 +25,6 @@ export const environment = {
     getEventsOneTime: 'getEventsV2'
   },
   shareUrl: 'https://www.cervezapoker.com/poker-roja/gratis/{0}',
-  googleAnalyticsId: '',
-  googleTagManagerId: ''
+  googleAnalyticsId: 'UA-159252784-4',
+  googleTagManagerId: 'GTM-MKLL6C7'
 };
