@@ -17,14 +17,8 @@ export const environment = {
   functions: {
     url: 'https://us-central1-rei-imagining-loyalty.cloudfunctions.net',
     checkExistentUser: 'api-checkExistentUser',
-    createUserReferralCode: 'createUserReferralCode',
-    sendEmailUserRegister: 'sendEmailUserRegister',
-    getEvents: 'getEventsForWeb',
-    generateBooking: 'generateBookingV2',
-    applyPromotionalCode: 'applyPromotionalCode',
-    getEventsOneTime: 'getEventsV2'
+    getAllEvents: 'api-listEvents'
   },
-  shareUrl: 'https://www.cervezapoker.com/poker-roja/gratis/{0}',
   googleAnalyticsId: 'UA-159252784-4',
   googleTagManagerId: 'GTM-MKLL6C7'
 };

@@ -17,14 +17,8 @@ export const environment = {
   functions: {
     url: 'https://us-central1-re-imagining-loyalty-dev.cloudfunctions.net',
     checkExistentUser: 'api-checkExistentUser',
-    createUserReferralCode: 'createUserReferralCode',
-    sendEmailUserRegister: 'sendEmailUserRegister',
-    getEvents: 'getEventsForWeb',
-    generateBooking: 'generateBookingV2',
-    applyPromotionalCode: 'applyPromotionalCode',
-    getEventsOneTime: 'getEventsV2'
+    getAllEvents: 'api-listEvents'
   },
-  shareUrl: 'https://dev-poker-prod.pantheonsite.io/cerveza-poker-roja-f2/{0}',
   googleAnalyticsId: 'UA-159252784-3',
   googleTagManagerId: 'GTM-NFCC7RC'
 };

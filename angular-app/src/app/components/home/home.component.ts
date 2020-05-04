@@ -30,13 +30,58 @@ export class HomeComponent implements OnInit {
     '../assets/images/beers/beer-Pilsen.png',
     '../assets/images/beers/beer-Costenita.png',
   ];
+  slideConfig = {
+    arrows: true,
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
+  };
+  settings = {
+    arrows: true,
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 2,
+        }
+      }
+    ]
+  };
 
-  constructor(private eventDAO: EventDAO, private billDAO: BillDAO, private router: Router, private loaderService: LoaderService,
-              private dialogService: DialogService, private analyticsService: AnalyticsService) {
+  constructor(private billDAO: BillDAO, private router: Router, private loaderService: LoaderService,
+              private dialogService: DialogService, private analyticsService: AnalyticsService, private eventDAO: EventDAO) {
   }
 
   ngOnInit(): void {
-    this.eventDAO.getEvents().subscribe(events => {
+    this.eventDAO.getAll().subscribe(events => {
+      console.log(events);
       this.events = events;
       this.events.forEach(event => event.isSelected = true);
     });
@@ -96,60 +141,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  private sendEventAndBillToAnalytics() {
-    this.analyticsService.sendCustomEvent({
-      hitType: 'event',
-      eventCategory: 'Polas-recargadas-Completed',
-      eventAction: this.selectedEvent.name,
-      eventLabel: this.billNumber
-    });
-  }
-
-  slideConfig = {
-    arrows: true,
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 2,
-        }
-      },
-      {
-        breakpoint: 576,
-        settings: {
-          slidesToShow: 1,
-        }
-      }
-    ]
-  };
-  settings = {
-    arrows: true,
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-        }
-      },
-      {
-        breakpoint: 576,
-        settings: {
-          slidesToShow: 2,
-        }
-      }
-    ]
-  };
-
   detectMobile() {
     const toMatch: any = [
       /Android/i,
@@ -169,6 +160,15 @@ export class HomeComponent implements OnInit {
     this.events.forEach(event => event.isSelected = false);
     this.events[i].isSelected = true;
     this.selectedEvent = this.events[i];
+  }
+
+  private sendEventAndBillToAnalytics() {
+    this.analyticsService.sendCustomEvent({
+      hitType: 'event',
+      eventCategory: 'Polas-recargadas-Completed',
+      eventAction: this.selectedEvent.name,
+      eventLabel: this.billNumber
+    });
   }
 
   private isFormValid() {
