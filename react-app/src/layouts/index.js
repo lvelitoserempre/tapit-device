@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import {HashRouter,Route,Link} from "react-router-dom";
 import "./../styles/main.less";
 import events from "./../common/scripts/events";
 import Header from "./../components/header.component";
@@ -20,6 +21,7 @@ export default function Index() {
     const [events,setEvents] = useState(null);
     const [user,setUser] = useState(null);
     const [userDate,setUserDate] = useState(window.localStorage.getItem('anonymousUserBirthDate'));
+    const [urlParams,setUrlParams] = useState(null);
 
     useEffect(() => {
         setMobile(detectMobile());
@@ -34,6 +36,9 @@ export default function Index() {
         let localDate = window.localStorage.getItem('anonymousUserBirthDate');
         if (!localDate) {
             document.body.style.overflow = "hidden";
+        }
+        if (!urlParams) {
+            getUrlParams();
         }
     },[]);
 
@@ -57,17 +62,74 @@ export default function Index() {
             return navigator.userAgent.match(toMatchItem);
         });
     }
+    const request = new Request('https://us-central1-re-imagining-loyalty-dev.cloudfunctions.net/api-listEvents');
     const initEvents = () => {
-        fetch('/scripts/events.json')
+        fetch(request, {
+            method: 'GET'
+        })
         .then(response => {
             return response.json();
         })
         .then((data)=> {
-            setEvents(data);
+            setEvents(data.data);
         });
     }
+    function getUrlParams() {
+        let str = window.location.search.toString();
+        if (str != '' && str.includes('s=')) {
+            let firstParam = str.split('s=');
+            let secondParam = firstParam[1].split('&m=');
+            setUrlParams(secondParam);
+        }
+    }
 
-    const isBillLayout = i18next.t("BillLayout.Active")
+    const isBillLayout = i18next.t("BillLayout.Active");
+
+    const BillLayout = () => (
+        <div>
+            <Header user={user} />
+            <div className="main__bgGray">
+                <div className="container">
+                    <StartSectionBill isMobile={isMobile} />
+                </div>
+                <EventsSection events={events} isMobile={isMobile} />
+            </div>
+            <div className="main__bgGray">
+                <div className="container">
+                    <ComoParticiparSection />
+                    <BeersSection isBill={isBillLayout} isMobile={isMobile} />
+                </div>
+            </div>
+        </div>
+    );
+
+    const Home = () => (
+        <div>
+            <header>
+            <a href="/app">
+                <img src={i18next.t("Header.Logo")}/>
+            </a>
+            </header>
+            <div className="main__bgGray">
+                <div className="container">
+                    <StartSection urlParams={urlParams} />
+                    <PointsSection isMobile={isMobile} />
+                </div>
+            </div>
+            <div className="main__bgBlue">
+                <div className="container">
+                    <PrizesSection isMobile={isMobile} />
+                </div>
+            </div>
+            <div className="main__bgGray">
+                <div className="container">
+                    <MarketPlaceSection />
+                    <BeersSection isMobile={isMobile} />
+                </div>
+                <DownloadSeccion urlParams={urlParams} isMobile={isMobile} />
+            </div>
+        </div>
+    )
 
     return (
         // title ?
@@ -80,48 +142,11 @@ export default function Index() {
                 }
                 
                 {
-                    isBillLayout?
-                    <div>
-                        <Header user={user} />
-                        <div className="main__bgGray">
-                            <div className="container">
-                                <StartSectionBill isMobile={isMobile} />
-                            </div>
-                            <EventsSection events={events} isMobile={isMobile} />
-                        </div>
-                        <div className="main__bgGray">
-                            <div className="container">
-                                <ComoParticiparSection />
-                                <BeersSection isBill={isBillLayout} isMobile={isMobile} />
-                            </div>
-                        </div>
-                    </div>
-                    :
-                    <div>
-                        <header>
-                        <a href="/app">
-                            <img src={i18next.t("Header.Logo")}/>
-                        </a>
-                        </header>
-                        <div className="main__bgGray">
-                            <div className="container">
-                                <StartSection />
-                                <PointsSection isMobile={isMobile} />
-                            </div>
-                        </div>
-                        <div className="main__bgBlue">
-                            <div className="container">
-                                <PrizesSection isMobile={isMobile} />
-                            </div>
-                        </div>
-                        <div className="main__bgGray">
-                            <div className="container">
-                                <MarketPlaceSection />
-                                <BeersSection isMobile={isMobile} />
-                            </div>
-                            <DownloadSeccion isMobile={isMobile} />
-                        </div>
-                    </div>
+
+                        <HashRouter>
+                            <Route exact path="/" component={Home}/>
+                            <Route exact path="/polas-recargadas" component={BillLayout}/>
+                        </HashRouter>
                 }
                 <FooterSection/>
             </div>
