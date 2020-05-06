@@ -110,9 +110,7 @@ export default function Index() {
     const Home = () => (
         <div>
             <header>
-            <a href="/app">
                 <img src={i18next.t("Header.Logo")}/>
-            </a>
             </header>
             <div className="main__bgGray">
                 <div className="container">
