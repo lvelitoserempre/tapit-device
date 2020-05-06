@@ -81,7 +81,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventDAO.getAll().subscribe(events => {
-      console.log(events);
       this.events = events;
       this.events.forEach(event => event.isSelected = true);
     });
