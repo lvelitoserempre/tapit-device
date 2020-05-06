@@ -30,14 +30,14 @@ task('copy-static', function () {
 });
 
 task('build-react-app', function () {
-  const command = 'npm run ' + (process.env.environment === 'production' ? 'build-prod' : 'build-prod')
+  const command = 'npm i && npm run ' + (process.env.environment === 'production' ? 'build-prod' : 'build-prod')
   const folder = './react-app';
 
   return runCommand(command, folder);
 })
 
 task('build-angular-app', function () {
-  const command = 'npm run ' + (process.env.environment === 'production' ? 'build-prod' : 'build')
+  const command = 'npm i && npm run ' + (process.env.environment === 'production' ? 'build-prod' : 'build')
   const folder = './angular-app';
 
   return runCommand(command, folder);
