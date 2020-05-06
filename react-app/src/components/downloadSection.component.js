@@ -21,6 +21,8 @@ export default function DownloadSection(props) {
         });
     }
 
+    const params = props.urlParams?'&referrer=utm_source%3D'+props.urlParams[0]+'%26utm_medium%3D'+props.urlParams[1]:'';
+
     const bothAppsHtml = <div className='row center-xs section__download-content'>
                             <div className='row center-xs col-xs-12'>
                                 <div className="section__download-phone">
@@ -37,7 +39,7 @@ export default function DownloadSection(props) {
                                     </a>
                                 </div>
                                 <div className="section__download-logo">
-                                    <a target="_blank" href={i18next.t("Section6.googlePlayUrl")}>
+                                    <a target="_blank" href={`${i18next.t("Section6.googlePlayUrl")+params}`}>
                                         <img src={i18next.t("Section6.googlePlay")} />
                                     </a>
                                 </div>
@@ -65,7 +67,7 @@ export default function DownloadSection(props) {
                             </div>
                             <div className='row center-xs col-xs-12'>
                                 <div className="section__download-logo">
-                                    <a target="_blank" href={i18next.t("Section6.googlePlayUrl")}>
+                                    <a target="_blank" href={`${i18next.t("Section6.googlePlayUrl")+params}`}>
                                         <img src={i18next.t("Section6.googlePlay")} />
                                     </a>
                                 </div>

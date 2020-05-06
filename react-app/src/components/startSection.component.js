@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Plx from 'react-plx';
 
-export default function StartSection() {
+export default function StartSection(props) {
     const [isIos,setIos] = useState(null);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ export default function StartSection() {
 
 
     const animate =  i18next.t("Animations.Section1", { returnObjects: true })
-
+    const params = props.urlParams?'&referrer=utm_source%3D'+props.urlParams[0]+'%26utm_medium%3D'+props.urlParams[1]:'';
     return (
         <section className='row section section__start'>
             <div className="col-xs-10 col-lg-6 col-xs-offset-1 col-lg-offset-0 middle-xs">
@@ -31,7 +31,7 @@ export default function StartSection() {
                         isIos?
                             <a className="section__button" href={i18next.t("Section6.appStoreUrl")} target="_blank" >{i18next.t("Section1.Button")}</a>
                         :
-                            <a className="section__button" href={i18next.t("Section6.googlePlayUrl")} target="_blank" >{i18next.t("Section1.Button")}</a>
+                            <a className="section__button" href={`${i18next.t("Section6.googlePlayUrl")+params}`} target="_blank" >{i18next.t("Section1.Button")}</a>
                     }
                     
                 </div>
