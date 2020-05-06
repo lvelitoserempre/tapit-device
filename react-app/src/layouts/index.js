@@ -80,6 +80,10 @@ export default function Index() {
             let firstParam = str.split('s=');
             let secondParam = firstParam[1].split('&m=');
             setUrlParams(secondParam);
+        } else if (str != '' && str.includes('utm_source=')) {
+            let firstParam = str.split('utm_source=');
+            let secondParam = firstParam[1].split('&utm_medium=');
+            setUrlParams(secondParam);
         }
     }
 
