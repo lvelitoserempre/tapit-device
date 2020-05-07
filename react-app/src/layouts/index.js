@@ -145,10 +145,10 @@ export default function Index() {
                 
                 {
 
-                        <HashRouter>
-                            <Route exact path="/" component={Home}/>
-                            <Route exact path="/polas-recargadas" component={BillLayout}/>
-                        </HashRouter>
+                    <HashRouter>
+                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/polas-recargadas" component={BillLayout}/>
+                    </HashRouter>
                 }
                 <FooterSection/>
             </div>
