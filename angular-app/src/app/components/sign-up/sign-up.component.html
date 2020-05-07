@@ -1,17 +1,17 @@
-<div class="legacy-container" fxLayout="column" fxLayoutGap="50px" fxLayoutAlign="center stretch">
+<div class="legacy-container" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="50px">
 
   <div class="legacy-title" fxLayout="row" fxLayoutAlign="center center">
     Registrarse
   </div>
 
-  <div class="content" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px"
-       fxLayoutAlign="center center">
+  <div class="content" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="center center"
+       fxLayoutGap="30px">
     <div class="item">
-      <form class="form" fxLayout="column" fxLayoutGap="20px" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <form (ngSubmit)="onSubmit()" [formGroup]="signUpForm" class="form" fxLayout="column" fxLayoutGap="20px">
 
         <!-- First name -->
         <mat-form-field>
-          <input matInput type="text" placeholder="Nombre" formControlName="firstName" required>
+          <input formControlName="firstName" matInput placeholder="Nombre" required type="text">
           <mat-error
             *ngIf="signUpForm.get('firstName').hasError('required')">{{ validationMessages.firstName.required }}</mat-error>
           <mat-error
@@ -20,7 +20,7 @@
 
         <!-- Last name -->
         <mat-form-field>
-          <input matInput type="text" placeholder="Apellido" formControlName="lastName" required>
+          <input formControlName="lastName" matInput placeholder="Apellido" required type="text">
           <mat-error
             *ngIf="signUpForm.get('lastName').hasError('required')">{{ validationMessages.lastName.required }}</mat-error>
           <mat-error
@@ -29,7 +29,7 @@
 
         <!-- Email -->
         <mat-form-field>
-          <input matInput type="text" placeholder="Email" formControlName="email" required>
+          <input formControlName="email" matInput placeholder="Email" required type="text">
           <mat-error
             *ngIf="signUpForm.get('email').hasError('required')">{{ validationMessages.email.required }}</mat-error>
           <mat-error
@@ -38,7 +38,7 @@
 
         <!-- Password -->
         <mat-form-field>
-          <input matInput type="password" placeholder="Contraseña" formControlName="password" required>
+          <input formControlName="password" matInput placeholder="Contraseña" required type="password">
           <mat-error
             *ngIf="signUpForm.get('password').hasError('required')">{{ validationMessages.password.required }}</mat-error>
           <mat-error
@@ -47,7 +47,7 @@
 
         <!-- Phone -->
         <mat-form-field>
-          <input matInput type="tel" placeholder="Número de celular" formControlName="phone" required>
+          <input formControlName="phone" matInput placeholder="Número de celular" required type="tel">
           <mat-error
             *ngIf="signUpForm.get('phone').hasError('required')">{{ validationMessages.phone.required }}</mat-error>
           <mat-error
@@ -58,9 +58,9 @@
 
         <!-- Birthdate -->
         <mat-form-field>
-          <input matInput readonly (click)="picker.open()" [matDatepicker]="picker" placeholder="Fecha de nacimiento"
-                 formControlName="birthDate" required>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <input (click)="picker.open()" [matDatepicker]="picker" formControlName="birthDate" matInput placeholder="Fecha de nacimiento"
+                 readonly required>
+          <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           <mat-error
             *ngIf="signUpForm.get('birthDate').hasError('required')">{{ validationMessages.birthDate.required }}</mat-error>
@@ -70,11 +70,11 @@
 
         <!-- Referral code -->
         <mat-form-field>
-          <input matInput type="text" placeholder="Código de referido" formControlName="referralCode">
+          <input formControlName="referralCode" matInput placeholder="Código de referido" type="text">
         </mat-form-field>
 
         <!-- Terms and conditions -->
-        <div>Al crear una cuenta accedes a nuestros <a id="terms" href="https://home.gettap.it/terminos" target="blank">términos</a>
+        <div>Al crear una cuenta accedes a nuestros <a href="https://home.gettap.it/terminos" id="terms" target="blank">términos</a>
         </div>
 
         <!-- Create account button -->

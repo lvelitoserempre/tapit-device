@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { EventDAOService } from './event-dao.service';
+import {EventDAOService} from './event-dao.service';
 
 describe('EventDAOService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

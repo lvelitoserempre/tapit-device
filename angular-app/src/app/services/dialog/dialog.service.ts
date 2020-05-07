@@ -4,7 +4,7 @@ import {MatDialog, MatDialogRef} from '@angular/material';
 import {DialogComponent} from 'src/app/components/dialog/dialog.component';
 import {AuthError} from 'src/app/common/enums/auth-error.enum';
 
-const DIALOG_WIDTH = '500px'
+const DIALOG_WIDTH = '500px';
 
 @Injectable({
   providedIn: 'root'
