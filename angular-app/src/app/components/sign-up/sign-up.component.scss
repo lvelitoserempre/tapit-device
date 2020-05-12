@@ -1,17 +1,17 @@
 @import '../../../assets/styles/colors';
 
 a#terms {
-    &:link {
-        text-decoration: underline !important;
-        color: $dark-gray;
-    }
+  &:link {
+    text-decoration: underline !important;
+    color: $dark-gray;
+  }
 
-    &:hover {
-        text-decoration: underline !important;
-    }
+  &:hover {
+    text-decoration: underline !important;
+  }
 
-    &:visited {
-        text-decoration: underline !important;
-        color: $dark-gray;
-    }
+  &:visited {
+    text-decoration: underline !important;
+    color: $dark-gray;
+  }
 }

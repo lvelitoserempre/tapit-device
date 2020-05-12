@@ -2,13 +2,14 @@
   <div class="flex">
     <div class="self-center">
       <div class="p-2 inline-block align-middle w-1/4">
-        <img src="assets/images/admiration-icon.svg" class="image w-full">
+        <img class="image w-full" src="assets/images/admiration-icon.svg">
       </div>
 
       <div class="p-2 inline-block align-middle w-3/4">
         <p class="text-red-500 text-xl sm:text-2xl font-bold mb-4">{{data.message}}</p>
-        <button class="bg-orange-500 px-3 py-2 text-white text-sm sm:text-lg font-bold rounded-xl focus:outline-none block mx-auto"
-                [mat-dialog-close]="true">{{ data.buttonOne }}</button>
+        <button
+          [mat-dialog-close]="true"
+          class="bg-orange-500 px-3 py-2 text-white text-sm sm:text-lg font-bold rounded-xl focus:outline-none block mx-auto">{{ data.buttonOne }}</button>
       </div>
     </div>
   </div>

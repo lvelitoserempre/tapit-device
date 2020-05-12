@@ -92,86 +92,94 @@
   padding: 0 0 100px;
   position: relative;
   @media screen and (max-width: $tablet) {
-      padding: 0 0 30px;
+    padding: 0 0 30px;
   }
+
   &__legal {
-      padding: 15px 0;
-      border-bottom: 1px solid white;
-      margin: 0 0 70px;
-      @media screen and (max-width: $maxWidthTablet) {
-          img {
-              width: 95%;
-          }
+    padding: 15px 0;
+    border-bottom: 1px solid white;
+    margin: 0 0 70px;
+    @media screen and (max-width: $maxWidthTablet) {
+      img {
+        width: 95%;
       }
-      @media screen and (max-width: $tablet) {
-          margin: 0;
-      }
+    }
+    @media screen and (max-width: $tablet) {
+      margin: 0;
+    }
   }
+
   &__social {
-      li {
-          background-image: url('../../../../dist/assets/images/footer/bg-social.svg');
-          height: 50px;
-          margin: 0 10px;
-          text-align: center;
-          width: 50px;
-          a {
-              width: 100%;
-          }
+    li {
+      background-image: url('../../../../dist/assets/images/footer/bg-social.svg');
+      height: 50px;
+      margin: 0 10px;
+      text-align: center;
+      width: 50px;
+
+      a {
+        width: 100%;
       }
+    }
   }
+
   &__copyright {
-      border-left: 1px solid white;
-      border-right: 1px solid white;
-      margin: 0 50px 0 0;
-      padding: 10px 50px;
-      @media screen and (max-width: $tablet) {
-          border-bottom: 1px solid white;
-          border-left: none;
-          border-right: none;
-          border-top: 1px solid white;
-          margin: 0 0 20px;
-          padding: 20px 0;
-          text-align: center;
-          img {
-              display: inline-block;
-              margin: 0 auto;
-          }
-          p {
-              font-size: 3.5vw;
-              margin: 10px auto;
-          }
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    margin: 0 50px 0 0;
+    padding: 10px 50px;
+    @media screen and (max-width: $tablet) {
+      border-bottom: 1px solid white;
+      border-left: none;
+      border-right: none;
+      border-top: 1px solid white;
+      margin: 0 0 20px;
+      padding: 20px 0;
+      text-align: center;
+      img {
+        display: inline-block;
+        margin: 0 auto;
       }
+      p {
+        font-size: 3.5vw;
+        margin: 10px auto;
+      }
+    }
   }
+
   &__follow {
     p {
       margin: 1em 0;
     }
-      @media screen and (max-width: $tablet) {
-          margin: 0;
-          p {
-              text-align: center;
-              width: 100%; 
-          }
-          ul {
-              padding: 0;
-              width: 100%;
-          }
+
+    @media screen and (max-width: $tablet) {
+      margin: 0;
+      p {
+        text-align: center;
+        width: 100%;
       }
       ul {
-        li {
-          img {
-            display: inline-block;
-          }
+        padding: 0;
+        width: 100%;
+      }
+    }
+
+    ul {
+      li {
+        img {
+          display: inline-block;
         }
+      }
     }
   }
+
   &__polas {
-      @media screen and (max-width: $tablet) {
-          text-align: center;
-          img {
-              display: inline-block;
-              margin: 0 auto;
-          }
+    @media screen and (max-width: $tablet) {
+      text-align: center;
+      img {
+        display: inline-block;
+        margin: 0 auto;
       }
+    }
   }
 }

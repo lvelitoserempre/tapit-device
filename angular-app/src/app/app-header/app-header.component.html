@@ -20,7 +20,7 @@
               class="font-bold text-white m-auto capitalize">{{(user.firstName || '') + ' ' + (user.lastName || '')}}</p>
           </li>
           <li>
-            <a class="header__button font-bold" (click)="logout()">
+            <a (click)="logout()" class="header__button font-bold">
               Salir
             </a>
           </li>

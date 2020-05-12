@@ -18,11 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppHeaderComponent} from './app-header/app-header.component';
 import {AppFooterComponent} from './app-footer/app-footer.component';
 import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
-import {
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-  MAT_MOMENT_DATE_FORMATS,
-  MomentDateAdapter
-} from '@angular/material-moment-adapter';
+import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
 import {FinalMessageComponent} from './components/final-message/final-message.component';
 
 @NgModule({
