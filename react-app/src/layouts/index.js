@@ -4,7 +4,8 @@ import {HashRouter,Route,Link} from "react-router-dom";
 import "./../styles/main.less";
 import events from "./../common/scripts/events";
 import Header from "./../components/header.component";
-import Agegate from "./../components/agegate.component"
+import Agegate from "./../components/agegate.component";
+import CookiesSection from "./../components/cookiesModal.component"
 import StartSection from "./../components/startSection.component";
 import PointsSection from "./../components/pointsSection.component";
 import PrizesSection from "./../components/prizesSection.component";
@@ -22,6 +23,7 @@ export default function Index() {
     const [user,setUser] = useState(null);
     const [userDate,setUserDate] = useState(window.localStorage.getItem('anonymousUserBirthDate'));
     const [urlParams,setUrlParams] = useState(null);
+    const [cookieSt,setCookieSt] = useState(null);
 
     useEffect(() => {
         setMobile(detectMobile());
@@ -39,6 +41,9 @@ export default function Index() {
         }
         if (!urlParams) {
             getUrlParams();
+        }
+        if (!cookieSt) {
+            checkCookie();
         }
     },[]);
 
@@ -85,6 +90,40 @@ export default function Index() {
             let secondParam = firstParam[1].split('&utm_medium=');
             setUrlParams(secondParam);
         }
+    }
+
+    function setCookie(accept,cvalue,exdays) {
+        let d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires=" + d.toGMTString();
+        document.cookie = accept + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    function getCookie(accept) {
+        let name = accept + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+    }
+
+    function checkCookie() {
+        let accept=getCookie("cookie_acceptance");
+        if (accept != "") {
+            setCookieSt(accept);
+        }
+    }
+
+    function acceptCookie() {
+        setCookie("cookie_acceptance", 'yes', 30);
+        setCookieSt(getCookie("cookie_acceptance"));
     }
 
     const isBillLayout = i18next.t("BillLayout.Active");
@@ -142,7 +181,12 @@ export default function Index() {
                         <Agegate saveBirthDate={()=>saveBirthDate()} />
                     :null
                 }
-                
+                {
+                    !cookieSt?
+                        <CookiesSection acceptCookie={()=>acceptCookie()} />
+                    :
+                    null
+                }
                 {
 
                     <HashRouter>

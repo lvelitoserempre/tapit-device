@@ -129,6 +129,12 @@ i18next.init({
                     "/app",
                     "/tyc",
                 ],
+                CookiesModal: {
+                    Text: 'Utilizamos cookies para personalizar contenido y anuncios, proporcionar funciones de redes sociales y analizar nuestro tráfico. También compartimos información sobre cómo usted utiliza nuestro sitio con nuestros socios de redes sociales, de publicidad y de analítica. <a href="/privacy.html" target="_blank">Política de Privacidad</a>',
+                    ButtonText: 'Aceptar',
+                    ConfigurationText: '> Configuración de cookies',
+                    ConfigurationUrl: '#'
+                },
                 TagManagerDev: 'GTM-NFCC7RC',
                 TagManagerProd: 'GTM-MKLL6C7',
                 PordEnvironment: 'https://tapit.com.co'
