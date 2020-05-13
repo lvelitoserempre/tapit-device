@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
-import {UserService} from '../user/user.service';
+import {AuthService} from '../user/auth.service';
 import {auth, User} from 'firebase';
 
 @Injectable({
@@ -9,7 +9,7 @@ import {auth, User} from 'firebase';
 })
 export class AlreadyLoggedInGuard implements CanActivate {
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private userService: AuthService) {
   }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> {

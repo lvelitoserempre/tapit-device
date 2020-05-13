@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {LoaderService} from '../services/loader/loader.service';
 import {UserAccount} from '../models/user-account.model';
-import {UserService} from '../user/user.service';
+import {AuthService} from '../user/auth.service';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 
@@ -14,7 +14,7 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
   user: UserAccount;
   private userSubscription: Subscription;
 
-  constructor(private loaderService: LoaderService, private userService: UserService, private router: Router,
+  constructor(private loaderService: LoaderService, private userService: AuthService, private router: Router,
               private changeDetectorRef: ChangeDetectorRef) {
   }
 

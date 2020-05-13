@@ -10,7 +10,7 @@ import UserCredential = firebase.auth.UserCredential;
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class AuthService {
   private currentUser: ReplaySubject<UserAccount>;
   private wasNewUserSigningUp = false;
 
@@ -37,9 +37,18 @@ export class UserService {
       }));
   }
 
-  setCurrentUser(user: UserAccount) {
+  async setCurrentUser(user: UserAccount) {
+    await this.addIdToken(user);
     this.currentUser.next(user);
     this.saveUserToLocalStorage(user);
+    this.saveUserToACookie(user);
+  }
+
+  async addIdToken(user: UserAccount) {
+    if (auth().currentUser) {
+      const token = await auth().currentUser.getIdToken();
+      user.idToken = token;
+    }
   }
 
   saveUserToLocalStorage(user: UserAccount) {
@@ -50,6 +59,19 @@ export class UserService {
       window.localStorage.setItem('user', JSON.stringify(userCopy));
     } else {
       window.localStorage.removeItem('user');
+    }
+  }
+
+  saveUserToACookie(user: UserAccount) {
+    if (user) {
+      const userCopy = {...user};
+
+      delete userCopy.referralCode;
+      document.cookie = 'user=' + encodeURIComponent(JSON.stringify(userCopy)) + ';max-age=86400;domain=' +
+        window.location.hostname; // + 'eldiablo.com.co';
+      console.log(userCopy, document.cookie);
+    } else {
+      document.cookie = 'user=';
     }
   }
 
