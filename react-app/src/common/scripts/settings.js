@@ -4,7 +4,7 @@ i18next.init({
         es: {
             translation: {
                 BillLayout: {
-                    Active: false,
+                    Active: true,
                     Header: {
                         Logo: '../assets/images/billLayout/Tapit_Logo.svg',
                         LogoPolas: '../assets/images/billLayout/PloasLogo.svg',

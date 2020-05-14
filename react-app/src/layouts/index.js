@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import {HashRouter,Route,Link} from "react-router-dom";
 import "./../styles/main.less";
-import events from "./../common/scripts/events";
 import Header from "./../components/header.component";
 import Agegate from "./../components/agegate.component";
 import CookiesSection from "./../components/cookiesModal.component"
@@ -24,6 +23,7 @@ export default function Index() {
     const [userDate,setUserDate] = useState(window.localStorage.getItem('anonymousUserBirthDate'));
     const [urlParams,setUrlParams] = useState(null);
     const [cookieSt,setCookieSt] = useState(null);
+    const isBillLayout = i18next.t("BillLayout.Active");
 
     useEffect(() => {
         setMobile(detectMobile());
@@ -126,8 +126,6 @@ export default function Index() {
         setCookie("cookie_acceptance", 'yes', 30);
         setCookieSt(getCookie("cookie_acceptance"));
     }
-
-    const isBillLayout = i18next.t("BillLayout.Active");
 
     const BillLayout = () => (
         <div>
