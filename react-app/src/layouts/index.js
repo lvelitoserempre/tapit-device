@@ -67,8 +67,9 @@ export default function Index() {
             return navigator.userAgent.match(toMatchItem);
         });
     }
-    const request = new Request('https://us-central1-re-imagining-loyalty-dev.cloudfunctions.net/api-listEvents');
     const initEvents = () => {
+        let origin = window.location.origin == i18next.t("PordEnvironment")?i18next.t("ApiUrlProd"):i18next.t("ApiUrlDev");
+        const request = new Request(origin + i18next.t("EventsUrl"));
         fetch(request, {
             method: 'GET'
         })

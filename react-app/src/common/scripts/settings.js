@@ -137,7 +137,10 @@ i18next.init({
                 },
                 TagManagerDev: 'GTM-NFCC7RC',
                 TagManagerProd: 'GTM-MKLL6C7',
-                PordEnvironment: 'https://tapit.com.co'
+                PordEnvironment: 'https://tapit.com.co',
+                ApiUrlDev: 'https://api-dev.tapit.com.co/',
+                ApiUrlProd: 'https://api.tapit.com.co/',
+                EventsUrl: 'v1/list/events'
             }
         }
     }

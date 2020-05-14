@@ -15,9 +15,9 @@ export const environment = {
     userAccount: 'user_account_tap'
   },
   functions: {
-    url: 'https://us-central1-re-imagining-loyalty-dev.cloudfunctions.net',
+    url: 'https://api-dev.tapit.com.co',
     checkExistentUser: 'api-checkExistentUser',
-    getAllEvents: 'api-listEvents'
+    getAllEvents: 'v1/list/events'
   },
   googleAnalyticsId: 'UA-159252784-3',
   googleTagManagerId: 'GTM-NFCC7RC'
