@@ -1,5 +1,5 @@
 .bill-input-section {
-  background: url("../../../assets/images/bg.svg") no-repeat;
+  background: url("../../assets/images/bg.svg") no-repeat;
   background-size: cover;
 }
 
@@ -87,7 +87,7 @@
 
     &-slider {
       &-image {
-        background-image: url('../../../../../dist/assets/images/spacer.svg');
+        background-image: url('../../../../dist/assets/images/spacer.svg');
         background-position: top right;
         background-repeat: no-repeat;
 

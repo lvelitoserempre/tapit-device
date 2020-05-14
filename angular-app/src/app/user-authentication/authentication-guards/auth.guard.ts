@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
-import {AuthService} from '../user/auth.service';
+import {UserAuthenticationService} from '../user-authentication-service/user-authentication.service';
 import {auth, User} from 'firebase';
 
 
@@ -10,7 +10,7 @@ import {auth, User} from 'firebase';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router, private userService: AuthService) {
+  constructor(private router: Router, private userService: UserAuthenticationService) {
   }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> {
@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
         if (user) {
           subscriber.next(true);
         } else {
-          subscriber.next(this.router.parseUrl('/login'));
+          subscriber.next(this.router.parseUrl('/auth/login'));
         }
         subscriber.complete();
       });

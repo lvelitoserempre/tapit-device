@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from './user/auth.service';
+import {UserAuthenticationService} from './user-authentication/user-authentication-service/user-authentication.service';
 import {Router} from '@angular/router';
 import {environment} from '../environments/environment';
 
@@ -13,7 +13,7 @@ declare var ga;
 })
 export class AppComponent implements OnInit {
 
-  constructor(private userService: AuthService, private router: Router) {
+  constructor(private userService: UserAuthenticationService, private router: Router) {
   }
 
   ngOnInit(): void {

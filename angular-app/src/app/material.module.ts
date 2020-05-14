@@ -14,7 +14,7 @@ import {
 } from '@angular/material';
 
 
-const MaterialComponents = [
+const MaterialModules = [
   MatButtonModule,
   MatCardModule,
   MatDatepickerModule,
@@ -30,8 +30,8 @@ const MaterialComponents = [
 
 
 @NgModule({
-  imports: [MaterialComponents],
-  exports: [MaterialComponents]
+  imports: [MaterialModules],
+  exports: [MaterialModules]
 })
 export class MaterialModule {
 }

@@ -1,17 +1,16 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LoginComponent} from './components/login/login.component';
-import {HomeComponent} from './components/home/home.component';
-import {SignUpComponent} from './components/sign-up/sign-up.component';
-import {AlreadyLoggedInGuard} from './guards/already-logged-in.guard';
-import {AuthGuard} from './guards/auth.guard';
-import {FinalMessageComponent} from './components/final-message/final-message.component';
+import {HomeComponent} from './home/home.component';
+import {AuthGuard} from './user-authentication/authentication-guards/auth.guard';
+import {FinalMessageComponent} from './final-message/final-message.component';
 
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
-  {path: 'login', component: LoginComponent, canActivate: [AlreadyLoggedInGuard]},
-  {path: 'signup', component: SignUpComponent, canActivate: [AlreadyLoggedInGuard]},
+  {
+    path: 'auth',
+    loadChildren: () => import('./user-authentication/user-authentication.module').then(m => m.UserAuthenticationModule)
+  },
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'final-message', component: FinalMessageComponent, canActivate: [AuthGuard]},
   {path: '**', pathMatch: 'full', redirectTo: 'home'},

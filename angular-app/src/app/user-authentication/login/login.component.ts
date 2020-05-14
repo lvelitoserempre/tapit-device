@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {AuthFormModel} from 'src/app/models/auth-form.model';
 import {Router} from '@angular/router';
 import {LoaderService} from 'src/app/services/loader/loader.service';
-import {AuthService} from '../../user/auth.service';
+import {UserAuthenticationService} from '../user-authentication-service/user-authentication.service';
 import {DialogService} from '../../services/dialog/dialog.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class LoginComponent {
     private router: Router,
     private loaderService: LoaderService,
     private dialogService: DialogService,
-    private userService: AuthService
+    private userService: UserAuthenticationService
   ) {
     this.loginForm = this.formBuilder.group(this.loginFormModel);
   }

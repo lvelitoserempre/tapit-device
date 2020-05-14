@@ -5,8 +5,8 @@ import {Router} from '@angular/router';
 import {DialogService} from 'src/app/services/dialog/dialog.service';
 import {from} from 'rxjs';
 import {mergeMap} from 'rxjs/operators';
-import {SignUpValidationMessages, SignUpValidators} from './sign-up.validation';
-import {AuthService} from '../../user/auth.service';
+import {SignUpValidationMessages, SignUpValidators} from './sign-up.validations';
+import {UserAuthenticationService} from '../user-authentication-service/user-authentication.service';
 import UserCredential = firebase.auth.UserCredential;
 
 @Component({
@@ -20,7 +20,7 @@ export class SignUpComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: AuthService,
+    private userService: UserAuthenticationService,
     private router: Router,
     private loaderService: LoaderService,
     private dialogService: DialogService

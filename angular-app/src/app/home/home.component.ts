@@ -1,10 +1,10 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {EventDAO} from '../../event/event-dao.service';
-import {BillDAO} from '../../bill/bill-dao.service';
+import {EventDAO} from '../event/event-dao.service';
+import {BillDAO} from '../bill/bill-dao.service';
 import {Router} from '@angular/router';
-import {DialogService} from '../../services/dialog/dialog.service';
-import {LoaderService} from '../../services/loader/loader.service';
-import {AnalyticsService} from '../../services/anaylitics/analytics.service';
+import {DialogService} from '../services/dialog/dialog.service';
+import {LoaderService} from '../services/loader/loader.service';
+import {AnalyticsService} from '../services/anaylitics/analytics.service';
 
 @Component({
   selector: 'app-home',

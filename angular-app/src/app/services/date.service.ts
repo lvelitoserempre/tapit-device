@@ -1,4 +1,4 @@
-export abstract class DateFormatter {
+export abstract class DateService {
 
   /**
    * Formats a given date to the format dd/MM/yyyy

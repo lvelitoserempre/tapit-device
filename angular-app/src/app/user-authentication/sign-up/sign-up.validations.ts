@@ -1,12 +1,12 @@
-import {UnderAgeValidator} from '../../common/utils/validators';
 import {Validators} from '@angular/forms';
+import {userAgeValidator} from '../../services/user-age-validator';
 
 export const SignUpValidators = {
   firstName: ['', Validators.minLength(3)],
   lastName: ['', Validators.minLength(3)],
   email: ['', Validators.email],
   password: ['', Validators.minLength(6)],
-  birthDate: ['', [Validators.required, UnderAgeValidator]],
+  birthDate: ['', [Validators.required, userAgeValidator]],
   phone: ['', [Validators.minLength(10), Validators.pattern(/^\+?[0-9]+$/)]],
   referralCode: ['']
 };

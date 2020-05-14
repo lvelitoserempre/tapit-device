@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {LoaderService} from '../services/loader/loader.service';
 import {UserAccount} from '../models/user-account.model';
-import {AuthService} from '../user/auth.service';
+import {UserAuthenticationService} from '../user-authentication/user-authentication-service/user-authentication.service';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 
@@ -14,7 +14,7 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
   user: UserAccount;
   private userSubscription: Subscription;
 
-  constructor(private loaderService: LoaderService, private userService: AuthService, private router: Router,
+  constructor(private loaderService: LoaderService, private userService: UserAuthenticationService, private router: Router,
               private changeDetectorRef: ChangeDetectorRef) {
   }
 
@@ -35,7 +35,7 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
     this.userService.logout()
       .subscribe(() => {
         this.loaderService.hide();
-        this.router.navigateByUrl('login');
+        this.router.navigateByUrl('auth/login');
       }, (error) => {
         console.error(error);
         this.loaderService.hide();
