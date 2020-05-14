@@ -40,8 +40,11 @@ export class AuthService {
   async setCurrentUser(user: UserAccount) {
     await this.addIdToken(user);
     this.currentUser.next(user);
-    this.saveUserToLocalStorage(user);
-    this.saveUserToACookie(user);
+
+    const userCopy = {...user};
+    delete userCopy.referralCode;
+    this.saveUserToLocalStorage(userCopy);
+    this.saveUserToACookie(userCopy);
   }
 
   async addIdToken(user: UserAccount) {
@@ -53,10 +56,7 @@ export class AuthService {
 
   saveUserToLocalStorage(user: UserAccount) {
     if (user) {
-      const userCopy = {...user};
-
-      delete userCopy.referralCode;
-      window.localStorage.setItem('user', JSON.stringify(userCopy));
+      window.localStorage.setItem('user', JSON.stringify(user));
     } else {
       window.localStorage.removeItem('user');
     }
@@ -64,14 +64,9 @@ export class AuthService {
 
   saveUserToACookie(user: UserAccount) {
     if (user) {
-      const userCopy = {...user};
-
-      delete userCopy.referralCode;
-      document.cookie = 'user=' + encodeURIComponent(JSON.stringify(userCopy)) + ';max-age=86400;domain=' +
-        window.location.hostname; // + 'eldiablo.com.co';
-      console.log(userCopy, document.cookie);
+      document.cookie = 'loggedUser=' + encodeURIComponent(JSON.stringify(user)) + ';max-age=86400;path=/;domain=tapit.com.co';
     } else {
-      document.cookie = 'user=';
+      document.cookie = 'loggedUser=;max-age=0;path=/;domain=tapit.com.co';
     }
   }
 
