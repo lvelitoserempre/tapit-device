@@ -1,5 +1,5 @@
 .cookies {
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.7);
     bottom: 0;
     color: white;
     font-size: 16px;
@@ -10,6 +10,7 @@
     width: 100%;
     z-index: 3;
     @media screen and (max-width: @sm) {
+        background-color: rgba(0,0,0,0.9);
         height: auto;
         padding-bottom: 10px;
     }
@@ -18,7 +19,14 @@
         text-decoration: underline;
         &-white {
             color: white;
-            text-decoration: none;
+        }
+    }
+    &__text {
+        text-align: justify;
+    }
+    .container {
+        @media screen and (min-width: @lg) {
+            width: 1264px;
         }
     }
     .section__button {
