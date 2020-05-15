@@ -16,7 +16,7 @@ export class BillDAO {
     return from(auth().currentUser.getIdToken())
       .pipe(mergeMap(token =>
         this.http.post(
-          environment.firebase.functions.url + '/api-receiveDigitalInvoice',
+          environment.firebase.functions.url + environment.firebase.functions.sendDigitalInvoice,
           bill,
           {
             headers: {

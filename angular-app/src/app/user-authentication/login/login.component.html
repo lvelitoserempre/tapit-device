@@ -18,14 +18,12 @@
           <mat-error
             *ngIf="loginForm.get('password').hasError('required')">{{ validationMessages.password.required }}</mat-error>
         </mat-form-field>
-        <button [disabled]="loginForm.invalid"
-                class="px-8 py-4 bg-orange-500 font-bold text-white rounded-xl inline-block mx-auto focus:outline-none align-bottom"
-                type="submit">
+        <button [disabled]="loginForm.invalid" class="app-primary-button bg-orange-500 rounded-xl" type="submit">
           INGRESAR
         </button>
-        <div fxFlexAlign="center">¿No tienes una cuenta? <a routerLink="/signup">Regístrate</a></div>
+        <div fxFlexAlign="center">¿No tienes una cuenta? <a routerLink="/auth/signup">Regístrate</a></div>
       </form>
     </div>
-    <img class="item" src="../../../assets/images/login.svg">
+    <img class="item" src="assets/images/login.svg">
   </div>
 </div>

@@ -16,8 +16,9 @@ export const environment = {
     },
     functions: {
       url: 'https://api-dev.tapit.com.co',
-      checkExistentUser: 'api-checkExistentUser',
-      getAllEvents: 'v1/list/events'
+      checkExistentUser: '/v1/user/check',
+      getAllEvents: '/v1/list/events',
+      sendDigitalInvoice: '/v1/digitalinvoice'
     }
   },
   googleAnalyticsId: 'UA-159252784-3',

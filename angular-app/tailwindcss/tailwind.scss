@@ -1,0 +1,21 @@
+@tailwind base;
+
+@tailwind components;
+
+.app-primary-button {
+  @apply px-8 py-4 font-bold text-white inline-block mx-auto align-bottom;
+}
+
+.app-primary-button:focus {
+  @apply outline-none;
+}
+
+.app-primary-button:focus {
+  @apply outline-none;
+}
+
+.app-primary-button:disabled {
+  @apply opacity-25;
+}
+
+@tailwind utilities;

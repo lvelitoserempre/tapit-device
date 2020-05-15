@@ -8,8 +8,8 @@ i18next.init({
                     Header: {
                         Logo: '../assets/images/billLayout/Tapit_Logo.svg',
                         LogoPolas: '../assets/images/billLayout/PloasLogo.svg',
-                        UrlLogin: '/app/login',
-                        UrlSignup: '/app/signup',
+                        UrlLogin: '/app/auth/login',
+                        UrlSignup: '/app/auth/signup',
                         LoginText: 'Inicia sesión',
                         SignupText: 'Regístrate'
                     },
@@ -24,7 +24,7 @@ i18next.init({
                         Text: 'Por compras de mínimo <b>6 cervezas</b> de las marcas de Bavaria realizadas en establecimientos de Grupo Éxito, Olímpica, Cencosud, o a través de Merqueo o Rappi <b>podrás obtener acceso a eventos exclusivos.</b>',
                         Image: '../assets/images/billLayout/participa.png',
                         ButtonText: 'PARTICIPA',
-                        ButtonUrl: '/app/login'
+                        ButtonUrl: '/app/auth/login'
                     },
                     SectionEvents: {
                         Title: 'Pon las polas y nosotros te damos experiencias exclusivas',
