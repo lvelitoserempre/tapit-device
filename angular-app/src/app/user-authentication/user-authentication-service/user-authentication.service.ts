@@ -31,7 +31,7 @@ export class UserAuthenticationService {
   }
 
   getUser(userId: string): Observable<UserAccount> {
-    return from(firestore().collection('user_account_tap').doc(userId).get())
+    return from(firestore().collection(environment.firebase.collections.userAccount).doc(userId).get())
       .pipe(map(documentSnapshot => {
         return {id: documentSnapshot.id, ...documentSnapshot.data()};
       }));
@@ -108,7 +108,7 @@ export class UserAuthenticationService {
     return from(auth().currentUser.getIdToken())
       .pipe(mergeMap(token =>
         this.http.post(
-          environment.functions.url + '/' + environment.functions.checkExistentUser,
+          environment.firebase.functions.url + '/' + environment.firebase.functions.checkExistentUser,
           user,
           {
             headers: {

@@ -13,7 +13,7 @@ export class EventDAO {
   }
 
   getAll(): Observable<any[]> {
-    return this.http.get(environment.functions.url + '/' + environment.functions.getAllEvents)
+    return this.http.get(environment.firebase.functions.url + '/' + environment.firebase.functions.getAllEvents)
       .pipe(map((res: any) => res.data));
   }
 }

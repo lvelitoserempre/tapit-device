@@ -6,12 +6,11 @@ import {FinalMessageComponent} from './final-message/final-message.component';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'home'},
+  {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {
     path: 'auth',
     loadChildren: () => import('./user-authentication/user-authentication.module').then(m => m.UserAuthenticationModule)
   },
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'final-message', component: FinalMessageComponent, canActivate: [AuthGuard]},
   {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];

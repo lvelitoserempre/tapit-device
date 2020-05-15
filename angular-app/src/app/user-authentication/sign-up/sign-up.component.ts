@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {LoaderService} from 'src/app/services/loader/loader.service';
+import {LoaderService} from 'src/app/loader/loader-service/loader.service';
 import {Router} from '@angular/router';
-import {DialogService} from 'src/app/services/dialog/dialog.service';
+import {DialogService} from 'src/app/dialog/dialog-service/dialog.service';
 import {from} from 'rxjs';
 import {mergeMap} from 'rxjs/operators';
 import {SignUpValidationMessages, SignUpValidators} from './sign-up.validations';

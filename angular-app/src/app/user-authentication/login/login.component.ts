@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {AuthFormModel} from 'src/app/models/auth-form.model';
 import {Router} from '@angular/router';
-import {LoaderService} from 'src/app/services/loader/loader.service';
+import {LoaderService} from 'src/app/loader/loader-service/loader.service';
 import {UserAuthenticationService} from '../user-authentication-service/user-authentication.service';
-import {DialogService} from '../../services/dialog/dialog.service';
+import {DialogService} from '../../dialog/dialog-service/dialog.service';
+import {LoginValidationMessages, LoginValidators} from './login.validations';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +13,7 @@ import {DialogService} from '../../services/dialog/dialog.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  loginFormModel: AuthFormModel = new AuthFormModel();
-  validationMessages = {
-    email: {required: 'El email es obligatorio.', email: 'El formato de email no es válido.'},
-    password: {required: 'La contraseña es obligatoria.'}
-  };
+  validationMessages = LoginValidationMessages;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,7 +22,7 @@ export class LoginComponent {
     private dialogService: DialogService,
     private userService: UserAuthenticationService
   ) {
-    this.loginForm = this.formBuilder.group(this.loginFormModel);
+    this.loginForm = this.formBuilder.group(LoginValidators);
   }
 
   login() {

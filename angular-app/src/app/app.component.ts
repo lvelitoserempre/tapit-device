@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserAuthenticationService} from './user-authentication/user-authentication-service/user-authentication.service';
-import {Router} from '@angular/router';
 import {environment} from '../environments/environment';
+import {initializeApp} from 'firebase';
 
 declare var tagManager;
 declare var ga;
@@ -13,10 +13,11 @@ declare var ga;
 })
 export class AppComponent implements OnInit {
 
-  constructor(private userService: UserAuthenticationService, private router: Router) {
+  constructor(private userService: UserAuthenticationService) {
   }
 
   ngOnInit(): void {
+    initializeApp(environment.firebase.config);
     this.userService.setupLoggedUserObserver();
 
     this.redirectIfUserIsAChild();
