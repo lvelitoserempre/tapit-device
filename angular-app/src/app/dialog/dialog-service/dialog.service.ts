@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
 import {DialogConfigurationModel} from 'src/app/models/dialog-configuration.model';
-import {MatDialog, MatDialogRef} from '@angular/material';
 import {DialogComponent} from 'src/app/dialog/dialog.component';
 import {AuthError} from 'src/app/user-authentication/auth-error.enum';
-
-const DIALOG_WIDTH = '500px';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'

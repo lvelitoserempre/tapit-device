@@ -34,7 +34,7 @@ export class LoginComponent {
     this.userService.login(email, password)
       .subscribe(res => {
           this.loaderService.hide();
-          this.router.navigateByUrl('/home');
+          this.router.navigateByUrl('/');
         },
         error => {
           this.loaderService.hide();

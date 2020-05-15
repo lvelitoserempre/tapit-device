@@ -16,7 +16,7 @@ export class AlreadyLoggedInGuard implements CanActivate {
     return new Observable(subscriber => {
       auth().onAuthStateChanged((user: User) => {
         if (user) {
-          subscriber.next(this.router.parseUrl('/home'));
+          subscriber.next(this.router.parseUrl('/'));
         } else {
           subscriber.next(true);
         }

@@ -33,7 +33,7 @@ export default function Index() {
         let localUser = JSON.parse(window.localStorage.getItem('user'));
         if (localUser && !user) {
             setUser(localUser);
-            window.location.href = window.location.origin + '/app/home';
+            window.location.href = window.location.origin + '/app';
         }
         let localDate = window.localStorage.getItem('anonymousUserBirthDate');
         if (!localDate) {

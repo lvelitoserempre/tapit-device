@@ -6,11 +6,7 @@ export interface DialogConfigurationModel {
   title?: string;
   subtitle?: string;
   message: string;
-  qr?: string;
   buttonOne: string;
-  isShareDialog?: boolean;
   buttonTwo?: string;
   iconButton?: string;
-  buttonPoints?: boolean;
-  disclaimer?: string;
 }

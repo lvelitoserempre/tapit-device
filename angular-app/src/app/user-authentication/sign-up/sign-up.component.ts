@@ -39,7 +39,7 @@ export class SignUpComponent {
       .subscribe(res => {
           this.userService.setCurrentUser(userData);
           this.loaderService.hide();
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
         },
         error => {
           this.loaderService.hide();
