@@ -67,7 +67,7 @@
   }
 
   .m-2 {
-    margin: 1rem;
+    margin: 0.5rem;
   }
 
   .font-bold {
@@ -79,7 +79,7 @@
   }
 
   .p-4 {
-    padding: 2rem;
+    padding: 1rem;
   }
 
   .w-full {
@@ -102,7 +102,39 @@
     .sm\:p-8 {
       padding: 4rem;
     }
-  } </style>
+  } 
+
+
+  table.identificacion-marca-producto p.table-title {
+    font-weight: bold;
+    text-align: center;
+  }
+
+
+  @media only screen and (max-width: 992px) {
+    table.sistema-acumulacion-puntos, table.identificacion-marca-producto {
+      width: 100%;
+    }
+
+    table.identificacion-marca-producto p.table-title {
+      font-size: 12px;
+    }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    table.sistema-acumulacion-puntos {
+      width: 926px;
+    }
+
+    table.identificacion-marca-producto {
+      width: 866px;
+    }
+
+    table.identificacion-marca-producto p.table-title {
+      font-size: 16px;
+    }
+  }
+  </style>
 </head>
 <body>
 <div class="container m-2 p-4 sm:p-8">
@@ -116,7 +148,7 @@
     aplicativo móvil de Tap It, para Android y iOS los usuarios tendrán la posibilidad de acumular puntos, como se
     muestra en la siguiente tabla, y estos podrán ser redimidos por productos de la tienda virtual de Tap It, elistados
     más adelante.</font></font></font></p>
-  <table width="927" cellpadding="7" cellspacing="0">
+  <table class="sistema-acumulacion-puntos" cellpadding="7" cellspacing="0">
     <colgroup>
       <col width="465">
       <col width="136">
@@ -125,10 +157,16 @@
     </colgroup>
     <tbody>
     <tr>
-      <td colspan="4" width="911" height="11" bgcolor="#ef6630" style="background: #ef6630"><p class="western"
-                                                                                               align="center"><font
-        color="#ffffff"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Sistema de Acumulación
-        de Puntos</font></font></font></p></td>
+      <td colspan="4" width="911" height="11" bgcolor="#ef6630" style="background: #ef6630">
+        <p class="western" align="center">
+          Sistema de Acumulación de Puntos
+          <font color="#ffffff">
+            <font face="Montserrat ExtraLight">
+              <font size="1" style="font-size: 8pt"></font>
+            </font>
+          </font>
+        </p>
+      </td>
     </tr>
     <tr>
       <td width="465" height="70" bgcolor="#ffffff" style="background: #ffffff"><p class="western" align="center"><font
@@ -207,7 +245,7 @@
     están relacionados a continuación con sus respectivos precios y puntos; estos productos están sujetos a las
     promociones que BAVARIA &amp; CIA S.C.A., y ZX Ventures Colombia S.A.S., determinen.</font></font></font></p>
   <p class="western" style="margin-bottom: 0cm; line-height: 100%"><br></p>
-  <table width="867" cellpadding="7" cellspacing="0">
+  <table class="identificacion-marca-producto" cellpadding="7" cellspacing="0">
     <colgroup>
       <col width="375">
       <col width="116">
@@ -218,19 +256,19 @@
     <tr>
       <td width="375" height="41"
           style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
-        <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt"><b>PRODUCTO</b></font></font>
-        </p></td>
+        <p class="table-title">PRODUCTO</p>
+      </td>
       <td width="116"
           style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
-        <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt"><b>PRECIO</b></font></font>
-        </p></td>
+        <p class="table-title">PRECIO</p>
+      </td>
       <td width="150"
           style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
-        <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt"><b>VALOR
-          EN PUNTOS</b></font></font></p></td>
-      <td width="168" style="border: 1px solid #000000; padding: 0cm 0.12cm"><p class="western" align="center"><font
-        face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt"><b>PUNTOS ASIGNADOS POR
-        COMPRA</b></font></font></p></td>
+        <p class="table-title">VALOR EN Puntos</p>
+      </td>
+      <td width="168" style="border: 1px solid #000000; padding: 0cm 0.12cm">
+        <p class="table-title" >PUNTOS ASIGNADOS POR COMPRA</p>
+      </td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
