@@ -104,11 +104,11 @@ export class UserAuthenticationService {
       }));
   }
 
-  checkExistentUser(user: UserAccount) {
+  checkUser(user: UserAccount) {
     return from(auth().currentUser.getIdToken())
       .pipe(mergeMap(token =>
         this.http.post(
-          environment.firebase.functions.url + environment.firebase.functions.checkExistentUser,
+          environment.firebase.functions.url + environment.firebase.functions.checkUser,
           user,
           {
             headers: {

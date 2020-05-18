@@ -35,7 +35,7 @@ export class SignUpComponent {
     this.loaderService.show();
 
     from(this.userService.signUp(form.email, form.password))
-      .pipe(mergeMap((userCredential: UserCredential) => this.userService.checkExistentUser(userData)))
+      .pipe(mergeMap((userCredential: UserCredential) => this.userService.checkUser(userData)))
       .subscribe(res => {
           this.userService.setCurrentUser(userData);
           this.loaderService.hide();
@@ -57,7 +57,7 @@ export class SignUpComponent {
       birthDate: form.birthDate.toISOString(),
       phone: form.phone,
       origin: 'pola',
-      ...(form.referredBy && form.referredBy.trim()) && {referredBy: form.referralCode}
+      ...(form.referralCode && form.referralCode.trim()) && {referredBy: form.referralCode}
     };
   }
 }

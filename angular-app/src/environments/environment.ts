@@ -16,7 +16,7 @@ export const environment = {
     },
     functions: {
       url: 'https://api-dev.tapit.com.co',
-      checkExistentUser: '/v1/user/check',
+      checkUser: '/v1/user/check',
       getAllEvents: '/v1/list/events',
       sendDigitalInvoice: '/v1/digitalinvoice'
     }

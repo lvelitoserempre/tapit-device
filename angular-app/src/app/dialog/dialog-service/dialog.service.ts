@@ -29,11 +29,11 @@ export class DialogService {
   /**
    * Opens the wrong password error dialog and returns the dialog reference for further actions
    */
-  openWrongPasswordErrorDialog(): MatDialogRef<DialogComponent> {
+  openWrongPasswordErrorDialog(message?: string): MatDialogRef<DialogComponent> {
     // TODO: translate
     const dialogConfig: DialogConfigurationModel = {
       title: 'Error de autenticación',
-      message: 'La contraseña no es correcta o el usuario no tiene una.',
+      message: message || 'La contraseña no es correcta o el usuario no tiene una.',
       buttonOne: 'Aceptar'
     };
 
@@ -91,6 +91,8 @@ export class DialogService {
       this.openUserNotFoundErrorDialog();
     } else if (error.code === AuthError.AUTH_ERROR_WRONG_PASSWORD) {
       this.openWrongPasswordErrorDialog();
+    } else if (error.code === AuthError.AUTH_ERROR_USER_CANCELLED) {
+      this.openWrongPasswordErrorDialog('Debes autorizar el uso de tus datos en la ventana de facebook.');
     } else {
       this.openSignUpErrorDialog();
     }
