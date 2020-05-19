@@ -1,0 +1,15 @@
+.app-button {
+  @apply px-8 py-4 font-bold text-white inline-block mx-auto align-bottom;
+}
+
+.app-button:focus {
+  @apply outline-none;
+}
+
+.app-button:focus {
+  @apply outline-none;
+}
+
+.app-button:disabled {
+  @apply opacity-25;
+}

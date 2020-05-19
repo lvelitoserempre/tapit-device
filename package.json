@@ -1,24 +1,30 @@
 {
-  "name": "tapit-web",
-  "version": "1.0.0",
   "description": "",
-  "scripts": {
-    "start": "gulp serve-dist",
-    "build": "cross-env environment=testing gulp build",
-    "deploy-dev": "cross-env environment=dev gulp build-and-deploy",
-    "deploy-testing": "cross-env environment=testing gulp build-and-deploy",
-    "deploy-production": "cross-env environment=production gulp build-and-deploy"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.globant.com/ABInBev/TapIt-Web"
-  },
   "devDependencies": {
+    "autoprefixer": "^9.8.0",
+    "cross-env": "^7.0.2",
+    "cssnano": "^4.1.10",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-copy": "^4.0.1",
     "gulp-live-server": "0.0.31",
     "gulp-run": "^1.7.1",
-    "cross-env": "^7.0.2"
-  }
+    "postcss-cli": "^7.1.1",
+    "postcss-import": "^12.0.1",
+    "tailwindcss": "^1.4.6"
+  },
+  "name": "tapit-web",
+  "repository": {
+    "type": "git",
+    "url": "https://github.globant.com/ABInBev/TapIt-Web"
+  },
+  "scripts": {
+    "start": "gulp serve-dist",
+    "build": "npm run build-tailwind && cross-env environment=testing gulp build",
+    "build-tailwind": "postcss tailwindcss/tailwind.css -o static/styles/tailwind.css",
+    "deploy-dev": "cross-env environment=dev gulp build-and-deploy",
+    "deploy-testing": "cross-env environment=testing gulp build-and-deploy",
+    "deploy-production": "cross-env environment=production gulp build-and-deploy"
+  },
+  "version": "1.0.0"
 }

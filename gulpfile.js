@@ -26,7 +26,7 @@ task('clear', function () {
 });
 
 task('copy-static', function () {
-  return src('static/*').pipe(copy('dist', {prefix: 1}));
+  return src('static/**').pipe(copy('dist', {prefix: 1}));
 });
 
 task('build-react-app', function () {

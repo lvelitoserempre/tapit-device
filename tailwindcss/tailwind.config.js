@@ -16,7 +16,7 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
-      primary: {
+      orange: {
         100: '#FFDCCD',
         200: '#FFB99B',
         300: '#FF9669',
@@ -27,16 +27,16 @@ module.exports = {
         800: '#681F00',
         900: '#341000',
       },
-      secondary: {
-        100: '#FFDCCD',
-        200: '#FFB99B',
-        300: '#FF9669',
-        400: '#FF976B',
-        500: '#FF5005',
-        600: '#D03E00',
-        700: '#9C2F00',
-        800: '#681F00',
-        900: '#341000',
+      purple: {
+        100: '#D6CBD6',
+        200: '#AC98AC',
+        300: '#806780',
+        400: '#4D3D4D',
+        500: '#191419',
+        600: '#141014',
+        700: '#110D11',
+        800: '#0A080A',
+        900: '#050405',
       },
       gray: {
         100: '#FCFBFB',
@@ -142,6 +142,7 @@ module.exports = {
       default: '0.25rem',
       md: '0.375rem',
       lg: '0.5rem',
+      xl: '1rem',
       full: '9999px',
     },
     borderWidth: {
@@ -222,6 +223,8 @@ module.exports = {
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '4rem',
+      '15xl': '10rem',
+      '20xl': '15rem',
     },
     fontWeight: {
       hairline: '100',
