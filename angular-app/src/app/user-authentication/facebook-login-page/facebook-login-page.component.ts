@@ -5,7 +5,7 @@ import {UserAuthenticationService} from '../user-authentication-service/user-aut
 import {Router} from '@angular/router';
 import {LoaderService} from '../../loader/loader-service/loader.service';
 import {DialogService} from '../../dialog/dialog-service/dialog.service';
-import {map, mergeMap} from 'rxjs/operators';
+import {mergeMap} from 'rxjs/operators';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
 
 @Component({
@@ -32,13 +32,11 @@ export class FacebookLoginPageComponent implements OnInit {
       .pipe(mergeMap((facebookResponse) => {
         console.log(facebookResponse)
         const userData = this.parseUserData(facebookResponse);
-        return this.userService.checkUser(userData).pipe(map(res => userData));
+        return this.userService.checkUser(userData);
       }))
-      .subscribe(userData => {
-          console.log(userData);
-          this.userService.setCurrentUser(userData);
+      .subscribe(res => {
           this.loaderService.hide();
-          //this.router.navigate(['/']);
+          this.router.navigateByUrl('');
         },
         error => {
           this.loaderService.hide();
@@ -47,15 +45,12 @@ export class FacebookLoginPageComponent implements OnInit {
   }
 
   private parseUserData(facebookResponse) {
-    const referralCode = null;
-
     return {
       email: facebookResponse.additionalUserInfo.profile.email,
       firstName: facebookResponse.additionalUserInfo.profile.first_name,
       lastName: facebookResponse.additionalUserInfo.profile.last_name,
       birthDate: (new Date(facebookResponse.additionalUserInfo.profile.birthday)).toISOString(),
-      origin: 'pola',
-      ...(referralCode && referralCode.trim()) && {referredBy: referralCode}
+      origin: 'pola'
     };
   }
 }

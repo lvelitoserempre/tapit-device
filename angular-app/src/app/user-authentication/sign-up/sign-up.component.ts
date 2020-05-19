@@ -37,7 +37,6 @@ export class SignUpComponent {
     from(this.userService.signUp(form.email, form.password))
       .pipe(mergeMap((userCredential: UserCredential) => this.userService.checkUser(userData)))
       .subscribe(res => {
-          this.userService.setCurrentUser(userData);
           this.loaderService.hide();
           this.router.navigate(['/']);
         },

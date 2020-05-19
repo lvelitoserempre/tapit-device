@@ -8,4 +8,5 @@ export interface UserAccount {
   phone?: string;
   referralCode?: any;
   idToken?: string;
+  refreshToken?: string;
 }

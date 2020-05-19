@@ -12,7 +12,7 @@ import UserCredential = firebase.auth.UserCredential;
 })
 export class UserAuthenticationService {
   private currentUser: ReplaySubject<UserAccount>;
-  private wasNewUserSigningUp = false;
+  private cancelUserListener: () => void;
 
   constructor(private http: HttpClient) {
     this.currentUser = new ReplaySubject<UserAccount>(0);
@@ -20,11 +20,17 @@ export class UserAuthenticationService {
 
   setupLoggedUserObserver() {
     auth().onAuthStateChanged((user: User) => {
-      if (user) {
-        if (!this.wasNewUserSigningUp) {
-          this.getUser(user.uid).subscribe(userData => this.setCurrentUser(userData));
-        }
+      if (user && !this.cancelUserListener) {
+        this.cancelUserListener = firestore().collection(environment.firebase.collections.userAccount).doc(user.uid)
+          .onSnapshot(snapshot => {
+            this.setCurrentUser({id: snapshot.id, ...snapshot.data()});
+          });
       } else {
+        if (this.cancelUserListener) {
+          this.cancelUserListener();
+        }
+
+        this.cancelUserListener = null;
         this.setCurrentUser(null);
       }
     });
@@ -51,6 +57,7 @@ export class UserAuthenticationService {
     if (auth().currentUser) {
       const token = await auth().currentUser.getIdToken();
       user.idToken = token;
+      user.refreshToken = auth().currentUser.refreshToken;
     }
   }
 
@@ -70,16 +77,6 @@ export class UserAuthenticationService {
     }
   }
 
-  setCurrentUserById(userId: string) {
-    if (userId) {
-      this.getUser(userId).subscribe(user => {
-        this.currentUser.next(user);
-      });
-    } else {
-      this.currentUser.next(null);
-    }
-  }
-
   getCurrentUser() {
     return this.currentUser.asObservable();
   }
@@ -89,19 +86,11 @@ export class UserAuthenticationService {
   }
 
   login(email: string, password: string): Observable<UserCredential> {
-    return from(auth().signInWithEmailAndPassword(email, password))
-      .pipe(map((userCredential: UserCredential) => {
-        this.wasNewUserSigningUp = false;
-        return userCredential;
-      }));
+    return from(auth().signInWithEmailAndPassword(email, password));
   }
 
   signUp(email: string, password: string): Observable<UserCredential> {
-    return from(auth().createUserWithEmailAndPassword(email, password))
-      .pipe(map((userCredential: UserCredential) => {
-        this.wasNewUserSigningUp = true;
-        return userCredential;
-      }));
+    return from(auth().createUserWithEmailAndPassword(email, password));
   }
 
   checkUser(user: UserAccount) {
