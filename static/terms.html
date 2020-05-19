@@ -44,6 +44,7 @@
   }
 
   p {
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
   }
 
@@ -102,7 +103,34 @@
     .sm\:p-8 {
       padding: 4rem;
     }
+  }
+
+  table {
+    border: 1px solid #a1a1a1;
+  }
+
+  table td {
+    padding: 4px;
+  }
+
+  table td, table th {
+    border: 1px solid #a1a1a1;
   } 
+
+  table p.header {
+    text-align: center;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 10px;
+    font-weight: 600;
+  }
+
+  table p.subheader {
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    padding: 8px 4px;
+  }
 
   @media only screen and (max-width: 992px) {
     table.sistema-acumulacion-puntos, table.identificacion-marca-producto {
@@ -113,6 +141,14 @@
   @media only screen and (min-width: 1200px) {
     table.sistema-acumulacion-puntos {
       width: 926px;
+    }
+
+    table p.header {
+      font-size: 18px;
+    }
+
+    table p.subheader {
+      font-size: 14px;
     }
 
     table.identificacion-marca-producto {
@@ -165,25 +201,23 @@
     </colgroup>
     <tbody>
     <tr>
-      <td colspan="4" width="910" height="11" bgcolor="#ef6630" style="background: #ef6630"><p class="western"
-                                                                                               align="center"><font
-        color="#ffffff"><font face="Arial, serif"><font size="1" style="font-size: 8pt"><b>Sistema de Acumulación de
-        Puntos</b></font></font></font></p></td>
+      <td colspan="4" width="910" height="11" bgcolor="#ef6630" style="background: #ef6630">
+        <p class="header">Sistema de Acumulación de Puntos</p>
+      </td>
     </tr>
     <tr>
-      <td width="465" height="70" bgcolor="#ffffff" style=""><p class="western" align="center"><font
-        color="#000000"><font face="Arial, serif"><font size="1"
-                                                        style="font-size: 8pt"><b>Acción</b></font></font></font></p>
+      <td class="action">
+        <p class="subheader">Acción</p>
       </td>
-      <td width="136" bgcolor="#ffffff" style=""><p class="western" align="center"><font
-        color="#000000"><font face="Arial, serif"><font size="1" style="font-size: 8pt"><b>Puntos por
-        Pack</b></font></font></font></p></td>
-      <td width="132" bgcolor="#ffffff" style=""><p class="western" align="center"><font
-        color="#000000"><font face="Arial, serif"><font size="1" style="font-size: 8pt"><b>Puntos por unidad</b></font></font></font>
-      </p></td>
-      <td width="135" bgcolor="#ffffff" style=""><p class="western" align="center"><font
-        color="#000000"><font face="Arial, serif"><font size="1" style="font-size: 8pt"><b>Máximo de puntos por
-        actividad al mes</b></font></font></font></p></td>
+      <td class="points-pack">
+        <p class="subheader">Puntos por Pack</p>
+      </td>
+      <td class="points-unit">
+        <p class="subheader">Puntos por unidad</p>
+      </td>
+      <td class="max-points">
+        <p class="subheader">Máximo de puntos por actividad al mes</p>
+      </td>
     </tr>
     <tr>
       <td width="465" height="12" bgcolor="#ffffff" style=""><p class="western"><font
@@ -565,7 +599,7 @@
   <p class="western" style="margin-bottom: 0cm; line-height: 150%"><font color="#1c1e21"><font face="Arial, serif"><font
     size="2" style="font-size: 11pt">Los productos a incluir en la tienda virtual están relacionados a continuación con sus respectivos precios y puntos; estos productos están sujetos a las promociones que BAVARIA & CIA S.C.A., y ZX Ventures Colombia S.A.S., determinen.</font></font></font></p>
   <p class="western" style="margin-bottom: 0cm; line-height: 100%"><br></p>
-  <table class="identificacion-marca-producto" cellpadding="7" cellspacing="0" border="1">
+  <table class="identificacion-marca-producto" cellpadding="7" cellspacing="0">
     <colgroup>
       <col width="375">
       <col width="116">
@@ -574,19 +608,17 @@
     </colgroup>
     <tbody>
       <tr>
-        <td width="249" height="26" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.05in"><p class="western" align="center">
-          <font face="Arial, serif"><font size="1" style="font-size: 8pt"><b>PRODUCTO</b></font></font></p>
+        <td width="249">
+          <p class="subheader">Producto</p>
         </td>
-        <td width="77" style="background: transparent" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: none; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0in; padding-left: 0in; padding-right: 0.05in"><p class="western" align="center">
-          <font face="Arial, serif"><font size="1" style="font-size: 8pt"><b>PRECIO</b></font></font></p>
+        <td width="77">
+          <p class="subheader">PRECIO</p>
         </td>
-        <td width="99" style="background: transparent" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: none; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0in; padding-left: 0in; padding-right: 0.05in"><p class="western" align="center">
-          <font face="Arial, serif"><font size="1" style="font-size: 8pt"><b>VALOR
-          EN PUNTOS</b></font></font></p>
+        <td width="99">
+          <p class="subheader">VALOR EN PUNTOS</p>
         </td>
-        <td width="110" style="background: transparent" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: none; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0in; padding-left: 0in; padding-right: 0.05in"><p class="western" align="center">
-          <font face="Arial, serif"><font size="1" style="font-size: 8pt"><b>PUNTOS
-          ASIGNADOS POR COMPRA</b></font></font></p>
+        <td width="110">
+          <p class="subheader">PUNTOS ASIGNADOS POR COMPRA</p>
         </td>
       </tr>
       <tr valign="bottom">
