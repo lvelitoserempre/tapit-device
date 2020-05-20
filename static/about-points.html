@@ -51,9 +51,9 @@
     padding: 1.5rem 0 1.5rem 1.5rem;
   }
 
-  td {
+  /* td {
     border-bottom: 1px solid;
-  }
+  } */
 
   .container {
     background: #FCFBFB;
@@ -102,6 +102,33 @@
     .sm\:p-8 {
       padding: 4rem;
     }
+  }
+
+  table {
+    border: 1px solid #a1a1a1;
+  }
+
+  table td {
+    padding: 4px;
+  }
+
+  table td, table th {
+    border: 1px solid #a1a1a1;
+  } 
+
+  table p.header {
+    text-align: center;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 10px;
+    font-weight: 600;
+  }
+
+  table p.subheader {
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    padding: 8px 4px;
   } 
 
 
@@ -124,6 +151,14 @@
   @media only screen and (min-width: 1200px) {
     table.sistema-acumulacion-puntos {
       width: 926px;
+    }
+
+    table p.header {
+      font-size: 18px;
+    }
+
+    table p.subheader {
+      font-size: 14px;
     }
 
     table.identificacion-marca-producto {
@@ -158,26 +193,24 @@
     <tbody>
     <tr>
       <td colspan="4" width="911" height="11" bgcolor="#ef6630" style="background: #ef6630">
-        <p class="western" align="center">
+        <p class="header">
           Sistema de Acumulación de Puntos
-          <font color="#ffffff">
-            <font face="Montserrat ExtraLight">
-              <font size="1" style="font-size: 8pt"></font>
-            </font>
-          </font>
         </p>
       </td>
     </tr>
     <tr>
-      <td width="465" height="70" bgcolor="#ffffff" style="background: #ffffff"><p class="western" align="center"><font
-        face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Acción</font></font></p></td>
-      <td width="136" bgcolor="#ffffff" style="background: #ffffff"><p class="western" align="center"><font
-        face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Puntos por Pack</font></font></p></td>
-      <td width="132" bgcolor="#ffffff" style="background: #ffffff"><p class="western" align="center"><font
-        face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Puntos por unidad</font></font></p></td>
-      <td width="136" bgcolor="#ffffff" style="background: #ffffff"><p class="western" align="center"><font
-        color="#000000"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Máximo de puntos por
-        actividad al mes</font></font></font></p></td>
+      <td>
+        <p class="subheader">Acción</p>
+      </td>
+      <td>
+        <p class="subheader">Puntos por Pack</p>
+      </td>
+      <td>
+        <p class="subheader">Puntos por unidad</p>
+      </td>
+      <td>
+        <p class="subheader">Máximo de puntos por actividad al mes</p>
+      </td>
     </tr>
     <tr>
       <td width="465" height="12" bgcolor="#ffffff" style="background: #ffffff"><p class="western"><font
@@ -254,1188 +287,1185 @@
     </colgroup>
     <tbody>
     <tr>
-      <td width="375" height="41"
-          style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
-        <p class="table-title">PRODUCTO</p>
+      <td>
+        <p class="subheader">PRODUCTO</p>
       </td>
-      <td width="116"
-          style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
-        <p class="table-title">PRECIO</p>
+      <td>
+        <p class="subheader">PRECIO</p>
       </td>
-      <td width="150"
-          style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
-        <p class="table-title">VALOR EN Puntos</p>
+      <td>
+        <p class="subheader">VALOR EN Puntos</p>
       </td>
-      <td width="168" style="border: 1px solid #000000; padding: 0cm 0.12cm">
-        <p class="table-title" >PUNTOS ASIGNADOS POR COMPRA</p>
+      <td>
+        <p class="subheader">PUNTOS ASIGNADOS POR COMPRA</p>
       </td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Agua pura Zalva sin
           gas- Botella 600 ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$18.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1080</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">72</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Agua pura Zalva sin
           gas- Botella 600ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$36.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2160</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">144</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Águila Cero-
           Botella 330 ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$48.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2880</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">192</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Águila Cero-
           Lata 355 x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$52.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">3120</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">208</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Águila
           Light- Lata 269ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$42.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2520</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">168</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Águila
           Original- Lata 269ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$42.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2520</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">168</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Budweiser-
           Lata 269ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$24.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1440</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">96</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Club
           Colombia Dorada- Lata 330ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$31.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1860</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">124</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Club
           Colombia Negra- Botella 330ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$67.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">4020</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">268</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Club
           Colombia Negra- Lata 330 ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$31.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1860</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">124</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Club
           Colombia Roja - Lata 330ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$31.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1860</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">124</font></font>
         </p></td>
     </tr>
     <tr>
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Pack Experimental
           Club Colombia - Lata 330ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$31.000</font></font>
         </p></td>
       <td width="150" valign="bottom"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1860</font></font>
         </p></td>
       <td width="168" valign="bottom"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">124</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Stella
           Artois - Botella 330ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$48.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2880</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">192</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font color="#000000"><font face="Montserrat ExtraLight"><font size="1"
                                                                                           style="font-size: 8pt">Cerveza
           Stella Artois - Botella 330ml x24</font></font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$96.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">5760</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">384</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Stella
           Artois - Lata 250ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$36.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2160</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">144</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font color="#000000"><font face="Montserrat ExtraLight"><font size="1"
                                                                                           style="font-size: 8pt">Cerveza
           Stella Artois - Lata 250ml x24</font></font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$72.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">4320</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">288</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Corona -
           Botella 210ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$60.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">3600</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">240</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Corona Extra
           - Botella 355ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$96.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">5760</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">384</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Corona -
           Botella 210ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$30.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1800</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">120</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Corona Extra
           - Botella 355ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$48.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2880</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">192</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Poker - Lata
           355ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$27.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1620</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">108</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Poker - Lata
           355ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$54.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">3240</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">216</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Malta Pony Malta -
           Botella Pet 330ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$40.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2400</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">160</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Malta Pony Malta -
           Mini Botella Pet 200ml x30</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$30.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1800</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">120</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Malta Pony Vital -
           Botella PET 200ml x30</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$30.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1800</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">120</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Malta Pony Vital -
           Botella PET 330ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$40.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2400</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">160</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Redd's -
           Botella 250ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$24.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1440</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">96</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font color="#000000"><font face="Montserrat ExtraLight"><font size="1"
                                                                                           style="font-size: 8pt">Cerveza
           Redd's Citrus - Lata 269ml x12</font></font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$24.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1440</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">96</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza BBC Bacata
           Blanca- Botella 330ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$54.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">3240</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">216</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza BBC Bacata
           Blanca- Botella 330ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$108.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">6480</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">432</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Chapinero
           Porter- Botella 330ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$54.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">3240</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">216</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza Chapinero
           Porter- Botella 330ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$108.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">6480</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">432</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza BBC La
           Cotidiana- Lata 269ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$30.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1800</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">120</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza BBC La
           Cotidiana- Lata 269ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$60.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">3600</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">240</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza BBC Lager-
           Botella 330ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$42.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2520</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">168</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza BBC Lager-
           Botella 330ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font color="#000000"><font face="Montserrat ExtraLight"><font size="1"
                                                                                                          style="font-size: 8pt">$84.000</font></font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">5040</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">336</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza BBC Macondo-
           Botella 330ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$66.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">3960</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">264</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza BBC Macondo-
           Botella 330ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$132.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">7920</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">528</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza BBC
           Monserrate Roja- Botella 330ml x12</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$54.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">3240</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">216</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Cerveza BBC
           Monserrate Roja- Botella 330ml x24</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$108.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">6480</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">432</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Audífonos
           Budweiser</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$112.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">6720</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">448</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Bandeja en Barro con
           logo grabado Club Colombia</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$21.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1260</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">84</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font color="#000000"><font face="Montserrat ExtraLight"><font size="1"
                                                                                           style="font-size: 8pt">Buzo
           con capota Azul BBC Talla L</font></font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$47.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2820</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">188</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Buzo con capota
           Negro BBC Talla L</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$47.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2820</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">188</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Buzo cremallera
           beige BBC Talla L</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$103.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">6180</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">412</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Buzo cremallera
           negro BBC Talla S</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$103.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">6180</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">412</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font color="#000000"><font face="Montserrat ExtraLight"><font size="1"
                                                                                           style="font-size: 8pt">Camiseta
           logo lúpulo para hombre Talla S</font></font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font color="#000000"><font face="Montserrat ExtraLight"><font size="1"
                                                                                                          style="font-size: 8pt">$31.000</font></font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">1860</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">124</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Hamaca Corona</font></font>
         </p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$66.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">3960</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">264</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Mini Cooler
           Corona</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$67.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">4020</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">268</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Mochila
           Corona</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$132.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">7920</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">528</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Mochila Tejida Club
           Colombia</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font color="#000000"><font face="Montserrat ExtraLight"><font size="1"
                                                                                                          style="font-size: 8pt">$49.000</font></font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2940</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">196</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Morral Gris
           Poker</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$93.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">5580</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">372</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font color="#000000"><font face="Montserrat ExtraLight"><font size="1"
                                                                                           style="font-size: 8pt">Parlante
           Budweiser</font></font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$94.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">5640</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">376</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Skate Corona</font></font>
         </p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font color="#000000"><font face="Montserrat ExtraLight"><font size="1"
                                                                                                          style="font-size: 8pt">$141.000</font></font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">8460</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">564</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Toalla Corona</font></font>
         </p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$47.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2820</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">188</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Kit Asado Club
           Colombia</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$69.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">4140</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">276</font></font>
         </p></td>
     </tr>
     <tr valign="bottom">
       <td width="375" height="18"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Tabla de Quesos
           Stella Artois</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$43.000</font></font>
         </p></td>
       <td width="150"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">2580</font></font>
         </p></td>
       <td width="168"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">172</font></font>
         </p></td>
     </tr>
     <tr>
       <td width="375" height="17" valign="bottom"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">Poncho
           Budweiser</font></font></p></td>
       <td width="116"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1" style="font-size: 8pt">$50.000</font></font>
         </p></td>
       <td width="150" valign="bottom"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.12cm; padding-right: 0cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">3000</font></font>
         </p></td>
       <td width="168" valign="bottom"
-          style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0cm 0.12cm">
+          >
         <p class="western" align="center"><font face="Montserrat ExtraLight"><font size="1"
                                                                                    style="font-size: 8pt">200</font></font>
         </p></td>
