@@ -24,9 +24,9 @@ ul {
 .main {
     font-family: @mainFont, sans-serif;
     font-size: 34px;
-    margin: 0 auto;
+    .mx-auto;
     overflow: hidden;
-    width: 100%;
+    .w-full;
     @media screen and (max-width: @sm) {
         font-size: 5vw;
     }
@@ -56,9 +56,10 @@ ul {
         background-image: url('../../assets/images/blue-bg.svg');
         background-position: right top;
         background-repeat: no-repeat;
-        margin: 0 auto;
-        max-width: 1366px;
+        // margin: 0 auto;
+        // max-width: 1366px;
         width: 100%;
+        .mx-auto;
         @media screen and (max-width: @xs) {
             background-image: url('../../assets/images/blue-bg-mobile.svg');
             background-position: left bottom;
