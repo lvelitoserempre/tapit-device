@@ -1,9 +1,8 @@
-@keyframes animateTop {
-    from {margin-top: -150px;}
-    to {margin-top: 0;}
-}
 .section {
     &__start {
+        @media screen and (min-width: @md) {
+            background-image: url('../assets/images/scroll.svg');
+        }
         .section__button {
             display: inline-block;
             &-container {
@@ -47,8 +46,6 @@
                 margin-top: 30px;
             }
             &-cellphone {
-                // animation: animateTop 1.5s;
-                transition: all 0.3s ease-in-out;
                 @media screen and (max-width: @md) {
                     width: 100%;
                 }

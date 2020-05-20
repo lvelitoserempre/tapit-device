@@ -150,9 +150,13 @@ export default function Index() {
             <header>
                 <img src={i18next.t("Header.Logo")}/>
             </header>
-            <div className="main__bgGray">
+            <div>
                 <div className="container">
                     <StartSection urlParams={urlParams} />
+                </div>
+            </div>
+            <div className="main__bgCircle">
+                <div className="container">
                     <PointsSection isMobile={isMobile} />
                 </div>
             </div>
@@ -161,7 +165,7 @@ export default function Index() {
                     <PrizesSection isMobile={isMobile} />
                 </div>
             </div>
-            <div className="main__bgGray">
+            <div>
                 <div className="container">
                     <MarketPlaceSection />
                     <BeersSection isMobile={isMobile} />

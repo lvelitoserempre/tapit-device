@@ -37,7 +37,7 @@ i18next.init({
                     Title: '<span>La app que premia a los</span> amantes de la cerveza',
                     Text: 'Descarga Tap it y acumula puntos, solo por tomar cerveza ¡Es muy fácil!',
                     Button: 'DESCARGA TAP IT',
-                    Image: '../assets/images/phone-start-section.png',
+                    Image: '../assets/images/beer-lovers.png',
                     BubbleTop: '../assets/images/TopBubble.svg',
                     BubbleBottom: '../assets/images/BottomBubble.svg'
                 },
@@ -45,17 +45,17 @@ i18next.init({
                     Title: '¿Cómo sumo puntos?',
                     Points: [
                         {
-                            Title: '<span>Así acumulas</span> puntos con Tap it',
+                            Title: '<span>Así acumulas</span></br>puntos con Tap it',
                             Text: 'Compra un six pack de tu cerveza favorita y escanea el código QR que encontrarás adentro.',
                             Image: '../assets/images/slider/phone-slide1.png'
                         },
                         {
-                            Title: '<span>Así acumulas</span> puntos con Tap it',
+                            Title: '<span>Así acumulas</span></br>puntos con Tap it',
                             Text: 'Invita a tus amigos a que descarguen y usen Tap it',
                             Image: '../assets/images/slider/phone-slide2.png'
                         },
                         {
-                            Title: '<span>Así acumulas</span> puntos con Tap it',
+                            Title: '<span>Así acumulas</span></br>puntos con Tap it',
                             Text: 'Pide tu cerveza en línea, desde la comodidad de tu casa',
                             Image: '../assets/images/slider/phone-slide3.png'
                         }
@@ -79,8 +79,8 @@ i18next.init({
                     ]
                 },
                 Section4: {
-                    Title: 'Compra tus cervezas y <span>productos de tus marcas favoritas</span>',
-                    Image: '../assets/images/marketplace/Truck.png',
+                    Title: '<span>Compra tus cervezas y productos</span></br> de tus marcas favoritas',
+                    Image: '../assets/images/marketplace/favorite-brands.svg',
                 },
                 Section5: {
                     Title: 'Nuestras Marcas',

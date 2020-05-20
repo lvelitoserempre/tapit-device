@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Plx from 'react-plx';
 import Slider from "react-slick";
 
 export default function PointsSection(props) {
@@ -26,22 +25,22 @@ export default function PointsSection(props) {
     
     return (
         <section className='row section section section__slider'>
-            <Plx parallaxData={ animate.Content } className="section__slider-container">
+            <div className="section__slider-container">
                 <Slider {...settings}>
                     {pointsArr.map((point,index)=>{
 
-                        const HtlmImage = <div className={`row col-xs-10 col-lg-5 col-xs-offset-1 col-lg-offset-0 middle-xs section__slider-image ${index == 1 && !props.isMobile?`section__slider-image-lay2`:null}`}>
-                                            <Plx className={"section__slider-image-"+index} 
+                        const HtlmImage = <div className={`row col-xs-10 col-lg-4 col-xs-offset-1 col-lg-offset-0 middle-xs section__slider-image relative end-lg ${index == 1 && !props.isMobile?`section__slider-image-lay2`:''}`}>
+                                            <div className={"section__slider-image-"+index} 
                                                 // parallaxData={ animate.Image }
                                             >
                                                 <img src={point.Image} />
-                                            </Plx>
+                                            </div>
                                         </div>
 
-                        const HtmlText = <div className="col-xs-10 col-lg-7 col-xs-offset-1 col-lg-offset-0 middle-xs">
-                                            <h2 className="section__title" dangerouslySetInnerHTML={{__html: point.Title}} ></h2>
-                                            <div className="row middle-xs section__slider-content">
-                                                <div className="col-xs-3">
+                        const HtmlText = <div className="col-xs-10 col-lg-4 col-xs-offset-1 col-lg-offset-0 middle-xs start-xs">
+                                            <h2 className="section__title section__title-small mb-8" dangerouslySetInnerHTML={{__html: point.Title}} ></h2>
+                                            <div className="row middle-xs section__slider-content  relative pt-6">
+                                                <div className="col-xs-1">
                                                     <div className="section__slider-number">
                                                         {index+1}
                                                     </div>
@@ -53,7 +52,7 @@ export default function PointsSection(props) {
                                         </div>
                         return(
                             <div key={index} >
-                                <div className="row middle-xs">
+                                <div className="row middle-xs center-sm">
                                     {index == 1 && !props.isMobile?
                                         HtlmImage
                                     :
@@ -76,7 +75,7 @@ export default function PointsSection(props) {
                         <img src="../assets/images/mouse.svg" width="26" className="section__slider-mouse" />
                 }
                 
-            </Plx>
+            </div>
             
         </section>
     )

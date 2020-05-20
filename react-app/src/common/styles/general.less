@@ -5,7 +5,6 @@ a{
     }
     text-decoration: none;
 }
-
 ::selection,
 ::-webkit-selection,
 ::-moz-selection,
@@ -23,10 +22,12 @@ ul {
 }
 .main {
     font-family: @mainFont, sans-serif;
-    font-size: 34px;
-    margin: 0 auto;
+    font-size: 16px;
     overflow: hidden;
     width: 100%;
+    img {
+        display: unset;
+    }
     @media screen and (max-width: @sm) {
         font-size: 5vw;
     }
@@ -57,8 +58,6 @@ ul {
         background-position: right top;
         background-repeat: no-repeat;
         margin: 0 auto;
-        max-width: 1366px;
-        width: 100%;
         @media screen and (max-width: @xs) {
             background-image: url('../../assets/images/blue-bg-mobile.svg');
             background-position: left bottom;
@@ -82,12 +81,20 @@ ul {
             }
         }
     }
+    &__bgCircle {
+        background-image: url('../../assets/images/slider/background-1.svg');
+        background-position: right top;
+        background-repeat: no-repeat;
+        @media screen and (max-width: @xs) {
+            background-image: none;
+        }
+    }
     .section {
         &__title {
             color: black;
-            font-size: 75px;
-            font-family: @mainFontBold, sans-serif;
-            line-height: 75px;
+            font-size: 48px;
+            font-family: @mainFont, sans-serif;
+            line-height: 56px;
             span {
                 color: @mainColor;
             }
@@ -102,6 +109,10 @@ ul {
                     font-size: 8.3vw;
                 }
             }
+            &-small {
+                font-size: 34px;
+                line-height: 36px;
+            }
         }
         &__text {
             color: @grayColor;
@@ -109,16 +120,20 @@ ul {
         &__button {
             background-color: @mainColor;
             border: none;
-            border-radius: 36px;
+            border-radius: 20px;
             color: white;
             font-family: @mainFontBold, sans-serif;
-            font-size: 34px;
-            padding: 30px 50px;
+            font-size: 16px;
+            line-height: 16px;
+            padding: 16px 12px;
             text-decoration: none;
             @media screen and (max-width: @xs) {
                 border-radius: 20px;
                 font-size: 20px;
                 padding: 20px 25px;
+            }
+            &:focus {
+                outline: none;
             }
         }
     }
