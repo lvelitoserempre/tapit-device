@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserAuthenticationService} from './user-authentication/user-authentication-service/user-authentication.service';
+import {UserAuthenticationService} from './user/user-authentication/user-authentication-service/user-authentication.service';
 import {environment} from '../environments/environment';
 import {initializeApp} from 'firebase';
 

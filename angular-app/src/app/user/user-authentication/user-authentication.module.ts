@@ -3,9 +3,9 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {AlreadyLoggedInGuard} from './authentication-guards/already-logged-in.guard';
 import {SignUpComponent} from './sign-up/sign-up.component';
-import {AppCommonModule} from '../app-common.module';
-import {DialogModule} from '../dialog/dialog.module';
-import {LoaderModule} from '../loader/loader.module';
+import {AppCommonModule} from '../../app-common.module';
+import {DialogModule} from '../../dialog/dialog.module';
+import {LoaderModule} from '../../loader/loader.module';
 import { FacebookLoginPageComponent } from './facebook-login-page/facebook-login-page.component';
 
 

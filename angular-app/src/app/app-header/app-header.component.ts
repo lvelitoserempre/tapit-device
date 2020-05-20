@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {LoaderService} from '../loader/loader-service/loader.service';
 import {UserAccount} from '../models/user-account.model';
-import {UserAuthenticationService} from '../user-authentication/user-authentication-service/user-authentication.service';
+import {UserAuthenticationService} from '../user/user-authentication/user-authentication-service/user-authentication.service';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 

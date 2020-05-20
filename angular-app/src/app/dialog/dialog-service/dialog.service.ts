@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {DialogConfigurationModel} from 'src/app/models/dialog-configuration.model';
 import {DialogComponent} from 'src/app/dialog/dialog.component';
-import {AuthError} from 'src/app/user-authentication/auth-error.enum';
+import {AUTH_ERRORS} from 'src/app/user/user-authentication/auth-error.enum';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Injectable({
@@ -83,15 +83,15 @@ export class DialogService {
   }
 
   manageError(error: any) {
-    if (error.code === AuthError.AUTH_ERROR_TOO_MANY_FAILED_ATTEMPTS) {
+    if (error.code === AUTH_ERRORS.TOO_MANY_REQUESTS) {
       this.openTooManyFailedAttemptsErrorDialog();
-    } else if (error.code === AuthError.AUTH_ERROR_EMAIL_ALREADY_IN_USE) {
+    } else if (error.code === AUTH_ERRORS.EMAIL_ALREADY_IN_USE) {
       this.openSignUpEmailAlreadyInUseErrorDialog();
-    } else if (error.code === AuthError.AUTH_ERROR_USER_NOT_FOUND) {
+    } else if (error.code === AUTH_ERRORS.USER_NOT_FOUND) {
       this.openUserNotFoundErrorDialog();
-    } else if (error.code === AuthError.AUTH_ERROR_WRONG_PASSWORD) {
+    } else if (error.code === AUTH_ERRORS.WRONG_PASSWORD) {
       this.openWrongPasswordErrorDialog();
-    } else if (error.code === AuthError.AUTH_ERROR_USER_CANCELLED) {
+    } else if (error.code === AUTH_ERRORS.USER_CANCELLED || error.code === AUTH_ERRORS.POPUP_CLOSED_BY_USER) {
       this.openWrongPasswordErrorDialog('Debes autorizar el uso de tus datos en la ventana de facebook.');
     } else {
       this.openSignUpErrorDialog();

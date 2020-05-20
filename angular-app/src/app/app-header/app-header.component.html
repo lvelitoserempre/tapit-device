@@ -16,8 +16,8 @@
       <div class="w-full sm:w-6/12">
         <ul *ngIf="user" class="sm:flex sm:flex-row justify-center sm:justify-end header__buttons">
           <li>
-            <p
-              class="font-bold text-white m-auto capitalize">{{(user.firstName || '') + ' ' + (user.lastName || '')}}</p>
+            <a routerLink="/user/profile"
+              class="font-bold text-white m-auto capitalize">{{(user.firstName || '') + ' ' + (user.lastName || '')}}</a>
           </li>
           <li>
             <a (click)="logout()" class="header__button font-bold cursor-pointer">

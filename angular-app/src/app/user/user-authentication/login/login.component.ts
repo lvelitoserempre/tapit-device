@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoaderService} from 'src/app/loader/loader-service/loader.service';
 import {UserAuthenticationService} from '../user-authentication-service/user-authentication.service';
-import {DialogService} from '../../dialog/dialog-service/dialog.service';
+import {DialogService} from '../../../dialog/dialog-service/dialog.service';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
 
 @Component({

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {UserAuthenticationService} from '../../user-authentication/user-authentication-service/user-authentication.service';
+import {UserAuthenticationService} from '../../user/user-authentication/user-authentication-service/user-authentication.service';
 
 declare var dataLayer;
 declare var ga;

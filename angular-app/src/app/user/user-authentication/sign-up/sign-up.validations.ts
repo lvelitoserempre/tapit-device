@@ -1,5 +1,5 @@
 import {Validators} from '@angular/forms';
-import {userAgeValidator} from '../../services/user-age-validator';
+import {userAgeValidator} from '../../../services/user-age-validator';
 
 export const SignUpValidators = {
   firstName: ['', Validators.minLength(3)],

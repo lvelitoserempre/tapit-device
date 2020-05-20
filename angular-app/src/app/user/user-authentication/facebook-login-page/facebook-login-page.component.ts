@@ -3,8 +3,8 @@ import {auth} from 'firebase';
 import {from} from 'rxjs';
 import {UserAuthenticationService} from '../user-authentication-service/user-authentication.service';
 import {Router} from '@angular/router';
-import {LoaderService} from '../../loader/loader-service/loader.service';
-import {DialogService} from '../../dialog/dialog-service/dialog.service';
+import {LoaderService} from '../../../loader/loader-service/loader.service';
+import {DialogService} from '../../../dialog/dialog-service/dialog.service';
 import {mergeMap} from 'rxjs/operators';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
 
