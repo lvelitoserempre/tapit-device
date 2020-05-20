@@ -23,7 +23,9 @@ export class UserAuthenticationService {
       if (user && !this.cancelUserListener) {
         this.cancelUserListener = firestore().collection(environment.firebase.collections.userAccount).doc(user.uid)
           .onSnapshot(snapshot => {
-            this.setCurrentUser({id: snapshot.id, ...snapshot.data()});
+            const userData: UserAccount = {id: snapshot.id, ...snapshot.data()};
+            delete userData.referralCode;
+            this.setCurrentUser(userData);
           });
       } else {
         if (this.cancelUserListener) {
@@ -46,11 +48,8 @@ export class UserAuthenticationService {
   async setCurrentUser(user: UserAccount) {
     await this.addIdToken(user);
     this.currentUser.next(user);
-
-    const userCopy = {...user};
-    delete userCopy.referralCode;
-    this.saveUserToLocalStorage(userCopy);
-    this.saveUserToACookie(userCopy);
+    this.saveUserToLocalStorage(user);
+    this.saveUserToACookie(user);
   }
 
   async addIdToken(user: UserAccount) {
@@ -71,7 +70,7 @@ export class UserAuthenticationService {
 
   saveUserToACookie(user: UserAccount) {
     if (user) {
-      document.cookie = 'loggedUser=' + encodeURIComponent(JSON.stringify(user)) + ';max-age=86400;path=/;domain=tapit.com.co';
+      document.cookie = 'loggedUser=' + encodeURIComponent(JSON.stringify(user)) + ';max-age=31536000;path=/;domain=tapit.com.co';
     } else {
       document.cookie = 'loggedUser=;max-age=0;path=/;domain=tapit.com.co';
     }
