@@ -147,10 +147,8 @@ export default function Index() {
 
     const Home = () => (
         <div>
-            <header>
-                <img src={i18next.t("Header.Logo")}/>
-            </header>
-            <div>
+            <Header user={user} />
+            <div className="mt-12">
                 <div className="container">
                     <StartSection urlParams={urlParams} />
                 </div>
@@ -170,7 +168,7 @@ export default function Index() {
                     <MarketPlaceSection />
                     <BeersSection isMobile={isMobile} />
                 </div>
-                <DownloadSeccion urlParams={urlParams} isMobile={isMobile} />
+                {/* <DownloadSeccion urlParams={urlParams} isMobile={isMobile} /> */}
             </div>
         </div>
     )

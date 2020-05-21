@@ -11,55 +11,40 @@ export default function PrizesSection(props) {
         <section className='row section section section__prizes'>
             <div className="section__prizes-container">
             <div>
-                <div className="col-xs-10 col-lg-11 col-xs-offset-1 col-lg-offset-0 middle-xs">
-                    <h1 className="section__title" dangerouslySetInnerHTML={{__html: i18next.t("Section3.Title")}}></h1>
-                    <div className="col-lg-7">
+                <div className="col-xs-10 col-lg-10 col-xs-offset-1 col-lg-offset-2 middle-xs">
+                    <h1 className="section__title section__title-small col-lg-6 col-xl-4" dangerouslySetInnerHTML={{__html: i18next.t("Section3.Title")}}></h1>
+                    <div className="col-lg-6 col-xl-5">
                         <p className="section__text">{i18next.t("Section3.Text")}</p>
                     </div>
-                    <div className="col-lg-5">
+                    <div className="col-lg-6 col-xl-5">
                         {!props.isMobile?
-                        <div>
-                            <div className="row center-xs" >
-                                <div className="section__prizes-orangeCircle" >
-                                </div>
+                            <div className="start-xs" >
+                                <img className="max-w-none mt-8" src={lines[0]} />
                             </div>
-                            <div className="row center-xs" >
-                                <img src={lines[0]} />
-                            </div>
-                        </div>
-                        :null}
-                        <ul className="section__prizes-icons row around-xs">
-                        {
-                            iconsArr.map((icon,index)=>{
-                                return(
-                                    <li key={index} className="row middle-xs">
-                                        <img src={icon} />
-                                    </li>)
-                                }
-                            )
-                        }   
-                        </ul>
+                        :
+                            <ul className="section__prizes-icons row around-xs">
+                                {
+                                    iconsArr.map((icon,index)=>{
+                                        return(
+                                            <li key={index} className="row middle-xs">
+                                                <img src={icon} />
+                                            </li>)
+                                        }
+                                    )
+                                }   
+                            </ul>
+                        }
+                        
                     </div>
                     <div>
 
                     </div>
                 </div>
                 <Plx className="row end-xs section__prizes-image" >
-                    <div className="col-xs-12">
+                    <div className="col-xs-12 col-lg-8 col-xl-12">
                         <img src={i18next.t("Section3.Image")} />
                     </div>
                 </Plx>
-                {!props.isMobile?
-                    <div className="section__prizes-bottomLine" >
-                        <div className="row middle-xs" >
-                            <div className="section__prizes-orangeCircle2" >
-                            </div>
-                            <div className="row center-xs" >
-                                <img src={lines[3]} />
-                            </div>
-                        </div>
-                    </div>
-                :null}
             </div>
             </div>
         </section>

@@ -28,15 +28,11 @@ ul {
     img {
         display: unset;
     }
-    @media screen and (max-width: @sm) {
-        font-size: 5vw;
-    }
     .loader {
         background-color: red;
         text-align: center;
     }
     header {
-        text-align: center;
         img {
             @media screen and (max-width: @xs) {
                 width: 100px;
@@ -54,7 +50,7 @@ ul {
         }
     }
     &__bgBlue {
-        background-image: url('../../assets/images/blue-bg.svg');
+        background-image: url('../../assets/images/background-2.svg');
         background-position: right top;
         background-repeat: no-repeat;
         margin: 0 auto;
@@ -85,8 +81,11 @@ ul {
         background-image: url('../../assets/images/slider/background-1.svg');
         background-position: right top;
         background-repeat: no-repeat;
-        @media screen and (max-width: @xs) {
-            background-image: none;
+        @media screen and (max-width: @md) {
+            background-position: right center;
+        }
+        @media screen and (max-width: @sm) {
+            background-size: 210%;
         }
     }
     .section {
@@ -105,6 +104,7 @@ ul {
             &-red {
                 color: @redColor;
                 font-size: 70px;
+                line-height: 76px;
                 @media screen and (max-width: @xs) {
                     font-size: 8.3vw;
                 }
@@ -127,11 +127,6 @@ ul {
             line-height: 16px;
             padding: 16px 12px;
             text-decoration: none;
-            @media screen and (max-width: @xs) {
-                border-radius: 20px;
-                font-size: 20px;
-                padding: 20px 25px;
-            }
             &:focus {
                 outline: none;
             }

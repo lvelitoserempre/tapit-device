@@ -7,7 +7,7 @@ export default function StartSectionBill(props) {
     const animate =  i18next.t("Animations.Section1", { returnObjects: true })
 
     return (
-        <section className='row section section__start middle-xs'>
+        <section className='row section section__start middle-xs bg-no-repeat bg-right-top'>
             <div className="col-xs-10 col-lg-7 col-xs-offset-1 col-lg-offset-0 middle-xs">
                 <h1 className="section__title section__title-red" dangerouslySetInnerHTML={{__html: i18next.t("BillLayout.Section1.Title")}}></h1>
                 <p className="section__text col-xs-10">{i18next.t("BillLayout.Section1.Text")}</p>

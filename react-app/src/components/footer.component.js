@@ -7,7 +7,7 @@ export default function FooterSection() {
     const social = i18next.t("Footer.Social", { returnObjects: true })
 
     return (
-        <footer className='footer'>
+        <footer className='footer bg-purple-500'>
             <div className="footer__legal">
                 <div className='row center-xs'>
                     <img src={i18next.t("Footer.LegalImage")} />

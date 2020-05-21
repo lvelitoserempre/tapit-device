@@ -37,15 +37,15 @@ export default function PointsSection(props) {
                                             </div>
                                         </div>
 
-                        const HtmlText = <div className="col-xs-10 col-lg-4 col-xs-offset-1 col-lg-offset-0 middle-xs start-xs">
+                        const HtmlText = <div className="col-xs-11 col-lg-4 col-xs-offset-1 col-lg-offset-0 middle-xs start-xs">
                                             <h2 className="section__title section__title-small mb-8" dangerouslySetInnerHTML={{__html: point.Title}} ></h2>
                                             <div className="row middle-xs section__slider-content  relative pt-6">
-                                                <div className="col-xs-1">
+                                                <div className="col-xs-4 col-md-2">
                                                     <div className="section__slider-number">
                                                         {index+1}
                                                     </div>
                                                 </div>
-                                                <div className="col-xs-8">
+                                                <div className="col-xs-8 col-md-8">
                                                     <p className="section__text" dangerouslySetInnerHTML={{__html: point.Text}}></p>
                                                 </div>
                                             </div>

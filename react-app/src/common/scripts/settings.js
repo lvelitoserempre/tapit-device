@@ -6,7 +6,7 @@ i18next.init({
                 BillLayout: {
                     Active: true,
                     Header: {
-                        Logo: '../assets/images/billLayout/Tapit_Logo.svg',
+                        Logo: '../assets/images/tap-it_black-orange.svg',
                         LogoPolas: '../assets/images/billLayout/PloasLogo.svg',
                         UrlLogin: '/app/auth/login',
                         UrlSignup: '/app/auth/signup',
@@ -64,7 +64,7 @@ i18next.init({
                 Section3: {
                     Title: '<span>Entre más cerveza tomes,</span> mejores premios',
                     Text: 'Accede a beneficios exclusivos como más cerveza, experiencias y productos de tu marca favorita.',
-                    Image: '../assets/images/benefits/phone-prizes.png',
+                    Image: '../assets/images/benefits/rewards.png',
                     IconList: [
                         '../assets/images/benefits/icon-beers.svg',
                         '../assets/images/benefits/icon-Tickets.svg',
@@ -72,7 +72,7 @@ i18next.init({
                         '../assets/images/benefits/icon-Cap.svg'
                     ],
                     Lines: [
-                        '../assets/images/benefits/verticalLine.svg',
+                        '../assets/images/benefits/decal.svg',
                         '../assets/images/benefits/horizontalLine.svg',
                         '../assets/images/benefits/horizontalLine2.svg',
                         '../assets/images/benefits/bottomLine.svg'
