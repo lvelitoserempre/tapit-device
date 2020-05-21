@@ -1,8 +1,13 @@
-const {series, watch, task, src} = require('gulp');
+const {series, watch, task, src, dest} = require('gulp');
 const liveServer = require('gulp-live-server');
 const run = require('gulp-run');
 const copy = require('gulp-copy');
 const del = require('del');
+const postcss = require('gulp-postcss');
+const postcssImport = require('postcss-import');
+const tailwindcss = require('tailwindcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 function runCommand(command, folder) {
   return run(command, {cwd: folder})
@@ -29,6 +34,14 @@ task('copy-static', function () {
   return src('static/**').pipe(copy('dist', {prefix: 1}));
 });
 
+task('build-tailwind', function () {
+  return src('tailwindcss/tailwind.css')
+    .pipe(postcss([postcssImport, tailwindcss, autoprefixer, cssnano]))
+    .pipe(dest('static/assets/styles'))
+    .pipe(dest('react-app/src/assets/styles'))
+    .pipe(dest('angular-app/src/assets/styles'))
+})
+
 task('build-react-app', function () {
   const command = 'npm i && npm run ' + (process.env.environment === 'production' ? 'build-prod' : 'build-prod')
   const folder = './react-app';
@@ -50,6 +63,6 @@ task('deploy', function () {
   return runCommand(command, folder);
 })
 
-task('build', series('clear', 'copy-static', 'build-react-app', 'build-angular-app'));
+task('build', series('clear', 'build-tailwind', 'copy-static', 'build-react-app', 'build-angular-app'));
 
-task('build-and-deploy', series('clear', 'copy-static', 'build-react-app', 'build-angular-app', 'deploy'));
+task('build-and-deploy', series('clear', 'build-tailwind', 'copy-static', 'build-react-app', 'build-angular-app', 'deploy'));
