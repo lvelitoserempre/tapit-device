@@ -21,7 +21,7 @@
   "scripts": {
     "start": "gulp serve-dist",
     "build": "npm run build-tailwind && cross-env environment=testing gulp build",
-    "build-tailwind": "postcss tailwindcss/tailwind.css -o static/assets/styles/tailwind.css",
+    "build-tailwind": "postcss tailwindcss/tailwind.css -o static/assets/styles/tailwind.css && postcss tailwindcss/tailwind.css -o react-app/src/assets/styles/tailwind.css",
     "deploy-dev": "cross-env environment=dev gulp build-and-deploy",
     "deploy-testing": "cross-env environment=testing gulp build-and-deploy",
     "deploy-production": "cross-env environment=production gulp build-and-deploy"
