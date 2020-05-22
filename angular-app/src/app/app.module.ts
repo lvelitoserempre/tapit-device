@@ -12,6 +12,10 @@ import {FinalMessageComponent} from './final-message/final-message.component';
 import {DialogModule} from './dialog/dialog.module';
 import {LoaderModule} from './loader/loader.module';
 import {AppCommonModule} from './app-common.module';
+import {SocialMediaComponent} from './social-media/social-media.component';
+import { FacebookComponent }    from './social-media/facebook/facebook.component';
+import { TwitterComponent }    from './social-media/twitter/twitter.component';
+import { WhatsappComponent } from './social-media/whatsapp/whatsapp.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import {AppCommonModule} from './app-common.module';
     HomeComponent,
     AppHeaderComponent,
     AppFooterComponent,
-    FinalMessageComponent
+    FinalMessageComponent,
+    SocialMediaComponent,
+    FacebookComponent,
+    TwitterComponent,
+    WhatsappComponent
   ],
   imports: [
     BrowserModule,
