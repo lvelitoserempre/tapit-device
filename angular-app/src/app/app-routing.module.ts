@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {AuthGuard} from './user/user-authentication/authentication-guards/auth.guard';
 import {FinalMessageComponent} from './final-message/final-message.component';
+import {SocialMediaComponent} from './social-media/social-media.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   },
+  {path: 'social-media', component: SocialMediaComponent},
   {path: 'final-message', component: FinalMessageComponent, canActivate: [AuthGuard]},
   {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];
