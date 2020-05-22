@@ -3,11 +3,9 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {LoaderService} from 'src/app/loader/loader-service/loader.service';
 import {Router} from '@angular/router';
 import {DialogService} from 'src/app/dialog/dialog-service/dialog.service';
-import {from} from 'rxjs';
-import {mergeMap} from 'rxjs/operators';
 import {SignUpValidationMessages, SignUpValidators} from './sign-up.validations';
-import {UserAuthenticationService} from '../user-authentication-service/user-authentication.service';
-import UserCredential = firebase.auth.UserCredential;
+import {SignupService} from '../signup.service';
+import {FacebookService} from '../facebook.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -20,7 +18,8 @@ export class SignUpComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserAuthenticationService,
+    private signupService: SignupService,
+    private facebookService: FacebookService,
     private router: Router,
     private loaderService: LoaderService,
     private dialogService: DialogService
@@ -28,14 +27,9 @@ export class SignUpComponent {
     this.signUpForm = this.formBuilder.group(SignUpValidators);
   }
 
-  async onSubmit() {
-    const form = this.signUpForm.value;
-    const userData: any = this.parseUserForm();
-
+  signUp() {
     this.loaderService.show();
-
-    from(this.userService.signUp(form.email, form.password))
-      .pipe(mergeMap((userCredential: UserCredential) => this.userService.checkUser(userData)))
+    this.signupService.signUp(this.signUpForm.value)
       .subscribe(res => {
           this.loaderService.hide();
           this.router.navigate(['/']);
@@ -46,17 +40,16 @@ export class SignUpComponent {
         });
   }
 
-  private parseUserForm() {
-    const form = this.signUpForm.value;
-
-    return {
-      email: form.email,
-      firstName: form.firstName,
-      lastName: form.lastName,
-      birthDate: form.birthDate.toISOString(),
-      phone: form.phone,
-      origin: 'pola',
-      ...(form.referralCode && form.referralCode.trim()) && {referredBy: form.referralCode}
-    };
+  loginWithFacebook() {
+    this.loaderService.show();
+    this.facebookService.login()
+      .subscribe(res => {
+          this.loaderService.hide();
+          this.router.navigateByUrl('');
+        },
+        error => {
+          this.loaderService.hide();
+          this.dialogService.manageError(error);
+        });
   }
 }

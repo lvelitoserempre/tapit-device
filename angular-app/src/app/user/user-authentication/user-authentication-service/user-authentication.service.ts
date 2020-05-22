@@ -38,13 +38,6 @@ export class UserAuthenticationService {
     });
   }
 
-  getUser(userId: string): Observable<UserAccount> {
-    return from(firestore().collection(environment.firebase.collections.userAccount).doc(userId).get())
-      .pipe(map(documentSnapshot => {
-        return {id: documentSnapshot.id, ...documentSnapshot.data()};
-      }));
-  }
-
   async setCurrentUser(user: UserAccount) {
     await this.addIdToken(user);
     this.currentUser.next(user);
@@ -90,20 +83,5 @@ export class UserAuthenticationService {
 
   signUp(email: string, password: string): Observable<UserCredential> {
     return from(auth().createUserWithEmailAndPassword(email, password));
-  }
-
-  checkUser(user: UserAccount) {
-    return from(auth().currentUser.getIdToken())
-      .pipe(mergeMap(token =>
-        this.http.post(
-          environment.firebase.functions.url + environment.firebase.functions.checkUser,
-          user,
-          {
-            headers: {
-              Authorization: 'Bearer ' + token,
-              ab_data: auth().currentUser.uid
-            }
-          }
-        )));
   }
 }

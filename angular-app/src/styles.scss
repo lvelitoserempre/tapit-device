@@ -2,158 +2,8 @@
 @import "assets/styles/fonts";
 @import "assets/styles/variables";
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  font-family: gilroy, Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  background-color: white;
-
-  .home-component {
-    background-color: #2b2929;
-    color: white;
-
-    .legacy-title {
-      color: white;
-
-      &-red {
-        color: $redColor;
-
-        span {
-          color: white;
-        }
-      }
-    }
-  }
-
-  .container-steps__description {
-    a,
-    a:link,
-    a:visited {
-      color: white;
-
-      &:hover {
-        color: $redColor;
-      }
-    }
-  }
-}
-
 * {
-  box-sizing: border-box;
-}
-
-.legacy-container {
-  flex: 1 0 auto !important;
-
-  .content {
-    width: 100%;
-
-    a:link {
-      text-decoration: none;
-      color: map_get($primary-colors, 500);
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    a:visited {
-      text-decoration: none;
-      color: map_get($primary-colors, 500);
-    }
-  }
-}
-
-.legacy-title {
-  font-family: 'gilroy', sans-serif;
-  font-size: 60px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: -0.72px;
-  text-align: center;
-  position: relative;
-  z-index: 0;
-
-  span {
-    color: $redColor;
-    font-family: "gilroy", sans-serif;
-    font-size: 25px;
-    font-weight: 300;
-    line-height: 2px;
-    text-align: left;
-    text-transform: uppercase;
-    width: 100%;
-  }
-}
-
-.item {
-  width: 50%;
-  min-width: 300px;
-  max-width: 500px;
-  height: auto;
-}
-
-%btn-base {
-  background-color: map_get($primary-colors, 500);
-  color: white;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: $semi-bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  padding: 0 50px;
-  width: 100%;
-  max-width: 300px;
-  height: 50px;
-
-  &:hover {
-    background: map_get($primary-colors, 400);
-  }
-
-  &:active {
-    background: map_get($primary-colors, 500);
-    box-shadow: inset 0px 1px 1px fadeout(black, 90%);
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:disabled {
-    background: map_get($primary-colors, 50) !important;
-    color: map_get($primary-colors, 200) !important;
-  }
-}
-
-.btn-red-rounded {
-  @extend %btn-base;
-  border-radius: 30px !important;
-}
-
-.btn-red-squared {
-  @extend %btn-base;
-  border-radius: 5px;
-}
-
-.btn-white-rounded {
-  @extend %btn-base;
-  border-radius: 30px;
-  background: white !important;
-  color: map_get($primary-colors, 500) !important;
-  box-shadow: none !important;
+  font-family: filson-soft;
 }
 
 .slick-slider {
@@ -231,42 +81,14 @@ body {
   }
 }
 
-.btn-yellow-rounded-line {
-  background-color: transparent;
-  border-radius: 25px;
-  border: 2px solid $yellowColor;
-  color: white;
-  padding: 5px 15px;
-
-  img {
-    margin: 0 0 0 10px;
-  }
+.min-width-18 {
+  min-width: 18rem;
 }
 
-.btn-red-poker {
-  background-color: $redColor;
-  border-radius: 25px;
-  font-weight: 700;
-  padding: 15px;
+.facebook-button {
+  background: #4267B2;
 }
 
-.aclaass {
-  margin: 130px 0 0 58px;
-
-  img {
-    width: 120px;
-  }
-}
-
-.sm\:text-20xl {
-  font-size: 15rem;
-  line-height: 8rem;
-}
-
-.text-15xl {
-  font-size: 10rem;
-  line-height: 6rem;
-}
 .bg-pattern {
   background: url("assets/images/bg.svg") no-repeat;
   background-size: cover;

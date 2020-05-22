@@ -7,7 +7,7 @@
   <div class="content" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="center center"
        fxLayoutGap="30px">
     <div class="item">
-      <form (ngSubmit)="onSubmit()" [formGroup]="signUpForm" class="form" fxLayout="column" fxLayoutGap="20px">
+      <form (ngSubmit)="signUp()" [formGroup]="signUpForm" class="form" fxLayout="column" fxLayoutGap="20px">
 
         <!-- First name -->
         <mat-form-field>
@@ -79,12 +79,16 @@
         </div>
 
         <!-- Create account button -->
-        <button [disabled]="signUpForm.invalid" class="app-button bg-orange-500 rounded-xl" type="submit">
+        <button [disabled]="signUpForm.invalid" class="app-button bg-orange-500 min-width-18" type="submit">
           CREAR CUENTA
         </button>
 
+        <button type="button" class="app-button facebook-button min-width-18" (click)="loginWithFacebook()"> INGRESAR CON FACEBOOK
+        </button>
+
         <!-- Login link -->
-        <div fxFlexAlign="center">Si ya tienes una cuenta <a routerLink="/auth/login">Ingresa</a></div>
+        <div fxFlexAlign="center">¿Ya tienes una cuenta <a routerLink="/auth/login" class="text-orange-500 font-bold">INGRESA</a>
+        </div>
       </form>
     </div>
 

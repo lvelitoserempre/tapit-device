@@ -6,20 +6,17 @@ import {SignUpComponent} from './sign-up/sign-up.component';
 import {AppCommonModule} from '../../app-common.module';
 import {DialogModule} from '../../dialog/dialog.module';
 import {LoaderModule} from '../../loader/loader.module';
-import { FacebookLoginPageComponent } from './facebook-login-page/facebook-login-page.component';
 
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate: [AlreadyLoggedInGuard]},
-  {path: 'signup', component: SignUpComponent, canActivate: [AlreadyLoggedInGuard]},
-  {path: 'facebook', component: FacebookLoginPageComponent, canActivate: [AlreadyLoggedInGuard]}
+  {path: 'signup', component: SignUpComponent, canActivate: [AlreadyLoggedInGuard]}
 ];
 
 @NgModule({
   declarations: [
     LoginComponent,
-    SignUpComponent,
-    FacebookLoginPageComponent
+    SignUpComponent
   ],
   imports: [
     AppCommonModule,
