@@ -9,22 +9,28 @@
     </div>
     <div class="inline-block text-center md:text-right w-full md:w-1/2 align-middle">
       <ul *ngIf="user" class="relative">
-        <li
-          class="font-bold text-md uppercase text-orange-500 cursor-pointer inline-block mr-4 align-middle focus:outline-none"
-          routerLink="/user/profile">{{user.firstName}} {{user.lastName}}</li>
-        <li class="absolute top-0 bottom-0 border-l-4 border-gray-500 inline-block align-middle"></li>
-        <li class="inline-block ml-4 align-middle">
-          <span class="text-sm font-bold block">Tus puntos</span>
-          <span class="text-md font-bold block text-orange-500">{{user.points | number : '1.0'}}</span>
-        </li>
+        <a class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none"
+           href="https://market.tapit.com.co"><i class="uil uil-store text-2xl"></i> MARKET</a>
+
+        <ul class="rounded-xl bg-gray-200 relative inline-block py-2 px-6">
+          <li
+            class="font-bold text-md uppercase text-orange-500 cursor-pointer inline-block mr-4 align-middle focus:outline-none"
+            routerLink="/user/profile">{{user.firstName}} {{user.lastName}}</li>
+          <li class="absolute top-0 bottom-0 border-l-4 border-gray-500 inline-block align-middle"></li>
+          <li class="inline-block ml-4 align-middle">
+            <span class="text-sm font-bold block">Tus puntos</span>
+            <span class="text-md font-bold block text-orange-500">{{user.points | number : '1.0'}}</span>
+          </li>
+        </ul>
       </ul>
 
       <ul *ngIf="!user">
-        <li class="inline-block">
-          <a class="app-button text-black border-black border-2 mr-4" routerLink="/auth/login">INICIAR SESIÓN </a>
+        <li class="inline-block mr-4 align-middle">
+          <button class="app-button text-black border-black border-2" routerLink="/auth/login">INICIA SESIÓN</button>
         </li>
-        <li class="inline-block">
-          <a class="app-button text-black border-black border-2" routerLink="/auth/signup"> REGISTRATE </a>
+        <li class="inline-block align-middle">
+          <button class="app-button border-2 border-orange-500 bg-orange-500" routerLink="/auth/signup">REGISTRATE
+          </button>
         </li>
       </ul>
     </div>
