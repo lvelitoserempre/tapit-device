@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  user: UserAccount;
+  user: UserAccount = {};
 
   constructor(private loaderService: LoaderService, private userAuthenticationService: UserAuthenticationService,
               private router: Router) {

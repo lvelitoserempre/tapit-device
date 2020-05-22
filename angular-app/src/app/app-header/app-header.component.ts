@@ -19,7 +19,7 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
     this.userSubscription = this.userAuthenticationService.getCurrentUser()
       .subscribe(user => {
         this.user = user;
-        this.changeDetectorRef.detectChanges();
+        //this.changeDetectorRef.detectChanges();
       });
   }
 
