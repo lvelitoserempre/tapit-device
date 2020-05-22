@@ -8,8 +8,6 @@ import { Component, OnInit, Input } from '@angular/core';
 export class WhatsappComponent implements OnInit {
   
   @Input() 
-  phone: string;
-  @Input() 
   message: string;
   @Input() 
   label: string;
