@@ -8,7 +8,7 @@ import UserCredential = firebase.auth.UserCredential;
 @Injectable({
   providedIn: 'root'
 })
-export class SignupService {
+export class SignUpService {
 
   constructor(private userAuthenticationService: UserAuthenticationService, private userDAO: UserDAO) {
   }

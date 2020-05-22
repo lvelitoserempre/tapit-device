@@ -83,11 +83,13 @@
           CREAR CUENTA
         </button>
 
-        <button type="button" class="app-button facebook-button min-width-18" (click)="loginWithFacebook()"> INGRESAR CON FACEBOOK
+        <button type="button" class="app-button facebook-button min-width-18" (click)="loginWithFacebook()"> INGRESAR
+          CON FACEBOOK
         </button>
 
         <!-- Login link -->
-        <div fxFlexAlign="center">¿Ya tienes una cuenta <a routerLink="/auth/login" class="text-orange-500 font-bold">INGRESA</a>
+        <div fxFlexAlign="center">¿Ya tienes una cuenta <a class="text-orange-500 font-bold" queryParamsHandling="merge"
+                                                           routerLink="/auth/login">INGRESA</a>
         </div>
       </form>
     </div>

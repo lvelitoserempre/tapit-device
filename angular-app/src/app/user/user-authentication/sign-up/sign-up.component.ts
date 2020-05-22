@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {LoaderService} from 'src/app/loader/loader-service/loader.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {DialogService} from 'src/app/dialog/dialog-service/dialog.service';
 import {SignUpValidationMessages, SignUpValidators} from './sign-up.validations';
-import {SignupService} from '../signup.service';
+import {SignUpService} from '../sign-up.service';
 import {FacebookService} from '../facebook.service';
 
 @Component({
@@ -12,24 +12,27 @@ import {FacebookService} from '../facebook.service';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
 })
-export class SignUpComponent {
+export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   validationMessages = SignUpValidationMessages;
+  private backUrl: string;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private signupService: SignupService,
-    private facebookService: FacebookService,
-    private router: Router,
-    private loaderService: LoaderService,
-    private dialogService: DialogService
-  ) {
+  constructor(private formBuilder: FormBuilder, private signUpService: SignUpService, private facebookService: FacebookService,
+              private router: Router, private route: ActivatedRoute, private loaderService: LoaderService,
+              private dialogService: DialogService) {
     this.signUpForm = this.formBuilder.group(SignUpValidators);
   }
 
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(queryParams => {
+      this.backUrl = queryParams.backUrl;
+    });
+  }
+
+
   signUp() {
     this.loaderService.show();
-    this.signupService.signUp(this.signUpForm.value)
+    this.signUpService.signUp(this.signUpForm.value)
       .subscribe(res => {
           this.loaderService.hide();
           this.router.navigate(['/']);
@@ -45,11 +48,19 @@ export class SignUpComponent {
     this.facebookService.login()
       .subscribe(res => {
           this.loaderService.hide();
-          this.router.navigateByUrl('');
+          this.navigateBack();
         },
         error => {
           this.loaderService.hide();
           this.dialogService.manageError(error);
         });
+  }
+
+  navigateBack() {
+    if (this.backUrl) {
+      window.location.replace(this.backUrl);
+    } else {
+      this.router.navigateByUrl('/');
+    }
   }
 }

@@ -18,14 +18,18 @@
           <mat-error
             *ngIf="loginForm.get('password').hasError('required')">{{ validationMessages.password.required }}</mat-error>
         </mat-form-field>
+
         <button [disabled]="loginForm.invalid" class="app-button bg-orange-500 min-width-18" type="submit">
           INGRESAR
         </button>
-        <button (click)="loginWithFacebook()" class="app-button facebook-button min-width-18" type="button"> INGRESAR
-          CON FACEBOOK
+
+        <button (click)="loginWithFacebook()" class="app-button facebook-button min-width-18" type="button">
+          INGRESAR CON FACEBOOK
         </button>
-        <div fxFlexAlign="center">¿No tienes una cuenta? <a routerLink="/auth/signup"
-                                                            class="text-orange-500 font-bold"> REGISTRATE</a></div>
+        <div fxFlexAlign="center">
+          ¿No tienes una cuenta?
+          <a class="text-orange-500 font-bold" queryParamsHandling="merge" routerLink="/auth/signup"> REGISTRATE</a>
+        </div>
       </form>
     </div>
     <img class="item" src="../../../../assets/images/login.svg">

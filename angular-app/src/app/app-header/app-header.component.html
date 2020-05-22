@@ -3,7 +3,7 @@
     <div class="inline-block text-center md:text-left w-full md:w-1/2 mb-3 md:mb-0 align-middle">
       <ul>
         <li>
-          <img src="assets/images/Tapit_Logo.svg"/>
+          <img src="assets/images/tap-it_black-orange.svg"/>
         </li>
       </ul>
     </div>
@@ -26,10 +26,10 @@
 
       <ul *ngIf="!user">
         <li class="inline-block mr-4 align-middle">
-          <button class="app-button text-black border-black border-2" routerLink="/auth/login">INICIA SESIÓN</button>
+          <button class="app-button text-black border-black border-2" routerLink="/auth/login"  queryParamsHandling="merge">INICIA SESIÓN</button>
         </li>
         <li class="inline-block align-middle">
-          <button class="app-button border-2 border-orange-500 bg-orange-500" routerLink="/auth/signup">REGISTRATE
+          <button class="app-button border-2 border-orange-500 bg-orange-500" routerLink="/auth/signup" queryParamsHandling="merge">REGISTRATE
           </button>
         </li>
       </ul>
