@@ -97,31 +97,58 @@ i18next.init({
                     ]
                 },
                 Section6: {
-                    Title: 'Descarga la app',
+                    Title: 'Descarga Tapit',
+                    Subtitle: 'en iOS y Android...',
                     LeftPhone: '../assets/images/download/leftPhone.png',
                     RightPhone: '../assets/images/download/rightPhone.png',
                     appStore: '../assets/images/download/appStore.svg',
                     googlePlay: '../assets/images/download/googlePlay.svg',
                     appStoreUrl: 'https://apps.apple.com/us/app/tapit/id1481852424?ls=1',
                     googlePlayUrl: 'https://play.google.com/store/apps/details?id=com.abinbev.tapit',
-                    Disclaimer: 'Prohíbase el expendio de bebidas embriagantes a personas menores de edad.<br/> El exeso de alcohol es perjudicial para la salud'
+                    Disclaimer: '<span class="font-bold">Código QR</span></br>O escanea este código en tu teléfono',
+                    QrCode: '../assets/images/download/onlink_to_9mttry.svg'
                 },
                 Footer: {
                     TextFollow: 'Siguenos en:',
                     Social: [
                         {
                             Image: '../assets/images/footer/logo-facebbok.svg',
-                            Url: 'https://www.facebook.com/gettap.it/'
+                            Url: 'https://www.facebook.com/gettap.it/',
+                            Name: 'Facebook'
                         },
                         {
                             Image:'../assets/images/footer/logo-instagram.svg',
-                            Url: 'https://www.instagram.com/tapit_beer/'
+                            Url: 'https://www.instagram.com/tapit_beer/',
+                            Name: 'Instagram'
                         }
                     ],
+                    TextTapit: 'Tapit',
                     LegalImage: '../assets/images/footer/legal.png',
-                    Logo: '../assets/images/footer/Logo-tapit.svg',
+                    Logo: '../assets/images/footer/tap-it_white-orange.svg',
                     LogoPolas: '../assets/images/footer/logo-polas.svg',
-                    Copyright: 'Todos los derechos reservados © 2020 <br/><a href="/terms.html" target="_blank">Términos y Condiciones</a> | <a href="/data-proteccion.html" target="_blank">Políticas de protección de datos personales</a> <br/><a href="/privacy.html" target="_blank">Aviso de privacidad</a> | <a href="/cookies.html" target="_blank">Política de Cookies</a> | <a href="mailto:hello@gettap.it">Contáctanos</a>'
+                    Copyright: 'Todos los derechos reservados © 2020',
+                    Links: [
+                        {
+                            Name: 'Contáctanos',
+                            Url: 'mailto:hello@gettap.it'
+                        },
+                        {
+                            Name: 'Términos y Condiciones',
+                            Url: '/terms.html'
+                        },
+                        {
+                            Name: 'Políticas de protección de datos personales',
+                            Url: '/data-proteccion.html'
+                        },
+                        {
+                            Name: 'Política de Cookies',
+                            Url: '/cookies.html'
+                        },
+                        {
+                            Name: 'Aviso de privacidad',
+                            Url: '/privacy.html'
+                        }
+                    ]
                 },
                 Animations,
                 Redirection: [

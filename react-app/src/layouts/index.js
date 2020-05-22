@@ -195,7 +195,7 @@ export default function Index() {
                         <Route exact path="/polas-recargadas" component={BillLayout}/>
                     </HashRouter>
                 }
-                <FooterSection/>
+                <FooterSection isMobile={isMobile} />
             </div>
         )
     )
