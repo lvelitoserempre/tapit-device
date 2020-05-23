@@ -1,17 +1,49 @@
-<div class="container mx-auto p-4">
-  <h1 class="text-2xl text-gray-700 text-center">TU PERFIL</h1>
+<div class="container mx-auto mb-20">
+  <div class="bg-gray-200 rounded-2xl p-4 py-6 relative overflow-hidden max-w-xl mx-auto">
+    <img class="absolute right-0 top-0 z-0" src="assets/images/bubble-5.png" style="right: -13rem; top: -10rem;">
+    <!--<button class="text-2xl absolute top-0 right-0 m-4 focus:outline-none">
+      <i class="uil uil-times-circle"></i>
+    </button>-->
 
-  <div>
-    <div class="inline-block w-1/2 align-middle">
-      <h3>{{user.firstName + ' ' + user.lastName}}</h3>
-      <p>{{user.email}}</p>
-    </div>
-    <div class="inline-block w-1/2 align-middle">
-      <h1 class="text-2xl text-right">{{user.points}} pts</h1>
-    </div>
+    <h3 class="text-md font-bold text-gray-700 mb-8 z-10">TU PERFIL</h3>
+
+    <section class="z-10 mb-8">
+      <div class="inline-block align-middle p-4">
+        <img class="w-auto" src="assets/images/profile-placeholder.png">
+      </div>
+
+      <div class="inline-block align-middle p-4">
+        <h3 class="text-xl font-bold">{{user.firstName + ' ' + user.lastName}}</h3>
+        <p class="text-lg text-gray-800">{{user.email}}</p>
+
+        <div class="mt-4">
+          <h3 class="text-md text-gray-800 font-bold">TUS PUNTOS</h3>
+          <h1 class="text-2xl font-bold">{{user.points | number : '1.0'}}</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-4 border-white bg-gray-200 p-4 mb-8">
+      <h1 class="text-xl font-bold">¡Invita un amigo y gana 120 puntos!</h1>
+      <h2 class="text-lg text-gray-800 mb-8">Puedes invitar hasta 5 amigos al mes</h2>
+
+      <div class="bg-black p-4 inline-block mb-8">
+        <h2 class="text-lg text-white">TU CÓDIGO DE REFERIDO</h2>
+        <h1 class="text-xl text-white font-bold">{{user.referralCode}}</h1>
+      </div>
+
+      <h2 class="text-lg text-gray-800 mb-2">Comparte tu código por:</h2>
+      <div class="text-center">
+        <a class="app-button mx-1 text-black border-black border-2"
+           href="https://www.facebook.com/dialog/share?app_id=656082591823070&display=popup&quote={{shareMessage}}&href={{shareUrl}}&redirect_uri={{shareRedirectUrl}}}"
+           target="_blank">FACEBOOK </a>
+        <a class="app-button mx-1 text-black border-black border-2" href="https://twitter.com/share?url={{shareUrl}}&text={{shareMessage}}"
+           target="_blank">TWITTER </a>
+        <a class="app-button mx-1 text-black border-black border-2" href="https://api.whatsapp.com/send?text={{shareMessage}}"
+           target="_blank">WHATSAPP</a>
+      </div>
+    </section>
+
+    <a (click)="logout()" class="text-orange-500 font-bold cursor-pointer">CERRAR SESIÓN</a>
   </div>
-
-  <li class="inline-block ml-4 align-middle">
-    <button class="app-button text-black border-black border-2" (click)="logout()">SALIR</button>
-  </li>
 </div>

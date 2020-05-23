@@ -10,14 +10,23 @@ import {Router} from '@angular/router';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  user: UserAccount;
+  user: UserAccount = {};
+  shareUrl: string;
+  shareMessage: string;
+  shareRedirectUrl: string;
 
   constructor(private loaderService: LoaderService, private userAuthenticationService: UserAuthenticationService,
               private router: Router) {
   }
 
   ngOnInit(): void {
-    this.userAuthenticationService.getCurrentUser().subscribe(user => this.user = user);
+    this.userAuthenticationService.getCurrentUser().subscribe(user => {
+      this.user = user;
+      this.shareUrl = 'https://tapit.com.co/?utm_source=referredCode&utm_medium=referral';
+      this.shareRedirectUrl = 'https://tapit.com.co/app/user/profile';
+      this.shareMessage = 'Hola! Me estoy tomando una pola fría y me acorde de ti, entra a ' +
+        encodeURIComponent(this.shareUrl) + ' descarga la app y no olvides ingresar mi código TapIt: ' + this.user.referralCode;
+    });
   }
 
   logout() {
@@ -31,5 +40,4 @@ export class UserProfileComponent implements OnInit {
         this.loaderService.hide();
       });
   }
-
 }

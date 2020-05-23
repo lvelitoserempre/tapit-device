@@ -1,6 +1,6 @@
 <div class="legacy-container" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="50px">
 
-  <div class="legacy-title" fxLayout="row" fxLayoutAlign="center center">
+  <div class="text-6xl font-bold" fxLayout="row" fxLayoutAlign="center center">
     Registrarse
   </div>
 
@@ -69,32 +69,30 @@
             *ngIf="signUpForm.get('birthDate').hasError('underAge') && !signUpForm.get('birthDate').hasError('required')">{{ validationMessages.birthDate.underAge }}</mat-error>
         </mat-form-field>
 
-        <!-- Referral code -->
         <mat-form-field>
           <input formControlName="referralCode" matInput placeholder="Código de referido" type="text">
         </mat-form-field>
 
-        <!-- Terms and conditions -->
-        <div>Al crear una cuenta accedes a nuestros <a href="https://home.gettap.it/terminos" id="terms" target="blank">términos</a>
+        <div class="text-gray-800">
+          Al crear una cuenta accedes a nuestros
+          <a class="text-orange-500 font-bold" href="/terms" target="blank">términos</a>
         </div>
 
-        <!-- Create account button -->
         <button [disabled]="signUpForm.invalid" class="app-button bg-orange-500 min-width-18" type="submit">
           CREAR CUENTA
         </button>
 
-        <button type="button" class="app-button facebook-button min-width-18" (click)="loginWithFacebook()"> INGRESAR
-          CON FACEBOOK
+        <button (click)="loginWithFacebook()" class="app-button facebook-button min-width-18" type="button">
+          INGRESAR CON FACEBOOK
         </button>
 
-        <!-- Login link -->
-        <div fxFlexAlign="center">¿Ya tienes una cuenta <a class="text-orange-500 font-bold" queryParamsHandling="merge"
-                                                           routerLink="/auth/login">INGRESA</a>
+        <div class="text-gray-800" fxFlexAlign="center">
+          ¿Ya tienes una cuenta?
+          <a class="text-orange-500 font-bold" queryParamsHandling="merge" routerLink="/auth/login">INGRESA</a>
         </div>
       </form>
     </div>
 
-    <!-- Right image -->
-    <img class="item" src="../../../../assets/images/signup.svg">
+    <img class="item" src="../../../../assets/images/signup.png">
   </div>
 </div>

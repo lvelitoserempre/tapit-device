@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {from, Observable, ReplaySubject} from 'rxjs';
 import {UserAccount} from '../../../models/user-account.model';
 import {auth, firestore, User} from 'firebase';
-import {map, mergeMap} from 'rxjs/operators';
 import {environment} from '../../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import UserCredential = firebase.auth.UserCredential;
@@ -24,7 +23,7 @@ export class UserAuthenticationService {
         this.cancelUserListener = firestore().collection(environment.firebase.collections.userAccount).doc(user.uid)
           .onSnapshot(snapshot => {
             const userData: UserAccount = {id: snapshot.id, ...snapshot.data()};
-            delete userData.referralCode;
+            userData.referralCode = userData.referralCode.id;
             this.setCurrentUser(userData);
           });
       } else {
