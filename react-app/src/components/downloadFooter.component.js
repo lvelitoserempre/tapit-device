@@ -57,7 +57,7 @@ export default function DownloadFooter(props) {
 
     return (
         <section className='container px-2 transform -translate-y-16 mx-auto'>
-            <div className='bg-gray-100 w-full md:w-8/12 mx-auto py-8'>
+            <div className='bg-gray-100 w-full md:w-10/12 xl:w-8/12 mx-auto py-8'>
                 <div className='w-10/12 mx-auto'>
                     <div className='w-full lg:w-7/12 inline-block'>
                         <p className="text-orange-500 text-4xl" dangerouslySetInnerHTML={{__html: i18next.t("Section6.Title")}} />
@@ -85,7 +85,7 @@ export default function DownloadFooter(props) {
                                     <p dangerouslySetInnerHTML={{__html: i18next.t("Section6.Disclaimer")}} />
                                 </div>
                                 <div className="w-1/2 inline-block align-bottom">
-                                    <img width="120" src={i18next.t("Section6.QrCode")} />
+                                    <img className="max-w-none" width="180" src={i18next.t("Section6.QrCode")} />
                                 </div>
                             </div>
                         :null
