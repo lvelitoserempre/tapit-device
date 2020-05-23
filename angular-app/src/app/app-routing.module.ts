@@ -5,7 +5,6 @@ import {FinalMessageComponent} from './final-message/final-message.component';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: '/user/profile'},
   {
     path: 'auth',
     loadChildren: () => import('./user/user-authentication/user-authentication.module').then(m => m.UserAuthenticationModule)
@@ -15,7 +14,7 @@ const routes: Routes = [
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   },
   {path: 'final-message', component: FinalMessageComponent, canActivate: [AuthGuard]},
-  {path: '**', pathMatch: 'full', redirectTo: 'home'},
+  {path: '**', pathMatch: 'full', redirectTo: '/user/profile'},
 ];
 
 @NgModule({

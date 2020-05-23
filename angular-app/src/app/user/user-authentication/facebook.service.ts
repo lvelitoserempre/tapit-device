@@ -29,8 +29,7 @@ export class FacebookService {
       email: facebookResponse.additionalUserInfo.profile.email,
       firstName: facebookResponse.additionalUserInfo.profile.first_name,
       lastName: facebookResponse.additionalUserInfo.profile.last_name,
-      birthDate: (new Date(facebookResponse.additionalUserInfo.profile.birthday)).toISOString(),
-      origin: 'pola'
+      birthDate: (new Date(facebookResponse.additionalUserInfo.profile.birthday)).toISOString()
     };
   }
 }

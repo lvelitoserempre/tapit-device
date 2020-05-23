@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 
   loginWithFacebook() {
     this.loaderService.show();
-    
+
     this.facebookService.login()
       .subscribe(res => {
           this.loaderService.hide();
