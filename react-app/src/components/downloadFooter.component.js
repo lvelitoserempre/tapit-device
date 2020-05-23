@@ -85,7 +85,7 @@ export default function DownloadFooter(props) {
                                     <p dangerouslySetInnerHTML={{__html: i18next.t("Section6.Disclaimer")}} />
                                 </div>
                                 <div className="w-1/2 inline-block align-bottom">
-                                    <img width="105" src={i18next.t("Section6.QrCode")} />
+                                    <img width="120" src={i18next.t("Section6.QrCode")} />
                                 </div>
                             </div>
                         :null
