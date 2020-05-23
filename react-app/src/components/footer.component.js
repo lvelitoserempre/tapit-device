@@ -9,7 +9,7 @@ export default function FooterSection(props) {
 
     return (
         <footer className='bg-purple-500 w-full mt-10'>
-            <DownloadFooter isMobile={props.isMobile}/>
+            <DownloadFooter isMobile={props.isMobile} urlParams={props.urlParams}/>
             <div className='container pt-8 -mt-6 px-4 md:px-0 mx-auto'>
                 <div className='px-4'>
                     <div className="sm:w-3/12 xl:w-5/12 inline-block align-top">

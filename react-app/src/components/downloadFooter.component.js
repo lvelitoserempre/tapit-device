@@ -61,7 +61,11 @@ export default function DownloadFooter(props) {
                 <div className='w-10/12 mx-auto'>
                     <div className='w-full lg:w-7/12 inline-block'>
                         <p className="text-orange-500 text-4xl" dangerouslySetInnerHTML={{__html: i18next.t("Section6.Title")}} />
-                        <p className="text-gray-800 font-bold">{i18next.t("Section6.Subtitle")}</p>
+                        {
+                            props.isMobile?
+                                null
+                            :<p className="text-gray-800 font-bold">{i18next.t("Section6.Subtitle")}</p>
+                        }
                         {
                             props.isMobile?
                                 isAndroid?

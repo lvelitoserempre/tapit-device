@@ -1,5 +1,6 @@
 .agegate {
     background-color: rgba(0,0,0,0.6);
+    font-size: 34px;
     height: 100%;
     left: 8px;
     position: fixed;
@@ -9,6 +10,12 @@
     @media screen and (max-width: @xs) {
         left: 16px;
     }
+    .section__text {
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
     &__content {
         background-color: white;
         border-radius: 20px;
@@ -17,7 +24,10 @@
             border-radius: 0;
         }
         .section__button {
+            border-radius: 36px;
+            font-size: 34px;
             margin: 20px 0 0;
+            padding: 30px 50px;
         }
         #day, #month {
             width: 100px;
