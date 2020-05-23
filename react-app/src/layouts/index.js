@@ -87,9 +87,16 @@ export default function Index() {
             let secondParam = firstParam[1].split('&m=');
             setUrlParams(secondParam);
         } else if (str != '' && str.includes('utm_source=')) {
-            let firstParam = str.split('utm_source=');
-            let secondParam = firstParam[1].split('&utm_medium=');
-            setUrlParams(secondParam);
+            if (str.indexOf("utm_source=") == 1) {
+                let firstParam = str.split('utm_source=');
+                let secondParam = firstParam[1].split('&utm_medium=');
+                setUrlParams(secondParam);
+            } else {
+                let firstParam = str.split('utm_medium=');
+                let secondParam = firstParam[1].split('&utm_source=');
+                let finalParam = [secondParam[1],secondParam[0]]
+                setUrlParams(finalParam);
+            }
         }
     }
 
