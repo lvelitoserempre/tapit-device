@@ -83,9 +83,16 @@ export default function Index() {
     function getUrlParams() {
         let str = window.location.search.toString();
         if (str != '' && str.includes('s=')) {
-            let firstParam = str.split('s=');
-            let secondParam = firstParam[1].split('&m=');
-            setUrlParams(secondParam);
+            if (str.indexOf("s=") == 1) {
+                let firstParam = str.split('s=');
+                let secondParam = firstParam[1].split('&m=');
+                setUrlParams(secondParam);
+            } else {
+                let firstParam = str.split('m=');
+                let secondParam = firstParam[1].split('&s=');
+                let finalParam = [secondParam[1],secondParam[0]]
+                setUrlParams(finalParam);
+            }
         } else if (str != '' && str.includes('utm_source=')) {
             if (str.indexOf("utm_source=") == 1) {
                 let firstParam = str.split('utm_source=');
