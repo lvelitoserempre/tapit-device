@@ -35,8 +35,8 @@ i18next.init({
                 },
                 Section1: {
                     Title: '<span>La app que premia a los</span> amantes de la cerveza',
-                    Text: 'Descarga Tap it y acumula puntos, solo por tomar cerveza ¡Es muy fácil!',
-                    Button: 'DESCARGA TAP IT',
+                    Text: 'Descarga Tapit y acumula puntos, solo por tomar cerveza ¡Es muy fácil!',
+                    Button: 'DESCARGA TAPIT',
                     Image: '../assets/images/beer-lovers.png',
                     BubbleTop: '../assets/images/TopBubble.svg',
                     BubbleBottom: '../assets/images/BottomBubble.svg'
@@ -45,17 +45,17 @@ i18next.init({
                     Title: '¿Cómo sumo puntos?',
                     Points: [
                         {
-                            Title: '<span>Así acumulas</span></br>puntos con Tap it',
+                            Title: '<span>Así acumulas</span></br>puntos con Tapit',
                             Text: 'Compra un six pack de tu cerveza favorita y escanea el código QR que encontrarás adentro.',
                             Image: '../assets/images/slider/phone-slide1.png'
                         },
                         {
-                            Title: '<span>Así acumulas</span></br>puntos con Tap it',
-                            Text: 'Invita a tus amigos a que descarguen y usen Tap it',
+                            Title: '<span>Así acumulas</span></br>puntos con Tapit',
+                            Text: 'Invita a tus amigos a que descarguen y usen Tapit',
                             Image: '../assets/images/slider/phone-slide2.png'
                         },
                         {
-                            Title: '<span>Así acumulas</span></br>puntos con Tap it',
+                            Title: '<span>Así acumulas</span></br>puntos con Tapit',
                             Text: 'Pide tu cerveza en línea, desde la comodidad de tu casa',
                             Image: '../assets/images/slider/phone-slide3.png'
                         }
