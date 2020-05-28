@@ -4,6 +4,8 @@ import {UserAccount} from '../../../models/user-account.model';
 import {auth, firestore, User} from 'firebase';
 import {environment} from '../../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
+import {switchMap} from 'rxjs/operators';
+import {UserDAO} from '../../user-dao.service';
 import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
@@ -13,7 +15,7 @@ export class UserAuthenticationService {
   private currentUser: ReplaySubject<UserAccount>;
   private cancelUserListener: () => void;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userDAO: UserDAO) {
     this.currentUser = new ReplaySubject<UserAccount>(0);
   }
 
@@ -76,8 +78,14 @@ export class UserAuthenticationService {
     return from(auth().signOut());
   }
 
-  login(email: string, password: string): Observable<UserCredential> {
-    return from(auth().signInWithEmailAndPassword(email, password));
+  login(email: string, password: string): Observable<void> {
+    return from(auth().signInWithEmailAndPassword(email, password))
+      .pipe(switchMap((user: UserCredential) => {
+        return this.userDAO.get(user.user.uid);
+      }))
+      .pipe(switchMap(user => {
+        return this.setCurrentUser(user);
+      }));
   }
 
   signUp(email: string, password: string): Observable<UserCredential> {

@@ -10,7 +10,7 @@
     <div class="inline-block text-center md:text-right w-full md:w-1/2 align-middle">
       <ul *ngIf="user" class="relative">
         <a class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none"
-           href="https://market.tapit.com.co"><i class="uil uil-store text-2xl"></i> MARKET</a>
+           [href]="marketUrl"><i class="uil uil-store text-2xl"></i> MARKET</a>
 
         <ul class="rounded-2xl bg-gray-200 relative inline-block py-2 px-6">
           <li
@@ -25,11 +25,8 @@
       </ul>
 
       <ul *ngIf="!user">
-        <li class="inline-block mr-4 align-middle">
-          <button class="app-button text-black border-black border-2" routerLink="/auth/login"  queryParamsHandling="merge">INICIA SESIÓN</button>
-        </li>
         <li class="inline-block align-middle">
-          <button class="app-button border-2 border-orange-500 bg-orange-500" routerLink="/auth/signup" queryParamsHandling="merge">REGISTRATE
+          <button class="app-button border-2 border-orange-500 bg-orange-500" routerLink="/auth/login" queryParamsHandling="merge">INICIA SESIÓN
           </button>
         </li>
       </ul>

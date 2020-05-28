@@ -9,8 +9,7 @@ import {LoaderModule} from '../../loader/loader.module';
 
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent, canActivate: [AlreadyLoggedInGuard]},
-  {path: 'signup', component: SignUpComponent, canActivate: [AlreadyLoggedInGuard]}
+  {path: 'login', component: LoginComponent, canActivate: [AlreadyLoggedInGuard]}
 ];
 
 @NgModule({
