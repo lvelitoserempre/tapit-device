@@ -3,6 +3,7 @@ import {UserAccount} from '../../models/user-account.model';
 import {UserAuthenticationService} from '../user-authentication/user-authentication-service/user-authentication.service';
 import {LoaderService} from '../../loader/loader-service/loader.service';
 import {Router} from '@angular/router';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-user-profile',
@@ -15,6 +16,7 @@ export class UserProfileComponent implements OnInit {
   shareMessage: string;
   shareRedirectUrl: string;
   sharePlainMessage: string;
+  facebookAppId = environment.production ? '1703386173129451' : '656082591823070';
 
   constructor(private loaderService: LoaderService, private userAuthenticationService: UserAuthenticationService,
               private router: Router) {

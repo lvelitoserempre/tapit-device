@@ -6,6 +6,7 @@ import {DialogService} from 'src/app/dialog/dialog-service/dialog.service';
 import {SignUpValidationMessages, SignUpValidators} from './sign-up.validations';
 import {SignUpService} from '../sign-up.service';
 import {FacebookService} from '../facebook.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-sign-up',
@@ -48,7 +49,7 @@ export class SignUpComponent implements OnInit {
     this.facebookService.login()
       .subscribe(res => {
           this.loaderService.hide();
-          this.navigateBack();
+          this.redirectUser();
         },
         error => {
           this.loaderService.hide();
@@ -56,11 +57,8 @@ export class SignUpComponent implements OnInit {
         });
   }
 
-  navigateBack() {
-    if (this.backUrl) {
-      window.location.replace(this.backUrl);
-    } else {
-      this.router.navigateByUrl('/');
-    }
+  redirectUser() {
+    const redirectUrl = this.backUrl ? this.backUrl : (environment.production ? 'https://market.tapit.com.co' : 'https://market-dev.tapit.com.co');
+    window.location.replace(redirectUrl);
   }
 }

@@ -6,6 +6,7 @@ import {UserAuthenticationService} from '../user-authentication-service/user-aut
 import {DialogService} from '../../../dialog/dialog-service/dialog.service';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {FacebookService} from '../facebook.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.userAuthenticationService.login(email, password)
       .subscribe(res => {
           this.loaderService.hide();
-          this.navigateBack();
+          this.redirectUser();
         },
         error => {
           this.loaderService.hide();
@@ -52,7 +53,7 @@ export class LoginComponent implements OnInit {
     this.facebookService.login()
       .subscribe(res => {
           this.loaderService.hide();
-          this.navigateBack();
+          this.redirectUser();
         },
         error => {
           this.loaderService.hide();
@@ -60,11 +61,8 @@ export class LoginComponent implements OnInit {
         });
   }
 
-  navigateBack() {
-    if (this.backUrl) {
-      window.location.replace(this.backUrl);
-    } else {
-      this.router.navigateByUrl('/');
-    }
+  redirectUser() {
+    const redirectUrl = this.backUrl ? this.backUrl : (environment.production ? 'https://market.tapit.com.co' : 'https://market-dev.tapit.com.co');
+    window.location.replace(redirectUrl);
   }
 }

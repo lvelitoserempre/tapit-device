@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
 import {from} from 'rxjs';
 import {auth} from 'firebase';
-import {mergeMap} from 'rxjs/operators';
+import {mergeMap, switchMap} from 'rxjs/operators';
 import {UserDAO} from '../user-dao.service';
+import {UserAuthenticationService} from './user-authentication-service/user-authentication.service';
+import {UserAccount} from '../../models/user-account.model';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
 
 @Injectable({
@@ -11,7 +13,7 @@ import FacebookAuthProvider = auth.FacebookAuthProvider;
 export class FacebookService {
   private facebookAuthProvider: FacebookAuthProvider;
 
-  constructor(private userDAO: UserDAO) {
+  constructor(private userDAO: UserDAO, private authenticationService: UserAuthenticationService) {
     this.facebookAuthProvider = new FacebookAuthProvider();
     this.facebookAuthProvider.addScope('user_birthday');
   }
@@ -21,6 +23,12 @@ export class FacebookService {
       .pipe(mergeMap((facebookResponse) => {
         const userData = this.parseUserData(facebookResponse);
         return this.userDAO.checkUser(userData);
+      }))
+      .pipe(switchMap(() => {
+        return this.userDAO.get(auth().currentUser.uid);
+      }))
+      .pipe(switchMap((user: UserAccount) => {
+        return this.authenticationService.setCurrentUser(user);
       }));
   }
 
