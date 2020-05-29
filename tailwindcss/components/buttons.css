@@ -6,10 +6,6 @@
   @apply outline-none;
 }
 
-.app-button:focus {
-  @apply outline-none;
-}
-
 .app-button:disabled {
   @apply opacity-25;
 }
