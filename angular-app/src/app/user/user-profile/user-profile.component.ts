@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserAccount} from '../../models/user-account.model';
-import {UserAuthenticationService} from '../user-authentication/user-authentication-service/user-authentication.service';
+import {AuthService} from '../user-authentication/user-authentication-service/auth.service';
 import {LoaderService} from '../../loader/loader-service/loader.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
 
 @Component({
@@ -11,27 +11,25 @@ import {environment} from '../../../environments/environment';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  user: UserAccount = {};
+  user: UserAccount = {firstName: '', lastName: ''};
   shareUrl: string;
   shareMessage: string;
   shareRedirectUrl: string;
   sharePlainMessage: string;
   facebookAppId = environment.production ? '1703386173129451' : '656082591823070';
 
-  constructor(private loaderService: LoaderService, private userAuthenticationService: UserAuthenticationService,
-              private router: Router) {
+  constructor(private loaderService: LoaderService, private userAuthenticationService: AuthService,
+              private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.userAuthenticationService.getCurrentUser().subscribe(user => {
-      if (user) {
-        this.user = user;
-        this.shareUrl = 'https://tapit.com.co/?utm_source=referredCode&utm_medium=referral';
-        this.shareRedirectUrl = 'https://tapit.com.co/app/user/profile';
-        this.shareMessage = 'Hola! Me estoy tomando una pola fría y me acorde de ti, entra a ' +
-          encodeURIComponent(this.shareUrl) + ' descarga la app y no olvides ingresar mi código TapIt: ' + this.user.referralCode;
-        this.sharePlainMessage = 'Hola! Me estoy tomando una pola fría y me acorde de ti, entra a tapit.com.co descarga la app y no olvides ingresar mi código TapIt: ' + this.user.referralCode;
-      }
+    this.activatedRoute.data.subscribe(data => {
+      this.user = data.user;
+      this.shareUrl = 'https://tapit.com.co/?utm_source=referredCode&utm_medium=referral';
+      this.shareRedirectUrl = 'https://tapit.com.co/app/user/profile';
+      this.shareMessage = 'Hola! Me estoy tomando una pola fría y me acorde de ti, entra a ' +
+        encodeURIComponent(this.shareUrl) + ' descarga la app y no olvides ingresar mi código TapIt: ' + this.user.referralCode;
+      this.sharePlainMessage = 'Hola! Me estoy tomando una pola fría y me acorde de ti, entra a tapit.com.co descarga la app y no olvides ingresar mi código TapIt: ' + this.user.referralCode;
     });
   }
 

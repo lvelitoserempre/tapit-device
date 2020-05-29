@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserAuthenticationService} from './user/user-authentication/user-authentication-service/user-authentication.service';
+import {AuthService} from './user/user-authentication/user-authentication-service/auth.service';
 import {environment} from '../environments/environment';
 import {initializeApp} from 'firebase';
 
@@ -13,7 +13,7 @@ declare var ga;
 })
 export class AppComponent implements OnInit {
 
-  constructor(private userService: UserAuthenticationService) {
+  constructor(private userService: AuthService) {
   }
 
   ngOnInit(): void {
