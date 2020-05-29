@@ -3,7 +3,7 @@ import {from} from 'rxjs';
 import {auth} from 'firebase';
 import {mergeMap, switchMap} from 'rxjs/operators';
 import {UserDAO} from '../user-dao.service';
-import {UserAuthenticationService} from './user-authentication-service/user-authentication.service';
+import {AuthService} from './user-authentication-service/auth.service';
 import {UserAccount} from '../../models/user-account.model';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
 
@@ -13,7 +13,7 @@ import FacebookAuthProvider = auth.FacebookAuthProvider;
 export class FacebookService {
   private facebookAuthProvider: FacebookAuthProvider;
 
-  constructor(private userDAO: UserDAO, private authenticationService: UserAuthenticationService) {
+  constructor(private userDAO: UserDAO, private authenticationService: AuthService) {
     this.facebookAuthProvider = new FacebookAuthProvider();
     this.facebookAuthProvider.addScope('user_birthday');
   }

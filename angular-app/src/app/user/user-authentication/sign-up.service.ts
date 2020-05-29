@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {from} from 'rxjs';
 import {mergeMap} from 'rxjs/operators';
-import {UserAuthenticationService} from './user-authentication-service/user-authentication.service';
+import {AuthService} from './user-authentication-service/auth.service';
 import {UserDAO} from '../user-dao.service';
 import UserCredential = firebase.auth.UserCredential;
 
@@ -10,7 +10,7 @@ import UserCredential = firebase.auth.UserCredential;
 })
 export class SignUpService {
 
-  constructor(private userAuthenticationService: UserAuthenticationService, private userDAO: UserDAO) {
+  constructor(private userAuthenticationService: AuthService, private userDAO: UserDAO) {
   }
 
   signUp(form) {

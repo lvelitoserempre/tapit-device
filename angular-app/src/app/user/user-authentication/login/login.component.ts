@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LoaderService} from 'src/app/loader/loader-service/loader.service';
-import {UserAuthenticationService} from '../user-authentication-service/user-authentication.service';
+import {AuthService} from '../user-authentication-service/auth.service';
 import {DialogService} from '../../../dialog/dialog-service/dialog.service';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {FacebookService} from '../facebook.service';
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   private backUrl: string;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute, private loaderService: LoaderService,
-              private dialogService: DialogService, private userAuthenticationService: UserAuthenticationService,
+              private dialogService: DialogService, private userAuthenticationService: AuthService,
               private facebookService: FacebookService) {
     this.loginForm = this.formBuilder.group(LoginValidators);
   }
@@ -53,7 +53,8 @@ export class LoginComponent implements OnInit {
     this.facebookService.login()
       .subscribe(res => {
           this.loaderService.hide();
-          this.redirectUser();
+          this.router.navigateByUrl('user/profile');
+          //this.redirectUser();
         },
         error => {
           this.loaderService.hide();

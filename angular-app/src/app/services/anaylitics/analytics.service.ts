@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {UserAuthenticationService} from '../../user/user-authentication/user-authentication-service/user-authentication.service';
+import {AuthService} from '../../user/user-authentication/user-authentication-service/auth.service';
 
 declare var dataLayer;
 declare var ga;
@@ -10,7 +10,7 @@ declare var ga;
 export class AnalyticsService {
 
 
-  constructor(private userService: UserAuthenticationService) {
+  constructor(private userService: AuthService) {
   }
 
   sendUserId() {
