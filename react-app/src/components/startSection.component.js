@@ -26,11 +26,11 @@ export default function StartSection(props) {
                 <div className="section__button-container mt-5">
                     {
                         isIos?
-                            <a className="section__button" href={i18next.t("Section6.appStoreUrl")} target="_blank" >{i18next.t("Section1.Button")}</a>
+                            <a className="app-button border-2 border-orange-500 bg-orange-500 text-white" href={i18next.t("Section6.appStoreUrl")} target="_blank" >{i18next.t("Section1.Button")}</a>
                         :
-                            <a className="section__button" href={`${i18next.t("Section6.googlePlayUrl")+params}`} target="_blank" >{i18next.t("Section1.Button")}</a>
+                            <a className="app-button border-2 border-orange-500 bg-orange-500 text-white" href={`${i18next.t("Section6.googlePlayUrl")+params}`} target="_blank" >{i18next.t("Section1.Button")}</a>
                     }
-                    
+
                 </div>
             </div>
             <div className="col-xs-12 col-md-4 col-lg-4 col-md-offset-1 col-lg-offset-0 middle-xs section__start-content center-xs end-md">
@@ -41,6 +41,6 @@ export default function StartSection(props) {
             </div>
         </section>
     )
-    
+
 
 }

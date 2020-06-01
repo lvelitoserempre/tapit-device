@@ -16,10 +16,10 @@ export class UserDAO {
   }
 
   get(id: string): Observable<UserAccount> {
-    return from(firestore().collection(environment.firebase.collections.userAccount).doc(id).get())
+    return from(firestore().collection(this.collection).doc(id).get())
       .pipe(map(documentSnapshot => {
         const user: UserAccount = {id: documentSnapshot.id, ...documentSnapshot.data()};
-        user.referralCode = user.referralCode.id;
+        user.referralCode = user.referralCode?.id;
 
         return user;
       }));

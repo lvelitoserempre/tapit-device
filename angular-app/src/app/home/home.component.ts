@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
     });
 
     this.isMobile = this.detectMobile();
-    this.analyticsService.sendUserId();
+    // this.analyticsService.sendUserId();
   }
 
   selectedBill(event: any) {

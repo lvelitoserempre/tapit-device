@@ -21,6 +21,6 @@ export const environment = {
       sendDigitalInvoice: '/api-receiveDigitalInvoice'
     },
   },
-  googleAnalyticsId: 'UA-159252784-4',
-  googleTagManagerId: 'GTM-MKLL6C7'
+  googleAnalyticsId: 'UA-159252784-5',
+  googleTagManagerId: 'GTM-MGL9B93'
 };

@@ -53,8 +53,7 @@ export class LoginComponent implements OnInit {
     this.facebookService.login()
       .subscribe(res => {
           this.loaderService.hide();
-          this.router.navigateByUrl('user/profile');
-          //this.redirectUser();
+          this.redirectUser();
         },
         error => {
           this.loaderService.hide();
@@ -64,6 +63,8 @@ export class LoginComponent implements OnInit {
 
   redirectUser() {
     const redirectUrl = this.backUrl ? this.backUrl : (environment.production ? 'https://market.tapit.com.co' : 'https://market-dev.tapit.com.co');
-    window.location.replace(redirectUrl);
+    this.router.navigateByUrl('user/profile');
+    //window.location.replace(redirectUrl);
   }
+
 }

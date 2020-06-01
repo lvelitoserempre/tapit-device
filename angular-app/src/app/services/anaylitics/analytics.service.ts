@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {AuthService} from '../../user/user-authentication/user-authentication-service/auth.service';
 
 declare var dataLayer;
 declare var ga;
@@ -10,16 +9,17 @@ declare var ga;
 export class AnalyticsService {
 
 
-  constructor(private userService: AuthService) {
+  constructor() {
   }
 
-  sendUserId() {
-    this.userService.getCurrentUser().subscribe(user => {
-      if (user) {
-        dataLayer.push({event: 'userId', uid: user.id});
-      }
-    });
-  }
+  /*
+    sendUserId() {
+      this.userService.getCurrentUser().subscribe(user => {
+        if (user) {
+          dataLayer.push({event: 'userId', uid: user.id});
+        }
+      });
+    }*/
 
   sendCustomEvent(event) {
     ga('send', event);
