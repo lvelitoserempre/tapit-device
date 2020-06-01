@@ -2,6 +2,8 @@
 
 @import "tailwindcss/components";
 @import "./components/buttons.css";
+@import "./components/tags.css";
+@import "./components/links.css";
 
 @import "tailwindcss/utilities";
 

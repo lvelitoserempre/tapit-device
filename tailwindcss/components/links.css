@@ -1,0 +1,7 @@
+.active.app-link {
+    @apply text-purple-500;
+}
+
+.active.app-link i{
+    @apply text-orange-500;
+}

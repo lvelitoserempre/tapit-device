@@ -10,7 +10,7 @@ i18next.init({
                         LogoPolas: '../assets/images/billLayout/PloasLogo.svg',
                         UrlLogin: '/app/auth/login',
                         UrlSignup: '/app/auth/signup',
-                        LoginText: 'Inicia sesión',
+                        LoginText: 'INICIA SESIÓN',
                         SignupText: 'Regístrate'
                     },
                     Section1: {
@@ -163,7 +163,7 @@ i18next.init({
                     ConfigurationUrl: '#'
                 },
                 TagManagerDev: 'GTM-NFCC7RC',
-                TagManagerProd: 'GTM-MKLL6C7',
+                TagManagerProd: 'GTM-MGL9B93',
                 PordEnvironment: 'https://tapit.com.co',
                 ApiUrlDev: 'https://api-dev.tapit.com.co/',
                 ApiUrlProd: 'https://api.tapit.com.co/',

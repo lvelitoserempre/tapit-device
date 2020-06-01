@@ -6,6 +6,7 @@ import {environment} from '../../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {switchMap} from 'rxjs/operators';
 import {UserDAO} from '../../user-dao.service';
+import {AnalyticsService} from '../../../services/anaylitics/analytics.service';
 import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
@@ -15,7 +16,7 @@ export class AuthService {
   private currentUser: ReplaySubject<UserAccount>;
   private cancelUserListener: () => void;
 
-  constructor(private http: HttpClient, private userDAO: UserDAO) {
+  constructor(private http: HttpClient, private userDAO: UserDAO, private analyticsService: AnalyticsService) {
     this.currentUser = new ReplaySubject<UserAccount>(0);
   }
 
@@ -84,11 +85,20 @@ export class AuthService {
         return this.userDAO.get(user.user.uid);
       }))
       .pipe(switchMap(user => {
+        this.sendEventToAnalytics();
         return this.setCurrentUser(user);
       }));
   }
 
   signUp(email: string, password: string): Observable<UserCredential> {
     return from(auth().createUserWithEmailAndPassword(email, password));
+  }
+
+  private sendEventToAnalytics() {
+    this.analyticsService.sendCustomEvent({
+      hitType: 'event',
+      eventAction: 'login',
+      eventLabel: 'login-email'
+    });
   }
 }

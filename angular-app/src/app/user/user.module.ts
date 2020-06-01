@@ -4,6 +4,7 @@ import {AppCommonModule} from '../app-common.module';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthGuard} from './user-authentication/authentication-guards/auth.guard';
 import {UserResolverService} from './user-resolver.service';
+import { MyCodesComponent } from './codes/codes.component';
 
 const routes: Routes = [
   {
@@ -11,11 +12,12 @@ const routes: Routes = [
     component: UserProfileComponent,
     canActivate: [AuthGuard],
     resolve: {user: UserResolverService}
-  }
+  },
+  {path: 'codes', component: MyCodesComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
-  declarations: [UserProfileComponent],
+  declarations: [UserProfileComponent, MyCodesComponent],
   imports: [
     AppCommonModule,
     RouterModule.forChild(routes)
