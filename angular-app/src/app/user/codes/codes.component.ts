@@ -10,7 +10,8 @@ import { Subscription } from 'rxjs';
 })
 export class MyCodesComponent implements OnInit, OnDestroy {
   codesSubscription: Subscription;
-  codes: Code[]
+  codes: Code[];
+  showSpinner: boolean = true;
 
   constructor(private codeDAO: CodeDAO) { }
   ngOnDestroy(): void {
@@ -19,6 +20,7 @@ export class MyCodesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.codesSubscription = this.codeDAO.getAll().subscribe((codes: Code[]) => {
+      this.showSpinner = false;
       this.codes = codes;
     })
   }
