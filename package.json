@@ -26,5 +26,8 @@
     "deploy-testing": "cross-env environment=testing gulp build-and-deploy",
     "deploy-production": "cross-env environment=production gulp build-and-deploy"
   },
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dependencies": {
+    "gulp-rename": "^2.0.0"
+  }
 }

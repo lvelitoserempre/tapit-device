@@ -1,0 +1,35 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.abinbev.tapit.debug",
+      "sha256_cert_fingerprints": [
+        "94:CA:0A:78:CD:CC:6A:EB:C6:06:40:44:5E:CD:92:C7:97:0D:18:C1:DC:CD:83:6A:42:48:12:B9:34:4D:03:11"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "web",
+      "site": "https://dev.tapit.com.co"
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.abinbev.tapit.debug",
+      "sha256_cert_fingerprints": [
+        "94:CA:0A:78:CD:CC:6A:EB:C6:06:40:44:5E:CD:92:C7:97:0D:18:C1:DC:CD:83:6A:42:48:12:B9:34:4D:03:11"
+      ]
+    }
+  }
+]
