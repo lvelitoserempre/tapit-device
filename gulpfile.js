@@ -8,6 +8,7 @@ const postcssImport = require('postcss-import');
 const tailwindcss = require('tailwindcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+const rename = require('gulp-rename');
 
 function runCommand(command, folder) {
   return run(command, {cwd: folder})
@@ -32,6 +33,13 @@ task('clear', function () {
 
 task('copy-static', function () {
   return src('static/**').pipe(copy('dist', {prefix: 1}));
+});
+
+task('copy-assetlinks', function () {
+  const file = process.env.environment === 'production' ? 'assetlinks.prod.json' : 'assetlinks.dev.json';
+  return src('.well-known/'+file)
+  .pipe(rename("assetlinks.json"))
+  .pipe(dest("./dist/.well-known"));
 });
 
 task('build-tailwind', function () {
@@ -63,6 +71,6 @@ task('deploy', function () {
   return runCommand(command, folder);
 })
 
-task('build', series('clear', 'build-tailwind', 'copy-static', 'build-react-app', 'build-angular-app'));
+task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'build-react-app', 'build-angular-app'));
 
-task('build-and-deploy', series('clear', 'build-tailwind', 'copy-static', 'build-react-app', 'build-angular-app', 'deploy'));
+task('build-and-deploy', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'build-react-app', 'build-angular-app', 'deploy'));
