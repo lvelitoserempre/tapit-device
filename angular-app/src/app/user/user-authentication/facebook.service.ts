@@ -26,12 +26,8 @@ export class FacebookService {
         const userData = this.parseUserData(facebookResponse);
         return this.userDAO.checkUser(userData);
       }))
-      .pipe(switchMap((res) => {
-        console.log('check user', res);
-        return this.userDAO.get(auth().currentUser.uid);
-      }))
-      .pipe(switchMap((user: UserAccount) => {
-        return this.authenticationService.setCurrentUser(user);
+      .pipe(switchMap((res: any) => {
+        return this.authenticationService.setCurrentUser(res.data);
       }));
   }
 
