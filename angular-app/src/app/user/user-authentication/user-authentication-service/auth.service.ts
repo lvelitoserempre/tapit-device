@@ -55,7 +55,7 @@ export class AuthService {
 
   saveUserToLocalStorage(user: UserAccount) {
     if (user) {
-      window.localStorage.setItem('user', JSON.stringify(user));
+      window.localStorage.setItem('user', this.extractBasicData(user));
     } else {
       window.localStorage.removeItem('user');
     }
@@ -63,7 +63,7 @@ export class AuthService {
 
   saveUserToACookie(user: UserAccount) {
     if (user) {
-      document.cookie = 'loggedUser=' + encodeURIComponent(JSON.stringify(user)) + ';max-age=31536000;path=/;domain=tapit.com.co';
+      document.cookie = 'loggedUser=' + encodeURIComponent(this.extractBasicData(user)) + ';max-age=31536000;path=/;domain=tapit.com.co';
     } else {
       document.cookie = 'loggedUser=;max-age=0;path=/;domain=tapit.com.co';
     }
@@ -97,6 +97,18 @@ export class AuthService {
       hitType: 'event',
       eventAction: 'login',
       eventLabel: 'login-email'
+    });
+  }
+
+  private extractBasicData(data: UserAccount): string {
+    return JSON.stringify({
+      id: data.id,
+      email: data.email,
+      firstName: data.firstName || '',
+      lastName: data.lastName || '',
+      points: data.points || 0,
+      idToken: data.idToken,
+      refreshToken: data.refreshToken
     });
   }
 }

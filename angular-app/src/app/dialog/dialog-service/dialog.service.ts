@@ -57,11 +57,11 @@ export class DialogService {
   /**
    * Opens the sign up error dialog and returns the dialog reference for further actions
    */
-  openSignUpErrorDialog(): MatDialogRef<DialogComponent> {
+  openSignUpErrorDialog(error: any): MatDialogRef<DialogComponent> {
     // TODO: translate
     const dialogConfig: DialogConfigurationModel = {
-      title: 'Error en alta de usuario',
-      message: 'Se ha producido un error al crear el usuario. Por favor, revisa los datos del formulario.',
+      title: 'Error',
+      message: 'Se ha producido un error desconocido.',
       buttonOne: 'Aceptar'
     };
 
@@ -94,7 +94,7 @@ export class DialogService {
     } else if (error.code === AUTH_ERRORS.USER_CANCELLED || error.code === AUTH_ERRORS.POPUP_CLOSED_BY_USER) {
       this.openWrongPasswordErrorDialog('Debes autorizar el uso de tus datos en la ventana de facebook.');
     } else {
-      this.openSignUpErrorDialog();
+      this.openSignUpErrorDialog(error);
     }
     throw error;
   }
