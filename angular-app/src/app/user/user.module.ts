@@ -12,8 +12,8 @@ const routes: Routes = [
     component: UserProfileComponent,
     canActivate: [AuthGuard],
     resolve: {user: UserResolverService}
-  },
-  {path: 'codes', component: MyCodesComponent, canActivate: [AuthGuard]}
+  }/*,
+  {path: 'codes', component: MyCodesComponent, canActivate: [AuthGuard]}*/
 ];
 
 @NgModule({

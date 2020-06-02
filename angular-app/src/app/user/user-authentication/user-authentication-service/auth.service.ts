@@ -25,9 +25,7 @@ export class AuthService {
       if (user && !this.cancelUserListener) {
         this.cancelUserListener = firestore().collection(environment.firebase.collections.userAccount).doc(user.uid)
           .onSnapshot(snapshot => {
-            const userData: UserAccount = {id: snapshot.id, ...snapshot.data()};
-            userData.referralCode = userData.referralCode.id;
-            this.setCurrentUser(userData);
+            this.setCurrentUser(UserDAO.snapshotToUser(snapshot));
           });
       } else {
         if (this.cancelUserListener) {

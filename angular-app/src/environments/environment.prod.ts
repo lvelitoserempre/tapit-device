@@ -18,6 +18,7 @@ export const environment = {
       url: 'https://api.tapit.com.co',
       checkUser: '/v1/user/check',
       getAllEvents: '/v1/list/events',
+      getAllCodes: '/v1/tapits/',
       sendDigitalInvoice: '/api-receiveDigitalInvoice'
     },
   },

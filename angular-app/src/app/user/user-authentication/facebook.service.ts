@@ -27,7 +27,10 @@ export class FacebookService {
         return this.userDAO.checkUser(userData);
       }))
       .pipe(switchMap((res: any) => {
-        return this.authenticationService.setCurrentUser(res.data);
+        return this.userDAO.get(auth().currentUser.uid);
+      }))
+      .pipe(switchMap((res: any) => {
+        return this.authenticationService.setCurrentUser(res);
       }));
   }
 

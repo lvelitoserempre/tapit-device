@@ -5,6 +5,7 @@ import {auth, firestore} from 'firebase';
 import {map, mergeMap} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
+import DocumentSnapshot = firestore.DocumentSnapshot;
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +16,18 @@ export class UserDAO {
   constructor(private http: HttpClient) {
   }
 
+
+  static snapshotToUser(documentSnapshot: DocumentSnapshot): UserAccount {
+    const user: UserAccount = {id: documentSnapshot.id, ...documentSnapshot.data()};
+
+    user.referralCode = user.referralCode ? user.referralCode.id : '';
+
+    return user;
+  }
+
   get(id: string): Observable<UserAccount> {
     return from(firestore().collection(this.collection).doc(id).get())
-      .pipe(map(documentSnapshot => {
-        const user: UserAccount = {id: documentSnapshot.id, ...documentSnapshot.data()};
-        user.referralCode = user.referralCode?.id;
-
-        return user;
-      }));
+      .pipe(map(documentSnapshot => UserDAO.snapshotToUser(documentSnapshot)));
   }
 
   checkUser(user: UserAccount) {
