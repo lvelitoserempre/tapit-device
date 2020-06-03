@@ -34,8 +34,11 @@ export class CodeDAO {
               name: object.commercialEstablishment.name, 
               amount: object.amount,
               expireDate: new Date(object.validTo),
-              image: object.imageUrl,
-              tags: object.tags });
+              image: object.commercialEstablishment.icon,
+              tags: object.tags,
+              qrCodeUrl: object.qrCodeUrl,
+              description: object.description
+             });
           }
           return codes;
         }));

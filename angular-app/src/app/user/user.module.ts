@@ -5,6 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AuthGuard} from './user-authentication/authentication-guards/auth.guard';
 import {UserResolverService} from './user-resolver.service';
 import { MyCodesComponent } from './codes/codes.component';
+import { CodeDetailDialogComponent } from './codes/code-detail-dialog/code-detail-dialog.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [UserProfileComponent, MyCodesComponent],
+  declarations: [UserProfileComponent, MyCodesComponent, CodeDetailDialogComponent],
   imports: [
     AppCommonModule,
     RouterModule.forChild(routes)

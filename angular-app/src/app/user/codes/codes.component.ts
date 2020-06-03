@@ -3,6 +3,9 @@ import { CodeDAO } from './code-dao.service';
 import Code from './codes';
 import { Subscription } from 'rxjs';
 import {LoaderService} from 'src/app/loader/loader-service/loader.service';
+import { DialogService } from 'src/app/dialog/dialog-service/dialog.service';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { CodeDetailDialogComponent } from './code-detail-dialog/code-detail-dialog.component';
 
 @Component({
   selector: 'app-codes',
@@ -13,7 +16,8 @@ export class MyCodesComponent implements OnInit, OnDestroy {
   codesSubscription: Subscription;
   codes: Code[];
 
-  constructor(private codeDAO: CodeDAO, private loaderService: LoaderService,) { }
+  constructor(private codeDAO: CodeDAO, private loaderService: LoaderService, 
+    private dialogService: DialogService, private dialog: MatDialog) { }
   ngOnDestroy(): void {
     this.codesSubscription.unsubscribe();
   }
@@ -26,4 +30,10 @@ export class MyCodesComponent implements OnInit, OnDestroy {
     })
   }
 
+  showQRDetail(code): void {
+    this.dialog.open(CodeDetailDialogComponent, {
+      panelClass: ['dialog'],
+      data: code
+    });
+  }
 }

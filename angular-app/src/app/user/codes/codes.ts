@@ -4,4 +4,6 @@ export default interface Code {
     expireDate: Date;
     image: string;
     tags: [];
+    qrCodeUrl: string;
+    description: string;
 }

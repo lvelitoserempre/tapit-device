@@ -5,7 +5,7 @@
         
     <div class="w-full sm:w-1/2 inline-block px-4"
         *ngFor="let code of codes">
-        <section class=" border-4 border-white bg-gray-100 px-2 py-2 cursor-pointer">
+        <section class=" border-4 border-white bg-gray-100 px-2 py-2">
             <div class="p-1 table w-full mb-6">
                 <div class="w-1/2 table-cell align-middle">
                     <h4 class="text-purple-500 text-base font-normal mb-2">{{code.name}}</h4>
@@ -21,7 +21,7 @@
                 <p class="table-cell text-xs text-gray-700 text-left">
                     <span class="uil uil-clock text-base"></span>Hasta: {{ code.expireDate | date : 'dd/MM/yyyy' }}
                 </p>
-                <a class="table-cell text-xs text-orange-500 text-right uppercase font-bold tracking-wider" href="javascript:void(0)">ver código QR</a>
+                <a class="table-cell text-xs text-orange-500 text-right uppercase font-bold tracking-wider" href="javascript:void(0)" (click)="showQRDetail(code)">ver código QR</a>
             </div>
         </section>
     </div>

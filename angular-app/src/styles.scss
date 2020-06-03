@@ -6,6 +6,12 @@
   font-family: filson-soft;
 }
 
+.dialog {
+  .mat-dialog-container {
+    border-radius: 2rem;
+  }
+}
+
 .slick-slider {
   .slick-arrow {
     bottom: -100px;
