@@ -59,12 +59,12 @@ export default function DownloadFooter(props) {
         <section className='container px-2 transform -translate-y-16 mx-auto'>
             <div className='bg-gray-100 w-full md:w-10/12 xl:w-8/12 mx-auto py-8'>
                 <div className='w-10/12 mx-auto'>
-                    <div className='w-full lg:w-7/12 inline-block'>
+                    <div className='w-full lg:w-7/12 inline-block align-middle'>
                         <p className="text-orange-500 text-4xl" dangerouslySetInnerHTML={{__html: i18next.t("Section6.Title")}} />
                         {
                             props.isMobile?
                                 null
-                            :<p className="text-gray-800 font-bold">{i18next.t("Section6.Subtitle")}</p>
+                            :<p className="text-gray-800 font-bold mb-8">{i18next.t("Section6.Subtitle")}</p>
                         }
                         {
                             props.isMobile?
@@ -80,11 +80,11 @@ export default function DownloadFooter(props) {
                     </div>
                     {
                         !props.isMobile?
-                            <div className='w-full lg:w-5/12 inline-block'>
-                                <div className="w-1/2 inline-block align-bottom">
+                            <div className='w-full lg:w-5/12 inline-block align-middle'>
+                                <div className="w-1/2 inline-block align-middle">
                                     <p dangerouslySetInnerHTML={{__html: i18next.t("Section6.Disclaimer")}} />
                                 </div>
-                                <div className="w-1/2 inline-block align-bottom">
+                                <div className="w-1/2 inline-block align-middle">
                                     <img className="max-w-none" width="180" src={i18next.t("Section6.QrCode")} />
                                 </div>
                             </div>
