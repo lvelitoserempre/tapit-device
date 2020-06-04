@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
   }
 
   redirectUser() {
-    const redirectUrl = this.backUrl ? this.backUrl : (environment.production ? 'https://market.tapit.com.co' : 'https://market-dev.tapit.com.co');
+    const redirectUrl = this.backUrl ? this.backUrl : environment.marketUrl;
     window.location.replace(redirectUrl);
   }
 

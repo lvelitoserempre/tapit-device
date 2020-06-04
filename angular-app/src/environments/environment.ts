@@ -22,6 +22,7 @@ export const environment = {
       sendDigitalInvoice: '/v1/digitalinvoice'
     }
   },
+  marketUrl: 'https://market-dev.tapit.com.co/api/vtexid/pub/logout?scope=bavariaco&returnUrl=https://market-dev.tapit.com.co/dev',
   googleAnalyticsId: 'UA-159252784-3',
   googleTagManagerId: 'GTM-NFCC7RC'
 };

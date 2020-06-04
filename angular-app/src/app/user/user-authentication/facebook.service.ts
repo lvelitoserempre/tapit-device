@@ -46,8 +46,8 @@ export class FacebookService {
   private sendEventToAnalytics(isNewUser: boolean) {
     this.analyticsService.sendCustomEvent({
       hitType: 'event',
-      eventAction: isNewUser ? 'signup' : 'login',
-      eventLabel: 'login-facebook'
+      eventCategory: isNewUser ? 'signup' : 'login',
+      eventAction: 'login-facebook'
     });
   }
 }

@@ -20,8 +20,9 @@ export const environment = {
       getAllEvents: '/v1/list/events',
       getAllCodes: '/v1/tapits/',
       sendDigitalInvoice: '/api-receiveDigitalInvoice'
-    },
+    }
   },
+  marketUrl: 'https://market.tapit.com.co/api/vtexid/pub/logout?scope=bavariaco&returnUrl=https://market.tapit.com.co',
   googleAnalyticsId: 'UA-159252784-5',
   googleTagManagerId: 'GTM-MGL9B93'
 };

@@ -95,8 +95,8 @@ export class AuthService {
   private sendEventToAnalytics() {
     this.analyticsService.sendCustomEvent({
       hitType: 'event',
-      eventAction: 'login',
-      eventLabel: 'login-email'
+      eventCategory: 'login',
+      eventAction: 'login-email'
     });
   }
 
