@@ -1,33 +1,34 @@
 .agegate {
     background-color: rgba(0,0,0,0.6);
-    font-size: 34px;
+    font-size: 28px;
     height: 100%;
     left: 8px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 2;
-    @media screen and (max-width: @xs) {
-        left: 16px;
+    >.row {
+        margin: 0;
+        padding: 0;
     }
     .section__text {
-        margin-block-start: 1em;
-        margin-block-end: 1em;
+        margin-block-start: 0.5em;
+        margin-block-end: 0.7em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
     }
     &__content {
         background-color: white;
         border-radius: 20px;
-        padding: 30px;
+        padding: 20px 30px;
         @media screen and (max-width: @xs) {
             border-radius: 0;
         }
         .section__button {
             border-radius: 36px;
-            font-size: 34px;
+            font-size: 26px;
             margin: 20px 0 0;
-            padding: 30px 50px;
+            padding: 24px 50px;
         }
         #day, #month {
             width: 100px;
