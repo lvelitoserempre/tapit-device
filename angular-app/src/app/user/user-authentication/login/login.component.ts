@@ -61,7 +61,12 @@ export class LoginComponent implements OnInit {
         });
   }
 
+  setCookie(name:string,cvalue:boolean) {
+      document.cookie = name + "=" + cvalue + ";domain=tapit.com.co;path=/;max-age=31536000"
+  }
+
   redirectUser() {
+    this.setCookie('setItems',false);
     const redirectUrl = this.backUrl ? this.backUrl : environment.marketUrl;
     window.location.replace(redirectUrl);
   }
