@@ -9,7 +9,7 @@ import Code from '../codes';
 })
 export class CodeDetailDialogComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Code) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public code: Code) { }
 
   ngOnInit(): void {
   }
