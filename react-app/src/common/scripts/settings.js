@@ -97,34 +97,37 @@ i18next.init({
                     ]
                 },
                 Section6: {
-                    Title: 'Descarga Tapit',
-                    Subtitle: 'en iOS y Android...',
+                    Title: 'Descarga la app',
+                    Subtitle: 'Para verdaderos amantes de la cerveza',
                     LeftPhone: '../assets/images/download/leftPhone.png',
                     RightPhone: '../assets/images/download/rightPhone.png',
                     appStore: '../assets/images/download/appStore.svg',
                     googlePlay: '../assets/images/download/googlePlay.svg',
                     appStoreUrl: 'https://apps.apple.com/us/app/tapit/id1481852424?ls=1',
                     googlePlayUrl: 'https://play.google.com/store/apps/details?id=com.abinbev.tapit',
-                    Disclaimer: '<span class="font-bold">Código QR</span></br>O escanea este código en tu teléfono',
-                    QrCode: '../assets/images/download/onlink_to_9mttry.svg'
+                    Disclaimer: 'O escanea este código QR con tu teléfono móvil para descargar la app.',
+                    QrCode: '../assets/images/download/onlink_to_9mttry.svg',
+                    ButtonImg: '../assets/images/download/spotlight-icon.png',
+                    ButtonText: 'Descargar app',
+                    BobileDevices: '* Disponible únicamente para dispositivos móviles'
                 },
                 Footer: {
-                    TextFollow: 'Siguenos en:',
+                    TextFollow: 'Siguenos en',
                     Social: [
                         {
-                            Image: '../assets/images/footer/logo-facebbok.svg',
+                            Image: '../assets/images/footer/facebook-logo.svg',
                             Url: 'https://www.facebook.com/gettap.it/',
                             Name: 'Facebook'
                         },
                         {
-                            Image:'../assets/images/footer/logo-instagram.svg',
+                            Image:'../assets/images/footer/instagram-logo.svg',
                             Url: 'https://www.instagram.com/tapit_beer/',
                             Name: 'Instagram'
                         }
                     ],
-                    TextTapit: 'Tapit',
+                    TextTapit: 'Acerca de Tapit',
                     LegalImage: '../assets/images/footer/legal.png',
-                    Logo: '../assets/images/footer/tap-it_white-orange.svg',
+                    Logo: '../assets/images/footer/tap-it_black-orange.svg',
                     LogoPolas: '../assets/images/footer/logo-polas.svg',
                     Copyright: 'Todos los derechos reservados © 2020',
                     Links: [
@@ -133,20 +136,20 @@ i18next.init({
                             Url: 'mailto:hello@gettap.it'
                         },
                         {
-                            Name: 'Términos y Condiciones',
-                            Url: '/terms.html'
-                        },
-                        {
-                            Name: 'Políticas de protección de datos personales',
-                            Url: '/data-proteccion.html'
+                            Name: 'Aviso de privacidad',
+                            Url: '/privacy.html'
                         },
                         {
                             Name: 'Política de Cookies',
                             Url: '/cookies.html'
                         },
                         {
-                            Name: 'Aviso de privacidad',
-                            Url: '/privacy.html'
+                            Name: 'Políticas de protección de datos personales',
+                            Url: '/data-proteccion.html'
+                        },
+                        {
+                            Name: 'Términos y Condiciones',
+                            Url: '/terms.html'
                         }
                     ]
                 },

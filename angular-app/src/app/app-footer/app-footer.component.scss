@@ -1,6 +1,13 @@
 @import "../../assets/styles/variables";
 @import "../../assets/styles/colors";
 
+.bg-footer {
+  background-image: url('../../../../dist/assets/images/footer/background-footer.svg');
+  @media screen and (max-width: $xs) {
+      background-position: 10vw bottom;
+  }
+}
+
 .footer {
   // flex: 1 0 auto !important;
   // .disclaimer {
