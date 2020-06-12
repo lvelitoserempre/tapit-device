@@ -50,7 +50,7 @@ export default function DownloadFooter(props) {
                         </div>
     const androidHtml = <div className='mt-4 block sm:hidden'>
                             <div className=''>
-                                <div className="inline-block ml-3">
+                                <div className="inline-block">
                                     <a target="_blank" className="app-button border-2 border-orange-500 bg-orange-500 text-white px-2 py-2 uppercase text-xs" href={`${i18next.t("Section6.googlePlayUrl")+params}`}>
                                         <img className="inline-block align-middle mr-2" src={i18next.t("Section6.ButtonImg")} />
                                         <p className="inline-block align-middle">{i18next.t("Section6.ButtonText")}</p>
