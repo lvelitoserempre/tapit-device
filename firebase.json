@@ -1,15 +1,6 @@
 {
   "hosting": [
     {
-      "headers": [ {
-        "source" : "**/*.@(eot|otf|ttf|ttc|woff|woff2|font.css)",
-        "headers" : [ {
-          "key" : "Access-Control-Allow-Origin",
-          "value" : "*"
-        } ]
-      } ]
-    },
-    {
       "site": "tapit-app-dev",
       "public": "dist",
       "ignore": [
@@ -22,7 +13,14 @@
           "source": "/app/**",
           "destination": "/app/index.html"
         }
-      ]
+      ],
+      "headers": [ {
+        "source" : "**/*.@(eot|otf|ttf|ttc|woff|woff2|font.css)",
+        "headers" : [ {
+          "key" : "Access-Control-Allow-Origin",
+          "value" : "*"
+        } ]
+      } ]
     },
     {
       "site": "tapit-app-testing",
