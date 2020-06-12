@@ -25,7 +25,7 @@ const routes: Routes = [
   declarations: [
     LoginComponent,
     SignUpComponent,
-    RecoveryPasswordComponent
+    RecoveryPasswordComponent,
   ],
   imports: [
     AppCommonModule,
