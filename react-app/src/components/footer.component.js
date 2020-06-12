@@ -10,8 +10,8 @@ export default function FooterSection(props) {
     let secondMenu = [];
 
     return (
-        <footer className='bg-gray-100 w-full mt-10 bg-right-bottom sm:bg-right bg-no-repeat bg-contain sm:bg-auto bg-footer'>
-            <div className='container pt-8 -mt-6 px-4 md:px-0 mx-auto'>
+        <footer className='bg-gray-100 w-full mt-10 bg-right-bottom sm:bg-right bg-no-repeat bg-contain sm:bg-auto bg-footer border-t-2 border-orange-500'>
+            <div className='container pt-8 px-4 md:px-0 mx-auto'>
                 <div className='w-full sm:w-9/12 xl:w-9/12 px-4 inline-block'>
                     <div className="inline-block align-top">
                         <p className="text-orange-500 uppercase mb-6 font-bold text-xs tracking-widest">{i18next.t("Footer.TextTapit")}</p>
