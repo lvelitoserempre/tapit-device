@@ -1,5 +1,5 @@
 .app-button {
-  @apply px-8 py-4 font-bold text-white inline-block mx-auto align-bottom rounded-xl;
+  @apply px-4 py-4 font-bold text-white inline-block mx-auto align-bottom rounded-xl;
 }
 
 .app-button:focus {

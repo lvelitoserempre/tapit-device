@@ -1,0 +1,11 @@
+.app-input {
+  @apply px-4 py-4 text-black inline-block mx-auto align-bottom rounded-xl border border-gray-500;
+}
+
+.app-input:focus {
+  @apply outline-none;
+}
+
+.app-input:disabled {
+  @apply opacity-25;
+}

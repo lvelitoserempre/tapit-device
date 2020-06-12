@@ -6,16 +6,26 @@ import {SignUpComponent} from './sign-up/sign-up.component';
 import {AppCommonModule} from '../../app-common.module';
 import {DialogModule} from '../../dialog/dialog.module';
 import {LoaderModule} from '../../loader/loader.module';
+import {RecoveryPasswordComponent} from './recovery-password/recovery-password.component';
 
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent, canActivate: [AlreadyLoggedInGuard]}
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [AlreadyLoggedInGuard]
+  },
+  {
+    path: 'recovery-password',
+    component: RecoveryPasswordComponent
+  }
 ];
 
 @NgModule({
   declarations: [
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    RecoveryPasswordComponent
   ],
   imports: [
     AppCommonModule,
