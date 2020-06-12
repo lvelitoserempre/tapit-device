@@ -2,7 +2,7 @@
   <div class="text-6xl font-bold" fxLayout="row" fxLayoutAlign="center center">
     Iniciar sesión
   </div>
-  <div class="content" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="center center"
+  <div class="content mb-32" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="center center"
        fxLayoutGap="30px">
     <div class="item">
       <form (ngSubmit)="login()" [formGroup]="loginForm" class="login-form" fxLayout="column" fxLayoutGap="20px">
@@ -29,10 +29,6 @@
         <button (click)="loginWithFacebook()" class="app-button facebook-button min-width-18" type="button">
           INGRESAR CON FACEBOOK
         </button>
-        <div fxFlexAlign="center">
-          ¿No tienes una cuenta?
-          <a class="text-orange-500 font-bold" queryParamsHandling="merge" routerLink="/auth/signup"> REGISTRATE</a>
-        </div>
       </form>
     </div>
     <img class="item" src="assets/images/login.png">
