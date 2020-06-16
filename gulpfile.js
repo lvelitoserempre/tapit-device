@@ -42,6 +42,12 @@ task('copy-assetlinks', function () {
   .pipe(dest("./dist/.well-known"));
 });
 
+task('copy-applefile', function () {
+  const file = 'apple-app-site-association';
+  return src('.well-known/'+file)
+  .pipe(dest("./dist/.well-known"));
+});
+
 task('build-tailwind', function () {
   return src('tailwindcss/tailwind.css')
     .pipe(postcss([postcssImport, tailwindcss, autoprefixer, cssnano]))
@@ -71,6 +77,6 @@ task('deploy', function () {
   return runCommand(command, folder);
 })
 
-task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'build-react-app', 'build-angular-app'));
+task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-angular-app'));
 
-task('build-and-deploy', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'build-react-app', 'build-angular-app', 'deploy'));
+task('build-and-deploy', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-angular-app', 'deploy'));
