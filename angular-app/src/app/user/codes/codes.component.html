@@ -21,12 +21,11 @@
       </div>
 
       <div class="border-t border-dashed border-gray-500 table w-full pt-3">
-        <p class="table-cell text-xs text-gray-700 text-left">
+        <p class="inline-block text-xs text-gray-700 text-left w-8/12 md:w-9/12">
           <span class="uil uil-clock text-base"></span>Hasta: {{ code.expireDate | date : 'dd/MM/yyyy' }}
         </p>
         <a (click)="showQRDetail(code)"
-           class="table-cell text-xs text-orange-500 text-right uppercase font-bold tracking-wider cursor-pointer">ver
-          código QR</a>
+           class="inline-block text-xs text-center uppercase font-bold tracking-wider cursor-pointer border-2 border-black p-2 w-4/12 md:w-3/12 rounded-xl">ver más</a>
       </div>
     </section>
   </div>
