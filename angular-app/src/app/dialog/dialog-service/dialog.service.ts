@@ -55,20 +55,6 @@ export class DialogService {
   }
 
   /**
-   * Opens the sign up error dialog and returns the dialog reference for further actions
-   */
-  openSignUpErrorDialog(error: any): MatDialogRef<DialogComponent> {
-    // TODO: translate
-    const dialogConfig: DialogConfigurationModel = {
-      title: 'Error',
-      message: 'Se ha producido un error desconocido.',
-      buttonOne: 'Aceptar'
-    };
-
-    return this.showErrorDialog(dialogConfig);
-  }
-
-  /**
    * Opens the sign up email already in use error dialog and returns the dialog reference for further actions
    */
   openSignUpEmailAlreadyInUseErrorDialog() {
@@ -94,7 +80,7 @@ export class DialogService {
     } else if (error.code === AUTH_ERRORS.USER_CANCELLED || error.code === AUTH_ERRORS.POPUP_CLOSED_BY_USER) {
       this.openWrongPasswordErrorDialog('Debes autorizar el uso de tus datos en la ventana de facebook.');
     } else {
-      this.openSignUpErrorDialog(error);
+      this.showErrorMessage('Se ha producido un error desconocido.');
     }
     throw error;
   }
@@ -103,6 +89,14 @@ export class DialogService {
     return this.dialog.open(DialogComponent, {
       panelClass: ['border', 'border-orange-500'],
       data: config
+    });
+  }
+
+  showErrorMessage(message: string) {
+    return this.showErrorDialog({
+      title: 'Error',
+      message,
+      buttonOne: 'Aceptar'
     });
   }
 }

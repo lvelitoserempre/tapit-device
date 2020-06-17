@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {auth} from 'firebase';
 import {LoaderService} from '../../../loader/loader-service/loader.service';
 import {ActivatedRoute} from '@angular/router';
+import {DialogService} from '../../../dialog/dialog-service/dialog.service';
+import RecoveryPasswordErrorService from './recovery-password-error.service';
 
 @Component({
   selector: 'app-recovery-password',
@@ -9,10 +11,13 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./recovery-password.component.scss']
 })
 export class RecoveryPasswordComponent implements OnInit {
-  stage = 'reset';
+  stage: string;
   email: string;
+  resetEmail: string;
+  newPassword: string;
+  private oobCode: string;
 
-  constructor(private loaderService: LoaderService, private route: ActivatedRoute) {
+  constructor(private loaderService: LoaderService, private route: ActivatedRoute, private dialogService: DialogService) {
   }
 
   ngOnInit(): void {
@@ -22,22 +27,41 @@ export class RecoveryPasswordComponent implements OnInit {
   resetPassword() {
     this.route.queryParams.subscribe(params => {
       if (params.mode === 'resetPassword') {
-        const oobCode = params.oobCode;
-        auth().verifyPasswordResetCode(oobCode)
-          .then(email => {
-            console.log(email);
-          });
+        this.showNewPasswordForm(params.oobCode);
       }
     });
+  }
+
+  showNewPasswordForm(oobCode: string) {
+    this.oobCode = oobCode;
+    this.loaderService.show();
+
+    auth().verifyPasswordResetCode(this.oobCode).then(email => {
+      this.stage = 'setNewPassword';
+      this.resetEmail = email;
+    }).catch(error => {
+      this.stage = 'linkLapsed';
+      //this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
+    }).finally(() => this.loaderService.hide());
   }
 
   recoveryPassword() {
     this.loaderService.show();
 
-    auth().sendPasswordResetEmail(this.email, {url: window.location.origin + '/app/auth/login'})
-      .then(res => {
-        this.stage = 'sentEmail';
-        this.loaderService.hide();
-      });
+    auth().sendPasswordResetEmail(this.email, {url: window.location.origin + '/app/auth/login'}).then(res => {
+      this.stage = 'sentEmail';
+    }).catch(error => {
+      this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
+    }).finally(() => this.loaderService.hide());
+  }
+
+  setNewPassword() {
+    this.loaderService.show();
+
+    auth().confirmPasswordReset(this.oobCode, this.newPassword).then(res => {
+      this.stage = 'passwordChanged';
+    }).catch(error => {
+      this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
+    }).finally(() => this.loaderService.hide());
   }
 }
