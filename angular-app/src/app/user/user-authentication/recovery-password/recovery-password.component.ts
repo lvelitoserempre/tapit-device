@@ -41,18 +41,21 @@ export class RecoveryPasswordComponent implements OnInit {
       this.resetEmail = email;
     }).catch(error => {
       this.stage = 'linkLapsed';
-      //this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
     }).finally(() => this.loaderService.hide());
   }
 
   recoveryPassword() {
-    this.loaderService.show();
+    if (this.email) {
+      this.loaderService.show();
 
-    auth().sendPasswordResetEmail(this.email, {url: window.location.origin + '/app/auth/login'}).then(res => {
-      this.stage = 'sentEmail';
-    }).catch(error => {
-      this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
-    }).finally(() => this.loaderService.hide());
+      auth().sendPasswordResetEmail(this.email, {url: window.location.origin + '/app/auth/login'}).then(res => {
+        this.stage = 'sentEmail';
+      }).catch(error => {
+        this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
+      }).finally(() => this.loaderService.hide());
+    } else {
+      this.dialogService.showErrorMessage('El email ingresado es inválido. Intenta de nuevo');
+    }
   }
 
   setNewPassword() {

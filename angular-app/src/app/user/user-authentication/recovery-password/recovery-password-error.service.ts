@@ -15,6 +15,9 @@ export default class RecoveryPasswordErrorService {
       case 'auth/invalid-email':
         return 'El email ingresado es inválido. Intenta de nuevo';
 
+      case 'auth/argument-error':
+        return 'El email ingresado es inválido. Intenta de nuevo';
+
       default:
         console.error(error);
         return 'Se ha producido un error desconocido.';
