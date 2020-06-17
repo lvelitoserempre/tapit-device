@@ -20,7 +20,7 @@ export default function Index() {
     const [isMobile,setMobile] = useState(null);
     const [events,setEvents] = useState(null);
     const [user,setUser] = useState(null);
-    const [userDate,setUserDate] = useState(window.localStorage.getItem('anonymousUserBirthDate'));
+    const [userDate,setUserDate] = useState(getCookie('anonymousUserBirthDate'));
     const [urlParams,setUrlParams] = useState(null);
     const [cookieSt,setCookieSt] = useState(null);
     const isBillLayout = i18next.t("BillLayout.Active");
@@ -35,7 +35,8 @@ export default function Index() {
             setUser(localUser);
             window.location.href = window.location.origin + '/app';
         }
-        let localDate = window.localStorage.getItem('anonymousUserBirthDate');
+        //let localDate = window.localStorage.getItem('anonymousUserBirthDate');
+        let localDate = getCookie('anonymousUserBirthDate');
         if (!localDate) {
             document.body.style.overflow = "hidden";
         }
@@ -196,12 +197,12 @@ export default function Index() {
                         <Agegate saveBirthDate={()=>saveBirthDate()} />
                     :null
                 }
-                {
+                {/* {
                     !cookieSt?
                         <CookiesSection acceptCookie={()=>acceptCookie()} />
                     :
                     null
-                }
+                } */}
                 {
 
                     <HashRouter>

@@ -3,6 +3,7 @@ import {AuthService} from './user/user-authentication/user-authentication-servic
 import {environment} from '../environments/environment';
 import {auth, initializeApp, User} from 'firebase';
 import {UserDAO} from './user/user-dao.service';
+import { CookiesService } from './services/cookies.service';
 
 declare var tagManager;
 declare var ga;
@@ -28,7 +29,9 @@ export class AppComponent implements OnInit {
    * This method redirects the user to the root in production if the user has not entered his birth date
    */
   private redirectIfUserIsAChild() {
-    if (!window.localStorage.getItem('anonymousUserBirthDate') && window.location.hostname !== 'localhost') {
+    console.log(CookiesService.getValue('anonymousUserBirthDate'));
+    
+    if (!CookiesService.getValue('anonymousUserBirthDate') && window.location.hostname !== 'localhost') {
       window.location.replace(window.location.origin);
     }
   }
