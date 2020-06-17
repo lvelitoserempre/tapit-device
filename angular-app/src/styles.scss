@@ -9,6 +9,24 @@
 .dialog {
   .mat-dialog-container {
     border-radius: 2rem;
+    @media (max-width: $xs) {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: 24px 18px;
+    }
+  }
+  &.dialog-full {
+    @media (max-width: $xs) {
+      bottom: 0;
+      max-width: none !important;
+      position: absolute !important;
+      width: 100%;
+    }
+    .scroll-view {
+      @media (max-width: $xs) {
+        max-height: 80vh;
+      }
+    }
   }
 }
 
@@ -43,11 +61,11 @@
     }
 
     &.slick-next::before {
-      content: url('../../react-app/src/assets/images/next-arrow.svg');
+      content: url("../../react-app/src/assets/images/next-arrow.svg");
     }
 
     &.slick-prev::before {
-      content: url('../../react-app/src/assets/images/prev-arrow.svg');
+      content: url("../../react-app/src/assets/images/prev-arrow.svg");
     }
   }
 
@@ -92,7 +110,7 @@
 }
 
 .facebook-button {
-  background: #4267B2;
+  background: #4267b2;
 }
 
 .bg-pattern {
