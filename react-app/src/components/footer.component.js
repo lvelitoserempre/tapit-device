@@ -56,7 +56,7 @@ export default function FooterSection(props) {
                             return(
                                 <li className="mb-5 w-1/2 sm:w-full inline-block" key={index}>
                                     <a target="_blank" href={item.Url}>
-                                        <img src={item.Image} className="inline-block align-middle" /> 
+                                        <img src={item.Image} className="inline-block align-middle" />
                                         <span className="align-middle ml-3">{item.Name}</span>
                                     </a>
                                 </li>
@@ -64,7 +64,7 @@ export default function FooterSection(props) {
                         })}
                     </ul>
                 </div>
-                <DownloadFooter isMobile={props.isMobile} urlParams={props.urlParams}/>
+                <DownloadFooter isMobile={props.isMobile} />
                 <div className="border-t-2 border-gray-500 py-5 mt-12 ">
                     <img className='inline-block align-middle' src={i18next.t("Footer.Logo")} />
                     <p className='inline-block text-gray-700 ml-1 pl-2 border-l border-gray-600 align-middle text-xs'>
@@ -74,6 +74,6 @@ export default function FooterSection(props) {
             </div>
         </footer>
     )
-    
+
 
 }
