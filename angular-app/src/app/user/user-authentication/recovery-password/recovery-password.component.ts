@@ -4,6 +4,7 @@ import {LoaderService} from '../../../loader/loader-service/loader.service';
 import {ActivatedRoute} from '@angular/router';
 import {DialogService} from '../../../dialog/dialog-service/dialog.service';
 import RecoveryPasswordErrorService from './recovery-password-error.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-recovery-password',
@@ -12,12 +13,20 @@ import RecoveryPasswordErrorService from './recovery-password-error.service';
 })
 export class RecoveryPasswordComponent implements OnInit {
   stage: string;
-  email: string;
   resetEmail: string;
-  newPassword: string;
+  emailForm: FormGroup;
+  passwordForm: FormGroup;
   private oobCode: string;
 
-  constructor(private loaderService: LoaderService, private route: ActivatedRoute, private dialogService: DialogService) {
+  constructor(private loaderService: LoaderService, private route: ActivatedRoute, private dialogService: DialogService,
+              formBuilder: FormBuilder) {
+    this.emailForm = formBuilder.group({
+      email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]]
+    });
+
+    this.passwordForm = formBuilder.group({
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
   }
 
   ngOnInit(): void {
@@ -45,23 +54,19 @@ export class RecoveryPasswordComponent implements OnInit {
   }
 
   recoveryPassword() {
-    if (this.email) {
-      this.loaderService.show();
+    this.loaderService.show();
 
-      auth().sendPasswordResetEmail(this.email, {url: window.location.origin + '/app/auth/login'}).then(res => {
-        this.stage = 'sentEmail';
-      }).catch(error => {
-        this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
-      }).finally(() => this.loaderService.hide());
-    } else {
-      this.dialogService.showErrorMessage('El email ingresado es inválido. Intenta de nuevo');
-    }
+    auth().sendPasswordResetEmail(this.emailForm.controls.email.value, {url: window.location.origin + '/app/auth/login'}).then(res => {
+      this.stage = 'sentEmail';
+    }).catch(error => {
+      this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
+    }).finally(() => this.loaderService.hide());
   }
 
   setNewPassword() {
     this.loaderService.show();
 
-    auth().confirmPasswordReset(this.oobCode, this.newPassword).then(res => {
+    auth().confirmPasswordReset(this.oobCode, this.passwordForm.controls.password.value).then(res => {
       this.stage = 'passwordChanged';
     }).catch(error => {
       this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));

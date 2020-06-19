@@ -6,6 +6,9 @@ export default class RecoveryPasswordErrorService {
       case 'auth/invalid-action-code':
         return 'El link de restablecimiento de contraseña no es válido. Intenta de nuevo';
 
+      case 'auth/user-not-found':
+        return 'No existe ningun usuario con el email dado';
+
       case 'auth/expired-action-code':
         return 'El link de restablecimiento de contraseña ha expirado. Intenta de nuevo';
 
