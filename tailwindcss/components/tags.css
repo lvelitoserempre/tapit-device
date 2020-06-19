@@ -1,3 +1,6 @@
 .app-tag {
     @apply font-bold py-1 px-2 border text-xs uppercase inline-block
 }
+.app-tag-modal {
+    @apply font-bold py-1 px-2 border text-xs inline-block
+}

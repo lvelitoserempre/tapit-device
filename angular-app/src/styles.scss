@@ -18,13 +18,14 @@
   &.dialog-full {
     @media (max-width: $xs) {
       bottom: 0;
+      max-height: 80%;
       max-width: none !important;
       position: absolute !important;
       width: 100%;
     }
     .scroll-view {
       @media (max-width: $xs) {
-        max-height: 80vh;
+        max-height: 60vh;
       }
     }
   }

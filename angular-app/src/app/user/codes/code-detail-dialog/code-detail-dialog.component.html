@@ -22,15 +22,16 @@
           {{ code.name }}
         </h4>
       </div>
-      <p class="text-purple-500 font-bold text-2xl sm:mr-2 mb-3 sm:w-full w-7/12 inline-block align-middle">
+      <p class="text-purple-500 font-bold text-2xl sm:mr-2 sm:w-full w-7/12 inline-block align-middle">
         {{ code.amount | currency: "COP":"symbol-narrow":"1.0" }}
       </p>
-      <p class="text-xs text-gray-700 text-left uppercase sm:hidden inline-block w-5/12">
+      <p class="text-xs text-gray-700 text-left uppercase sm:hidden inline-block w-5/12 align-middle text-right">
         <span class="tracking-widest">Válido Hasta:</span><br>
         <span class="text-black text-base font-bold">{{ code.expireDate | date: "dd/MM/yyyy" }}</span>
       </p>
-      <div class="w-full mb-2">
-        <span *ngFor="let tag of code.tags" class="app-tag text-white rounded-md bg-purple-900 mr-2">{{ tag }}</span>
+      <div class="w-full mb-2 mt-3">
+        <span *ngFor="let tag of code.tags"
+          class="app-tag-modal text-white rounded-md bg-purple-900 mr-2">{{ tag }}</span>
       </div>
       <p class="table-cell text-xs text-gray-700 text-left uppercase hidden sm:inline-block">
         <span class="tracking-widest">Válido Hasta:</span><br>
@@ -45,7 +46,7 @@
       <p class="w-full md:w-1/2 block md:inline-block text-xs lg:pr-32 align-middle">
         Descarga nuestra app para tener todos tus códigos a la mano.
       </p>
-      <div class="w-full md:w-1/2 md:inline-block sm:pl-4 align-middle">
+      <div class="w-full md:w-1/2 md:inline-block sm:pl-4 align-middle pb-8">
         <div class="inline-block align-middle">
           <a href="https://apps.apple.com/us/app/tapit/id1481852424?ls=1" target="_blank"><img
               src="/assets/images/download/appStore.svg" /></a>
