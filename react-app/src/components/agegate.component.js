@@ -19,7 +19,8 @@ export default function Agegate(props) {
                 setAdult('invalid');
             } else {
                 setAdult(true);
-                window.localStorage.setItem('anonymousUserBirthDate',dateToLocal);
+                setCookie("anonymousUserBirthDate", dateToLocal, 30);
+                //window.localStorage.setItem('anonymousUserBirthDate',dateToLocal);
                 props.saveBirthDate(dateToLocal);
             }
         } else {
@@ -43,6 +44,13 @@ export default function Agegate(props) {
         return false;
     }
 
+    function setCookie(accept,cvalue,exdays) {
+        let d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires=" + d.toGMTString();
+        document.cookie = accept + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
     return (
         <div id='agegate' className='agegate row center-sm middle-sm'>
             <div className='container center-xs row'>
@@ -50,6 +58,7 @@ export default function Agegate(props) {
                     <div>
                         <p className="section__text">¡Hola!</p>
                         <p className="section__text">Por favor ingresa tu fecha de nacimiento</p>
+                        <p className="section__text cookies-policies">Debes ser mayor de 18 años para acceder. Al ingresar, aceptas que utilizamos cookies para personalizar contenido y anuncios, proporcionar funciones de redes sociales y analizar nuestro tráfico. También compartimos información sobre cómo usted utiliza nuestro sitio con nuestros socios de redes sociales, de publicidad y de analítica.</p>
                         <form className='agegate__form row center-xs middle-xs'>
                             <input type="text" maxLength="2" placeholder="DD" id="day" />
                             <input type="text" maxLength="2" placeholder="MM" id="month" />

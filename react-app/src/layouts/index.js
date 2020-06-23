@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import {HashRouter, Route} from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 import "./../styles/main.less";
 import Header from "./../components/header.component";
 import Agegate from "./../components/agegate.component";
@@ -19,7 +19,7 @@ export default function Index() {
   const [isMobile, setMobile] = useState(null);
   const [events, setEvents] = useState(null);
   const [user, setUser] = useState(null);
-  const [userDate, setUserDate] = useState(window.localStorage.getItem('anonymousUserBirthDate'));
+  const [userDate, setUserDate] = useState(getCookie('anonymousUserBirthDate'));
   const [cookieSt, setCookieSt] = useState(null);
   const isBillLayout = i18next.t("BillLayout.Active");
 
@@ -33,7 +33,8 @@ export default function Index() {
       setUser(localUser);
       window.location.href = window.location.origin + '/app';
     }
-    let localDate = window.localStorage.getItem('anonymousUserBirthDate');
+    //let localDate = window.localStorage.getItem('anonymousUserBirthDate');
+    let localDate = getCookie('anonymousUserBirthDate');
     if (!localDate) {
       document.body.style.overflow = "hidden";
     }
@@ -41,6 +42,8 @@ export default function Index() {
       checkCookie();
     }
   }, []);
+
+
 
   function saveBirthDate(value) {
     setUserDate(value);
@@ -113,17 +116,17 @@ export default function Index() {
 
   const BillLayout = () => (
     <div>
-      <Header user={user}/>
+      <Header user={user} />
       <div className="main__bgGray">
         <div className="container">
-          <StartSectionBill isMobile={isMobile}/>
+          <StartSectionBill isMobile={isMobile} />
         </div>
-        <EventsSection events={events} isMobile={isMobile}/>
+        <EventsSection events={events} isMobile={isMobile} />
       </div>
       <div className="main__bgGray">
         <div className="container">
-          <ComoParticiparSection/>
-          <BeersSection isBill={isBillLayout} isMobile={isMobile}/>
+          <ComoParticiparSection />
+          <BeersSection isBill={isBillLayout} isMobile={isMobile} />
         </div>
       </div>
     </div>
@@ -131,26 +134,26 @@ export default function Index() {
 
   const Home = () => (
     <div>
-      <Header user={user}/>
+      <Header user={user} />
       <div className="mt-12">
         <div className="container">
-          <StartSection/>
+          <StartSection />
         </div>
       </div>
       <div className="main__bgCircle">
         <div className="container">
-          <PointsSection isMobile={isMobile}/>
+          <PointsSection isMobile={isMobile} />
         </div>
       </div>
       <div className="main__bgBlue">
         <div className="container">
-          <PrizesSection isMobile={isMobile}/>
+          <PrizesSection isMobile={isMobile} />
         </div>
       </div>
       <div>
         <div className="container">
-          <MarketPlaceSection/>
-          <BeersSection isMobile={isMobile}/>
+          <MarketPlaceSection />
+          <BeersSection isMobile={isMobile} />
         </div>
       </div>
     </div>
@@ -162,23 +165,23 @@ export default function Index() {
       <div className="main d-flex align-items-start">
         {
           !userDate ?
-            <Agegate saveBirthDate={() => saveBirthDate()}/>
+            <Agegate saveBirthDate={() => saveBirthDate()} />
             : null
         }
-        {
-          !cookieSt ?
-            <CookiesSection acceptCookie={() => acceptCookie()}/>
-            :
-            null
-        }
+        {/* {
+                    !cookieSt?
+                        <CookiesSection acceptCookie={()=>acceptCookie()} />
+                    :
+                    null
+                } */}
         {
 
           <HashRouter>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/polas-recargadas" component={BillLayout}/>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/polas-recargadas" component={BillLayout} />
           </HashRouter>
         }
-        <FooterSection isMobile={isMobile}/>
+        <FooterSection isMobile={isMobile} />
       </div>
     )
   )
@@ -186,4 +189,4 @@ export default function Index() {
 }
 
 // Implementacion de este layout al HTML
-ReactDOM.render(<Index/>, document.getElementById("index"));
+ReactDOM.render(<Index />, document.getElementById("index"));
