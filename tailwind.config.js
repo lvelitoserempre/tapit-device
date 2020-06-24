@@ -214,6 +214,7 @@ module.exports = {
       mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
     },
     fontSize: {
+      '2xs': '0.65rem',
       xs: '0.75rem',
       sm: '0.875rem',
       base: '1rem',
@@ -277,7 +278,7 @@ module.exports = {
       disc: 'disc',
       decimal: 'decimal',
     },
-    margin: (theme, {negative}) => ({
+    margin: (theme, { negative }) => ({
       auto: 'auto',
       ...theme('spacing'),
       ...negative(theme('spacing')),
@@ -286,7 +287,7 @@ module.exports = {
       full: '100%',
       screen: '100vh',
     },
-    maxWidth: (theme, {breakpoints}) => ({
+    maxWidth: (theme, { breakpoints }) => ({
       none: 'none',
       xs: '20rem',
       sm: '24rem',
@@ -531,7 +532,7 @@ module.exports = {
       '90': '90deg',
       '180': '180deg',
     },
-    translate: (theme, {negative}) => ({
+    translate: (theme, { negative }) => ({
       ...theme('spacing'),
       ...negative(theme('spacing')),
       '-full': '-100%',

@@ -12,10 +12,12 @@
     <div class="w-8/12 m-auto md:w-2/5 md:inline-block md:align-middle">
       <div class="bg-center bg-contain w-full bg-no-repeat p-3"
         style="background-image: url('assets/images/background-bubbles.png');">
-        <img [src]="code.qrCodeUrl" alt="" class="w-11/12" />
+        <div class="rounded-lg border-white border-4 w-11/12 bg-white shadow-lg">
+          <img [src]="code.qrCodeUrl" alt="" class="w-full " />
+        </div>
       </div>
     </div>
-    <div class="w-full md:w-3/5 md:inline-block md:align-middle mt-3 pl-0 sm:pl-4">
+    <div class="w-full md:w-3/5 md:inline-block md:align-middle pl-0 sm:pl-4">
       <div class="w-full mb-4 inline-block">
         <img [src]="code.image" class="w-12 mr-4 align-middle inline-block" />
         <h4 class="text-purple-500 text-xl font-normal inline-block align-middle font-bold align-middle">
@@ -33,8 +35,8 @@
         <span *ngFor="let tag of code.tags"
           class="app-tag-modal text-white rounded-md bg-purple-900 mr-2">{{ tag }}</span>
       </div>
-      <p class="table-cell text-xs text-gray-700 text-left uppercase hidden sm:inline-block">
-        <span class="tracking-widest">Válido Hasta:</span><br>
+      <p class="table-cell text-xs text-gray-700 text-left uppercase hidden sm:inline-block mt-2">
+        <span class="tracking-widest font-bold">Válido Hasta:</span><br>
         <span class="text-black text-base font-bold">{{ code.expireDate | date: "dd/MM/yyyy" }}</span>
       </p>
     </div>

@@ -1,3 +1,7 @@
+@import "../../../assets/styles/variables";
 .bg-image {
-    background-image: url('../../../assets/images/background_3.png');
+    background-image: url('../../../assets/images/background_3-mobile.png');
+    @media (min-width: $xs) {
+        background-image: url('../../../assets/images/background_3.png');
+    }
 }
