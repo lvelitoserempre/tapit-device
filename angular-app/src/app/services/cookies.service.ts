@@ -12,6 +12,10 @@ export class CookiesService {
   }
 
   static getValue(key: string) {
-    return document.cookie.match(key + "=[^ ;]*")[0].replace(key + "=", "");
+    const cookieValue = document.cookie.match(key + "=[^ ;]*");
+
+    if (cookieValue) {
+      return cookieValue[0].replace(key + "=", "");
+    }
   }
 }

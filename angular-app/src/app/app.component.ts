@@ -29,12 +29,15 @@ export class AppComponent implements OnInit {
    * This method redirects the user to the root in production if the user has not entered his birth date
    */
   private redirectIfUserIsAChild() {
-    console.log(CookiesService.getValue('anonymousUserBirthDate'));
+    const locationPath = window.location.pathname;
 
-    if (!CookiesService.getValue('anonymousUserBirthDate') && window.location.hostname !== 'localhost') {
-      window.location.replace(window.location.origin);
-    } else if (CookiesService.getValue('anonymousUserBirthDate') && CookiesService.getValue('loggedUser') && (window.location.pathname == '/' || window.location.pathname == '/app/')) {
-      this.redirectUserToMarket()
+    if (locationPath.indexOf('recovery-password') == -1) {
+      if (!CookiesService.getValue('anonymousUserBirthDate') && window.location.hostname !== 'localhost') {
+        window.location.replace(window.location.origin);
+      }
+      // else if (CookiesService.getValue('anonymousUserBirthDate') && CookiesService.getValue('loggedUser') && (locationPath == '/' || locationPath == '/app/')) {
+      //   this.redirectUserToMarket()
+      // }
     }
   }
   private redirectUserToMarket() {
