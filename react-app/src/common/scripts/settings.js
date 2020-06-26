@@ -11,7 +11,8 @@ i18next.init({
                         UrlLogin: '/app/auth/login',
                         UrlSignup: '/app/auth/signup',
                         LoginText: 'INICIA SESIÓN',
-                        SignupText: 'Regístrate'
+                        SignupText: 'Regístrate',
+                        IconClose: '../assets/images/ic_close.svg'
                     },
                     Section1: {
                         Title: 'Tapit y Polas Recargadas te traen experiencias increíbles',
@@ -120,7 +121,7 @@ i18next.init({
                             Name: 'Facebook'
                         },
                         {
-                            Image:'../assets/images/footer/instagram-logo.svg',
+                            Image: '../assets/images/footer/instagram-logo.svg',
                             Url: 'https://www.instagram.com/tapit_beer/',
                             Name: 'Instagram'
                         }
@@ -174,5 +175,5 @@ i18next.init({
             }
         }
     }
-}, function(err, t) {
+}, function (err, t) {
 });

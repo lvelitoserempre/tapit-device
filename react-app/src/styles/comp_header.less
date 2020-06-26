@@ -49,7 +49,7 @@
 }
 
 #menuToggle {
-    top: 20px;
+    top: 30px;
     left: 0;
     z-index: 1;
     -webkit-user-select: none;
@@ -67,8 +67,7 @@
 }
 
 
-#menuToggle input
-{
+#menuToggle input {
     display: block;
     width: 40px;
     height: 32px;
@@ -76,14 +75,15 @@
     top: -7px;
     left: 20px;
     cursor: pointer;
-    opacity: 0; /* hide this */
-    z-index: 2; /* and place it over the hamburger */
+    opacity: 0;
+    z-index: 2; 
     -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 #menuToggle input:checked {
     left: auto;
-    right: 5px;
+    right: 20%;
 }
 #menuToggle span {
     display: block;
@@ -92,7 +92,6 @@
     margin-bottom: 5px;
     margin-left: 20px;
     position: relative;
-    background: #cdcdcd;
     border-radius: 3px;
     z-index: 1;
     // transform-origin: 4px 0px;
@@ -132,7 +131,7 @@
   font-size: 22px;
 }
 .background {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(25, 20, 25, 0.8);
     display: none;
     height: 100%;
     left: 0;
@@ -148,4 +147,8 @@
 #menuToggle input:checked ~ .background {
     display: block;
     opacity: 1;
+}
+.icon-close {
+    right: 3%;
+    top: 20px;
 }

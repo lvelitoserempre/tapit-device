@@ -21,23 +21,24 @@ export default function Header(props) {
                     <div id="menuToggle" className="absolute block w-full">
                         <input type="checkbox" onClick={setMenu} />
                         <div className="background"></div>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <ul className="fixed w-10/12 p-6 bg-white pt-10 h-full top-0" id="menu">
+                        <span className="bg-orange-500"></span>
+                        <span className="bg-orange-500"></span>
+                        <span className="bg-orange-500"></span>
+                        <ul className="fixed w-10/12 p-6 bg-gray-100 pt-10 h-full top-0 border-4 border-white" id="menu">
                             <li>
-                                <img src={i18next.t("BillLayout.Header.Logo")} />
+                                <img className="main-logo" src={i18next.t("BillLayout.Header.Logo")} />
                             </li>
                             <li>
                                 <a className="app-button border-2 border-orange-500 bg-orange-500 text-white" href={i18next.t("BillLayout.Header.UrlLogin")}>
                                     {i18next.t("BillLayout.Header.LoginText")}
                                 </a>
                             </li>
+                            <img width="30" className="absolute icon-close" src={i18next.t("BillLayout.Header.IconClose")} />
                         </ul>
                     </div>
                 </nav>
-                <div className="w-full py-4">
-                    <div className="inline-block text-center md:text-left w-full md:w-1/2 mb-3 md:mb-0 align-middle">
+                <div className="w-full py-4 pb-0 sm:pb-4">
+                    <div className="inline-block text-center md:text-left w-full md:w-1/2 mb-0 align-middle">
                         <ul>
                             <li>
                                 <img src={i18next.t("BillLayout.Header.Logo")} />
