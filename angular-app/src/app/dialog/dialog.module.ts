@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {DialogComponent} from './dialog.component';
-import {AppCommonModule} from '../app-common.module';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [DialogComponent],
   entryComponents: [DialogComponent],
-  imports: [AppCommonModule],
+  imports: [MatDialogModule],
   exports: [DialogComponent]
 })
 export class DialogModule {

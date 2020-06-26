@@ -6,6 +6,7 @@ import {AuthService} from '../user-authentication-service/auth.service';
 import {DialogService} from '../../../dialog/dialog-service/dialog.service';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {FacebookService} from '../facebook.service';
+import {CookiesService} from '../../../services/cookies.service';
 import {environment} from '../../../../environments/environment';
 
 @Component({
@@ -48,25 +49,25 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithFacebook() {
-    this.loaderService.show();
+    if (!this.loginForm.get('terms').invalid) {
+      this.loaderService.show();
 
-    this.facebookService.login()
-      .subscribe(res => {
-          this.loaderService.hide();
-          this.redirectUser();
-        },
-        error => {
-          this.loaderService.hide();
-          this.dialogService.manageError(error);
-        });
-  }
-
-  setCookie(name:string,cvalue:boolean) {
-      document.cookie = name + "=" + cvalue + ";domain=tapit.com.co;path=/;max-age=31536000"
+      this.facebookService.login()
+        .subscribe(res => {
+            this.loaderService.hide();
+            this.redirectUser();
+          },
+          error => {
+            this.loaderService.hide();
+            this.dialogService.manageError(error);
+          });
+    } else {
+      this.loginForm.get('terms').markAsTouched();
+    }
   }
 
   redirectUser() {
-    this.setCookie('setItems',false);
+    CookiesService.setValue('setItems', 'false');
     const redirectUrl = this.backUrl ? this.backUrl : environment.marketUrl;
     window.location.replace(redirectUrl);
   }

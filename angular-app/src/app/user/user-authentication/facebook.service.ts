@@ -4,15 +4,16 @@ import {auth} from 'firebase';
 import {mergeMap, switchMap} from 'rxjs/operators';
 import {UserDAO} from '../user-dao.service';
 import {AuthService} from './user-authentication-service/auth.service';
-import {UserAccount} from '../../models/user-account.model';
 import {AnalyticsService} from '../../services/anaylitics/analytics.service';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
+
+declare var fbq: any;
 
 @Injectable({
   providedIn: 'root'
 })
 export class FacebookService {
-  private facebookAuthProvider: FacebookAuthProvider;
+  facebookAuthProvider: FacebookAuthProvider;
 
   constructor(private userDAO: UserDAO, private authenticationService: AuthService, private analyticsService: AnalyticsService) {
     this.facebookAuthProvider = new FacebookAuthProvider();
@@ -23,7 +24,7 @@ export class FacebookService {
     return from(auth().signInWithPopup(this.facebookAuthProvider))
       .pipe(mergeMap((facebookResponse) => {
         this.sendEventToAnalytics(facebookResponse.additionalUserInfo.isNewUser);
-        const userData = this.parseUserData(facebookResponse);
+        const userData = this.parseUserData(facebookResponse, {email: facebookResponse.additionalUserInfo.profile['email'],});
         return this.userDAO.checkUser(userData);
       }))
       .pipe(switchMap((res: any) => {
@@ -34,16 +35,21 @@ export class FacebookService {
       }));
   }
 
-  private parseUserData(facebookResponse) {
+  parseUserData(facebookResponse, otherData?) {
     return {
-      email: facebookResponse.additionalUserInfo.profile.email,
       firstName: facebookResponse.additionalUserInfo.profile.first_name,
       lastName: facebookResponse.additionalUserInfo.profile.last_name,
-      birthDate: (new Date(facebookResponse.additionalUserInfo.profile.birthday)).toISOString()
+      gender: facebookResponse.additionalUserInfo.profile.gender,
+      birthDate: (new Date(facebookResponse.additionalUserInfo.profile.birthday)).toISOString(),
+      ...otherData
     };
   }
 
   private sendEventToAnalytics(isNewUser: boolean) {
+    if (isNewUser) {
+      fbq('track', 'CompleteRegistration');
+    }
+
     this.analyticsService.sendCustomEvent({
       hitType: 'event',
       eventCategory: isNewUser ? 'signup' : 'login',
