@@ -19,17 +19,15 @@ export default function Header(props) {
             <div className='container'>
                 <nav role="navigation" className="block sm:hidden">
                     <div id="menuToggle" className="absolute block w-full">
-                        <input type="checkbox" onClick={setMenu} />
+                        <input type="checkbox" onClick={setMenu} className="block absolute" />
                         <div className="background"></div>
-                        <span className="bg-orange-500"></span>
-                        <span className="bg-orange-500"></span>
-                        <span className="bg-orange-500"></span>
+                        <img className='img-menu block' width="26" src='../assets/images/hMenu.svg' />
                         <ul className="fixed w-10/12 p-6 bg-gray-100 pt-10 h-full top-0 border-4 border-white" id="menu">
                             <li>
-                                <img className="main-logo" src={i18next.t("BillLayout.Header.Logo")} />
+                                <img className="" src={i18next.t("BillLayout.Header.Logo")} />
                             </li>
                             <li>
-                                <a className="app-button border-2 border-black text-black w-full text-center p-3 text-sm" href={i18next.t("BillLayout.Header.UrlLogin")}>
+                                <a className="app-button border-2 border-orange-500 bg-orange-500 text-white w-full text-center p-3 text-sm" href={i18next.t("BillLayout.Header.UrlLogin")}>
                                     {i18next.t("BillLayout.Header.LoginText")}
                                 </a>
                             </li>
@@ -37,15 +35,15 @@ export default function Header(props) {
                         </ul>
                     </div>
                 </nav>
-                <div className="w-full py-4 pb-0 sm:pb-4">
-                    <div className="inline-block text-left w-full md:w-1/2 mb-0 align-middle">
+                <div className="w-full py-4">
+                    <div className="inline-block text-left w-1/2 mb-0 align-middle">
                         <ul>
                             <li>
-                                <img className="main-logo ml-16 sm:ml-0" src={i18next.t("BillLayout.Header.Logo")} />
+                                <img className="main-logo ml-12 sm:ml-0" src={i18next.t("BillLayout.Header.Logo")} />
                             </li>
                         </ul>
                     </div>
-                    <div className="inline-block text-center md:text-right w-full md:w-1/2 align-middle">
+                    <div className="inline-block text-center md:text-right w-1/2 align-middle text-right pr-2">
                         {
                             props.user ?
                                 <ul>
@@ -55,8 +53,8 @@ export default function Header(props) {
                                 </ul>
                                 :
                                 <ul>
-                                    <li className="hidden sm:inline-block">
-                                        <a className="app-button border-2 border-orange-500 bg-orange-500 text-white" href={i18next.t("BillLayout.Header.UrlLogin")}>
+                                    <li className="inline-block">
+                                        <a className="app-button border-2 border-orange-500 bg-orange-500 text-white text-center p-3 text-sm" href={i18next.t("BillLayout.Header.UrlLogin")}>
                                             {i18next.t("BillLayout.Header.LoginText")}
                                         </a>
                                     </li>
