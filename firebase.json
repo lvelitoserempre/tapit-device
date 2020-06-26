@@ -14,13 +14,17 @@
           "destination": "/app/index.html"
         }
       ],
-      "headers": [ {
-        "source" : "**/*.@(eot|otf|ttf|ttc|woff|woff2|font.css)",
-        "headers" : [ {
-          "key" : "Access-Control-Allow-Origin",
-          "value" : "*"
-        } ]
-      } ]
+      "headers": [
+        {
+          "source": "**/*.@(eot|otf|ttf|ttc|woff|woff2|font.css)",
+          "headers": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ]
+        }
+      ]
     },
     {
       "site": "tapit-app-testing",
@@ -61,6 +65,30 @@
             }
           ]
         }
+      ]
+    },
+    {
+      "site": "tapit-sso",
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "/app/**",
+          "destination": "/app/index.html"
+        }
+      ]
+    },
+    {
+      "site": "tapit-sso-test",
+      "public": "tapit-sso-test",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
       ]
     }
   ]

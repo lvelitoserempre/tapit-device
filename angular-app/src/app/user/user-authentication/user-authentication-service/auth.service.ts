@@ -43,6 +43,8 @@ export class AuthService {
     this.currentUser.next(user);
     this.saveUserToLocalStorage(user);
     this.saveUserToACookie(user);
+
+    return user;
   }
 
   async addIdToken(user: UserAccount) {
@@ -77,7 +79,7 @@ export class AuthService {
     return from(auth().signOut());
   }
 
-  login(email: string, password: string): Observable<void> {
+  login(email: string, password: string): Observable<UserAccount> {
     return from(auth().signInWithEmailAndPassword(email, password))
       .pipe(switchMap((user: UserCredential) => {
         return this.userDAO.get(user.user.uid);

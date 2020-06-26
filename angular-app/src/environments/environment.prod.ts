@@ -19,7 +19,9 @@ export const environment = {
       checkUser: '/v1/user/check',
       getAllEvents: '/v1/list/events',
       getAllCodes: '/v1/tapits/',
-      sendDigitalInvoice: '/api-receiveDigitalInvoice'
+      sendDigitalInvoice: '/api-receiveDigitalInvoice',
+      getCustomToken: '/v1/sso/customToken',
+      createUser: '/v1/sso/user'
     }
   },
   marketUrl: 'https://market.tapit.com.co/api/vtexid/pub/logout?scope=bavariaco&returnUrl=https://market.tapit.com.co',

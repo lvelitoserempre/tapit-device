@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Login Example</title>
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+
+  <style>
+    * {
+      margin: 0;
+      border: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif
+    }
+
+    main {
+      padding: 1rem 1.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05);
+    }
+
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    p {
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-align: left;
+      margin-bottom: 4rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 20rem;
+      display: none;
+    }
+
+    @media screen and (min-width: 640px) {
+      iframe {
+        height: 30rem;
+      }
+    }
+  </style>
+
+  <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-auth.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBbMDkDVAUJ8MWcKMVtU7Onrzv5JVlfSbA",
+      authDomain: "re-imagining-loyalty-dev.firebaseapp.com",
+      databaseURL: "https://re-imagining-loyalty-dev.firebaseio.com",
+      projectId: "re-imagining-loyalty-dev",
+      storageBucket: "re-imagining-loyalty-dev.appspot.com",
+      messagingSenderId: "25832745393",
+      appId: "1:25832745393:web:d91879ef2d1bf959fcf590",
+      measurementId: "G-JMD5T81SQM"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+  </script>
+</head>
+<body>
+
+<main>
+  <h1>WELCOME TO LOGIN-EXAMPLE.COM</h1>
+
+  <p id="userData"></p>
+
+  <iframe id="tapitIframe" src="http://localhost:4200/external-login"></iframe>
+</main>
+
+<script>
+  firebase.auth().onAuthStateChanged(function (userCredential) {
+    if (userCredential) {
+      document.getElementById('userData').innerText = 'Welcome user ' + userCredential.displayName;
+    } else {
+      addAuthenticationSystem();
+    }
+  });
+
+  function addAuthenticationSystem() {
+    const APP_ID = 'app01';
+    const LOGIN_ORIGIN = 'http://localhost:4200';
+
+    const loginIframe = createLoginIframe(LOGIN_ORIGIN, APP_ID);
+    addMessageListener(loginIframe, APP_ID);
+
+    document.querySelector('main').appendChild(loginIframe);
+  }
+
+  function createLoginIframe(LOGIN_ORIGIN, APP_ID) {
+    const loginIframe = document.createElement('iframe');
+    loginIframe.setAttribute('src', LOGIN_ORIGIN + '/external-login')
+
+    loginIframe.addEventListener('load', function () {
+      loginIframe.contentWindow.postMessage({
+        appId: APP_ID,
+        method: 'getUserCustomToken',
+        origin: 'aguilapenalties',
+        ageGateDate: Date.now()
+      }, LOGIN_ORIGIN)
+    })
+
+    return loginIframe;
+  }
+
+  function addMessageListener(loginIframe, APP_ID) {
+    window.addEventListener("message", function (event) {
+      if (event.data && event.data.appId === APP_ID) {
+        signInWithCustomToken(event.data.customToken, loginIframe)
+      } else {
+        document.getElementById('userData').innerText = 'Login with facebook to have access to our site';
+        loginIframe.setAttribute('style', 'display:block');
+      }
+    }, false);
+  }
+
+  function signInWithCustomToken(customToken, loginIframe) {
+    firebase.auth().signInWithCustomToken(customToken)
+      .then(function (userCredential) {
+        document.getElementById('userData').innerText = 'Welcome user ' + userCredential.displayName;
+        loginIframe.parentNode.removeChild(loginIframe);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }
+</script>
+</body>
+</html>

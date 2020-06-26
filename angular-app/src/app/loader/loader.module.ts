@@ -1,11 +1,15 @@
 import {NgModule} from '@angular/core';
-import {AppCommonModule} from '../app-common.module';
 import {LoaderComponent} from './loader.component';
+import {CommonModule} from '@angular/common';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [LoaderComponent],
   entryComponents: [LoaderComponent],
-  imports: [AppCommonModule],
+  imports: [
+    CommonModule,
+    MatProgressSpinnerModule
+  ],
   exports: [LoaderComponent]
 })
 export class LoaderModule {
