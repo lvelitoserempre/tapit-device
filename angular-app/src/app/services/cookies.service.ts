@@ -4,7 +4,7 @@ export class CookiesService {
   }
 
   static setValue(key: string, value: string) {
-    document.cookie = key + "=" + value + ";max-age=31536000;path=/;";
+    document.cookie = key + '=' + value + ';max-age=31536000;path=/;';
   }
 
   static getObject(key: string) {
@@ -12,10 +12,10 @@ export class CookiesService {
   }
 
   static getValue(key: string) {
-    const cookieValue = document.cookie.match(key + "=[^ ;]*");
+    const cookieValue = document.cookie.match(key + '=[^ ;]*');
 
     if (cookieValue) {
-      return cookieValue[0].replace(key + "=", "");
+      return cookieValue[0].replace(key + '=', '');
     }
   }
 }

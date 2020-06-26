@@ -10,7 +10,7 @@
             class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none"><i
               class="uil uil-store text-2xl"></i> Tienda</a>
         </li>
-        <li class="inline-block align-middle ml-0" *ngIf="user">
+        <li class="inline-block align-middle ml-0 hidden" *ngIf="user">
           <a class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none app-link"
             routerLink="/user/codes" routerLinkActive="active"><i class="uil uil-ticket text-2xl"
               queryParamsHandling="merge"></i> Mis Códigos</a>
