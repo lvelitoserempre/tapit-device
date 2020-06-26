@@ -29,7 +29,7 @@ export default function Header(props) {
                                 <img className="main-logo" src={i18next.t("BillLayout.Header.Logo")} />
                             </li>
                             <li>
-                                <a className="app-button border-2 border-orange-500 bg-orange-500 text-white" href={i18next.t("BillLayout.Header.UrlLogin")}>
+                                <a className="app-button border-2 border-black text-black w-full text-center p-3 text-sm" href={i18next.t("BillLayout.Header.UrlLogin")}>
                                     {i18next.t("BillLayout.Header.LoginText")}
                                 </a>
                             </li>
@@ -38,10 +38,10 @@ export default function Header(props) {
                     </div>
                 </nav>
                 <div className="w-full py-4 pb-0 sm:pb-4">
-                    <div className="inline-block text-center md:text-left w-full md:w-1/2 mb-0 align-middle">
+                    <div className="inline-block text-left w-full md:w-1/2 mb-0 align-middle">
                         <ul>
                             <li>
-                                <img src={i18next.t("BillLayout.Header.Logo")} />
+                                <img className="main-logo ml-16 sm:ml-0" src={i18next.t("BillLayout.Header.Logo")} />
                             </li>
                         </ul>
                     </div>
