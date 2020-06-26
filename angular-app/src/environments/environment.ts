@@ -24,7 +24,7 @@ export const environment = {
       createUser: '/v1/sso/user'
     }
   },
-  marketUrl: 'https://market-dev.tapit.com.co/api/vtexid/pub/logout?scope=bavariaco&returnUrl=https://market-dev.tapit.com.co/dev',
+  marketUrl: 'https://dev-market.tapit.com.co/api/vtexid/pub/logout?scope=bavariacotest&returnUrl=https://dev-market.tapit.com.co',
   googleAnalyticsId: 'UA-159252784-3',
   googleTagManagerId: 'GTM-NFCC7RC'
 };
