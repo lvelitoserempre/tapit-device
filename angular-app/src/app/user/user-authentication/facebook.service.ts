@@ -8,6 +8,8 @@ import {UserAccount} from '../../models/user-account.model';
 import {AnalyticsService} from '../../services/anaylitics/analytics.service';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
 
+declare var fbq: any;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -44,6 +46,10 @@ export class FacebookService {
   }
 
   private sendEventToAnalytics(isNewUser: boolean) {
+    if (isNewUser) {
+      fbq('track', 'CompleteRegistration');
+    }
+
     this.analyticsService.sendCustomEvent({
       hitType: 'event',
       eventCategory: isNewUser ? 'signup' : 'login',
