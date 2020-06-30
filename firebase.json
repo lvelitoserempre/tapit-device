@@ -57,7 +57,7 @@
           "headers": [
             {
               "key": "Access-Control-Allow-Origin",
-              "value": "https://promoaguila.tapit.com.co"
+              "value": "*"
             }
           ]
         }
