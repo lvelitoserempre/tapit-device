@@ -4,7 +4,6 @@ import {auth} from 'firebase';
 import {mergeMap, switchMap} from 'rxjs/operators';
 import {UserDAO} from '../user-dao.service';
 import {AuthService} from './user-authentication-service/auth.service';
-import {UserAccount} from '../../models/user-account.model';
 import {AnalyticsService} from '../../services/anaylitics/analytics.service';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
 
@@ -41,7 +40,8 @@ export class FacebookService {
       email: facebookResponse.additionalUserInfo.profile.email,
       firstName: facebookResponse.additionalUserInfo.profile.first_name,
       lastName: facebookResponse.additionalUserInfo.profile.last_name,
-      birthDate: (new Date(facebookResponse.additionalUserInfo.profile.birthday)).toISOString()
+      birthDate: (new Date(facebookResponse.additionalUserInfo.profile.birthday)).toISOString(),
+      origin: 'web'
     };
   }
 
