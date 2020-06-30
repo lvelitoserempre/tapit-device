@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Plx from 'react-plx';
 
 export default function PrizesSection(props) {
