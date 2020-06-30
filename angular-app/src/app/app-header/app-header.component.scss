@@ -1,3 +1,9 @@
+@import "../../assets/styles/variables";
+.main-logo {
+    @media (max-width: $xs) {
+        width: 76px;
+    }
+}
 #menuToggle {
     height: 0;
     left: 0;
