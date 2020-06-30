@@ -3,17 +3,18 @@
     <div class="inline-block text-center md:text-left w-full md:w-1/2 align-middle">
       <ul>
         <li class="inline-block align-middle">
-          <img src="assets/images/tap-it_black-orange.svg" />
+          <img src="assets/images/tap-it_black-orange.svg"/>
         </li>
-        <li class="inline-block align-middle ml-4" *ngIf="user">
+        <li *ngIf="user" class="inline-block md:hidden align-middle ml-4">
           <a [href]="marketUrl"
-            class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none"><i
-              class="uil uil-store text-2xl"></i> Tienda</a>
+             class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none"><i
+            class="uil uil-store text-2xl text-orange-500"></i> MARKET</a>
         </li>
-        <li class="inline-block align-middle ml-0 hidden" *ngIf="user">
-          <a class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none app-link"
+        <li *ngIf="user" class="inline-block align-middle ml-0 hidden">
+          <a
+            class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none app-link"
             routerLink="/user/codes" routerLinkActive="active"><i class="uil uil-ticket text-2xl"
-              queryParamsHandling="merge"></i> Mis Códigos</a>
+                                                                  queryParamsHandling="merge"></i> Mis Códigos</a>
         </li>
       </ul>
     </div>
@@ -30,10 +31,23 @@
             <span class="text-sm font-bold block">Tus puntos</span>
             <span class="text-md font-bold block text-orange-500">{{
               user.points | number: "1.0"
-            }}</span>
+              }}</span>
           </li>
         </ul>
       </ul>
+    </div>
+  </div>
+
+  <!--Monster created to support alignment of market link. Please delete once it is not needed anymore-->
+  <div class="hidden md:block absolute top-0 left-0 w-full">
+    <div class="container mx-auto">
+      <div class="w-10/12 mx-auto py-8">
+        <li *ngIf="user" class="inline-block align-middle">
+          <a [href]="marketUrl"
+             class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none"><i
+            class="uil uil-store text-2xl text-orange-500"></i> MARKET</a>
+        </li>
+      </div>
     </div>
   </div>
 </header>
