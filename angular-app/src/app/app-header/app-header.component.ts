@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {UserAccount} from '../models/user-account.model';
-import {AuthService} from '../user/user-authentication/user-authentication-service/auth.service';
-import {Subscription} from 'rxjs';
-import {environment} from '../../environments/environment';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { UserAccount } from '../models/user-account.model';
+import { AuthService } from '../user/user-authentication/user-authentication-service/auth.service';
+import { Subscription } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +15,14 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
   private userSubscription: Subscription;
 
   constructor(private userAuthenticationService: AuthService) {
+  }
+
+  setMenu(event: any) {
+    if (event.target.checked) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
   }
 
   ngOnInit(): void {

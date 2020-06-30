@@ -3,12 +3,9 @@ import React from "react";
 export default function Header(props) {
 
     function setMenu(e) {
-        console.log(e.target);
         if (e.target.checked) {
-            console.log(true);
             document.body.classList.add('overflow-hidden');
         } else {
-            console.log(false);
             document.body.classList.remove('overflow-hidden');
         }
     }
@@ -22,9 +19,9 @@ export default function Header(props) {
                         <input type="checkbox" onClick={setMenu} className="block absolute" />
                         <div className="background"></div>
                         <img className='img-menu block' width="26" src='../assets/images/hMenu.svg' />
-                        <ul className="fixed w-10/12 p-6 bg-gray-100 pt-10 h-full top-0 border-4 border-white" id="menu">
+                        <ul className="fixed w-10/12 p-6 bg-gray-100 pt-2 h-full top-0 border-4 border-white" id="menu">
                             <li>
-                                <img className="" src={i18next.t("BillLayout.Header.Logo")} />
+                                <img className="w-2/3" src={i18next.t("BillLayout.Header.Logo")} />
                             </li>
                             <li>
                                 <a className="app-button border-2 border-orange-500 bg-orange-500 text-white w-full text-center p-3 text-sm" href={i18next.t("BillLayout.Header.UrlLogin")}>
