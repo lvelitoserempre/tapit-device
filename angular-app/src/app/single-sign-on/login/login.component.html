@@ -6,7 +6,7 @@
       <div class="text-left mb-8">
         <label class="font-bold text-gray-800 block mb-2" for="email">Email</label>
         <input [class.border-red-500]="loginForm.get('email').invalid && loginForm.get('email').touched"
-               class="app-input block w-full lg:w-8/12 sm:ml-0" formControlName="email" id="email" type="email">
+               class="app-input block w-full lg:w-8/12 sm:ml-0" formControlName="email" id="email" type="email" [value]="incomingData.config.userEmail">
         <p *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched"
            class="text-red-500 pl-2">
           Debes ingresar un email
@@ -21,6 +21,9 @@
         <input [class.border-red-500]="loginForm.get('password').invalid && loginForm.get('password').touched"
                class="app-input block w-full lg:w-8/12 sm:ml-0" formControlName="password" id="password"
                type="password">
+        
+        <p *ngIf="incomingData.config.passwordInfo" class="text-red-500 pl-2">Usa tu cédula como contraseña</p>
+
         <p *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched"
            class="text-red-500 pl-2">
           Debes ingresar una contraseña
@@ -39,11 +42,11 @@
         ¿OLVIDASTE TU CONTRASEÑA?
       </a>
 
-      <button (click)="loginWithFacebook()" class="app-button facebook-button min-width-18 mb-8" type="button">
+      <button *ngIf="incomingData.config.facebookButton" (click)="loginWithFacebook()" class="app-button facebook-button min-width-18 mb-8" type="button">
         INGRESAR CON FACEBOOK
       </button>
 
-      <div class="text-left mb-8 lg:w-8/12">
+      <div *ngIf="incomingData.config.offersOption" class="text-left mb-8 lg:w-8/12">
         <label class="checkbox font-bold text-gray-800">
           <input formControlName="offers" type="checkbox">
           <span class="checkmark"></span>

@@ -18,6 +18,12 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   validationMessages = LoginValidationMessages;
   incomingData: {
+    config: {
+      userEmail: string,
+      facebookButton: boolean,
+      offersOption: boolean,
+      passwordInfo: boolean
+    },
     appId: string,
     targetPageOrigin: string,
     ageGateDate: Date,
@@ -27,12 +33,30 @@ export class LoginComponent implements OnInit {
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group(LoginValidators);
+    this.incomingData = {
+      config: {
+        userEmail: null,
+        facebookButton: true,
+        offersOption: true,
+        passwordInfo: false
+      },
+      appId: null,
+      targetPageOrigin: null,
+      ageGateDate: null,
+      origin: null
+    };
   }
 
   ngOnInit(): void {
     window.addEventListener('message', (event: MessageEvent) => {
       if (event.data && event.data.method === 'getUserCustomToken') {
         this.incomingData = {
+          config: {
+            userEmail: event.data.config.userEmail,
+            facebookButton: event.data.config.facebookButton,
+            offersOption: event.data.config.offersOption,
+            passwordInfo: event.data.config.passwordInfo
+          },
           appId: event.data.appId,
           ageGateDate: new Date(event.data.ageGateDate),
           origin: event.data.origin,
