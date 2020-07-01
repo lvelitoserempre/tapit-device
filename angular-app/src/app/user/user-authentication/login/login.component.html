@@ -1,6 +1,6 @@
 <div class="container mx-auto relative overflow-x-hidden">
   <div class="inline-block w-full sm:w-6/12 align-middle p-4">
-    <h1 class="title text-4xl my-10 sm:mt-0 sm:mb-8">Inicia <span class="text-orange-500">sesión</span></h1>
+    <h1 class="text-4xl my-10 sm:mt-0 sm:mb-8">Inicia <span class="text-orange-500">sesión</span></h1>
 
     <form (ngSubmit)="login()" [formGroup]="loginForm" class="text-center sm:text-left">
       <div class="text-left mb-8">
@@ -43,7 +43,7 @@
         INGRESAR CON FACEBOOK
       </button>
 
-      <div class="text-left mb-8">
+      <div class="text-left mb-8 lg:w-8/12">
         <label class="checkbox font-bold text-gray-800">
           <input formControlName="offers" type="checkbox">
           <span class="checkmark"></span>
@@ -51,12 +51,13 @@
         </label>
       </div>
 
-      <div class="text-left mb-8">
+      <div class="text-left mb-8  lg:w-8/12">
         <label class="checkbox font-bold text-gray-800">
           <input formControlName="terms" type="checkbox">
           <span class="checkmark"></span>
           Acepto los
-          <a class="text-orange-500" href="/terms-and-conditions.html" target="_blank">Términos y Condiciones de
+          <a class="text-orange-500 underline" href="/terms-and-conditions.html" target="_blank">Términos y Condiciones
+            de
             Tapit</a>
         </label>
         <p *ngIf="loginForm.get('terms').hasError('required') && loginForm.get('terms').touched"
