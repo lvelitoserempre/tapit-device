@@ -143,7 +143,8 @@ module.exports = {
       md: '0.375rem',
       lg: '0.5rem',
       xl: '1rem',
-      '2xl': '2rem',
+      '2xl': '1.25rem',
+      '3xl': '2rem',
       full: '9999px'
     },
     borderWidth: {
@@ -278,7 +279,7 @@ module.exports = {
       disc: 'disc',
       decimal: 'decimal',
     },
-    margin: (theme, { negative }) => ({
+    margin: (theme, {negative}) => ({
       auto: 'auto',
       ...theme('spacing'),
       ...negative(theme('spacing')),
@@ -287,7 +288,7 @@ module.exports = {
       full: '100%',
       screen: '100vh',
     },
-    maxWidth: (theme, { breakpoints }) => ({
+    maxWidth: (theme, {breakpoints}) => ({
       none: 'none',
       xs: '20rem',
       sm: '24rem',
@@ -532,7 +533,7 @@ module.exports = {
       '90': '90deg',
       '180': '180deg',
     },
-    translate: (theme, { negative }) => ({
+    translate: (theme, {negative}) => ({
       ...theme('spacing'),
       ...negative(theme('spacing')),
       '-full': '-100%',
