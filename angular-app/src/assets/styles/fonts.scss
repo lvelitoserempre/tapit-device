@@ -3,8 +3,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('assets/fonts/FilsonSoftRegular.woff') format('woff'),
-  url('assets/fonts/FilsonSoftRegular.woff2') format('woff2');
+  src: url('assets/fonts/FilsonSoftRegular.ttf') format('truetype');
 }
 
 @font-face {
@@ -12,6 +11,5 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('assets/fonts/FilsonSoft-Bold.woff') format('woff'),
-  url('assets/fonts/FilsonSoft-Bold.woff2') format('woff2');
+  src: url('assets/fonts/filson-soft-bold.otf') format('opentype');
 }
