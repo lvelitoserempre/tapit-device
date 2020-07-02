@@ -32,6 +32,21 @@
           La contraseña debe tener almenos 6 caracteres
         </p>
       </div>
+      <!-- This options are for promo poker campaing page -->
+      <div *ngIf="incomingData.config.promoPokerTerms" class="text-left mb-8  lg:w-8/12">
+        <label class="checkbox font-bold text-gray-800">
+          <input formControlName="terms" type="checkbox">
+          <span class="checkmark"></span>
+          Acepto los
+          <a class="text-orange-500 underline" href="/terms-and-conditions.html" target="_blank">Términos y Condiciones
+            de Tapit</a>
+        </label>
+        <p *ngIf="loginForm.get('terms').hasError('required') && loginForm.get('terms').touched"
+           class="text-red-500 pl-8">
+          <i class="uil uil-exclamation-circle text-2xl"></i>
+          Debes aceptar los términos y condiciones
+        </p>
+      </div>
 
       <button [disabled]="loginForm.invalid" class="app-button bg-orange-500 min-width-18 mb-8" type="submit">
         INGRESAR
@@ -54,7 +69,7 @@
         </label>
       </div>
 
-      <div class="text-left mb-8  lg:w-8/12">
+      <div *ngIf="incomingData.config.promoPokerTerms != true" class="text-left mb-8  lg:w-8/12">
         <label class="checkbox font-bold text-gray-800">
           <input formControlName="terms" type="checkbox">
           <span class="checkmark"></span>

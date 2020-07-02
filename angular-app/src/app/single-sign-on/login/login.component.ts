@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
       userEmail: string,
       facebookButton: boolean,
       offersOption: boolean,
-      passwordInfo: boolean
+      passwordInfo: boolean,
+      promoPokerTerms: boolean
     },
     appId: string,
     targetPageOrigin: string,
@@ -38,7 +39,8 @@ export class LoginComponent implements OnInit {
         userEmail: null,
         facebookButton: true,
         offersOption: true,
-        passwordInfo: false
+        passwordInfo: false,
+        promoPokerTerms: false
       },
       appId: null,
       targetPageOrigin: null,
@@ -55,7 +57,8 @@ export class LoginComponent implements OnInit {
             userEmail: event.data.config.userEmail,
             facebookButton: event.data.config.facebookButton,
             offersOption: event.data.config.offersOption,
-            passwordInfo: event.data.config.passwordInfo
+            passwordInfo: event.data.config.passwordInfo,
+            promoPokerTerms: event.data.config.promoPokerTerms
           },
           appId: event.data.appId,
           ageGateDate: new Date(event.data.ageGateDate),
