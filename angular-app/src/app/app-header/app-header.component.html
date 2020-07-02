@@ -3,7 +3,7 @@
     <div class="inline-block text-center md:text-left w-full md:w-1/2 align-middle">
       <ul>
         <li class="inline-block align-middle">
-          <img src="assets/images/tap-it_black-orange.svg" style="width: 100px"/>
+          <img src="assets/images/tap-it_black-orange.svg" style="width: 90px"/>
         </li>
         <li *ngIf="user" class="inline-block md:hidden align-middle ml-4">
           <a [href]="marketUrl"
@@ -24,9 +24,9 @@
           <li
             class="font-bold text-md uppercase text-orange-500 cursor-pointer inline-block mr-4 align-middle focus:outline-none"
             routerLink="/user/profile">
-            {{ user.firstName }} {{ user.lastName }}
+            HOLA {{ user.firstName }}
           </li>
-          <li class="absolute top-0 bottom-0 border-l-2 border-gray-500 inline-block align-middle"></li>
+          <li class="absolute top-0 bottom-0 border-l-4 border-gray-500 inline-block align-middle"></li>
           <li class="inline-block ml-4 align-middle">
             <span class="text-sm font-bold block">Tus puntos</span>
             <span class="text-md font-bold block text-orange-500">{{
