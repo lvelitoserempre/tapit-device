@@ -3,16 +3,16 @@
     <div id="menuToggle" class="absolute block w-full">
       <input type="checkbox" class="block absolute" (click)="setMenu($event)">
       <div class="background"></div>
-      <img class="img-menu block" width="26" src="assets/images/hMenu.svg">
+      <img class="img-menu block" width="26" src="../assets/images/hMenu.svg">
       <ul class="fixed w-10/12 p-6 bg-gray-100 pt-10 h-full top-0 border-4 border-white" id="menu" *ngIf="!user">
-        <li><img class="" src="assets/images/tap-it_black-orange.svg"></li>
+        <li><img class="" src="../assets/images/tap-it_black-orange.svg"></li>
         <li><a class="app-button border-2 border-orange-500 bg-orange-500 text-white w-full text-center p-3 text-sm"
             routerLink="/auth/login">INICIA SESIÓN</a></li>
-        <li><img width="30" class="absolute icon-close" src="assets/images/ic_close.svg"></li>
+        <li><img width="30" class="absolute icon-close" src="../assets/images/ic_close.svg"></li>
       </ul>
       <ul class="fixed w-10/12 p-6 bg-gray-100 pt-2 h-full top-0 border-4 border-white" id="menu" *ngIf="user">
         <li class="cursor-pointer inline-block align-middle focus:outline-none p-0" routerLink="/user/profile">
-          <img width="100" src="assets/images/profile-placeholder.png">
+          <img width="100" src="../assets/images/profile-placeholder.png">
         </li>
         <li
           class="font-bold text-md uppercase text-orange-500 cursor-pointer inline-block mr-4 align-middle focus:outline-none py-4"
@@ -40,20 +40,20 @@
     </div>
   </nav>
   <div class="container mx-auto">
-    <div class="w-full pl-0 py-2">
+    <div class="w-full py-2 px-2 sm:px-0">
       <div class="inline-block text-left w-1/2 mb-0 align-middle">
         <ul>
           <li class="inline-block align-middle">
             <img class="main-logo ml-12 sm:ml-0" style="width: 70px;" src="assets/images/tapit-logo.png" />
           </li>
-          <li class="hidden sm:inline-block align-middle ml-4" *ngIf="user">
+          <li class="hidden sm:inline-block align-middle ml-8" *ngIf="user">
             <a [href]="marketUrl"
-              class="font-bold text-sm uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none ml-3"><i
+              class="font-bold text-sm uppercase text-gray-700 inline-block mr-10 align-middle focus:outline-none"><i
                 class="uil uil-store text-lg inline-block align-middle leading-none"></i> <span
                 class="inline-block align-middle">Market</span></a>
           </li>
-          <li class="hidden sm:inline-block align-middle ml-0" *ngIf="user">
-            <a class="font-bold text-sm uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none app-link"
+          <li class="hidden sm:inline-block align-middle" *ngIf="user">
+            <a class="font-bold text-sm uppercase text-gray-700 inline-block mr-10 align-middle focus:outline-none app-link"
               routerLink="/user/codes" routerLinkActive="active"><i
                 class="uil uil-ticket text-lg inline-block align-middle leading-none" queryParamsHandling="merge"></i>
               <span class="inline-block align-middle">Mis Códigos</span></a>
