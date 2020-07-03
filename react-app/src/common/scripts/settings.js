@@ -32,7 +32,7 @@ i18next.init({
                     }
                 },
                 Header: {
-                    Logo: '../assets/images/TopLogo.png'
+                    Logo: '../assets/images/tapit-logo.png'
                 },
                 Section1: {
                     Title: '<span>La app que premia a los</span> amantes de la cerveza',
@@ -133,8 +133,8 @@ i18next.init({
                     Copyright: 'Todos los derechos reservados © 2020',
                     Links: [
                         {
-                            Name: 'Contáctanos',
-                            Url: 'mailto:hello@gettap.it'
+                            Name: 'E-Mail: info@tapit.com.co',
+                            Url: 'mailto:info@tapit.com.co'
                         },
                         {
                             Name: 'Aviso de privacidad',
@@ -152,7 +152,15 @@ i18next.init({
                             Name: 'Términos y Condiciones',
                             Url: '/terms.html'
                         }
-                    ]
+                    ],
+                    Support: {
+                        Title: 'Soporte',
+                        Phone: 'Teléfono: 3158220232',
+                        Contact: {
+                            Text: 'Contáctanos',
+                            Url: 'https://draftline.typeform.com/to/mr1ZYDog'
+                        }
+                    }
                 },
                 Animations,
                 Redirection: [
