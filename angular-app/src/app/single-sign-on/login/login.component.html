@@ -39,9 +39,9 @@
         <label class="checkbox font-bold text-gray-800">
           <input formControlName="terms" type="checkbox">
           <span class="checkmark"></span>
-          Acepto los
-          <a class="text-orange-500 underline" href="/terms-and-conditions.html" target="_blank">Términos y Condiciones
-            de Tapit</a>
+          Acepto
+          <a class="text-orange-500 underline" href="/terms-and-conditions.html" target="_blank">términos y condiciones
+            de Tapit y políticas de privacidad</a>
         </label>
         <p *ngIf="loginForm.get('terms').hasError('required') && loginForm.get('terms').touched"
            class="text-red-500 pl-8">
