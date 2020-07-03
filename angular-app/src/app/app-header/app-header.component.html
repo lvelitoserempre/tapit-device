@@ -1,4 +1,4 @@
-<header class='shadow-lg rounded-b-2xl bg-white z-10 relative'>
+<header class='border-b border-gray-500 bg-white z-10 relative'>
   <nav role="navigation" class="block sm:hidden">
     <div id="menuToggle" class="absolute block w-full">
       <input type="checkbox" class="block absolute" (click)="setMenu($event)">
@@ -40,21 +40,23 @@
     </div>
   </nav>
   <div class="container mx-auto">
-    <div class="w-full pl-0 pr-8 sm:px-8 py-4">
+    <div class="w-full pl-0 py-2">
       <div class="inline-block text-left w-1/2 mb-0 align-middle">
         <ul>
           <li class="inline-block align-middle">
-            <img class="main-logo ml-12 sm:ml-0" src="assets/images/tap-it_black-orange.svg" />
+            <img class="main-logo ml-12 sm:ml-0" style="width: 70px;" src="assets/images/tapit-logo.png" />
           </li>
           <li class="hidden sm:inline-block align-middle ml-4" *ngIf="user">
             <a [href]="marketUrl"
-              class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none"><i
-                class="uil uil-store text-2xl"></i> Market</a>
+              class="font-bold text-sm uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none ml-3"><i
+                class="uil uil-store text-lg inline-block align-middle leading-none"></i> <span
+                class="inline-block align-middle">Market</span></a>
           </li>
           <li class="hidden sm:inline-block align-middle ml-0" *ngIf="user">
-            <a class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none app-link"
-              routerLink="/user/codes" routerLinkActive="active"><i class="uil uil-ticket text-2xl"
-                queryParamsHandling="merge"></i> Mis Códigos</a>
+            <a class="font-bold text-sm uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none app-link"
+              routerLink="/user/codes" routerLinkActive="active"><i
+                class="uil uil-ticket text-lg inline-block align-middle leading-none" queryParamsHandling="merge"></i>
+              <span class="inline-block align-middle">Mis Códigos</span></a>
           </li>
         </ul>
       </div>
@@ -63,21 +65,23 @@
           <ul class="relative inline-block sm:hidden">
             <li class="inline-block ml-4 align-middle">
               <span class="text-sm font-bold block text-gray-700">Tus puntos</span>
-              <span class="text-md font-bold block text-orange-500">{{
+              <span class="text-sm font-bold block text-orange-500">{{
                 user.points | number: "1.0"
               }}</span>
             </li>
           </ul>
-          <ul class="rounded-2xl bg-gray-100 relative hidden sm:inline-block py-2 px-6">
+          <ul class="relative hidden sm:inline-block py-2 px-6">
             <li
-              class="font-bold text-md uppercase text-orange-500 cursor-pointer inline-block mr-4 align-middle focus:outline-none"
-              routerLink="/user/profile">
-              Hola, {{ user.firstName }}
+              class="font-bold text-sm uppercase text-gray-700 cursor-pointer inline-block mr-4 align-middle focus:outline-none app-link"
+              routerLink="/user/profile" routerLinkActive="active">
+              <i class="uil uil-user-circle text-lg inline-block align-middle inline-block align-middle"
+                queryParamsHandling="merge"></i>
+              <span class="inline-block align-middle">{{ user.firstName }}</span>
             </li>
             <li class="relative h-6 top-0 bottom-0 border-l border-gray-500 inline-block align-middle"></li>
             <li class="inline-block ml-4 align-middle">
               <span class="text-sm font-bold inline-block text-gray-700">Pts.&nbsp;</span>
-              <span class="text-md font-bold inline-block text-orange-500"> {{
+              <span class="text-sm font-bold inline-block text-orange-500"> {{
                 user.points | number: "1.0"
               }}</span>
             </li>

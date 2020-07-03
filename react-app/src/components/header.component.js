@@ -12,7 +12,7 @@ export default function Header(props) {
 
     return (
 
-        <header className='shadow-lg rounded-b-2xl mb-6'>
+        <header className='border-b border-gray-500 bg-white mb-6'>
             <div className='container'>
                 <nav role="navigation" className="block sm:hidden">
                     <div id="menuToggle" className="absolute block w-full">
