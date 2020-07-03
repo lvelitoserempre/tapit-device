@@ -6,7 +6,9 @@
       <div class="text-left mb-8">
         <label class="font-bold text-gray-800 block mb-2" for="email">Email</label>
         <input [class.border-red-500]="loginForm.get('email').invalid && loginForm.get('email').touched"
-               class="app-input block w-full lg:w-8/12 sm:ml-0" formControlName="email" id="email" type="email" [value]="incomingData.config.userEmail">
+               [value]="incomingData.config.userEmail" class="app-input block w-full lg:w-8/12 sm:ml-0"
+               formControlName="email" id="email"
+               type="email">
         <p *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched"
            class="text-red-500 pl-2">
           Debes ingresar un email
@@ -21,7 +23,7 @@
         <input [class.border-red-500]="loginForm.get('password').invalid && loginForm.get('password').touched"
                class="app-input block w-full lg:w-8/12 sm:ml-0" formControlName="password" id="password"
                type="password">
-        
+
         <p *ngIf="incomingData.config.passwordInfo" class="text-red-500 pl-2">Usa tu cédula como contraseña</p>
 
         <p *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched"
@@ -57,24 +59,25 @@
         ¿OLVIDASTE TU CONTRASEÑA?
       </a>
 
-      <button *ngIf="incomingData.config.facebookButton" (click)="loginWithFacebook()" class="app-button facebook-button min-width-18 mb-8" type="button">
+      <button (click)="loginWithFacebook()" *ngIf="incomingData.config.facebookButton"
+              class="app-button facebook-button min-width-18 mb-8" type="button">
         INGRESAR CON FACEBOOK
       </button>
 
       <div *ngIf="incomingData.config.offersOption" class="text-left mb-8 lg:w-8/12">
-        <label class="checkbox font-bold text-gray-800">
+        <label class="checkbox text-gray-800">
           <input formControlName="offers" type="checkbox">
           <span class="checkmark"></span>
           Quiero recibir ofertas exclusivas de Tapit en mi correo. No enviamos spam! (Opcional)
         </label>
       </div>
 
-      <div *ngIf="incomingData.config.promoPokerTerms != true" class="text-left mb-8  lg:w-8/12">
-        <label class="checkbox font-bold text-gray-800">
+      <div *ngIf="incomingData.config.promoPokerTerms != true" class="text-left mb-8 lg:w-8/12">
+        <label class="checkbox text-gray-800">
           <input formControlName="terms" type="checkbox">
           <span class="checkmark"></span>
           Acepto los
-          <a class="text-orange-500 underline" href="/terms-and-conditions.html" target="_blank">Términos y Condiciones
+          <a class="text-orange-500 underline" href="/terms.html" target="_blank">Términos y Condiciones
             de Tapit</a>
         </label>
         <p *ngIf="loginForm.get('terms').hasError('required') && loginForm.get('terms').touched"
@@ -86,7 +89,7 @@
     </form>
   </div>
 
-  <div class="w-4/12 inline-block align-top sm:w-6/12 sm:align-middle">
+  <div class="w-4/12 inline-block align-top sm:w-6/12">
     <img class="max-w-none relative people" src="assets/images/people.png">
   </div>
 </div>

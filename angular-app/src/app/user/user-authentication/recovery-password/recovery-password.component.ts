@@ -5,6 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {DialogService} from '../../../dialog/dialog-service/dialog.service';
 import RecoveryPasswordErrorService from './recovery-password-error.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {LoginValidators} from '../login/login.validations';
 
 @Component({
   selector: 'app-recovery-password',
@@ -22,11 +23,11 @@ export class RecoveryPasswordComponent implements OnInit {
               formBuilder: FormBuilder) {
     this.emailForm = formBuilder.group({
       email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]]
-    });
+    }, {updateOn: 'blur'});
 
     this.passwordForm = formBuilder.group({
       password: ['', [Validators.required, Validators.minLength(6)]]
-    });
+    }, {updateOn: 'blur'});
   }
 
   ngOnInit(): void {

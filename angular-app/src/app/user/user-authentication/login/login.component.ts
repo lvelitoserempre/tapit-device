@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute, private loaderService: LoaderService,
               private dialogService: DialogService, private userAuthenticationService: AuthService,
               private facebookService: FacebookService) {
-    this.loginForm = this.formBuilder.group(LoginValidators);
+    this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
   }
 
   ngOnInit(): void {
