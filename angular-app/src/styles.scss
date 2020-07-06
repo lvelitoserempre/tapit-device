@@ -147,12 +147,8 @@
   border-radius: 7px;
 }
 
-.checkbox:hover input ~ .checkmark {
-  background-color: #efefef;
-}
-
 .checkmark:after {
-  content: "\2714";
+  content: "\2705";
   position: absolute;
   display: none;
   font-size: 1.5rem;
@@ -161,4 +157,10 @@
 
 .checkbox input:checked ~ .checkmark:after {
   display: block;
+  color: white;
+}
+
+.checkbox input:checked ~ .checkmark {
+  background-color: #FF5005;
+  border-color: #FF5005;
 }
