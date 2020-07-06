@@ -1,13 +1,13 @@
-<header class='shadow-lg rounded-b-2xl bg-gray-100 z-10 relative'>
+<header class='shadow-lg rounded-b-2xl'>
   <div class="w-full px-8 py-4">
     <div class="inline-block text-center md:text-left w-full md:w-1/2 align-middle">
       <ul>
         <li class="inline-block align-middle">
-          <img src="assets/images/tap-it_black-orange.svg" style="width: 100px"/>
+          <img src="assets/images/tapit-logo.png" style="width: 90px"/>
         </li>
         <li *ngIf="user" class="inline-block md:hidden align-middle ml-4">
           <a [href]="marketUrl"
-             class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none"><i
+             class="font-bold text-md text-gray-700 inline-block mr-8 align-middle focus:outline-none leading-none"><i
             class="uil uil-store text-2xl icon"></i> MARKET</a>
         </li>
         <li *ngIf="user" class="inline-block align-middle ml-0 hidden">
@@ -18,13 +18,13 @@
         </li>
       </ul>
     </div>
-    <div class="inline-block text-center md:text-right w-full md:w-1/2 align-middle">
+    <div class="inline-block text-center md:text-right w-full md:w-1/2 align-middle  z-10 relative">
       <ul *ngIf="user" class="relative">
-        <ul class="rounded-2xl bg-gray-200 relative inline-block py-2 px-6">
+        <ul class="relative inline-block py-2 px-6">
           <li
             class="font-bold text-md uppercase text-orange-500 cursor-pointer inline-block mr-4 align-middle focus:outline-none"
             routerLink="/user/profile">
-            {{ user.firstName }} {{ user.lastName }}
+            HOLA {{ user.firstName }}
           </li>
           <li class="absolute top-0 bottom-0 border-l-4 border-gray-500 inline-block align-middle"></li>
           <li class="inline-block ml-4 align-middle">
@@ -40,14 +40,12 @@
 
   <!--Monster created to support alignment of market link. Please delete once it is not needed anymore-->
   <div class="hidden md:block absolute top-0 left-0 w-full">
-    <div class="container mx-auto market-alignment">
-      <div class="w-10/12 mx-auto py-8">
-        <li *ngIf="user" class="inline-block align-middle">
-          <a [href]="marketUrl"
-             class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none"><i
-            class="uil uil-store text-2xl icon"></i> MARKET</a>
-        </li>
-      </div>
+    <div class="container mx-auto market-alignment py-8 px-2">
+      <li *ngIf="user" class="inline-block align-middle">
+        <a [href]="marketUrl"
+           class="font-bold text-md text-gray-700 inline-block mr-8 align-middle focus:outline-none leading-none"><i
+          class="uil uil-store text-2xl icon"></i> MARKET</a>
+      </li>
     </div>
   </div>
 </header>
