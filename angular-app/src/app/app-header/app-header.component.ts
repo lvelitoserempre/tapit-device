@@ -1,8 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UserAccount } from '../models/user-account.model';
-import { AuthService } from '../user/user-authentication/user-authentication-service/auth.service';
-import { Subscription } from 'rxjs';
-import { environment } from '../../environments/environment';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {UserAccount} from '../models/user-account.model';
+import {AuthService} from '../user/user-authentication/user-authentication-service/auth.service';
+import {Subscription} from 'rxjs';
+import {environment} from '../../environments/environment';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +14,10 @@ import { environment } from '../../environments/environment';
 export class AppHeaderComponent implements OnInit, OnDestroy {
   user: UserAccount;
   marketUrl = environment.production ? 'https://market.tapit.com.co' : 'https://market-dev.tapit.com.co';
+  showLoginButton = false;
   private userSubscription: Subscription;
 
-  constructor(private userAuthenticationService: AuthService) {
+  constructor(private userAuthenticationService: AuthService, private route: ActivatedRoute, private router: Router) {
   }
 
   setMenu(event: any) {
@@ -26,9 +29,19 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.userAuthenticationService.getCurrentUser().pipe(take(1))
+          .subscribe(user => {
+            this.showLoginButton = !user && event.url !== '/auth/login';
+          })
+      }
+    })
+
     this.userSubscription = this.userAuthenticationService.getCurrentUser()
       .subscribe(user => {
         this.user = user;
+        this.showLoginButton = !user
       });
   }
 
