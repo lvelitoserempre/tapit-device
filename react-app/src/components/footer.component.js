@@ -76,7 +76,7 @@ export default function FooterSection(props) {
                         </div>
                         <div className="w-1/2 inline-block align-top">
                             <ul className='text-purple-500'>
-                                <li className="w-full inline-block align-top sm:pb-0 pb-3 mb-5">
+                                <li className="w-full inline-block align-top sm:pb-0 pb-3 mb-5 hidden">
                                     <a target="_blank" href={i18next.t("Footer.Support.Contact.Url")}>
                                         {i18next.t("Footer.Support.Contact.Text")}
                                     </a>
