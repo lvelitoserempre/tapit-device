@@ -20,10 +20,10 @@ export default function Header(props) {
                         <div className="background"></div>
                         <img className='img-menu block' width="26" src='../assets/images/hMenu.svg' />
                         <ul className="fixed w-10/12 p-6 bg-gray-100 pt-2 h-full top-0 border-4 border-white" id="menu">
-                            <li>
+                            <li className="py-2">
                                 <img className="w-2/3" src={i18next.t("BillLayout.Header.Logo")} />
                             </li>
-                            <li>
+                            <li className="py-2">
                                 <a className="app-button border-2 border-orange-500 bg-orange-500 text-white w-full text-center p-3 text-sm" href={i18next.t("BillLayout.Header.UrlLogin")}>
                                     {i18next.t("BillLayout.Header.LoginText")}
                                 </a>

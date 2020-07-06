@@ -43,7 +43,7 @@ export default function StartSection(props) {
         <img className="section__start-content-cellphone" src={i18next.t("Section1.Image")} />
       </div>
       <div
-        className="section__start__bottom-line col-xs-10 col-lg-8 col-lg-offset-0 start-xs hidden sm:block">
+        className="section__start__bottom-line col-xs-11 col-lg-8 col-lg-offset-0 start-xs hidden sm:block">
         <img src="../assets/images/beers-section1.svg" />
       </div>
       <div
