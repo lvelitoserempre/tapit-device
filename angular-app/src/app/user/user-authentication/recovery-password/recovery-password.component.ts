@@ -5,7 +5,6 @@ import {ActivatedRoute} from '@angular/router';
 import {DialogService} from '../../../dialog/dialog-service/dialog.service';
 import RecoveryPasswordErrorService from './recovery-password-error.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {LoginValidators} from '../login/login.validations';
 
 @Component({
   selector: 'app-recovery-password',
@@ -55,22 +54,30 @@ export class RecoveryPasswordComponent implements OnInit {
   }
 
   recoveryPassword() {
-    this.loaderService.show();
+    this.emailForm.markAllAsTouched();
 
-    auth().sendPasswordResetEmail(this.emailForm.controls.email.value, {url: window.location.origin + '/app/auth/login'}).then(res => {
-      this.stage = 'sentEmail';
-    }).catch(error => {
-      this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
-    }).finally(() => this.loaderService.hide());
+    if (this.emailForm.valid) {
+      this.loaderService.show();
+
+      auth().sendPasswordResetEmail(this.emailForm.controls.email.value, {url: window.location.origin + '/app/auth/login'}).then(res => {
+        this.stage = 'sentEmail';
+      }).catch(error => {
+        this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
+      }).finally(() => this.loaderService.hide());
+    }
   }
 
   setNewPassword() {
-    this.loaderService.show();
+    this.passwordForm.markAllAsTouched();
 
-    auth().confirmPasswordReset(this.oobCode, this.passwordForm.controls.password.value).then(res => {
-      this.stage = 'passwordChanged';
-    }).catch(error => {
-      this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
-    }).finally(() => this.loaderService.hide());
+    if (this.passwordForm.valid) {
+      this.loaderService.show();
+
+      auth().confirmPasswordReset(this.oobCode, this.passwordForm.controls.password.value).then(res => {
+        this.stage = 'passwordChanged';
+      }).catch(error => {
+        this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
+      }).finally(() => this.loaderService.hide());
+    }
   }
 }
