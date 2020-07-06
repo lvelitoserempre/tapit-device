@@ -12,7 +12,7 @@ export default function Header(props) {
 
     return (
 
-        <header className='shadow-lg rounded-b-2xl mb-6'>
+        <header className='border-b border-gray-500 bg-white mb-6'>
             <div className='container'>
                 <nav role="navigation" className="block sm:hidden">
                     <div id="menuToggle" className="absolute block w-full">
@@ -32,11 +32,11 @@ export default function Header(props) {
                         </ul>
                     </div>
                 </nav>
-                <div className="w-full py-4">
+                <div className="w-full py-2">
                     <div className="inline-block text-left w-1/2 mb-0 align-middle">
                         <ul>
                             <li>
-                                <img className="main-logo ml-12 sm:ml-0" src={i18next.t("BillLayout.Header.Logo")} />
+                                <img className="main-logo ml-12 sm:ml-0" src={i18next.t("Header.Logo")} style={{ width: '70px' }} />
                             </li>
                         </ul>
                     </div>
@@ -51,7 +51,7 @@ export default function Header(props) {
                                 :
                                 <ul>
                                     <li className="inline-block">
-                                        <a className="app-button border-2 border-orange-500 bg-orange-500 text-white text-center p-3 text-sm" href={i18next.t("BillLayout.Header.UrlLogin")}>
+                                        <a className="app-button border-2 border-orange-500 bg-orange-500 text-white text-center p-3 py-2 text-sm" href={i18next.t("BillLayout.Header.UrlLogin")}>
                                             {i18next.t("BillLayout.Header.LoginText")}
                                         </a>
                                     </li>
