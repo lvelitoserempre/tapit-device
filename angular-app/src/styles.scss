@@ -15,6 +15,7 @@
       padding: 24px 18px;
     }
   }
+
   &.dialog-full {
     @media (max-width: $xs) {
       bottom: 0;
@@ -23,6 +24,7 @@
       position: absolute !important;
       width: 100%;
     }
+
     .scroll-view {
       @media (max-width: $xs) {
         max-height: 60vh;
@@ -119,7 +121,6 @@
   background-size: cover;
 }
 
-
 .checkbox {
   display: block;
   position: relative;
@@ -127,40 +128,38 @@
   margin-bottom: 12px;
   cursor: pointer;
   user-select: none;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2px;
+    width: 24px;
+    height: 24px;
+    background: #FFFFFF;
+    border: 2px solid #191419;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input:checked ~ .checkmark {
+    display: block;
+    background-color: #FF5005;
+    border-color: #FF5005;
+  }
 }
 
-.checkbox input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
 
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  border: 2px solid #000;
-  border-radius: 7px;
-}
-
-.checkmark:after {
-  content: "\2705";
-  position: absolute;
-  display: none;
-  font-size: 1.5rem;
-  top: -5px;
-}
-
-.checkbox input:checked ~ .checkmark:after {
-  display: block;
-  color: white;
-}
-
-.checkbox input:checked ~ .checkmark {
-  background-color: #FF5005;
-  border-color: #FF5005;
-}
