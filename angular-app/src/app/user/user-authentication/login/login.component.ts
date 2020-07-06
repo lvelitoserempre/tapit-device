@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute, private loaderService: LoaderService,
               private dialogService: DialogService, private userAuthenticationService: AuthService,
               private facebookService: FacebookService) {
-    this.loginForm = this.formBuilder.group(LoginValidators);
+    this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
   }
 
   ngOnInit(): void {
@@ -32,20 +32,24 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const email = this.loginForm.get('email').value;
-    const password = this.loginForm.get('password').value;
+    this.loginForm.markAllAsTouched();
 
-    this.loaderService.show();
+    if (this.loginForm.valid) {
+      const email = this.loginForm.get('email').value;
+      const password = this.loginForm.get('password').value;
 
-    this.userAuthenticationService.login(email, password)
-      .subscribe(res => {
-          this.loaderService.hide();
-          this.redirectUser();
-        },
-        error => {
-          this.loaderService.hide();
-          this.dialogService.manageError(error);
-        });
+      this.loaderService.show();
+
+      this.userAuthenticationService.login(email, password)
+        .subscribe(res => {
+            this.loaderService.hide();
+            this.redirectUser();
+          },
+          error => {
+            this.loaderService.hide();
+            this.dialogService.manageError(error);
+          });
+    }
   }
 
   loginWithFacebook() {

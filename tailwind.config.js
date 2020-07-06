@@ -141,8 +141,8 @@ module.exports = {
       sm: '0.125rem',
       default: '0.25rem',
       md: '0.375rem',
-      lg: '0.5rem',
-      xl: '1rem',
+      lg: '0.875rem',
+      xl: '1.25rem',
       '2xl': '2rem',
       full: '9999px'
     },

@@ -22,11 +22,11 @@ export class RecoveryPasswordComponent implements OnInit {
               formBuilder: FormBuilder) {
     this.emailForm = formBuilder.group({
       email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]]
-    });
+    }, {updateOn: 'blur'});
 
     this.passwordForm = formBuilder.group({
       password: ['', [Validators.required, Validators.minLength(6)]]
-    });
+    }, {updateOn: 'blur'});
   }
 
   ngOnInit(): void {
@@ -54,22 +54,30 @@ export class RecoveryPasswordComponent implements OnInit {
   }
 
   recoveryPassword() {
-    this.loaderService.show();
+    this.emailForm.markAllAsTouched();
 
-    auth().sendPasswordResetEmail(this.emailForm.controls.email.value, {url: window.location.origin + '/app/auth/login'}).then(res => {
-      this.stage = 'sentEmail';
-    }).catch(error => {
-      this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
-    }).finally(() => this.loaderService.hide());
+    if (this.emailForm.valid) {
+      this.loaderService.show();
+
+      auth().sendPasswordResetEmail(this.emailForm.controls.email.value, {url: window.location.origin + '/app/auth/login'}).then(res => {
+        this.stage = 'sentEmail';
+      }).catch(error => {
+        this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
+      }).finally(() => this.loaderService.hide());
+    }
   }
 
   setNewPassword() {
-    this.loaderService.show();
+    this.passwordForm.markAllAsTouched();
 
-    auth().confirmPasswordReset(this.oobCode, this.passwordForm.controls.password.value).then(res => {
-      this.stage = 'passwordChanged';
-    }).catch(error => {
-      this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
-    }).finally(() => this.loaderService.hide());
+    if (this.passwordForm.valid) {
+      this.loaderService.show();
+
+      auth().confirmPasswordReset(this.oobCode, this.passwordForm.controls.password.value).then(res => {
+        this.stage = 'passwordChanged';
+      }).catch(error => {
+        this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
+      }).finally(() => this.loaderService.hide());
+    }
   }
 }
