@@ -36,7 +36,7 @@ export default function Header(props) {
                     <div className="inline-block text-left w-1/2 mb-0 align-middle">
                         <ul>
                             <li>
-                                <img className="main-logo ml-12 sm:ml-0" src={i18next.t("Header.Logo")} style={{ width: '70px' }} />
+                                <img className="main-logo ml-12 sm:ml-0 inline-block align-middle" src={i18next.t("Header.Logo")} style={{ width: '70px' }} />
                             </li>
                         </ul>
                     </div>
