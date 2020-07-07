@@ -13,7 +13,7 @@ export default function Header(props) {
     return (
 
         <header className='border-b border-gray-500 bg-white mb-6'>
-            <div className='container'>
+            <div className='container md:px-4'>
                 <nav role="navigation" className="block sm:hidden">
                     <div id="menuToggle" className="absolute block w-full">
                         <input type="checkbox" onClick={setMenu} className="block absolute" />
