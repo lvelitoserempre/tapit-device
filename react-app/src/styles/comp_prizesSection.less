@@ -8,6 +8,13 @@
             @media screen and (max-width: @md) {
                 width: 100%;
             }
+            >div>div,
+            h1,
+            p {
+                @media screen and (min-width: @sm) {
+                    padding: 0;
+                }
+            }
         }
         &-image {
             margin: -280px 0 0 0;
@@ -31,6 +38,9 @@
                     margin-left: 5%;
                     width: 130%;
                 }
+            }
+            img {
+                display: initial;
             }
         }
         &-icons {
