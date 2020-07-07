@@ -7,6 +7,7 @@ import {AppCommonModule} from '../../app-common.module';
 import {DialogModule} from '../../dialog/dialog.module';
 import {LoaderModule} from '../../loader/loader.module';
 import {RecoveryPasswordComponent} from './recovery-password/recovery-password.component';
+import {RecoveryPasswordModule} from './recovery-password/recovery-password.module';
 
 
 const routes: Routes = [
@@ -24,14 +25,14 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     LoginComponent,
-    SignUpComponent,
-    RecoveryPasswordComponent,
+    SignUpComponent
   ],
   imports: [
     AppCommonModule,
     DialogModule,
     LoaderModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    RecoveryPasswordModule
   ],
   exports: [RouterModule]
 })
