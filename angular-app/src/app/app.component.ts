@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from './user/user-authentication/user-authentication-service/auth.service';
-import { environment } from '../environments/environment';
-import { auth, initializeApp, User } from 'firebase';
-import { UserDAO } from './user/user-dao.service';
-import { CookiesService } from './services/cookies.service';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from './user/user-authentication/user-authentication-service/auth.service';
+import {environment} from '../environments/environment';
+import {auth, initializeApp} from 'firebase';
+import {UserDAO} from './user/user-dao.service';
+import {CookiesService} from './services/cookies.service';
 
 declare var tagManager;
 declare var ga;
@@ -29,17 +29,19 @@ export class AppComponent implements OnInit {
    * This method redirects the user to the root in production if the user has not entered his birth date
    */
   private redirectIfUserIsAChild() {
-    const locationPath = window.location.pathname;
+    console.log(CookiesService.getValue('anonymousUserBirthDate'));
 
-    if (locationPath.indexOf('recovery-password') == -1) {
-      if (!CookiesService.getValue('anonymousUserBirthDate') && window.location.hostname !== 'localhost') {
-        window.location.replace(window.location.origin);
+    auth().onAuthStateChanged(user => {
+      if (!user) {
+        if (window.location.hostname !== 'localhost') {
+          if (!CookiesService.getValue('anonymousUserBirthDate')) {
+            window.location.replace(window.location.origin);
+          }
+        }
       }
-      // else if (CookiesService.getValue('anonymousUserBirthDate') && CookiesService.getValue('loggedUser') && (locationPath == '/' || locationPath == '/app/')) {
-      //   this.redirectUserToMarket()
-      // }
-    }
+    });
   }
+
   private redirectUserToMarket() {
     window.location.replace(environment.marketUrl);
   }
