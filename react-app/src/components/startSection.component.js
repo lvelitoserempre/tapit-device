@@ -21,7 +21,7 @@ export default function StartSection(props) {
   const url = searchMap ? '&referrer=utm_source%3D' + (searchMap.utm_source || searchMap.s) + '%26utm_medium%3D' + (searchMap.utm_medium || searchMap.m) : '';
 
   return (
-    <section className='row section section__start center-xs bg-no-repeat bg-right-top relative'>
+    <section className='bg-no-repeat bg-right-top center-lg center-xs relative row section section__start start-md'>
       <div className="col-xs-11 col-md-6 col-lg-4 col-lg-offset-0 middle-xs start-xs">
         <h1 className="section__title mt-0" dangerouslySetInnerHTML={{ __html: i18next.t("Section1.Title") }}></h1>
         <p className="section__text">{i18next.t("Section1.Text")}</p>
