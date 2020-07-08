@@ -16,7 +16,7 @@
         </li>
         <li
           class="font-bold text-md uppercase text-orange-500 cursor-pointer inline-block mr-4 align-middle focus:outline-none py-4"
-          routerLink="/user/profile">
+          routerLink="/user/profile" (click)="loginCloseMenu()">
           {{ user.firstName }} {{ user.lastName }}
           <span class="text-gray-700 normal-case text-xs font-normal">{{user.email}}</span>
         </li>
@@ -28,16 +28,16 @@
         <li class="inline-block align-middle border-b border-gray-500 w-full py-4">
           <a
             class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none app-link"
-            routerLink="/user/codes" routerLinkActive="active"><i class="uil uil-ticket text-2xl"
+            routerLink="/user/codes" routerLinkActive="active" (click)="loginCloseMenu()"><i class="uil uil-ticket text-2xl"
                                                                   queryParamsHandling="merge"></i> Mis Códigos</a>
         </li>
         <li class="inline-block align-middle w-full py-4">
           <a
             class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none app-link"
-            routerLink="/user/profile" routerLinkActive="active"><i class="uil uil-user-circle text-2xl"
+            routerLink="/user/profile" routerLinkActive="active" (click)="loginCloseMenu()"><i class="uil uil-user-circle text-2xl"
                                                                     queryParamsHandling="merge"></i> Perfil</a>
         </li>
-        <li><img class="absolute icon-close" src="assets/images/ic_close.svg" width="30"></li>
+        <li><img class="absolute icon-close" src="../assets/images/ic_close.svg" width="30"></li>
       </ul>
     </div>
   </nav>
