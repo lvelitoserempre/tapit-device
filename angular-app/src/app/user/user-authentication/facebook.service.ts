@@ -41,6 +41,7 @@ export class FacebookService {
       lastName: facebookResponse.additionalUserInfo.profile.last_name,
       gender: facebookResponse.additionalUserInfo.profile.gender,
       birthDate: (new Date(facebookResponse.additionalUserInfo.profile.birthday)).toISOString(),
+      origin: 'web',
       ...otherData
     };
   }

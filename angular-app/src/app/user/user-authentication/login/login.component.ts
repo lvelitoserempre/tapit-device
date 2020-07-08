@@ -53,7 +53,10 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithFacebook() {
-    if (!this.loginForm.get('terms').invalid) {
+    this.loginForm.markAsUntouched();
+    this.loginForm.get('terms').markAsTouched();
+
+    if (this.loginForm.get('terms').valid) {
       this.loaderService.show();
 
       this.facebookService.login()
@@ -65,8 +68,6 @@ export class LoginComponent implements OnInit {
             this.loaderService.hide();
             this.dialogService.manageError(error);
           });
-    } else {
-      this.loginForm.get('terms').markAsTouched();
     }
   }
 

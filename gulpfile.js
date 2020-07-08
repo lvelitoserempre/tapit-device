@@ -36,16 +36,16 @@ task('copy-static', function () {
 });
 
 task('copy-assetlinks', function () {
-  const file = process.env.environment === 'production' ? 'assetlinks.prod.json' : 'assetlinks.dev.json';
-  return src('.well-known/'+file)
-  .pipe(rename("assetlinks.json"))
-  .pipe(dest("./dist/.well-known"));
+  const file = isProductionBuild() ? 'assetlinks.prod.json' : 'assetlinks.dev.json';
+  return src('.well-known/' + file)
+    .pipe(rename("assetlinks.json"))
+    .pipe(dest("./dist/.well-known"));
 });
 
 task('copy-applefile', function () {
   const file = 'apple-app-site-association';
-  return src('.well-known/'+file)
-  .pipe(dest("./dist/.well-known"));
+  return src('.well-known/' + file)
+    .pipe(dest("./dist/.well-known"));
 });
 
 task('build-tailwind', function () {
@@ -57,14 +57,14 @@ task('build-tailwind', function () {
 })
 
 task('build-react-app', function () {
-  const command = 'npm i && npm run ' + (process.env.environment === 'production' ? 'build-prod' : 'build-prod')
+  const command = 'npm i && npm run ' + (isProductionBuild() ? 'build-prod' : 'build-prod')
   const folder = './react-app';
 
   return runCommand(command, folder);
 })
 
 task('build-angular-app', function () {
-  const command = 'npm i && npm run ' + (process.env.environment === 'production' ? 'build-prod' : 'build')
+  const command = 'npm i && npm run ' + (isProductionBuild() ? 'build-prod' : 'build')
   const folder = './angular-app';
 
   return runCommand(command, folder);
@@ -80,3 +80,8 @@ task('deploy', function () {
 task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-angular-app'));
 
 task('build-and-deploy', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-angular-app', 'deploy'));
+
+
+function isProductionBuild() {
+ return process.env.environment === 'production' || process.env.environment === 'preview';
+}
