@@ -1,12 +1,12 @@
 <header class='border-b border-gray-500 bg-white z-10 relative'>
   <nav class="block sm:hidden" role="navigation">
     <div class="absolute block w-full" id="menuToggle">
-      <input (click)="setMenu($event)" class="block absolute" type="checkbox">
+      <input (click)="setMenu($event)" class="block absolute" id="toggleMenu" type="checkbox">
       <div class="background"></div>
       <img class="img-menu block" width="26" src="../assets/images/hMenu.svg">
       <ul class="fixed w-10/12 p-6 bg-gray-100 pt-2 h-full top-0 border-4 border-white" id="menu" *ngIf="!user">
         <li class="py-2"><img class="w-2/3" src="../assets/images/tap-it_black-orange.svg"></li>
-        <li class="py-2"><a class="app-button border-2 border-orange-500 bg-orange-500 text-white w-full text-center p-3 text-sm"
+        <li class="py-2"><a (click)="loginCloseMenu()" class="app-button border-2 border-orange-500 bg-orange-500 text-white w-full text-center p-3 text-sm"
             routerLink="/auth/login">INICIA SESIÓN</a></li>
         <li><img width="30" class="absolute icon-close" src="../assets/images/ic_close.svg"></li>
       </ul>
@@ -43,7 +43,7 @@
   </nav>
   <div class="container mx-auto md:px-4">
     <div class="w-full py-2 px-2 sm:px-0">
-      <div class="inline-block text-left w-1/2 mb-0 align-middle">
+      <div class="w-3/5 md:w-7/12 sm:w-2/3 inline-block text-left mb-0 align-middle">
         <ul>
           <li class="inline-block align-middle">
             <img class="main-logo ml-12 sm:ml-0" src="assets/images/tapit-logo.png" style="width: 70px;"/>
@@ -63,7 +63,7 @@
           </li>
         </ul>
       </div>
-      <div class="inline-block text-right w-1/2 align-middle" style="min-height: 38px;">
+      <div class="inline-block text-right w-2/5 sm:w-1/3 md:w-5/12 align-middle" style="min-height: 38px;">
         <ul *ngIf="user" class="relative">
           <ul class="relative inline-block sm:hidden">
             <li class="inline-block ml-4 align-middle">
