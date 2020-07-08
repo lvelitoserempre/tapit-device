@@ -28,6 +28,10 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
     }
   }
 
+  loginCloseMenu() {
+    document.getElementById('toggleMenu').click()
+  }
+
   ngOnInit(): void {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
