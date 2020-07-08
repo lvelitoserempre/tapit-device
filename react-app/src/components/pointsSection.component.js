@@ -27,7 +27,7 @@ export default function PointsSection(props) {
                 <Slider {...settings}>
                     {pointsArr.map((point, index) => {
 
-                        const HtlmImage = <div className={`row col-xs-10 col-md-6 col-lg-3 align-middle col-lg-offset-0 middle-xs section__slider-image relative end-lg ${index == 1 && !props.isMobile ? `section__slider-image-lay2` : ''}`}>
+                        const HtlmImage = <div className={`row col-xs-10 col-md-5 col-lg-3 align-middle col-lg-offset-0 middle-xs section__slider-image relative end-lg ${index == 1 && !props.isMobile ? `section__slider-image-lay2 ` : ''}`}>
                             <div className={"section__slider-image-" + index}
                             // parallaxData={ animate.Image }
                             >
@@ -35,7 +35,7 @@ export default function PointsSection(props) {
                             </div>
                         </div>
 
-                        const HtmlText = <div className="col-xs-11 col-md-6 col-lg-5 align-middle col-lg-offset-0 middle-xs start-xs">
+                        const HtmlText = <div className={`col-xs-11 col-md-6 col-lg-5 align-middle col-lg-offset-0 middle-xs start-xs section__slider-text-${index}`}>
                             <h2 className="section__title section__title-small mb-8" dangerouslySetInnerHTML={{ __html: point.Title }} ></h2>
                             <div className="row middle-xs section__slider-content  relative pt-6 col-lg-10">
                                 <div className="col-xs-3 col-md-2 text-left">
