@@ -10,19 +10,15 @@ import {MatInputModule} from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const MaterialModules = [
-  MatButtonModule,
-  MatCardModule,
   MatDatepickerModule,
   MatDialogModule,
-  MatIconModule,
   MatInputModule,
-  MatMenuModule,
   MatNativeDateModule,
-  MatToolbarModule,
   MatProgressSpinnerModule,
-  MatListModule
+  MatCheckboxModule
 ];
 
 

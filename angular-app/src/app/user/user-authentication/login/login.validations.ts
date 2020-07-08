@@ -3,7 +3,7 @@ import {Validators} from '@angular/forms';
 export const LoginValidators = {
   email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
   password: ['', Validators.required],
-  terms: ['', Validators.requiredTrue],
+  terms: ['', {validators: [Validators.requiredTrue], updateOn: 'change'}],
   offers: ['']
 };
 
