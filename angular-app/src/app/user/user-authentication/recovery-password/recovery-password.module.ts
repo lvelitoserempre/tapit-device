@@ -4,6 +4,7 @@ import {DialogModule} from '../../../dialog/dialog.module';
 import {NgModule} from '@angular/core';
 import {LoaderModule} from '../../../loader/loader.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     DialogModule,
-    LoaderModule
+    LoaderModule,
+    RouterModule.forChild([])
   ],
   exports: [
     RecoveryPasswordComponent

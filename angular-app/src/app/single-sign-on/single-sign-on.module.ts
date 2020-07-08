@@ -9,8 +9,6 @@ import {DialogModule} from '../dialog/dialog.module';
 import {LoaderModule} from '../loader/loader.module';
 import {LoginComponent} from './login/login.component';
 import {SingleSignOnComponent} from './single-sign-on/single-sign-on.component';
-import {RecoveryPasswordComponent} from '../user/user-authentication/recovery-password/recovery-password.component';
-import {RecoveryPasswordModule} from '../user/user-authentication/recovery-password/recovery-password.module';
 
 const routes: Routes = [
   {
@@ -19,10 +17,6 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent
-      },
-      {
-        path: 'recovery-password',
-        component: RecoveryPasswordComponent
       },
       {
         path: '**',
@@ -43,10 +37,9 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
     DialogModule,
     LoaderModule,
-    RecoveryPasswordModule
+    RouterModule.forRoot(routes)
   ],
   bootstrap: [SingleSignOnComponent]
 })
