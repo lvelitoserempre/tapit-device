@@ -74,17 +74,23 @@ export default function DownloadFooter(props) {
             {
               props.isMobile ?
                 isAndroid ?
-                  androidHtml
-                  : isIos ?
-                    iosHtml
+                  screen.width >= 768?
+                    bothAppsHtml
                     :
+                      androidHtml
+                  : isIos ?
+                    screen.width >= 768?
+                      bothAppsHtml
+                    :
+                      iosHtml
+                  :
                     bothAppsHtml
                 :
                 bothAppsHtml
             }
           </div>
           {
-            !props.isMobile ?
+             screen.width >= 768 ?
               <div className='w-full sm:w-5/12 sm:inline-block align-top hidden'>
                 <div className="w-1/2 inline-block align-top text-xs text-gray-700">
                   <p dangerouslySetInnerHTML={{ __html: i18next.t("Section6.Disclaimer") }} />
