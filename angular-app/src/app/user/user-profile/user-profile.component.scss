@@ -9,3 +9,9 @@
     height: 70px;
     min-width: 200px;
 }
+.button-share {
+    @media (max-width: 330px) {
+        margin-left: 5px;
+        margin-right: 0;
+    }
+}

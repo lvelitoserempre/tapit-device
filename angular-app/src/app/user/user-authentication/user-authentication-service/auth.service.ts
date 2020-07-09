@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
 import {switchMap} from 'rxjs/operators';
 import {UserDAO} from '../../user-dao.service';
 import {AnalyticsService} from '../../../services/anaylitics/analytics.service';
+import {CookiesService} from '../../../services/cookies.service';
 import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
@@ -41,7 +42,6 @@ export class AuthService {
   async setCurrentUser(user: UserAccount) {
     await this.addIdToken(user);
     this.currentUser.next(user);
-    this.saveUserToLocalStorage(user);
     this.saveUserToACookie(user);
 
     return user;
@@ -55,20 +55,9 @@ export class AuthService {
     }
   }
 
-  saveUserToLocalStorage(user: UserAccount) {
-    if (user) {
-      window.localStorage.setItem('user', this.extractBasicData(user));
-    } else {
-      window.localStorage.removeItem('user');
-    }
-  }
-
   saveUserToACookie(user: UserAccount) {
-    if (user) {
-      document.cookie = 'loggedUser=' + encodeURIComponent(this.extractBasicData(user)) + ';max-age=31536000;path=/;domain=tapit.com.co';
-    } else {
-      document.cookie = 'loggedUser=;max-age=0;path=/;domain=tapit.com.co';
-    }
+    console.log(user);
+    CookiesService.setObject('loggedUser', this.extractCookieData(user));
   }
 
   getCurrentUser() {
@@ -102,8 +91,8 @@ export class AuthService {
     });
   }
 
-  private extractBasicData(data: UserAccount): string {
-    return JSON.stringify({
+  private extractCookieData(data: UserAccount): any {
+    return data ? {
       id: data.id,
       email: data.email,
       firstName: data.firstName || '',
@@ -111,6 +100,6 @@ export class AuthService {
       points: data.points || 0,
       idToken: data.idToken,
       refreshToken: data.refreshToken
-    });
+    } : null;
   }
 }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from './user/user-authentication/user-authentication-service/auth.service';
 import {environment} from '../environments/environment';
-import {auth, initializeApp} from 'firebase';
+import {initializeApp} from 'firebase';
 import {UserDAO} from './user/user-dao.service';
 import {CookiesService} from './services/cookies.service';
 
@@ -29,17 +29,17 @@ export class AppComponent implements OnInit {
    * This method redirects the user to the root in production if the user has not entered his birth date
    */
   private redirectIfUserIsAChild() {
-    console.log(CookiesService.getValue('anonymousUserBirthDate'));
-
-    auth().onAuthStateChanged(user => {
-      if (!user) {
-        if (window.location.hostname !== 'localhost') {
-          if (!CookiesService.getValue('anonymousUserBirthDate')) {
-            window.location.replace(window.location.origin);
+    this.authService.getCurrentUser()
+      .subscribe(user => user => {
+        console.log('listener', user)
+        if (!user) {
+          if (window.location.hostname !== 'localhost') {
+            if (!CookiesService.getValue('anonymousUserBirthDate')) {
+              window.location.replace(window.location.origin);
+            }
           }
         }
-      }
-    });
+      });
   }
 
   private redirectUserToMarket() {

@@ -161,5 +161,15 @@
     border-color: #FF5005;
   }
 }
+body {
+  input  {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    box-shadow: none;
+  }
+}
+
 
 

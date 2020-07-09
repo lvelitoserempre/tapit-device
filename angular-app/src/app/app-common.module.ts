@@ -1,5 +1,4 @@
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MaterialModule} from './material.module';
 import {NgModule} from '@angular/core';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {
@@ -14,7 +13,6 @@ import {CommonModule} from '@angular/common';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'es-CO'},
@@ -28,8 +26,7 @@ import {CommonModule} from '@angular/common';
   exports: [
     CommonModule,
     FormsModule,
-    MaterialModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AppCommonModule {

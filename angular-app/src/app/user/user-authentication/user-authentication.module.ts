@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {AlreadyLoggedInGuard} from './authentication-guards/already-logged-in.guard';
-import {SignUpComponent} from './sign-up/sign-up.component';
 import {AppCommonModule} from '../../app-common.module';
 import {DialogModule} from '../../dialog/dialog.module';
 import {LoaderModule} from '../../loader/loader.module';
@@ -24,8 +23,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    LoginComponent,
-    SignUpComponent
+    LoginComponent
   ],
   imports: [
     AppCommonModule,
