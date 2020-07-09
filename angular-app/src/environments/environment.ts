@@ -19,10 +19,12 @@ export const environment = {
       checkUser: '/v1/user/check',
       getAllEvents: '/v1/list/events',
       getAllCodes: '/v1/tapits/',
-      sendDigitalInvoice: '/v1/digitalinvoice'
+      sendDigitalInvoice: '/v1/digitalinvoice',
+      getCustomToken: '/v1/sso/customToken',
+      createUser: '/v1/sso/user'
     }
   },
-  marketUrl: 'https://market-dev.tapit.com.co/api/vtexid/pub/logout?scope=bavariaco&returnUrl=https://market-dev.tapit.com.co/dev',
+  marketUrl: 'https://market-dev.tapit.com.co/api/vtexid/pub/logout?scope=bavariacotest&returnUrl=https://market-dev.tapit.com.co',
   googleAnalyticsId: 'UA-159252784-3',
   googleTagManagerId: 'GTM-NFCC7RC'
 };

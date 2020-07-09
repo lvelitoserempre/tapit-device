@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import UrlService from "./url.service";
+import UrlService from "../services/url.service";
 
 export default function DownloadFooter(props) {
   const [isIos, setIos] = useState(null);
@@ -66,7 +66,7 @@ export default function DownloadFooter(props) {
 
   return (
     <section className='container px-2 transform mx-auto mt-2'>
-      <div className='bg-gray-100 w-full md:w-11/12 lg:w-8/12 xl:w-7/12 py-8 border-4 border-white shadow-sm'>
+      <div className='bg-gray-100 w-full md:w-11/12 lg:w-8/12 xl:w-6/12 py-8 border-4 border-white shadow-sm'>
         <div className='w-11/12 mx-auto'>
           <div className='w-full sm:w-7/12 inline-block align-top'>
             <p className="text-orange-500 font-bold " dangerouslySetInnerHTML={{__html: i18next.t("Section6.Title")}}/>
@@ -74,9 +74,15 @@ export default function DownloadFooter(props) {
             {
               props.isMobile ?
                 isAndroid ?
-                  androidHtml
+                  screen.width >= 768 ?
+                    bothAppsHtml
+                    :
+                    androidHtml
                   : isIos ?
-                  iosHtml
+                  screen.width >= 768 ?
+                    bothAppsHtml
+                    :
+                    iosHtml
                   :
                   bothAppsHtml
                 :
@@ -84,7 +90,7 @@ export default function DownloadFooter(props) {
             }
           </div>
           {
-            !props.isMobile ?
+            screen.width >= 768 ?
               <div className='w-full sm:w-5/12 sm:inline-block align-top hidden'>
                 <div className="w-1/2 inline-block align-top text-xs text-gray-700">
                   <p dangerouslySetInnerHTML={{__html: i18next.t("Section6.Disclaimer")}}/>

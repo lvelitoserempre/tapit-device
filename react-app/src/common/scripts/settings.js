@@ -11,7 +11,8 @@ i18next.init({
                         UrlLogin: '/app/auth/login',
                         UrlSignup: '/app/auth/signup',
                         LoginText: 'INICIA SESIÓN',
-                        SignupText: 'Regístrate'
+                        SignupText: 'Regístrate',
+                        IconClose: '../assets/images/ic_close.svg'
                     },
                     Section1: {
                         Title: 'Tapit y Polas Recargadas te traen experiencias increíbles',
@@ -31,7 +32,7 @@ i18next.init({
                     }
                 },
                 Header: {
-                    Logo: '../assets/images/TopLogo.png'
+                    Logo: '../assets/images/tapit-logo.png'
                 },
                 Section1: {
                     Title: '<span>La app que premia a los</span> amantes de la cerveza',
@@ -120,7 +121,7 @@ i18next.init({
                             Name: 'Facebook'
                         },
                         {
-                            Image:'../assets/images/footer/instagram-logo.svg',
+                            Image: '../assets/images/footer/instagram-logo.svg',
                             Url: 'https://www.instagram.com/tapit_beer/',
                             Name: 'Instagram'
                         }
@@ -132,8 +133,8 @@ i18next.init({
                     Copyright: 'Todos los derechos reservados © 2020',
                     Links: [
                         {
-                            Name: 'Contáctanos',
-                            Url: 'mailto:hello@gettap.it'
+                            Name: 'E-Mail: info@tapit.com.co',
+                            Url: 'mailto:info@tapit.com.co'
                         },
                         {
                             Name: 'Aviso de privacidad',
@@ -151,7 +152,15 @@ i18next.init({
                             Name: 'Términos y Condiciones',
                             Url: '/terms.html'
                         }
-                    ]
+                    ],
+                    Support: {
+                        Title: 'Soporte',
+                        Phone: 'Teléfono: 3158220232',
+                        Contact: {
+                            Text: 'Contáctanos',
+                            Url: 'https://draftline.typeform.com/to/mr1ZYDog'
+                        }
+                    }
                 },
                 Animations,
                 Redirection: [
@@ -174,5 +183,5 @@ i18next.init({
             }
         }
     }
-}, function(err, t) {
+}, function (err, t) {
 });

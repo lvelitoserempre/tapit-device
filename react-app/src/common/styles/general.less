@@ -26,17 +26,14 @@ ul {
     font-size: 16px;
     overflow: hidden;
     width: 100%;
-    img {
-        display: unset;
-    }
     .loader {
         background-color: red;
         text-align: center;
     }
     header {
-        img {
+        .main-logo {
             @media screen and (max-width: @xs) {
-                width: 100px;
+                width: 76px;
             }
         }
     }
@@ -82,10 +79,20 @@ ul {
         background-image: url('../../assets/images/slider/background-1.svg');
         background-position: right top;
         background-repeat: no-repeat;
-        @media screen and (max-width: @md) {
-            background-position: right center;
+        @media screen and (min-width: @xl) {
+            background-image: url('../../assets/images/slider/bubble_1.png');
+            background-position: 110% top;
+            background-size: 520px;
         }
-        @media screen and (max-width: @sm) {
+        @media screen and (min-width: @2xl) {
+            background-position: 90% top;
+        }
+        @media screen and (max-width: @md) {
+            background-size: 120%;
+            background-position: center top;
+        }
+        @media screen and (max-width: @xs) {
+            background-position: right center;
             background-size: 210%;
         }
     }
@@ -99,8 +106,8 @@ ul {
                 color: @mainColor;
             }
             @media screen and (max-width: @xs) {
-                font-size: 8.6vw;
-                line-height: 8.6vw;
+                font-size: 11.6vw;
+                line-height: 11.6vw;
             }
             &-red {
                 color: @redColor;
@@ -148,5 +155,14 @@ ul {
     }
     @media screen and (max-width: @md) {
         display: inherit;
+    }
+}
+body {
+    input  {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        outline: none;
+        box-shadow: none;
     }
 }

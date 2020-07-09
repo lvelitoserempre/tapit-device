@@ -8,11 +8,18 @@
             @media screen and (max-width: @md) {
                 width: 100%;
             }
+            >div>div,
+            h1,
+            p {
+                @media screen and (min-width: @sm) {
+                    padding: 0;
+                }
+            }
         }
         &-image {
-            margin: -280px -107px 0 0;
+            margin: -280px 0 0 0;
             @media screen and (max-width: @lg) {
-                margin: -140px -107px 0 0;
+                margin: -140px 0 0 0;
                 img {
                     width: 70%;
                 }
@@ -20,8 +27,20 @@
             @media screen and (max-width: @md) {
                 margin: 20px 0 0;
                 img {
+                    margin-left: 27%;
+                    max-width: none;
                     width: calc(100% + 32px);
                 }
+            }
+            @media screen and (max-width: @xs) {
+                margin: 20px 0 0;
+                img {
+                    margin-left: 5%;
+                    width: 130%;
+                }
+            }
+            img {
+                display: initial;
             }
         }
         &-icons {

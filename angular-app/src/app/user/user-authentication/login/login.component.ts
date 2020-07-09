@@ -6,6 +6,7 @@ import {AuthService} from '../user-authentication-service/auth.service';
 import {DialogService} from '../../../dialog/dialog-service/dialog.service';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {FacebookService} from '../facebook.service';
+import {CookiesService} from '../../../services/cookies.service';
 import {environment} from '../../../../environments/environment';
 
 @Component({
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute, private loaderService: LoaderService,
               private dialogService: DialogService, private userAuthenticationService: AuthService,
               private facebookService: FacebookService) {
-    this.loginForm = this.formBuilder.group(LoginValidators);
+    this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
   }
 
   ngOnInit(): void {
@@ -31,42 +32,47 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const email = this.loginForm.get('email').value;
-    const password = this.loginForm.get('password').value;
+    this.loginForm.markAllAsTouched();
 
-    this.loaderService.show();
+    if (this.loginForm.valid) {
+      const email = this.loginForm.get('email').value;
+      const password = this.loginForm.get('password').value;
 
-    this.userAuthenticationService.login(email, password)
-      .subscribe(res => {
-          this.loaderService.hide();
-          this.redirectUser();
-        },
-        error => {
-          this.loaderService.hide();
-          this.dialogService.manageError(error);
-        });
+      this.loaderService.show();
+
+      this.userAuthenticationService.login(email, password)
+        .subscribe(res => {
+            this.loaderService.hide();
+            this.redirectUser();
+          },
+          error => {
+            this.loaderService.hide();
+            this.dialogService.manageError(error);
+          });
+    }
   }
 
   loginWithFacebook() {
-    this.loaderService.show();
+    this.loginForm.markAsUntouched();
+    this.loginForm.get('terms').markAsTouched();
 
-    this.facebookService.login()
-      .subscribe(res => {
-          this.loaderService.hide();
-          this.redirectUser();
-        },
-        error => {
-          this.loaderService.hide();
-          this.dialogService.manageError(error);
-        });
-  }
+    if (this.loginForm.get('terms').valid) {
+      this.loaderService.show();
 
-  setCookie(name:string,cvalue:boolean) {
-      document.cookie = name + "=" + cvalue + ";domain=tapit.com.co;path=/;max-age=31536000"
+      this.facebookService.login()
+        .subscribe(res => {
+            this.loaderService.hide();
+            this.redirectUser();
+          },
+          error => {
+            this.loaderService.hide();
+            this.dialogService.manageError(error);
+          });
+    }
   }
 
   redirectUser() {
-    this.setCookie('setItems',false);
+    CookiesService.setValue('setItems', 'false');
     const redirectUrl = this.backUrl ? this.backUrl : environment.marketUrl;
     window.location.replace(redirectUrl);
   }

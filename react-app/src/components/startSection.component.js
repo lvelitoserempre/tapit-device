@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import UrlService from "./url.service";
+import UrlService from "../services/url.service";
 
 export default function StartSection(props) {
   const [isIos, setIos] = useState(null);
@@ -21,8 +21,8 @@ export default function StartSection(props) {
   const url = searchMap ? '&referrer=utm_source%3D' + (searchMap.utm_source || searchMap.s) + '%26utm_medium%3D' + (searchMap.utm_medium || searchMap.m) : '';
 
   return (
-    <section className='row section section__start center-xs bg-no-repeat bg-right-top'>
-      <div className="col-xs-10 col-md-6 col-lg-4 col-xs-offset-1 col-lg-offset-0 middle-xs start-xs">
+    <section className='bg-no-repeat bg-right-top center-lg center-xs relative row section section__start start-md'>
+      <div className="col-xs-11 col-md-6 col-lg-4 col-lg-offset-0 middle-xs start-xs">
         <h1 className="section__title mt-0" dangerouslySetInnerHTML={{__html: i18next.t("Section1.Title")}}></h1>
         <p className="section__text">{i18next.t("Section1.Text")}</p>
         <div className="section__button-container mt-5">
@@ -43,8 +43,12 @@ export default function StartSection(props) {
         <img className="section__start-content-cellphone" src={i18next.t("Section1.Image")}/>
       </div>
       <div
-        className="section__start__bottom-line row middle-xs col-xs-10 col-lg-8 col-xs-offset-1 col-lg-offset-0 start-xs">
+        className="section__start__bottom-line col-xs-11 col-lg-8 col-lg-offset-0 start-xs hidden sm:block">
         <img src="../assets/images/beers-section1.svg"/>
+      </div>
+      <div
+        className="section__start__bottom-line-mobile sm:hidden block absolute">
+        <img src="../assets/images/beers-section1-mobile.svg"/>
       </div>
     </section>
   )

@@ -1,0 +1,97 @@
+<div class="container mx-auto relative overflow-x-hidden">
+  <div class="inline-block w-full sm:w-6/12 align-middle p-4">
+    <h1 class="text-4xl my-10 sm:mt-0 sm:mb-8">Inicia <span class="text-orange-500">sesión</span></h1>
+
+    <form (ngSubmit)="login()" [formGroup]="loginForm" class="text-center sm:text-left">
+      <div class="text-left mb-8">
+        <label class="font-bold text-gray-800 block mb-2" for="email">Email</label>
+        <input [class.border-red-500]="loginForm.get('email').invalid && loginForm.get('email').touched"
+               [value]="incomingData.config.userEmail" class="app-input block w-full lg:w-8/12 sm:ml-0"
+               formControlName="email" id="email"
+               type="email">
+        <p *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched"
+           class="text-red-500 pl-2">
+          Debes ingresar un email
+        </p>
+        <p *ngIf="loginForm.get('email').hasError('pattern')" class="text-red-500 pl-2">
+          El formato de email no es correcto
+        </p>
+      </div>
+
+      <div class="text-left mb-8">
+        <label class="font-bold text-gray-800 block mb-2" for="password">Contraseña</label>
+        <input [class.border-red-500]="loginForm.get('password').invalid && loginForm.get('password').touched"
+               class="app-input block w-full lg:w-8/12 sm:ml-0" formControlName="password" id="password"
+               type="password">
+
+        <p *ngIf="incomingData.config.passwordInfo" class="text-red-500 pl-2">Usa tu cédula como contraseña</p>
+
+        <p *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched"
+           class="text-red-500 pl-2">
+          Debes ingresar una contraseña
+        </p>
+        <p *ngIf="loginForm.get('password').hasError('minlength')" class="text-red-500 pl-2">
+          La contraseña debe tener almenos 6 caracteres
+        </p>
+      </div>
+      <!-- This options are for promo poker campaing page -->
+      <div *ngIf="incomingData.config.promoPokerTerms" class="text-left mb-8  lg:w-8/12">
+        <label class="checkbox font-bold text-gray-800">
+          <input formControlName="terms" type="checkbox">
+          <span class="checkmark"></span>
+          Acepto
+          <a class="text-orange-500 underline" href="https://tapit.com.co/terms.html" target="_blank">términos y
+            condiciones
+            de Tapit</a> y <a class="text-orange-500 underline" href="https://tapit.com.co/data-proteccion.html"
+                              target="_blank"> políticas de privacidad</a>
+        </label>
+        <p *ngIf="loginForm.get('terms').hasError('required') && loginForm.get('terms').touched"
+           class="text-red-500 pl-8">
+          <i class="uil uil-exclamation-circle text-2xl"></i>
+          Debes aceptar los términos y condiciones
+        </p>
+      </div>
+
+      <button [disabled]="loginForm.invalid" class="app-button bg-orange-500 min-width-18 mb-8" type="submit">
+        INGRESAR
+      </button>
+
+      <a class="font-bold text-orange-500 text-left text-sm block mb-16 sm:pl-8 text-center sm:text-left"
+         href="/app/auth/recovery-password" target="_blank">
+        ¿OLVIDASTE TU CONTRASEÑA?
+      </a>
+
+      <button (click)="loginWithFacebook()" *ngIf="incomingData.config.facebookButton"
+              class="app-button facebook-button min-width-18 mb-8" type="button">
+        INGRESAR CON FACEBOOK
+      </button>
+
+      <div *ngIf="incomingData.config.offersOption" class="text-left mb-8 lg:w-8/12">
+        <label class="checkbox text-gray-800">
+          <input formControlName="offers" type="checkbox">
+          <span class="checkmark"></span>
+          Quiero recibir ofertas exclusivas de Tapit en mi correo. No enviamos spam! (Opcional)
+        </label>
+      </div>
+
+      <div *ngIf="incomingData.config.promoPokerTerms != true" class="text-left mb-8 lg:w-8/12">
+        <label class="checkbox text-gray-800">
+          <input formControlName="terms" type="checkbox">
+          <span class="checkmark"></span>
+          Acepto los
+          <a class="text-orange-500 underline" href="/terms.html" target="_blank">Términos y Condiciones
+            de Tapit</a>
+        </label>
+        <p *ngIf="loginForm.get('terms').hasError('required') && loginForm.get('terms').touched"
+           class="text-red-500 pl-8">
+          <i class="uil uil-exclamation-circle text-2xl"></i>
+          Debes aceptar los términos y condiciones
+        </p>
+      </div>
+    </form>
+  </div>
+
+  <div class="w-4/12 inline-block align-top sm:w-6/12">
+    <img class="max-w-none relative people" src="assets/images/people.png">
+  </div>
+</div>

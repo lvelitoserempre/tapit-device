@@ -15,6 +15,7 @@
       padding: 24px 18px;
     }
   }
+
   &.dialog-full {
     @media (max-width: $xs) {
       bottom: 0;
@@ -23,6 +24,7 @@
       position: absolute !important;
       width: 100%;
     }
+
     .scroll-view {
       @media (max-width: $xs) {
         max-height: 60vh;
@@ -118,3 +120,56 @@
   background: url("assets/images/bg.svg") no-repeat;
   background-size: cover;
 }
+
+.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  user-select: none;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2px;
+    width: 24px;
+    height: 24px;
+    background: #FFFFFF;
+    border: 2px solid #191419;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input:checked ~ .checkmark {
+    display: block;
+    background-color: #FF5005;
+    border-color: #FF5005;
+  }
+}
+body {
+  input  {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+
+

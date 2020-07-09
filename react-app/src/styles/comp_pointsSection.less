@@ -19,7 +19,7 @@
             &-image {
                 background-repeat: no-repeat;
                 img {
-                    @media screen and (max-width: @md) {
+                    @media screen and (max-width: @xs) {
                         margin: 0 24%;
                         width: 80%;
                     }
@@ -31,6 +31,16 @@
                         }
                     }
                 }
+            }
+            &-text-1 {
+                .section__slider-content {
+                    @media screen and (min-width: @sm) {
+                        &:before {
+                            width: 72%;
+                        }
+                    }
+                }
+
             }
             &-content {
                 &::before {
@@ -46,7 +56,6 @@
                 color: @ligthGrayColor;
                 font-family: @mainFontBold;
                 font-size: 60px;
-                text-align: center;
                 @media screen and (max-width: @xs) {
                     font-size: 125px;
                 }

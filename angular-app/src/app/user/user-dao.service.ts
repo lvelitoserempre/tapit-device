@@ -44,4 +44,31 @@ export class UserDAO {
           }
         )));
   }
+
+  getCustomToken() {
+    return from(auth().currentUser.getIdToken())
+      .pipe(mergeMap(token =>
+        this.http.get(
+          environment.firebase.functions.url + environment.firebase.functions.getCustomToken,
+          {
+            headers: {
+              Authorization: 'Bearer ' + token
+            }
+          }
+        )));
+  }
+
+  createUser(user: UserAccount) {
+    return from(auth().currentUser.getIdToken())
+      .pipe(mergeMap(token =>
+        this.http.post(
+          environment.firebase.functions.url + environment.firebase.functions.createUser,
+          user,
+          {
+            headers: {
+              Authorization: 'Bearer ' + token,
+            }
+          }
+        )));
+  }
 }
