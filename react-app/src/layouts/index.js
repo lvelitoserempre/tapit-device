@@ -48,6 +48,7 @@ export default function Index() {
   function saveBirthDate(value) {
     setUserDate(value);
     document.body.style.overflow = "auto";
+    window.scrollTo(0,0);
     document.getElementById('agegate').style.display = 'none';
   }
 

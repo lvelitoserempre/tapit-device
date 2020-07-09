@@ -9,6 +9,9 @@ export default function Header(props) {
             document.body.classList.remove('overflow-hidden');
         }
     }
+    function loginCloseMenu() {
+        document.getElementById('toggleMenu').click()
+    }
 
     return (
 
@@ -16,8 +19,8 @@ export default function Header(props) {
             <div className='container md:px-4'>
                 <nav role="navigation" className="block sm:hidden">
                     <div id="menuToggle" className="absolute block w-full">
-                        <input type="checkbox" onClick={setMenu} className="block absolute" />
-                        <div className="background"></div>
+                        <input type="checkbox" onClick={setMenu} id='toggleMenu' className="block absolute" />
+                        <div onClick={loginCloseMenu} className="background"></div>
                         <img className='img-menu block' width="26" src='../assets/images/hMenu.svg' />
                         <ul className="fixed w-10/12 p-6 bg-gray-100 pt-2 h-full top-0 border-4 border-white" id="menu">
                             <li className="py-2">
