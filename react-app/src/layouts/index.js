@@ -21,7 +21,6 @@ export default function Index() {
   const [events, setEvents] = useState(null);
   const [user, setUser] = useState(null);
   const [userDate, setUserDate] = useState(null);
-  const [cookieSt, setCookieSt] = useState(null);
   const isBillLayout = i18next.t("BillLayout.Active");
 
   useEffect(() => {
@@ -32,7 +31,7 @@ export default function Index() {
     setUser(loggedUser);
 
     if (loggedUser) {
-      //window.location.replace(UrlBuilder.buildUrl('market'))
+      window.location.replace(UrlBuilder.buildUrl('market'))
     }
 
 

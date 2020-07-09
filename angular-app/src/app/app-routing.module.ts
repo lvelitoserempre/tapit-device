@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'app/user',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'user/profile'
   }
 ];
 
