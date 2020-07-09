@@ -1,4 +1,4 @@
-<div class="container mx-auto mb-20 pt-8">
+<div class="container mx-auto mb-8 pt-8">
   <div class="pb-6 w-10/12 sm:w-11/12 lg:w-10/12 mx-auto">
     <h3 class="text-2xl font-bold text-black mb-8">Mi <span class="text-orange-500">Perfil</span></h3>
     <!--<button class="text-2xl absolute top-0 right-0 m-4 focus:outline-none">
@@ -11,11 +11,11 @@
         <img class="w-auto" src="assets/images/profile-placeholder.png">
       </div>
 
-      <div class="inline-block align-middle sm:px-0 lg:px-6 py-6 pt-0 sm:pt-6">
+      <div class="block sm:inline-block align-middle sm:px-0 lg:px-6 py-6 pt-0 sm:pt-6">
         <h3 class="text-xl font-bold text-3xl mb-6">{{user.firstName + ' ' + user.lastName}}</h3>
-        <div class="inline-block align-middle md:mr-4 lg:mr-20 mb-4">
+        <div class="block sm:inline-block overflow-hidden align-middle md:mr-4 lg:mr-20 mb-4">
           <h3 class="text-xs tracking-widest text-gray-700 font-bold uppercase">Correo</h3>
-          <p class="text-md sm:text-xl text-gray-700 sm:text-black">{{user.email}}</p>
+          <p class="text-md sm:text-xl text-gray-700 sm:text-black truncate">{{user.email}}</p>
         </div>
 
         <div class="inline-block align-middle mb-4">
