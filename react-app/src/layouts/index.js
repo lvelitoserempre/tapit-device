@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
-import { HashRouter, Route } from "react-router-dom";
+import {HashRouter, Route} from "react-router-dom";
 import "./../styles/main.less";
 import Header from "./../components/header.component";
 import Agegate from "./../components/agegate.component";
-import CookiesSection from "./../components/cookiesModal.component"
 import StartSection from "./../components/startSection.component";
 import PointsSection from "./../components/pointsSection.component";
 import PrizesSection from "./../components/prizesSection.component";
@@ -14,41 +13,40 @@ import MarketPlaceSection from "./../components/marketPlaceSection.component";
 import StartSectionBill from "./../components/billLayout/startSectionBill.component";
 import ComoParticiparSection from "./../components/billLayout/comoParticipar.component";
 import EventsSection from "./../components/billLayout/events.component";
+import {CookiesService} from "../services/cookies.service";
+import UrlBuilder from "../services/url-builder.service";
 
 export default function Index() {
   const [isMobile, setMobile] = useState(null);
   const [events, setEvents] = useState(null);
   const [user, setUser] = useState(null);
-  const [userDate, setUserDate] = useState(getCookie('anonymousUserBirthDate'));
+  const [userDate, setUserDate] = useState(null);
   const [cookieSt, setCookieSt] = useState(null);
   const isBillLayout = i18next.t("BillLayout.Active");
 
   useEffect(() => {
     setMobile(detectMobile());
-    if (!events) {
-      initEvents();
+    setUserDate(CookiesService.getValue('anonymousUserBirthDate'));
+
+    let loggedUser = CookiesService.getObject('loggedUser');
+    setUser(loggedUser);
+
+    if (loggedUser) {
+      //window.location.replace(UrlBuilder.buildUrl('market'))
     }
-    let localUser = JSON.parse(window.localStorage.getItem('user'));
-    if (localUser && !user) {
-      setUser(localUser);
-      window.location.href = window.location.origin + '/app';
-    }
-    //let localDate = window.localStorage.getItem('anonymousUserBirthDate');
-    let localDate = getCookie('anonymousUserBirthDate');
-    if (!localDate) {
+
+
+    let anonymousUserBirthDate = CookiesService.getValue('anonymousUserBirthDate');
+    if (!anonymousUserBirthDate) {
       document.body.style.overflow = "hidden";
     }
-    if (!cookieSt) {
-      checkCookie();
-    }
   }, []);
-
 
 
   function saveBirthDate(value) {
     setUserDate(value);
     document.body.style.overflow = "auto";
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     document.getElementById('agegate').style.display = 'none';
   }
 
@@ -66,9 +64,11 @@ export default function Index() {
     });
   }
 
-  const initEvents = () => {
-    let origin = window.location.origin == i18next.t("PordEnvironment") ? i18next.t("ApiUrlProd") : i18next.t("ApiUrlDev");
-    const request = new Request(origin + i18next.t("EventsUrl"));
+  const getAllEvents = () => {
+    console.log(UrlBuilder.buildUrl('api', 'v1/list/events'));
+
+    const request = new Request(UrlBuilder.buildUrl('api', 'v1/list/events'));
+
     fetch(request, {
       method: 'GET'
     })
@@ -80,54 +80,19 @@ export default function Index() {
       });
   }
 
-  function setCookie(accept, cvalue, exdays) {
-    let d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    let expires = "expires=" + d.toGMTString();
-    document.cookie = accept + "=" + cvalue + ";" + expires + ";path=/";
-  }
-
-  function getCookie(accept) {
-    let name = accept + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-
-  function checkCookie() {
-    let accept = getCookie("cookie_acceptance");
-    if (accept != "") {
-      setCookieSt(accept);
-    }
-  }
-
-  function acceptCookie() {
-    setCookie("cookie_acceptance", 'yes', 30);
-    setCookieSt(getCookie("cookie_acceptance"));
-  }
-
   const BillLayout = () => (
     <div>
-      <Header user={user} />
+      <Header user={user}/>
       <div className="main__bgGray">
         <div className="container">
-          <StartSectionBill isMobile={isMobile} />
+          <StartSectionBill isMobile={isMobile}/>
         </div>
-        <EventsSection events={events} isMobile={isMobile} />
+        <EventsSection events={events} isMobile={isMobile}/>
       </div>
       <div className="main__bgGray">
         <div className="container">
-          <ComoParticiparSection />
-          <BeersSection isBill={isBillLayout} isMobile={isMobile} />
+          <ComoParticiparSection/>
+          <BeersSection isBill={isBillLayout} isMobile={isMobile}/>
         </div>
       </div>
     </div>
@@ -135,59 +100,50 @@ export default function Index() {
 
   const Home = () => (
     <div>
-      <Header user={user} />
+      <Header user={user}/>
       <div className="mt-12">
         <div className="container">
-          <StartSection />
+          <StartSection/>
         </div>
       </div>
       <div className="main__bgCircle">
         <div className="container">
-          <PointsSection isMobile={isMobile} />
+          <PointsSection isMobile={isMobile}/>
         </div>
       </div>
       <div className="main__bgBlue">
         <div className="container">
-          <PrizesSection isMobile={isMobile} />
+          <PrizesSection isMobile={isMobile}/>
         </div>
       </div>
       <div>
         <div className="container">
-          <MarketPlaceSection />
-          <BeersSection isMobile={isMobile} />
+          <MarketPlaceSection/>
+          <BeersSection isMobile={isMobile}/>
         </div>
       </div>
     </div>
   )
 
   return (
-    // title ?
     (
       <div className="main d-flex align-items-start">
         {
           !userDate ?
-            <Agegate saveBirthDate={() => saveBirthDate()} />
+            <Agegate saveBirthDate={() => saveBirthDate()}/>
             : null
         }
-        {/* {
-                    !cookieSt?
-                        <CookiesSection acceptCookie={()=>acceptCookie()} />
-                    :
-                    null
-                } */}
         {
-
           <HashRouter>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/polas-recargadas" component={BillLayout} />
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/polas-recargadas" component={BillLayout}/>
           </HashRouter>
         }
-        <FooterSection isMobile={isMobile} />
+        <FooterSection isMobile={isMobile}/>
       </div>
     )
   )
 
 }
 
-// Implementacion de este layout al HTML
-ReactDOM.render(<Index />, document.getElementById("index"));
+ReactDOM.render(<Index/>, document.getElementById("index"));

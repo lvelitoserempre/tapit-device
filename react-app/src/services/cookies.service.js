@@ -1,10 +1,12 @@
 export class CookiesService {
   static setObject(key, object) {
-    this.setValue(key, encodeURIComponent(JSON.stringify(object)));
+    this.setValue(key, (object ? encodeURIComponent(JSON.stringify(object)) : ''));
   }
 
   static setValue(key, value) {
-    document.cookie = key + '=' + value + ';max-age=31536000;path=/;';
+    document.cookie = key + '=' + value + ';max-age=31536000;path=/;'
+      + (!value ? 'max-age=0;' : '')
+      + (window.location.hostname == 'localhost' ? '' : 'domain=tapit.com.co;');
   }
 
   static getObject(key) {

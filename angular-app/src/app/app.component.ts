@@ -29,9 +29,11 @@ export class AppComponent implements OnInit {
    * This method redirects the user to the root in production if the user has not entered his birth date
    */
   private redirectIfUserIsAChild() {
-    console.log(CookiesService.getValue('anonymousUserBirthDate'));
+    this.authService.getCurrentUser().subscribe(user => console.log('observable', user));
+
 
     auth().onAuthStateChanged(user => {
+      console.log('listener', user)
       if (!user) {
         if (window.location.hostname !== 'localhost') {
           if (!CookiesService.getValue('anonymousUserBirthDate')) {

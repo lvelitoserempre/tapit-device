@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import UrlService from "./url.service";
+import UrlService from "../services/url.service";
 
 export default function DownloadSection(props) {
   const [isIos, setIos] = useState(null);
