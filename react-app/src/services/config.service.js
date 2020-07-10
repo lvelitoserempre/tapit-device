@@ -20,15 +20,15 @@ export default class ConfigService {
         api: 'https://api-dev.tapit.com.co',
       },
       preview: {
-        market: 'https://market-dev.tapit.com.co',
+        market: 'https://market.tapit.com.co',
         angular: 'https://preview.tapit.com.co/app',
         react: 'https://preview.tapit.com.co',
         api: 'https://api.tapit.com.co',
       },
       production: {
         market: 'https://market.tapit.com.co',
-        angular: 'https://dev.tapit.com.co/app',
-        react: 'https://dev.tapit.com.co',
+        angular: 'https://tapit.com.co/app',
+        react: 'https://tapit.com.co',
         api: 'https://api.tapit.com.co',
       }
     }
