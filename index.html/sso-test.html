@@ -6,6 +6,10 @@
   <meta content="width=device-width,initial-scale=1" name="viewport">
 
   <style>
+    html, body {
+      height: 100vh;
+    }
+
     * {
       margin: 0;
       border: 0;
@@ -36,7 +40,7 @@
     iframe {
       width: 100%;
       height: 20rem;
-      display: none;
+      /*display: none;*/
     }
 
     @media screen and (min-width: 640px) {
@@ -70,17 +74,26 @@
 
   <p id="userData"></p>
 
-  <iframe id="tapitIframe" src="http://localhost:4200/external-login"></iframe>
 </main>
 
+<iframe allowfullscreen id="" src="http://localhost:4200/sso/login"
+        style="position: fixed; top:0; left:0; right: 0; bottom: 0; z-index: 10"></iframe>
+
+<button onclick="f()">Test 2  </button>
+<a href="#idea">Test 1</a>
 <script>
-  firebase.auth().onAuthStateChanged(function (userCredential) {
+
+  function f() {
+    console.log('event')
+  }
+
+  /*firebase.auth().onAuthStateChanged(function (userCredential) {
     if (userCredential) {
       document.getElementById('userData').innerText = 'Welcome user ' + userCredential.displayName;
     } else {
-      addAuthenticationSystem();
     }
-  });
+  });*/
+  //addAuthenticationSystem();
 
   function addAuthenticationSystem() {
     const APP_ID = 'app01';
@@ -94,7 +107,7 @@
 
   function createLoginIframe(LOGIN_ORIGIN, APP_ID) {
     const loginIframe = document.createElement('iframe');
-    loginIframe.setAttribute('src', LOGIN_ORIGIN + '/external-login')
+    loginIframe.setAttribute('src', LOGIN_ORIGIN + '/sso/login')
 
     loginIframe.addEventListener('load', function () {
       loginIframe.contentWindow.postMessage({

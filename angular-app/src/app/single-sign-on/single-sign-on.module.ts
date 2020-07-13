@@ -9,6 +9,7 @@ import {DialogModule} from '../dialog/dialog.module';
 import {LoaderModule} from '../loader/loader.module';
 import {LoginComponent} from './login/login.component';
 import {SingleSignOnComponent} from './single-sign-on/single-sign-on.component';
+import {LoginByEmailComponent} from './login-by-email/login-by-email.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'login-by-email',
+        component: LoginByEmailComponent
       },
       {
         path: '**',
@@ -29,7 +34,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     SingleSignOnComponent,
-    LoginComponent
+    LoginComponent,
+    LoginByEmailComponent
   ],
   imports: [
     BrowserModule,

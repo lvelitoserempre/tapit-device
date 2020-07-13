@@ -1,20 +1,19 @@
 import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {LoginValidationMessages, LoginValidators} from '../../user/user-authentication/login/login.validations';
 import {LoaderService} from '../../loader/loader-service/loader.service';
 import {DialogService} from '../../dialog/dialog-service/dialog.service';
 import {FacebookService} from '../../user/user-authentication/facebook.service';
 import {UserDAO} from '../../user/user-dao.service';
 import {auth, User} from 'firebase';
-import {from, of} from 'rxjs';
-import {mergeMap} from 'rxjs/operators';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {LoginValidationMessages, LoginValidators} from '../../user/user-authentication/login/login.validations';
+import {from} from 'rxjs';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-login-by-email',
+  templateUrl: './login-by-email.component.html',
+  styleUrls: ['./login-by-email.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginByEmailComponent implements OnInit {
   loginForm: FormGroup;
   validationMessages = LoginValidationMessages;
   incomingData: {
@@ -33,8 +32,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder) {
-    this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
-
+    this.loginForm = this.formBuilder.group(LoginValidators);
     this.incomingData = {
       config: {
         userEmail: null,
@@ -83,29 +81,17 @@ export class LoginComponent implements OnInit {
     }, false);
   }
 
-  loginWithFacebook() {
-    this.loginForm.markAsUntouched();
-    this.loginForm.get('terms').markAsTouched();
+  login() {
+    const formValue = this.loginForm.value;
+    this.loaderService.show();
 
-    if (this.loginForm.get('terms').valid) {
-      this.loaderService.show();
-      from(auth().signInWithPopup(this.facebookService.facebookAuthProvider))
-        .pipe(mergeMap((facebookResponse) => {
-          const userData = this.facebookService.parseUserData(facebookResponse);
-
-          if (this.incomingData.origin) {
-            userData.origin = this.incomingData.origin;
-          }
-
-          return facebookResponse.additionalUserInfo.isNewUser ? this.userDAO.createUser(userData) : of();
-        })).subscribe(customToken => {
-          this.loaderService.hide();
-        },
-        error => {
-          this.loaderService.hide();
-          this.dialogService.manageError(error);
-        });
-    }
+    from(auth().signInWithEmailAndPassword(formValue.email, formValue.password))
+      .subscribe(user => {
+        this.loaderService.hide();
+      }, error => {
+        this.loaderService.hide();
+        this.dialogService.manageError(error);
+      });
   }
 
   sendDataToParent(data) {
@@ -115,9 +101,6 @@ export class LoginComponent implements OnInit {
   }
 
   closePopup() {
-    this.sendDataToParent({
-      appId: this.incomingData.appId,
-      action: 'closePopup'
-    });
+
   }
 }
