@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {from} from 'rxjs';
 import {auth} from 'firebase';
-import {mergeMap, switchMap} from 'rxjs/operators';
+import {mergeMap} from 'rxjs/operators';
 import {UserDAO} from '../user-dao.service';
 import {AuthService} from './user-authentication-service/auth.service';
 import {AnalyticsService} from '../../services/anaylitics/analytics.service';
@@ -27,12 +27,6 @@ export class FacebookService {
         const userData = this.parseUserData(facebookResponse, {email: facebookResponse.additionalUserInfo.profile['email'],});
         return this.userDAO.checkUser(userData);
       }))
-      .pipe(switchMap((res: any) => {
-        return this.userDAO.get(auth().currentUser.uid);
-      }))
-      .pipe(switchMap((res: any) => {
-        return this.authenticationService.setCurrentUser(res);
-      }));
   }
 
   parseUserData(facebookResponse, otherData?) {

@@ -40,7 +40,7 @@ export class LoginByEmailComponent implements OnInit {
 
       from(auth().signInWithEmailAndPassword(formValue.email, formValue.password))
         .subscribe(user => {
-          //this.loaderService.hide();
+          
         }, error => {
           this.loaderService.hide();
           this.dialogService.manageError(error);

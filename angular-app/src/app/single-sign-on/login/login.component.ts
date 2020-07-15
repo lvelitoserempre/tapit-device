@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 
           return facebookResponse.additionalUserInfo.isNewUser ? this.userDAO.createUser(userData) : of();
         })).subscribe(customToken => {
-          this.loaderService.hide();
+
         },
         error => {
           this.loaderService.hide();
