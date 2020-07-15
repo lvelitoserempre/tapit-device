@@ -45,17 +45,15 @@ export class UserDAO {
         )));
   }
 
-  getCustomToken() {
-    return from(auth().currentUser.getIdToken())
-      .pipe(mergeMap(token =>
-        this.http.get(
-          environment.firebase.functions.url + environment.firebase.functions.getCustomToken,
-          {
-            headers: {
-              Authorization: 'Bearer ' + token
-            }
-          }
-        )));
+  getCustomToken(idToken: string): Observable<any> {
+    return this.http.get(
+      environment.firebase.functions.url + environment.firebase.functions.getCustomToken,
+      {
+        headers: {
+          Authorization: 'Bearer ' + idToken
+        }
+      }
+    );
   }
 
   createUser(user: UserAccount) {

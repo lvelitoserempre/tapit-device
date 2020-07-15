@@ -4,11 +4,12 @@ import {UserAccount} from '../../../models/user-account.model';
 import {auth, firestore, User} from 'firebase';
 import {environment} from '../../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {switchMap} from 'rxjs/operators';
+import {switchMap, tap} from 'rxjs/operators';
 import {UserDAO} from '../../user-dao.service';
 import {AnalyticsService} from '../../../services/anaylitics/analytics.service';
 import {CookiesService} from '../../../services/cookies.service';
 import UserCredential = firebase.auth.UserCredential;
+import {LoaderService} from '../../../loader/loader-service/loader.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +18,15 @@ export class AuthService {
   private currentUser: ReplaySubject<UserAccount>;
   private cancelUserListener: () => void;
 
-  constructor(private http: HttpClient, private userDAO: UserDAO, private analyticsService: AnalyticsService) {
+  constructor(private http: HttpClient, private userDAO: UserDAO, private analyticsService: AnalyticsService,
+              private loaderService: LoaderService) {
     this.currentUser = new ReplaySubject<UserAccount>(0);
   }
 
   setupLoggedUserObserver() {
     auth().onAuthStateChanged((user: User) => {
       if (user && !this.cancelUserListener) {
+        this.loaderService.show();
         this.cancelUserListener = firestore().collection(environment.firebase.collections.userAccount).doc(user.uid)
           .onSnapshot(snapshot => {
             this.setCurrentUser(UserDAO.snapshotToUser(snapshot));
@@ -39,19 +42,24 @@ export class AuthService {
     });
   }
 
-  async setCurrentUser(user: UserAccount) {
-    await this.addIdToken(user);
-    this.currentUser.next(user);
-    this.saveUserToACookie(user);
-
-    return user;
-  }
-
-  async addIdToken(user: UserAccount) {
+  setCurrentUser(user: UserAccount) {
     if (auth().currentUser) {
-      const token = await auth().currentUser.getIdToken();
-      user.idToken = token;
-      user.refreshToken = auth().currentUser.refreshToken;
+      from(auth().currentUser.getIdToken())
+        .pipe(switchMap(idToken => {
+          user.idToken = idToken;
+          user.refreshToken = auth().currentUser.refreshToken;
+
+          return this.userDAO.getCustomToken(idToken)
+        }))
+        .subscribe(customToken => {
+          user.customToken = customToken;
+          this.currentUser.next(user);
+          this.saveUserToACookie(user);
+          this.loaderService.hide();
+        })
+    } else {
+      this.currentUser.next(null);
+      this.saveUserToACookie(null);
     }
   }
 
@@ -69,12 +77,12 @@ export class AuthService {
 
   login(email: string, password: string): Observable<UserAccount> {
     return from(auth().signInWithEmailAndPassword(email, password))
-      .pipe(switchMap((user: UserCredential) => {
-        return this.userDAO.get(user.user.uid);
+      .pipe(switchMap((userCredential: UserCredential) => {
+        return this.userDAO.get(userCredential.user.uid);
       }))
-      .pipe(switchMap(user => {
+      .pipe(tap(user => {
         this.sendEventToAnalytics();
-        return this.setCurrentUser(user);
+        this.setCurrentUser(user);
       }));
   }
 

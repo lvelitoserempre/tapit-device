@@ -17,6 +17,10 @@ export class SingleSignOnComponent implements OnInit {
   ngOnInit(): void {
     initializeApp(environment.firebase.config);
     this.authService.setupLoggedUserObserver();
-    this.iframeCommunicatorService.setUpCommunicationListener();
+
+    this.authService.getCurrentUser()
+      .subscribe(user => {
+        this.iframeCommunicatorService.sendDataToParent('setLoggedUser', user);
+      })
   }
 }

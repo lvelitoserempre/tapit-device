@@ -16,22 +16,18 @@ export class IframeCommunicatorService {
       .pipe(shareReplay(1));
   }
 
-  setUpCommunicationListener() {
-    fromEvent(window, 'message')
-      .pipe(filter((event: any) => event.data && event.data.channel === 'TAPIT' && event.data.action === 'config'))
-      .subscribe(event => {
-        this.config = event.data.config;
-      });
-  }
-
   getParentData(): Observable<any> {
     return fromEvent(window, 'message')
       .pipe(filter((event: any) => event.data && event.data.channel === 'TAPIT' && event.data.action !== 'config'));
   }
 
-  sendDataToParent(data) {
+  sendDataToParent(action: string, data) {
     if (window.parent) {
-      window.parent.postMessage(data, window.parent.origin)
+      window.parent.postMessage({
+        channel: 'TAPIT',
+        action,
+        data
+      }, window.location.ancestorOrigins.item(0))
     }
   }
 }

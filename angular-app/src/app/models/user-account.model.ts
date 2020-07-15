@@ -1,4 +1,5 @@
 export interface UserAccount {
+  customToken?: string;
   id?: string;
   birthDate?: string;
   code?: string;
