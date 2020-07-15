@@ -10,6 +10,7 @@ import {LoaderModule} from '../loader/loader.module';
 import {LoginComponent} from './login/login.component';
 import {SingleSignOnComponent} from './single-sign-on/single-sign-on.component';
 import {LoginByEmailComponent} from './login-by-email/login-by-email.component';
+import { LoginHeaderComponent } from './login-header/login-header.component';
 
 const routes: Routes = [
   {
@@ -35,7 +36,8 @@ const routes: Routes = [
   declarations: [
     SingleSignOnComponent,
     LoginComponent,
-    LoginByEmailComponent
+    LoginByEmailComponent,
+    LoginHeaderComponent
   ],
   imports: [
     BrowserModule,

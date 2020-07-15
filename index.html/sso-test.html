@@ -5,54 +5,35 @@
   <title>Login Example</title>
   <meta content="width=device-width,initial-scale=1" name="viewport">
 
-  <style>
-    html, body {
-      height: 100vh;
-    }
-
-    * {
-      margin: 0;
-      border: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif
-    }
-
-    main {
-      padding: 1rem 1.5rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05);
-    }
-
-    h1 {
-      font-size: 2rem;
-      text-align: center;
-      margin-top: 2rem;
-      margin-bottom: 4rem;
-    }
-
-    p {
-      font-size: 1.3rem;
-      font-weight: bold;
-      text-align: left;
-      margin-bottom: 4rem;
-    }
-
-    iframe {
-      width: 100%;
-      height: 20rem;
-      /*display: none;*/
-    }
-
-    @media screen and (min-width: 640px) {
-      iframe {
-        height: 30rem;
-      }
-    }
-  </style>
-
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-auth.js"></script>
   <script>
+    const TAPIT_ORIGIN = 'http://localhost:4200';
+
+    function setUpCommunication() {
+      const tapitIframe = document.getElementById('tapitIframe');
+
+      setTimeout(() => {
+        tapitIframe.contentWindow.postMessage({
+          channel: 'TAPIT',
+          action: 'config',
+          config: {
+            userEmail: '',
+            facebookButton: true,
+            offersOption: false,
+            passwordInfo: true,
+          }
+        }, TAPIT_ORIGIN)
+
+        tapitIframe.contentWindow.postMessage({
+          channel: 'TAPIT',
+          action: 'getUserCustomToken',
+          origin: 'aguilapenalties',
+          ageGateDate: Date.now()
+        }, TAPIT_ORIGIN)
+      }, 1000)
+    }
+
     var firebaseConfig = {
       apiKey: "AIzaSyBbMDkDVAUJ8MWcKMVtU7Onrzv5JVlfSbA",
       authDomain: "re-imagining-loyalty-dev.firebaseapp.com",
@@ -65,54 +46,41 @@
     };
 
     firebase.initializeApp(firebaseConfig);
+
+    firebase.auth().onAuthStateChanged(function (userCredential) {
+      if (userCredential) {
+        document.getElementById('loggedUser').innerText = 'LOGGED_USER: ' + userCredential.email;
+      }
+    });
   </script>
 </head>
 <body>
 
-<main>
-  <h1>WELCOME TO LOGIN-EXAMPLE.COM</h1>
+<p id="loggedUser"></p>
 
-  <p id="userData"></p>
+<iframe id="tapitIframe" onload="setUpCommunication()" src="http://localhost:4200/sso/login-by-email"
+        style="width: 100%; height: 500px"></iframe>
 
-</main>
-
-<iframe allowfullscreen id="" src="http://localhost:4200/sso/login"
-        style="position: fixed; top:0; left:0; right: 0; bottom: 0; z-index: 10"></iframe>
-
-<button onclick="f()">Test 2  </button>
-<a href="#idea">Test 1</a>
 <script>
 
-  function f() {
-    console.log('event')
-  }
-
-  /*firebase.auth().onAuthStateChanged(function (userCredential) {
-    if (userCredential) {
-      document.getElementById('userData').innerText = 'Welcome user ' + userCredential.displayName;
-    } else {
-    }
-  });*/
-  //addAuthenticationSystem();
 
   function addAuthenticationSystem() {
-    const APP_ID = 'app01';
-    const LOGIN_ORIGIN = 'http://localhost:4200';
+    const TAPIT_ORIGIN = 'http://localhost:4200';
 
-    const loginIframe = createLoginIframe(LOGIN_ORIGIN, APP_ID);
-    addMessageListener(loginIframe, APP_ID);
+    const loginIframe = createLoginIframe(TAPIT_ORIGIN);
+    addMessageListener(loginIframe);
 
     document.querySelector('main').appendChild(loginIframe);
   }
 
-  function createLoginIframe(LOGIN_ORIGIN, APP_ID) {
+  function createLoginIframe(LOGIN_ORIGIN) {
     const loginIframe = document.createElement('iframe');
     loginIframe.setAttribute('src', LOGIN_ORIGIN + '/sso/login')
 
     loginIframe.addEventListener('load', function () {
       loginIframe.contentWindow.postMessage({
-        appId: APP_ID,
-        method: 'getUserCustomToken',
+        channel: 'TAPIT',
+        action: 'getUserCustomToken',
         origin: 'aguilapenalties',
         ageGateDate: Date.now()
       }, LOGIN_ORIGIN)
@@ -121,9 +89,9 @@
     return loginIframe;
   }
 
-  function addMessageListener(loginIframe, APP_ID) {
+  function addMessageListener(loginIframe) {
     window.addEventListener("message", function (event) {
-      if (event.data && event.data.appId === APP_ID) {
+      if (event.data && event.data.channel === 'TAPIT') {
         signInWithCustomToken(event.data.customToken, loginIframe)
       } else {
         document.getElementById('userData').innerText = 'Login with facebook to have access to our site';

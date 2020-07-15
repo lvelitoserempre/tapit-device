@@ -3,11 +3,13 @@ import {LoaderService} from '../../loader/loader-service/loader.service';
 import {DialogService} from '../../dialog/dialog-service/dialog.service';
 import {FacebookService} from '../../user/user-authentication/facebook.service';
 import {UserDAO} from '../../user/user-dao.service';
-import {auth, User} from 'firebase';
+import {auth} from 'firebase';
 import {from, of} from 'rxjs';
 import {mergeMap} from 'rxjs/operators';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {LoginValidationMessages, LoginValidators} from '../../user/user-authentication/login/login.validations';
+import {LoginValidationMessages, LoginValidators} from './login.validations';
+import {IframeCommunicatorService} from '../iframe-communicator.service';
+import LoginConfig from '../login.config';
 
 @Component({
   selector: 'app-login',
@@ -17,70 +19,17 @@ import {LoginValidationMessages, LoginValidators} from '../../user/user-authenti
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   validationMessages = LoginValidationMessages;
-  incomingData: {
-    config: {
-      userEmail: string,
-      facebookButton: boolean,
-      offersOption: boolean,
-      passwordInfo: boolean,
-      promoPokerTerms: boolean
-    },
-    appId: string,
-    targetPageOrigin: string,
-    ageGateDate: Date,
-    origin: string
-  };
+  config: LoginConfig = {};
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
-              private userDAO: UserDAO, private formBuilder: FormBuilder) {
+              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService) {
     this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
-
-    this.incomingData = {
-      config: {
-        userEmail: null,
-        facebookButton: true,
-        offersOption: true,
-        passwordInfo: false,
-        promoPokerTerms: false
-      },
-      appId: null,
-      targetPageOrigin: null,
-      ageGateDate: null,
-      origin: null
-    };
   }
 
   ngOnInit(): void {
-    window.addEventListener('message', (event: MessageEvent) => {
-      if (event.data && event.data.method === 'getUserCustomToken') {
-        this.incomingData = {
-          config: {
-            userEmail: event.data.config.userEmail,
-            facebookButton: event.data.config.facebookButton,
-            offersOption: event.data.config.offersOption,
-            passwordInfo: event.data.config.passwordInfo,
-            promoPokerTerms: event.data.config.promoPokerTerms
-          },
-          appId: event.data.appId,
-          ageGateDate: new Date(event.data.ageGateDate),
-          origin: event.data.origin,
-          targetPageOrigin: event.origin
-        };
-
-        auth().onAuthStateChanged((user: User) => {
-          if (user) {
-            this.userDAO.getCustomToken().subscribe((res: any) => {
-              this.sendDataToParent({
-                appId: this.incomingData.appId,
-                customToken: res.customToken
-              });
-            });
-          } else {
-            this.sendDataToParent(null);
-          }
-        });
-      }
-    }, false);
+    this.iframeCommunicatorService.config.subscribe(config => {
+      this.config = config;
+    })
   }
 
   loginWithFacebook() {
@@ -93,8 +42,8 @@ export class LoginComponent implements OnInit {
         .pipe(mergeMap((facebookResponse) => {
           const userData = this.facebookService.parseUserData(facebookResponse);
 
-          if (this.incomingData.origin) {
-            userData.origin = this.incomingData.origin;
+          if (this.config.origin) {
+            userData.origin = this.config.origin;
           }
 
           return facebookResponse.additionalUserInfo.isNewUser ? this.userDAO.createUser(userData) : of();
@@ -106,18 +55,5 @@ export class LoginComponent implements OnInit {
           this.dialogService.manageError(error);
         });
     }
-  }
-
-  sendDataToParent(data) {
-    if (window.parent && this.incomingData.targetPageOrigin) {
-      window.parent.postMessage(data, this.incomingData.targetPageOrigin)
-    }
-  }
-
-  closePopup() {
-    this.sendDataToParent({
-      appId: this.incomingData.appId,
-      action: 'closePopup'
-    });
   }
 }

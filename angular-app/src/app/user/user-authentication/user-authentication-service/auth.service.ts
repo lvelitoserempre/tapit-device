@@ -56,7 +56,6 @@ export class AuthService {
   }
 
   saveUserToACookie(user: UserAccount) {
-    console.log(user);
     CookiesService.setObject('loggedUser', this.extractCookieData(user));
   }
 
