@@ -159,6 +159,10 @@ i18next.init({
                         Contact: {
                             Text: 'Contáctanos',
                             Url: 'https://draftline.typeform.com/to/mr1ZYDog'
+                        },
+                        Help: {
+                            Text: 'Documento de Necesitas Ayuda',
+                            Url: '/help.html'
                         }
                     }
                 },
