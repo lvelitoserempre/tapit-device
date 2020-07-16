@@ -3,7 +3,7 @@
 @import "assets/styles/variables";
 
 * {
-  font-family: filson-soft;
+  font-family: filson-soft-regular;
 }
 
 .dialog {
@@ -161,8 +161,9 @@
     border-color: #FF5005;
   }
 }
+
 body {
-  input  {
+  input {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;

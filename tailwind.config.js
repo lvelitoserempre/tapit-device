@@ -93,6 +93,9 @@ module.exports = {
         800: '#2B696F',
         900: '#163437',
       },
+      danger: {
+        500: '#F85464'
+      }
     },
     spacing: {
       px: '1px',
@@ -195,49 +198,47 @@ module.exports = {
       default: '1',
     },
     fontFamily: {
-      sans: [
-        'system-ui',
+      'fs-regular': [
+        'filson-soft-regular',
         '-apple-system',
-        'BlinkMacSystemFont',
         '"Segoe UI"',
-        'Roboto',
         '"Helvetica Neue"',
         'Arial',
-        '"Noto Sans"',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-        '"Noto Color Emoji"',
+        'sans-serif'
       ],
-      serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
-      mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+      'fs-book': [
+        'filson-soft-book',
+        '-apple-system',
+        '"Segoe UI"',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif'
+      ],
+      'fs-bold': [
+        'filson-soft-bold',
+        '-apple-system',
+        '"Segoe UI"',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif'
+      ]
     },
     fontSize: {
-      '2xs': '0.65rem',
+      '2xs': '0.625rem',
       xs: '0.75rem',
       sm: '0.875rem',
       base: '1rem',
-      lg: '1.125rem',
-      xl: '1.25rem',
-      '2xl': '1.5rem',
-      '3xl': '1.875rem',
-      '4xl': '2.25rem',
-      '5xl': '3rem',
-      '6xl': '4rem',
-      '15xl': '10rem',
-      '20xl': '15rem',
+      lg: '1.25rem',
+      xl: '1.5rem',
+      '2xl': '2.125rem',
+      '3xl': '3rem',
+      '4xl': '3.75rem',
+      '5xl': '6rem'
     },
     fontWeight: {
-      hairline: '100',
-      thin: '200',
       light: '300',
       normal: '400',
-      medium: '500',
-      semibold: '600',
-      bold: '700',
-      extrabold: '800',
-      black: '900',
+      bold: '700'
     },
     height: theme => ({
       auto: 'auto',
@@ -278,7 +279,7 @@ module.exports = {
       disc: 'disc',
       decimal: 'decimal',
     },
-    margin: (theme, { negative }) => ({
+    margin: (theme, {negative}) => ({
       auto: 'auto',
       ...theme('spacing'),
       ...negative(theme('spacing')),
@@ -287,7 +288,7 @@ module.exports = {
       full: '100%',
       screen: '100vh',
     },
-    maxWidth: (theme, { breakpoints }) => ({
+    maxWidth: (theme, {breakpoints}) => ({
       none: 'none',
       xs: '20rem',
       sm: '24rem',
@@ -532,7 +533,7 @@ module.exports = {
       '90': '90deg',
       '180': '180deg',
     },
-    translate: (theme, { negative }) => ({
+    translate: (theme, {negative}) => ({
       ...theme('spacing'),
       ...negative(theme('spacing')),
       '-full': '-100%',
