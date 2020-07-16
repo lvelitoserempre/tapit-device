@@ -163,6 +163,14 @@ i18next.init({
                         Help: {
                             Text: 'Documento de Necesitas Ayuda',
                             Url: '/help.html'
+                        },
+                        Cancellation: {
+                            Text: 'Políticas de cancelación',
+                            Url: '/cancellation-policies.html'
+                        },
+                        SIC: {
+                            Text: 'Superintendencia de Industria y Comercio',
+                            Url: 'https://www.sic.gov.co/por-un-clic-confiable'
                         }
                     }
                 },
