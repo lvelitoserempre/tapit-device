@@ -1,23 +1,15 @@
 @font-face {
-  font-family: filson-soft-book;
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url('assets/fonts/filson-soft-book.otf') format('opentype');
-}
-
-@font-face {
-  font-family: filson-soft-regular;
+  font-family: filson-soft;
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('assets/fonts/filson-soft-regular.otf') format('opentype');
+  src: url('assets/fonts/FilsonSoftRegular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: filson-soft-bold;
+  font-family: filson-soft;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   font-display: swap;
   src: url('assets/fonts/filson-soft-bold.otf') format('opentype');
 }
