@@ -19,7 +19,10 @@ import LoginConfig from '../login.config';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   validationMessages = LoginValidationMessages;
-  config: LoginConfig = {};
+  config: LoginConfig = {
+    facebookButton: true,
+    promoPokerTerms: true
+  };
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService) {
