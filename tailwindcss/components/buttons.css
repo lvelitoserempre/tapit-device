@@ -15,7 +15,7 @@
   @apply bg-orange-500 text-white;
 }
 
-.primary-button:focus {
+.primary-button:hover, .primary-button:focus {
   @apply bg-orange-300;
 }
 
@@ -23,6 +23,6 @@
   @apply bg-white text-gray-500 border-2 border-black;
 }
 
-.secondary-button:focus {
+.secondary-button:hover, .secondary-button:focus {
   @apply bg-gray-500 text-white;
 }
