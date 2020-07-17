@@ -161,7 +161,7 @@ i18next.init({
                             Url: 'https://draftline.typeform.com/to/mr1ZYDog'
                         },
                         Help: {
-                            Text: 'Documento de Necesitas Ayuda',
+                            Text: 'Recomendaciones Covid-19',
                             Url: '/help.html'
                         },
                         Cancellation: {
