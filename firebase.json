@@ -24,13 +24,6 @@
             }
           ]
         }
-      ],
-      "redirects": [
-        {
-          "source": "help.html",
-          "destination": "https://drive.google.com/viewerng/viewer?embedded=true&url=https://dev.tapit.com.co/help.pdf",
-          "type": 301
-        }
       ]
     },
     {
