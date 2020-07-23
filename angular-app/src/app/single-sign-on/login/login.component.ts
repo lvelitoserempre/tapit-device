@@ -52,19 +52,20 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     window.addEventListener('message', (event: MessageEvent) => {
       if (event.data && event.data.method === 'getUserCustomToken') {
-        this.incomingData = {
-          config: {
+        if (event.data.config) {
+          this.incomingData.config = {
             userEmail: event.data.config.userEmail,
             facebookButton: event.data.config.facebookButton,
             offersOption: event.data.config.offersOption,
             passwordInfo: event.data.config.passwordInfo,
             promoPokerTerms: event.data.config.promoPokerTerms
-          },
-          appId: event.data.appId,
-          ageGateDate: new Date(event.data.ageGateDate),
-          origin: event.data.origin,
-          targetPageOrigin: event.origin
-        };
+          };
+        }
+
+        this.incomingData.appId = event.data.appId;
+        this.incomingData.ageGateDate = new Date(event.data.ageGateDate);
+        this.incomingData.origin = event.data.origin;
+        this.incomingData.targetPageOrigin = event.origin;
 
         auth().onAuthStateChanged((user: User) => {
           if (user) {
