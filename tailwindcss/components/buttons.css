@@ -8,21 +8,21 @@
 }
 
 .app-button:disabled {
-  @apply bg-gray-300 text-gray-800;
+  @apply bg-neutral-300 text-neutral-800;
 }
 
 .primary-button {
-  @apply bg-orange-500 text-white;
+  @apply bg-primary-500 text-white;
 }
 
 .primary-button:hover, .primary-button:focus {
-  @apply bg-orange-300;
+  @apply bg-primary-300;
 }
 
 .secondary-button {
-  @apply bg-white text-gray-500 border-2 border-black;
+  @apply bg-white text-neutral-500 border-2 border-black;
 }
 
 .secondary-button:hover, .secondary-button:focus {
-  @apply bg-gray-500 text-white;
+  @apply bg-neutral-500 text-white;
 }
