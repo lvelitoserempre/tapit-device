@@ -1,40 +1,40 @@
-<header class='border-b border-gray-500 bg-white z-10 relative'>
+<header class='border-b border-neutral-500 bg-white z-10 relative'>
   <nav class="block sm:hidden" role="navigation">
     <div class="absolute block w-full" id="menuToggle">
       <input (click)="setMenu($event)" class="block absolute" id="toggleMenu" type="checkbox">
       <div class="background" (click)="loginCloseMenu()"></div>
       <img class="img-menu block" width="26" src="../assets/images/hMenu.svg">
-      <ul class="fixed w-10/12 p-5 bg-gray-100 h-full top-0 border-4 border-white" id="menu" *ngIf="!user">
+      <ul class="fixed w-10/12 p-5 bg-neutral-100 h-full top-0 border-4 border-white" id="menu" *ngIf="!user">
         <li class="py-2"><img class="w-2/3" src="../assets/images/tap-it_black-orange.svg"></li>
-        <li class="py-2"><a (click)="loginCloseMenu()" class="app-button border-2 border-orange-500 bg-orange-500 text-white w-full text-center p-3 text-sm"
+        <li class="py-2"><a (click)="loginCloseMenu()" class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
             routerLink="/auth/login">INICIA SESIÓN</a></li>
         <li><img width="30" class="absolute icon-close" src="../assets/images/ic_close.svg"></li>
       </ul>
-      <ul *ngIf="user" class="fixed w-10/12 p-6 bg-gray-100 pt-2 h-full top-0 border-4 border-white" id="menu">
+      <ul *ngIf="user" class="fixed w-10/12 p-6 bg-neutral-100 pt-2 h-full top-0 border-4 border-white" id="menu">
         <li class="cursor-pointer inline-block align-middle focus:outline-none p-0" routerLink="/user/profile">
           <img src="../assets/images/profile-placeholder.png" width="100">
         </li>
         <li
-          class="font-bold text-md uppercase text-orange-500 cursor-pointer block mr-4 align-middle focus:outline-none py-4"
+          class="font-bold text-md uppercase text-primary-500 cursor-pointer block mr-4 align-middle focus:outline-none py-4"
           routerLink="/user/profile" (click)="loginCloseMenu()">
           <span class="block">{{ user.firstName }} {{ user.lastName }}</span>
-          <span class="text-gray-700 normal-case text-xs font-normal block mt-2">{{user.email}}</span>
+          <span class="text-neutral-700 normal-case text-xs font-normal block mt-2">{{user.email}}</span>
         </li>
-        <li class="inline-block align-middle border-b border-gray-500 w-full py-4">
+        <li class="inline-block align-middle border-b border-neutral-500 w-full py-4">
           <a [href]="marketUrl"
-             class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none"><i
-            class="uil uil-store text-2xl"></i> Market</a>
+             class="font-bold text-md uppercase text-neutral-700 inline-block mr-8 align-middle focus:outline-none"><i
+            class="uil uil-store text-xl"></i> Market</a>
         </li>
-        <li class="inline-block align-middle border-b border-gray-500 w-full py-4 hidden">
+        <li class="inline-block align-middle border-b border-neutral-500 w-full py-4 hidden">
           <a
-            class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none app-link"
-            routerLink="/user/codes" routerLinkActive="active" (click)="loginCloseMenu()"><i class="uil uil-ticket text-2xl"
+            class="font-bold text-md uppercase text-neutral-700 inline-block mr-8 align-middle focus:outline-none app-link"
+            routerLink="/user/codes" routerLinkActive="active" (click)="loginCloseMenu()"><i class="uil uil-ticket text-xl"
                                                                   queryParamsHandling="merge"></i> Mis Códigos</a>
         </li>
         <li class="inline-block align-middle w-full py-4">
           <a
-            class="font-bold text-md uppercase text-gray-700 inline-block mr-8 align-middle focus:outline-none app-link"
-            routerLink="/user/profile" routerLinkActive="active" (click)="loginCloseMenu()"><i class="uil uil-user-circle text-2xl"
+            class="font-bold text-md uppercase text-neutral-700 inline-block mr-8 align-middle focus:outline-none app-link"
+            routerLink="/user/profile" routerLinkActive="active" (click)="loginCloseMenu()"><i class="uil uil-user-circle text-xl"
                                                                     queryParamsHandling="merge"></i> Perfil</a>
         </li>
         <li><img class="absolute icon-close" src="../assets/images/ic_close.svg" width="30"></li>
@@ -50,15 +50,15 @@
           </li>
           <li *ngIf="user" class="hidden sm:inline-block align-middle ml-8">
             <a [href]="marketUrl"
-               class="font-bold text-sm uppercase text-gray-700 inline-block mr-10 align-middle focus:outline-none"><i
-              class="uil uil-store text-lg inline-block align-middle leading-none"></i> <span
+               class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none"><i
+              class="uil uil-store text-base inline-block align-middle leading-none"></i> <span
               class="inline-block align-middle">Market</span></a>
           </li>
           <li *ngIf="user" class="hidden  align-middle">
             <a
-              class="font-bold text-sm uppercase text-gray-700 inline-block mr-10 align-middle focus:outline-none app-link"
+              class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none app-link"
               routerLink="/user/codes" routerLinkActive="active"><i
-              class="uil uil-ticket text-lg inline-block align-middle leading-none" queryParamsHandling="merge"></i>
+              class="uil uil-ticket text-base inline-block align-middle leading-none" queryParamsHandling="merge"></i>
               <span class="inline-block align-middle">Mis Códigos</span></a>
           </li>
         </ul>
@@ -67,24 +67,24 @@
         <ul *ngIf="user" class="relative">
           <ul class="relative inline-block sm:hidden">
             <li class="inline-block ml-4 align-middle">
-              <span class="text-sm font-bold block text-gray-700">Tus puntos</span>
-              <span class="text-sm font-bold block text-orange-500">{{
+              <span class="text-sm font-bold block text-neutral-700">Tus puntos</span>
+              <span class="text-sm font-bold block text-primary-500">{{
                 user.points | number: "1.0"
                 }}</span>
             </li>
           </ul>
           <ul class="relative hidden sm:inline-block py-2 profile-header" routerLinkActive="active">
             <li
-              class="font-bold text-sm uppercase text-gray-700 cursor-pointer inline-block mr-4 align-middle focus:outline-none app-link"
+              class="font-bold text-sm uppercase text-neutral-700 cursor-pointer inline-block mr-4 align-middle focus:outline-none app-link"
               routerLink="/user/profile" routerLinkActive="active">
-              <i class="uil uil-user-circle text-lg inline-block align-middle inline-block align-middle"
+              <i class="uil uil-user-circle text-base inline-block align-middle inline-block align-middle"
                  queryParamsHandling="merge"></i>
               <span class="inline-block align-middle">{{ user.firstName }}</span>
             </li>
-            <li class="relative h-6 top-0 bottom-0 border-l border-gray-500 inline-block align-middle"></li>
+            <li class="relative h-6 top-0 bottom-0 border-l border-neutral-500 inline-block align-middle"></li>
             <li class="inline-block ml-4 align-middle">
-              <small class="text-xs font-bold inline-block text-gray-700 relative points-text">Pts. </small>
-              <span class="text-sm font-bold inline-block text-orange-500"> {{
+              <small class="text-xs font-bold inline-block text-neutral-700 relative points-text">Pts. </small>
+              <span class="text-sm font-bold inline-block text-primary-500"> {{
                 user.points | number: "1.0"
                 }}</span>
             </li>
@@ -92,7 +92,7 @@
         </ul>
         <ul *ngIf="showLoginButton" class="relative">
           <ul class="relative inline-block">
-            <li><a class="app-button border-2 border-orange-500 bg-orange-500 text-white w-full text-center p-3 text-sm"
+            <li><a class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
                    routerLink="/auth/login">INICIA SESIÓN</a></li>
           </ul>
         </ul>

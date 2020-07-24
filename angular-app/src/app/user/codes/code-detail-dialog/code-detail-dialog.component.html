@@ -1,11 +1,11 @@
 <div class="container max-w-2xl mx-auto">
   <div class="w-full mb-4 inline-block">
-    <h3 class="text-purple-500 text-xl font-normal inline-block align-middle font-bold">
+    <h3 class="text-secondary-500 text-lg font-normal inline-block align-middle font-bold">
       Detalle del bono
     </h3>
     <div [mat-dialog-close]="true"
       class="inline-block float-right h-8 w-8 md:h-12 md:w-12 text-center align-middle cursor-pointer">
-      <i class="uil uil-times-circle text-2xl"></i>
+      <i class="uil uil-times-circle text-xl"></i>
     </div>
   </div>
   <div id="scroll-view" class="w-full px-4 sm:px-0 overflow-scroll sm:overflow-visible scroll-view">
@@ -20,27 +20,27 @@
     <div class="w-full md:w-3/5 md:inline-block md:align-middle pl-0 sm:pl-4">
       <div class="w-full mb-4 inline-block">
         <img [src]="code.image" class="w-12 mr-4 align-middle inline-block" />
-        <h4 class="text-purple-500 text-xl font-normal inline-block align-middle font-bold align-middle">
+        <h4 class="text-secondary-500 text-lg font-normal inline-block align-middle font-bold align-middle">
           {{ code.name }}
         </h4>
       </div>
-      <p class="text-purple-500 font-bold text-2xl sm:mr-2 sm:w-full w-7/12 inline-block align-middle">
+      <p class="text-secondary-500 font-bold text-xl sm:mr-2 sm:w-full w-7/12 inline-block align-middle">
         {{ code.amount | currency: "COP":"symbol-narrow":"1.0" }}
       </p>
-      <p class="text-xs text-gray-700 text-left uppercase sm:hidden inline-block align-middle float-right">
+      <p class="text-xs text-neutral-700 text-left uppercase sm:hidden inline-block align-middle float-right">
         <span class="tracking-widest">Válido Hasta:</span><br>
         <span class="text-black text-base font-bold">{{ code.expireDate | date: "dd/MM/yyyy" }}</span>
       </p>
       <div class="w-full mb-2 mt-3">
         <span *ngFor="let tag of code.tags"
-          class="app-tag-modal text-white rounded-md bg-purple-900 mr-2">{{ tag }}</span>
+          class="app-tag-modal text-white rounded-md bg-secondary-900 mr-2">{{ tag }}</span>
       </div>
-      <p class="table-cell text-xs text-gray-700 text-left uppercase hidden sm:inline-block mt-2">
+      <p class="table-cell text-xs text-neutral-700 text-left uppercase hidden sm:inline-block mt-2">
         <span class="tracking-widest font-bold">Válido Hasta:</span><br>
         <span class="text-black text-base font-bold">{{ code.expireDate | date: "dd/MM/yyyy" }}</span>
       </p>
     </div>
-    <p class="text-sm text-gray-800 mb-4 mt-4">{{ code.description }}</p>
+    <p class="text-sm text-neutral-800 mb-4 mt-4">{{ code.description }}</p>
     <a class="app-button mr-1 text-black border-black border-2 uppercase w-auto py-3 sm:px-3 px-2 text-center mb-4"
       href="/terms.html" target="_blank">Ver Términos y Condiciones
     </a>

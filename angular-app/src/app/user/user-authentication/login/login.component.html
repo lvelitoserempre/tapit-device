@@ -1,40 +1,40 @@
 <div class="container mx-auto relative overflow-x-hidden">
   <div class="inline-block w-full sm:w-6/12 align-middle p-4">
-    <h1 class="text-4xl my-10 sm:mt-0 sm:mb-8">Inicia <span class="text-orange-500">sesión</span></h1>
+    <h1 class="text-2xl my-10 sm:mt-0 sm:mb-8">Inicia <span class="text-primary-500">sesión</span></h1>
 
     <form (ngSubmit)="login()" [formGroup]="loginForm" class="text-center sm:text-left">
       <div class="text-left mb-8">
-        <label class="font-bold text-gray-800 block mb-2" for="email">Email</label>
+        <label class="font-bold text-neutral-800 block mb-2" for="email">Email</label>
         <input (focus)="loginForm.get('email').markAsUntouched()"
-               [class.border-red-500]="loginForm.get('email').invalid && loginForm.get('email').touched"
+               [class.border-danger-500]="loginForm.get('email').invalid && loginForm.get('email').touched"
                class="app-input block w-full lg:w-8/12 sm:ml-0" formControlName="email" id="email" type="email">
         <p *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched"
-           class="text-red-500 pl-2">
+           class="text-danger-500 pl-2">
           Debes ingresar un email
         </p>
         <p *ngIf="loginForm.get('email').hasError('pattern')  && loginForm.get('email').touched"
-           class="text-red-500 pl-2">
+           class="text-danger-500 pl-2">
           El formato de email no es correcto
         </p>
       </div>
 
       <div class="text-left mb-8">
-        <label class="font-bold text-gray-800 block mb-2" for="password">Contraseña</label>
+        <label class="font-bold text-neutral-800 block mb-2" for="password">Contraseña</label>
         <input (focus)="loginForm.get('password').markAsUntouched()"
-               [class.border-red-500]="loginForm.get('password').invalid && loginForm.get('password').touched"
+               [class.border-danger-500]="loginForm.get('password').invalid && loginForm.get('password').touched"
                class="app-input block w-full lg:w-8/12 sm:ml-0" formControlName="password" id="password"
                type="password">
         <p *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched"
-           class="text-red-500 pl-2">
+           class="text-danger-500 pl-2">
           Debes ingresar una contraseña
         </p>
       </div>
 
-      <button class="app-button bg-orange-500 min-width-18 mb-8" type="submit">
+      <button class="app-button bg-primary-500 min-width-18 mb-8" type="submit">
         INGRESAR
       </button>
 
-      <a class="font-bold text-orange-500 text-left text-sm block mb-16 sm:pl-8 text-center sm:text-left"
+      <a class="font-bold text-primary-500 text-left text-sm block mb-16 sm:pl-8 text-center sm:text-left"
          routerLink="/auth/recovery-password">
         ¿OLVIDASTE TU CONTRASEÑA?
       </a>
@@ -44,7 +44,7 @@
       </button>
 
       <div class="text-left mb-8  lg:w-8/12">
-        <label class="checkbox text-gray-800" for="terms">
+        <label class="checkbox text-neutral-800" for="terms">
           <input formControlName="terms" id="terms" type="checkbox">
           <svg class="checkmark" fill="none" focusable="false" height="8" tabindex="-1" viewBox="0 0 10 8" width="10">
             <path
@@ -53,12 +53,12 @@
           </svg>
 
           Acepto los
-          <a class="text-orange-500 underline" href="/terms.html" target="_blank">Términos y Condiciones
+          <a class="text-primary-500 underline" href="/terms.html" target="_blank">Términos y Condiciones
             de Tapit</a>
         </label>
         <p *ngIf="loginForm.get('terms').hasError('required') && loginForm.get('terms').touched"
-           class="text-red-500 pl-8">
-          <i class="uil uil-exclamation-circle text-2xl"></i>
+           class="text-danger-500 pl-8">
+          <i class="uil uil-exclamation-circle text-xl"></i>
           Debes aceptar los términos y condiciones
         </p>
       </div>
