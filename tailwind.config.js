@@ -56,6 +56,18 @@ module.exports = {
       },
       info: {
         500: '#7DD5ED'
+      },
+      'complementary-1': {
+        500: '#F0DC32'
+      },
+      'complementary-2': {
+        500: '#D20F28'
+      },
+      'complementary-3': {
+        500: '#5FCD5A'
+      },
+      'complementary-4': {
+        500: '#A5D7DC'
       }
     },
     spacing: {
