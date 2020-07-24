@@ -33,7 +33,7 @@ window.zESettings = {
     },
     color: {
       theme: '#FF5005',
-      launcher: '#FF5005',
+      launcher: '#191419',
       launcherText: '#FFFFFF'
     }
   }
