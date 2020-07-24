@@ -1,38 +1,55 @@
+var CookiesService = /*#__PURE__*/function () {
+  function CookiesService() {
+  }
+
+  CookiesService.setObject = function setObject(key, object) {
+    this.setValue(key, object ? encodeURIComponent(JSON.stringify(object)) : '');
+  };
+
+  CookiesService.setValue = function setValue(key, value) {
+    document.cookie = key + '=' + value + ';max-age=31536000;path=/;' + (!value ? 'max-age=0;' : '') + (window.location.hostname == 'localhost' ? '' : 'domain=tapit.com.co;');
+  };
+
+  CookiesService.getObject = function getObject(key) {
+    var value = this.getValue(key);
+    return value ? JSON.parse(decodeURIComponent(value)) : undefined;
+  };
+
+  CookiesService.getValue = function getValue(key) {
+    var cookieValue = document.cookie.match(key + '=[^ ;]*');
+
+    if (cookieValue) {
+      return cookieValue[0].replace(key + '=', '');
+    }
+  };
+
+  return CookiesService;
+}();
+
 window.zESettings = {
   webWidget: {
     contactForm: {
       attachments: true
     },
-    color: { 
+    color: {
       theme: '#FF5005',
       launcher: '#FF5005',
       launcherText: '#FFFFFF'
     }
   }
 };
-var getCookie = function (key) {
-  var cookieValue = document.cookie.match(key + '=[^ ;]*');
-  if (cookieValue) {
-    return cookieValue[0].replace(key + '=', '');
-  }
-}
-var user_cookie;
-var user_desk = getCookie('loggedUser');
-var user_email, user_fullName;
 
-if (user_desk !== '' && user_desk !== undefined && user_desk !== null) {
-  user_cookie = JSON.parse(decodeURIComponent(user_desk));
-  user_email = user_cookie.email;
-  user_fullName = user_cookie.firstName + ' ' + user_cookie.lastName;
-}
+var loggedUser = CookiesService.getObject('loggedUser');
 
-zE('webWidget', 'prefill', {
-  name: {
-    value: user_fullName,
-    readOnly: true 
-  },
-  email: {
-    value: user_email,
-    readOnly: true 
-  }
-});
+if (loggedUser) {
+  zE('webWidget', 'prefill', {
+    name: {
+      value: loggedUser.firstName + ' ' + loggedUser.lastName,
+      readOnly: true
+    },
+    email: {
+      value: loggedUser.email,
+      readOnly: true
+    }
+  });
+}
