@@ -10,6 +10,8 @@ import {AnalyticsService} from '../../../services/anaylitics/analytics.service';
 import {CookiesService} from '../../../services/cookies.service';
 import UserCredential = firebase.auth.UserCredential;
 
+declare var zE: any;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -43,6 +45,7 @@ export class AuthService {
     await this.addIdToken(user);
     this.currentUser.next(user);
     this.saveUserToACookie(user);
+    this.setUserToZendesk(user);
 
     return user;
   }
@@ -56,7 +59,6 @@ export class AuthService {
   }
 
   saveUserToACookie(user: UserAccount) {
-    console.log(user);
     CookiesService.setObject('loggedUser', this.extractCookieData(user));
   }
 
@@ -81,6 +83,34 @@ export class AuthService {
 
   signUp(email: string, password: string): Observable<UserCredential> {
     return from(auth().createUserWithEmailAndPassword(email, password));
+  }
+
+  private setUserToZendesk(user: UserAccount) {
+    if (typeof zE === 'function') {
+      if (user) {
+        zE('webWidget', 'prefill', {
+          name: {
+            value: user.firstName + ' ' + user.lastName,
+            readOnly: true
+          },
+          email: {
+            value: user.email,
+            readOnly: true
+          }
+        });
+      } else {
+        zE('webWidget', 'prefill', {
+          name: {
+            value: '',
+            readOnly: false
+          },
+          email: {
+            value: '',
+            readOnly: false
+          }
+        });
+      }
+    }
   }
 
   private sendEventToAnalytics() {
