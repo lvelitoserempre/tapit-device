@@ -44,6 +44,17 @@ zE('webWidget:on', 'open', function () {
   setZeUserData(loggedUser);
 });
 
+zE('webWidget:on', 'close', function () {
+  zE('webWidget', 'prefill', {
+    name: {
+      readOnly: false
+    },
+    email: {
+      readOnly: false
+    }
+  });
+});
+
 function setZeUserData(user) {
   if (user) {
     zE('webWidget', 'prefill', {
@@ -54,17 +65,6 @@ function setZeUserData(user) {
       email: {
         value: user.email,
         readOnly: true
-      }
-    });
-  } else {
-    zE('webWidget', 'prefill', {
-      name: {
-        value: '',
-        readOnly: false
-      },
-      email: {
-        value: '',
-        readOnly: false
       }
     });
   }
