@@ -39,17 +39,33 @@ window.zESettings = {
   }
 };
 
-var loggedUser = CookiesService.getObject('loggedUser');
+zE('webWidget:on', 'open', function () {
+  var loggedUser = CookiesService.getObject('loggedUser');
+  setZeUserData(loggedUser);
+});
 
-if (loggedUser) {
-  zE('webWidget', 'prefill', {
-    name: {
-      value: loggedUser.firstName + ' ' + loggedUser.lastName,
-      readOnly: true
-    },
-    email: {
-      value: loggedUser.email,
-      readOnly: true
-    }
-  });
+function setZeUserData(user) {
+  if (user) {
+    zE('webWidget', 'prefill', {
+      name: {
+        value: user.firstName + ' ' + user.lastName,
+        readOnly: true
+      },
+      email: {
+        value: user.email,
+        readOnly: true
+      }
+    });
+  } else {
+    zE('webWidget', 'prefill', {
+      name: {
+        value: '',
+        readOnly: false
+      },
+      email: {
+        value: '',
+        readOnly: false
+      }
+    });
+  }
 }
