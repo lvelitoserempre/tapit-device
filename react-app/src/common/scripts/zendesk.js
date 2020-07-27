@@ -32,7 +32,7 @@ window.zESettings = {
       attachments: true
     },
     color: {
-      theme: '#FF5005',
+      theme: '#191419',
       launcher: '#191419',
       launcherText: '#FFFFFF'
     }
