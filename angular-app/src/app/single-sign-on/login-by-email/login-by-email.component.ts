@@ -9,6 +9,7 @@ import {from} from 'rxjs';
 import {LoginByEmailValidationMessages, LoginByEmailValidators} from './login-by-email.validations';
 import {IframeCommunicatorService} from '../iframe-communicator.service';
 import LoginConfig from '../login.config';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login-by-email',
@@ -21,8 +22,11 @@ export class LoginByEmailComponent implements OnInit {
   config: LoginConfig = {};
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
-              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService) {
+              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService,
+              public translate: TranslateService) {
     this.loginForm = this.formBuilder.group(LoginByEmailValidators, {updateOn: 'blur'});
+    const userLanguage = navigator.language ? navigator.language.slice(0,2) : 'es';
+    this.translate.setDefaultLang(userLanguage);
   }
 
   ngOnInit(): void {

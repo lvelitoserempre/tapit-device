@@ -1,0 +1,32 @@
+{
+    "loginLabel": "Iniciar Sesión",
+    "sloganLabel": {
+        "simplePart": "La comunidad de los",
+        "highlightedPart": "amantes de la cerveza."
+    },
+    "buttonsLabels": {
+        "facebook": "Ingresar con Facebook",
+        "signUp": "Ya tengo cuenta"
+    },
+    "acceptenceLabel": "Acepto los",
+    "andConnector": "y",
+    "termsAndConditions": {
+        "tapitConditions": "Términos y Condiciones de Tapit",
+        "privacyPolicy": "Políticas de Privacidad",
+        "pokerConditions": "Términos y Condiciones de Poker"
+    },
+    "signUp":{
+        "returnLabel": "Ya tengo una cuenta",
+        "email": "Email",
+        "password": "Contraseña",
+        "passwordInformation": "Usa tu cédula como contraseña",
+        "buttonLabel": "Ingresar",
+        "forgotPassLabel": "¿Olvidate tu Contraseña?"
+    },
+    "validations": {
+        "termsRequired": "Debes aceptar los términos y condiciones",
+        "emailRequired": "Debes ingresar un email",
+        "invalidEmail": "El formato de email no es correcto",
+        "passRequired": "Debes ingresar una contraseña"
+    }
+}

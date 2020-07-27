@@ -5,5 +5,5 @@ export const LoginValidators = {
 };
 
 export const LoginValidationMessages = {
-  terms: {required: 'Debes aceptar los términos y condiciones'}
+  terms: {required: 'validations.termsRequired'}
 };

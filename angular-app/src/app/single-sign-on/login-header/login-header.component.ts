@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login-header',
@@ -13,7 +14,9 @@ export class LoginHeaderComponent implements OnInit {
   title: any;
 
 
-  constructor(private router:Router) {
+  constructor(private router:Router, public translate: TranslateService) {
+    const userLanguage = navigator.language ? navigator.language.slice(0,2) : 'es';
+    this.translate.setDefaultLang(userLanguage);
   }
 
   ngOnInit(): void {

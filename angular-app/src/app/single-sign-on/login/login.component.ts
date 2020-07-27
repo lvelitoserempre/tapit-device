@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {IframeCommunicatorService} from '../iframe-communicator.service';
 import LoginConfig from '../login.config';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -25,8 +26,11 @@ export class LoginComponent implements OnInit {
   };
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
-              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService) {
+              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService,
+              public translate: TranslateService) {
     this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
+    const userLanguage = navigator.language ? navigator.language.slice(0,2) : 'es';
+    this.translate.setDefaultLang(userLanguage);
   }
 
   ngOnInit(): void {

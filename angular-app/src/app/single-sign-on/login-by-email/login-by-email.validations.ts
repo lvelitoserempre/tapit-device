@@ -6,6 +6,6 @@ export const LoginByEmailValidators = {
 };
 
 export const LoginByEmailValidationMessages = {
-  email: {required: 'Debes ingresar un email', pattern: 'El formato de email no es correcto'},
-  password: {required: 'Debes ingresar una contraseña'},
+  email: {required: 'validations.emailRequired', pattern: 'validations.invalidEmail'},
+  password: {required: 'validations.passRequired'},
 };

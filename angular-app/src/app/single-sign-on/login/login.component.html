@@ -1,15 +1,15 @@
 <div class="container mx-auto relative sm:rounded-xl bg-white p-6">
-  <app-login-header title="Inicia Sesión"></app-login-header>
+  <app-login-header title="{{'loginLabel' | translate }}"></app-login-header>
 
   <form [formGroup]="loginForm">
     <button (click)="loginWithFacebook()" *ngIf="config.facebookButton"
             class="app-button facebook-button min-width-18 mb-4 block mx-auto" type="button">
-      INGRESAR CON FACEBOOK
+      {{'buttonsLabels.facebook' | translate }}
     </button>
 
     <button class="app-button border-2 border-black text-black min-width-18 block mx-auto mb-10"
             routerLink="../login-by-email" type="button">
-      YA TENGO UNA CUENTA
+      {{'buttonsLabels.signUp' | translate }}
     </button>
 
     <div class="text-left mb-12">
@@ -21,20 +21,20 @@
             fill="white"/>
         </svg>
 
-        Acepto los
-        <a class="text-orange-500 underline" href="/terms.html" target="_blank">Términos y Condiciones de Tapit</a>
-        y
+        {{'acceptenceLabel' | translate }}
+        <a class="text-orange-500 underline" href="/terms.html" target="_blank"> {{'termsAndConditions.tapitConditions' | translate }}</a>
+        {{'andConnector' | translate }}
         <a class="text-orange-500 underline" href="/data-proteccion.html" target="_blank">
-          Políticas de privacidad
+          {{'termsAndConditions.privacyPolicy' | translate }}
         </a>
         <span *ngIf="config.promoPokerTerms">
-            y <a class="text-orange-500 underline" href="https://tapit.com.co/data-proteccion.html" target="_blank">Términos y Condiciones de Poker</a>
+          {{'andConnector' | translate }} <a class="text-orange-500 underline" href="https://tapit.com.co/data-proteccion.html" target="_blank">{{'termsAndConditions.pokerConditions' | translate }}</a>
           </span>
       </label>
       <p *ngIf="loginForm.get('terms').hasError('required') && loginForm.get('terms').touched"
          class="text-red-500 pl-8">
         <i class="uil uil-exclamation-circle text-2xl"></i>
-        {{validationMessages.terms.required}}
+        {{validationMessages.terms.required | translate }}
       </p>
     </div>
   </form>
