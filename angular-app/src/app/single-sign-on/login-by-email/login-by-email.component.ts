@@ -10,6 +10,7 @@ import {LoginByEmailValidationMessages, LoginByEmailValidators} from './login-by
 import {IframeCommunicatorService} from '../iframe-communicator.service';
 import LoginConfig from '../login.config';
 import { TranslateService } from '@ngx-translate/core';
+import { I18nService } from '../i18n.service';
 
 @Component({
   selector: 'app-login-by-email',
@@ -23,10 +24,9 @@ export class LoginByEmailComponent implements OnInit {
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService,
-              public translate: TranslateService) {
+              private i18n: I18nService, public translate: TranslateService) {
     this.loginForm = this.formBuilder.group(LoginByEmailValidators, {updateOn: 'blur'});
-    const userLanguage = navigator.language ? navigator.language.slice(0,2) : 'es';
-    this.translate.setDefaultLang(userLanguage);
+    this.translate.setDefaultLang(this.i18n.getCurrentLanguage());
   }
 
   ngOnInit(): void {
