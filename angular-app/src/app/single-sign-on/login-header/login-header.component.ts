@@ -15,8 +15,7 @@ export class LoginHeaderComponent implements OnInit {
   title: any;
 
 
-  constructor(private router:Router, private i18n: I18nService, public translate: TranslateService) {
-    this.translate.setDefaultLang(this.i18n.getCurrentLanguage());
+  constructor(private router:Router) {
   }
 
   ngOnInit(): void {

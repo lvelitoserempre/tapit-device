@@ -27,10 +27,8 @@ export class LoginComponent implements OnInit {
   };
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
-              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService,
-              private i18n: I18nService ,public translate: TranslateService) {
+              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService) {
     this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
-    this.translate.setDefaultLang(this.i18n.getCurrentLanguage());
   }
 
   ngOnInit(): void {

@@ -23,10 +23,8 @@ export class LoginByEmailComponent implements OnInit {
   config: LoginConfig = {};
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
-              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService,
-              private i18n: I18nService, public translate: TranslateService) {
+              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService,) {
     this.loginForm = this.formBuilder.group(LoginByEmailValidators, {updateOn: 'blur'});
-    this.translate.setDefaultLang(this.i18n.getCurrentLanguage());
   }
 
   ngOnInit(): void {
