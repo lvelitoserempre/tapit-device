@@ -116,6 +116,30 @@
         "**/.*",
         "**/node_modules/**"
       ]
+    },
+    {
+      "site": "clube-brahma-sso",
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "/app/**",
+          "destination": "/app/index.html"
+        }
+      ]
+    },
+    {
+      "site": "clube-brahma-sso-example",
+      "public": "sso-example",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
     }
   ]
 }
