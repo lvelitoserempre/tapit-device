@@ -16,7 +16,7 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
-      orange: {
+      primary: {
         100: '#FFDCCD',
         200: '#FFB99B',
         300: '#FF9669',
@@ -27,72 +27,48 @@ module.exports = {
         800: '#681F00',
         900: '#341000',
       },
-      purple: {
-        100: '#D6CBD6',
-        200: '#AC98AC',
-        300: '#806780',
-        400: '#4D3D4D',
-        500: '#191419',
-        600: '#141014',
-        700: '#110D11',
-        800: '#0A080A',
-        900: '#050405',
+      secondary: {
+        100: '#AB96AB',
+        200: '#856B85',
+        300: '#5D4B5D',
+        400: '#362B36',
+        500: '#191419'
       },
-      gray: {
+      neutral: {
         100: '#FAFAFA',
-        200: '#F5F4F4',
-        300: '#EEEDEC',
-        400: '#E7E5E5',
-        500: '#D5D3D2',
-        600: '#A29E9B',
-        700: '#847D7A',
-        800: '#494644',
-        900: '#373433',
+        200: '#F3F2F2',
+        300: '#EEEDED',
+        400: '#E6E5E5',
+        500: '#DAD8D7',
+        600: '#BCB9B8',
+        700: '#9F9A99',
+        800: '#716C6A',
+        900: '#514E4D',
       },
-      yellow: {
-        100: '#FCF8D6',
-        200: '#F9F1AD',
-        300: '#F6EA84',
-        400: '#F3E35B',
-        500: '#F0DC32',
-        600: '#D8C310',
-        700: '#A2920C',
-        800: '#6C6208',
-        900: '#363104',
+      success: {
+        500: '#41E189'
       },
-      red: {
-        100: '#FBCAD0',
-        200: '#F795A1',
-        300: '#F45F72',
-        400: '#F02A44',
-        500: '#D20F28',
-        600: '#A80C20',
-        700: '#7E0918',
-        800: '#540610',
-        900: '#2A0308',
+      warning: {
+        500: '#FFD738'
       },
-      green: {
-        100: '#DFF5DE',
-        200: '#BFEBBD',
-        300: '#9FE19C',
-        400: '#7FD77B',
-        500: '#5FCD5A',
-        600: '#3CB537',
-        700: '#2D8829',
-        800: '#1E5B1B',
-        900: '#0F2D0E',
+      danger: {
+        500: '#F85464'
       },
-      cyan: {
-        100: '#EDF7F8',
-        200: '#DBEFF1',
-        300: '#C9E7EA',
-        400: '#B7DFE3',
-        500: '#A5D7DC',
-        600: '#6EBEC6',
-        700: '#419DA6',
-        800: '#2B696F',
-        900: '#163437',
+      info: {
+        500: '#7DD5ED'
       },
+      'complementary-1': {
+        500: '#F0DC32'
+      },
+      'complementary-2': {
+        500: '#D20F28'
+      },
+      'complementary-3': {
+        500: '#5FCD5A'
+      },
+      'complementary-4': {
+        500: '#A5D7DC'
+      }
     },
     spacing: {
       px: '1px',
@@ -195,49 +171,47 @@ module.exports = {
       default: '1',
     },
     fontFamily: {
-      sans: [
-        'system-ui',
+      'fs-regular': [
+        'filson-soft-regular',
         '-apple-system',
-        'BlinkMacSystemFont',
         '"Segoe UI"',
-        'Roboto',
         '"Helvetica Neue"',
         'Arial',
-        '"Noto Sans"',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-        '"Noto Color Emoji"',
+        'sans-serif'
       ],
-      serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
-      mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+      'fs-book': [
+        'filson-soft-book',
+        '-apple-system',
+        '"Segoe UI"',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif'
+      ],
+      'fs-bold': [
+        'filson-soft-bold',
+        '-apple-system',
+        '"Segoe UI"',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif'
+      ]
     },
     fontSize: {
-      '2xs': '0.65rem',
+      '2xs': '0.625rem',
       xs: '0.75rem',
       sm: '0.875rem',
       base: '1rem',
-      lg: '1.125rem',
-      xl: '1.25rem',
-      '2xl': '1.5rem',
-      '3xl': '1.875rem',
-      '4xl': '2.25rem',
-      '5xl': '3rem',
-      '6xl': '4rem',
-      '15xl': '10rem',
-      '20xl': '15rem',
+      lg: '1.25rem',
+      xl: '1.5rem',
+      '2xl': '2.125rem',
+      '3xl': '3rem',
+      '4xl': '3.75rem',
+      '5xl': '6rem'
     },
     fontWeight: {
-      hairline: '100',
-      thin: '200',
       light: '300',
       normal: '400',
-      medium: '500',
-      semibold: '600',
-      bold: '700',
-      extrabold: '800',
-      black: '900',
+      bold: '700'
     },
     height: theme => ({
       auto: 'auto',
@@ -278,7 +252,7 @@ module.exports = {
       disc: 'disc',
       decimal: 'decimal',
     },
-    margin: (theme, { negative }) => ({
+    margin: (theme, {negative}) => ({
       auto: 'auto',
       ...theme('spacing'),
       ...negative(theme('spacing')),
@@ -287,7 +261,7 @@ module.exports = {
       full: '100%',
       screen: '100vh',
     },
-    maxWidth: (theme, { breakpoints }) => ({
+    maxWidth: (theme, {breakpoints}) => ({
       none: 'none',
       xs: '20rem',
       sm: '24rem',
@@ -532,7 +506,7 @@ module.exports = {
       '90': '90deg',
       '180': '180deg',
     },
-    translate: (theme, { negative }) => ({
+    translate: (theme, {negative}) => ({
       ...theme('spacing'),
       ...negative(theme('spacing')),
       '-full': '-100%',

@@ -1,4 +1,5 @@
 .app-button {
+  transition: all .3s;
   @apply px-4 py-4 font-bold text-white inline-block mx-auto align-bottom rounded-xl;
 }
 
@@ -7,5 +8,21 @@
 }
 
 .app-button:disabled {
-  @apply bg-gray-300 text-gray-800;
+  @apply bg-neutral-300 text-neutral-800;
+}
+
+.primary-button {
+  @apply bg-primary-500 text-white;
+}
+
+.primary-button:hover, .primary-button:focus {
+  @apply bg-primary-300;
+}
+
+.secondary-button {
+  @apply bg-white text-neutral-500 border-2 border-black;
+}
+
+.secondary-button:hover, .secondary-button:focus {
+  @apply bg-neutral-500 text-white;
 }

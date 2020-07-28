@@ -28,10 +28,10 @@ export default function StartSection(props) {
         <div className="section__button-container mt-5">
           {
             isIos ?
-              <a className="app-button border-2 border-orange-500 bg-orange-500 text-white"
+              <a className="app-button border-2 border-primary-500 bg-primary-500 text-white"
                  href={i18next.t("Section6.appStoreUrl")} target="_blank">{i18next.t("Section1.Button")}</a>
               :
-              <a className="app-button border-2 border-orange-500 bg-orange-500 text-white"
+              <a className="app-button border-2 border-primary-500 bg-primary-500 text-white"
                  href={`${i18next.t("Section6.googlePlayUrl") + url}`}
                  target="_blank">{i18next.t("Section1.Button")}</a>
           }
