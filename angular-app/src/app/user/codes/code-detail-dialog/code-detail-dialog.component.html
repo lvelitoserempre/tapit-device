@@ -1,11 +1,11 @@
 <div class="container max-w-2xl mx-auto">
   <div class="w-full mb-4 inline-block">
-    <h3 class="text-secondary-500 text-lg font-normal inline-block align-middle font-bold">
+    <h3 class="text-secondary-500 text-base font-normal inline-block align-middle font-bold">
       Detalle del bono
     </h3>
     <div [mat-dialog-close]="true"
       class="inline-block float-right h-8 w-8 md:h-12 md:w-12 text-center align-middle cursor-pointer">
-      <i class="uil uil-times-circle text-xl"></i>
+      <i class="uil uil-times-circle text-lg"></i>
     </div>
   </div>
   <div id="scroll-view" class="w-full px-4 sm:px-0 overflow-scroll sm:overflow-visible scroll-view">
@@ -20,11 +20,11 @@
     <div class="w-full md:w-3/5 md:inline-block md:align-middle pl-0 sm:pl-4">
       <div class="w-full mb-4 inline-block">
         <img [src]="code.image" class="w-12 mr-4 align-middle inline-block" />
-        <h4 class="text-secondary-500 text-lg font-normal inline-block align-middle font-bold align-middle">
+        <h4 class="text-secondary-500 text-base font-normal inline-block align-middle font-bold align-middle">
           {{ code.name }}
         </h4>
       </div>
-      <p class="text-secondary-500 font-bold text-xl sm:mr-2 sm:w-full w-7/12 inline-block align-middle">
+      <p class="text-secondary-500 font-bold text-lg sm:mr-2 sm:w-full w-7/12 inline-block align-middle">
         {{ code.amount | currency: "COP":"symbol-narrow":"1.0" }}
       </p>
       <p class="text-xs text-neutral-700 text-left uppercase sm:hidden inline-block align-middle float-right">

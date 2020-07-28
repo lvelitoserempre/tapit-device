@@ -1,7 +1,7 @@
 <div class="container mx-auto mb-8 pt-8">
   <div class="pb-6 w-10/12 sm:w-11/12 lg:w-10/12 mx-auto">
-    <h3 class="text-xl font-bold text-black mb-6">Mi <span class="text-primary-500">Perfil</span></h3>
-    <!--<button class="text-xl absolute top-0 right-0 m-4 focus:outline-none">
+    <h3 class="text-lg font-bold text-black mb-6">Mi <span class="text-primary-500">Perfil</span></h3>
+    <!--<button class="text-lg absolute top-0 right-0 m-4 focus:outline-none">
       <i class="uil uil-times-circle"></i>
     </button>-->
 
@@ -12,27 +12,27 @@
       </div>
 
       <div class="block sm:inline-block align-middle sm:px-0 lg:px-6 py-6 pt-0 sm:pt-6">
-        <h3 class="text-lg font-bold text-2xl mb-6">{{user.firstName + ' ' + user.lastName}}</h3>
+        <h3 class="text-base font-bold text-xl mb-6">{{user.firstName + ' ' + user.lastName}}</h3>
         <div class="block sm:inline-block overflow-hidden align-middle md:mr-4 lg:mr-20 mb-4">
           <h3 class="text-xs tracking-widest text-neutral-700 font-bold uppercase">Correo</h3>
-          <p class="text-md sm:text-lg text-neutral-700 sm:text-black truncate">{{user.email}}</p>
+          <p class="text-md sm:text-base text-neutral-700 sm:text-black truncate">{{user.email}}</p>
         </div>
 
         <div class="inline-block align-middle mb-4">
           <h3 class="text-xs tracking-widest text-neutral-700 font-bold">TUS PUNTOS</h3>
-          <h1 class="text-md sm:text-lg text-primary-500 font-bold">{{user.points | number : '1.0'}}</h1>
+          <h1 class="text-md sm:text-base text-primary-500 font-bold">{{user.points | number : '1.0'}}</h1>
         </div>
       </div>
     </section>
 
     <section
       class="border-4 border-white bg-neutral-100 p-5 mb-8 shadow bg-image bg-no-repeat bg-left-bottom bg-contain sm:bg-auto pb-0 sm:pb-6 sm:bg-left-top">
-      <h1 class="text-lg font-bold">¡Invita un amigo y gana 120 puntos!</h1>
+      <h1 class="text-base font-bold">¡Invita un amigo y gana 120 puntos!</h1>
       <h2 class="text-neutral-700 mb-6">Puedes invitar hasta 10 amigos al mes</h2>
 
       <div class="bg-black px-5 inline-block mb-8 border-4 border-white w-full sm:w-auto py-2 code-container">
         <h2 class="text-2xs text-white tracking-widest">TU CÓDIGO DE REFERIDO</h2>
-        <h1 class="text-lg text-white font-bold">{{user.referralCode}}</h1>
+        <h1 class="text-base text-white font-bold">{{user.referralCode}}</h1>
       </div>
 
       <h2 class="text-neutral-700 mb-4 sm:mb-6">Comparte tu código por:</h2>

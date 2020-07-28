@@ -1,6 +1,6 @@
 <div class="container mx-auto relative overflow-x-hidden">
   <div class="inline-block w-full sm:w-6/12 align-middle p-4">
-    <h1 class="text-2xl my-10 sm:mt-0 sm:mb-8">Inicia <span class="text-primary-500">sesión</span></h1>
+    <h1 class="text-xl my-10 sm:mt-0 sm:mb-8">Inicia <span class="text-primary-500">sesión</span></h1>
 
     <form (ngSubmit)="login()" [formGroup]="loginForm" class="text-center sm:text-left">
       <div class="text-left mb-8">
@@ -47,7 +47,7 @@
         </label>
         <p *ngIf="loginForm.get('terms').hasError('required') && loginForm.get('terms').touched"
            class="text-danger-500 pl-8">
-          <i class="uil uil-exclamation-circle text-xl"></i>
+          <i class="uil uil-exclamation-circle text-lg"></i>
           Debes aceptar los términos y condiciones
         </p>
       </div>
@@ -84,7 +84,7 @@
         </label>
         <p *ngIf="loginForm.get('terms').hasError('required') && loginForm.get('terms').touched"
            class="text-danger-500 pl-8">
-          <i class="uil uil-exclamation-circle text-xl"></i>
+          <i class="uil uil-exclamation-circle text-lg"></i>
           Debes aceptar los términos y condiciones
         </p>
       </div>
