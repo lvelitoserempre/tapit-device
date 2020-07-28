@@ -35,6 +35,14 @@ task('serve-static', function () {
   });
 });
 
+task('serve-sso-example', function () {
+  const server = liveServer.static('sso-example', 3000);
+  server.start();
+
+  watch(['sso-example/**'], function (file) {
+    server.notify.apply(server, [file]);
+  });
+});
 
 task('clear', function () {
   return del('dist/*');

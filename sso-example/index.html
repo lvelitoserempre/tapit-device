@@ -5,7 +5,7 @@
   <title>Login Example</title>
   <meta content="width=device-width,initial-scale=1" name="viewport">
 
-  <link rel="stylesheet" href="https://tapit.com.co/assets/styles/tailwind.css">
+  <link rel="stylesheet" href="https://dev.tapit.com.co/assets/styles/tailwind.css">
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-auth.js"></script>
   <script>
@@ -91,7 +91,7 @@
 <div id="loginPopup" class="hidden">
   <div class="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center">
     <div class="fixed inset-0 transition-opacity">
-      <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+      <div class="absolute inset-0 bg-neutral-500 opacity-75"></div>
     </div>
     <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full"
          role="dialog" aria-modal="true" aria-labelledby="modal-headline">
@@ -104,10 +104,10 @@
 </div>
 
 <div class="text-center mt-20" id="loginButton">
-  <button class="app-button bg-orange-500 text-white" onclick="showLoginPopup()">INICIA SESIÓN</button>
+  <button class="app-button bg-primary-500 text-white" onclick="showLoginPopup()">INICIA SESIÓN</button>
 </div>
 
-<div class="m-4 rounded-lg bg-gray-200 p-4">
+<div class="m-4 rounded-lg bg-neutral-200 p-4">
   <p id="loggedUser" class=" overflow-x-auto"></p>
 </div>
 

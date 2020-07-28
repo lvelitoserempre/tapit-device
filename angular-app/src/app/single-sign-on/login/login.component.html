@@ -22,13 +22,13 @@
         </svg>
 
         {{'acceptenceLabel' | translate }}
-        <a class="text-orange-500 underline" href="/terms.html" target="_blank"> {{'termsAndConditions.tapitConditions' | translate }}</a>
+        <a class="text-primary-500 underline" href="/terms.html" target="_blank"> {{'termsAndConditions.tapitConditions' | translate }}</a>
         {{'andConnector' | translate }}
-        <a class="text-orange-500 underline" href="/data-proteccion.html" target="_blank">
+        <a class="text-primary-500 underline" href="/data-proteccion.html" target="_blank">
           {{'termsAndConditions.privacyPolicy' | translate }}
         </a>
         <span *ngIf="config.promoPokerTerms">
-          {{'andConnector' | translate }} <a class="text-orange-500 underline" href="https://tapit.com.co/data-proteccion.html" target="_blank">{{'termsAndConditions.pokerConditions' | translate }}</a>
+          {{'andConnector' | translate }} <a class="text-primary-500 underline" href="https://tapit.com.co/data-proteccion.html" target="_blank">{{'termsAndConditions.pokerConditions' | translate }}</a>
           </span>
       </label>
       <p *ngIf="loginForm.get('terms').hasError('required') && loginForm.get('terms').touched"
