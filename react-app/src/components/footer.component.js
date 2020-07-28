@@ -72,6 +72,11 @@ export default function FooterSection(props) {
                                 <li className="w-full inline-block align-top sm:pb-0 pb-3 mb-5">
                                     {i18next.t("Footer.Support.Phone")}
                                 </li>
+                                <li className="w-full inline-block align-top sm:pb-0 pb-3 mb-5">
+                                    <a target="_blank" href={i18next.t("Footer.Support.Help.Url")}>
+                                        {i18next.t("Footer.Support.Help.Text")}
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <div className="w-1/2 inline-block align-top">
@@ -79,6 +84,16 @@ export default function FooterSection(props) {
                                 <li className="w-full inline-block align-top sm:pb-0 pb-3 mb-5 hidden">
                                     <a target="_blank" href={i18next.t("Footer.Support.Contact.Url")}>
                                         {i18next.t("Footer.Support.Contact.Text")}
+                                    </a>
+                                </li>
+                                <li className="w-full inline-block align-top sm:pb-0 pb-3 mb-5">
+                                    <a target="_blank" href={i18next.t("Footer.Support.Cancellation.Url")}>
+                                        {i18next.t("Footer.Support.Cancellation.Text")}
+                                    </a>
+                                </li>
+                                <li className="w-full inline-block align-top sm:pb-0 pb-3 mb-5">
+                                    <a target="_blank" href={i18next.t("Footer.Support.SIC.Url")}>
+                                        {i18next.t("Footer.Support.SIC.Text")}
                                     </a>
                                 </li>
                             </ul>

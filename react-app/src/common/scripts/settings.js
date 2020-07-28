@@ -159,6 +159,18 @@ i18next.init({
                         Contact: {
                             Text: 'Contáctanos',
                             Url: 'https://draftline.typeform.com/to/mr1ZYDog'
+                        },
+                        Help: {
+                            Text: 'Recomendaciones Covid-19',
+                            Url: '/help.html'
+                        },
+                        Cancellation: {
+                            Text: 'Políticas de cancelación',
+                            Url: '/cancellation-policies.html'
+                        },
+                        SIC: {
+                            Text: 'Superintendencia de Industria y Comercio',
+                            Url: 'https://www.sic.gov.co/por-un-clic-confiable'
                         }
                     }
                 },
