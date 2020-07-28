@@ -26,6 +26,15 @@ task('serve-dist', function () {
   });
 });
 
+task('serve-static', function () {
+  const server = liveServer.static('static', 3000);
+  server.start();
+
+  watch(['static/**'], function (file) {
+    server.notify.apply(server, [file]);
+  });
+});
+
 
 task('clear', function () {
   return del('dist/*');
