@@ -1,5 +1,6 @@
+<app-login-header title="{{'loginLabel' | translate }}" selectedTab="sign-up"></app-login-header>
+
 <div class="container mx-auto relative sm:rounded-xl bg-white p-6">
-  <app-login-header title="{{'loginLabel' | translate }}"></app-login-header>
 
   <button (click)="loginWithFacebook()" *ngIf="config.showFacebookButton"
           class="app-button facebook-button min-width-280 mb-6 block mx-auto uppercase" type="button">

@@ -1,4 +1,4 @@
-<header class="mb-8">
+<header class="mb-8 bg-neutral-100 ">
   <a (click)="closePopup()" class="text-xl cursor-pointer absolute right-0 top-0 mr-4 mt-4">
     <i class="uil uil-times-circle"></i>
   </a>
@@ -9,7 +9,14 @@
 
   <div class="mb-4" [innerHTML]="config.slogan" *ngIf="config.slogan"></div>
 
-  <div>
-    
+  <div class="text-center">
+    <button class="inline-block text-sm font-bold px-4 py-3 focus:outline-none"
+            [ngClass]="{'border-b-2 border-primary-500' : selectedTab === 'login'}" routerLink="../login">
+      {{'HEADER.LOGIN_TAP' | translate}}
+    </button>
+    <button class="inline-block text-sm font-bold px-4 py-3 focus:outline-none"
+            [ngClass]="{'border-b-2 border-primary-500' : selectedTab === 'sign-up'}" routerLink="../sign-up">
+      {{'HEADER.SIGN_UP_TAP' | translate}}
+    </button>
   </div>
 </header>
