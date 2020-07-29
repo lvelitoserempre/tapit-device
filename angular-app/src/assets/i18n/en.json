@@ -1,27 +1,24 @@
 {
-    "loginLabel": "Log in",
     "sloganLabel": {
         "simplePart": "The community of",
         "highlightedPart": "beer lovers."
     },
+    "tapsLabels": {
+        "login": "Login",
+        "signUp": "Sign up"
+    },
     "buttonsLabels": {
-        "facebook": "Login with Facebook",
-        "signUp": "I already have an account"
+        "facebookLogin": "Login with Facebook",
+        "mail": "or your email account",
+        "login": "Login",
+        "recoverPassword": "Recover Password",
+        "facebookSignUp": "Sign up with Facebook"
     },
-    "acceptenceLabel": "I accept the",
-    "andConnector": "and",
-    "termsAndConditions": {
-        "tapitConditions": "Tapit Terms and Conditions",
-        "privacyPolicy": "Privacy policies",
-        "pokerConditions": "Poker Terms and Conditions"
-    },
-    "signUp":{
-        "returnLabel": "I already have an account",
+    "inputsLabels": {
         "email": "Email",
         "password": "Password",
-        "passwordInformation": "Use your ID as password",
-        "buttonLabel": "Login",
-        "forgotPassLabel": "Forgot your password?"
+        "remindMe": "Remind me",
+        "legendAcceptance": "By registering you accept these"
     },
     "validations": {
         "termsRequired": "You must agree to terms and conditions",
