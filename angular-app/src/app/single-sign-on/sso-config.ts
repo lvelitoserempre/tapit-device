@@ -5,5 +5,6 @@ export default interface SSOConfig {
   email: string,
   emailHint: string,
   passwordHint: string,
-  legalLinksToAccept: string[]
+  signUpLegalHtml: string;
+  loginLegalHtml: string;
 }

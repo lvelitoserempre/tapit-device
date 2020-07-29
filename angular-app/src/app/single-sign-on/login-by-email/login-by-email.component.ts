@@ -28,8 +28,7 @@ export class LoginByEmailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.configService.config.subscribe(config => {
-      console.log('login', config);
+    this.configService.getConfig().subscribe(config => {
       this.config = config;
     })
   }

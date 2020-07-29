@@ -1,15 +1,16 @@
 <header class="flex items-center justify-between mb-6">
   <div class="flex items-center">
-    <a (click)="navigateBack()"><i *ngIf="isShowingBackButton" class="uil uil-arrow-left text-2xl mr-3"></i></a>
+    <a (click)="navigateBack()"><i *ngIf="isShowingBackButton" class="uil uil-arrow-left text-xl mr-3"></i></a>
     <h1 class="text-lg font-bold">{{title}}</h1>
   </div>
-  <a (click)="closePopup()" class="text-2xl cursor-pointer">
+  <a (click)="closePopup()" class="text-xl cursor-pointer">
     <i class="uil uil-times-circle"></i>
   </a>
 </header>
 
 <div class="mb-8">
   <img class="mx-auto mb-2" src="/assets/images/tap-it_black-orange.svg" style="height: 64px">
-  <p class="text-center text-xs"><span class="bg-neutral-100 border-2 border-white px-2 py-1 shadow-md">{{'sloganLabel.simplePart' | translate }} <span
+  <p class="text-center text-xs"><span
+    class="bg-neutral-100 border-2 border-white px-2 py-1 shadow-md">{{'sloganLabel.simplePart' | translate }} <span
     class="text-primary-500">{{'sloganLabel.highlightedPart' | translate }}</span></span></p>
 </div>

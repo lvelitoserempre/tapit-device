@@ -7,10 +7,10 @@ import {auth} from 'firebase';
 import {from, of} from 'rxjs';
 import {mergeMap} from 'rxjs/operators';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {IframeCommunicatorService} from '../iframe-communicator.service';
 import SSOConfig from '../sso-config';
 import {ConfigService} from '../config.service';
+import {LoginByEmailValidationMessages, LoginByEmailValidators} from '../login-by-email/login-by-email.validations';
 
 @Component({
   selector: 'app-login',
@@ -19,44 +19,57 @@ import {ConfigService} from '../config.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  validationMessages = LoginValidationMessages;
+  validationMessages = LoginByEmailValidationMessages;
   config: SSOConfig;
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService,
               private configService: ConfigService) {
-    this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
+    this.loginForm = this.formBuilder.group(LoginByEmailValidators, {updateOn: 'blur'});
   }
 
   ngOnInit(): void {
-    this.configService.config.subscribe(config => {
-      console.log('login', config);
+    this.configService.getConfig().subscribe(config => {
       this.config = config;
     })
   }
 
-  loginWithFacebook() {
-    this.loginForm.markAsUntouched();
-    this.loginForm.get('terms').markAsTouched();
 
-    if (this.loginForm.get('terms').valid) {
+  login() {
+    this.loginForm.markAllAsTouched();
+
+    if (this.loginForm.valid) {
+      const formValue = this.loginForm.value;
       this.loaderService.show();
-      from(auth().signInWithPopup(this.facebookService.facebookAuthProvider))
-        .pipe(mergeMap((facebookResponse) => {
-          const userData = this.facebookService.parseUserData(facebookResponse);
 
-          if (this.config.origin) {
-            userData.origin = this.config.origin;
-          }
+      from(auth().signInWithEmailAndPassword(formValue.email, formValue.password))
+        .subscribe(user => {
 
-          return facebookResponse.additionalUserInfo.isNewUser ? this.userDAO.createUser(userData) : of();
-        })).subscribe(customToken => {
-
-        },
-        error => {
+        }, error => {
           this.loaderService.hide();
           this.dialogService.manageError(error);
         });
     }
+  }
+
+  loginWithFacebook() {
+    this.loaderService.show();
+
+    from(auth().signInWithPopup(this.facebookService.facebookAuthProvider))
+      .pipe(mergeMap((facebookResponse) => {
+        const userData = this.facebookService.parseUserData(facebookResponse);
+
+        if (this.config.origin) {
+          userData.origin = this.config.origin;
+        }
+
+        return facebookResponse.additionalUserInfo.isNewUser ? this.userDAO.createUser(userData) : of();
+      })).subscribe(customToken => {
+
+      },
+      error => {
+        this.loaderService.hide();
+        this.dialogService.manageError(error);
+      });
   }
 }

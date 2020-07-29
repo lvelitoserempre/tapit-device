@@ -5,7 +5,7 @@
         "highlightedPart": "amantes de la cerveza."
     },
     "buttonsLabels": {
-        "facebook": "Ingresar con Facebook",
+        "facebook": "Iniciar con Facebook",
         "signUp": "Ya tengo cuenta"
     },
     "acceptenceLabel": "Acepto los",
@@ -17,7 +17,7 @@
     },
     "signUp":{
         "returnLabel": "Ya tengo una cuenta",
-        "email": "Email",
+        "email": "Correo",
         "password": "Contraseña",
         "passwordInformation": "Usa tu cédula como contraseña",
         "buttonLabel": "Ingresar",
