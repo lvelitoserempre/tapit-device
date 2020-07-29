@@ -13,6 +13,7 @@ import {LoginHeaderComponent} from './login-header/login-header.component';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {AppComponent} from './app/app.component';
+import {SignUpComponent} from './sign-up/sign-up.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -27,6 +28,10 @@ const routes: Routes = [
         component: LoginComponent
       },
       {
+        path: 'sign-up',
+        component: SignUpComponent
+      },
+      {
         path: '**',
         redirectTo: 'login'
       }
@@ -38,7 +43,8 @@ const routes: Routes = [
   declarations: [
     LoginComponent,
     LoginHeaderComponent,
-    AppComponent
+    AppComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

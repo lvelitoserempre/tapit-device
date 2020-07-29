@@ -13,7 +13,7 @@
         "mail": "o tu cuenta de correo",
         "login": "Iniciar Sesión",
         "recoverPassword": "Recuperar Contraseña",
-        "facebookSignUp": "Iniciar Sesión con Facebook"
+        "facebookSignUp": "Registrarme con Facebook"
     },
     "inputsLabels": {
         "email": "Correo",
