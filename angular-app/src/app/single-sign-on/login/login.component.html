@@ -2,7 +2,7 @@
   <app-login-header title="{{'loginLabel' | translate }}"></app-login-header>
 
   <form [formGroup]="loginForm">
-    <button (click)="loginWithFacebook()" *ngIf="config.facebookButton"
+    <button (click)="loginWithFacebook()" *ngIf="config.showFacebookButton"
             class="app-button facebook-button min-width-18 mb-4 block mx-auto" type="button">
       {{'buttonsLabels.facebook' | translate }}
     </button>
@@ -32,7 +32,7 @@
           </span>
       </label>
       <p *ngIf="loginForm.get('terms').hasError('required') && loginForm.get('terms').touched"
-         class="text-red-500 pl-8">
+         class="text-danger-500 pl-8">
         <i class="uil uil-exclamation-circle text-2xl"></i>
         {{validationMessages.terms.required | translate }}
       </p>

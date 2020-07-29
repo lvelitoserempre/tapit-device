@@ -9,9 +9,8 @@ import {mergeMap} from 'rxjs/operators';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {IframeCommunicatorService} from '../iframe-communicator.service';
-import LoginConfig from '../login.config';
-import { TranslateService } from '@ngx-translate/core';
-import { I18nService } from '../i18n.service';
+import SSOConfig from '../sso-config';
+import {ConfigService} from '../config.service';
 
 @Component({
   selector: 'app-login',
@@ -21,18 +20,17 @@ import { I18nService } from '../i18n.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   validationMessages = LoginValidationMessages;
-  config: LoginConfig = {
-    facebookButton: true,
-    promoPokerTerms: true
-  };
+  config: SSOConfig;
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
-              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService) {
+              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService,
+              private configService: ConfigService) {
     this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
   }
 
   ngOnInit(): void {
-    this.iframeCommunicatorService.config.subscribe(config => {
+    this.configService.config.subscribe(config => {
+      console.log('login', config);
       this.config = config;
     })
   }

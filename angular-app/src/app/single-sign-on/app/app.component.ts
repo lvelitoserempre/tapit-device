@@ -16,13 +16,14 @@ declare var zE;
 export class AppComponent implements OnInit {
 
   constructor(private authService: AuthService, private iframeCommunicatorService: IframeCommunicatorService,
-              private i18n: I18nService, public translate: TranslateService) {
+              private i18n: I18nService, private translate: TranslateService) {
     this.translate.setDefaultLang(this.i18n.getCurrentLanguage());
   }
 
   ngOnInit(): void {
     initializeApp(environment.firebase.config);
     this.authService.setupLoggedUserObserver();
+    this.iframeCommunicatorService.init();
 
     this.authService.getCurrentUser()
       .subscribe(user => {

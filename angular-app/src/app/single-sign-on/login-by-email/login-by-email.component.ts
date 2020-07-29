@@ -8,9 +8,8 @@ import {auth} from 'firebase';
 import {from} from 'rxjs';
 import {LoginByEmailValidationMessages, LoginByEmailValidators} from './login-by-email.validations';
 import {IframeCommunicatorService} from '../iframe-communicator.service';
-import LoginConfig from '../login.config';
-import { TranslateService } from '@ngx-translate/core';
-import { I18nService } from '../i18n.service';
+import SSOConfig from '../sso-config';
+import {ConfigService} from '../config.service';
 
 @Component({
   selector: 'app-login-by-email',
@@ -20,15 +19,17 @@ import { I18nService } from '../i18n.service';
 export class LoginByEmailComponent implements OnInit {
   loginForm: FormGroup;
   validationMessages = LoginByEmailValidationMessages;
-  config: LoginConfig = {};
+  config: SSOConfig;
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
-              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService,) {
+              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService,
+              private configService: ConfigService) {
     this.loginForm = this.formBuilder.group(LoginByEmailValidators, {updateOn: 'blur'});
   }
 
   ngOnInit(): void {
-    this.iframeCommunicatorService.config.subscribe(config => {
+    this.configService.config.subscribe(config => {
+      console.log('login', config);
       this.config = config;
     })
   }
@@ -42,7 +43,7 @@ export class LoginByEmailComponent implements OnInit {
 
       from(auth().signInWithEmailAndPassword(formValue.email, formValue.password))
         .subscribe(user => {
-          
+
         }, error => {
           this.loaderService.hide();
           this.dialogService.manageError(error);

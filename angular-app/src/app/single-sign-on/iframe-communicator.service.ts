@@ -1,19 +1,14 @@
 import {Injectable} from '@angular/core';
 import {fromEvent, Observable} from 'rxjs';
-import {filter, map, shareReplay} from 'rxjs/operators';
-import LoginConfig from './login.config';
+import {filter, map} from 'rxjs/operators';
+import {ConfigService} from './config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IframeCommunicatorService {
-  config: Observable<LoginConfig>;
 
-  constructor() {
-    this.config = fromEvent(window, 'message')
-      .pipe(filter((event: any) => event.data && event.data.channel === 'TAPIT' && event.data.action === 'config'))
-      .pipe(map(event => event.data.config))
-      .pipe(shareReplay(1));
+  constructor(private configService: ConfigService) {
   }
 
   getParentData(): Observable<any> {
@@ -29,5 +24,12 @@ export class IframeCommunicatorService {
         data
       }, window.location.ancestorOrigins.item(0))
     }
+  }
+
+  init() {
+    fromEvent(window, 'message')
+      .pipe(filter((event: any) => event.data && event.data.channel === 'TAPIT' && event.data.action === 'config'))
+      .pipe(map(event => event.data.config))
+      .subscribe(config => this.configService.config.next(config));
   }
 }
