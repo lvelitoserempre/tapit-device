@@ -1,32 +1,29 @@
 {
-    "loginLabel": "Iniciar sessão",
     "sloganLabel": {
         "simplePart": "A comunidade de",
         "highlightedPart": "amantes de cerveja."
-    },  
+    },
+    "tapsLabels": {
+        "login": "Conecte-se",
+        "signUp": "Inscrever-se"
+    },
     "buttonsLabels": {
-        "facebook": "Entrar com o Facebook",
-        "signUp": "Eu já tenho uma conta"
+        "facebookLogin": "Entrar com o Facebook",
+        "mail": "ou sua conta de email",
+        "login": "Conecte-se",
+        "recoverPassword": "Recuperar Senha",
+        "facebookSignUp": "Inscreva-se com o Facebook"
     },
-    "acceptenceLabel": "Eu aceito o",
-    "andConnector": "e",
-    "termsAndConditions": {
-        "tapitConditions": "Termos e Condições de Tapit",
-        "privacyPolicy": "Políticas de privacidade",
-        "pokerConditions": "Termos e Condições do Poker"
-    },
-    "signUp":{
-        "returnLabel": "Eu já tenho uma conta",
-        "email": "Email",
+    "inputsLabels": {
+        "email": "O email",
         "password": "Senha",
-        "passwordInformation": "Use seu ID como senha",
-        "buttonLabel": "Enterokay",
-        "forgotPassLabel": "Esqueceu sua senha?"
+        "remindMe": "lembre-me",
+        "legendAcceptance": "Ao se registrar, você aceita estes"
     },
     "validations": {
         "termsRequired": "Você deve concordar com os termos e condições",
-        "emailRequired": "Você deve inserir um email",
-        "invalidEmail": "O formato do email não está correto",
-        "passRequired": "Você deve digitar uma senha"
+        "emailRequired": "E-mail é obrigatório",
+        "invalidEmail": "O formato do email não é válido",
+        "passRequired": "Senha requerida"
     }
 }
