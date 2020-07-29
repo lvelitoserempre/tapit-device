@@ -8,7 +8,6 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {DialogModule} from '../dialog/dialog.module';
 import {LoaderModule} from '../loader/loader.module';
 import {LoginComponent} from './login/login.component';
-import {LoginByEmailComponent} from './login-by-email/login-by-email.component';
 import {LoginHeaderComponent} from './login-header/login-header.component';
 
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -28,10 +27,6 @@ const routes: Routes = [
         component: LoginComponent
       },
       {
-        path: 'login-by-email',
-        component: LoginByEmailComponent
-      },
-      {
         path: '**',
         redirectTo: 'login'
       }
@@ -42,7 +37,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     LoginComponent,
-    LoginByEmailComponent,
     LoginHeaderComponent,
     AppComponent
   ],

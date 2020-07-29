@@ -10,7 +10,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {IframeCommunicatorService} from '../iframe-communicator.service';
 import SSOConfig from '../sso-config';
 import {ConfigService} from '../config.service';
-import {LoginByEmailValidationMessages, LoginByEmailValidators} from '../login-by-email/login-by-email.validations';
+import {LoginValidationMessages, LoginValidators} from './login.validations';
 
 @Component({
   selector: 'app-login',
@@ -19,13 +19,13 @@ import {LoginByEmailValidationMessages, LoginByEmailValidators} from '../login-b
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  validationMessages = LoginByEmailValidationMessages;
+  validationMessages = LoginValidationMessages;
   config: SSOConfig;
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService,
               private configService: ConfigService) {
-    this.loginForm = this.formBuilder.group(LoginByEmailValidators, {updateOn: 'blur'});
+    this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
   }
 
   ngOnInit(): void {

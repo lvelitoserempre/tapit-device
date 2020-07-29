@@ -30,6 +30,6 @@ export class IframeCommunicatorService {
     fromEvent(window, 'message')
       .pipe(filter((event: any) => event.data && event.data.channel === 'TAPIT' && event.data.action === 'config'))
       .pipe(map(event => event.data.config))
-      .subscribe(config => this.configService.config.next(config));
+      .subscribe(config => this.configService.setConfig(config));
   }
 }
