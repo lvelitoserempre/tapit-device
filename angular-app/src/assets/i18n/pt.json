@@ -1,29 +1,27 @@
 {
-    "sloganLabel": {
-        "simplePart": "A comunidade de",
-        "highlightedPart": "amantes de cerveja."
+    "HEADER": {
+        "SLOGAN_SIMPLE_PART": "A comunidade de",
+        "SLOGAN_HIGHLIGHTED_PART": "amantes de cerveja.",
+        "LOGIN_TAP": "Iniciar Sessão",
+        "SIGN_UP_TAP": "Registro"
     },
-    "tapsLabels": {
-        "login": "Conecte-se",
-        "signUp": "Inscrever-se"
+    "LOGIN":{
+        "FACEBOOK_LOGIN": "Entrar com o Facebook",
+        "EMAIL_LABEL": "ou com sua conta de email",
+        "EMAIL": "Correio eletrônico",
+        "PASSWORD": "Senha",
+        "REMIND_ME": "Lembre-me",
+        "LOGIN": "Iniciar Sessão",
+        "RECOVER_PASSWORD": "Recuperar Senha",
+        "LEGEND_ACCEPTANCE": "Ao se registrar, você aceita estes",
+        "VALIDATIONS": {
+            "EMAIL_REQUERIED": "E-mail é obrigatório",
+            "INVALID_EMAIL": "O formato do email não é válido",
+            "PASSWORD_REQUIRED": "Senha requerida"
+        }
     },
-    "buttonsLabels": {
-        "facebookLogin": "Entrar com o Facebook",
-        "mail": "ou sua conta de email",
-        "login": "Conecte-se",
-        "recoverPassword": "Recuperar Senha",
-        "facebookSignUp": "Inscreva-se com o Facebook"
-    },
-    "inputsLabels": {
-        "email": "O email",
-        "password": "Senha",
-        "remindMe": "lembre-me",
-        "legendAcceptance": "Ao se registrar, você aceita estes"
-    },
-    "validations": {
-        "termsRequired": "Você deve concordar com os termos e condições",
-        "emailRequired": "E-mail é obrigatório",
-        "invalidEmail": "O formato do email não é válido",
-        "passRequired": "Senha requerida"
+    "SIGN_UP": {
+        "FACEBOOK_SIGN_UP": "Inscreva-se com o Facebook",
+        "LEGEND_ACCEPTANCE": "Ao se registrar, você aceita estes"
     }
 }

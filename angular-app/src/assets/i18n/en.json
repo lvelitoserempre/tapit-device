@@ -1,29 +1,27 @@
 {
-    "sloganLabel": {
-        "simplePart": "The community of",
-        "highlightedPart": "beer lovers."
+    "HEADER": {
+        "SLOGAN_SIMPLE_PART": "The community of",
+        "SLOGAN_HIGHLIGHTED_PART": "beer lovers.",
+        "LOGIN_TAP": "Login",
+        "SIGN_UP_TAP": "Sign up"
     },
-    "tapsLabels": {
-        "login": "Login",
-        "signUp": "Sign up"
+    "LOGIN":{
+        "FACEBOOK_LOGIN": "Login with Facebook",
+        "EMAIL_LABEL": "or with your email account",
+        "EMAIL": "Email",
+        "PASSWORD": "Password",
+        "REMIND_ME": "Remind me",
+        "LOGIN": "Login",
+        "RECOVER_PASSWORD": "Recover Password",
+        "LEGEND_ACCEPTANCE": "By registering you accept these",
+        "VALIDATIONS": {
+            "EMAIL_REQUERIED": "Email is required",
+            "INVALID_EMAIL": "Email format is not valid",
+            "PASSWORD_REQUIRED": "Password is required"
+        }
     },
-    "buttonsLabels": {
-        "facebookLogin": "Login with Facebook",
-        "mail": "or your email account",
-        "login": "Login",
-        "recoverPassword": "Recover Password",
-        "facebookSignUp": "Sign up with Facebook"
-    },
-    "inputsLabels": {
-        "email": "Email",
-        "password": "Password",
-        "remindMe": "Remind me",
-        "legendAcceptance": "By registering you accept these"
-    },
-    "validations": {
-        "termsRequired": "You must agree to terms and conditions",
-        "emailRequired": "Email is required",
-        "invalidEmail": "Email format is not valid",
-        "passRequired": "Password is required"
+    "SIGN_UP": {
+        "FACEBOOK_SIGN_UP": "Sign up with Facebook",
+        "LEGEND_ACCEPTANCE": "By registering you accept these"
     }
 }
