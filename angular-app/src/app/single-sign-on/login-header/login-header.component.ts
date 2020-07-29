@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { I18nService } from '../i18n.service';
+import {ConfigService} from '../config.service';
+import SSOConfig from '../sso-config';
 
 @Component({
   selector: 'app-login-header',
@@ -13,12 +13,16 @@ export class LoginHeaderComponent implements OnInit {
   isShowingBackButton: any;
   @Input()
   title: any;
+  config: SSOConfig;
 
 
-  constructor(private router:Router) {
+  constructor(private router: Router, private configService: ConfigService) {
   }
 
   ngOnInit(): void {
+    this.configService.getConfig().subscribe(config => {
+      this.config = config;
+    })
   }
 
   closePopup() {
