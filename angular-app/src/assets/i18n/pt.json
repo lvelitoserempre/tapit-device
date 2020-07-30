@@ -22,6 +22,7 @@
   },
   "SIGN_UP": {
     "FACEBOOK_SIGN_UP": "Inscreva-se com o Facebook",
-    "LEGEND_ACCEPTANCE": "Ao se registrar, você aceita estes"
+    "LEGEND_ACCEPTANCE": "Ao se registrar, você aceita estes",
+    "SELECT_INTERESTS": "Select your interests"
   }
 }
