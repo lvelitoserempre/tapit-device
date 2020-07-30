@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {LoginValidationMessages, LoginValidators} from '../login/login.validations';
+import {FormBuilder} from '@angular/forms';
+import {LoginValidationMessages} from '../login/login.validations';
 import SSOConfig from '../sso-config';
 import {LoaderService} from '../../loader/loader-service/loader.service';
 import {DialogService} from '../../dialog/dialog-service/dialog.service';
@@ -20,6 +20,7 @@ import {mergeMap} from 'rxjs/operators';
 export class SignUpComponent implements OnInit {
   validationMessages = LoginValidationMessages;
   config: SSOConfig;
+  interests: any = {};
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeMessagingService,
@@ -33,6 +34,7 @@ export class SignUpComponent implements OnInit {
   }
 
   loginWithFacebook() {
+    const interests = this.toArray(this.interests);
     this.loaderService.show();
 
     from(auth().signInWithPopup(this.facebookService.facebookAuthProvider))
@@ -41,6 +43,10 @@ export class SignUpComponent implements OnInit {
 
         if (this.config.origin) {
           userData.origin = this.config.origin;
+        }
+
+        if (interests && interests.length) {
+          userData.interests = interests;
         }
 
         return facebookResponse.additionalUserInfo.isNewUser ? this.userDAO.createUser(userData) : of();
@@ -53,4 +59,17 @@ export class SignUpComponent implements OnInit {
       });
   }
 
+  toArray(object) {
+    const array = [];
+
+    if (object) {
+      for (const interestKey of Object.keys(object)) {
+        if (object[interestKey]) {
+          array.push(interestKey);
+        }
+      }
+    }
+
+    return array;
+  }
 }

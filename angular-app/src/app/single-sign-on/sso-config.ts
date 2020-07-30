@@ -1,4 +1,5 @@
 export default interface SSOConfig {
+  interests: { label: string, key: string }[];
   origin: string;
   logoUrl: string;
   sloganHtml: string;
