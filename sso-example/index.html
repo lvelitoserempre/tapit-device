@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Login Example</title>
+  <title>TAPIT SSO EXAMPLE</title>
   <meta content="width=device-width,initial-scale=1" name="viewport">
 
   <link rel="stylesheet" href="https://dev.tapit.com.co/assets/styles/tailwind.css">
@@ -37,7 +37,7 @@
     }
 
     function setUpLogin() {
-      const tapitIframe = document.getElementById('tapitIframe');
+      const loginIframe = document.getElementById('login-iframe');
       /****************************************************************************************
        The following configuration shows the parameters with which
        the application can be customized as follows:
@@ -46,7 +46,7 @@
        * If a parameter with an empty value is sent, the value will be overwritten by removing
        the default values in case no value is to be displayed.
        ************************************************************************/
-      tapitIframe.contentWindow.postMessage({
+      loginIframe.contentWindow.postMessage({
         channel: CHANNEL,
         action: 'config',
         config: {
@@ -89,24 +89,31 @@
 
           ],
         }
-      }, TAPIT_ORIGIN)
-      tapitIframe.contentWindow.postMessage({
+      }, TAPIT_ORIGIN);
+
+
+      /**
+       *
+       * REQUESTS TO THE LOGIN PAGE TO SEND US THE DATA OF THE LOGGED USER THERE
+       *
+       **/
+      /*loginIframe.contentWindow.postMessage({
         channel: CHANNEL,
-        action: 'getUserCustomToken',
-      }, TAPIT_ORIGIN)
+        action: 'get-logged-user',
+      }, TAPIT_ORIGIN)*/
     }
 
     function showLoginPopup() {
       document.getElementById('login-popup').classList.remove('hidden');
     }
 
+
     /**
-     * FIREBASE LOGIN WITH THE DATA RECEIVED
      *
+     * FIREBASE CONFIGURATION AND USE
      *
      **/
-
-    var firebaseConfig = {
+    var FIREBASE_DEV = {
       apiKey: "AIzaSyBbMDkDVAUJ8MWcKMVtU7Onrzv5JVlfSbA",
       authDomain: "re-imagining-loyalty-dev.firebaseapp.com",
       databaseURL: "https://re-imagining-loyalty-dev.firebaseio.com",
@@ -117,7 +124,7 @@
       measurementId: "G-JMD5T81SQM"
     };
 
-    firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(FIREBASE_DEV);
 
     firebase.auth().onAuthStateChanged(function (userCredential) {
       if (userCredential) {
@@ -147,7 +154,22 @@
     }
   </script>
 </head>
+
+
 <body>
+<div class="text-center my-32" id="login-button">
+  <button class="app-button bg-primary-500 text-white" onclick="showLoginPopup()">INICIA SESIÓN</button>
+</div>
+
+<div class="m-4 rounded-lg bg-neutral-200 p-4">
+  <h1 class="font-bold">IFRAME LOGGED USER</h1>
+  <p id="iframe-user-data" class=" overflow-x-auto"></p>
+</div>
+
+<div class="m-4 rounded-lg bg-neutral-200 p-4">
+  <h1 class="font-bold">LOCAL LOGGED USER</h1>
+  <p id="firebase-user-data" class=" overflow-x-auto"></p>
+</div>
 
 <div id="login-popup" class="hidden mx-auto max-w-md">
   <div class="fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center">
@@ -156,30 +178,10 @@
     </div>
     <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full"
          role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-      <iframe class="w-full max-h-screen" id="tapitIframe" onload="setUpLogin()" src="http://localhost:4200/sso/login"
+      <iframe class="w-full max-h-screen" id="login-iframe" onload="setUpLogin()" src="http://localhost:4200/sso/login"
               style="height: 773px"></iframe>
     </div>
   </div>
 </div>
-
-<div class="text-center mt-20" id="loginButton">
-  <button class="app-button bg-primary-500 text-white" onclick="showLoginPopup()">INICIA SESIÓN</button>
-</div>
-
-<div class="m-4 rounded-lg bg-neutral-200 p-4">
-  <h1 class="font-bold">IFRAME USER DATA</h1>
-  <p id="iframe-user-data" class=" overflow-x-auto"></p>
-</div>
-
-<div class="m-4 rounded-lg bg-neutral-200 p-4">
-  <h1 class="font-bold">FIREBASE USER DATA</h1>
-  <p id="firebase-user-data" class=" overflow-x-auto"></p>
-</div>
-<!--
-<div class="m-4 rounded-lg bg-neutral-200 p-4">
-  <h1 class="font-bold">LOGGED USER DATA</h1>
-  <p id="logged-user-data" class=" overflow-x-auto"></p>
-</div>-->
-
 </body>
 </html>

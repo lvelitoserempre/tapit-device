@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {fromEvent, Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {filter, map, switchMap} from 'rxjs/operators';
 import {ConfigService} from './config.service';
+import {AuthService} from '../user/user-authentication/user-authentication-service/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,13 @@ import {ConfigService} from './config.service';
 export class IframeMessagingService {
   private readonly CHANNEL = 'TAPIT';
 
-  constructor(private configService: ConfigService) {
+  constructor(private configService: ConfigService, private authService: AuthService) {
   }
 
-  getParentData(): Observable<any> {
+  listenActions(): Observable<any> {
     return fromEvent(window, 'message')
-      .pipe(filter((event: any) => event.data && event.data.channel === this.CHANNEL && event.data.action !== 'config'));
+      .pipe(filter((event: any) => event.data && event.data.channel === this.CHANNEL && event.data.action !== 'config'))
+      .pipe(map(event => event.data.action))
   }
 
   sendDataToParent(action: string, data) {
@@ -32,5 +34,18 @@ export class IframeMessagingService {
       .pipe(filter((event: any) => event.data && event.data.channel === this.CHANNEL && event.data.action === 'config'))
       .pipe(map(event => event.data.config))
       .subscribe(config => this.configService.setConfig(config));
+
+    this.listenActions()
+      .pipe(switchMap(action => this.performAction(action)))
+      .subscribe(user => {
+        this.sendDataToParent('set-logged-user', user);
+      })
+  }
+
+  performAction(action: string): Observable<any> {
+    switch (action) {
+      case 'get-logged-user':
+        return this.authService.getCurrentUser();
+    }
   }
 }

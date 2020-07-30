@@ -19,7 +19,7 @@
                [value]="config.email"
                class="app-input block w-full" formControlName="email" id="email" type="email">
 
-        <p *ngIf="config.emailHint" class="pl-2 text-neutral-200 italic">{{config.emailHint}}</p>
+        <p *ngIf="config.emailHint" class="pl-2 text-neutral-700 italic">{{config.emailHint}}</p>
 
         <p *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched"
            class="text-danger-500 pl-2">
@@ -37,7 +37,7 @@
                [class.border-danger-500]="loginForm.get('password').invalid && loginForm.get('password').touched"
                class="app-input block w-full" formControlName="password" id="password" type="password">
 
-        <p *ngIf="config.passwordHint" class="pl-2 text-neutral-200 italic">{{config.passwordHint}}</p>
+        <p *ngIf="config.passwordHint" class="pl-2 text-neutral-700 italic">{{config.passwordHint}}</p>
 
         <p *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched"
            class="text-danger-500 pl-2">
