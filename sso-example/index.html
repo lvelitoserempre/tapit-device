@@ -35,21 +35,15 @@
     }
 
     function setUpLogin() {
-
       const tapitIframe = document.getElementById('tapitIframe');
-
       /****************************************************************************************
-       
         The following configuration shows the parameters with which 
         the application can be customized as follows:
-
         * If a parameter is not sent, the default value of the parameter will be taken.
         * If a parameter is sent with a custom value, it will be overwritten over the default value.
         * If a parameter with an empty value is sent, the value will be overwritten by removing 
           the default values in case no value is to be displayed.
-
       ************************************************************************/
-
       tapitIframe.contentWindow.postMessage({
         channel: 'TAPIT',
         action: 'config',
@@ -57,18 +51,23 @@
           project: 'aguilapenalties', // String type parameter to indicate the source platform that is making the request
           logoUrl: '', // String type parameter for the image URL or the base64 logo image.
           sloganHtml: '', // String type parameter for the slogan in HTML tag format. Example: <p>Our Slogan</p>.
-          showLoginFacebookButton: true, // Boolean type parameter to show the login and registration button with facebook.
+          showLoginFacebookButton: false, // Boolean type parameter to show the login facebook button.
+          showSignUpFacebookButton: false, // Boolean type parameter to show the sign up facebook button.
           showOffersOption: false, // Boolean type parameter to show offers options.
           email: 'test@test.com', // String type parameter for user mail.
           emailHint: 'test@test.com',  // String type parameter for user email hint.
           passwordHint: '', // String type parameter for user password hint.
           signUpLegalHtml: '', // String type parameter for legend of acceptance of terms and conditions when the user registers, in HTML tag format. Example: <h1>By registering you accept our terms and conditions</h1>.
           loginLegalHtml: '', // String type parameter for legend of acceptance of terms and conditions when the user registers, in HTML tag format. Example: <p>By logging you accept our terms and conditions</p>.
-          showCloseButton: true,  // Boolean type parameter to show the close button.
-          styles: '', // String type parameter to add custom stylest in CSS format. Example: .app-button { border-radius: 3rem;}.
+          showCloseButton: false,  // Boolean type parameter to show the close button.
+          showContainerBackground: false, // Boolean type parameter to show the container background.
+          styles: '.text-primary-500{color: red;} .bg-primary-500{background: red;}', // String type parameter to add custom stylest in CSS format. Example: .app-button { border-radius: 3rem;}.
+          interests: [ // Object type parameter to add cutom imputs. 
+            { key: 'beer', label: 'Cerveza'}, // Each custom input must be made up of a key and a label.
+            { key: 'soccer', label: 'Futbol'}, 
+          ],
         }
       }, TAPIT_ORIGIN)
-
       tapitIframe.contentWindow.postMessage({
         channel: 'TAPIT',
         action: 'getUserCustomToken',
