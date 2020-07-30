@@ -7,19 +7,20 @@ import {ConfigService} from './config.service';
   providedIn: 'root'
 })
 export class IframeMessagingService {
+  private readonly CHANNEL = 'TAPIT';
 
   constructor(private configService: ConfigService) {
   }
 
   getParentData(): Observable<any> {
     return fromEvent(window, 'message')
-      .pipe(filter((event: any) => event.data && event.data.channel === 'TAPIT' && event.data.action !== 'config'));
+      .pipe(filter((event: any) => event.data && event.data.channel === this.CHANNEL && event.data.action !== 'config'));
   }
 
   sendDataToParent(action: string, data) {
     if (window.parent) {
       window.parent.postMessage({
-        channel: 'TAPIT',
+        channel: this.CHANNEL,
         action,
         data
       }, window.location.ancestorOrigins.item(0))
@@ -28,7 +29,7 @@ export class IframeMessagingService {
 
   init() {
     fromEvent(window, 'message')
-      .pipe(filter((event: any) => event.data && event.data.channel === 'TAPIT' && event.data.action === 'config'))
+      .pipe(filter((event: any) => event.data && event.data.channel === this.CHANNEL && event.data.action === 'config'))
       .pipe(map(event => event.data.config))
       .subscribe(config => this.configService.setConfig(config));
   }

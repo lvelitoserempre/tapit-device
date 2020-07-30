@@ -14,10 +14,11 @@
       document.getElementById('loginButton').classList.add('hidden');
     }
 
-    const TAPIT_ORIGIN = 'https://localhost:4200';
+    const TAPIT_ORIGIN = 'http://localhost:4200';
+    const CHANNEL = 'TAPIT';
 
     window.addEventListener("message", function (event) {
-      if (event.data && event.data.channel === 'TAPIT') {
+      if (event.data && event.data.channel === CHANNEL) {
         performAction(event.data.action, event.data.data)
       }
     }, false);
@@ -37,15 +38,15 @@
     function setUpLogin() {
       const tapitIframe = document.getElementById('tapitIframe');
       /****************************************************************************************
-        The following configuration shows the parameters with which 
-        the application can be customized as follows:
-        * If a parameter is not sent, the default value of the parameter will be taken.
-        * If a parameter is sent with a custom value, it will be overwritten over the default value.
-        * If a parameter with an empty value is sent, the value will be overwritten by removing 
-          the default values in case no value is to be displayed.
-      ************************************************************************/
+       The following configuration shows the parameters with which
+       the application can be customized as follows:
+       * If a parameter is not sent, the default value of the parameter will be taken.
+       * If a parameter is sent with a custom value, it will be overwritten over the default value.
+       * If a parameter with an empty value is sent, the value will be overwritten by removing
+       the default values in case no value is to be displayed.
+       ************************************************************************/
       tapitIframe.contentWindow.postMessage({
-        channel: 'TAPIT',
+        channel: CHANNEL,
         action: 'config',
         config: {
           project: 'aguilapenalties', // String type parameter to indicate the source platform that is making the request
@@ -62,14 +63,14 @@
           showCloseButton: false,  // Boolean type parameter to show the close button.
           showContainerBackground: false, // Boolean type parameter to show the container background.
           styles: '.text-primary-500{color: red;} .bg-primary-500{background: red;}', // String type parameter to add custom stylest in CSS format. Example: .app-button { border-radius: 3rem;}.
-          interests: [ // Object type parameter to add cutom imputs. 
-            { key: 'beer', label: 'Cerveza'}, // Each custom input must be made up of a key and a label.
-            { key: 'soccer', label: 'Futbol'}, 
+          interests: [ // Object type parameter to add cutom imputs.
+            {key: 'beer', label: 'Cerveza'}, // Each custom input must be made up of a key and a label.
+            {key: 'soccer', label: 'Futbol'},
           ],
         }
       }, TAPIT_ORIGIN)
       tapitIframe.contentWindow.postMessage({
-        channel: 'TAPIT',
+        channel: CHANNEL,
         action: 'getUserCustomToken',
       }, TAPIT_ORIGIN)
     }
