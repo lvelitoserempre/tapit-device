@@ -8,12 +8,8 @@
   <link rel="stylesheet" href="https://dev.tapit.com.co/assets/styles/tailwind.css">
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-auth.js"></script>
-  <script>
-    function showLoginPopup() {
-      document.getElementById('loginPopup').classList.remove('hidden');
-      document.getElementById('loginButton').classList.add('hidden');
-    }
 
+  <script>
     const TAPIT_ORIGIN = 'http://localhost:4200';
     const CHANNEL = 'TAPIT';
 
@@ -25,12 +21,15 @@
 
     function performAction(action, data) {
       switch (action) {
-        case 'setLoggedUser':
+        case 'set-logged-user':
           if (data) {
             document.getElementById('loggedUser').innerText = JSON.stringify(data);
-            document.getElementById('loginPopup').remove();
+            document.getElementById('loginPopup').classList.add('hidden');
           }
+          break;
 
+        case 'close-popup':
+          document.getElementById('loginPopup').classList.add('hidden');
           break;
       }
     }
@@ -48,31 +47,12 @@
       tapitIframe.contentWindow.postMessage({
         channel: CHANNEL,
         action: 'config',
-        config: {
-          project: 'aguilapenalties', // String type parameter to indicate the source platform that is making the request
-          logoUrl: '', // String type parameter for the image URL or the base64 logo image.
-          sloganHtml: '', // String type parameter for the slogan in HTML tag format. Example: <p>Our Slogan</p>.
-          showLoginFacebookButton: false, // Boolean type parameter to show the login facebook button.
-          showSignUpFacebookButton: false, // Boolean type parameter to show the sign up facebook button.
-          showOffersOption: false, // Boolean type parameter to show offers options.
-          email: 'test@test.com', // String type parameter for user mail.
-          emailHint: 'test@test.com',  // String type parameter for user email hint.
-          passwordHint: '', // String type parameter for user password hint.
-          signUpLegalHtml: '', // String type parameter for legend of acceptance of terms and conditions when the user registers, in HTML tag format. Example: <h1>By registering you accept our terms and conditions</h1>.
-          loginLegalHtml: '', // String type parameter for legend of acceptance of terms and conditions when the user registers, in HTML tag format. Example: <p>By logging you accept our terms and conditions</p>.
-          showCloseButton: false,  // Boolean type parameter to show the close button.
-          showContainerBackground: false, // Boolean type parameter to show the container background.
-          styles: '.text-primary-500{color: red;} .bg-primary-500{background: red;}', // String type parameter to add custom stylest in CSS format. Example: .app-button { border-radius: 3rem;}.
-          interests: [ // Object type parameter to add cutom imputs.
-            {key: 'beer', label: 'Cerveza'}, // Each custom input must be made up of a key and a label.
-            {key: 'soccer', label: 'Futbol'},
-          ],
-        }
+        config: {}
       }, TAPIT_ORIGIN)
-      tapitIframe.contentWindow.postMessage({
-        channel: CHANNEL,
-        action: 'getUserCustomToken',
-      }, TAPIT_ORIGIN)
+    }
+
+    function showLoginPopup() {
+      document.getElementById('loginPopup').classList.remove('hidden');
     }
 
     function signInWithCustomToken(customToken) {
@@ -109,16 +89,14 @@
 <body>
 
 <div id="loginPopup" class="hidden mx-auto max-w-md">
-  <div class="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center">
+  <div class="fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center">
     <div class="fixed inset-0 transition-opacity">
       <div class="absolute inset-0 bg-neutral-500 opacity-75"></div>
     </div>
     <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full"
          role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-      <div class="bg-white">
-        <iframe id="tapitIframe" onload="setUpLogin()" src="http://localhost:4200/sso/login"
-                style="width: 100%; height: 836px"></iframe>
-      </div>
+      <iframe class="w-full max-h-screen" id="tapitIframe" onload="setUpLogin()" src="http://localhost:4200/sso/login"
+              style="height: 836px"></iframe>
     </div>
   </div>
 </div>

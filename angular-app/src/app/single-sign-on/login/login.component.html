@@ -1,7 +1,7 @@
 <div class="flex flex-col fixed inset-0">
   <app-login-header selectedTab="login"></app-login-header>
 
-  <div class="container mx-auto relative bg-white px-6 pt-8 pb-24 overflow-y-auto"
+  <div class="container mx-auto relative bg-white px-6 pt-8 pb-24 overflow-y-auto flex-1"
        [ngClass]="{'bg-bubble-4':config.showContainerBackground}">
     <button (click)="loginWithFacebook()" *ngIf="config.showLoginFacebookButton"
             class="app-button facebook-button min-width-280 mb-6 block mx-auto uppercase" type="button">
