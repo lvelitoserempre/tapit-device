@@ -13,8 +13,6 @@ export class LoginHeaderComponent implements OnInit {
   @Input()
   isShowingBackButton: any;
   @Input()
-  title: any;
-  @Input()
   selectedTab: string;
   config: SSOConfig;
 
