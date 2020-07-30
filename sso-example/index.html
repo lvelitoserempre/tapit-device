@@ -38,13 +38,24 @@
 
       const tapitIframe = document.getElementById('tapitIframe');
 
+      /****************************************************************************************
+       
+        The following configuration shows the parameters with which 
+        the application can be customized as follows:
+
+        * If a parameter is not sent, the default value of the parameter will be taken.
+        * If a parameter is sent with a custom value, it will be overwritten over the default value.
+        * If a parameter with an empty value is sent, the value will be overwritten by removing 
+          the default values in case no value is to be displayed.
+
+      ************************************************************************/
+
       tapitIframe.contentWindow.postMessage({
         channel: 'TAPIT',
         action: 'config',
         config: {
-          ageGateDate: Date.now(),
-          project: 'aguilapenalties', // String type parameter to indicate the source application.
-          logoUrl: '', // String type parameter for the base64 logo image.
+          project: 'aguilapenalties', // String type parameter to indicate the source platform that is making the request
+          logoUrl: '', // String type parameter for the image URL or the base64 logo image.
           sloganHtml: '', // String type parameter for the slogan in HTML tag format. Example: <p>Our Slogan</p>.
           showLoginFacebookButton: true, // Boolean type parameter to show the login and registration button with facebook.
           showOffersOption: false, // Boolean type parameter to show offers options.
@@ -54,7 +65,7 @@
           signUpLegalHtml: '', // String type parameter for legend of acceptance of terms and conditions when the user registers, in HTML tag format. Example: <h1>By registering you accept our terms and conditions</h1>.
           loginLegalHtml: '', // String type parameter for legend of acceptance of terms and conditions when the user registers, in HTML tag format. Example: <p>By logging you accept our terms and conditions</p>.
           showCloseButton: true,  // Boolean type parameter to show the close button.
-          styles: string, // String type parameter to add custom stylest in CSS format. Example: .app-button { border-radius: 3rem;}.
+          styles: '', // String type parameter to add custom stylest in CSS format. Example: .app-button { border-radius: 3rem;}.
         }
       }, TAPIT_ORIGIN)
 
