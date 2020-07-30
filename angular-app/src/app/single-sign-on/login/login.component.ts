@@ -59,8 +59,8 @@ export class LoginComponent implements OnInit {
       .pipe(mergeMap((facebookResponse) => {
         const userData = this.facebookService.parseUserData(facebookResponse);
 
-        if (this.config.origin) {
-          userData.origin = this.config.origin;
+        if (this.config.project) {
+          userData.origin = this.config.project;
         }
 
         return facebookResponse.additionalUserInfo.isNewUser ? this.userDAO.createUser(userData) : of();

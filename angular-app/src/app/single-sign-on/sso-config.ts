@@ -1,8 +1,8 @@
 export default interface SSOConfig {
-  origin: string;
+  project: string;
   logoUrl: string;
   sloganHtml: string;
-  showFacebookButton: boolean;
+  showLoginFacebookButton: boolean;
   showOffersOption: boolean;
   email: string;
   emailHint: string;

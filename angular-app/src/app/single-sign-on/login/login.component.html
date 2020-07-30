@@ -1,12 +1,12 @@
 <app-login-header title="{{'loginLabel' | translate }}" selectedTab="login"></app-login-header>
 
 <div class="container mx-auto relative sm:rounded-xl bg-white p-6">
-  <button (click)="loginWithFacebook()" *ngIf="config.showFacebookButton"
+  <button (click)="loginWithFacebook()" *ngIf="config.showLoginFacebookButton"
           class="app-button facebook-button min-width-280 mb-6 block mx-auto uppercase" type="button">
     {{'LOGIN.FACEBOOK_LOGIN' | translate }}
   </button>
 
-  <p class="text-2xs font-bold text-center uppercase mb-3" *ngIf="config.showFacebookButton"
+  <p class="text-2xs font-bold text-center uppercase mb-3" *ngIf="config.showLoginFacebookButton"
      style="letter-spacing: 1.3px">{{'LOGIN.EMAIL_LABEL' | translate }}</p>
 
   <form (ngSubmit)="login()" [formGroup]="loginForm">
