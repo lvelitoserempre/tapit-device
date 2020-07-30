@@ -8,7 +8,7 @@
     </button>
 
     <div class="mb-8" *ngIf="config.interests && config.interests.length">
-      <h3 class="p-2 text-sm">{{'SIGN_UP.SELECT_INTERESTS' | translate }}</h3>
+      <h3 class="p-2 text-sm font-bold">{{'SIGN_UP.SELECT_INTERESTS' | translate }}:</h3>
 
       <div class="grid grid-cols-2">
         <div *ngFor="let interest of config.interests" class="p-2">
