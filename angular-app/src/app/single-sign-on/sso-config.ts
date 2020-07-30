@@ -1,7 +1,7 @@
 export default interface SSOConfig {
   origin: string;
   logoUrl: string;
-  slogan: string;
+  sloganHtml: string;
   showFacebookButton: boolean;
   showOffersOption: boolean;
   email: string;
@@ -10,4 +10,5 @@ export default interface SSOConfig {
   signUpLegalHtml: string;
   loginLegalHtml: string;
   showCloseButton: boolean;
+  styles: string;
 }
