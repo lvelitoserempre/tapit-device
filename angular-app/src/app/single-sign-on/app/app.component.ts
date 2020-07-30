@@ -5,6 +5,8 @@ import {initializeApp} from 'firebase';
 import {environment} from '../../../environments/environment';
 import {TranslateService} from '@ngx-translate/core';
 import {I18nService} from '../i18n.service';
+import {ConfigService} from '../config.service';
+import SSOConfig from '../sso-config';
 
 declare var zE;
 
@@ -14,24 +16,36 @@ declare var zE;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  config: SSOConfig;
 
-  constructor(private authService: AuthService, private iframeCommunicatorService: IframeMessagingService,
-              private i18n: I18nService, private translate: TranslateService) {
+  constructor(private authService: AuthService, private iframeMessagingService: IframeMessagingService,
+              private i18n: I18nService, private translate: TranslateService, private configService: ConfigService) {
     this.translate.setDefaultLang(this.i18n.getCurrentLanguage());
   }
 
   ngOnInit(): void {
     initializeApp(environment.firebase.config);
     this.authService.setupLoggedUserObserver();
-    this.iframeCommunicatorService.init();
+    this.iframeMessagingService.init();
 
     this.authService.getCurrentUser()
       .subscribe(user => {
-        this.iframeCommunicatorService.sendDataToParent('setLoggedUser', user);
+        this.iframeMessagingService.sendDataToParent('setLoggedUser', user);
       })
+
+    //this.configService.getConfig().subscribe(config => this.addCustomStyles(config.styles));
+    this.configService.getConfig().subscribe(config => {
+      this.config = config;
+    })
 
     if (typeof zE === 'function') {
       zE('webWidget', 'hide');
+    }
+  }
+
+  private addCustomStyles(styles: string) {
+    if (styles) {
+
     }
   }
 }
