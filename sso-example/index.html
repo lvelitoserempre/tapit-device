@@ -8,12 +8,8 @@
   <link rel="stylesheet" href="https://dev.tapit.com.co/assets/styles/tailwind.css">
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-auth.js"></script>
-  <script>
-    function showLoginPopup() {
-      document.getElementById('loginPopup').classList.remove('hidden');
-      document.getElementById('loginButton').classList.add('hidden');
-    }
 
+  <script>
     const TAPIT_ORIGIN = 'http://localhost:4200';
     const CHANNEL = 'TAPIT';
 
@@ -25,12 +21,15 @@
 
     function performAction(action, data) {
       switch (action) {
-        case 'setLoggedUser':
+        case 'set-logged-user':
           if (data) {
             document.getElementById('loggedUser').innerText = JSON.stringify(data);
-            document.getElementById('loginPopup').remove();
+            document.getElementById('loginPopup').classList.add('hidden');
           }
+          break;
 
+        case 'close-popup':
+          document.getElementById('loginPopup').classList.add('hidden');
           break;
       }
     }
@@ -84,6 +83,8 @@
             */
             {key: 'beer', label: 'Beer'},
             {key: 'soccer', label: 'Futbol'},
+            {key: 'games', label: 'Games'},
+
           ],
         }
       }, TAPIT_ORIGIN)
@@ -91,6 +92,10 @@
         channel: CHANNEL,
         action: 'getUserCustomToken',
       }, TAPIT_ORIGIN)
+    }
+
+    function showLoginPopup() {
+      document.getElementById('loginPopup').classList.remove('hidden');
     }
 
     function signInWithCustomToken(customToken) {
@@ -127,16 +132,14 @@
 <body>
 
 <div id="loginPopup" class="hidden mx-auto max-w-md">
-  <div class="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center">
+  <div class="fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center">
     <div class="fixed inset-0 transition-opacity">
       <div class="absolute inset-0 bg-neutral-500 opacity-75"></div>
     </div>
     <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full"
          role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-      <div class="bg-white">
-        <iframe id="tapitIframe" onload="setUpLogin()" src="http://localhost:4200/sso/login"
-                style="width: 100%; height: 773px"></iframe>
-      </div>
+      <iframe class="w-full max-h-screen" id="tapitIframe" onload="setUpLogin()" src="http://localhost:4200/sso/login"
+              style="height: 773px"></iframe>
     </div>
   </div>
 </div>

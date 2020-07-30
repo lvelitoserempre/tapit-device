@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
 
     this.authService.getCurrentUser()
       .subscribe(user => {
-        this.iframeMessagingService.sendDataToParent('setLoggedUser', user);
+        this.iframeMessagingService.sendDataToParent('set-logged-user', user);
       })
 
     this.configService.getConfig().subscribe(config => this.addCustomStyles(config.styles));
