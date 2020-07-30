@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../user/user-authentication/user-authentication-service/auth.service';
-import {IframeCommunicatorService} from '../iframe-communicator.service';
+import {IframeMessagingService} from '../iframe-messaging.service';
 import {initializeApp} from 'firebase';
 import {environment} from '../../../environments/environment';
 import {TranslateService} from '@ngx-translate/core';
@@ -15,7 +15,7 @@ declare var zE;
 })
 export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService, private iframeCommunicatorService: IframeCommunicatorService,
+  constructor(private authService: AuthService, private iframeCommunicatorService: IframeMessagingService,
               private i18n: I18nService, private translate: TranslateService) {
     this.translate.setDefaultLang(this.i18n.getCurrentLanguage());
   }

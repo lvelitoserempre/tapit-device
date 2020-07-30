@@ -6,7 +6,7 @@ import {ConfigService} from './config.service';
 @Injectable({
   providedIn: 'root'
 })
-export class IframeCommunicatorService {
+export class IframeMessagingService {
 
   constructor(private configService: ConfigService) {
   }

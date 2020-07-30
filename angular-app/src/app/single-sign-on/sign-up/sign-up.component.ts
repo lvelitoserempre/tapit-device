@@ -6,7 +6,7 @@ import {LoaderService} from '../../loader/loader-service/loader.service';
 import {DialogService} from '../../dialog/dialog-service/dialog.service';
 import {FacebookService} from '../../user/user-authentication/facebook.service';
 import {UserDAO} from '../../user/user-dao.service';
-import {IframeCommunicatorService} from '../iframe-communicator.service';
+import {IframeMessagingService} from '../iframe-messaging.service';
 import {ConfigService} from '../config.service';
 import {from, of} from 'rxjs';
 import {auth} from 'firebase';
@@ -22,7 +22,7 @@ export class SignUpComponent implements OnInit {
   config: SSOConfig;
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
-              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService,
+              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeMessagingService,
               private configService: ConfigService) {
   }
 

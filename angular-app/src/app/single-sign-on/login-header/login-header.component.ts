@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ConfigService} from '../config.service';
 import SSOConfig from '../sso-config';
+import {IframeMessagingService} from '../iframe-messaging.service';
 
 @Component({
   selector: 'app-login-header',
@@ -18,7 +19,7 @@ export class LoginHeaderComponent implements OnInit {
   config: SSOConfig;
 
 
-  constructor(private router: Router, private configService: ConfigService) {
+  constructor(private router: Router, private configService: ConfigService, private iframeMessagingService: IframeMessagingService) {
   }
 
   ngOnInit(): void {
@@ -28,6 +29,7 @@ export class LoginHeaderComponent implements OnInit {
   }
 
   closePopup() {
+    this.iframeMessagingService.sendDataToParent('close-popup', {});
   }
 
   navigateBack() {

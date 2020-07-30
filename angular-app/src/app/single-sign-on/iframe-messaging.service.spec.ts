@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { IframeCommunicatorService } from './iframe-communicator.service';
+import { IframeMessagingService } from './iframe-messaging.service';
 
 describe('IframeCommunicatorService', () => {
-  let service: IframeCommunicatorService;
+  let service: IframeMessagingService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(IframeCommunicatorService);
+    service = TestBed.inject(IframeMessagingService);
   });
 
   it('should be created', () => {

@@ -7,7 +7,7 @@ import {auth} from 'firebase';
 import {from, of} from 'rxjs';
 import {mergeMap} from 'rxjs/operators';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {IframeCommunicatorService} from '../iframe-communicator.service';
+import {IframeMessagingService} from '../iframe-messaging.service';
 import SSOConfig from '../sso-config';
 import {ConfigService} from '../config.service';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   config: SSOConfig;
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
-              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeCommunicatorService,
+              private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeMessagingService: IframeMessagingService,
               private configService: ConfigService) {
     this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
   }
