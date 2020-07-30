@@ -1,5 +1,6 @@
 <header class="mb-8 bg-neutral-100 ">
-  <a (click)="closePopup()" class="text-xl cursor-pointer absolute right-0 top-0 mr-4 mt-4">
+  <a (click)="closePopup()" class="text-xl cursor-pointer absolute right-0 top-0 mr-4 mt-4"
+     *ngIf="config.showCloseButton">
     <i class="uil uil-times-circle"></i>
   </a>
 
