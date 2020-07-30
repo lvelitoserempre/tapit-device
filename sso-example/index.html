@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://dev.tapit.com.co/assets/styles/tailwind.css">
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-firestore.js"></script>
 
   <script>
     const TAPIT_ORIGIN = 'http://localhost:4200';
@@ -23,13 +24,14 @@
       switch (action) {
         case 'set-logged-user':
           if (data) {
-            document.getElementById('loggedUser').innerText = JSON.stringify(data);
-            document.getElementById('loginPopup').classList.add('hidden');
+            document.getElementById('iframe-user-data').innerText = JSON.stringify(data);
+            document.getElementById('login-popup').classList.add('hidden');
+            signInWithCustomToken(data.customToken.customToken)
           }
           break;
 
         case 'close-popup':
-          document.getElementById('loginPopup').classList.add('hidden');
+          document.getElementById('login-popup').classList.add('hidden');
           break;
       }
     }
@@ -95,19 +97,14 @@
     }
 
     function showLoginPopup() {
-      document.getElementById('loginPopup').classList.remove('hidden');
+      document.getElementById('login-popup').classList.remove('hidden');
     }
 
-    function signInWithCustomToken(customToken) {
-      firebase.auth().signInWithCustomToken(customToken)
-        .then(function (userCredential) {
-          document.getElementById('userData').innerText = 'Logged user ' + userCredential.email;
-        })
-        .catch(function (error) {
-
-          console.error(error);
-        });
-    }
+    /**
+     * FIREBASE LOGIN WITH THE DATA RECEIVED
+     *
+     *
+     **/
 
     var firebaseConfig = {
       apiKey: "AIzaSyBbMDkDVAUJ8MWcKMVtU7Onrzv5JVlfSbA",
@@ -124,14 +121,37 @@
 
     firebase.auth().onAuthStateChanged(function (userCredential) {
       if (userCredential) {
-        document.getElementById('loggedUser').innerText = 'LOGGED_USER: ' + userCredential.email;
+        firebase.firestore().collection('user_account_tap').doc(userCredential.uid).get()
+          .then(function (documentSnapshot) {
+            document.getElementById('firebase-user-data').innerText = JSON.stringify(snapshotToUser(documentSnapshot));
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
       }
     });
+
+    function signInWithCustomToken(customToken) {
+      firebase.auth().signInWithCustomToken(customToken)
+        .then(userCredential => {
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    }
+
+    function snapshotToUser(documentSnapshot) {
+      const user = {id: documentSnapshot.id, ...documentSnapshot.data()};
+
+      user.referralCode = user.referralCode ? user.referralCode.id : '';
+
+      return user;
+    }
   </script>
 </head>
 <body>
 
-<div id="loginPopup" class="hidden mx-auto max-w-md">
+<div id="login-popup" class="hidden mx-auto max-w-md">
   <div class="fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center">
     <div class="fixed inset-0 transition-opacity">
       <div class="absolute inset-0 bg-neutral-500 opacity-75"></div>
@@ -149,8 +169,19 @@
 </div>
 
 <div class="m-4 rounded-lg bg-neutral-200 p-4">
-  <p id="loggedUser" class=" overflow-x-auto"></p>
+  <h1 class="font-bold">IFRAME USER DATA</h1>
+  <p id="iframe-user-data" class=" overflow-x-auto"></p>
 </div>
+
+<div class="m-4 rounded-lg bg-neutral-200 p-4">
+  <h1 class="font-bold">FIREBASE USER DATA</h1>
+  <p id="firebase-user-data" class=" overflow-x-auto"></p>
+</div>
+<!--
+<div class="m-4 rounded-lg bg-neutral-200 p-4">
+  <h1 class="font-bold">LOGGED USER DATA</h1>
+  <p id="logged-user-data" class=" overflow-x-auto"></p>
+</div>-->
 
 </body>
 </html>
