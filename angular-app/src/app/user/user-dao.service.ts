@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {UserAccount} from '../models/user-account.model';
 import {from, Observable} from 'rxjs';
 import {auth, firestore} from 'firebase';
-import {map, mergeMap} from 'rxjs/operators';
+import {map, mergeMap, pluck} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import DocumentSnapshot = firestore.DocumentSnapshot;
@@ -52,8 +52,7 @@ export class UserDAO {
         headers: {
           Authorization: 'Bearer ' + idToken
         }
-      }
-    );
+      }).pipe(pluck('customToken'));
   }
 
   createUser(user: UserAccount) {
