@@ -38,7 +38,6 @@ export class AppComponent implements OnInit {
   }
 
   private addCustomStyles(styles: string) {
-    console.log('configuring ' + styles)
     if (styles) {
       const styleElement = document.createElement('style');
       styleElement.id = 'config-styles';

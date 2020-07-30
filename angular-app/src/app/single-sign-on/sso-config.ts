@@ -12,5 +12,6 @@ export default interface SSOConfig {
   signUpLegalHtml: string;
   loginLegalHtml: string;
   showCloseButton: boolean;
+  showContainerBackground: boolean;
   styles: string;
 }
