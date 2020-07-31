@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {fromEvent, Observable} from 'rxjs';
+import {fromEvent, Observable, of} from 'rxjs';
 import {filter, map, switchMap} from 'rxjs/operators';
 import {ConfigService} from './config.service';
 import {AuthService} from '../user/user-authentication/user-authentication-service/auth.service';
@@ -37,15 +37,16 @@ export class IframeMessagingService {
 
     this.listenActions()
       .pipe(switchMap(action => this.performAction(action)))
-      .subscribe(user => {
-        this.sendDataToParent('set-logged-user', user);
-      })
+      .subscribe(result => {
+      });
   }
 
   performAction(action: string): Observable<any> {
     switch (action) {
       case 'get-logged-user':
-        return this.authService.getCurrentUser();
+        return this.authService.getCurrentUser().pipe(map(user => this.sendDataToParent('set-logged-user', user)));
+      default:
+        return of();
     }
   }
 }
