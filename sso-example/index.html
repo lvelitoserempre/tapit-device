@@ -138,8 +138,10 @@
 
     firebase.initializeApp(FIREBASE_DEV);
 
+    /* The recommended way to get the current user is to set an observer on the Auth object */
     firebase.auth().onAuthStateChanged(function (userCredential) {
       if (userCredential) {
+        /* Get user data */
         firebase.firestore().collection('user_account_tap').doc(userCredential.uid).get()
           .then(function (documentSnapshot) {
             document.getElementById('firebase-user-data').innerText = JSON.stringify(snapshotToUser(documentSnapshot));
@@ -153,6 +155,7 @@
     function signInWithCustomToken(customToken) {
       firebase.auth().signInWithCustomToken(customToken)
         .then(userCredential => {
+          /* Next steps after login */
         })
         .catch(function (error) {
           console.error(error);
