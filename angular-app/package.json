@@ -4,12 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build -c=testing --output-path=../dist/app --base-href=/app/",
-    "build-prod": "ng build --prod --output-path=../dist/app --base-href=/app/",
+    "build": "ng build -c=testing --output-path=../dist --base-href=/",
+    "build-prod": "ng build --prod --output-path=../dist --base-href=/",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "tw": "tailwind build ../tailwindcss/tailwind.css -c tailwindcss/tailwind.config.js -o ../static/tailwind.css"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

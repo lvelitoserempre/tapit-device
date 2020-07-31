@@ -21,21 +21,16 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 const routes: Routes = [
   {
-    path: 'sso',
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: 'sign-up',
-        component: SignUpComponent
-      },
-      {
-        path: '**',
-        redirectTo: 'login'
-      }
-    ]
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
   }
 ];
 
@@ -46,24 +41,24 @@ const routes: Routes = [
     AppComponent,
     SignUpComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        DialogModule,
-        LoaderModule,
-        RouterModule.forRoot(routes),
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }),
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    DialogModule,
+    LoaderModule,
+    RouterModule.forRoot(routes),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+  ],
   bootstrap: [AppComponent]
 })
 export class SingleSignOnModule {

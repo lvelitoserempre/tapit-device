@@ -7,8 +7,6 @@ import {TranslateService} from '@ngx-translate/core';
 import {I18nService} from '../i18n.service';
 import {ConfigService} from '../config.service';
 
-declare var zE;
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -31,10 +29,6 @@ export class AppComponent implements OnInit {
       })
 
     this.configService.getConfig().subscribe(config => this.addCustomStyles(config.styles));
-
-    if (typeof zE === 'function') {
-      zE('webWidget', 'hide');
-    }
   }
 
   private addCustomStyles(styles: string) {
