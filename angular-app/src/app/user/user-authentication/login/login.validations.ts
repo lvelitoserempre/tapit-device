@@ -4,7 +4,7 @@ export const LoginValidators = {
   email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
   password: ['', Validators.required],
   terms: ['', {validators: [Validators.requiredTrue], updateOn: 'change'}],
-  offers: ['']
+  offers: [true]
 };
 
 export const LoginValidationMessages = {
