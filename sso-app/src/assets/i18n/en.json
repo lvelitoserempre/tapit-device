@@ -24,5 +24,34 @@
     "FACEBOOK_SIGN_UP": "Sign up with Facebook",
     "LEGEND_ACCEPTANCE": "By registering you accept these",
     "SELECT_INTERESTS": "Select your interests"
+  },
+  "DIALOG": {
+    "TOO_MANY_FAILED_ATTEMPTS": {
+      "TITLE": "Authentication Error",
+      "MESSAGE": "Too many failed attempts. Please try again later.",
+      "BUTTON_LABEL": "Agree"
+    },
+    "WRONG_PASSWORD": {
+      "TITLE": "Authentication Error",
+      "MESSAGE": "The password is not correct or the user does not exist",
+      "BUTTON_LABEL": "Agree"
+    },
+    "USER_NOT_FOUND": {
+      "TITLE": "Authentication Error",
+      "MESSAGE": "There is no user record with this identify. The user may have been removed.",
+      "BUTTON_LABEL": "Agree"
+    },
+    "SIGN_UP_EMAIL_ALREADY_IN_USE": {
+      "TITLE": "Error en alta de usuario",
+      "MESSAGE": "The email address is in use by another account. \nIs it possible that you are already registered?",
+      "BUTTON_LABEL": "Agree"
+    },
+    "USER_CANCELLED": "You must authorize the use of your data in the facebook window.",
+    "FACEBOOK_REQUIRED_EMAIL": "You must authorize the use of your email.",
+    "UKNOWN_ERROR": "An unknown error has occurred.",
+    "ERROR_MESSAGE": {
+      "TITLE": "Error",
+      "BUTTON_LABEL": "Agree"
+    }
   }
 }

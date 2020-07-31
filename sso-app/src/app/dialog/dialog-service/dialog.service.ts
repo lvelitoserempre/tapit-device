@@ -18,9 +18,9 @@ export class DialogService {
   openTooManyFailedAttemptsErrorDialog(): MatDialogRef<DialogComponent> {
     // TODO: translate
     const dialogConfig: DialogConfiguration = {
-      title: 'Error de autenticación',
-      message: 'Demasiados intentos fallidos. Por favor inténtalo de nuevo más tarde.',
-      buttonOne: 'Aceptar'
+      title: 'DIALOG.TOO_MANY_FAILED_ATTEMPTS.TITLE',
+      message: 'DIALOG.TOO_MANY_FAILED_ATTEMPTS.MESSAGE',
+      buttonOne: 'DIALOG.TOO_MANY_FAILED_ATTEMPTS.BUTTON_LABEL'
     };
 
     return this.showErrorDialog(dialogConfig);
@@ -32,9 +32,9 @@ export class DialogService {
   openWrongPasswordErrorDialog(message?: string): MatDialogRef<DialogComponent> {
     // TODO: translate
     const dialogConfig: DialogConfiguration = {
-      title: 'Error de autenticación',
-      message: message || 'La contraseña no es correcta o el usuario no tiene una.',
-      buttonOne: 'Aceptar'
+      title: 'DIALOG.WRONG_PASSWORD.TITLE',
+      message: message || 'DIALOG.WRONG_PASSWORD.MESSAGE',
+      buttonOne: 'DIALOG.WRONG_PASSWORD.BUTTON_LABEL'
     };
 
     return this.showErrorDialog(dialogConfig);
@@ -46,9 +46,9 @@ export class DialogService {
   openUserNotFoundErrorDialog(): MatDialogRef<DialogComponent> {
     // TODO: translate
     const dialogConfig: DialogConfiguration = {
-      title: 'Error de autenticación',
-      message: 'No existe registro de usuario con este identificador. El usuario puede haber sido eliminado.',
-      buttonOne: 'Aceptar'
+      title: 'DIALOG.USER_NOT_FOUND.TITLE',
+      message: 'DIALOG.USER_NOT_FOUND.MESSAGE',
+      buttonOne: 'DIALOG.USER_NOT_FOUND.BUTTON_LABEL'
     };
 
     return this.showErrorDialog(dialogConfig);
@@ -60,9 +60,9 @@ export class DialogService {
   openSignUpEmailAlreadyInUseErrorDialog() {
     // TODO: translate
     const dialogConfig: DialogConfiguration = {
-      title: 'Error en alta de usuario',
-      message: 'La dirección de correo electrónico se encuentra en uso por otra cuenta.\n¿Es posible que ya estés registrado/a?',
-      buttonOne: 'Aceptar'
+      title: 'DIALOG.SIGN_UP_EMAIL_ALREADY_IN_USE.TITLE',
+      message: 'DIALOG.SIGN_UP_EMAIL_ALREADY_IN_USE.MESSAGE',
+      buttonOne: 'DIALOG.SIGN_UP_EMAIL_ALREADY_IN_USE.BUTTON_LABEL',
     };
 
     return this.showErrorDialog(dialogConfig);
@@ -78,11 +78,11 @@ export class DialogService {
     } else if (error.code === AUTH_ERRORS.WRONG_PASSWORD) {
       this.openWrongPasswordErrorDialog();
     } else if (error.code === AUTH_ERRORS.USER_CANCELLED || error.code === AUTH_ERRORS.POPUP_CLOSED_BY_USER) {
-      this.openWrongPasswordErrorDialog('Debes autorizar el uso de tus datos en la ventana de facebook.');
+      this.openWrongPasswordErrorDialog('DIALOG.USER_CANCELLED');
     } else if (error.code === AUTH_ERRORS.FACEBOOK_REQUIRED_EMAIL) {
-      this.showErrorMessage('Debes autorizar el uso de tu correo electrónico.');
+      this.showErrorMessage('DIALOG.FACEBOOK_REQUIRED_EMAIL');
     } else {
-      this.showErrorMessage('Se ha producido un error desconocido.');
+      this.showErrorMessage('DIALOG.UKNOWN_ERROR');
     }
     throw error;
   }
@@ -96,9 +96,9 @@ export class DialogService {
 
   showErrorMessage(message: string) {
     return this.showErrorDialog({
-      title: 'Error',
+      title: 'DIALOG.ERROR_MESSAGE.TITLE',
       message,
-      buttonOne: 'Aceptar'
+      buttonOne: 'DIALOG.ERROR_MESSAGE.BUTTON_LABEL'
     });
   }
 }
