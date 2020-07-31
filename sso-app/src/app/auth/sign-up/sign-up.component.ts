@@ -31,6 +31,8 @@ export class SignUpComponent implements OnInit {
     this.configService.getConfig().subscribe(config => {
       this.config = config;
     })
+
+    auth().signOut();
   }
 
   loginWithFacebook() {
@@ -39,7 +41,7 @@ export class SignUpComponent implements OnInit {
 
     from(auth().signInWithPopup(this.facebookService.facebookAuthProvider))
       .pipe(mergeMap((facebookResponse) => {
-        const userData = this.facebookService.parseUserData(facebookResponse);
+        const userData = FacebookService.parseUserData(facebookResponse);
 
         if (this.config.project) {
           userData.origin = this.config.project;
@@ -51,11 +53,11 @@ export class SignUpComponent implements OnInit {
 
         return facebookResponse.additionalUserInfo.isNewUser ? this.userDAO.createUser(userData) : of();
       })).subscribe(customToken => {
-
       },
       error => {
         this.loaderService.hide();
         this.dialogService.manageError(error);
+        auth().signOut();
       });
   }
 

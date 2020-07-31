@@ -6,8 +6,6 @@ import {UserDAO} from '../user/user-dao.service';
 import {AuthService} from './auth.service';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
 
-declare var fbq: any;
-
 @Injectable({
   providedIn: 'root'
 })
@@ -19,22 +17,29 @@ export class FacebookService {
     this.facebookAuthProvider.addScope('user_birthday');
   }
 
+  static parseUserData(facebookResponse, project = 'web', otherData?) {
+    const profile = facebookResponse.additionalUserInfo.profile;
+
+    if (!profile.email) {
+      throw {code: 'facebook-not-authorized-email'};
+    }
+
+    return {
+      email: profile.email,
+      firstName: profile.first_name,
+      lastName: profile.last_name,
+      origin: project,
+      ...(profile.gender ? {gender: profile.gender} : {}),
+      ...(profile.birthday ? {birthDate: (new Date(profile.birthday)).toISOString()} : {}),
+      ...otherData
+    };
+  }
+
   login() {
     return from(auth().signInWithPopup(this.facebookAuthProvider))
       .pipe(mergeMap((facebookResponse) => {
-        const userData = this.parseUserData(facebookResponse, {email: facebookResponse.additionalUserInfo.profile['email'],});
+        const userData = FacebookService.parseUserData(facebookResponse);
         return this.userDAO.checkUser(userData);
       }))
-  }
-
-  parseUserData(facebookResponse, otherData?) {
-    return {
-      firstName: facebookResponse.additionalUserInfo.profile.first_name,
-      lastName: facebookResponse.additionalUserInfo.profile.last_name,
-      gender: facebookResponse.additionalUserInfo.profile.gender,
-      birthDate: (new Date(facebookResponse.additionalUserInfo.profile.birthday)).toISOString(),
-      origin: 'web',
-      ...otherData
-    };
   }
 }

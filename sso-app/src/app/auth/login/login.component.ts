@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
     from(auth().signInWithPopup(this.facebookService.facebookAuthProvider))
       .pipe(mergeMap((facebookResponse) => {
-        const userData = this.facebookService.parseUserData(facebookResponse);
+        const userData = FacebookService.parseUserData(facebookResponse);
 
         if (this.config.project) {
           userData.origin = this.config.project;
@@ -65,11 +65,11 @@ export class LoginComponent implements OnInit {
 
         return facebookResponse.additionalUserInfo.isNewUser ? this.userDAO.createUser(userData) : of();
       })).subscribe(customToken => {
-
       },
       error => {
         this.loaderService.hide();
         this.dialogService.manageError(error);
+        auth().signOut();
       });
   }
 }

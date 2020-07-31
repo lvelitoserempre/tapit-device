@@ -79,6 +79,8 @@ export class DialogService {
       this.openWrongPasswordErrorDialog();
     } else if (error.code === AUTH_ERRORS.USER_CANCELLED || error.code === AUTH_ERRORS.POPUP_CLOSED_BY_USER) {
       this.openWrongPasswordErrorDialog('Debes autorizar el uso de tus datos en la ventana de facebook.');
+    } else if (error.code === AUTH_ERRORS.FACEBOOK_REQUIRED_EMAIL) {
+      this.showErrorMessage('Debes autorizar el uso de tu correo electrónico.');
     } else {
       this.showErrorMessage('Se ha producido un error desconocido.');
     }
