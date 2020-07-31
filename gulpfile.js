@@ -70,7 +70,7 @@ task('build-tailwind', function () {
     .pipe(postcss([postcssImport, tailwindcss, autoprefixer, cssnano]))
     .pipe(dest('static/assets/styles'))
     .pipe(dest('react-app/src/assets/styles'))
-    .pipe(dest('angular-app/src/assets/styles'))
+    .pipe(dest('sso-app/src/assets/styles'))
 })
 
 task('build-react-app', function () {
@@ -80,9 +80,9 @@ task('build-react-app', function () {
   return runCommand(command, folder);
 })
 
-task('build-angular-app', function () {
+task('build-sso-app', function () {
   const command = 'npm i && npm run ' + (isProductionBuild() ? 'build-prod' : 'build')
-  const folder = './angular-app';
+  const folder = './sso-app';
 
   return runCommand(command, folder);
 })
@@ -94,9 +94,9 @@ task('deploy', function () {
   return runCommand(command, folder);
 })
 
-task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-angular-app'));
+task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-sso-app'));
 
-task('build-and-deploy', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-angular-app', 'deploy'));
+task('build-and-deploy', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-sso-app', 'deploy'));
 
 
 function isProductionBuild() {
