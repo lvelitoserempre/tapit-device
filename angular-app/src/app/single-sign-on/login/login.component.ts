@@ -84,21 +84,28 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const formValue = this.loginForm.value;
-    this.loaderService.show();
+    if (this.loginForm.valid) {
+      const formValue = this.loginForm.value;
+      this.loaderService.show();
 
-    from(auth().signInWithEmailAndPassword(formValue.email, formValue.password))
-      .subscribe(user => {
-        this.loaderService.hide();
-      }, error => {
-        this.loaderService.hide();
-        this.dialogService.manageError(error);
-      });
+      from(auth().signInWithEmailAndPassword(formValue.email, formValue.password))
+        .subscribe(user => {
+          this.loaderService.hide();
+        }, error => {
+          this.loaderService.hide();
+          this.dialogService.manageError(error);
+        });
+    } else {
+      this.loginForm.get('terms').markAsTouched();
+      this.scrollToTerms();
+    }
   }
 
 
   loginWithFacebook() {
-    if (!this.loginForm.get('terms').invalid) {
+    const offers = this.loginForm.get('offers').value;
+
+    if (this.loginForm.get('terms').valid) {
       this.loaderService.show();
 
       from(auth().signInWithPopup(this.facebookService.facebookAuthProvider))
@@ -107,6 +114,10 @@ export class LoginComponent implements OnInit {
 
           if (this.incomingData.origin) {
             userData.origin = this.incomingData.origin;
+          }
+
+          if (offers) {
+            userData.getExclusiveEmails = true;
           }
 
           return facebookResponse.additionalUserInfo.isNewUser ? this.userDAO.createUser(userData) : of();
@@ -119,8 +130,22 @@ export class LoginComponent implements OnInit {
         });
     } else {
       this.loginForm.get('terms').markAsTouched();
+      this.scrollToTerms();
     }
   }
+
+
+  scrollToTerms() {
+    const rect = document.getElementById('terms-and-conditions').getBoundingClientRect();
+    const to = {
+      left: 0,
+      top: rect.top,
+      behavior: 'smooth'
+    };
+
+    window.scrollTo(to);
+  }
+
 
   sendDataToParent(data) {
     if (window.parent && this.incomingData.targetPageOrigin) {

@@ -52,21 +52,25 @@
         </p>
       </div>
 
-      <button [disabled]="loginForm.invalid" class="app-button bg-orange-500 min-width-18 mb-8" type="submit">
+      <button class="app-button bg-orange-500 min-width-18 mb-4" type="submit">
         INGRESAR
       </button>
 
-      <a class="font-bold text-orange-500 text-left text-sm block mb-16 sm:pl-8 text-center sm:text-left"
+      <a class="font-bold text-orange-500 text-sm text-left block mb-6 sm:pl-8 text-center sm:text-left"
          href="/app/auth/recovery-password" target="_blank">
         ¿OLVIDASTE TU CONTRASEÑA?
       </a>
 
+      <p class="text-2xs font-bold block mb-4 sm:pl-12 text-center sm:text-left uppercase mb-6"
+         style="letter-spacing: 1.3px">o ingresa con facebook</p>
+
       <button (click)="loginWithFacebook()" *ngIf="incomingData.config.facebookButton"
               class="app-button facebook-button min-width-18 mb-8" type="button">
-        INGRESAR CON FACEBOOK
+        CONTINUAR CON FACEBOOK
       </button>
 
-      <div *ngIf="incomingData.config.promoPokerTerms != true" class="text-left mb-8 lg:w-8/12">
+      <div id="terms-and-conditions" *ngIf="incomingData.config.promoPokerTerms != true"
+           class="text-left mb-8 lg:w-8/12">
         <label class="checkbox text-gray-800">
           <input formControlName="terms" type="checkbox">
           <span class="checkmark"></span>
