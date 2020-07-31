@@ -2,36 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>TAPIT SSO EXAMPLE</title>
+  <title>SSO EXAMPLE</title>
   <meta content="width=device-width,initial-scale=1" name="viewport">
 
-  <link rel="stylesheet" href="https://dev.tapit.com.co/assets/styles/tailwind.css">
+  <link rel="stylesheet" href="https://clube-brahma-sso.web.app/assets/styles/tailwind.css">
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-firestore.js"></script>
 
   <script>
-    const TAPIT_ORIGIN = 'http://localhost:4200';
+    const TAPIT_ORIGIN = 'https://clube-brahma-sso.web.app';
     const CHANNEL = 'TAPIT';
 
-   /*************************************************************************
+    /*************************************************************************
      Event listener to listen to the events of the TAPIT channel
-    ************************************************************************/
+     ************************************************************************/
     window.addEventListener("message", function (event) {
       if (event.data && event.data.channel === CHANNEL) {
         performAction(event.data.action, event.data.data)
       }
     }, false);
 
-   /*****************
-         Actions
-    ********************/
+    /*****************
+     Actions
+     ********************/
     function performAction(action, data) {
       switch (action) {
         case 'set-logged-user':
-          /* This action is executed when the user credentials were successfully validated, 
-          it returns in 'data' the information of the user who started the session, 
-          in this example the data on the iframe is shown and the customToken is obtained 
+          /* This action is executed when the user credentials were successfully validated,
+          it returns in 'data' the information of the user who started the session,
+          in this example the data on the iframe is shown and the customToken is obtained
           to be able to login sending it as a parameter of the 'signInWithCustomToken' function*/
           if (data) {
             document.getElementById('iframe-user-data').innerText = JSON.stringify(data);
@@ -126,14 +126,14 @@
      *
      **/
     var FIREBASE_DEV = {
-      apiKey: "AIzaSyBbMDkDVAUJ8MWcKMVtU7Onrzv5JVlfSbA",
-      authDomain: "re-imagining-loyalty-dev.firebaseapp.com",
-      databaseURL: "https://re-imagining-loyalty-dev.firebaseio.com",
-      projectId: "re-imagining-loyalty-dev",
-      storageBucket: "re-imagining-loyalty-dev.appspot.com",
-      messagingSenderId: "25832745393",
-      appId: "1:25832745393:web:d91879ef2d1bf959fcf590",
-      measurementId: "G-JMD5T81SQM"
+      apiKey: 'AIzaSyB822NxnsV-CB_k5E78q76jaqnCC4ohfVI',
+      authDomain: 'clube-brahma.firebaseapp.com',
+      databaseURL: 'https://clube-brahma.firebaseio.com',
+      projectId: 'clube-brahma',
+      storageBucket: 'clube-brahma.appspot.com',
+      messagingSenderId: '226852992923',
+      appId: '1:226852992923:web:1ad18fa74cab2f9826933e',
+      measurementId: 'G-9P28VMNFGR'
     };
 
     firebase.initializeApp(FIREBASE_DEV);
@@ -190,7 +190,8 @@
     </div>
     <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full"
          role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-      <iframe class="w-full max-h-screen" id="login-iframe" onload="setUpLogin()" src="http://localhost:4200/sso/login"
+      <iframe class="w-full max-h-screen" id="login-iframe" onload="setUpLogin()"
+              src="https://clube-brahma-sso.web.app/login"
               style="height: 773px"></iframe>
     </div>
   </div>
