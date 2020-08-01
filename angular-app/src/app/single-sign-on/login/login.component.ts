@@ -137,7 +137,7 @@ export class LoginComponent implements OnInit {
 
   scrollToTerms() {
     const rect = document.getElementById('terms-and-conditions').getBoundingClientRect();
-    const to = {
+    const to: ScrollToOptions = {
       left: 0,
       top: rect.top,
       behavior: 'smooth'
