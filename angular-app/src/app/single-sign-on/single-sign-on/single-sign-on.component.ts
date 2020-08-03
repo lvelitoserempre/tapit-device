@@ -4,6 +4,7 @@ import {environment} from '../../../environments/environment';
 import {AuthService} from '../../user/user-authentication/user-authentication-service/auth.service';
 
 declare var zE;
+declare var tagManager;
 
 @Component({
   selector: 'app-root',
@@ -22,5 +23,7 @@ export class SingleSignOnComponent implements OnInit {
     if (typeof zE === 'function') {
       zE('webWidget', 'hide');
     }
+
+    tagManager(window, document, 'script', 'dataLayer', 'GTM-MGL9B93');
   }
 }
