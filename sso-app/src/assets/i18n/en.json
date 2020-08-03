@@ -27,6 +27,7 @@
     "PASSWORD": "Password",
     "PASSWORD_VERIFICATION": "Password Verification",
     "SIGN_UP": "Sign up",
+    "SIGN_UP_OPTION_LABEL": "or register with facebook",
     "FACEBOOK_SIGN_UP": "Register with Facebook",
     "LEGEND_ACCEPTANCE": "By registering you are accepting:",
     "SELECT_INTERESTS": "Select your interests",
