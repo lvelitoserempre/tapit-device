@@ -4,6 +4,7 @@ export default class SignUpForm {
   static readonly CONFIG = {
     firstName: ['', [Validators.required, Validators.pattern('[A-Za-zÀ-ÖØ-öø-ÿ]*')]],
     lastName: ['', [Validators.required, Validators.pattern('[A-Za-zÀ-ÖØ-öø-ÿ]*')]],
+    birthDate: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
     password: ['', [Validators.required, Validators.minLength(6), SignUpForm.passwordsMatch]],
     passwordVerification: ['', [Validators.required, SignUpForm.passwordsMatch]]
@@ -30,6 +31,9 @@ export default class SignUpForm {
     passwordVerification: {
       required: 'SIGN_UP.VALIDATIONS.PASSWORD_VERIFICATION.REQUIRED',
       passwordsMatch: 'SIGN_UP.VALIDATIONS.PASSWORD_VERIFICATION.PASSWORD_MATCH'
+    },
+    birthDate: {
+      required: 'SIGN_UP.VALIDATIONS.BIRTH_DATE.REQUIRED',
     }
   };
 

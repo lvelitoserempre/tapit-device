@@ -56,6 +56,22 @@
       </div>
 
       <div class="text-left mb-6">
+        <label class="font-bold text-neutral-800 block mb-2"
+               for="lastName">{{'SIGN_UP.BIRTH_DATE' | translate }}</label>
+        <input (click)="picker.open()"
+               (focus)="signUpForm.get('birthDate').markAsUntouched()"
+               [class.border-danger-500]="signUpForm.get('birthDate').invalid && signUpForm.get('birthDate').touched"
+               [matDatepicker]="picker" class="app-input block w-full" formControlName="birthDate" id="birthDate"
+               readonly>
+        <mat-datepicker #picker></mat-datepicker>
+
+        <p *ngIf="signUpForm.get('birthDate').hasError('required') && signUpForm.get('birthDate').touched"
+           class="text-danger-500 pl-2">
+          {{errorMessages.birthDate.required | translate}}
+        </p>
+      </div>
+
+      <div class="text-left mb-6">
         <label class="font-bold text-neutral-800 block mb-2" for="email">{{'SIGN_UP.EMAIL' | translate }}</label>
         <input (focus)="signUpForm.get('email').markAsUntouched()"
                [class.border-danger-500]="signUpForm.get('email').invalid && signUpForm.get('email').touched"
@@ -81,6 +97,14 @@
            class="text-danger-500 pl-2">
           {{errorMessages.password.required | translate}}
         </p>
+        <p *ngIf="signUpForm.get('password').hasError('minlength') && signUpForm.get('password').touched"
+           class="text-danger-500 pl-2">
+          {{errorMessages.password.minlength | translate}}
+        </p>
+        <p *ngIf="signUpForm.get('password').hasError('passwordsMatch') && signUpForm.get('password').touched"
+           class="text-danger-500 pl-2">
+          {{errorMessages.password.passwordsMatch | translate}}
+        </p>
       </div>
 
       <div class="text-left mb-4">
@@ -89,12 +113,17 @@
         <input (focus)="signUpForm.get('passwordVerification').markAsUntouched()"
                [class.border-danger-500]="signUpForm.get('passwordVerification').invalid && signUpForm.get('passwordVerification').touched"
                class="app-input block w-full" formControlName="passwordVerification" id="passwordVerification"
-               type="passwordVerification">
+               type="password">
 
         <p
           *ngIf="signUpForm.get('passwordVerification').hasError('required') && signUpForm.get('passwordVerification').touched"
           class="text-danger-500 pl-2">
           {{errorMessages.passwordVerification.required | translate}}
+        </p>
+        <p
+          *ngIf="signUpForm.get('passwordVerification').hasError('passwordsMatch')  && signUpForm.get('passwordVerification').touched"
+          class="text-danger-500 pl-2">
+          {{errorMessages.passwordVerification.passwordsMatch | translate}}
         </p>
       </div>
 

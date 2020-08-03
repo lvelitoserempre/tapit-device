@@ -11,6 +11,7 @@ import {from, of} from 'rxjs';
 import {auth} from 'firebase';
 import {mergeMap, switchMap} from 'rxjs/operators';
 import SignUpForm from './sign-up.form';
+import {SignUpService} from '../sign-up.service';
 import UserCredential = firebase.auth.UserCredential;
 
 @Component({
@@ -47,7 +48,7 @@ export class SignUpComponent implements OnInit {
 
       from(auth().createUserWithEmailAndPassword(formValue.email, formValue.password))
         .pipe(switchMap((userCredential: UserCredential) => {
-return of();
+          return this.userDAO.createUser(SignUpService.parseUserData(formValue, this.config.project));
         }))
         .subscribe(user => {
 

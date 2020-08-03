@@ -13,23 +13,22 @@ export class SignUpService {
   constructor(private userAuthenticationService: AuthService, private userDAO: UserDAO) {
   }
 
-  signUp(form) {
-    return from(this.userAuthenticationService.signUp(form.email, form.password))
-      .pipe(mergeMap((userCredential: UserCredential) => {
-        const userData = this.parseUserData(form);
-        return this.userDAO.checkUser(userData);
-      }));
-  }
-
-  private parseUserData(form) {
+  static parseUserData(form, origin = 'pola') {
     return {
       email: form.email,
       firstName: form.firstName,
       lastName: form.lastName,
       birthDate: form.birthDate.toISOString(),
-      phone: form.phone,
-      origin: 'pola',
+      origin,
       ...(form.referralCode && form.referralCode.trim()) && {referredBy: form.referralCode}
     };
+  }
+
+  signUp(form) {
+    return from(this.userAuthenticationService.signUp(form.email, form.password))
+      .pipe(mergeMap((userCredential: UserCredential) => {
+        const userData = SignUpService.parseUserData(form);
+        return this.userDAO.checkUser(userData);
+      }));
   }
 }
