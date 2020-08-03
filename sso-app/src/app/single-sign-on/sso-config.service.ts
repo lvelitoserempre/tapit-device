@@ -14,7 +14,7 @@ export class SSOConfigService {
     showSignUpFacebookButton: true,
     showOffersOption: false,
     email: '',
-    project: '',
+    project: 'pola',
     emailHint: '',
     passwordHint: '',
     sloganHtml: '<p class="text-center text-xs">La comunidad de los <span class="text-primary-500">amantes de la cerveza.</span></p>',

@@ -1,9 +1,5 @@
 import {Injectable} from '@angular/core';
-import {from} from 'rxjs';
 import {auth} from 'firebase';
-import {mergeMap} from 'rxjs/operators';
-import {UserDAO} from '../user/user-dao.service';
-import {AuthService} from './auth.service';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
 
 @Injectable({
@@ -12,7 +8,7 @@ import FacebookAuthProvider = auth.FacebookAuthProvider;
 export class FacebookService {
   facebookAuthProvider: FacebookAuthProvider;
 
-  constructor(private userDAO: UserDAO, private authenticationService: AuthService) {
+  constructor() {
     this.facebookAuthProvider = new FacebookAuthProvider();
     this.facebookAuthProvider.addScope('user_birthday');
   }
@@ -33,13 +29,5 @@ export class FacebookService {
       ...(profile.birthday ? {birthDate: (new Date(profile.birthday)).toISOString()} : {}),
       ...otherData
     };
-  }
-
-  login() {
-    return from(auth().signInWithPopup(this.facebookAuthProvider))
-      .pipe(mergeMap((facebookResponse) => {
-        const userData = FacebookService.parseUserData(facebookResponse);
-        return this.userDAO.checkUser(userData);
-      }))
   }
 }
