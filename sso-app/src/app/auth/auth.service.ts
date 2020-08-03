@@ -25,7 +25,6 @@ export class AuthService {
   setupLoggedUserObserver() {
     auth().onAuthStateChanged((user: User) => {
       if (user && !this.cancelUserListener) {
-        this.loaderService.show();
         this.cancelUserListener = firestore().collection(environment.firebase.collections.userAccount).doc(user.uid)
           .onSnapshot(snapshot => {
             this.setCurrentUser(UserDAO.snapshotToUser(snapshot));
