@@ -1,0 +1,35 @@
+.title {
+  max-width: 12rem;
+
+  @media screen and (min-width: 640px) {
+    max-width: none;
+  }
+}
+
+.people {
+  position: absolute;
+  height: 15rem;
+  right: -10rem;
+  top: -4rem;
+
+  @media screen and (min-width: 640px) {
+    position: relative;
+    height: 30rem;
+    right: 0;
+    top: -4rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    right: 5rem;
+  }
+
+  @media screen and (min-width: 1280px) {
+    right: 0;
+  }
+}
+
+.icon:before {
+  vertical-align: middle;
+  margin: 1rem;
+}
+
