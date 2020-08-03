@@ -35,18 +35,18 @@
     "VALIDATIONS": {
       "FIRST_NAME": {
         "REQUIRED": "Você deve digitar seu nome",
-        "PATTERN ": "Somente letras são aceitas aqui. Não inclua espaços ou caracteres especiais"
+        "PATTERN": "Somente letras são aceitas aqui. Não inclua espaços ou caracteres especiais"
       },
       "LAST_NAME": {
         "REQUIRED": "Você deve digitar seu sobrenome",
-        "PATTERN ": "Somente letras são aceitas aqui. Não inclua espaços ou caracteres especiais"
+        "PATTERN": "Somente letras são aceitas aqui. Não inclua espaços ou caracteres especiais"
       },
       "BIRTH_DATE": {
         "REQUIRED": "Você deve inserir sua data de nascimento"
       },
       "EMAIL": {
         "REQUIRED": "Você deve digitar seu email",
-        "PATTERN ": "Seu email não é válido. Talvez esteja incorreto"
+        "PATTERN": "Seu email não é válido. Talvez esteja incorreto"
       },
       "PASSWORD": {
         "REQUIRED": "Você deve digitar sua senha",

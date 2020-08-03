@@ -35,18 +35,18 @@
     "VALIDATIONS": {
       "FIRST_NAME": {
         "REQUIRED": "Name is required",
-        "PATTERN ": "Only letters are accepted here. Do not include spaces or special characters"
+        "PATTERN": "Only letters are accepted here. Do not include spaces or special characters"
       },
       "LAST_NAME": {
         "REQUIRED": "Last name is required",
-        "PATTERN ": "Only letters are accepted here. Do not include spaces or special characters"
+        "PATTERN": "Only letters are accepted here. Do not include spaces or special characters"
       },
       "BIRTH_DATE": {
         "REQUIRED": "Birthday Date is required"
       },
       "EMAIL": {
         "REQUIRED": "Email is required",
-        "PATTERN ": "Your email is not valid. Maybe it's misspelled"
+        "PATTERN": "Your email is not valid. Maybe it's misspelled"
       },
       "PASSWORD": {
         "REQUIRED": "Password is required",
