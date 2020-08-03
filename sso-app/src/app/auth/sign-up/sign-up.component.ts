@@ -9,8 +9,9 @@ import {IframeMessagingService} from '../../shared/services/iframe-messaging.ser
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {from, of} from 'rxjs';
 import {auth} from 'firebase';
-import {mergeMap} from 'rxjs/operators';
+import {mergeMap, switchMap} from 'rxjs/operators';
 import SignUpForm from './sign-up.form';
+import UserCredential = firebase.auth.UserCredential;
 
 @Component({
   selector: 'app-sign-up',
@@ -21,7 +22,7 @@ export class SignUpComponent implements OnInit {
   config: SSOConfig;
   interests: any = {};
   signUpForm: FormGroup;
-  validationMessages = SignUpForm.ERROR_MESSAGES;
+  errorMessages = SignUpForm.ERROR_MESSAGES;
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeMessagingService,
@@ -35,6 +36,26 @@ export class SignUpComponent implements OnInit {
     })
 
     auth().signOut();
+  }
+
+  signUp() {
+    this.signUpForm.markAllAsTouched();
+
+    if (this.signUpForm.valid) {
+      const formValue = this.signUpForm.value;
+      this.loaderService.show();
+
+      from(auth().createUserWithEmailAndPassword(formValue.email, formValue.password))
+        .pipe(switchMap((userCredential: UserCredential) => {
+return of();
+        }))
+        .subscribe(user => {
+
+        }, error => {
+          this.loaderService.hide();
+          this.dialogService.manageError(error);
+        });
+    }
   }
 
   signUpWithFacebook() {
@@ -75,9 +96,5 @@ export class SignUpComponent implements OnInit {
     }
 
     return array;
-  }
-
-  signUp() {
-
   }
 }

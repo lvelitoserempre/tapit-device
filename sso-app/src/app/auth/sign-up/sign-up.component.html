@@ -31,11 +31,11 @@
 
         <p *ngIf="signUpForm.get('firstName').hasError('required') && signUpForm.get('firstName').touched"
            class="text-danger-500 pl-2">
-          {{validationMessages.firstName.required | translate}}
+          {{errorMessages.firstName.required | translate}}
         </p>
         <p *ngIf="signUpForm.get('firstName').hasError('pattern')  && signUpForm.get('firstName').touched"
            class="text-danger-500 pl-2">
-          {{validationMessages.firstName.pattern | translate}}
+          {{errorMessages.firstName.pattern | translate}}
         </p>
       </div>
 
@@ -47,11 +47,11 @@
 
         <p *ngIf="signUpForm.get('lastName').hasError('required') && signUpForm.get('lastName').touched"
            class="text-danger-500 pl-2">
-          {{validationMessages.lastName.required | translate}}
+          {{errorMessages.lastName.required | translate}}
         </p>
         <p *ngIf="signUpForm.get('lastName').hasError('pattern')  && signUpForm.get('lastName').touched"
            class="text-danger-500 pl-2">
-          {{validationMessages.lastName.pattern | translate}}
+          {{errorMessages.lastName.pattern | translate}}
         </p>
       </div>
 
@@ -63,11 +63,11 @@
 
         <p *ngIf="signUpForm.get('email').hasError('required') && signUpForm.get('email').touched"
            class="text-danger-500 pl-2">
-          {{validationMessages.email.required | translate}}
+          {{errorMessages.email.required | translate}}
         </p>
         <p *ngIf="signUpForm.get('email').hasError('pattern')  && signUpForm.get('email').touched"
            class="text-danger-500 pl-2">
-          {{validationMessages.email.pattern | translate}}
+          {{errorMessages.email.pattern | translate}}
         </p>
       </div>
 
@@ -79,7 +79,7 @@
 
         <p *ngIf="signUpForm.get('password').hasError('required') && signUpForm.get('password').touched"
            class="text-danger-500 pl-2">
-          {{validationMessages.password.required | translate}}
+          {{errorMessages.password.required | translate}}
         </p>
       </div>
 
@@ -94,7 +94,7 @@
         <p
           *ngIf="signUpForm.get('passwordVerification').hasError('required') && signUpForm.get('passwordVerification').touched"
           class="text-danger-500 pl-2">
-          {{validationMessages.passwordVerification.required | translate}}
+          {{errorMessages.passwordVerification.required | translate}}
         </p>
       </div>
 
