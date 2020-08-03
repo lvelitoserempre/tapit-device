@@ -3,15 +3,10 @@
 
   <div class="container mx-auto relative bg-white px-6 pt-8 pb-24 overflow-y-auto flex-1"
        [ngClass]="{'bg-bubble-4':config.showContainerBackground}">
-    <button (click)="loginWithFacebook()" *ngIf="config.showSignUpFacebookButton"
-            class="app-button facebook-button min-width-280 mb-6 block mx-auto uppercase" type="button">
-      {{'SIGN_UP.FACEBOOK_SIGN_UP' | translate }}
-    </button>
-
     <div class="mb-8" *ngIf="config.interests && config.interests.length">
       <h3 class="p-2 text-sm font-bold">{{'SIGN_UP.SELECT_INTERESTS' | translate }}:</h3>
 
-      <div class="grid grid-cols-2">
+      <div class="grid grid-cols-3">
         <div *ngFor="let interest of config.interests" class="p-2">
           <label class="checkbox text-left text-sm" [for]="interest.key">
             <input [id]="interest.key" type="checkbox" [(ngModel)]="interests[interest.key]">
@@ -25,6 +20,94 @@
         </div>
       </div>
     </div>
+
+    <form (ngSubmit)="signUp()" [formGroup]="signUpForm">
+      <div class="text-left mb-6">
+        <label class="font-bold text-neutral-800 block mb-2"
+               for="firstName">{{'SIGN_UP.FIRST_NAME' | translate }}</label>
+        <input (focus)="signUpForm.get('firstName').markAsUntouched()"
+               [class.border-danger-500]="signUpForm.get('firstName').invalid && signUpForm.get('firstName').touched"
+               class="app-input block w-full" formControlName="firstName" id="firstName" type="firstName">
+
+        <p *ngIf="signUpForm.get('firstName').hasError('required') && signUpForm.get('firstName').touched"
+           class="text-danger-500 pl-2">
+          {{validationMessages.firstName.required | translate}}
+        </p>
+        <p *ngIf="signUpForm.get('firstName').hasError('pattern')  && signUpForm.get('firstName').touched"
+           class="text-danger-500 pl-2">
+          {{validationMessages.firstName.pattern | translate}}
+        </p>
+      </div>
+
+      <div class="text-left mb-6">
+        <label class="font-bold text-neutral-800 block mb-2" for="lastName">{{'SIGN_UP.LAST_NAME' | translate }}</label>
+        <input (focus)="signUpForm.get('lastName').markAsUntouched()"
+               [class.border-danger-500]="signUpForm.get('lastName').invalid && signUpForm.get('lastName').touched"
+               class="app-input block w-full" formControlName="lastName" id="lastName" type="lastName">
+
+        <p *ngIf="signUpForm.get('lastName').hasError('required') && signUpForm.get('lastName').touched"
+           class="text-danger-500 pl-2">
+          {{validationMessages.lastName.required | translate}}
+        </p>
+        <p *ngIf="signUpForm.get('lastName').hasError('pattern')  && signUpForm.get('lastName').touched"
+           class="text-danger-500 pl-2">
+          {{validationMessages.lastName.pattern | translate}}
+        </p>
+      </div>
+
+      <div class="text-left mb-6">
+        <label class="font-bold text-neutral-800 block mb-2" for="email">{{'SIGN_UP.EMAIL' | translate }}</label>
+        <input (focus)="signUpForm.get('email').markAsUntouched()"
+               [class.border-danger-500]="signUpForm.get('email').invalid && signUpForm.get('email').touched"
+               class="app-input block w-full" formControlName="email" id="email" type="email">
+
+        <p *ngIf="signUpForm.get('email').hasError('required') && signUpForm.get('email').touched"
+           class="text-danger-500 pl-2">
+          {{validationMessages.email.required | translate}}
+        </p>
+        <p *ngIf="signUpForm.get('email').hasError('pattern')  && signUpForm.get('email').touched"
+           class="text-danger-500 pl-2">
+          {{validationMessages.email.pattern | translate}}
+        </p>
+      </div>
+
+      <div class="text-left mb-4">
+        <label class="font-bold text-neutral-800 block mb-2" for="password">{{'SIGN_UP.PASSWORD' | translate }}</label>
+        <input (focus)="signUpForm.get('password').markAsUntouched()"
+               [class.border-danger-500]="signUpForm.get('password').invalid && signUpForm.get('password').touched"
+               class="app-input block w-full" formControlName="password" id="password" type="password">
+
+        <p *ngIf="signUpForm.get('password').hasError('required') && signUpForm.get('password').touched"
+           class="text-danger-500 pl-2">
+          {{validationMessages.password.required | translate}}
+        </p>
+      </div>
+
+      <div class="text-left mb-4">
+        <label class="font-bold text-neutral-800 block mb-2"
+               for="passwordVerification">{{'SIGN_UP.PASSWORD_VERIFICATION' | translate }}</label>
+        <input (focus)="signUpForm.get('passwordVerification').markAsUntouched()"
+               [class.border-danger-500]="signUpForm.get('passwordVerification').invalid && signUpForm.get('passwordVerification').touched"
+               class="app-input block w-full" formControlName="passwordVerification" id="passwordVerification"
+               type="passwordVerification">
+
+        <p
+          *ngIf="signUpForm.get('passwordVerification').hasError('required') && signUpForm.get('passwordVerification').touched"
+          class="text-danger-500 pl-2">
+          {{validationMessages.passwordVerification.required | translate}}
+        </p>
+      </div>
+
+      <button class="app-button bg-primary-500 min-width-18 mb-2 block mx-auto uppercase" type="submit">
+        {{'SIGN_UP.SIGN_UP' | translate }}
+      </button>
+    </form>
+
+    <button (click)="signUpWithFacebook()" *ngIf="config.showSignUpFacebookButton"
+            class="app-button facebook-button min-width-280 mb-6 block mx-auto uppercase" type="button">
+      {{'SIGN_UP.FACEBOOK_SIGN_UP' | translate }}
+    </button>
+
 
     <div [innerHTML]="config.signUpLegalHtml"></div>
   </div>

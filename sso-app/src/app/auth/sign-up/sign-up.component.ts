@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
-import {LoginValidationMessages} from '../login/login.validations';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import SSOConfig from '../../single-sign-on/sso-config';
 import {LoaderService} from '../../loader/loader-service/loader.service';
 import {DialogService} from '../../dialog/dialog-service/dialog.service';
@@ -11,6 +10,7 @@ import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {from, of} from 'rxjs';
 import {auth} from 'firebase';
 import {mergeMap} from 'rxjs/operators';
+import SignUpForm from './sign-up.form';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,13 +18,15 @@ import {mergeMap} from 'rxjs/operators';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  validationMessages = LoginValidationMessages;
   config: SSOConfig;
   interests: any = {};
+  signUpForm: FormGroup;
+  validationMessages = SignUpForm.ERROR_MESSAGES;
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeMessagingService,
               private configService: SSOConfigService) {
+    this.signUpForm = this.formBuilder.group(SignUpForm.CONFIG, {updateOn: 'blur'});
   }
 
   ngOnInit(): void {
@@ -35,7 +37,7 @@ export class SignUpComponent implements OnInit {
     auth().signOut();
   }
 
-  loginWithFacebook() {
+  signUpWithFacebook() {
     const interests = this.toArray(this.interests);
     this.loaderService.show();
 
@@ -73,5 +75,9 @@ export class SignUpComponent implements OnInit {
     }
 
     return array;
+  }
+
+  signUp() {
+
   }
 }
