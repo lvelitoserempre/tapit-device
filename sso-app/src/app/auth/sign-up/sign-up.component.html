@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <form (ngSubmit)="signUp()" [formGroup]="signUpForm">
+    <form (ngSubmit)="signUp()" [formGroup]="signUpForm" class="mb-6">
       <div class="text-left mb-6">
         <label class="font-bold text-neutral-800 block mb-2"
                for="firstName">{{'SIGN_UP.FIRST_NAME' | translate }}</label>
@@ -103,11 +103,13 @@
       </button>
     </form>
 
+    <p class="text-2xs font-bold text-center uppercase mb-3" *ngIf="config.showLoginFacebookButton"
+       style="letter-spacing: 1.3px">{{'SIGN_UP.EMAIL_LABEL' | translate }}</p>
+
     <button (click)="signUpWithFacebook()" *ngIf="config.showSignUpFacebookButton"
             class="app-button facebook-button min-width-280 mb-6 block mx-auto uppercase" type="button">
       {{'SIGN_UP.FACEBOOK_SIGN_UP' | translate }}
     </button>
-
 
     <div [innerHTML]="config.signUpLegalHtml"></div>
   </div>
