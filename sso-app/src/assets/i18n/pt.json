@@ -23,6 +23,7 @@
   "SIGN_UP": {
     "FIRST_NAME": "Nome",
     "LAST_NAME": "Sobrenome",
+    "BIRTH_DATE": "Data de Nascimento",
     "EMAIL": "Correio eletrônico",
     "PASSWORD": "Senha",
     "PASSWORD_VERIFICATION": "Verifique a Senha",
@@ -40,6 +41,9 @@
         "REQUIRED": "Você deve digitar seu sobrenome",
         "PATTERN ": "Somente letras são aceitas aqui. Não inclua espaços ou caracteres especiais"
       },
+      "BIRTH_DATE": {
+        "REQUIRED": "Você deve inserir sua data de nascimento"
+      },
       "EMAIL": {
         "REQUIRED": "Você deve digitar seu email",
         "PATTERN ": "Seu email não é válido. Talvez esteja incorreto"
@@ -47,11 +51,11 @@
       "PASSWORD": {
         "REQUIRED": "Você deve digitar sua senha",
         "MIN_LENGTH": "Sua senha deve ter pelo menos 6 caracteres",
-        "PASSWORD_MATCH ": "Sua senha deve ter pelo menos 6 caracteres"
+        "PASSWORD_MATCH": "Suas senhas não conferem"
       },
       "PASSWORD_VERIFICATION": {
         "REQUIRED": "Você deve digitar sua senha novamente",
-        "PASSWORD_MATCH ": "Suas senhas não conferem"
+        "PASSWORD_MATCH": "Suas senhas não conferem"
       }
     }
   },

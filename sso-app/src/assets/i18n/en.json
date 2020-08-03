@@ -23,6 +23,7 @@
   "SIGN_UP": {
     "FIRST_NAME": "Name",
     "LAST_NAME": "Last Name",
+    "BIRTH_DATE": "Birthday Date",
     "EMAIL": "Email",
     "PASSWORD": "Password",
     "PASSWORD_VERIFICATION": "Password Verification",
@@ -40,6 +41,9 @@
         "REQUIRED": "Last name is required",
         "PATTERN ": "Only letters are accepted here. Do not include spaces or special characters"
       },
+      "BIRTH_DATE": {
+        "REQUIRED": "Birthday Date is required"
+      },
       "EMAIL": {
         "REQUIRED": "Email is required",
         "PATTERN ": "Your email is not valid. Maybe it's misspelled"
@@ -47,11 +51,11 @@
       "PASSWORD": {
         "REQUIRED": "Password is required",
         "MIN_LENGTH": "Your password must have at least 6 characters",
-        "PASSWORD_MATCH ": "Your password must have at least 6 characters"
+        "PASSWORD_MATCH": "Your passwords do not match"
       },
       "PASSWORD_VERIFICATION": {
         "REQUIRED": "You must enter your password again",
-        "PASSWORD_MATCH ": "Your passwords do not match"
+        "PASSWORD_MATCH": "Your passwords do not match"
       }
     }
   },
