@@ -24,6 +24,7 @@ export class SignUpComponent implements OnInit {
   interests: any = {};
   signUpForm: FormGroup;
   errorMessages = SignUpForm.ERROR_MESSAGES;
+  hide: boolean = true;
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeMessagingService,

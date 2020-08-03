@@ -89,9 +89,17 @@
 
       <div class="text-left mb-4">
         <label class="font-bold text-neutral-800 block mb-2" for="password">{{'SIGN_UP.PASSWORD' | translate }}</label>
-        <input (focus)="signUpForm.get('password').markAsUntouched()"
-               [class.border-danger-500]="signUpForm.get('password').invalid && signUpForm.get('password').touched"
-               class="app-input block w-full" formControlName="password" id="password" type="password">
+        <div class="relative">
+          <input #password
+                 (focus)="signUpForm.get('password').markAsUntouched()"
+                 [class.border-danger-500]="signUpForm.get('password').invalid && signUpForm.get('password').touched"
+                 class="app-input block w-full" formControlName="password" id="password" type="password">
+          <div class="absolute top-0 right-0 h-full p-1 pr-2 flex items-center">
+            <i (click)="password.type = password.type === 'password' ? 'text' : 'password'"
+               class="uil uil-eye text-xl bg-white cursor-pointer" [class.uil-eye]="password.type === 'password'"
+               [class.uil-eye-slash]="password.type !== 'password'"></i>
+          </div>
+        </div>
 
         <p *ngIf="signUpForm.get('password').hasError('required') && signUpForm.get('password').touched"
            class="text-danger-500 pl-2">
@@ -110,11 +118,17 @@
       <div class="text-left mb-4">
         <label class="font-bold text-neutral-800 block mb-2"
                for="passwordVerification">{{'SIGN_UP.PASSWORD_VERIFICATION' | translate }}</label>
-        <input (focus)="signUpForm.get('passwordVerification').markAsUntouched()"
-               [class.border-danger-500]="signUpForm.get('passwordVerification').invalid && signUpForm.get('passwordVerification').touched"
-               class="app-input block w-full" formControlName="passwordVerification" id="passwordVerification"
-               type="password">
-
+        <div class="relative">
+          <input #passwordVerification (focus)="signUpForm.get('passwordVerification').markAsUntouched()"
+                 [class.border-danger-500]="signUpForm.get('passwordVerification').invalid && signUpForm.get('passwordVerification').touched"
+                 class="app-input block w-full" formControlName="passwordVerification" id="passwordVerification"
+                 type="password">
+          <div class="absolute top-0 right-0 h-full p-1 pr-2 flex items-center">
+            <i (click)="passwordVerification.type = passwordVerification.type === 'password' ? 'text' : 'password'"
+               class="uil uil-eye text-xl bg-white cursor-pointer" [class.uil-eye]="passwordVerification.type === 'password'"
+               [class.uil-eye-slash]="passwordVerification.type !== 'password'"></i>
+          </div>
+        </div>
         <p
           *ngIf="signUpForm.get('passwordVerification').hasError('required') && signUpForm.get('passwordVerification').touched"
           class="text-danger-500 pl-2">
