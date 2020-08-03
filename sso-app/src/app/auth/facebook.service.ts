@@ -1,6 +1,11 @@
 import {Injectable} from '@angular/core';
 import {auth} from 'firebase';
+import {from, Observable, of, throwError} from 'rxjs';
+import {catchError, mergeMap} from 'rxjs/operators';
+import {SignUpService} from './sign-up.service';
+import {UserDAO} from '../user/user-dao.service';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
+import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
   providedIn: 'root'
@@ -8,26 +13,31 @@ import FacebookAuthProvider = auth.FacebookAuthProvider;
 export class FacebookService {
   facebookAuthProvider: FacebookAuthProvider;
 
-  constructor() {
+  constructor(private userDAO: UserDAO) {
     this.facebookAuthProvider = new FacebookAuthProvider();
     this.facebookAuthProvider.addScope('user_birthday');
   }
 
-  static parseUserData(facebookResponse, project = 'web', otherData?) {
-    const profile = facebookResponse.additionalUserInfo.profile;
+  signIn(project: string, interests?: string[]): Observable<any> {
+    let newUser;
 
-    if (!profile.email) {
-      throw {code: 'facebook-not-authorized-email'};
-    }
+    return from(auth().signInWithPopup(this.facebookAuthProvider))
+      .pipe(mergeMap((userCredential: UserCredential) => {
+        newUser = userCredential.additionalUserInfo.isNewUser;
 
-    return {
-      email: profile.email,
-      firstName: profile.first_name,
-      lastName: profile.last_name,
-      origin: project,
-      ...(profile.gender ? {gender: profile.gender} : {}),
-      ...(profile.birthday ? {birthDate: (new Date(profile.birthday)).toISOString()} : {}),
-      ...otherData
-    };
+        if (newUser) {
+          const userData = SignUpService.extractFacebookUserData(userCredential, project, interests);
+          return this.userDAO.createUser(userData)
+        }
+
+        return of();
+      }))
+      .pipe(catchError(err => {
+        if (newUser) {
+          auth().currentUser.delete().then((res) => console.log('user deleted', res));
+        }
+
+        return throwError(err);
+      }));
   }
 }

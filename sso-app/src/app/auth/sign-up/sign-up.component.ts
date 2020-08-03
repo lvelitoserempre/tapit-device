@@ -7,9 +7,9 @@ import {FacebookService} from '../facebook.service';
 import {UserDAO} from '../../user/user-dao.service';
 import {IframeMessagingService} from '../../shared/services/iframe-messaging.service';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
-import {from, of} from 'rxjs';
+import {from} from 'rxjs';
 import {auth} from 'firebase';
-import {mergeMap, switchMap} from 'rxjs/operators';
+import {switchMap} from 'rxjs/operators';
 import SignUpForm from './sign-up.form';
 import {SignUpService} from '../sign-up.service';
 import UserCredential = firebase.auth.UserCredential;
@@ -41,6 +41,7 @@ export class SignUpComponent implements OnInit {
   }
 
   signUp() {
+    const interests = this.toArray(this.interests);
     this.signUpForm.markAllAsTouched();
 
     if (this.signUpForm.valid) {
@@ -49,13 +50,14 @@ export class SignUpComponent implements OnInit {
 
       from(auth().createUserWithEmailAndPassword(formValue.email, formValue.password))
         .pipe(switchMap((userCredential: UserCredential) => {
-          return this.userDAO.createUser(SignUpService.parseUserData(formValue, this.config.project));
+          return this.userDAO.createUser(SignUpService.extractFormUserData(formValue, this.config.project, interests));
         }))
         .subscribe(user => {
 
         }, error => {
           this.loaderService.hide();
           this.dialogService.manageError(error);
+          auth().currentUser.delete().then((res) => console.log('user deleted', res));
         });
     }
   }
@@ -64,26 +66,14 @@ export class SignUpComponent implements OnInit {
     const interests = this.toArray(this.interests);
     this.loaderService.show();
 
-    from(auth().signInWithPopup(this.facebookService.facebookAuthProvider))
-      .pipe(mergeMap((facebookResponse) => {
-        const userData = FacebookService.parseUserData(facebookResponse);
-
-        if (this.config.project) {
-          userData.origin = this.config.project;
-        }
-
-        if (interests && interests.length) {
-          userData.interests = interests;
-        }
-
-        return facebookResponse.additionalUserInfo.isNewUser ? this.userDAO.createUser(userData) : of();
-      })).subscribe(customToken => {
-      },
-      error => {
-        this.loaderService.hide();
-        this.dialogService.manageError(error);
-        auth().signOut();
-      });
+    this.facebookService.signIn(this.config.project, interests)
+      .subscribe(customToken => {
+        },
+        error => {
+          this.loaderService.hide();
+          this.dialogService.manageError(error);
+          auth().currentUser.delete().then();
+        });
   }
 
   toArray(object) {

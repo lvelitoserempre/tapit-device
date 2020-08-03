@@ -4,8 +4,7 @@ import {DialogService} from '../../dialog/dialog-service/dialog.service';
 import {FacebookService} from '../facebook.service';
 import {UserDAO} from '../../user/user-dao.service';
 import {auth} from 'firebase';
-import {from, of} from 'rxjs';
-import {mergeMap} from 'rxjs/operators';
+import {from} from 'rxjs';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {IframeMessagingService} from '../../shared/services/iframe-messaging.service';
 import SSOConfig from '../../single-sign-on/sso-config';
@@ -55,21 +54,11 @@ export class LoginComponent implements OnInit {
   loginWithFacebook() {
     this.loaderService.show();
 
-    from(auth().signInWithPopup(this.facebookService.facebookAuthProvider))
-      .pipe(mergeMap((facebookResponse) => {
-        const userData = FacebookService.parseUserData(facebookResponse);
-
-        if (this.config.project) {
-          userData.origin = this.config.project;
-        }
-
-        return facebookResponse.additionalUserInfo.isNewUser ? this.userDAO.createUser(userData) : of();
-      })).subscribe(customToken => {
-      },
-      error => {
+    this.facebookService.signIn(this.config.project)
+      .subscribe(customToken => {
+      }, error => {
         this.loaderService.hide();
         this.dialogService.manageError(error);
-        auth().signOut();
       });
   }
 }

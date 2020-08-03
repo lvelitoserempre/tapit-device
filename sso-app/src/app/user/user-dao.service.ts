@@ -16,7 +16,6 @@ export class UserDAO {
   constructor(private http: HttpClient) {
   }
 
-
   static snapshotToUser(documentSnapshot: DocumentSnapshot): UserAccount {
     const user: UserAccount = {id: documentSnapshot.id, ...documentSnapshot.data()};
 
@@ -28,21 +27,6 @@ export class UserDAO {
   get(id: string): Observable<UserAccount> {
     return from(firestore().collection(this.collection).doc(id).get())
       .pipe(map(documentSnapshot => UserDAO.snapshotToUser(documentSnapshot)));
-  }
-
-  checkUser(user: UserAccount) {
-    return from(auth().currentUser.getIdToken())
-      .pipe(mergeMap(token =>
-        this.http.post(
-          environment.firebase.functions.url + environment.firebase.functions.checkUser,
-          user,
-          {
-            headers: {
-              Authorization: 'Bearer ' + token,
-              ab_data: auth().currentUser.uid
-            }
-          }
-        )));
   }
 
   getCustomToken(idToken: string): Observable<any> {
