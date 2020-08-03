@@ -11,25 +11,25 @@ export default class SignUpForm {
 
   static readonly ERROR_MESSAGES = {
     firstName: {
-      required: 'Debes ingresar tu nombre',
-      pattern: 'Solo se aceptan letras aqui. No incluyas espacios ni caracteres especiales',
+      required: 'SIGN_UP.VALIDATIONS.FIRST_NAME.REQUIRED',
+      pattern: 'SIGN_UP.VALIDATIONS.FIRST_NAME.PATTERN',
     },
     lastName: {
-      required: 'Debes ingresar tu apellido',
-      pattern: 'Solo se aceptan letras aqui. No incluyas espacios ni caracteres especiales',
+      required: 'SIGN_UP.VALIDATIONS.LAST_NAME.REQUIRED',
+      pattern: 'SIGN_UP.VALIDATIONS.LAST_NAME.PATTERN',
     },
     email: {
-      required: 'Debes ingresar tu email',
-      pattern: 'Tu email no es válido. Tal vez esté mal escrito',
+      required: 'SIGN_UP.VALIDATIONS.EMAIL.REQUIRED',
+      pattern: 'SIGN_UP.VALIDATIONS.EMAIL.PATTERN',
     },
     password: {
-      required: 'Debes ingresar tu contraseña',
-      minlength: 'Tu contraseña debe tener almenos 6 caracteres',
-      passwordsMatch: 'Tus contraseñas no coinciden'
+      required: 'SIGN_UP.VALIDATIONS.PASSWORD.REQUIRED',
+      minlength: 'SIGN_UP.VALIDATIONS.PASSWORD.MIN_LENGTH',
+      passwordsMatch: 'SIGN_UP.VALIDATIONS.PASSWORD.PASSWORD_MATCH'
     },
     passwordVerification: {
-      required: 'Debes ingresar tu contraseña de nuevo',
-      passwordsMatch: 'Tus contraseñas no coinciden'
+      required: 'SIGN_UP.VALIDATIONS.PASSWORD_VERIFICATION.REQUIRED',
+      passwordsMatch: 'SIGN_UP.VALIDATIONS.PASSWORD_VERIFICATION.PASSWORD_MATCH'
     }
   };
 

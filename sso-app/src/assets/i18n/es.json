@@ -21,9 +21,38 @@
     }
   },
   "SIGN_UP": {
+    "FIRST_NAME": "Nombre",
+    "LAST_NAME": "Apellido",
+    "EMAIL": "Correo",
+    "PASSWORD": "Contraseña",
+    "PASSWORD_VERIFICATION": "Verificar Contraseña",
+    "SIGN_UP": "Registrarme",
     "FACEBOOK_SIGN_UP": "Registrarme con Facebook",
     "LEGEND_ACCEPTANCE": "Al registrarte estás aceptando:",
-    "SELECT_INTERESTS": "Selecciona tus intereses"
+    "SELECT_INTERESTS": "Selecciona tus intereses",
+    "VALIDATIONS": {
+      "FIRST_NAME": {
+        "REQUIRED": "Debes ingresar tu nombre",
+        "PATTERN ": "Solo se aceptan letras aqui. No incluyas espacios ni caracteres especiales"
+      },
+      "LAST_NAME": {
+        "REQUIRED": "Debes ingresar tu apellido",
+        "PATTERN ": "Solo se aceptan letras aqui. No incluyas espacios ni caracteres especiales"
+      },
+      "EMAIL": {
+        "REQUIRED": "Debes ingresar tu email",
+        "PATTERN ": "Tu email no es válido. Tal vez esté mal escrito"
+      },
+      "PASSWORD": {
+        "REQUIRED": "Debes ingresar tu contraseña",
+        "MIN_LENGTH": "Tu contraseña debe tener almenos 6 caracteres",
+        "PASSWORD_MATCH ": "Tu contraseña debe tener almenos 6 caracteres"
+      },
+      "PASSWORD_VERIFICATION": {
+        "REQUIRED": "Debes ingresar tu contraseña de nuevo",
+        "PASSWORD_MATCH ": "Tus contraseñas no coinciden"
+      }
+    }
   },
   "DIALOG": {
     "TOO_MANY_FAILED_ATTEMPTS": {

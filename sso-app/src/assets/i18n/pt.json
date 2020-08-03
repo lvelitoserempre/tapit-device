@@ -21,9 +21,38 @@
     }
   },
   "SIGN_UP": {
-    "FACEBOOK_SIGN_UP": "Inscreva-se com o Facebook",
-    "LEGEND_ACCEPTANCE": "Ao se registrar, você aceita estes",
-    "SELECT_INTERESTS": "Selecione seus interesses"
+    "FIRST_NAME": "Nome",
+    "LAST_NAME": "Sobrenome",
+    "EMAIL": "Correio eletrônico",
+    "PASSWORD": "Senha",
+    "PASSWORD_VERIFICATION": "Verifique a Senha",
+    "SIGN_UP": "Inscrever-se",
+    "FACEBOOK_SIGN_UP": "Registre-se no Facebook",
+    "LEGEND_ACCEPTANCE": "Ao se registrar, você concorda em:",
+    "SELECT_INTERESTS": "Selecione seus interesses",
+    "VALIDATIONS": {
+      "FIRST_NAME": {
+        "REQUIRED": "Você deve digitar seu nome",
+        "PATTERN ": "Somente letras são aceitas aqui. Não inclua espaços ou caracteres especiais"
+      },
+      "LAST_NAME": {
+        "REQUIRED": "Você deve digitar seu sobrenome",
+        "PATTERN ": "Somente letras são aceitas aqui. Não inclua espaços ou caracteres especiais"
+      },
+      "EMAIL": {
+        "REQUIRED": "Você deve digitar seu email",
+        "PATTERN ": "Seu email não é válido. Talvez esteja incorreto"
+      },
+      "PASSWORD": {
+        "REQUIRED": "Você deve digitar sua senha",
+        "MIN_LENGTH": "Sua senha deve ter pelo menos 6 caracteres",
+        "PASSWORD_MATCH ": "Sua senha deve ter pelo menos 6 caracteres"
+      },
+      "PASSWORD_VERIFICATION": {
+        "REQUIRED": "Você deve digitar sua senha novamente",
+        "PASSWORD_MATCH ": "Suas senhas não conferem"
+      }
+    }
   },
   "DIALOG": {
     "TOO_MANY_FAILED_ATTEMPTS": {
