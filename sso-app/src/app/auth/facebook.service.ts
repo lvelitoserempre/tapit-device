@@ -33,7 +33,7 @@ export class FacebookService {
       }));
   }
 
-  signIn(form, project: string, interests?: string[]): Observable<any> {
+  signUp(form, project: string, interests?: string[]): Observable<any> {
     let newUser;
 
     return from(auth().signInWithPopup(this.facebookAuthProvider))

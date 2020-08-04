@@ -52,6 +52,10 @@
            class="text-danger-500 pl-2">
           {{errorMessages.birthDate.required | translate}}
         </p>
+        <p *ngIf="signUpForm.get('birthDate').hasError('olderThan') && signUpForm.get('birthDate').touched"
+           class="text-danger-500 pl-2">
+          {{errorMessages.birthDate.olderThan | translate}}
+        </p>
       </div>
 
       <div class="text-left mb-6">

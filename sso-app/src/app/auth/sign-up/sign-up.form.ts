@@ -4,7 +4,7 @@ export default class SignUpForm {
   static readonly CONFIG = {
     firstName: ['', [Validators.required, Validators.pattern('[A-Za-zÀ-ÖØ-öø-ÿ]*')]],
     lastName: ['', [Validators.required, Validators.pattern('[A-Za-zÀ-ÖØ-öø-ÿ]*')]],
-    birthDate: ['', [Validators.required]],
+    birthDate: ['', [Validators.required, SignUpForm.olderThan(18)]],
     email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
     password: ['', [Validators.required, Validators.minLength(6), SignUpForm.passwordsMatch]],
     passwordVerification: ['', [Validators.required, SignUpForm.passwordsMatch]],
@@ -36,6 +36,7 @@ export default class SignUpForm {
     },
     birthDate: {
       required: 'SIGN_UP.VALIDATIONS.BIRTH_DATE.REQUIRED',
+      olderThan: 'SIGN_UP.VALIDATIONS.BIRTH_DATE.OLDER_THAN'
     },
     acceptTerms: {
       required: 'SIGN_UP.VALIDATIONS.ACCEPT_TERMS.REQUIRED',
@@ -49,6 +50,20 @@ export default class SignUpForm {
 
       if (password.value && passwordVerification.value && (password.value !== passwordVerification.value)) {
         return {passwordsMatch: true};
+      }
+    }
+  }
+
+  private static olderThan(years: number) {
+    const time = Date.now() - (31536000000 * years);
+
+    return (control: AbstractControl): ValidationErrors => {
+      if (control.value) {
+        const a = new Date(control.value);
+
+        if (a.getTime() > time) {
+          return {olderThan: true};
+        }
       }
     }
   }
