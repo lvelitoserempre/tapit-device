@@ -42,7 +42,8 @@
         "PATTERN": "Only letters are accepted here. Do not include spaces or special characters"
       },
       "BIRTH_DATE": {
-        "REQUIRED": "Birthday Date is required"
+        "REQUIRED": "Birthday Date is required",
+        "OLDER_THAN": "You must be over 18 years old"
       },
       "EMAIL": {
         "REQUIRED": "Email is required",

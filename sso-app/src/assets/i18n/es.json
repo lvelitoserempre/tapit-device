@@ -42,7 +42,8 @@
         "PATTERN": "Solo se aceptan letras aqui. No incluyas espacios ni caracteres especiales"
       },
       "BIRTH_DATE": {
-        "REQUIRED": "Debes ingresar tu fecha de nacimiento"
+        "REQUIRED": "Debes ingresar tu fecha de nacimiento",
+        "OLDER_THAN": "Debes ser mayor de 18 años"
       },
       "EMAIL": {
         "REQUIRED": "Debes ingresar tu email",
