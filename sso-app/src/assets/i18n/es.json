@@ -56,6 +56,9 @@
       "PASSWORD_VERIFICATION": {
         "REQUIRED": "Debes ingresar tu contraseña de nuevo",
         "PASSWORD_MATCH": "Tus contraseñas no coinciden"
+      },
+      "ACCEPT_TERMS": {
+        "REQUIRED": "Debes aceptar los terminos y condiciones"
       }
     }
   },
@@ -82,6 +85,7 @@
     },
     "USER_CANCELLED": "Debes autorizar el uso de tus datos en la ventana de facebook.",
     "FACEBOOK_REQUIRED_EMAIL": "Debes autorizar el uso de tu correo electrónico.",
+    "FACEBOOK_SIGN_UP_IN_WRONG_TAB": "Por favor registrate en la pestaña de registro.",
     "UKNOWN_ERROR": "Se ha producido un error desconocido.",
     "ERROR_MESSAGE": {
       "TITLE": "Error",

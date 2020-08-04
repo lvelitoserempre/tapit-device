@@ -56,6 +56,9 @@
       "PASSWORD_VERIFICATION": {
         "REQUIRED": "You must enter your password again",
         "PASSWORD_MATCH": "Your passwords do not match"
+      },
+      "ACCEPT_TERMS": {
+        "REQUIRED": "You must agree to terms and conditions"
       }
     }
   },
@@ -82,6 +85,7 @@
     },
     "USER_CANCELLED": "You must authorize the use of your data in the facebook window.",
     "FACEBOOK_REQUIRED_EMAIL": "You must authorize the use of your email.",
+    "FACEBOOK_SIGN_UP_IN_WRONG_TAB": "Please sign up in the sign up tab.",
     "UKNOWN_ERROR": "An unknown error has occurred.",
     "ERROR_MESSAGE": {
       "TITLE": "Error",
