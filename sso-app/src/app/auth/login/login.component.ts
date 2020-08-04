@@ -10,6 +10,7 @@ import {IframeMessagingService} from '../../shared/services/iframe-messaging.ser
 import SSOConfig from '../../single-sign-on/sso-config';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeMessagingService: IframeMessagingService,
-              private configService: SSOConfigService) {
+              private configService: SSOConfigService, private router: Router) {
     this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
   }
 
@@ -54,11 +55,12 @@ export class LoginComponent implements OnInit {
   loginWithFacebook() {
     this.loaderService.show();
 
-    this.facebookService.signIn(this.config.project)
+    this.facebookService.login()
       .subscribe(customToken => {
       }, error => {
         this.loaderService.hide();
         this.dialogService.manageError(error);
+        this.router.navigateByUrl('sign-up?provider=facebook');
       });
   }
 }

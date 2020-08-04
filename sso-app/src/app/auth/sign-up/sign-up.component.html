@@ -149,7 +149,7 @@
       <p class="text-2xs font-bold text-center uppercase mb-3" *ngIf="config.showLoginFacebookButton"
          style="letter-spacing: 1.3px">{{'SIGN_UP.SIGN_UP_OPTION_LABEL' | translate }}</p>
 
-      <button (click)="signUpWithFacebook()" *ngIf="config.showSignUpFacebookButton"
+      <button id="facebook-button" (click)="signUpWithFacebook()" *ngIf="config.showSignUpFacebookButton"
               class="app-button facebook-button min-width-280 mb-6 block mx-auto uppercase" type="button">
         {{'SIGN_UP.FACEBOOK_SIGN_UP' | translate }}
       </button>

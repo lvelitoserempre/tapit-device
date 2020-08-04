@@ -81,10 +81,13 @@ export class DialogService {
       this.openWrongPasswordErrorDialog('DIALOG.USER_CANCELLED');
     } else if (error.code === AUTH_ERRORS.FACEBOOK_REQUIRED_EMAIL) {
       this.showErrorMessage('DIALOG.FACEBOOK_REQUIRED_EMAIL');
+    } else if (error.code === AUTH_ERRORS.FACEBOOK_SIGN_UP_IN_WRONG_TAB) {
+      this.showErrorMessage('DIALOG.FACEBOOK_SIGN_UP_IN_WRONG_TAB');
     } else {
       this.showErrorMessage('DIALOG.UKNOWN_ERROR');
     }
-    throw error;
+
+    console.error(error);
   }
 
   showErrorDialog(config: DialogConfiguration): MatDialogRef<DialogComponent> {

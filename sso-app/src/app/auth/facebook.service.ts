@@ -18,6 +18,21 @@ export class FacebookService {
     this.facebookAuthProvider.addScope('user_birthday');
   }
 
+  login(): Observable<any> {
+    let newUser;
+
+    return from(auth().signInWithPopup(this.facebookAuthProvider))
+      .pipe(mergeMap((userCredential: UserCredential) => {
+        newUser = userCredential.additionalUserInfo.isNewUser;
+
+        if (newUser) {
+          return from(auth().currentUser.delete()).pipe(() => throwError({code: 'facebook-sign-up-in-wrong-tab'}));
+        }
+
+        return of(userCredential);
+      }));
+  }
+
   signIn(project: string, interests?: string[]): Observable<any> {
     let newUser;
 

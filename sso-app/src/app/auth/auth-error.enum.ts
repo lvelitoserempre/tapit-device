@@ -5,5 +5,6 @@ export enum AUTH_ERRORS {
   TOO_MANY_REQUESTS = 'auth/too-many-requests',
   USER_CANCELLED = 'auth/user-cancelled',
   POPUP_CLOSED_BY_USER = 'auth/popup-closed-by-user',
-  FACEBOOK_REQUIRED_EMAIL = 'facebook-not-authorized-email'
+  FACEBOOK_REQUIRED_EMAIL = 'facebook-not-authorized-email',
+  FACEBOOK_SIGN_UP_IN_WRONG_TAB = 'facebook-sign-up-in-wrong-tab'
 }

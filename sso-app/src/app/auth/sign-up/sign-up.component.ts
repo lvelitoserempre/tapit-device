@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import SSOConfig from '../../single-sign-on/sso-config';
 import {LoaderService} from '../../loader/loader-service/loader.service';
@@ -12,6 +12,8 @@ import {auth} from 'firebase';
 import {switchMap} from 'rxjs/operators';
 import SignUpForm from './sign-up.form';
 import {SignUpService} from '../sign-up.service';
+import {ActivatedRoute} from '@angular/router';
+import {ScrollService} from '../../shared/services/scroll.service';
 import UserCredential = firebase.auth.UserCredential;
 
 @Component({
@@ -19,7 +21,7 @@ import UserCredential = firebase.auth.UserCredential;
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit, AfterViewInit {
   config: SSOConfig;
   interests: any = {};
   signUpForm: FormGroup;
@@ -28,16 +30,22 @@ export class SignUpComponent implements OnInit {
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeMessagingService,
-              private configService: SSOConfigService) {
+              private configService: SSOConfigService, private route: ActivatedRoute) {
     this.signUpForm = this.formBuilder.group(SignUpForm.CONFIG, {updateOn: 'blur'});
   }
 
   ngOnInit(): void {
     this.configService.getConfig().subscribe(config => {
       this.config = config;
-    })
+    });
+  }
 
-    auth().signOut();
+  ngAfterViewInit() {
+    this.route.queryParams.subscribe(queryParams => {
+      if (queryParams.provider === 'facebook') {
+        ScrollService.scrollToElement('facebook-button');
+      }
+    });
   }
 
   signUp() {
