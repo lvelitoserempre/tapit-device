@@ -63,17 +63,21 @@ export class SignUpComponent implements OnInit {
   }
 
   signUpWithFacebook() {
-    const interests = this.toArray(this.interests);
-    this.loaderService.show();
+    this.signUpForm.get('acceptTerms').markAsTouched();
 
-    this.facebookService.signIn(this.config.project, interests)
-      .subscribe(customToken => {
-        },
-        error => {
-          this.loaderService.hide();
-          this.dialogService.manageError(error);
-          auth().currentUser.delete().then();
-        });
+    if (this.signUpForm.get('acceptTerms').valid) {
+      const interests = this.toArray(this.interests);
+      this.loaderService.show();
+
+      this.facebookService.signIn(this.config.project, interests)
+        .subscribe(customToken => {
+          },
+          error => {
+            this.loaderService.hide();
+            this.dialogService.manageError(error);
+            auth().currentUser.delete().then();
+          });
+    }
   }
 
   toArray(object) {
