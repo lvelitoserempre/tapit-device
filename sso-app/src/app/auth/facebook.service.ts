@@ -33,7 +33,7 @@ export class FacebookService {
       }));
   }
 
-  signIn(project: string, interests?: string[]): Observable<any> {
+  signIn(form, project: string, interests?: string[]): Observable<any> {
     let newUser;
 
     return from(auth().signInWithPopup(this.facebookAuthProvider))
@@ -41,7 +41,7 @@ export class FacebookService {
         newUser = userCredential.additionalUserInfo.isNewUser;
 
         if (newUser) {
-          const userData = SignUpService.extractFacebookUserData(userCredential, project, interests);
+          const userData = SignUpService.extractFacebookUserData(form, userCredential, project, interests);
           return this.userDAO.createUser(userData)
         }
 

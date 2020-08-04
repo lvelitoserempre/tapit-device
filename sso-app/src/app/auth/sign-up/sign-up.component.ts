@@ -74,7 +74,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     if (this.signUpForm.get('acceptTerms').valid) {
       this.loaderService.show();
 
-      this.facebookService.signIn(this.config.project, this.interests)
+      this.facebookService.signIn(this.signUpForm.value, this.config.project, this.interests)
         .subscribe(customToken => {
           },
           error => {
