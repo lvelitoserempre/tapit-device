@@ -23,7 +23,7 @@ import UserCredential = firebase.auth.UserCredential;
 })
 export class SignUpComponent implements OnInit, AfterViewInit {
   config: SSOConfig;
-  interests: any = {};
+  interests: string[] = [];
   signUpForm: FormGroup;
   errorMessages = SignUpForm.ERROR_MESSAGES;
   hide: boolean = true;
@@ -74,10 +74,9 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     this.signUpForm.get('acceptTerms').markAsTouched();
 
     if (this.signUpForm.get('acceptTerms').valid) {
-      const interests = this.toArray(this.interests);
       this.loaderService.show();
 
-      this.facebookService.signIn(this.config.project, interests)
+      this.facebookService.signIn(this.config.project, this.interests)
         .subscribe(customToken => {
           },
           error => {
@@ -88,17 +87,16 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     }
   }
 
-  toArray(object) {
-    const array = [];
+  toggleInterest(key, $event) {
+    if ($event.target.checked) {
+      this.interests.push(key);
+    } else {
+      const i = this.interests.indexOf(key);
 
-    if (object) {
-      for (const interestKey of Object.keys(object)) {
-        if (object[interestKey]) {
-          array.push(interestKey);
-        }
+      if (i >= 0) {
+        this.interests.splice(i, 1);
       }
     }
-
-    return array;
+    console.log(key, $event.target.checked, this.interests)
   }
 }
