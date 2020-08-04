@@ -16,10 +16,10 @@
         <label class="font-bold text-neutral-800 block mb-2" for="email">{{'LOGIN.EMAIL' | translate }}</label>
         <input (focus)="loginForm.get('email').markAsUntouched()"
                [class.border-danger-500]="loginForm.get('email').invalid && loginForm.get('email').touched"
-               [value]="config.email"
+               [value]="config.loginEmail"
                class="app-input block w-full" formControlName="email" id="email" type="email">
 
-        <p *ngIf="config.emailHint" class="pl-2 text-neutral-700 italic">{{config.emailHint}}</p>
+        <p *ngIf="config.loginEmailHint" class="pl-2 text-neutral-700 italic">{{config.loginEmailHint}}</p>
 
         <p *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched"
            class="text-danger-500 pl-2">
@@ -44,7 +44,7 @@
           </div>
         </div>
 
-        <p *ngIf="config.passwordHint" class="pl-2 text-neutral-700 italic">{{config.passwordHint}}</p>
+        <p *ngIf="config.loginPasswordHint" class="pl-2 text-neutral-700 italic">{{config.loginPasswordHint}}</p>
 
         <p *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched"
            class="text-danger-500 pl-2">
@@ -71,6 +71,6 @@
       {{'LOGIN.RECOVER_PASSWORD' | translate }}
     </a>
 
-    <div [innerHTML]="config.loginLegalHtml"></div>
+    <div [innerHTML]="config.loginFooterHtml"></div>
   </div>
 </div>

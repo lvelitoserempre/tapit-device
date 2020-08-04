@@ -11,7 +11,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-firestore.js"></script>
 
   <script>
-    const TAPIT_ORIGIN = 'https://clube-brahma-sso.web.app';
+    const TAPIT_ORIGIN = 'http://localhost:4200';
     const CHANNEL = 'TAPIT';
 
     /*************************************************************************
@@ -74,21 +74,23 @@
           /* Boolean type parameter to show the sign up facebook button. */
           showOffersOption: false,
           /* Boolean type parameter to show offers options. */
-          email: '',
+          loginEmail: '',
           /* String type parameter for sample mail to be displayed as a value within the email field. */
-          emailHint: '',
+          loginEmailHint: '',
           /* String type parameter to show a suggestion of mail or text under the email field. Empty by default */
-          passwordHint: '',
+          loginPasswordHint: '',
           /* String type parameter to show a suggestion of password or text under the password field. Empty by default */
-          signUpLegalHtml: '<h1 class="text-sm font-bold mb-1 text-center">By registering you agree to:</h1><p class="text-sm text-center">Nuestros <a class="text-primary-500" href="/terms.html" target="_blank">Tapit Terms and Conditions,</a> the <a class="text-primary-500" href="/privacy.html" target="_blank">Privacy policies,</a> the <a class="text-primary-500" href="/data-proteccion.html" target="_blank">Personal data protection policy</a> and sending exclusive offers to my email. <br><br> The processing of my personal information by Bavaria & Cía S.C.A. for the purposes and uses required by Beer Poker described in the aforementioned policy. <br> <br> I confirm that I am over 18 years of age.</p>',
+          signUpAcceptTermsHtml: '<h1 class="text-sm font-bold mb-1 text-center">By registering you agree to:</h1><p class="text-sm text-center">Nuestros <a class="text-primary-500" href="/terms.html" target="_blank">Tapit Terms and Conditions,</a> the <a class="text-primary-500" href="/privacy.html" target="_blank">Privacy policies,</a> the <a class="text-primary-500" href="/data-proteccion.html" target="_blank">Personal data protection policy</a> and sending exclusive offers to my email. <br><br> The processing of my personal information by Bavaria & Cía S.C.A. for the purposes and uses required by Beer Poker described in the aforementioned policy. <br> <br> I confirm that I am over 18 years of age.</p>',
+
+          signUpAcceptOffersHtml: 'Acepto el envío de ofertas exclusivas a mi correo.',
           /* String type parameter for legend of acceptance of terms and conditions when the user registers, in HTML tag format. SSO can recognize and apply tailwind css classes */
-          loginLegalHtml: '<p class="text-sm text-center">By logging in you are accepting our <a class="text-primary-500" href="/terms.html" target="_blank">Tapit Terms and Conditions,</a> the <a class="text-primary-500" href="/privacy.html" target="_blank">Privacy policies,</a> the <a class="text-primary-500" href="/data-proteccion.html" target="_blank">Personal data protection policy</a> and sending exclusive offers to my email. </p>',
+          loginFooterHtml: '<p class="text-sm text-center">By logging in you are accepting our <a class="text-primary-500" href="/terms.html" target="_blank">Tapit Terms and Conditions,</a> the <a class="text-primary-500" href="/privacy.html" target="_blank">Privacy policies,</a> the <a class="text-primary-500" href="/data-proteccion.html" target="_blank">Personal data protection policy</a> and sending exclusive offers to my email. </p>',
           /* String type parameter for legend of acceptance of terms and conditions when the user registers, in HTML tag format. SSO can recognize and apply tailwind css classes */
           showCloseButton: true,
           /* Boolean type parameter to show the close button. */
           showContainerBackground: true,
           /* Boolean type parameter to show the container background. */
-          styles: '.text-primary-500{color: #da291c;} .bg-primary-500{background: #da291c;} .border-primary-500{border-color: #da291c;} .logo {padding-top: 15px;}',
+          styles: '.text-primary-500{color: #da291c;} .bg-primary-500{background: #da291c;} .border-primary-500{border-color: #da291c;} .logo {padding-top: 15px;} .checkbox input:checked ~ .checkmark { background-color: #da291c; border-color: #da291c;}',
           /*  String type parameter to add custom stylest in CSS format. Empty by default */
           interests: [
             /* Object type parameter to add cutom inputs.
@@ -199,7 +201,7 @@
     <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full"
          role="dialog" aria-modal="true" aria-labelledby="modal-headline">
       <iframe class="w-full max-h-screen" id="login-iframe" onload="setUpLogin()"
-              src="https://clube-brahma-sso.web.app/login"
+              src="http://localhost:4200/login"
               style="height: 773px"></iframe>
     </div>
   </div>

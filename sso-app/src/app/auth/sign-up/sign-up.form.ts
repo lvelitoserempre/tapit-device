@@ -7,7 +7,9 @@ export default class SignUpForm {
     birthDate: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
     password: ['', [Validators.required, Validators.minLength(6), SignUpForm.passwordsMatch]],
-    passwordVerification: ['', [Validators.required, SignUpForm.passwordsMatch]]
+    passwordVerification: ['', [Validators.required, SignUpForm.passwordsMatch]],
+    acceptTerms: ['', [Validators.required]],
+    acceptOffers: [true, []]
   };
 
   static readonly ERROR_MESSAGES = {
@@ -34,6 +36,9 @@ export default class SignUpForm {
     },
     birthDate: {
       required: 'SIGN_UP.VALIDATIONS.BIRTH_DATE.REQUIRED',
+    },
+    acceptTerms: {
+      required: 'SIGN_UP.VALIDATIONS.ACCEPT_TERMS.REQUIRED',
     }
   };
 
