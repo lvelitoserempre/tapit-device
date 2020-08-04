@@ -36,7 +36,7 @@
       </div>
       <!-- This options are for promo poker campaing page -->
       <div *ngIf="incomingData.config.promoPokerTerms" class="text-left mb-8  lg:w-8/12">
-        <label class="checkbox font-bold text-gray-800">
+        <label class="app-checkbox font-bold text-gray-800">
           <input formControlName="terms" type="checkbox">
           <span class="checkmark"></span>
           Acepto
@@ -71,7 +71,7 @@
 
       <div id="terms-and-conditions" *ngIf="incomingData.config.promoPokerTerms != true"
            class="text-left mb-8 lg:w-8/12">
-        <label class="checkbox text-gray-800">
+        <label class="app-checkbox text-gray-800">
           <input formControlName="terms" type="checkbox">
           <span class="checkmark"></span>
           Acepto los
@@ -86,7 +86,7 @@
       </div>
 
       <div *ngIf="incomingData.config.offersOption" class="text-left mb-8 lg:w-8/12">
-        <label class="checkbox text-gray-800">
+        <label class="app-checkbox text-gray-800">
           <input formControlName="offers" type="checkbox">
           <span class="checkmark"></span>
           Quiero recibir ofertas exclusivas de Tapit en mi correo. No enviamos spam! (Opcional)
