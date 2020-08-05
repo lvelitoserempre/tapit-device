@@ -1,11 +1,11 @@
 .active.app-link {
-    @apply text-purple-500;
+    @apply text-secondary-500;
 }
 
 .active.app-link i{
-    @apply text-orange-500;
+    @apply text-primary-500;
 }
 
 .profile-header.active {
-    @apply px-2 bg-gray-100 rounded-2xl
+    @apply px-2 bg-neutral-100 rounded-2xl
 }

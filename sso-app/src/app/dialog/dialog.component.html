@@ -1,0 +1,16 @@
+<div class="max-w-xl">
+  <div class="flex">
+    <div class="self-center">
+      <div class="p-2 inline-block align-middle w-1/4">
+        <img class="image w-full" src="assets/images/exclamation-icon.svg">
+      </div>
+
+      <div class="p-2 inline-block align-middle w-3/4">
+        <p class="text-danger-500 text-base sm:text-lg font-bold mb-4">{{data.message | translate }}</p>
+        <button
+          [mat-dialog-close]="true"
+          class="bg-primary-500 px-3 py-2 text-white text-sm sm:text-base font-bold rounded-xl focus:outline-none block mx-auto">{{ data.buttonOne | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

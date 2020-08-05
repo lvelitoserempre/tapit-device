@@ -1,0 +1,96 @@
+{
+  "HEADER": {
+    "SLOGAN_SIMPLE_PART": "A comunidade de",
+    "SLOGAN_HIGHLIGHTED_PART": "amantes de cerveja.",
+    "LOGIN_TAP": "Iniciar Sessão",
+    "SIGN_UP_TAP": "Registro"
+  },
+  "LOGIN": {
+    "FACEBOOK_LOGIN": "Entrar com o Facebook",
+    "EMAIL_LABEL": "ou com sua conta de email",
+    "EMAIL": "Correio eletrônico",
+    "PASSWORD": "Senha",
+    "REMIND_ME": "Lembre-me",
+    "LOGIN": "Iniciar Sessão",
+    "RECOVER_PASSWORD": "Recuperar Senha",
+    "LEGEND_ACCEPTANCE": "Ao se registrar, você aceita estes",
+    "VALIDATIONS": {
+      "EMAIL_REQUERIED": "E-mail é obrigatório",
+      "INVALID_EMAIL": "O formato do email não é válido",
+      "PASSWORD_REQUIRED": "Senha requerida"
+    }
+  },
+  "SIGN_UP": {
+    "FIRST_NAME": "Nome",
+    "LAST_NAME": "Sobrenome",
+    "BIRTH_DATE": "Data de Nascimento",
+    "EMAIL": "Correio eletrônico",
+    "PASSWORD": "Senha",
+    "PASSWORD_VERIFICATION": "Verifique a Senha",
+    "SIGN_UP": "Inscrever-se",
+    "SIGN_UP_OPTION_LABEL": "ou registre-se no facebook",
+    "FACEBOOK_SIGN_UP": "Registre-se no Facebook",
+    "LEGEND_ACCEPTANCE": "Ao se registrar, você concorda em:",
+    "SELECT_INTERESTS": "Selecione seus interesses",
+    "VALIDATIONS": {
+      "FIRST_NAME": {
+        "REQUIRED": "Você deve digitar seu nome",
+        "PATTERN": "Somente letras são aceitas aqui. Não inclua espaços ou caracteres especiais"
+      },
+      "LAST_NAME": {
+        "REQUIRED": "Você deve digitar seu sobrenome",
+        "PATTERN": "Somente letras são aceitas aqui. Não inclua espaços ou caracteres especiais"
+      },
+      "BIRTH_DATE": {
+        "REQUIRED": "Você deve inserir sua data de nascimento",
+        "OLDER_THAN": "Você deve ter mais de 18 anoss"
+      },
+      "EMAIL": {
+        "REQUIRED": "Você deve digitar seu email",
+        "PATTERN": "Seu email não é válido. Talvez esteja incorreto"
+      },
+      "PASSWORD": {
+        "REQUIRED": "Você deve digitar sua senha",
+        "MIN_LENGTH": "Sua senha deve ter pelo menos 6 caracteres",
+        "PASSWORD_MATCH": "Suas senhas não conferem"
+      },
+      "PASSWORD_VERIFICATION": {
+        "REQUIRED": "Você deve digitar sua senha novamente",
+        "PASSWORD_MATCH": "Suas senhas não conferem"
+      },
+      "ACCEPT_TERMS": {
+        "REQUIRED": "Você deve concordar com os termos e condições"
+      }
+    }
+  },
+  "DIALOG": {
+    "TOO_MANY_FAILED_ATTEMPTS": {
+      "TITLE": "Erro de autenticação",
+      "MESSAGE": "Muitas tentativas falhas. Por favor, tente novamente mais tarde.",
+      "BUTTON_LABEL": "Aceite"
+    },
+    "WRONG_PASSWORD": {
+      "TITLE": "Erro de autenticação",
+      "MESSAGE": "A senha não está correta ou o usuário não possui uma.",
+      "BUTTON_LABEL": "Aceite"
+    },
+    "USER_NOT_FOUND": {
+      "TITLE": "Erro de autenticação",
+      "MESSAGE": "Não há registro de usuário com este identificador. O usuário pode ter sido removido.",
+      "BUTTON_LABEL": "Aceite"
+    },
+    "SIGN_UP_EMAIL_ALREADY_IN_USE": {
+      "TITLE": "Erro de registro do usuário",
+      "MESSAGE": "O endereço de email está em uso por outra conta.\n É possível que você já esteja registrado?",
+      "BUTTON_LABEL": "Aceite"
+    },
+    "USER_CANCELLED": "Você deve autorizar o uso de seus dados na janela do facebook.",
+    "FACEBOOK_REQUIRED_EMAIL": "Você deve autorizar o uso do seu email.",
+    "FACEBOOK_SIGN_UP_IN_WRONG_TAB": "Registre-se na guia de registro",
+    "UKNOWN_ERROR": "Um erro desconhecido ocorreu",
+    "ERROR_MESSAGE": {
+      "TITLE": "Erro",
+      "BUTTON_LABEL": "Aceite"
+    }
+  }
+}

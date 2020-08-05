@@ -1,0 +1,96 @@
+{
+  "HEADER": {
+    "SLOGAN_SIMPLE_PART": "The community of",
+    "SLOGAN_HIGHLIGHTED_PART": "beer lovers.",
+    "LOGIN_TAP": "Login",
+    "SIGN_UP_TAP": "Sign up"
+  },
+  "LOGIN": {
+    "FACEBOOK_LOGIN": "Login with Facebook",
+    "EMAIL_LABEL": "or with your email account",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "REMIND_ME": "Remind me",
+    "LOGIN": "Login",
+    "RECOVER_PASSWORD": "Recover Password",
+    "LEGEND_ACCEPTANCE": "By registering you accept these",
+    "VALIDATIONS": {
+      "EMAIL_REQUERIED": "Email is required",
+      "INVALID_EMAIL": "Email format is not valid",
+      "PASSWORD_REQUIRED": "Password is required"
+    }
+  },
+  "SIGN_UP": {
+    "FIRST_NAME": "Name",
+    "LAST_NAME": "Last Name",
+    "BIRTH_DATE": "Birthday Date",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "PASSWORD_VERIFICATION": "Password Verification",
+    "SIGN_UP": "Sign up",
+    "SIGN_UP_OPTION_LABEL": "or register with facebook",
+    "FACEBOOK_SIGN_UP": "Register with Facebook",
+    "LEGEND_ACCEPTANCE": "By registering you are accepting:",
+    "SELECT_INTERESTS": "Select your interests",
+    "VALIDATIONS": {
+      "FIRST_NAME": {
+        "REQUIRED": "Name is required",
+        "PATTERN": "Only letters are accepted here. Do not include spaces or special characters"
+      },
+      "LAST_NAME": {
+        "REQUIRED": "Last name is required",
+        "PATTERN": "Only letters are accepted here. Do not include spaces or special characters"
+      },
+      "BIRTH_DATE": {
+        "REQUIRED": "Birthday Date is required",
+        "OLDER_THAN": "You must be over 18 years old"
+      },
+      "EMAIL": {
+        "REQUIRED": "Email is required",
+        "PATTERN": "Your email is not valid. Maybe it's misspelled"
+      },
+      "PASSWORD": {
+        "REQUIRED": "Password is required",
+        "MIN_LENGTH": "Your password must have at least 6 characters",
+        "PASSWORD_MATCH": "Your passwords do not match"
+      },
+      "PASSWORD_VERIFICATION": {
+        "REQUIRED": "You must enter your password again",
+        "PASSWORD_MATCH": "Your passwords do not match"
+      },
+      "ACCEPT_TERMS": {
+        "REQUIRED": "You must agree to terms and conditions"
+      }
+    }
+  },
+  "DIALOG": {
+    "TOO_MANY_FAILED_ATTEMPTS": {
+      "TITLE": "Authentication Error",
+      "MESSAGE": "Too many failed attempts. Please try again later.",
+      "BUTTON_LABEL": "Agree"
+    },
+    "WRONG_PASSWORD": {
+      "TITLE": "Authentication Error",
+      "MESSAGE": "The password is not correct or the user does not exist",
+      "BUTTON_LABEL": "Agree"
+    },
+    "USER_NOT_FOUND": {
+      "TITLE": "Authentication Error",
+      "MESSAGE": "There is no user record with this identify. The user may have been removed.",
+      "BUTTON_LABEL": "Agree"
+    },
+    "SIGN_UP_EMAIL_ALREADY_IN_USE": {
+      "TITLE": "Error en alta de usuario",
+      "MESSAGE": "The email address is in use by another account. \nIs it possible that you are already registered?",
+      "BUTTON_LABEL": "Agree"
+    },
+    "USER_CANCELLED": "You must authorize the use of your data in the facebook window.",
+    "FACEBOOK_REQUIRED_EMAIL": "You must authorize the use of your email.",
+    "FACEBOOK_SIGN_UP_IN_WRONG_TAB": "Please sign up in the sign up tab.",
+    "UKNOWN_ERROR": "An unknown error has occurred.",
+    "ERROR_MESSAGE": {
+      "TITLE": "Error",
+      "BUTTON_LABEL": "Agree"
+    }
+  }
+}

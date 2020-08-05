@@ -1,0 +1,33 @@
+@font-face {
+  font-family: filson-soft-book;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/assets/fonts/filson-soft-book.otf') format('opentype');
+}
+
+@font-face {
+  font-family: filson-soft-regular;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/filson-soft-regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: filson-soft-bold;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/filson-soft-bold.otf') format('opentype');
+}
+
+
+html {
+  font-family: filson-soft-regular;
+  font-size: 16px;
+}
+
+body {
+  font-family: filson-soft-regular;
+}

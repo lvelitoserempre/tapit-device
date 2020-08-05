@@ -1,0 +1,98 @@
+@import "assets/styles/material.theme";
+@import "assets/styles/tailwind.css";
+@import "assets/styles/variables";
+
+*:focus {
+  outline: none !important;
+}
+
+.dialog {
+  .mat-dialog-container {
+    border-radius: 2rem;
+    @media (max-width: $xs) {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: 24px 18px;
+    }
+  }
+
+  &.dialog-full {
+    @media (max-width: $xs) {
+      bottom: 0;
+      max-height: 80%;
+      max-width: none !important;
+      position: absolute !important;
+      width: 100%;
+    }
+
+    .scroll-view {
+      @media (max-width: $xs) {
+        max-height: 60vh;
+      }
+    }
+  }
+}
+
+.min-width-280 {
+  min-width: 280px;
+}
+
+.min-width-18 {
+  min-width: 18rem;
+}
+
+.facebook-button {
+  background: #4267b2;
+}
+
+.bg-pattern {
+  background: url("assets/images/bg.svg") no-repeat;
+  background-size: cover;
+}
+
+.bg-bubble-4 {
+  background: url("assets/images/bubble_4.png") no-repeat left -3em bottom -1rem;
+  background-size: 144px;
+}
+
+.app-checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  user-select: none;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2px;
+    width: 24px;
+    height: 24px;
+    background: #FFFFFF;
+    border: 2px solid #191419;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input:checked ~ .checkmark {
+    display: block;
+    background-color: #FF5005;
+    border-color: #FF5005;
+  }
+}
+
+

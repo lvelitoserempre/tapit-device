@@ -10,6 +10,34 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const rename = require('gulp-rename');
 
+APPS_MAP = {
+  TAPIT_DEV: {
+    build: 'develop',
+    deploy: 'firebase deploy --only hosting:tapit-app-dev'
+  },
+  TAPIT_TESTING: {
+    build: 'develop',
+    deploy: 'firebase deploy --only hosting:tapit-app-testing'
+  },
+  TAPIT_PREVIEW: {
+    build: 'production',
+    deploy: 'firebase deploy --only hosting:tapit-app-preview'
+  },
+  TAPIT_PRODUCTION: {
+    build: 'production',
+    deploy: 'firebase deploy --only hosting:tapit-app-production'
+  },
+  SSO_BRAHMA: {
+    build: 'develop',
+    deploy: 'firebase deploy --only hosting:clube-brahma-sso && firebase deploy --only hosting:clube-brahma-sso-example'
+  },
+}
+
+
+function isProductionBuild() {
+  return APPS_MAP[process.env.environment].build === 'production';
+}
+
 function runCommand(command, folder) {
   return run(command, {cwd: folder})
     .exec(undefined, (error) => {
@@ -35,6 +63,14 @@ task('serve-static', function () {
   });
 });
 
+task('serve-sso-example', function () {
+  const server = liveServer.static('sso-example', 3000);
+  server.start();
+
+  watch(['sso-example/**'], function (file) {
+    server.notify.apply(server, [file]);
+  });
+});
 
 task('clear', function () {
   return del('dist/*');
@@ -62,7 +98,7 @@ task('build-tailwind', function () {
     .pipe(postcss([postcssImport, tailwindcss, autoprefixer, cssnano]))
     .pipe(dest('static/assets/styles'))
     .pipe(dest('react-app/src/assets/styles'))
-    .pipe(dest('angular-app/src/assets/styles'))
+    .pipe(dest('sso-app/src/assets/styles'))
 })
 
 task('build-react-app', function () {
@@ -72,25 +108,22 @@ task('build-react-app', function () {
   return runCommand(command, folder);
 })
 
-task('build-angular-app', function () {
+task('build-sso-app', function () {
   const command = 'npm i && npm run ' + (isProductionBuild() ? 'build-prod' : 'build')
-  const folder = './angular-app';
+  const folder = './sso-app';
 
   return runCommand(command, folder);
 })
 
 task('deploy', function () {
-  const command = 'firebase use default && firebase deploy --only hosting:tapit-app-' + process.env.environment
+  const command = APPS_MAP[process.env.environment].deploy;
   const folder = './';
 
   return runCommand(command, folder);
 })
 
-task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-angular-app'));
+task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-sso-app'));
 
-task('build-and-deploy', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-angular-app', 'deploy'));
+task('build-and-deploy', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-sso-app', 'deploy'));
 
-
-function isProductionBuild() {
- return process.env.environment === 'production' || process.env.environment === 'preview';
-}
+task('sso:build-and-deploy', series('clear', 'build-sso-app', 'deploy'));
