@@ -87,7 +87,7 @@ export class DialogService {
 
   showErrorDialog(config: DialogConfigurationModel): MatDialogRef<DialogComponent> {
     return this.dialog.open(DialogComponent, {
-      panelClass: ['border', 'border-orange-500'],
+      panelClass: ['border', 'border-primary-500'],
       data: config
     });
   }

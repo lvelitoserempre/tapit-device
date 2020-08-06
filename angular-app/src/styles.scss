@@ -1,10 +1,5 @@
 @import "assets/styles/material.theme";
-@import "assets/styles/fonts";
 @import "assets/styles/variables";
-
-* {
-  font-family: filson-soft;
-}
 
 .dialog {
   .mat-dialog-container {
@@ -161,8 +156,9 @@
     border-color: #FF5005;
   }
 }
+
 body {
-  input  {
+  input {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -170,6 +166,3 @@ body {
     box-shadow: none;
   }
 }
-
-
-

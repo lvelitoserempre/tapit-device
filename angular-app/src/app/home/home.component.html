@@ -1,15 +1,15 @@
 <div class="container mx-auto px-2 py-10">
   <section class="flex mb-8">
-    <h1 class="self-end text-15xl sm:text-20xl leading-none text-gray-400 font-bold">1</h1>
+    <h1 class="self-end text-15xl sm:text-20xl leading-none text-neutral-400 font-bold">1</h1>
 
     <div class="flex-1 self-end p-2">
-      <h3 class="text-red-500 text-2xl sm:text-5xl font-bold">Selecciona un evento</h3>
-      <p class="py-2 text-gray-700 sm:text-xl">Solo por tiempo limitado con la compra de mínimo <span
+      <h3 class="text-danger-500 text-lg sm:text-2xl font-bold">Selecciona un evento</h3>
+      <p class="py-2 text-neutral-700 sm:text-base">Solo por tiempo limitado con la compra de mínimo <span
         class="font-bold">6 cervezas</span> de las marcas de Bavaria <span class="font-bold">podrás acceder a eventos
           exclusivos.</span> Con cada factura tienes oportunidad para desbloquear los eventos. Próximamente encontrarás
         nuevos beneficios.</p>
 
-      <footer class="relative border-b-2 border-gray-400">
+      <footer class="relative border-b-2 border-neutral-400">
         <svg class="absolute right-0" height="10" style="bottom: -0.35rem" width="10">
           <circle cx="5" cy="5" fill="#FF5005" r="5"/>
         </svg>
@@ -26,12 +26,12 @@
            ngxSlickItem>
         <img [src]="event.image" class="h-full max-w-none mx-auto"/>
 
-        <div [ngClass]="event.isSelected ? 'bg-black opacity-50' : 'bg-gray-100 bm-color'"
+        <div [ngClass]="event.isSelected ? 'bg-black opacity-50' : 'bg-neutral-100 bm-color'"
              class="absolute inset-0"></div>
 
-        <h3 class="text-white text-2xl sm:text-4xl font-bold events__title">{{i + 1 | number : '2.0' }}</h3>
-        <div class="events__text text-xl sm:text-2xl">
-          <h4 class="text-red-500 font-bold events__name">{{event.name}}</h4>
+        <h3 class="text-white text-lg sm:text-2xl font-bold events__title">{{i + 1 | number : '2.0' }}</h3>
+        <div class="events__text text-base sm:text-lg">
+          <h4 class="text-danger-500 font-bold events__name">{{event.name}}</h4>
           <h4 class="text-white font-bold events__required">{{event.requiredBeers}} Cervezas</h4>
         </div>
       </div>
@@ -44,12 +44,12 @@
 <div class="bg-pattern">
   <div class="container mx-auto px-2 py-10">
     <section class="flex mb-8">
-      <h1 class="self-end text-15xl sm:text-20xl leading-none text-gray-400 font-bold">2</h1>
+      <h1 class="self-end text-15xl sm:text-20xl leading-none text-neutral-400 font-bold">2</h1>
       <div class="flex-1 self-end p-2">
-        <h3 class="text-red-500 text-2xl sm:text-5xl font-bold">Carga tu factura</h3>
-        <p class="py-2 text-gray-700 sm:text-xl">Envíanos una imagen de la factura de tu compra de cerveza.</p>
+        <h3 class="text-danger-500 text-lg sm:text-2xl font-bold">Carga tu factura</h3>
+        <p class="py-2 text-neutral-700 sm:text-base">Envíanos una imagen de la factura de tu compra de cerveza.</p>
 
-        <footer class="relative border-b-2 border-gray-400">
+        <footer class="relative border-b-2 border-neutral-400">
           <svg class="absolute right-0" height="10" style="bottom: -0.35rem" width="10">
             <circle cx="5" cy="5" fill="#FF5005" r="5"/>
           </svg>
@@ -60,8 +60,8 @@
     <section class="relative bill-input-section pt-10 p-4">
       <div class="sm:flex">
         <div class="sm:flex-1">
-          <label class="font-bold text-xl text-red-500 block mb-2" for="bill">Número de factura*</label>
-          <input [(ngModel)]="billNumber" class="text-center font-bold text-lg p-4 border border-orange-500 rounded-xl focus:outline-none"
+          <label class="font-bold text-base text-danger-500 block mb-2" for="bill">Número de factura*</label>
+          <input [(ngModel)]="billNumber" class="text-center font-bold text-base p-4 border border-primary-500 rounded-xl focus:outline-none"
                  id="bill"
                  type="text">
 
@@ -78,28 +78,28 @@
                                                                   src="assets/images/partners/rappi.png"></div>
           </div>
 
-          <p class="text-xs text-red-500 underline">*Solo se aceptarán facturas desde el 15 de Abril de 2020 en
+          <p class="text-xs text-danger-500 underline">*Solo se aceptarán facturas desde el 15 de Abril de 2020 en
             adelante.
             * Aplican términos y condiciones</p>
 
           <div *ngIf="!selectedImage" class="mt-10 text-center">
             <button
               (click)="inputFile.click()"
-              class="px-8 py-4 bg-orange-500 font-bold text-white rounded-xl inline-block mx-auto focus:outline-none">SUBE TU FACTURA
+              class="px-8 py-4 bg-primary-500 font-bold text-white rounded-xl inline-block mx-auto focus:outline-none">SUBE TU FACTURA
             </button>
-            <p class="text-xs text-gray-800 font-bold mt-2">Formatos válidos .jpg, .png máximo 5 megas.</p>
+            <p class="text-xs text-neutral-800 font-bold mt-2">Formatos válidos .jpg, .png máximo 5 megas.</p>
           </div>
 
           <div *ngIf="selectedImage" class="mt-10 text-center">
             <div class="inline-block max-w-sm text-center align-bottom">
               <img [src]="selectedImage.base64">
-              <a (click)="inputFile.click()" class="block underline text-red-500 font-bold cursor-pointer m-2">Subir de
+              <a (click)="inputFile.click()" class="block underline text-danger-500 font-bold cursor-pointer m-2">Subir de
                 nuevo</a>
             </div>
 
             <button
               (click)="sendFile()"
-              class="sm:ml-4 px-8 py-4 bg-orange-500 font-bold text-white rounded-xl inline-block mx-auto focus:outline-none align-bottom">
+              class="sm:ml-4 px-8 py-4 bg-primary-500 font-bold text-white rounded-xl inline-block mx-auto focus:outline-none align-bottom">
               ENVIAR
             </button>
           </div>
@@ -115,7 +115,7 @@
 
       <img class="my-16 mx-auto" src="/assets/images/line.svg">
       <div class="row section section__beers center-xs section__beers-bg">
-        <h2 class="text-red-500 font-bold text-center text-2xl sm:text-6xl mb-10">Nuestras Marcas</h2>
+        <h2 class="text-danger-500 font-bold text-center text-lg sm:text-2xl mb-10">Nuestras Marcas</h2>
         <div class="section__beers-container">
           <ngx-slick-carousel #slickModal="slick-carousel" [config]="settings"
                               class="section__beers-slider"
