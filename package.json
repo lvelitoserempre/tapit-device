@@ -22,7 +22,7 @@
     "start": "gulp serve-dist",
     "serve": "gulp serve-static",
     "serve-sso": "gulp serve-sso-example",
-    "build": "npm run build-tailwind && cross-env environment=testing gulp build",
+    "build": "cross-env environment=TAPIT_DEV gulp build",
     "build-tailwind": "gulp build-tailwind",
     "deploy-dev": "cross-env environment=TAPIT_DEV gulp build-and-deploy",
     "deploy-testing": "cross-env environment=TAPIT_TESTING gulp build-and-deploy",

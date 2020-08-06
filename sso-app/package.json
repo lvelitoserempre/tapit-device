@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build -c=testing --output-path=../dist --base-href=/",
-    "build-prod": "ng build --prod --output-path=../dist --base-href=/",
+    "build": "ng build -c=testing --output-path=../dist/sso --base-href=/sso/",
+    "build-prod": "ng build --prod --output-path=../dist/sso --base-href=/sso/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
