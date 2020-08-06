@@ -10,7 +10,7 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const rename = require('gulp-rename');
 
-APPS_MAP = {
+BUILD_MAP = {
   TAPIT_DEV: {
     build: 'develop',
     deploy: 'firebase deploy --only hosting:tapit-app-dev'
@@ -27,7 +27,7 @@ APPS_MAP = {
     build: 'production',
     deploy: 'firebase deploy --only hosting:tapit-app-production'
   },
-  SSO_BRAHMA: {
+  BRAHMA_SSO_DEV: {
     build: 'develop',
     deploy: 'firebase deploy --only hosting:clube-brahma-sso && firebase deploy --only hosting:clube-brahma-sso-example'
   },
@@ -35,7 +35,7 @@ APPS_MAP = {
 
 
 function isProductionBuild() {
-  return APPS_MAP[process.env.environment].build === 'production';
+  return BUILD_MAP[process.env.ENV].build === 'production';
 }
 
 function runCommand(command, folder) {
@@ -63,7 +63,7 @@ task('serve-static', function () {
   });
 });
 
-task('serve-sso-example', function () {
+task('serve-sso', function () {
   const server = liveServer.static('sso-example', 3000);
   server.start();
 
@@ -98,6 +98,7 @@ task('build-tailwind', function () {
     .pipe(postcss([postcssImport, tailwindcss, autoprefixer, cssnano]))
     .pipe(dest('static/assets/styles'))
     .pipe(dest('react-app/src/assets/styles'))
+    .pipe(dest('angular-app/src/assets/styles'))
     .pipe(dest('sso-app/src/assets/styles'))
 })
 
@@ -123,7 +124,7 @@ task('build-sso-app', function () {
 })
 
 task('deploy', function () {
-  const command = APPS_MAP[process.env.environment].deploy;
+  const command = BUILD_MAP[process.env.ENV].deploy;
   const folder = './';
 
   return runCommand(command, folder);
@@ -131,6 +132,6 @@ task('deploy', function () {
 
 task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-angular-app','build-sso-app'));
 
-task('build-and-deploy', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-sso-app', 'deploy'));
+task('deploy-tapit', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-sso-app', 'deploy'));
 
-task('sso:build-and-deploy', series('clear', 'build-sso-app', 'deploy'));
+task('deploy-brahma-sso', series('clear', 'build-sso-app', 'deploy'));
