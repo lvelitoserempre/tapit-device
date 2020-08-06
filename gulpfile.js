@@ -108,6 +108,13 @@ task('build-react-app', function () {
   return runCommand(command, folder);
 })
 
+task('build-angular-app', function () {
+  const command = 'npm i && npm run ' + (isProductionBuild() ? 'build-prod' : 'build')
+  const folder = './angular-app';
+
+  return runCommand(command, folder);
+})
+
 task('build-sso-app', function () {
   const command = 'npm i && npm run ' + (isProductionBuild() ? 'build-prod' : 'build')
   const folder = './sso-app';
@@ -122,7 +129,7 @@ task('deploy', function () {
   return runCommand(command, folder);
 })
 
-task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-sso-app'));
+task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-angular-app','build-sso-app'));
 
 task('build-and-deploy', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-sso-app', 'deploy'));
 

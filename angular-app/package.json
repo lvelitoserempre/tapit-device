@@ -8,8 +8,7 @@
     "build-prod": "ng build --prod --output-path=../dist/app --base-href=/app/",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "tw": "tailwind build ../tailwindcss/tailwind.css -c tailwindcss/tailwind.config.js -o ../static/tailwind.css"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

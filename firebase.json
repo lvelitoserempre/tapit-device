@@ -110,7 +110,7 @@
     },
     {
       "site": "tapit-sso-test",
-      "public": "tapit-sso-test",
+      "public": "sso-example",
       "ignore": [
         "firebase.json",
         "**/.*",
