@@ -2,16 +2,16 @@
   "HEADER": {
     "SLOGAN_SIMPLE_PART": "A comunidade de",
     "SLOGAN_HIGHLIGHTED_PART": "amantes de cerveja.",
-    "LOGIN_TAP": "Iniciar Sessão",
+    "LOGIN_TAP": "Login",
     "SIGN_UP_TAP": "Registro"
   },
   "LOGIN": {
     "FACEBOOK_LOGIN": "Entrar com o Facebook",
     "EMAIL_LABEL": "ou com sua conta de email",
-    "EMAIL": "Correio eletrônico",
+    "EMAIL": "Email",
     "PASSWORD": "Senha",
     "REMIND_ME": "Lembre-me",
-    "LOGIN": "Iniciar Sessão",
+    "LOGIN": "Login",
     "RECOVER_PASSWORD": "Recuperar Senha",
     "LEGEND_ACCEPTANCE": "Ao se registrar, você aceita estes",
     "VALIDATIONS": {
@@ -24,12 +24,12 @@
     "FIRST_NAME": "Nome",
     "LAST_NAME": "Sobrenome",
     "BIRTH_DATE": "Data de Nascimento",
-    "EMAIL": "Correio eletrônico",
+    "EMAIL": "Email",
     "PASSWORD": "Senha",
     "PASSWORD_VERIFICATION": "Verifique a Senha",
-    "SIGN_UP": "Inscrever-se",
-    "SIGN_UP_OPTION_LABEL": "ou registre-se no facebook",
-    "FACEBOOK_SIGN_UP": "Registre-se no Facebook",
+    "SIGN_UP": "Cadastrar",
+    "SIGN_UP_OPTION_LABEL": "ou conectar com o facebook",
+    "FACEBOOK_SIGN_UP": "Conectar com o Facebook",
     "LEGEND_ACCEPTANCE": "Ao se registrar, você concorda em:",
     "SELECT_INTERESTS": "Selecione seus interesses",
     "VALIDATIONS": {
@@ -76,11 +76,11 @@
     },
     "USER_NOT_FOUND": {
       "TITLE": "Erro de autenticação",
-      "MESSAGE": "Não há registro de usuário com este identificador. O usuário pode ter sido removido.",
+      "MESSAGE": "Não há cadastro de usuário com este identificador. O usuário pode ter sido removido.",
       "BUTTON_LABEL": "Aceite"
     },
     "SIGN_UP_EMAIL_ALREADY_IN_USE": {
-      "TITLE": "Erro de registro do usuário",
+      "TITLE": "Erro de cadastro do usuário",
       "MESSAGE": "O endereço de email está em uso por outra conta.\n É possível que você já esteja registrado?",
       "BUTTON_LABEL": "Aceite"
     },
