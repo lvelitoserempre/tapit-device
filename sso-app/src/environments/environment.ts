@@ -15,7 +15,7 @@ export const environment = {
       userAccount: 'user_account_tap'
     },
     functions: {
-      url: 'https://us-central1-clube-brahma.cloudfunctions.net/api-sso',
+      url: 'https://api-dev.tapit.com.co',
       checkUser: '/v1/user/check',
       getAllEvents: '/v1/list/events',
       getAllCodes: '/v1/tapits/',
