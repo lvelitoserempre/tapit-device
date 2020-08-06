@@ -12,30 +12,30 @@ const rename = require('gulp-rename');
 
 BUILD_MAP = {
   TAPIT_DEV: {
-    build: 'develop',
+    env: 'develop',
     deploy: 'firebase deploy --only hosting:tapit-app-dev'
   },
   TAPIT_TESTING: {
-    build: 'develop',
+    env: 'develop',
     deploy: 'firebase deploy --only hosting:tapit-app-testing'
   },
   TAPIT_PREVIEW: {
-    build: 'production',
+    env: 'production',
     deploy: 'firebase deploy --only hosting:tapit-app-preview'
   },
   TAPIT_PRODUCTION: {
-    build: 'production',
+    env: 'production',
     deploy: 'firebase deploy --only hosting:tapit-app-production'
   },
   BRAHMA_SSO_DEV: {
-    build: 'develop',
+    env: 'develop',
     deploy: 'firebase deploy --only hosting:clube-brahma-sso && firebase deploy --only hosting:clube-brahma-sso-example'
   },
 }
 
 
 function isProductionBuild() {
-  return BUILD_MAP[process.env.ENV].build === 'production';
+  return BUILD_MAP[process.env.ENV].env === 'production';
 }
 
 function runCommand(command, folder) {
@@ -130,8 +130,10 @@ task('deploy', function () {
   return runCommand(command, folder);
 })
 
-task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-angular-app','build-sso-app'));
+task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
+  'build-react-app', 'build-angular-app', 'build-sso-app'));
 
-task('deploy-tapit', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-sso-app', 'deploy'));
+task('deploy-tapit', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
+  'build-react-app', 'build-angular-app', 'build-sso-app', 'deploy'));
 
 task('deploy-brahma-sso', series('clear', 'build-sso-app', 'deploy'));
