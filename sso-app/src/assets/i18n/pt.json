@@ -76,8 +76,8 @@
     },
     "USER_NOT_FOUND": {
       "TITLE": "Erro de autenticação",
-      "MESSAGE": "Não há cadastro de usuário com este identificador. O usuário pode ter sido removido.",
-      "BUTTON_LABEL": "Aceite"
+      "MESSAGE": "Usuário ou senha não encontrados.",
+      "BUTTON_LABEL": "Tentar novamente"
     },
     "SIGN_UP_EMAIL_ALREADY_IN_USE": {
       "TITLE": "Erro de cadastro do usuário",

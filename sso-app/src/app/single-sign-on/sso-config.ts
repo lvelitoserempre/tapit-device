@@ -7,6 +7,7 @@ export default interface SSOConfig {
   showLoginFacebookButton: boolean;
   showSignUpFacebookButton: boolean;
   showOffersOption: boolean;
+  preCheckOffers: boolean;
   loginEmail: string;
   loginEmailHint: string;
   loginPasswordHint: string;
