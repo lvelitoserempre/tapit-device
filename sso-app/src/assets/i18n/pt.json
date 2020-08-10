@@ -87,6 +87,7 @@
     "USER_CANCELLED": "Você deve autorizar o uso de seus dados na janela do facebook.",
     "FACEBOOK_REQUIRED_EMAIL": "Você deve autorizar o uso do seu email.",
     "FACEBOOK_SIGN_UP_IN_WRONG_TAB": "Registre-se na guia de registro",
+    "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": "Você já se cadastrou com este e-mail {{email}}! Você não se lembra da sua senha? Pegue de volta!",
     "UKNOWN_ERROR": "Um erro desconhecido ocorreu",
     "ERROR_MESSAGE": {
       "TITLE": "Erro",

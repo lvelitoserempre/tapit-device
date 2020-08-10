@@ -6,5 +6,6 @@ export enum AUTH_ERRORS {
   USER_CANCELLED = 'auth/user-cancelled',
   POPUP_CLOSED_BY_USER = 'auth/popup-closed-by-user',
   FACEBOOK_REQUIRED_EMAIL = 'facebook-not-authorized-email',
-  FACEBOOK_SIGN_UP_IN_WRONG_TAB = 'facebook-sign-up-in-wrong-tab'
+  FACEBOOK_SIGN_UP_IN_WRONG_TAB = 'facebook-sign-up-in-wrong-tab',
+  ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL = 'auth/account-exists-with-different-credential'
 }
