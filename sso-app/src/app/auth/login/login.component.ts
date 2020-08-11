@@ -11,6 +11,7 @@ import SSOConfig from '../../single-sign-on/sso-config';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {Router} from '@angular/router';
+import {AUTH_ERRORS} from 'src/app/auth/auth-error.enum';
 
 @Component({
   selector: 'app-login',
@@ -60,7 +61,9 @@ export class LoginComponent implements OnInit {
       }, error => {
         this.loaderService.hide();
         this.dialogService.manageError(error);
-        this.router.navigateByUrl('sign-up?provider=facebook');
+        if (error.code !== AUTH_ERRORS.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL){
+          this.router.navigateByUrl('sign-up?provider=facebook');
+        }
       });
   }
 }
