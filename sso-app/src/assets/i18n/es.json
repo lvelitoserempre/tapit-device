@@ -63,6 +63,22 @@
       }
     }
   },
+  "RECOVER_PASSWORD": {
+    "TITLE": "Recuperar Contraseña",
+    "INSTRUCTIONS": "Ingresa tu correo electrónico, te enviaremos un link para que puedas reestablecer tu contraseña.",
+    "EMAIL": "Correo",
+    "RECOVER_PASSWORD":"Recuperar Contraseña",
+    "EMAIL_SENT": "¡Correo enviado!",
+    "EMAIL_SENT_TEXT": "Hemos enviado a tu correo un link para crear una nueva contraseña",
+    "LOGIN": "Iniciar Sesión",
+    "LINK_NOT_RECEIVED": "¿No recibiste el link?",
+    "RESEND": "Reenviar correo",
+    "VALIDATIONS": {
+      "EMAIL_REQUERIED": "El correo es obligatorio",
+      "INVALID_EMAIL": "Formato de correo incorrecto",
+      "PASSWORD_REQUIRED": "La contraseña es obligatoria"
+    }
+  },
   "DIALOG": {
     "TOO_MANY_FAILED_ATTEMPTS": {
       "TITLE": "Error de autenticación",
