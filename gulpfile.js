@@ -10,32 +10,32 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const rename = require('gulp-rename');
 
-APPS_MAP = {
+BUILD_MAP = {
   TAPIT_DEV: {
-    build: 'develop',
+    env: 'develop',
     deploy: 'firebase deploy --only hosting:tapit-app-dev'
   },
   TAPIT_TESTING: {
-    build: 'develop',
+    env: 'develop',
     deploy: 'firebase deploy --only hosting:tapit-app-testing'
   },
   TAPIT_PREVIEW: {
-    build: 'production',
+    env: 'production',
     deploy: 'firebase deploy --only hosting:tapit-app-preview'
   },
   TAPIT_PRODUCTION: {
-    build: 'production',
+    env: 'production',
     deploy: 'firebase deploy --only hosting:tapit-app-production'
   },
-  SSO_BRAHMA: {
-    build: 'develop',
+  BRAHMA_SSO_DEV: {
+    env: 'develop',
     deploy: 'firebase deploy --only hosting:clube-brahma-sso && firebase deploy --only hosting:clube-brahma-sso-example'
   },
 }
 
 
 function isProductionBuild() {
-  return APPS_MAP[process.env.environment].build === 'production';
+  return BUILD_MAP[process.env.ENV].env === 'production';
 }
 
 function runCommand(command, folder) {
@@ -63,7 +63,7 @@ task('serve-static', function () {
   });
 });
 
-task('serve-sso-example', function () {
+task('serve-sso', function () {
   const server = liveServer.static('sso-example', 3000);
   server.start();
 
@@ -98,12 +98,20 @@ task('build-tailwind', function () {
     .pipe(postcss([postcssImport, tailwindcss, autoprefixer, cssnano]))
     .pipe(dest('static/assets/styles'))
     .pipe(dest('react-app/src/assets/styles'))
+    .pipe(dest('angular-app/src/assets/styles'))
     .pipe(dest('sso-app/src/assets/styles'))
 })
 
 task('build-react-app', function () {
   const command = 'npm i && npm run ' + (isProductionBuild() ? 'build-prod' : 'build-prod')
   const folder = './react-app';
+
+  return runCommand(command, folder);
+})
+
+task('build-angular-app', function () {
+  const command = 'npm i && npm run ' + (isProductionBuild() ? 'build-prod' : 'build')
+  const folder = './angular-app';
 
   return runCommand(command, folder);
 })
@@ -116,14 +124,16 @@ task('build-sso-app', function () {
 })
 
 task('deploy', function () {
-  const command = APPS_MAP[process.env.environment].deploy;
+  const command = BUILD_MAP[process.env.ENV].deploy;
   const folder = './';
 
   return runCommand(command, folder);
 })
 
-task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-sso-app'));
+task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
+  'build-react-app', 'build-angular-app', 'build-sso-app'));
 
-task('build-and-deploy', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile', 'build-react-app', 'build-sso-app', 'deploy'));
+task('deploy-tapit', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
+  'build-react-app', 'build-angular-app', 'build-sso-app', 'deploy'));
 
-task('sso:build-and-deploy', series('clear', 'build-sso-app', 'deploy'));
+task('deploy-brahma-sso', series('clear', 'build-sso-app', 'deploy'));

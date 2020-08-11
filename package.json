@@ -21,14 +21,14 @@
   "scripts": {
     "start": "gulp serve-dist",
     "serve": "gulp serve-static",
-    "serve-sso": "gulp serve-sso-example",
-    "build": "npm run build-tailwind && cross-env environment=testing gulp build",
+    "serve-sso": "gulp serve-sso",
+    "build": "cross-env ENV=TAPIT_DEV gulp build",
     "build-tailwind": "gulp build-tailwind",
-    "deploy-dev": "cross-env environment=TAPIT_DEV gulp build-and-deploy",
-    "deploy-testing": "cross-env environment=TAPIT_TESTING gulp build-and-deploy",
-    "deploy-preview": "cross-env environment=TAPIT_PREVIEW gulp build-and-deploy",
-    "deploy-production": "cross-env environment=TAPIT_PRODUCTION gulp build-and-deploy",
-    "deploy-sso": "cross-env environment=SSO_BRAHMA gulp sso:build-and-deploy"
+    "deploy-dev": "cross-env ENV=TAPIT_DEV gulp deploy-tapit",
+    "deploy-testing": "cross-env ENV=TAPIT_TESTING gulp deploy-tapit",
+    "deploy-preview": "cross-env ENV=TAPIT_PREVIEW gulp deploy-tapit",
+    "deploy-production": "cross-env ENV=TAPIT_PRODUCTION gulp deploy-tapit",
+    "deploy-brahma-sso": "cross-env ENV=BRAHMA_SSO_DEV gulp deploy-brahma-sso"
   },
   "version": "1.0.0",
   "dependencies": {

@@ -87,6 +87,7 @@
     "USER_CANCELLED": "You must authorize the use of your data in the facebook window.",
     "FACEBOOK_REQUIRED_EMAIL": "You must authorize the use of your email.",
     "FACEBOOK_SIGN_UP_IN_WRONG_TAB": "Please sign up in the sign up tab.",
+    "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": "You have already registered with this email {{email}}! Do not you remember your password? Get it back!",
     "UKNOWN_ERROR": "An unknown error has occurred.",
     "ERROR_MESSAGE": {
       "TITLE": "Error",

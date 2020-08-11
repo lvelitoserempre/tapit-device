@@ -3,13 +3,14 @@ import {DialogConfiguration} from 'src/app/dialog/dialog-configuration';
 import {DialogComponent} from 'src/app/dialog/dialog.component';
 import {AUTH_ERRORS} from 'src/app/auth/auth-error.enum';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DialogService {
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private translate: TranslateService) {
   }
 
   /**
@@ -83,6 +84,10 @@ export class DialogService {
       this.showErrorMessage('DIALOG.FACEBOOK_REQUIRED_EMAIL');
     } else if (error.code === AUTH_ERRORS.FACEBOOK_SIGN_UP_IN_WRONG_TAB) {
       this.showErrorMessage('DIALOG.FACEBOOK_SIGN_UP_IN_WRONG_TAB');
+    } else if (error.code === AUTH_ERRORS.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL) {
+      this.translate.get('DIALOG.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL', {email: error.email }).subscribe((message) => {
+        this.showErrorMessage(message);
+      });
     } else {
       this.showErrorMessage('DIALOG.UKNOWN_ERROR');
     }

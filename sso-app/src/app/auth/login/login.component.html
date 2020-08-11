@@ -67,12 +67,9 @@
       </button>
     </form>
 
-    <!--
-      <a class="text-primary-500 text-center uppercase mb-4 text-sm block font-bold" href="" target="_blank">
-        {{'LOGIN.RECOVER_PASSWORD' | translate }}
-      </a>
-    -->
-    <br>
+    <a *ngIf="config.showRecoverPassword" class="text-primary-500 text-center uppercase mb-4 text-sm block font-bold mt-5" href="/app/auth/recovery-password" target="_blank">
+      {{'LOGIN.RECOVER_PASSWORD' | translate }}
+    </a>
 
     <div [innerHTML]="config.loginFooterHtml"></div>
   </div>
