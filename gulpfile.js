@@ -80,6 +80,10 @@ task('copy-static', function () {
   return src('static/**').pipe(copy('dist', {prefix: 1}));
 });
 
+task('copy-fonts', function () {
+  return src('static/assets/fonts/**').pipe(copy('dist', {prefix: 1}));
+});
+
 task('copy-assetlinks', function () {
   const file = isProductionBuild() ? 'assetlinks.prod.json' : 'assetlinks.dev.json';
   return src('.well-known/' + file)
@@ -136,4 +140,4 @@ task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks'
 task('deploy-tapit', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
   'build-react-app', 'build-angular-app', 'build-sso-app', 'deploy'));
 
-task('deploy-brahma-sso', series('clear', 'build-sso-app', 'deploy'));
+task('deploy-brahma-sso', series('clear', 'copy-fonts', 'build-sso-app', 'deploy'));

@@ -36,6 +36,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.configService.getConfig().subscribe(config => {
       this.config = config;
+      this.signUpForm.get('acceptOffers').setValue(this.config.preCheckOffers);
     });
   }
 

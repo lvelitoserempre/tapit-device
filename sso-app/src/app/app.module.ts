@@ -18,6 +18,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
+import { RecoverPasswordComponent } from './auth/recover-password/recover-password.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -33,6 +34,10 @@ const routes: Routes = [
     component: SignUpComponent
   },
   {
+    path: 'recover-password',
+    component: RecoverPasswordComponent
+  },
+  {
     path: '**',
     redirectTo: 'login'
   }
@@ -43,7 +48,8 @@ const routes: Routes = [
     LoginComponent,
     AppHeaderComponent,
     AppComponent,
-    SignUpComponent
+    SignUpComponent,
+    RecoverPasswordComponent
   ],
   imports: [
     BrowserModule,
