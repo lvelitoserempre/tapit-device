@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService, private iframeMessagingService: IframeMessagingService,
               private i18n: I18nService, private translate: TranslateService, private configService: SSOConfigService,
               private loaderService: LoaderService) {
-    this.translate.setDefaultLang(this.i18n.getCurrentLanguage());
   }
 
   ngOnInit(): void {
@@ -32,7 +31,11 @@ export class AppComponent implements OnInit {
         this.loaderService.hide()
       })
 
-    this.configService.getConfig().subscribe(config => this.addCustomStyles(config.styles));
+    this.configService.getConfig().subscribe(config => {
+      this.addCustomStyles(config.styles);
+      const language = config.language ? config.language : this.i18n.getCurrentLanguage();
+      this.translate.setDefaultLang(language);
+    });
   }
 
   private addCustomStyles(styles: string) {
