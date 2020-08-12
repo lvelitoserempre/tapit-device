@@ -5,13 +5,13 @@
   <title>SSO EXAMPLE</title>
   <meta content="width=device-width,initial-scale=1" name="viewport">
 
-  <link rel="stylesheet" href="https://clube-brahma-sso.web.app/assets/styles/tailwind.css">
+  <link rel="stylesheet" href="https://clube-brahma-sso.web.app/sso/assets/styles/tailwind.css">
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-firestore.js"></script>
 
   <script>
-    const TAPIT_ORIGIN = 'https://clube-brahma-sso.web.app/login';
+    const TAPIT_ORIGIN = 'https://clube-brahma-sso.web.app/sso/login';
     const CHANNEL = 'TAPIT';
 
     /*************************************************************************
@@ -210,7 +210,7 @@
     <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full"
          role="dialog" aria-modal="true" aria-labelledby="modal-headline">
       <iframe class="w-full max-h-screen" id="login-iframe" onload="setUpLogin()"
-              src="https://clube-brahma-sso.web.app/login"
+              src="https://clube-brahma-sso.web.app/sso/login"
               style="height: 773px"></iframe>
     </div>
   </div>
