@@ -1,0 +1,34 @@
+/*@font-face {
+  font-family: filson-soft-book;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/arquivos/filson-soft-book.otf.css') format('opentype');
+}*/
+
+@font-face {
+    font-family: filson-soft-regular;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/arquivos/filson-soft-regular.otf.css') format('opentype');
+}
+
+/*
+@font-face {
+  font-family: filson-soft-bold;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/arquivos/filson-soft-bold.otf.css') format('opentype');
+}*/
+
+
+html {
+    font-size: 16px;
+}
+
+​
+html, body {
+    font-family: filson-soft-regular;
+}
