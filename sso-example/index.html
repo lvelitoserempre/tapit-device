@@ -11,7 +11,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-firestore.js"></script>
 
   <script>
-    const TAPIT_ORIGIN = 'https://dev.tapit.com.co/sso/login';
+    const TAPIT_ORIGIN = 'https://tapit.com.co/sso/login';
     const CHANNEL = 'TAPIT';
 
     /*************************************************************************
@@ -137,7 +137,7 @@
      *
      **/
 
-    var FIREBASE_CONFIG = {
+    var FIREBASE_CONFIG_DEV = {
       apiKey: 'AIzaSyBbMDkDVAUJ8MWcKMVtU7Onrzv5JVlfSbA',
       authDomain: 're-imagining-loyalty-dev.firebaseapp.com',
       databaseURL: 'https://re-imagining-loyalty-dev.firebaseio.com',
@@ -148,7 +148,18 @@
       measurementId: 'G-L8M3HWX53Q'
     };
 
-    firebase.initializeApp(FIREBASE_CONFIG);
+    var FIREBASE_CONFIG_PROD = {
+      apiKey: 'AIzaSyBvKuj3cv5te44wY6IW2BcsmaGxFojCU3g',
+      authDomain: 'rei-imagining-loyalty.firebaseapp.com',
+      databaseURL: 'https://rei-imagining-loyalty.firebaseio.com',
+      projectId: 'rei-imagining-loyalty',
+      storageBucket: 'rei-imagining-loyalty.appspot.com',
+      messagingSenderId: '829727191495',
+      appId: '1:829727191495:web:87c155870b09f3522d69e2',
+      measurementId: 'G-SJR2YLNKJS'
+    };
+
+    firebase.initializeApp(FIREBASE_CONFIG_PROD);
 
     /* The recommended way to get the current user is to set an observer on the Auth object */
     firebase.auth().onAuthStateChanged(function (userCredential) {
@@ -210,7 +221,7 @@
     <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full"
          role="dialog" aria-modal="true" aria-labelledby="modal-headline">
       <iframe class="w-full max-h-screen" id="login-iframe" onload="setUpLogin()"
-              src="https://dev.tapit.com.co/sso/login"
+              src="https://tapit.com.co/sso/login"
               style="height: 773px"></iframe>
     </div>
   </div>
