@@ -66,4 +66,9 @@ export class LoginComponent implements OnInit {
         }
       });
   }
+
+  recoverPassword(){
+    this.router.navigateByUrl('recover-password/' + this.loginForm.value.email);
+  }
+
 }

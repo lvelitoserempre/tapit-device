@@ -75,8 +75,7 @@
     "RESEND": "Reenviar correo",
     "VALIDATIONS": {
       "EMAIL_REQUERIED": "El correo es obligatorio",
-      "INVALID_EMAIL": "Formato de correo incorrecto",
-      "PASSWORD_REQUIRED": "La contraseña es obligatoria"
+      "INVALID_EMAIL": "Formato de correo incorrecto"
     }
   },
   "DIALOG": {
