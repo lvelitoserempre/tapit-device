@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+	  xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce" lang="es">
+
+<head>
+	<title>TapIt</title>
+	<vtex:metaTags/>
+	<vtex:template id="Tapit-metatags"/>
+    <vtex:template id="Tapit-styles"/>
+    <link href="/arquivos/tapit-gift.min.css" rel="stylesheet" type="text/css" /> 
+</head>
+
+<body id="product-page">
+	<vtex:template id="Tapit-header" />
+
+	<div class="breadCrumbs-wrapper container m-auto">
+		<vtex.cmc:breadCrumb/>
+	</div>
+
+	<main class="product-container container m-auto mb-0">
+		<section class="flex flex-wrap">
+			<div class="w-full sm:w-1/2 product-detail">
+				<vtex.cmc:ProductImage/>
+			</div>
+
+            <div class="w-full sm:w-1/2">
+
+				<h1 class="text-lg font-bold leading-6 mb-2 mt-4 sm:mt-0">
+					<vtex.cmc:productName/>
+                </h1>
+
+				<h2 class="product-subtitle text-neutral-800"></h2>
+
+				<div id="tag-list" class="mt-2 mb-4">
+                </div>
+
+                <div id="product-pricing" class="mt-4">
+                    <vtex.cmc:skuPrice/>
+                </div>
+
+                <div class="points block text-primary-500 mt-1 mb-5 font-bold">0 puntos</div>
+
+				<div class="my-4">
+					<h3 class="text-xs font-bold tracking-widest mb-1">DETALLES DE COMPRA</h3>
+
+                    <span
+                        class="py-1 px-2 whitespace-no-wrap inline-block m-1 rounded ml-0 font-bold text-xs bg-success-500 text-secondary-500">Domicilio gratis</span>
+                    <span
+						class="py-1 px-2 whitespace-no-wrap inline-block m-1 rounded font-bold text-xs bg-secondary-500 text-neutral-100">Ganas <span id="points-to-win"></span> puntos</span>
+                </div>
+
+                <div class="add-to-cart-container hidden sm:block">
+                    <span class="inline-block align-middle text-neutral-800 mr-4 text-sm font-bold">Cantidad</span>
+                    <div class="item-qty hidden align-middle inline-block mr-4">
+                        <i class="uil uil-minus inline-block align-middle  mr-3 text-lg minus-qty"></i>
+                        <span class="product-qty inline-block align-middle ">1</span>
+                        <i class="uil uil-plus inline-block align-middle ml-3 text-lg plus-qty"></i>
+                    </div>
+                    <div class="inline-block align-middle mt-4 lg:mt-0">
+                        <vtex.cmc:BuyButton/>
+                    </div>
+                </div>
+			</div>
+		</section>
+
+		<section>
+			<div class="product-detail-description text-neutral-800 mt-2 sm:mt-6 mb-4 text-sm">
+				<vtex.cmc:ProductDescription/>
+            </div>
+
+			<a class="text-center border-2 rounded-lg border-black inline-block mb-2 py-2 px-4 text-xs font-bold focus:outline-none"
+			href="https://tapit.com.co/terms.html" target="_blank">VER TÉRMINOS Y CONDICIONES</a>
+		</section>
+    </main>
+
+	<div class="hidden">
+		<vtex.cmc:productSpecification/>
+	</div>
+
+	<div class="hightlights hidden">
+		<vtex.cmc:HightLight/>
+	</div>
+
+	<aside class="related-products container m-auto">
+		<vtex:contentPlaceHolder id="related-products" />
+    </aside>
+
+    <aside class="related-products container m-auto mb-10 sm:mb-16">
+		<vtex:contentPlaceHolder id="related-products-2" />
+    </aside>
+
+
+
+    <div id="total-bar" class="block sm:hidden fixed fixed-bottom-bar z-10 p-4">
+        <div class="flex flex-wrap items-center">
+            <div class="add-to-cart-container w-1/2">
+                <div class="item-qty hidden inline-block">
+                    <i class="uil uil-minus inline-block mr-3 text-lg minus-qty"></i>
+                    <span class="inline-block product-qty">1</span>
+                    <i class="uil uil-plus inline-block ml-3 text-lg plus-qty"></i>
+                </div>
+            </div>
+            <div class="product-detail-price font-bold w-1/2 text-right">
+                <div class="m-0">
+                    <vtex.cmc:skuPrice/>
+                </div>
+                <div class="points clear-both block text-primary-500 mt-1 font-bold text-sm"></div>
+            </div>
+        </div>
+        <div class="block mt-3">
+            <vtex.cmc:BuyButton/>
+        </div>
+    </div>
+
+	<vtex:template id="Tapit-footer" />
+
+	<vtex:template id="Tapit-scripts"/>
+	<script src="/arquivos/tapit-gift.js"></script>
+</body>
+</html>
