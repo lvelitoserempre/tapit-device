@@ -167,7 +167,7 @@
         /* Get user data */
         firebase.firestore().collection('user_account_tap').doc(userCredential.uid).get()
           .then(function (documentSnapshot) {
-            document.getElementById('firebase-user-data').innerText = JSON.stringify(snapshotToUser(documentSnapshot));
+            document.getElementById('firebase-user-data').innerText = JSON.stringify(documentSnapshotToObject(documentSnapshot));
           })
           .catch(function (error) {
             console.error(error);
@@ -185,10 +185,23 @@
         });
     }
 
-    function snapshotToUser(documentSnapshot) {
-      const user = {id: documentSnapshot.id, ...documentSnapshot.data()};
-      user.referralCode = user.referralCode ? user.referralCode.id : '';
-      return user;
+    function documentSnapshotToObject(documentSnapshot) {
+      const object = documentSnapshot.data();
+      object.id = documentSnapshot.id;
+
+      for (const objectKey in object) {
+        if (object.hasOwnProperty(objectKey)) {
+          if (object[objectKey] instanceof firebase.firestore.Timestamp) {
+            object[objectKey] = object[objectKey].toDate()
+          }
+
+          if (object[objectKey] instanceof firebase.firestore.DocumentReference) {
+            object[objectKey] = object[objectKey].id;
+          }
+        }
+      }
+
+      return object;
     }
   </script>
 </head>
