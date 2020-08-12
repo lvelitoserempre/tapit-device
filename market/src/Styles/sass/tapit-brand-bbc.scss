@@ -1,0 +1,83 @@
+@import "partials/variables";
+
+.Aguila {
+
+    // Tag de descuento
+    .bg-complementary-2-500 {
+        background-color: pink;
+    }
+
+    // Cambiar borde del thumbnail
+    &.border-neutral-300 {
+        border-color: red;
+    }
+
+    .text-neutral-800 {
+        color: blue;
+    }
+
+
+    // Nombre del producto
+    .product-name {
+        color: green;
+    }
+
+
+    // Precio
+    .product-name + p {
+        color: red;
+
+        // Precio tachado
+
+        span {
+            color: yellow;
+        }
+    }
+
+
+    // Puntos
+    .bg-neutral-200 {
+        background-color: pink;
+    }
+
+
+    // Botones
+    .bg-primary-500 {
+        background-color: $bbcBuyButton;
+
+        &:hover {
+            background-color: $bbcBuyButtonHover;
+        }
+    }
+}
+
+.Budweiser {
+
+    // Tag de descuento
+    .bg-complementary-2-500 {
+        background-color: pink;
+
+        p {
+            color: black;
+        }
+    }
+
+    .bg-primary-500 {
+        background-color: $bbcBuyButton;
+
+        &:hover {
+            background-color: $bbcBuyButtonHover;
+        }
+    }
+
+    // Precio
+    .product-name + p {
+        color: red;
+
+        // Precio tachado
+
+        span {
+            color: yellow;
+        }
+    }
+}
