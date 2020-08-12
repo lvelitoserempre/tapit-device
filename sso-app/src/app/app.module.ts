@@ -38,6 +38,10 @@ const routes: Routes = [
     component: RecoverPasswordComponent
   },
   {
+    path: 'recover-password/:email',
+    component: RecoverPasswordComponent
+  },
+  {
     path: '**',
     redirectTo: 'login'
   }

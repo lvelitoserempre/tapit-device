@@ -63,6 +63,21 @@
       }
     }
   },
+  "RECOVER_PASSWORD": {
+    "TITLE": "Recuperar senha",
+    "INSTRUCTIONS": "Digite seu e-mail, enviaremos um link para que você possa redefinir sua senha.",
+    "EMAIL": "Email",
+    "RECOVER_PASSWORD":"Recuperar senha",
+    "EMAIL_SENT": "Email enviado!",
+    "EMAIL_SENT_TEXT": "Enviamos um link para seu e-mail para criar uma nova senha",
+    "LOGIN": "Login",
+    "LINK_NOT_RECEIVED": "Você não recebeu o link?",
+    "RESEND": "Reenviar email",
+    "VALIDATIONS": {
+      "EMAIL_REQUERIED": "Correio é obrigatório",
+      "INVALID_EMAIL": "Seu email não é válido. Talvez esteja incorreto"
+    }
+  },
   "DIALOG": {
     "TOO_MANY_FAILED_ATTEMPTS": {
       "TITLE": "Erro de autenticação",
