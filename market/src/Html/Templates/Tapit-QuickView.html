@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+	  xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce" lang="en-us">
+
+<head>
+	<title>TapIt</title>
+	<vtex:metaTags/>
+	<vtex:template id="Tapit-metatags"/>
+	<vtex:template id="Tapit-styles"/>
+</head>
+
+<body id="product-page">
+	<div class="quick-view-wrapper" style="background: #fcfbfb;">
+		<div class="product-container rounded-lg mb-16">
+			<div class="flex">
+				<div class="w-2/5">
+					<div class="product-detail relative p-2 rounded-lg">
+						<vtex.cmc:ProductImage/>
+					</div>
+				</div>
+
+				<div class="w-3/5">
+					<h1 class="text-2xl font-bold m-2">
+						<vtex.cmc:productName/>
+					</h1>
+
+					<h2 class="product-subtitle"></h2>
+
+					<div id="tag-list" class="mb-4">
+					</div>
+
+					<div class="mb-4 mt-4">
+						<h3 class="text-xs font-bold">DETALLES DE COMPRA</h3>
+
+							<span
+								class="green-text border border-black uppercase py-1 px-2 whitespace-no-wrap inline-block m-1 font-bold text-xs">DOMICILIO GRATIS</span>
+
+							<span
+								class="border uppercase py-1 px-2 whitespace-no-wrap inline-block m-1 font-bold text-xs app-tag">GANAS <span id="points-to-win"></span> PUNTOS</span>
+
+					</div>
+
+				</div>
+			</div>
+
+
+			<p class="text-neutral-600 mb-4">
+				<vtex.cmc:ProductDescription/>
+			</p>
+
+
+
+			<a class="app-rounded text-center border-2 border-black p-2 text-xs font-bold focus:outline-none inline-block my-3" target="_blank"
+			href="https://tapit.com.co/terms.html">VER TÉRMINOS Y CONDICIONES </a>
+
+			<div class="hidden">
+				<vtex.cmc:productSpecification/>
+			</div>
+
+			<!-- <p class="qr-text mb-4 hidden">Recuerda escanear el código QR que viene con los Packs de Budweiser.</p> -->
+		</div>
+
+		<div id="total-bar" class="fixed flex justify-between fixed-bottom-bar px-4 py-3">
+
+			<div class="product-detail-price p-2 text-white font-bold inline-block">
+				<p id="price" class="m-0 md:text-xl"></p>
+				<div id="points" class="m-0 text-xs md:text-base"></div>
+			</div>
+
+			<div>
+				<div class="item-qty hidden inline-block">
+					<i class="uil uil-minus inline-block mr-4 text-base minus-qty"></i>
+					<span id="product-qty" class="inline-block">1</span>
+					<i class="uil uil-plus inline-block ml-4 text-base plus-qty"></i>
+				</div>
+
+				<div id="add-to-cart-qv" class="app-bg-orange app-rounded p-3 text-lg font-bold focus:outline-none text-white uppercase inline-block">
+					<vtex.cmc:BuyButton/>
+				</div>
+			</div>
+		</div>
+
+		<div class="hightlights hidden">
+			<vtex.cmc:HightLight/>
+		</div>
+
+	</div>
+
+	<vtex:template id="Tapit-confirm-quick-view"/>
+
+
+	<vtex:template id="Tapit-scripts"/>
+</body>
+</html>

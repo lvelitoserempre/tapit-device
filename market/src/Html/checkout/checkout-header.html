@@ -1,0 +1,104 @@
+<header class="header hidden bg-white z-10 relative border-b border-neutral-500">
+	<nav role="navigation" class="block sm:hidden visible">
+		<div id="menuToggle" class="absolute block w-full">
+			<input type="checkbox" class="block absolute" id="checkbox-menu" />
+			<div class="background"></div>
+			<img class="img-menu block" width="26" src="/arquivos/hMenu.png" />
+			<ul class="fixed w-10/12 p-5 bg-neutral-100 h-full top-0 border-4 border-white" id="menu">
+				<li class="cursor-pointer inline-block align-middle focus:outline-none p-0">
+					<img width="100" src="/arquivos/profile-placeholder.png" />
+				</li>
+				<li
+					class="font-bold text-md uppercase text-primary-500 cursor-pointer mr-4 align-middle focus:outline-none py-4">
+					<span id="userName" class="block"></span>
+					<span id="userEmail" class="text-neutral-700 normal-case text-xs font-normal block mt-2"></span>
+				</li>
+				<li class="inline-block align-middle border-b border-neutral-500 w-full py-4">
+					<a href="/"
+						class="font-bold text-md uppercase inline-block mr-8 align-middle focus:outline-none text-black"><i
+							class="uil uil-store text-xl inline-block text-primary-500"></i> Market</a>
+				</li>
+				<!--
+				<li class="inline-block align-middle border-b border-neutral-500 w-full py-4">
+					<a class="font-bold text-md uppercase text-neutral-700 inline-block mr-8 align-middle focus:outline-none app-link"
+						href="https://testing.tapit.com.co/app/user/codes">
+						<i class="uil uil-ticket text-xl inline-block"></i> Mis Códigos</a>
+				</li>
+				-->
+				<li class="inline-block align-middle w-full py-4">
+					<a href="https://testing.tapit.com.co/app/user/profile"
+						class="font-bold text-md uppercase text-neutral-700 inline-block mr-8 align-middle focus:outline-none app-link">
+						<i class="uil uil-user-circle text-xl inline-block"></i> Perfil</a>
+				</li>
+				<li><img width="30" class="absolute icon-close" src="/arquivos/ic_close.png" /></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container m-auto lg:px-4">
+		<div class="w-full py-2 px-5 lg:px-0 flex flex-wrap items-center">
+			<div class="w-3/5 md:w-7/12 sm:w-2/3 inline-block align-middle">
+				<ul>
+					<li class="header__logos-logo-tapil inline-block align-middle">
+						<a href="/">
+							<img class="ml-12 sm:ml-0" src="/arquivos/tapit-logo.png" style="width: 70px;" />
+						</a>
+					</li>
+					<li class="sm:inline-block hidden visible align-middle ml-8">
+						<a class="font-bold text-sm uppercase text-neutral-700 mr-10 align-middle focus:outline-none"
+							href="/">
+							<i class="uil uil-store text-base text-primary-500 inline-block align-middle leading-none"></i>
+							<span class="general-color inline-block align-middle">MARKET</span>
+						</a>
+					</li>
+					<!--
+					<li class="sm:inline-block hidden visible align-middle">
+						<a class="font-bold text-sm uppercase text-neutral-700 mr-10 align-middle focus:outline-none"
+							href="https://testing.tapit.com.co/app/user/codes">
+							<i class="uil uil-ticket text-base inline-block align-middle leading-none"></i> <span
+								class="inline-block align-middle">MIS
+								CÓDIGOS</span>
+						</a>
+					</li>
+					-->
+				</ul>
+			</div>
+			<div class="text-right w-2/5 sm:w-1/3 md:w-5/12 inline-block align-middle">
+				<ul class="relative">
+					<ul class="relative hidden visible sm:inline-block py-2">
+						<li
+							class="font-bold uppercase cursor-pointer text-neutral-700 inline-block mr-4 align-middle focus:outline-none">
+							<a href="https://testing.tapit.com.co/app/user/profile"><i
+									class="uil uil-user-circle text-base inline-block align-middle"></i> <span
+									class="text-sm user-name inline-block align-middle"></span></a>
+						</li>
+						<li class="relative h-6 top-0 bottom-0 border-l border-neutral-500 inline-block align-middle"></li>
+						<li class="inline-block ml-4 align-middle">
+							<small class="text-xs font-bold inline-block text-neutral-700 relative points-text">Pts. </small>
+							<span class="text-sm font-bold text-primary-500 user-total-points"></span>
+						</li>
+					</ul>
+					<ul class="relative inline-block sm:hidden visible">
+						<li class="inline-block ml-4 align-middle">
+							<span class="text-sm font-bold block text-neutral-700">Tus puntos</span>
+							<span class="text-sm font-bold block text-primary-500 user-total-points"></span>
+						</li>
+					</ul>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+<div id="steps-indicator" class="container m-auto text-center pt-8 pb-6">
+	<span href="#/cart" class="inline-block align-middle no-underline outline-none text-neutral-800 hover:text-neutral-800 focus:text-neutral-800 text-xs">Resumen de compra</span>
+	<span class="hidden visible sm:inline-block align-middle text-neutral-800 text-base"><i class="uil uil-angle-right"></i></span>
+
+	<span href="#/email" class="inline-block align-middle no-underline outline-none text-neutral-800 hover:text-neutral-800 focus:text-neutral-800 text-xs">Ingresa tu correo</span>
+	<span class="hidden visible sm:inline-block align-middle text-neutral-800 text-base"><i class="uil uil-angle-right"></i></span>
+
+	<span href="#/shipping" class="inline-block align-middle no-underline outline-none text-neutral-800 hover:text-neutral-800 focus:text-neutral-800 text-xs">Envío y Facturación</span>
+	<span class="hidden visible sm:inline-block align-middle text-neutral-800 text-base"><i class="uil uil-angle-right"></i></span>
+
+	<span class="inline-block align-middle no-underline outline-none text-neutral-800 hover:text-neutral-800 focus:text-neutral-800 text-xs">Pedido confirmado</span>
+</div>

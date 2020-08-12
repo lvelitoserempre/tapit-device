@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+ <html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+ <head>
+	<title>TapIt</title>
+	<vtex:metaTags/>
+	<vtex:contentPlaceHolder id="Title" />
+
+	<vtex:template id="Tapit-metatags" />
+    <vtex:template id="Tapit-styles" />
+    <vtex:contentPlaceHolder id="Styles" />
+</head>
+
+<body id="category-page">
+
+	<div class="page">
+		<section id="page-content" class="container mx-auto">
+
+			<div class="flex flex-wrap category-dropdowns md:hidden">
+				<div class="w-1/2">
+					<p id="filter-dropdown">Filtrar (<span id="filter-qty">0</span>) <i class="uil uil-angle-down"></i></p>
+				</div>
+				<div class="w-1/2"></div>
+			</div>
+
+			<div class="flex flex-wrap">
+
+				<div class="w-full md:w-1/5">
+					<aside id="filter-wrapper" class="modal">
+						<i class="uil uil-times-circle close-modal block md:hidden"></i>
+						<h3 class="filters-title uppercase font-bold">Marca</h3>
+						<vtex.cmc:searchNavigator />
+						<span id="clear-filters">BORRAR FILTROS <i class="uil uil-multiply"></i></span>
+					</aside>
+				</div>
+
+				<main class="w-full md:w-4/5">
+					<vtex.cmc:searchResult layout="abed9598-f48e-4edc-aecd-0d290a3c7581" itemCount="12"  columnCount="1" />
+				</main>
+			</div>
+		</section>
+    </div>
+
+    <div id="modals-overlay"></div>
+
+	<vtex:template id="Tapit-scripts" />
+	<script src="/arquivos/smartResearch.js"></script>
+	<script src="/arquivos/tapit-category.js"></script>
+</body>
+</html>
