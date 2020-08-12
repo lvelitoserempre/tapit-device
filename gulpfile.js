@@ -13,19 +13,19 @@ const rename = require('gulp-rename');
 BUILD_MAP = {
   TAPIT_DEV: {
     env: 'develop',
-    deploy: 'firebase deploy --only hosting:tapit-app-dev'
+    deploy: 'firebase deploy --only hosting:tapit-app-dev && firebase deploy --only hosting:tapit-sso-test'
   },
   TAPIT_TESTING: {
     env: 'develop',
-    deploy: 'firebase deploy --only hosting:tapit-app-testing'
+    deploy: 'firebase deploy --only hosting:tapit-app-testing && firebase deploy --only hosting:tapit-sso-test'
   },
   TAPIT_PREVIEW: {
     env: 'production',
-    deploy: 'firebase deploy --only hosting:tapit-app-preview'
+    deploy: 'firebase deploy --only hosting:tapit-app-preview && firebase deploy --only hosting:tapit-sso-test'
   },
   TAPIT_PRODUCTION: {
     env: 'production',
-    deploy: 'firebase deploy --only hosting:tapit-app-production'
+    deploy: 'firebase deploy --only hosting:tapit-app-production && firebase deploy --only hosting:tapit-sso-test'
   },
   BRAHMA_SSO_DEV: {
     env: 'develop',
