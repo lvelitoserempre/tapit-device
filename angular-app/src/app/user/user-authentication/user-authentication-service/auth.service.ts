@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 import {switchMap} from 'rxjs/operators';
 import {UserDAO} from '../../user-dao.service';
 import {AnalyticsService} from '../../../services/anaylitics/analytics.service';
-import {CookiesService} from '../../../services/cookies.service';
+import {CookiesService} from '../../../../../../library/cookies.service';
 import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({

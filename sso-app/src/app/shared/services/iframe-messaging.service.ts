@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
-import {fromEvent, Observable, of} from 'rxjs';
+import {from, fromEvent, Observable, of} from 'rxjs';
 import {filter, map, switchMap} from 'rxjs/operators';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {AuthService} from '../../auth/auth.service';
+import {auth} from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class IframeMessagingService {
         channel: this.CHANNEL,
         action,
         data
-      }, window.location.ancestorOrigins.item(0))
+      }, document.referrer)
     }
   }
 
@@ -45,6 +46,8 @@ export class IframeMessagingService {
     switch (action) {
       case 'get-logged-user':
         return this.authService.getCurrentUser().pipe(map(user => this.sendDataToParent('set-logged-user', user)));
+      case 'logout':
+        return this.authService.logout();
       default:
         return of();
     }

@@ -4,11 +4,11 @@ import {UserAccount} from '../user/user-account';
 import {auth, firestore, User} from 'firebase';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {switchMap, tap} from 'rxjs/operators';
+import {map, switchMap, tap} from 'rxjs/operators';
 import {UserDAO} from '../user/user-dao.service';
-import {CookiesService} from '../shared/services/cookies.service';
-import UserCredential = firebase.auth.UserCredential;
+import {CookiesService} from '../../../../library/cookies.service';
 import {LoaderService} from '../loader/loader-service/loader.service';
+import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
   providedIn: 'root'
@@ -70,7 +70,9 @@ export class AuthService {
   }
 
   logout(): Observable<void> {
-    return from(auth().signOut());
+    return from(auth().signOut()).pipe(map(() => {
+      CookiesService.setObject('loggedUser', null);
+    }));
   }
 
   login(email: string, password: string): Observable<UserAccount> {

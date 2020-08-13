@@ -6,7 +6,7 @@ import {AuthService} from '../user-authentication-service/auth.service';
 import {DialogService} from '../../../dialog/dialog-service/dialog.service';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {FacebookService} from '../facebook.service';
-import {CookiesService} from '../../../services/cookies.service';
+import {CookiesService} from '../../../../../../library/cookies.service';
 import {environment} from '../../../../environments/environment';
 
 @Component({
