@@ -6,6 +6,9 @@ import {map, mergeMap} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import DocumentSnapshot = firestore.DocumentSnapshot;
+import DocumentReference = firestore.DocumentReference;
+import Timestamp = firestore.Timestamp;
+import DocumentData = firebase.firestore.DocumentData;
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +19,27 @@ export class UserDAO {
   constructor(private http: HttpClient) {
   }
 
-
   static snapshotToUser(documentSnapshot: DocumentSnapshot): UserAccount {
-    const user: UserAccount = {id: documentSnapshot.id, ...documentSnapshot.data()};
+    let object: DocumentData = {};
 
-    user.referralCode = user.referralCode ? user.referralCode.id : '';
+    if (documentSnapshot) {
+      object = documentSnapshot.data() || {};
+      object.id = documentSnapshot.id;
 
-    return user;
+      for (const objectKey in object) {
+        if (object.hasOwnProperty(objectKey)) {
+          if (object[objectKey] instanceof Timestamp) {
+            object[objectKey] = object[objectKey].toDate()
+          }
+
+          if (object[objectKey] instanceof DocumentReference) {
+            object[objectKey] = object[objectKey].id;
+          }
+        }
+      }
+    }
+
+    return object;
   }
 
   get(id: string): Observable<UserAccount> {

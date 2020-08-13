@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+$white2: #FAFAFA;
+$white3: #EFF0F0;
+$white4: #F3F2F2;
+$orange: #FF5005;
+$border: #847D7A;
+$gray1: #EEEDEC;
+$gray2: #A29E9B;
+$gray3: #716C6A;
+$gray4: #BCB9B8;
+$gray5: #DAD8D7;
+$green: #41E189;
+$generalColor: #191419;
+
+// BBC Brand
+$bbcBuyButton: #36383E;
+$bbcBuyButtonHover: rgba(54, 56, 62, 0.6);
+
+
+//media querys
+$desktopBig: 1600px;
+$desktopMid: 1360px;
+$landscape: 1280px;
+$landscapeSmall: 1100px;
+$mobile: 991px;
+$mobileMedium: 767px;
+$mobileSm: 640px;
+$mobileSmall: 575px;
+
+$mediaBig:"screen and (max-width : #{$desktopBig})";
+$mediaMid:"screen and (max-width : #{$desktopMid})";
+$mediaLandscape:"screen and (max-width : #{$landscape})";
+$mediaLandscapeSmall : "screen and (max-width : #{$landscapeSmall})";
+$mediaMobile: "screen and (max-width : #{$mobile})";
+$mediaMobileMedium : "screen and (max-width : #{$mobileMedium})";
+$mediaMinMobileMedium : "screen and (min-width : #{$mobileMedium})";
+$mediaMobileSm : "screen and (max-width : #{$mobileSm})";
+$mediaMobileSmall : "screen and (max-width : #{$mobileSmall})";
+
+/*
+@media #{$mediaMobile}{
+	position:relative;
+}
+*/
