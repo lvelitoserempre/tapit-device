@@ -1,0 +1,13 @@
+@mixin replace-text( $text,$font-size:'initial', $position:'after' ){
+	font-size:0;
+	&:#{$position}{
+		content:$text;
+		@if $font-size == 'initial'{
+			font-size:initial;
+		}
+		@else{
+			font-size:$font-size;
+		}
+
+	}
+}

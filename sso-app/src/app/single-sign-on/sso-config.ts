@@ -9,7 +9,6 @@ export default interface SSOConfig {
   showSignUPWithFields: boolean;
   showOffersOption: boolean;
   preCheckOffers: boolean;
-  showRecoverPassword: boolean;
   loginEmail: string;
   loginEmailHint: string;
   loginPasswordHint: string;

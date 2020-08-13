@@ -148,7 +148,18 @@
       measurementId: 'G-9P28VMNFGR'
     };
 
-    firebase.initializeApp(FIREBASE_CONFIG);
+    var FIREBASE_CONFIG_PROD = {
+      apiKey: 'AIzaSyBvKuj3cv5te44wY6IW2BcsmaGxFojCU3g',
+      authDomain: 'rei-imagining-loyalty.firebaseapp.com',
+      databaseURL: 'https://rei-imagining-loyalty.firebaseio.com',
+      projectId: 'rei-imagining-loyalty',
+      storageBucket: 'rei-imagining-loyalty.appspot.com',
+      messagingSenderId: '829727191495',
+      appId: '1:829727191495:web:87c155870b09f3522d69e2',
+      measurementId: 'G-SJR2YLNKJS'
+    };
+
+    firebase.initializeApp(FIREBASE_CONFIG_PROD);
 
     /* The recommended way to get the current user is to set an observer on the Auth object */
     firebase.auth().onAuthStateChanged(function (userCredential) {
@@ -156,7 +167,7 @@
         /* Get user data */
         firebase.firestore().collection('user_account_tap').doc(userCredential.uid).get()
           .then(function (documentSnapshot) {
-            document.getElementById('firebase-user-data').innerText = JSON.stringify(snapshotToUser(documentSnapshot));
+            document.getElementById('firebase-user-data').innerText = JSON.stringify(documentSnapshotToObject(documentSnapshot));
           })
           .catch(function (error) {
             console.error(error);
@@ -174,10 +185,23 @@
         });
     }
 
-    function snapshotToUser(documentSnapshot) {
-      const user = {id: documentSnapshot.id, ...documentSnapshot.data()};
-      user.referralCode = user.referralCode ? user.referralCode.id : '';
-      return user;
+    function documentSnapshotToObject(documentSnapshot) {
+      const object = documentSnapshot.data();
+      object.id = documentSnapshot.id;
+
+      for (const objectKey in object) {
+        if (object.hasOwnProperty(objectKey)) {
+          if (object[objectKey] instanceof firebase.firestore.Timestamp) {
+            object[objectKey] = object[objectKey].toDate()
+          }
+
+          if (object[objectKey] instanceof firebase.firestore.DocumentReference) {
+            object[objectKey] = object[objectKey].id;
+          }
+        }
+      }
+
+      return object;
     }
   </script>
 </head>
