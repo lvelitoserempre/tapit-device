@@ -6,7 +6,9 @@ import {TranslateService} from '@ngx-translate/core';
 import {I18nService} from './shared/services/i18n.service';
 import {SSOConfigService} from './single-sign-on/sso-config.service';
 import {LoaderService} from './loader/loader-service/loader.service';
-import {initializeApp} from 'firebase';
+import {auth, initializeApp} from 'firebase';
+import {ActivatedRoute} from '@angular/router';
+import {CookiesService} from '../../../library/cookies.service';
 
 @Component({
   selector: 'app-root',
@@ -16,25 +18,34 @@ import {initializeApp} from 'firebase';
 export class AppComponent implements OnInit {
   constructor(private authService: AuthService, private iframeMessagingService: IframeMessagingService,
               private i18n: I18nService, private translate: TranslateService, private configService: SSOConfigService,
-              private loaderService: LoaderService) {
+              private loaderService: LoaderService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.loaderService.show();
     initializeApp(environment.firebase.config);
-    this.authService.setupLoggedUserObserver();
     this.iframeMessagingService.init();
-
-    this.authService.getCurrentUser()
-      .subscribe(user => {
-        this.iframeMessagingService.sendDataToParent('set-logged-user', user);
-        this.loaderService.hide()
-      })
 
     this.configService.getConfig().subscribe(config => {
       this.addCustomStyles(config.styles);
       const language = config.language ? config.language : this.i18n.getCurrentLanguage();
       this.translate.setDefaultLang(language);
+    });
+
+
+    this.route.queryParams.subscribe(queryParams => {
+      if (queryParams.backUrl) {
+        auth().onAuthStateChanged((user: firebase.User) => {
+          if (user) {
+            user.getIdToken().then(idToken => {
+              CookiesService.setObject('loggedUser', {idToken, firstName: user.displayName, lastName: ''});
+              window.location.replace(queryParams.backUrl);
+            });
+          } else {
+            this.authService.setupLoggedUserObserver();
+          }
+        });
+      }
     });
   }
 

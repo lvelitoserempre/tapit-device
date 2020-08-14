@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
-import {from, fromEvent, Observable, of} from 'rxjs';
+import {fromEvent, Observable, of} from 'rxjs';
 import {filter, map, switchMap} from 'rxjs/operators';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {AuthService} from '../../auth/auth.service';
-import {auth} from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +20,7 @@ export class IframeMessagingService {
   }
 
   sendDataToParent(action: string, data) {
-    if (window.parent) {
+    if (window.parent && document.referrer) {
       window.parent.postMessage({
         channel: this.CHANNEL,
         action,

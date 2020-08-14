@@ -4,8 +4,8 @@ export class CookiesService {
   }
 
   static setValue(key: string, value: string) {
-    document.cookie = key + '=' + value + ';max-age=31536000;path=/;SameSite=Strict;'
-      + (!value ? 'max-age=0;' : '')
+    document.cookie = key + '=' + value + ';path=/;SameSite=Strict;'
+      + (!value ? 'max-age=0;' : 'max-age=31536000;')
       + (window.location.hostname == 'localhost' ? '' : 'domain=tapit.com.co;');
   }
 
