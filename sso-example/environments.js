@@ -58,14 +58,14 @@ const environments = {
       ssoActionListener: null,
     },
     firebaseConfig: {
-      apiKey: 'AIzaSyBbMDkDVAUJ8MWcKMVtU7Onrzv5JVlfSbA',
-      authDomain: 're-imagining-loyalty-dev.firebaseapp.com',
-      databaseURL: 'https://re-imagining-loyalty-dev.firebaseio.com',
-      projectId: 're-imagining-loyalty-dev',
-      storageBucket: 're-imagining-loyalty-dev.appspot.com',
-      messagingSenderId: '25832745393',
-      appId: '1:25832745393:web:773b0a77001015f2fcf590',
-      measurementId: 'G-L8M3HWX53Q'
+      apiKey: 'AIzaSyB822NxnsV-CB_k5E78q76jaqnCC4ohfVI',
+      authDomain: 'clube-brahma.firebaseapp.com',
+      databaseURL: 'https://clube-brahma.firebaseio.com',
+      projectId: 'clube-brahma',
+      storageBucket: 'clube-brahma.appspot.com',
+      messagingSenderId: '226852992923',
+      appId: '1:226852992923:web:1ad18fa74cab2f9826933e',
+      measurementId: 'G-9P28VMNFGR'
     },
     ssoConfig: SSO_CONFIG_EXAMPLE
   },
@@ -78,14 +78,14 @@ const environments = {
       ssoActionListener: null,
     },
     firebaseConfig: {
-      apiKey: 'AIzaSyBvKuj3cv5te44wY6IW2BcsmaGxFojCU3g',
-      authDomain: 'rei-imagining-loyalty.firebaseapp.com',
-      databaseURL: 'https://rei-imagining-loyalty.firebaseio.com',
-      projectId: 'rei-imagining-loyalty',
-      storageBucket: 'rei-imagining-loyalty.appspot.com',
-      messagingSenderId: '829727191495',
-      appId: '1:829727191495:web:87c155870b09f3522d69e2',
-      measurementId: 'G-SJR2YLNKJS'
+      apiKey: 'AIzaSyB822NxnsV-CB_k5E78q76jaqnCC4ohfVI',
+      authDomain: 'clube-brahma.firebaseapp.com',
+      databaseURL: 'https://clube-brahma.firebaseio.com',
+      projectId: 'clube-brahma',
+      storageBucket: 'clube-brahma.appspot.com',
+      messagingSenderId: '226852992923',
+      appId: '1:226852992923:web:1ad18fa74cab2f9826933e',
+      measurementId: 'G-9P28VMNFGR'
     },
     ssoConfig: SSO_CONFIG_EXAMPLE
   }
