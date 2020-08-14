@@ -55,6 +55,10 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithFacebook() {
+    if (this.facebookService.isInstagram()) {
+      return;
+    }
+
     this.loaderService.show();
 
     this.facebookService.login()

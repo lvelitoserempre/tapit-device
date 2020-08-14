@@ -70,6 +70,10 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   }
 
   signUpWithFacebook() {
+    if (this.facebookService.isInstagram()) {
+      return;
+    }
+
     this.signUpForm.get('acceptTerms').markAsTouched();
 
     if (this.signUpForm.get('acceptTerms').valid) {
