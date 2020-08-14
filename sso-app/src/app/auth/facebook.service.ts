@@ -15,7 +15,7 @@ export class FacebookService {
 
   constructor(private userDAO: UserDAO) {
     this.facebookAuthProvider = new FacebookAuthProvider();
-    this.facebookAuthProvider.addScope('user_birthday');
+    //this.facebookAuthProvider.addScope('user_birthday');
   }
 
   login(): Observable<any> {
