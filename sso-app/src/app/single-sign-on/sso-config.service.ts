@@ -16,7 +16,6 @@ export class SSOConfigService {
     showSignUPWithFields: true,
     showOffersOption: false,
     preCheckOffers: true,
-    showRecoverPassword: true,
     loginEmail: '',
     project: 'pola',
     loginEmailHint: '',

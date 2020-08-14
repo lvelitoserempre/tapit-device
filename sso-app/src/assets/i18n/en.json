@@ -63,6 +63,21 @@
       }
     }
   },
+  "RECOVER_PASSWORD": {
+    "TITLE": "Recover password",
+    "INSTRUCTIONS": "Enter your email, we will send you a link so you can reset your password.",
+    "EMAIL": "Mail",
+    "RECOVER_PASSWORD":"Recover password",
+    "EMAIL_SENT": "Email sent!",
+    "EMAIL_SENT_TEXT": "We have sent a link to your email to create a new password",
+    "LOGIN": "Log in",
+    "LINK_NOT_RECEIVED": "Didn't you receive the link?",
+    "RESEND": "Resend e-mail",
+    "VALIDATIONS": {
+      "EMAIL_REQUERIED": "Mail is required",
+      "INVALID_EMAIL": "Incorrect mail format"
+    }
+  },
   "DIALOG": {
     "TOO_MANY_FAILED_ATTEMPTS": {
       "TITLE": "Authentication Error",

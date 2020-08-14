@@ -67,7 +67,7 @@
       </button>
     </form>
 
-    <a *ngIf="config.showRecoverPassword" class="text-primary-500 text-center uppercase mb-4 text-sm block font-bold mt-5" href="/app/auth/recovery-password" target="_blank">
+    <a (click)="recoverPassword()" class="text-primary-500 text-center uppercase mb-4 text-sm block font-bold mt-5 cursor-pointer">
       {{'LOGIN.RECOVER_PASSWORD' | translate }}
     </a>
 

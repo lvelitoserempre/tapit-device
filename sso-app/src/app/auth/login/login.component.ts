@@ -10,8 +10,9 @@ import {IframeMessagingService} from '../../shared/services/iframe-messaging.ser
 import SSOConfig from '../../single-sign-on/sso-config';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AUTH_ERRORS} from 'src/app/auth/auth-error.enum';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -25,14 +26,14 @@ export class LoginComponent implements OnInit {
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeMessagingService: IframeMessagingService,
-              private configService: SSOConfigService, private router: Router) {
+              private configService: SSOConfigService, private router: Router, private route: ActivatedRoute, private authService: AuthService) {
     this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
   }
 
   ngOnInit(): void {
     this.configService.getConfig().subscribe(config => {
       this.config = config;
-    })
+    });
   }
 
 
@@ -61,9 +62,14 @@ export class LoginComponent implements OnInit {
       }, error => {
         this.loaderService.hide();
         this.dialogService.manageError(error);
-        if (error.code !== AUTH_ERRORS.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL){
+        if (error.code !== AUTH_ERRORS.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL) {
           this.router.navigateByUrl('sign-up?provider=facebook');
         }
       });
   }
+
+  recoverPassword() {
+    this.router.navigateByUrl('recover-password/' + this.loginForm.value.email);
+  }
+
 }

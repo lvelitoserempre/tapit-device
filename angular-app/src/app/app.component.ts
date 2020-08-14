@@ -3,7 +3,7 @@ import {AuthService} from './user/user-authentication/user-authentication-servic
 import {environment} from '../environments/environment';
 import {initializeApp} from 'firebase';
 import {UserDAO} from './user/user-dao.service';
-import {CookiesService} from './services/cookies.service';
+import {CookiesService} from '../../../library/cookies.service';
 
 declare var tagManager;
 declare var ga;
