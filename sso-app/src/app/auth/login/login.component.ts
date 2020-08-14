@@ -13,6 +13,7 @@ import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AUTH_ERRORS} from 'src/app/auth/auth-error.enum';
 import {AuthService} from '../auth.service';
+import {UserAgentService} from '../../../../../library/user-agent.service';
 
 @Component({
   selector: 'app-login',
@@ -55,7 +56,9 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithFacebook() {
-    if (this.facebookService.isInstagram()) {
+    if (UserAgentService.isNotSupported()) {
+      this.dialogService.showErrorMessage('El ingreso por facebook actualmente no esta soportado en este navegador. ' +
+        'Por favor abre esta aplicación en el navegador haciendo click en el menu -> Abrir en navegador');
       return;
     }
 

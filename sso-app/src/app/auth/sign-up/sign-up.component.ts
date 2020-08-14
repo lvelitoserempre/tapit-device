@@ -14,6 +14,7 @@ import SignUpForm from './sign-up.form';
 import {SignUpService} from '../sign-up.service';
 import {ActivatedRoute} from '@angular/router';
 import {ScrollService} from '../../shared/services/scroll.service';
+import {UserAgentService} from '../../../../../library/user-agent.service';
 import UserCredential = firebase.auth.UserCredential;
 
 @Component({
@@ -70,7 +71,9 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   }
 
   signUpWithFacebook() {
-    if (this.facebookService.isInstagram()) {
+    if (UserAgentService.isNotSupported()) {
+      this.dialogService.showErrorMessage('El ingreso por facebook actualmente no esta soportado en este navegador. ' +
+        'Por favor abre esta aplicación en el navegador haciendo click en el menu -> Abrir en navegador');
       return;
     }
 
