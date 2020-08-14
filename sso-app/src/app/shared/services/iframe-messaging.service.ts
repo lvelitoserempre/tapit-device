@@ -20,12 +20,12 @@ export class IframeMessagingService {
   }
 
   sendDataToParent(action: string, data) {
-    if (window.parent) {
+    if (window.parent && document.referrer) {
       window.parent.postMessage({
         channel: this.CHANNEL,
         action,
         data
-      }, window.location.ancestorOrigins.item(0))
+      }, document.referrer)
     }
   }
 
@@ -45,6 +45,8 @@ export class IframeMessagingService {
     switch (action) {
       case 'get-logged-user':
         return this.authService.getCurrentUser().pipe(map(user => this.sendDataToParent('set-logged-user', user)));
+      case 'logout':
+        return this.authService.logout();
       default:
         return of();
     }
