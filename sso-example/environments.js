@@ -88,5 +88,45 @@ const environments = {
       measurementId: 'G-9P28VMNFGR'
     },
     ssoConfig: SSO_CONFIG_EXAMPLE
+  },
+  brahmaLocal: {
+    clientConfig: {
+      ssoOrigin: 'http://localhost:4200',
+      ssoPath: '/',
+      ssoIframeId: 'sso-iframe',
+      channel: 'TAPIT',
+      ssoActionListener: null,
+    },
+    firebaseConfig: {
+      apiKey: 'AIzaSyB822NxnsV-CB_k5E78q76jaqnCC4ohfVI',
+      authDomain: 'clube-brahma.firebaseapp.com',
+      databaseURL: 'https://clube-brahma.firebaseio.com',
+      projectId: 'clube-brahma',
+      storageBucket: 'clube-brahma.appspot.com',
+      messagingSenderId: '226852992923',
+      appId: '1:226852992923:web:1ad18fa74cab2f9826933e',
+      measurementId: 'G-9P28VMNFGR'
+    },
+    ssoConfig: SSO_CONFIG_EXAMPLE
+  },
+  brahmaDev: {
+    clientConfig: {
+      ssoOrigin: 'https://clube-brahma-sso.web.app',
+      ssoPath: '/sso',
+      ssoIframeId: 'sso-iframe',
+      channel: 'TAPIT',
+      ssoActionListener: null,
+    },
+    firebaseConfig: {
+      apiKey: 'AIzaSyB822NxnsV-CB_k5E78q76jaqnCC4ohfVI',
+      authDomain: 'clube-brahma.firebaseapp.com',
+      databaseURL: 'https://clube-brahma.firebaseio.com',
+      projectId: 'clube-brahma',
+      storageBucket: 'clube-brahma.appspot.com',
+      messagingSenderId: '226852992923',
+      appId: '1:226852992923:web:1ad18fa74cab2f9826933e',
+      measurementId: 'G-9P28VMNFGR'
+    },
+    ssoConfig: SSO_CONFIG_EXAMPLE
   }
 };
