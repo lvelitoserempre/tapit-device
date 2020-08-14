@@ -7,7 +7,6 @@ import {HttpClient} from '@angular/common/http';
 import {map, switchMap, tap} from 'rxjs/operators';
 import {UserDAO} from '../user/user-dao.service';
 import {CookiesService} from '../../../../library/cookies.service';
-import {LoaderService} from '../loader/loader-service/loader.service';
 import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
@@ -17,8 +16,7 @@ export class AuthService {
   private currentUser: ReplaySubject<UserAccount>;
   private cancelUserListener: () => void;
 
-  constructor(private http: HttpClient, private userDAO: UserDAO,
-              private loaderService: LoaderService) {
+  constructor(private http: HttpClient, private userDAO: UserDAO) {
     this.currentUser = new ReplaySubject<UserAccount>(0);
   }
 
@@ -53,7 +51,6 @@ export class AuthService {
           user.customToken = customToken;
           this.currentUser.next(user);
           this.saveUserToACookie(user);
-          this.loaderService.hide();
         })
     } else {
       this.currentUser.next(null);

@@ -12,11 +12,9 @@
   <script src="https://tapit-cdn.web.app/sso-client.js"></script>
 
   <script>
-    /**
-     *
-     * FIREBASE CONFIGURATION AND USE
-     *
-     **/
+    /*****************
+          FIREBASE CONFIGURATION AND USE
+    ********************/
 
     var FIREBASE_CONFIG_DEV = {
       apiKey: 'AIzaSyBbMDkDVAUJ8MWcKMVtU7Onrzv5JVlfSbA',
@@ -81,14 +79,15 @@
           }
         }
       }
-
       return object;
     }
 
+    /* function to show SSO */
     function showLoginPopup() {
       document.getElementById('login-popup').classList.remove('hidden');
     }
 
+    /*  logout function */
     function logout() {
       ssoClient.ssoExecuteAction('logout');
       firebase.auth().signOut().then(function () {
@@ -135,7 +134,7 @@
 <script>
   /*****************
    Actions
-   ********************/
+  ********************/
   function ssoActionListener(action, data) {
     switch (action) {
       case 'set-logged-user':
@@ -211,8 +210,6 @@
     /* Boolean type parameter to show the container background. */
     language: 'pt',
     /* String type parameter to define the language, in case a valid parameter is not sent, the browser language will be taken */
-    showRecoverPassword: false,
-    /* Boolean type parameter to show recover Password link. */
     styles: '.text-primary-500{color: #da291c;} .bg-primary-500{background: #da291c;} .border-primary-500{border-color: #da291c;} .logo {padding-top: 15px;} .app-checkbox input:checked ~ .checkmark { background-color: #da291c; border-color: #da291c;}',
     /*  String type parameter to add custom stylest in CSS format. Empty by default */
     interests: [
@@ -226,7 +223,10 @@
     ],
   };
 
-  var ssoClient = new SsoClient(devClientConfig, ssoConfig);
+  /*********************
+    Initialize SSO
+  ***************************/
+  var ssoClient = new SsoClient(localClientConfig, ssoConfig);
   ssoClient.init();
 </script>
 </body>

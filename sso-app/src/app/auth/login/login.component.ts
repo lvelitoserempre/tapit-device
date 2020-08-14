@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
 
       from(auth().signInWithEmailAndPassword(formValue.email, formValue.password))
         .subscribe(user => {
-
+          this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
           this.dialogService.manageError(error);
@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
 
     this.facebookService.login()
       .subscribe(customToken => {
+        this.loaderService.hide();
       }, error => {
         this.loaderService.hide();
         this.dialogService.manageError(error);
@@ -71,5 +72,4 @@ export class LoginComponent implements OnInit {
   recoverPassword() {
     this.router.navigateByUrl('recover-password/' + this.loginForm.value.email);
   }
-
 }

@@ -60,7 +60,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
           return this.userDAO.createUser(SignUpService.extractFormUserData(formValue, this.config.project, this.interests));
         }))
         .subscribe(user => {
-
+          this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
           this.dialogService.manageError(error);
@@ -77,12 +77,12 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
       this.facebookService.signUp(this.signUpForm.value, this.config.project, this.interests)
         .subscribe(customToken => {
-          },
-          error => {
-            this.loaderService.hide();
-            this.dialogService.manageError(error);
-            auth().currentUser.delete().then();
-          });
+          this.loaderService.hide();
+        }, error => {
+          this.loaderService.hide();
+          this.dialogService.manageError(error);
+          auth().currentUser.delete().then();
+        });
     }
   }
 
