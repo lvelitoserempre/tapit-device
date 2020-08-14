@@ -41,10 +41,10 @@ export class AppComponent implements OnInit {
               CookiesService.setObject('loggedUser', {idToken, firstName: user.displayName, lastName: ''});
               window.location.replace(queryParams.backUrl);
             });
-          } else {
-            this.authService.setupLoggedUserObserver();
           }
         });
+      } else {
+        this.authService.setupLoggedUserObserver();
       }
     });
   }
