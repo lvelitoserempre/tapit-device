@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loaderService.show();
     initializeApp(environment.firebase.config);
     this.iframeMessagingService.init();
 
@@ -45,6 +44,9 @@ export class AppComponent implements OnInit {
         });
       } else {
         this.authService.setupLoggedUserObserver();
+        this.authService.getCurrentUser().subscribe(user => {
+          this.iframeMessagingService.sendDataToParent('set-logged-user', user);
+        })
       }
     });
   }
