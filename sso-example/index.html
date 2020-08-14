@@ -12,11 +12,9 @@
   <script src="https://tapit-cdn.web.app/sso-client.js"></script>
 
   <script>
-    /**
-     *
-     * FIREBASE CONFIGURATION AND USE
-     *
-     **/
+    /*****************
+          FIREBASE CONFIGURATION AND USE
+    ********************/
 
     var FIREBASE_CONFIG_DEV = {
       apiKey: 'AIzaSyBbMDkDVAUJ8MWcKMVtU7Onrzv5JVlfSbA',
@@ -81,14 +79,15 @@
           }
         }
       }
-
       return object;
     }
 
+    /* function to show SSO */
     function showLoginPopup() {
       document.getElementById('login-popup').classList.remove('hidden');
     }
 
+    /*  logout function */
     function logout() {
       ssoClient.ssoExecuteAction('logout');
       firebase.auth().signOut().then(function () {
@@ -135,7 +134,7 @@
 <script>
   /*****************
    Actions
-   ********************/
+  ********************/
   function ssoActionListener(action, data) {
     switch (action) {
       case 'set-logged-user':
@@ -226,7 +225,10 @@
     ],
   };
 
-  var ssoClient = new SsoClient(devClientConfig, ssoConfig);
+  /*********************
+    Initialize SSO
+  ***************************/
+  var ssoClient = new SsoClient(localClientConfig, ssoConfig);
   ssoClient.init();
 </script>
 </body>
