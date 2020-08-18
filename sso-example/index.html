@@ -13,7 +13,7 @@
   <script src="./environments.js"></script>
 
   <script>
-    var config = environments.production;
+    var config = environments.local;
     var ssoClient;
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -109,6 +109,10 @@
         document.getElementById('firebase-user-data').innerText = '';
       });
     }
+
+    function configure() {
+      ssoClient.ssoExecuteAction('config', {reference: '', showContainerBackground: true, showCloseButton: false});
+    }
   </script>
 </head>
 
@@ -117,6 +121,7 @@
 <div class="text-center my-32" id="login-button">
   <button class="app-button bg-primary-500 text-white" onclick="showLoginPopup()">INICIA SESIÓN</button>
   <button class="app-button bg-secondary-500 text-white" onclick="logout()">CERRAR SESIÓN</button>
+  <button class="app-button bg-danger-500 text-white" onclick="configure()">CONFIGURE</button>
 </div>
 
 <div class="m-4 rounded-lg bg-neutral-200 p-4">

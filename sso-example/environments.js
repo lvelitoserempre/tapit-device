@@ -69,7 +69,7 @@ const environments = {
       appId: '1:25832745393:web:773b0a77001015f2fcf590',
       measurementId: 'G-L8M3HWX53Q'
     },
-    ssoConfig: SSO_CONFIG_EXAMPLE
+    ssoConfig: Object.assign(SSO_CONFIG_EXAMPLE, {reference: null})
   },
   dev: {
     clientConfig: {
