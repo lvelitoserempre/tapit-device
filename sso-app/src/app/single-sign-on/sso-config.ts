@@ -17,5 +17,6 @@ export default interface SSOConfig {
   language: string;
   showCloseButton: boolean;
   showContainerBackground: boolean;
+  reference: string;
   styles: string;
 }

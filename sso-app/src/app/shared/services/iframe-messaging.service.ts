@@ -20,13 +20,16 @@ export class IframeMessagingService {
   }
 
   sendDataToParent(action: string, data) {
-    if (window.parent && document.referrer) {
-      window.parent.postMessage({
-        channel: this.CHANNEL,
-        action,
-        data
-      }, document.referrer)
-    }
+    this.configService.getConfig().subscribe((config) => {
+      const referrer = config.reference ? config.reference : document.referrer;
+      if (window.parent) {
+        window.parent.postMessage({
+          channel: this.CHANNEL,
+          action,
+          data
+        }, referrer);
+      }
+    });
   }
 
   init() {
