@@ -25,6 +25,7 @@ export class SSOConfigService {
     signUpAcceptOffersHtml: '<p class="text-sm text-left">Acepto el envío de ofertas exclusivas a mi correo.</p>',
     loginFooterHtml: '<p class="text-sm text-center">Al iniciar sesión estás aceptando nuestros <a class="text-primary-500" href="/terms.html" target="_blank">Términos y Condiciones de Tapit,</a> las <a class="text-primary-500" href="/privacy.html" target="_blank">Políticas de Privacidad,</a> la <a class="text-primary-500" href="/data-proteccion.html" target="_blank">Política de protección de datos personales</a> y el envío de ofertas exclusivas a mi correo. </p>',
     interests: [],
+    reference: '',
     styles: '',
     showContainerBackground: true
   }
