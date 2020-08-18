@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     initializeApp(environment.firebase.config);
-    this.iframeMessagingService.init();
+    this.iframeMessagingService.listenWindowMessages();
 
     this.configService.getConfig().subscribe(config => {
       this.addCustomStyles(config.styles);
