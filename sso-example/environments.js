@@ -33,8 +33,8 @@ const SSO_CONFIG_EXAMPLE = {
   /* Boolean type parameter to show the container background. */
   language: 'pt',
   /* String type parameter to define the language, in case a valid parameter is not sent, the browser language will be taken */
-  reference: 'https://clube.brahma.com.br/',
-  /* String type parameter to define the reference */
+  reference: '',
+  /* String type parameter to define the referrer of the iframe (the domain of the current client)*/
   showRecoverPassword: false,
   /* Boolean type parameter to show recover Password link. */
   styles: '.text-primary-500{color: #da291c;} .bg-primary-500{background: #da291c;} .border-primary-500{border-color: #da291c;} .logo {padding-top: 15px;} .app-checkbox input:checked ~ .checkmark { background-color: #da291c; border-color: #da291c;}',
@@ -69,7 +69,7 @@ const environments = {
       appId: '1:25832745393:web:773b0a77001015f2fcf590',
       measurementId: 'G-L8M3HWX53Q'
     },
-    ssoConfig: Object.assign(SSO_CONFIG_EXAMPLE, {reference: null})
+    ssoConfig: Object.assign(SSO_CONFIG_EXAMPLE, {})
   },
   dev: {
     clientConfig: {
