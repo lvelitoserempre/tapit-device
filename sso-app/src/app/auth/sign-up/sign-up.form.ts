@@ -5,6 +5,7 @@ export default class SignUpForm {
     firstName: ['', [Validators.required, Validators.pattern('[A-Za-zÀ-ÖØ-öø-ÿ]*')]],
     lastName: ['', [Validators.required, Validators.pattern('[A-Za-zÀ-ÖØ-öø-ÿ]*')]],
     birthDate: ['', [Validators.required, SignUpForm.olderThan(18)]],
+    cpf: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],
     email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
     password: ['', [Validators.required, Validators.minLength(6), SignUpForm.passwordsMatch]],
     passwordVerification: ['', [Validators.required, SignUpForm.passwordsMatch]],
@@ -24,6 +25,10 @@ export default class SignUpForm {
     email: {
       required: 'SIGN_UP.VALIDATIONS.EMAIL.REQUIRED',
       pattern: 'SIGN_UP.VALIDATIONS.EMAIL.PATTERN',
+    },
+    cpf: {
+      required: 'SIGN_UP.VALIDATIONS.CPF.REQUIRED',
+      pattern: 'SIGN_UP.VALIDATIONS.CPF.PATTERN',
     },
     password: {
       required: 'SIGN_UP.VALIDATIONS.PASSWORD.REQUIRED',

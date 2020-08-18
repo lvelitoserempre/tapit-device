@@ -60,6 +60,22 @@
         </div>
 
         <div class="text-left mb-6">
+          <label class="font-bold text-neutral-800 block mb-2" for="cpf">{{'SIGN_UP.CPF' | translate }}</label>
+          <input (focus)="signUpForm.get('cpf').markAsUntouched()" maxlength="11"
+                [class.border-danger-500]="signUpForm.get('cpf').invalid && signUpForm.get('cpf').touched"
+                class="app-input block w-full" formControlName="cpf" id="cpf" type="text">
+
+          <p *ngIf="signUpForm.get('cpf').hasError('required') && signUpForm.get('cpf').touched"
+            class="text-danger-500 pl-2">
+            {{errorMessages.cpf.required | translate}}
+          </p>
+          <p *ngIf="signUpForm.get('cpf').hasError('pattern')  && signUpForm.get('cpf').touched"
+            class="text-danger-500 pl-2">
+            {{errorMessages.cpf.pattern | translate}}
+          </p>
+        </div>
+
+        <div class="text-left mb-6">
           <label class="font-bold text-neutral-800 block mb-2" for="email">{{'SIGN_UP.EMAIL' | translate }}</label>
           <input (focus)="signUpForm.get('email').markAsUntouched()"
                 [class.border-danger-500]="signUpForm.get('email').invalid && signUpForm.get('email').touched"

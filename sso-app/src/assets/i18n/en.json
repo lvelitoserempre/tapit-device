@@ -24,6 +24,7 @@
     "FIRST_NAME": "Name",
     "LAST_NAME": "Last Name",
     "BIRTH_DATE": "Birthday Date",
+    "CPF": "CPF",
     "EMAIL": "Email",
     "PASSWORD": "Password",
     "PASSWORD_VERIFICATION": "Password Verification",
@@ -44,6 +45,10 @@
       "BIRTH_DATE": {
         "REQUIRED": "Birthday Date is required",
         "OLDER_THAN": "You must be over 18 years old"
+      },
+      "CPF": {
+        "REQUIRED": "CPF is required",
+        "PATTERN": "Your CPF is not valid must be 11 numbers"
       },
       "EMAIL": {
         "REQUIRED": "Email is required",

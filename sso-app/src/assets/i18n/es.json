@@ -24,6 +24,7 @@
     "FIRST_NAME": "Nombre",
     "LAST_NAME": "Apellido",
     "BIRTH_DATE": "Fecha de Nacimiento",
+    "CPF": "CPF",
     "EMAIL": "Correo",
     "PASSWORD": "Contraseña",
     "PASSWORD_VERIFICATION": "Verificar Contraseña",
@@ -44,6 +45,10 @@
       "BIRTH_DATE": {
         "REQUIRED": "Debes ingresar tu fecha de nacimiento",
         "OLDER_THAN": "Debes ser mayor de 18 años"
+      },
+      "CPF": {
+        "REQUIRED": "Debes ingresar tu CPF",
+        "PATTERN": "Tu CPF no es válido deben ser 11 numeros"
       },
       "EMAIL": {
         "REQUIRED": "Debes ingresar tu email",
