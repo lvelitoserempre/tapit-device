@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SSO DOCS</title>
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <link rel="stylesheet" href="https://tapit.com.co/assets/styles/tailwind.css">
+  <style>
+    .code-container {
+      background: #1E2640;
+    }
+
+    .json-null {
+      color: #F24452;
+    }
+
+    .json-key {
+      color: #0476D9;
+    }
+
+    .json-string {
+      color: #A69B03;
+    }
+
+    .json-boolean {
+      color: #EE05F2;
+    }
+  </style>
+  <script src=https://cdn.jsdelivr.net/npm/pretty-print-json@0.2/dist/pretty-print-json.min.js></script>
+  <script src="./tapit.config.local.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById('data').innerHTML = prettyPrintJson.toHtml(TAPIT_CONFIG_LOCAL, {indent: 2});
+    });
+  </script>
+</head>
+
+
+<body>
+<div class="m-4 rounded-lg text-white p-4 code-container">
+  <h1 class="font-bold">DATA</h1>
+  <pre id="data" class="overflow-x-auto"></pre>
+</div>
+
+</body>
+</html>
