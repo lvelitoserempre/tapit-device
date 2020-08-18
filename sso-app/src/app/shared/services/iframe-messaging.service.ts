@@ -4,6 +4,7 @@ import {filter, map} from 'rxjs/operators';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {AuthService} from '../../auth/auth.service';
 import SSOConfig from '../../single-sign-on/sso-config';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import SSOConfig from '../../single-sign-on/sso-config';
 export class IframeMessagingService {
   private readonly CHANNEL = 'TAPIT';
 
-  constructor(private configService: SSOConfigService, private authService: AuthService) {
+  constructor(private configService: SSOConfigService, private authService: AuthService, private router: Router) {
   }
 
   sendDataToParent(action: string, data) {
@@ -51,6 +52,10 @@ export class IframeMessagingService {
 
       case 'logout':
         this.authService.logout().subscribe();
+        break;
+
+      case 'navigateTo':
+        this.router.navigateByUrl(data);
         break;
 
       default:

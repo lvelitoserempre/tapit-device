@@ -99,8 +99,18 @@
       return object;
     }
 
-    function showLoginPopup() {
-      document.getElementById('login-popup').classList.remove('hidden');
+    function showSSOPopup(path) {
+      const loginElement = document.getElementById('login-popup');
+      /*
+      const ssoIframe = document.getElementById('sso-iframe');
+
+      ssoIframe.setAttribute('src', config.clientConfig.ssoOrigin + config.clientConfig.ssoPath + path);
+      ssoIframe.addEventListener("load", function () {
+        SsoClient.configSso(ssoIframe, config.clientConfig, config.ssoConfig);
+        loginElement.classList.remove('hidden');
+      }, {once: true});*/
+      ssoClient.ssoExecuteAction('navigateTo', path);
+      loginElement.classList.remove('hidden');
     }
 
     function logout() {
@@ -109,19 +119,15 @@
         document.getElementById('firebase-user-data').innerText = '';
       });
     }
-
-    function configure() {
-      ssoClient.ssoExecuteAction('config', {reference: '', showContainerBackground: true, showCloseButton: false});
-    }
   </script>
 </head>
 
 
 <body>
 <div class="text-center my-32" id="login-button">
-  <button class="app-button bg-primary-500 text-white" onclick="showLoginPopup()">INICIA SESIÓN</button>
-  <button class="app-button bg-secondary-500 text-white" onclick="logout()">CERRAR SESIÓN</button>
-  <button class="app-button bg-danger-500 text-white" onclick="configure()">CONFIGURE</button>
+  <button class="app-button bg-primary-500 text-white" onclick="showSSOPopup('/login')">INICIAR SESIÓN</button>
+  <button class="app-button bg-secondary-500 text-white" onclick="showSSOPopup('/sign-up')">REGISTRARSE</button>
+  <button class="app-button bg-danger-500 text-white" onclick="logout()">CERRAR SESIÓN</button>
 </div>
 
 <div class="m-4 rounded-lg bg-neutral-200 p-4">
