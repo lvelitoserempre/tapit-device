@@ -86,6 +86,18 @@ export class AuthService {
     return from(auth().createUserWithEmailAndPassword(email, password));
   }
 
+  getRememberMeValue(): string{
+    return CookiesService.getValue('rememberUser') || '';
+  }
+ 
+  setRememberMeValue(email: string) {
+    CookiesService.setObject('rememberUser', email);
+  }
+
+  removeRememberMe(){
+    CookiesService.setObject('rememberUser', '');
+  }
+
   private extractCookieData(data: UserAccount): any {
     return data ? {
       id: data.id,
