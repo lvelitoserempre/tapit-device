@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeMessagingService: IframeMessagingService,
-              private configService: SSOConfigService, private router: Router, private route: ActivatedRoute, private authService: AuthService) {
+              private configService: SSOConfigService, private router: Router, private route: ActivatedRoute,
+              private authService: AuthService) {
     this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
   }
 
@@ -35,18 +36,25 @@ export class LoginComponent implements OnInit {
     this.configService.getConfig().subscribe(config => {
       this.config = config;
     });
+    if (this.authService.getRememberMeValue().length){
+      this.callAutoCompleteFields();
+      this.loginForm.controls['remember'].setValue(true);
+    }
   }
 
 
   login() {
     this.loginForm.markAllAsTouched();
-
     if (this.loginForm.valid) {
       const formValue = this.loginForm.value;
       this.loaderService.show();
-
       from(auth().signInWithEmailAndPassword(formValue.email, formValue.password))
         .subscribe(user => {
+          if (formValue.remember){
+            this.rememberUser(formValue.email);
+          } else {
+            this.authService.removeRememberMe();
+          }
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
@@ -79,4 +87,15 @@ export class LoginComponent implements OnInit {
   recoverPassword() {
     this.router.navigateByUrl('recover-password/' + this.loginForm.value.email);
   }
+
+  rememberUser(email: string){
+    this.authService.setRememberMeValue(email);
+    this.callAutoCompleteFields();
+  }
+
+  callAutoCompleteFields(){
+    const fields = document.querySelectorAll('input[type="password"]')
+    fields.forEach((field: any) => field.autocomplete = 'on');
+  }
+
 }
