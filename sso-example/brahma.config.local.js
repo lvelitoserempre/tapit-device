@@ -27,7 +27,7 @@ const BRAHMA_CONFIG_LOCAL = {
     /* Boolean type parameter to show the login facebook button. */
     showSignUpFacebookButton: true,
     /* Boolean type parameter to show the sign up facebook button. */
-    showSignUPWithFields: false,
+    showSignUPWithFields: true,
     /* Boolean type parameter to show the sign form. */
     showOffersOption: false,
     /* Boolean type parameter to show offers options. */

@@ -1,6 +1,6 @@
 const BRAHMA_CONFIG_PROD = {
   clientConfig: {
-    ssoOrigin: 'https://tapit.com.co',
+    ssoOrigin: 'https://clube-brahma-sso.web.app/',
     ssoPath: '/sso/sign-up',
     ssoIframeId: 'sso-iframe',
     channel: 'TAPIT',
@@ -27,7 +27,7 @@ const BRAHMA_CONFIG_PROD = {
     /* Boolean type parameter to show the login facebook button. */
     showSignUpFacebookButton: true,
     /* Boolean type parameter to show the sign up facebook button. */
-    showSignUPWithFields: false,
+    showSignUPWithFields: true,
     /* Boolean type parameter to show the sign form. */
     showOffersOption: false,
     /* Boolean type parameter to show offers options. */
