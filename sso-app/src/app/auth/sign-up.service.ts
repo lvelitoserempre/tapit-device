@@ -32,6 +32,7 @@ export class SignUpService {
       firstName: form.firstName,
       lastName: form.lastName,
       birthDate: form.birthDate.toISOString(),
+      // identity: form.cpf,
       getExclusiveEmails: form.acceptOffers,
       origin,
       ...((interests && interests.length) ? {interests: interests} : {}),

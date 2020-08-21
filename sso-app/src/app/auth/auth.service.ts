@@ -4,11 +4,10 @@ import {UserAccount} from '../user/user-account';
 import {auth, firestore, User} from 'firebase';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {switchMap, tap} from 'rxjs/operators';
+import {map, switchMap, tap} from 'rxjs/operators';
 import {UserDAO} from '../user/user-dao.service';
-import {CookiesService} from '../shared/services/cookies.service';
+import {CookiesService} from '../../../../library/cookies.service';
 import UserCredential = firebase.auth.UserCredential;
-import {LoaderService} from '../loader/loader-service/loader.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +16,7 @@ export class AuthService {
   private currentUser: ReplaySubject<UserAccount>;
   private cancelUserListener: () => void;
 
-  constructor(private http: HttpClient, private userDAO: UserDAO,
-              private loaderService: LoaderService) {
+  constructor(private http: HttpClient, private userDAO: UserDAO) {
     this.currentUser = new ReplaySubject<UserAccount>(0);
   }
 
@@ -53,7 +51,6 @@ export class AuthService {
           user.customToken = customToken;
           this.currentUser.next(user);
           this.saveUserToACookie(user);
-          this.loaderService.hide();
         })
     } else {
       this.currentUser.next(null);
@@ -70,7 +67,9 @@ export class AuthService {
   }
 
   logout(): Observable<void> {
-    return from(auth().signOut());
+    return from(auth().signOut()).pipe(map(() => {
+      CookiesService.setObject('loggedUser', null);
+    }));
   }
 
   login(email: string, password: string): Observable<UserAccount> {
@@ -85,6 +84,18 @@ export class AuthService {
 
   signUp(email: string, password: string): Observable<UserCredential> {
     return from(auth().createUserWithEmailAndPassword(email, password));
+  }
+
+  getRememberMeValue(): string{
+    return CookiesService.getValue('rememberUser') || '';
+  }
+ 
+  setRememberMeValue(email: string) {
+    CookiesService.setObject('rememberUser', email);
+  }
+
+  removeRememberMe(){
+    CookiesService.setObject('rememberUser', '');
   }
 
   private extractCookieData(data: UserAccount): any {

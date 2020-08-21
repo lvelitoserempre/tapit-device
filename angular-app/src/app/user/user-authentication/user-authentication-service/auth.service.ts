@@ -4,10 +4,10 @@ import {UserAccount} from '../../../models/user-account.model';
 import {auth, firestore, User} from 'firebase';
 import {environment} from '../../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {switchMap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import {UserDAO} from '../../user-dao.service';
 import {AnalyticsService} from '../../../services/anaylitics/analytics.service';
-import {CookiesService} from '../../../services/cookies.service';
+import {CookiesService} from '../../../../../../library/cookies.service';
 import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
@@ -56,7 +56,6 @@ export class AuthService {
   }
 
   saveUserToACookie(user: UserAccount) {
-    console.log(user);
     CookiesService.setObject('loggedUser', this.extractCookieData(user));
   }
 
@@ -65,7 +64,9 @@ export class AuthService {
   }
 
   logout(): Observable<void> {
-    return from(auth().signOut());
+    return from(auth().signOut()).pipe(map(() => {
+      CookiesService.setObject('loggedUser', null);
+    }));
   }
 
   login(email: string, password: string): Observable<UserAccount> {
