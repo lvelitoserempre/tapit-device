@@ -71,7 +71,9 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   signUp() {
     this.signUpForm.markAllAsTouched();
     this.interestsTouched = true;
-    if (this.signUpForm.valid && this.interests.length) {
+    const interestsValidation = this.config.interests && this.config.interests.length ? true : false;
+    const areInterestsValid = !interestsValidation ? true : (this.interests.length ? true : false);
+    if (this.signUpForm.valid && areInterestsValid) {
       const formValue = this.signUpForm.value;
       this.loaderService.show();
       from(auth().createUserWithEmailAndPassword(formValue.email, formValue.password))
