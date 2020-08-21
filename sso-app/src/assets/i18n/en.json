@@ -15,7 +15,7 @@
     "RECOVER_PASSWORD": "Recover Password",
     "LEGEND_ACCEPTANCE": "By registering you accept these",
     "VALIDATIONS": {
-      "EMAIL_REQUERIED": "Email is required",
+      "EMAIL_REQUIRED": "Email is required",
       "INVALID_EMAIL": "Email format is not valid",
       "PASSWORD_REQUIRED": "Password is required"
     }
@@ -82,7 +82,7 @@
     "LINK_NOT_RECEIVED": "Didn't you receive the link?",
     "RESEND": "Resend e-mail",
     "VALIDATIONS": {
-      "EMAIL_REQUERIED": "Mail is required",
+      "EMAIL_REQUIRED": "Mail is required",
       "INVALID_EMAIL": "Incorrect mail format"
     }
   },
