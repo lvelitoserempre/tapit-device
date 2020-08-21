@@ -43,7 +43,8 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   interests: string[] = [];
   signUpForm: FormGroup;
   errorMessages = SignUpForm.ERROR_MESSAGES;
-
+  interestsTouched:boolean = false;
+  
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeMessagingService,
               private configService: SSOConfigService, private route: ActivatedRoute, private _adapter: DateAdapter<any>,
@@ -69,11 +70,10 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
   signUp() {
     this.signUpForm.markAllAsTouched();
-
-    if (this.signUpForm.valid) {
+    this.interestsTouched = true;
+    if (this.signUpForm.valid && this.interests.length) {
       const formValue = this.signUpForm.value;
       this.loaderService.show();
-
       from(auth().createUserWithEmailAndPassword(formValue.email, formValue.password))
         .pipe(switchMap((userCredential: UserCredential) => {
           return this.userDAO.createUser(SignUpService.extractFormUserData(formValue, this.config.project, this.interests));
@@ -112,6 +112,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   }
 
   toggleInterest(key, $event) {
+    this.interestsTouched = true;
     if ($event.target.checked) {
       this.interests.push(key);
     } else {

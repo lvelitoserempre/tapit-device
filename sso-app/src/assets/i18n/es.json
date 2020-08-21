@@ -36,11 +36,11 @@
     "VALIDATIONS": {
       "FIRST_NAME": {
         "REQUIRED": "Debes ingresar tu nombre",
-        "PATTERN": "Solo se aceptan letras aqui. No incluyas espacios ni caracteres especiales"
+        "PATTERN": "Solo se aceptan letras aqui. No incluyas caracteres especiales"
       },
       "LAST_NAME": {
         "REQUIRED": "Debes ingresar tu apellido",
-        "PATTERN": "Solo se aceptan letras aqui. No incluyas espacios ni caracteres especiales"
+        "PATTERN": "Solo se aceptan letras aqui. No incluyas caracteres especiales"
       },
       "BIRTH_DATE": {
         "REQUIRED": "Debes ingresar tu fecha de nacimiento",
@@ -62,6 +62,9 @@
       "PASSWORD_VERIFICATION": {
         "REQUIRED": "Debes ingresar tu contraseña de nuevo",
         "PASSWORD_MATCH": "Tus contraseñas no coinciden"
+      },
+      "INTERESTS":{
+        "REQUIRED": "Debes aceptar al menos un interés"
       },
       "ACCEPT_TERMS": {
         "REQUIRED": "Debes aceptar los terminos y condiciones"

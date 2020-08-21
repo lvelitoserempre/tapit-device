@@ -2,8 +2,8 @@ import {AbstractControl, ValidationErrors, Validators} from '@angular/forms';
 
 export default class SignUpForm {
   static readonly CONFIG = {
-    firstName: ['', [Validators.required, Validators.pattern('[A-Za-zÀ-ÖØ-öø-ÿ]*')]],
-    lastName: ['', [Validators.required, Validators.pattern('[A-Za-zÀ-ÖØ-öø-ÿ]*')]],
+    firstName: ['', [Validators.required, Validators.pattern('[A-Za-zÀ-ÖØ-öø-ÿ ]*')]],
+    lastName: ['', [Validators.required, Validators.pattern('[A-Za-zÀ-ÖØ-öø-ÿ ]*')]],
     birthDate: ['', [Validators.required, SignUpForm.olderThan(18)]],
     cpf: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],
     email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
@@ -42,6 +42,9 @@ export default class SignUpForm {
     birthDate: {
       required: 'SIGN_UP.VALIDATIONS.BIRTH_DATE.REQUIRED',
       olderThan: 'SIGN_UP.VALIDATIONS.BIRTH_DATE.OLDER_THAN'
+    },
+    interests: {
+      required: 'SIGN_UP.VALIDATIONS.INTERESTS.REQUIRED',
     },
     acceptTerms: {
       required: 'SIGN_UP.VALIDATIONS.ACCEPT_TERMS.REQUIRED',

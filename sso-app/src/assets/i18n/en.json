@@ -36,11 +36,11 @@
     "VALIDATIONS": {
       "FIRST_NAME": {
         "REQUIRED": "Name is required",
-        "PATTERN": "Only letters are accepted here. Do not include spaces or special characters"
+        "PATTERN": "Only letters are accepted here. Do not include special characters"
       },
       "LAST_NAME": {
         "REQUIRED": "Last name is required",
-        "PATTERN": "Only letters are accepted here. Do not include spaces or special characters"
+        "PATTERN": "Only letters are accepted here. Do not include special characters"
       },
       "BIRTH_DATE": {
         "REQUIRED": "Birthday Date is required",
@@ -62,6 +62,9 @@
       "PASSWORD_VERIFICATION": {
         "REQUIRED": "You must enter your password again",
         "PASSWORD_MATCH": "Your passwords do not match"
+      },
+      "INTERESTS":{
+        "REQUIRED": "You must accept at least one interest"
       },
       "ACCEPT_TERMS": {
         "REQUIRED": "You must agree to terms and conditions"

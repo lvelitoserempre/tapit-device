@@ -162,7 +162,11 @@
                 {{interest.label}}
               </label>
             </div>
+            
           </div>
+          <p *ngIf="!interests.length && interestsTouched" class="text-danger-500 pl-2">
+            {{errorMessages.interests.required | translate}}
+          </p>
         </div>
 
         <button class="app-button bg-primary-500 min-width-18 mb-6 block mx-auto uppercase" type="submit">
