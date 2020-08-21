@@ -15,7 +15,7 @@
     "RECOVER_PASSWORD": "Recuperar Contraseña",
     "LEGEND_ACCEPTANCE": "Al registrarte estás aceptando:",
     "VALIDATIONS": {
-      "EMAIL_REQUERIED": "El correo es obligatorio",
+      "EMAIL_REQUIRED": "El correo es obligatorio",
       "INVALID_EMAIL": "Formato de correo incorrecto",
       "PASSWORD_REQUIRED": "La contraseña es obligatoria"
     }
@@ -82,7 +82,7 @@
     "LINK_NOT_RECEIVED": "¿No recibiste el link?",
     "RESEND": "Reenviar correo",
     "VALIDATIONS": {
-      "EMAIL_REQUERIED": "El correo es obligatorio",
+      "EMAIL_REQUIRED": "El correo es obligatorio",
       "INVALID_EMAIL": "Formato de correo incorrecto"
     }
   },

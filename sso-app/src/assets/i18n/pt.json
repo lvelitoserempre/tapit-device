@@ -10,19 +10,19 @@
     "EMAIL_LABEL": "ou com sua conta de email",
     "EMAIL": "Email",
     "PASSWORD": "Senha",
-    "REMIND_ME": "Lembre-me",
+    "REMIND_ME": "Recordar meu usuário",
     "LOGIN": "Login",
     "RECOVER_PASSWORD": "Recuperar Senha",
     "LEGEND_ACCEPTANCE": "Ao se registrar, você aceita estes",
     "VALIDATIONS": {
-      "EMAIL_REQUERIED": "E-mail é obrigatório",
-      "INVALID_EMAIL": "O formato do email não é válido",
-      "PASSWORD_REQUIRED": "Senha requerida"
+      "EMAIL_REQUIRED": "É necessário digitar um endereço de email",
+      "INVALID_EMAIL": "Formato de endereço de email inválido",
+      "PASSWORD_REQUIRED": "É necessário digitar a senha"
     }
   },
   "SIGN_UP": {
     "FIRST_NAME": "Nome",
-    "LAST_NAME": "Sobrenome",
+    "LAST_NAME": "Sobrenome Completo",
     "BIRTH_DATE": "Data de Nascimento",
     "CPF": "CPF",
     "EMAIL": "Email",
@@ -36,23 +36,23 @@
     "VALIDATIONS": {
       "FIRST_NAME": {
         "REQUIRED": "Você deve digitar seu nome",
-        "PATTERN": "Somente letras são aceitas aqui. Não inclua caracteres especiais"
+        "PATTERN": "Somente letras são aceitas. Não inclua espaços ou caracteres especiais"
       },
       "LAST_NAME": {
-        "REQUIRED": "Você deve digitar seu sobrenome",
-        "PATTERN": "Somente letras são aceitas aqui. Não inclua caracteres especiais"
+        "REQUIRED": "Você deve digitar seu sobrenome completo",
+        "PATTERN": "Somente letras são aceitas. Não inclua caracteres especiais"
       },
       "BIRTH_DATE": {
         "REQUIRED": "Você deve inserir sua data de nascimento",
-        "OLDER_THAN": "Você deve ter mais de 18 anoss"
+        "OLDER_THAN": "Você deve ter mais de 18 anos para prosseguir"
       },
       "CPF": {
         "REQUIRED": "Você deve digitar seu CPF",
-        "PATTERN": "Seu CPF não é válido deve ser 11 números"
+        "PATTERN": "Seu CPF não é válido. Deve ter 11 dígitos"
       },
       "EMAIL": {
         "REQUIRED": "Você deve digitar seu email",
-        "PATTERN": "Seu email não é válido. Talvez esteja incorreto"
+        "PATTERN": "Formato de endereço de email inválido"
       },
       "PASSWORD": {
         "REQUIRED": "Você deve digitar sua senha",
@@ -67,13 +67,13 @@
         "REQUIRED": "Você deve aceitar pelo menos um interesse"
       },
       "ACCEPT_TERMS": {
-        "REQUIRED": "Você deve concordar com os termos e condições"
+        "REQUIRED": "Você deve concordar com os termos e condições para prosseguir"
       }
     }
   },
   "RECOVER_PASSWORD": {
     "TITLE": "Recuperar senha",
-    "INSTRUCTIONS": "Digite seu e-mail, enviaremos um link para que você possa redefinir sua senha.",
+    "INSTRUCTIONS": "Digite seu email, enviaremos um link para que você possa redefinir sua senha.",
     "EMAIL": "Email",
     "RECOVER_PASSWORD":"Recuperar senha",
     "EMAIL_SENT": "Email enviado!",
@@ -82,39 +82,39 @@
     "LINK_NOT_RECEIVED": "Você não recebeu o link?",
     "RESEND": "Reenviar email",
     "VALIDATIONS": {
-      "EMAIL_REQUERIED": "Email é obrigatório.",
-      "INVALID_EMAIL": "Seu email não é válido. Talvez esteja incorreto."
+      "EMAIL_REQUIRED": "Email é obrigatório.",
+      "INVALID_EMAIL": "Endereço de email inválido. Digite seu email novamente"
     }
   },
   "DIALOG": {
     "TOO_MANY_FAILED_ATTEMPTS": {
       "TITLE": "Erro de autenticação",
-      "MESSAGE": "Muitas tentativas falhas. Por favor, tente novamente mais tarde.",
-      "BUTTON_LABEL": "Aceite"
+      "MESSAGE": "Você excedeu o limite de tentativas erradas. Por favor, tente novamente mais tarde.",
+      "BUTTON_LABEL": "Retornar"
     },
     "WRONG_PASSWORD": {
       "TITLE": "Erro de autenticação",
-      "MESSAGE": "A senha não está correta ou o usuário não possui uma.",
-      "BUTTON_LABEL": "Aceite"
+      "MESSAGE": "Senha incorreta ou inexistente",
+      "BUTTON_LABEL": "Tentar Novamente"
     },
     "USER_NOT_FOUND": {
       "TITLE": "Erro de autenticação",
-      "MESSAGE": "Usuário ou senha não encontrados.",
+      "MESSAGE": "Usuário ou senha não encontrados",
       "BUTTON_LABEL": "Tentar novamente"
     },
     "SIGN_UP_EMAIL_ALREADY_IN_USE": {
       "TITLE": "Erro de cadastro do usuário",
-      "MESSAGE": "O endereço de email está em uso por outra conta.\n É possível que você já esteja registrado?",
-      "BUTTON_LABEL": "Aceite"
+      "MESSAGE": "O endereço de email está em uso por outra conta.\n Caso não se recorde, clique em Recuperar Senha",
+      "BUTTON_LABEL": "Retornar"
     },
-    "USER_CANCELLED": "Você deve autorizar o uso de seus dados na janela do facebook.",
+    "USER_CANCELLED": "Você deve autorizar o uso de seus dados na janela do Facebook.",
     "FACEBOOK_REQUIRED_EMAIL": "Você deve autorizar o uso do seu email.",
     "FACEBOOK_SIGN_UP_IN_WRONG_TAB": "Registre-se na guia de registro",
-    "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": "Você já se cadastrou com este e-mail {{email}}! Você não se lembra da sua senha? Pegue de volta!",
+    "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": "Você já se cadastrou com este e-mail {{email}}! Você não se lembra da sua senha? Clique em Recuperar Senha para receber um email com instruções para reiniciar sua senha.",
     "UKNOWN_ERROR": "Um erro desconhecido ocorreu",
     "ERROR_MESSAGE": {
       "TITLE": "Erro",
-      "BUTTON_LABEL": "Aceite"
+      "BUTTON_LABEL": "Retornar"
     }
   }
 }
