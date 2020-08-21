@@ -9,7 +9,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {IframeMessagingService} from '../../shared/services/iframe-messaging.service';
 import SSOConfig from '../../single-sign-on/sso-config';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import { RecoverPasswordValidationMessages, RecoverPasswordValidators } from './recover-password.validations';
 
 
@@ -26,8 +26,13 @@ export class RecoverPasswordComponent implements OnInit {
   emailSent = false;
 
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private formBuilder: FormBuilder, 
-              private configService: SSOConfigService, private router: Router) {
+              private configService: SSOConfigService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.recoverPasswordForm = this.formBuilder.group(RecoverPasswordValidators, {updateOn: 'blur'});
+    const email = this.activatedRoute.snapshot.params['email'] || '';
+    this.recoverPasswordForm.controls['email'].setValue(email);
+    if(email !== ''){
+      this.recoverPasswordForm.markAllAsTouched();
+    }
   }
 
   ngOnInit(): void {
