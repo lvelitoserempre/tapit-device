@@ -24,6 +24,7 @@
     "FIRST_NAME": "Nome",
     "LAST_NAME": "Sobrenome",
     "BIRTH_DATE": "Data de Nascimento",
+    "CPF": "CPF",
     "EMAIL": "Email",
     "PASSWORD": "Senha",
     "PASSWORD_VERIFICATION": "Verifique a Senha",
@@ -35,15 +36,19 @@
     "VALIDATIONS": {
       "FIRST_NAME": {
         "REQUIRED": "Você deve digitar seu nome",
-        "PATTERN": "Somente letras são aceitas aqui. Não inclua espaços ou caracteres especiais"
+        "PATTERN": "Somente letras são aceitas aqui. Não inclua caracteres especiais"
       },
       "LAST_NAME": {
         "REQUIRED": "Você deve digitar seu sobrenome",
-        "PATTERN": "Somente letras são aceitas aqui. Não inclua espaços ou caracteres especiais"
+        "PATTERN": "Somente letras são aceitas aqui. Não inclua caracteres especiais"
       },
       "BIRTH_DATE": {
         "REQUIRED": "Você deve inserir sua data de nascimento",
         "OLDER_THAN": "Você deve ter mais de 18 anoss"
+      },
+      "CPF": {
+        "REQUIRED": "Você deve digitar seu CPF",
+        "PATTERN": "Seu CPF não é válido deve ser 11 números"
       },
       "EMAIL": {
         "REQUIRED": "Você deve digitar seu email",
@@ -57,6 +62,9 @@
       "PASSWORD_VERIFICATION": {
         "REQUIRED": "Você deve digitar sua senha novamente",
         "PASSWORD_MATCH": "Suas senhas não conferem"
+      },
+      "INTERESTS":{
+        "REQUIRED": "Você deve aceitar pelo menos um interesse"
       },
       "ACCEPT_TERMS": {
         "REQUIRED": "Você deve concordar com os termos e condições"
