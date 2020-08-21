@@ -1,6 +1,6 @@
-const BRAHMA_CONFIG_PROD = {
+const BRAHMA_CONFIG_LOCAL = {
   clientConfig: {
-    ssoOrigin: 'https://tapit.com.co',
+    ssoOrigin: 'http://localhost:4200',
     ssoPath: '/sso/sign-up',
     ssoIframeId: 'sso-iframe',
     channel: 'TAPIT',
