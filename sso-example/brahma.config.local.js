@@ -1,6 +1,6 @@
-const BRAHMA_CONFIG_PROD = {
+const BRAHMA_CONFIG_LOCAL = {
   clientConfig: {
-    ssoOrigin: 'https://clube-brahma-sso.web.app',
+    ssoOrigin: 'http://localhost:4200',
     ssoPath: '/sso/sign-up',
     ssoIframeId: 'sso-iframe',
     channel: 'TAPIT',
