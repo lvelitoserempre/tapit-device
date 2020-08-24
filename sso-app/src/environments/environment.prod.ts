@@ -19,7 +19,7 @@ export const environment = {
       checkUser: '/v1/user/check',
       getAllEvents: '/v1/list/events',
       getAllCodes: '/v1/tapits/',
-      sendDigitalInvoice: '/api-receiveDigitalInvoice',
+      sendDigitalInvoice: '/v1/digitalinvoice',
       getCustomToken: '/v1/sso/customToken',
       createUser: '/v1/sso/user'
     }

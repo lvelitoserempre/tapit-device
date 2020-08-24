@@ -1,6 +1,6 @@
 const BRAHMA_CONFIG_PROD = {
   clientConfig: {
-    ssoOrigin: 'https://clube-brahma-sso.web.app/',
+    ssoOrigin: 'https://clube-brahma-sso.web.app',
     ssoPath: '/sso/sign-up',
     ssoIframeId: 'sso-iframe',
     channel: 'TAPIT',
