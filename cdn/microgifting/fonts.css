@@ -38,22 +38,34 @@
   src: url('gilroy-bold.otf') format('opentype');
 }
 
+@font-face {
+  font-family: gilroy-heavy;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('gilroy-heavy.otf') format('opentype');
+}
+
 .font-sentinel-book {
-  font-family: sentinel-book, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif';
+  font-family: sentinel-book, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif'  !important;
 }
 
 .font-sentinel-medium {
-  font-family: sentinel-medium, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif';
+  font-family: sentinel-medium, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif' !important;
 }
 
 .font-sentinel-bold {
-  font-family: sentinel-bold, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif';
+  font-family: sentinel-bold, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif' !important;
 }
 
 .font-gilroy-regular {
-  font-family: gilroy-regular, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif';
+  font-family: gilroy-regular, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif' !important;
 }
 
 .font-gilroy-bold {
-  font-family: gilroy-bold, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif';
+  font-family: gilroy-bold, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif' !important;
+}
+
+.font-gilroy-heavy {
+  font-family: gilroy-heavy, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif' !important;
 }
