@@ -14,6 +14,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AUTH_ERRORS} from 'src/app/auth/auth-error.enum';
 import {AuthService} from '../auth.service';
 import {UserAgentService} from '../../../../../library/user-agent.service';
+import {GtmService} from '../../gtm.service';
 
 @Component({
   selector: 'app-login',
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
     this.configService.getConfig().subscribe(config => {
       this.config = config;
     });
-    if (this.authService.getRememberMeValue().length){
+    if (this.authService.getRememberMeValue().length) {
       this.callAutoCompleteFields();
       this.loginForm.controls['remember'].setValue(true);
     }
@@ -50,11 +51,13 @@ export class LoginComponent implements OnInit {
       this.loaderService.show();
       from(auth().signInWithEmailAndPassword(formValue.email, formValue.password))
         .subscribe(user => {
-          if (formValue.remember){
+          if (formValue.remember) {
             this.rememberUser(formValue.email);
           } else {
             this.authService.removeRememberMe();
           }
+
+          GtmService.sendEvent('login_all_websites', 'login_email')
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
@@ -74,6 +77,7 @@ export class LoginComponent implements OnInit {
 
     this.facebookService.login()
       .subscribe(customToken => {
+        GtmService.sendEvent('login_all_websites', 'login_facebook')
         this.loaderService.hide();
       }, error => {
         this.loaderService.hide();
@@ -88,14 +92,13 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('recover-password/' + this.loginForm.value.email);
   }
 
-  rememberUser(email: string){
+  rememberUser(email: string) {
     this.authService.setRememberMeValue(email);
     this.callAutoCompleteFields();
   }
 
-  callAutoCompleteFields(){
+  callAutoCompleteFields() {
     const fields = document.querySelectorAll('input[type="password"]')
     fields.forEach((field: any) => field.autocomplete = 'on');
   }
-
 }
