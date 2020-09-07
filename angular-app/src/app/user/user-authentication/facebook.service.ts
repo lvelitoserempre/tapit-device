@@ -22,11 +22,9 @@ export class FacebookService {
 
   login() {
     return from(auth().signInWithPopup(this.facebookAuthProvider))
-      .pipe(switchMap((facebookResponse: any) => {
-        return this.userDAO.updateXeerpa(facebookResponse.additionalUserInfo.profile.id, facebookResponse.credential.accessToken)
-          .pipe(map(() => facebookResponse));
-      }))
-      .pipe(mergeMap((facebookResponse) => {
+      .pipe(switchMap((facebookResponse) => {
+        this.userDAO.updateXeerpa(facebookResponse.additionalUserInfo.profile['id'], facebookResponse.credential['accessToken']).subscribe();
+
         this.sendEventToAnalytics(facebookResponse.additionalUserInfo.isNewUser);
         const userData = this.parseUserData(facebookResponse, {email: facebookResponse.additionalUserInfo.profile['email'],});
         return this.userDAO.checkUser(userData);
