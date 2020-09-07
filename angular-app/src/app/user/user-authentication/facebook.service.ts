@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {from} from 'rxjs';
 import {auth} from 'firebase';
-import {mergeMap, switchMap} from 'rxjs/operators';
+import {map, mergeMap, switchMap} from 'rxjs/operators';
 import {UserDAO} from '../user-dao.service';
 import {AuthService} from './user-authentication-service/auth.service';
 import {AnalyticsService} from '../../services/anaylitics/analytics.service';
@@ -29,6 +29,13 @@ export class FacebookService {
       }))
       .pipe(switchMap((res: any) => {
         return this.userDAO.get(auth().currentUser.uid);
+      }))
+      .pipe(switchMap((user: any) => {
+        return this.userDAO.getCustomToken()
+          .pipe(map(customToken => {
+            user.customToken = customToken;
+            return user;
+          }));
       }))
       .pipe(switchMap((res: any) => {
         return this.authenticationService.setCurrentUser(res);

@@ -8,6 +8,7 @@ import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {FacebookService} from '../facebook.service';
 import {CookiesService} from '../../../../../../library/cookies.service';
 import {environment} from '../../../../environments/environment';
+import {UserAccount} from '../../../models/user-account.model';
 
 @Component({
   selector: 'app-login',
@@ -41,9 +42,9 @@ export class LoginComponent implements OnInit {
       this.loaderService.show();
 
       this.userAuthenticationService.login(email, password)
-        .subscribe(res => {
+        .subscribe(user => {
             this.loaderService.hide();
-            this.redirectUser();
+            this.redirectUser(user);
           },
           error => {
             this.loaderService.hide();
@@ -60,9 +61,9 @@ export class LoginComponent implements OnInit {
       this.loaderService.show();
 
       this.facebookService.login()
-        .subscribe(res => {
+        .subscribe(user => {
             this.loaderService.hide();
-            this.redirectUser();
+            this.redirectUser(user);
           },
           error => {
             this.loaderService.hide();
@@ -71,9 +72,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  redirectUser() {
+  redirectUser(user: UserAccount) {
     CookiesService.setValue('setItems', 'false');
-    const redirectUrl = this.backUrl ? this.backUrl : environment.marketUrl;
+    const redirectUrl = this.backUrl ? this.backUrl : environment.marketUrl + 'customToken=' + user.customToken;
     window.location.replace(redirectUrl);
   }
 
