@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {auth} from 'firebase';
 import {from, Observable, of, throwError} from 'rxjs';
-import {catchError, mergeMap} from 'rxjs/operators';
+import {catchError, mergeMap, switchMap} from 'rxjs/operators';
 import {SignUpService} from './sign-up.service';
 import {UserDAO} from '../user/user-dao.service';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
@@ -42,7 +42,8 @@ export class FacebookService {
 
         if (newUser) {
           const userData = SignUpService.extractFacebookUserData(form, userCredential, project, interests);
-          return this.userDAO.createUser(userData)
+          return this.userDAO.updateXeerpa(userCredential.additionalUserInfo.profile['id'], userCredential.credential['accessToken'])
+            .pipe(switchMap(() => this.userDAO.createUser(userData)));
         }
 
         return of();
