@@ -28,7 +28,7 @@
     "d-tapit-test": "cross-env ENV=TAPIT_TESTING gulp deploy-tapit",
     "d-tapit-prev": "cross-env ENV=TAPIT_PREVIEW gulp deploy-tapit",
     "d-tapit-prod": "cross-env ENV=TAPIT_PRODUCTION gulp deploy-tapit",
-    "d-brahma-sso": "cross-env ENV=BRAHMA_SSO_DEV gulp deploy-brahma-sso"
+    "d-brahma-sso": "cross-env ENV=BRAHMA_SSO_PRODUCTION gulp deploy-brahma-sso"
   },
   "version": "1.0.0",
   "dependencies": {

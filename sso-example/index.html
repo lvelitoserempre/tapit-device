@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <title>SSO EXAMPLE</title>
   <meta content="width=device-width,initial-scale=1" name="viewport">
-
   <link rel="stylesheet" href="https://preview.tapit.com.co/assets/styles/tailwind.css">
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-auth.js"></script>
@@ -15,9 +14,10 @@
   <script src="./tapit.config.prev.js"></script>
   <script src="./tapit.config.prod.js"></script>
   <script src="./brahma.config.prod.js"></script>
+  <script src="./brahma.config.local.js"></script>
 
   <script>
-    const config = TAPIT_CONFIG_LOCAL;
+    const config = BRAHMA_CONFIG_PROD;
     let ssoClient;
 
     document.addEventListener("DOMContentLoaded", function () {

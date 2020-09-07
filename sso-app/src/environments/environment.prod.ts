@@ -23,5 +23,6 @@ export const environment = {
       getCustomToken: '/v1/sso/customToken',
       createUser: '/v1/sso/user'
     }
-  }
+  },
+  gtmId: 'GTM-MGL9B93'
 };
