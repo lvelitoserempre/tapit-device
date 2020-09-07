@@ -89,4 +89,23 @@ export class UserDAO {
           }
         )));
   }
+
+  updateXeerpa(providerId, providerToken) {
+    return from(auth().currentUser.getIdToken())
+      .pipe(mergeMap(token =>
+        this.http.post(
+          environment.firebase.functions.url + environment.firebase.functions.xeerpa,
+          {
+            'provider': 'FB',
+            'origin': 'web',
+            'providerID': providerId,
+            'providerToken': providerToken
+          },
+          {
+            headers: {
+              Authorization: 'Bearer ' + token,
+            }
+          }
+        )));
+  }
 }
