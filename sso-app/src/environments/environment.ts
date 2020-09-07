@@ -24,5 +24,5 @@ export const environment = {
       createUser: '/v1/sso/user'
     }
   },
-  gtmId: 'GTM-NFCC7RC'
+  gtmId: 'GTM-KQF533X'
 };
