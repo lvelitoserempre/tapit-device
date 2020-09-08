@@ -60,7 +60,7 @@
           </p>
         </div>
 
-        <div class="text-left mb-6">
+        <div class="text-left mb-6" *ngIf="config.showCPFInput">
           <label class="font-bold text-neutral-800 block mb-2" for="cpf">{{'SIGN_UP.CPF' | translate }}</label>
           <input (focus)="signUpForm.get('cpf').markAsUntouched()" maxlength="11"
                  [class.border-danger-500]="signUpForm.get('cpf').invalid && signUpForm.get('cpf').touched"

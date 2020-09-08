@@ -9,8 +9,8 @@ export default class SignUpForm {
     email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
     password: ['', [Validators.required, Validators.minLength(6), SignUpForm.passwordsMatch]],
     passwordVerification: ['', [Validators.required, SignUpForm.passwordsMatch]],
-    acceptTerms: ['', {validators: [Validators.requiredTrue], updateOn: 'change'}],
-    acceptOffers: ['']
+    acceptTerms: [false, {validators: [Validators.requiredTrue], updateOn: 'change'}],
+    acceptOffers: [false]
   };
 
   static readonly ERROR_MESSAGES = {

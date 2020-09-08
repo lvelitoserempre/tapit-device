@@ -18,4 +18,5 @@ export default interface SSOConfig {
   showContainerBackground: boolean;
   reference: string;
   styles: string;
+  showCPFInput: boolean;
 }
