@@ -21,7 +21,8 @@ export const environment = {
       getAllCodes: '/v1/tapits/',
       sendDigitalInvoice: '/api-receiveDigitalInvoice',
       getCustomToken: '/v1/sso/customToken',
-      createUser: '/v1/sso/user'
+      createUser: '/v1/sso/user',
+      xeerpa: '/v1/xeerpa'
     }
   },
   gtmId: 'GTM-MGL9B93'

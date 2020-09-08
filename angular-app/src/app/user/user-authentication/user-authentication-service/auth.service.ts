@@ -71,8 +71,15 @@ export class AuthService {
 
   login(email: string, password: string): Observable<UserAccount> {
     return from(auth().signInWithEmailAndPassword(email, password))
-      .pipe(switchMap((user: UserCredential) => {
-        return this.userDAO.get(user.user.uid);
+      .pipe(switchMap((userCredential: UserCredential) => {
+        return this.userDAO.get(userCredential.user.uid);
+      }))
+      .pipe(switchMap(user => {
+        return this.userDAO.getCustomToken()
+          .pipe(map(customToken => {
+            user.customToken = customToken;
+            return user;
+          }));
       }))
       .pipe(switchMap(user => {
         this.sendEventToAnalytics();
