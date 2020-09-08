@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
-import {fromEvent, Observable, of} from 'rxjs';
-import {filter, map, switchMap} from 'rxjs/operators';
+import {fromEvent} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {AuthService} from '../../auth/auth.service';
+import SSOConfig from '../../single-sign-on/sso-config';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,45 +12,60 @@ import {AuthService} from '../../auth/auth.service';
 export class IframeMessagingService {
   private readonly CHANNEL = 'TAPIT';
 
-  constructor(private configService: SSOConfigService, private authService: AuthService) {
+  constructor(private configService: SSOConfigService, private authService: AuthService, private router: Router) {
   }
 
-  listenActions(): Observable<any> {
-    return fromEvent(window, 'message')
-      .pipe(filter((event: any) => event.data && event.data.channel === this.CHANNEL && event.data.action !== 'config'))
-      .pipe(map(event => event.data.action))
-  }
+// config
 
   sendDataToParent(action: string, data) {
-    if (window.parent && document.referrer) {
-      window.parent.postMessage({
-        channel: this.CHANNEL,
-        action,
-        data
-      }, document.referrer)
-    }
-  }
+    this.configService.getConfig()
+      .subscribe((config) => {
+        const referrer = config.reference || document.referrer;
 
-  init() {
-    fromEvent(window, 'message')
-      .pipe(filter((event: any) => event.data && event.data.channel === this.CHANNEL && event.data.action === 'config'))
-      .pipe(map(event => event.data.config))
-      .subscribe(config => this.configService.setConfig(config));
-
-    this.listenActions()
-      .pipe(switchMap(action => this.performAction(action)))
-      .subscribe(result => {
+        if (window.parent) {
+          window.parent.postMessage({
+            channel: this.CHANNEL,
+            action,
+            data
+          }, referrer);
+        }
       });
   }
 
-  performAction(action: string): Observable<any> {
+  listenWindowMessages() {
+    fromEvent(window, 'message')
+      .pipe(filter((event: any) => event.data && event.data.channel === this.CHANNEL))
+      .pipe(map(event => this.performAction(event.data.action, (event.data.data || event.data.config)))) //TODO deprecate and delete the config variable
+      .subscribe()
+  }
+
+  private performAction(action: string, data?) {
     switch (action) {
+      case 'config':
+        if (this.isConfigValid(data)) {
+          this.configService.setConfig(data);
+        }
+        break;
+
       case 'get-logged-user':
-        return this.authService.getCurrentUser().pipe(map(user => this.sendDataToParent('set-logged-user', user)));
+        this.authService.getCurrentUser()
+          .pipe(map(user => this.sendDataToParent('set-logged-user', user))).subscribe();
+        break;
+
       case 'logout':
-        return this.authService.logout();
+        this.authService.logout().subscribe();
+        break;
+
+      case 'navigateTo':
+        this.router.navigateByUrl(data);
+        break;
+
       default:
-        return of();
+        console.error('Action ' + action + ' does not exist');
     }
+  }
+
+  private isConfigValid(config: SSOConfig) {
+    return true;
   }
 }

@@ -10,6 +10,8 @@ import {auth, initializeApp} from 'firebase';
 import {ActivatedRoute} from '@angular/router';
 import {CookiesService} from '../../../library/cookies.service';
 
+declare var setupGTM;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -23,7 +25,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     initializeApp(environment.firebase.config);
-    this.iframeMessagingService.init();
+    this.iframeMessagingService.listenWindowMessages();
 
     this.configService.getConfig().subscribe(config => {
       this.addCustomStyles(config.styles);
@@ -49,6 +51,8 @@ export class AppComponent implements OnInit {
         })
       }
     });
+
+    setupGTM(window, document, 'script', 'dataLayer', environment.gtmId);
   }
 
   private addCustomStyles(styles: string) {

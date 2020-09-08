@@ -4,17 +4,21 @@
   <meta charset="utf-8">
   <title>SSO EXAMPLE</title>
   <meta content="width=device-width,initial-scale=1" name="viewport">
-
   <link rel="stylesheet" href="https://preview.tapit.com.co/assets/styles/tailwind.css">
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-firestore.js"></script>
   <script src="https://tapit-cdn.web.app/sso-client.js"></script>
-  <script src="./environments.js"></script>
+  <script src="./tapit.config.local.js"></script>
+  <script src="./tapit.config.dev.js"></script>
+  <script src="./tapit.config.prev.js"></script>
+  <script src="./tapit.config.prod.js"></script>
+  <script src="./brahma.config.prod.js"></script>
+  <script src="./brahma.config.local.js"></script>
 
   <script>
-    var config = environments.local;
-    var ssoClient;
+    const config = TAPIT_CONFIG_DEV;
+    let ssoClient;
 
     document.addEventListener("DOMContentLoaded", function () {
       ssoClient = new SsoClient(config.clientConfig, config.ssoConfig);
@@ -99,8 +103,10 @@
       return object;
     }
 
-    function showLoginPopup() {
-      document.getElementById('login-popup').classList.remove('hidden');
+    function showSSOPopup(path) {
+      const loginElement = document.getElementById('login-popup');
+      ssoClient.ssoExecuteAction('navigateTo', path);
+      loginElement.classList.remove('hidden');
     }
 
     function logout() {
@@ -115,8 +121,9 @@
 
 <body>
 <div class="text-center my-32" id="login-button">
-  <button class="app-button bg-primary-500 text-white" onclick="showLoginPopup()">INICIA SESIÓN</button>
-  <button class="app-button bg-secondary-500 text-white" onclick="logout()">CERRAR SESIÓN</button>
+  <button class="app-button bg-primary-500 text-white" onclick="showSSOPopup('/login')">INICIAR SESIÓN</button>
+  <button class="app-button bg-secondary-500 text-white" onclick="showSSOPopup('/sign-up')">REGISTRARSE</button>
+  <button class="app-button bg-danger-500 text-white" onclick="logout()">CERRAR SESIÓN</button>
 </div>
 
 <div class="m-4 rounded-lg bg-neutral-200 p-4">
@@ -131,6 +138,7 @@
 
 <div class="m-4 mt-20 rounded-lg p-4">
   <a href="/index.html" download>Download source code here!</a>
+  <a href="/docs.html" target="_blank">See the docs here!</a>
 </div>
 
 <div id="login-popup" class="hidden mx-auto max-w-md">

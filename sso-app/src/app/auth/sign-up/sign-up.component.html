@@ -8,114 +8,132 @@
       <div *ngIf="config.showSignUPWithFields">
         <div class="text-left mb-6">
           <label class="font-bold text-neutral-800 block mb-2"
-                for="firstName">{{'SIGN_UP.FIRST_NAME' | translate }}</label>
+                 for="firstName">{{'SIGN_UP.FIRST_NAME' | translate }}</label>
           <input (focus)="signUpForm.get('firstName').markAsUntouched()"
-                [class.border-danger-500]="signUpForm.get('firstName').invalid && signUpForm.get('firstName').touched"
-                class="app-input block w-full" formControlName="firstName" id="firstName" type="firstName">
+                 [class.border-danger-500]="signUpForm.get('firstName').invalid && signUpForm.get('firstName').touched"
+                 class="app-input block w-full" formControlName="firstName" id="firstName" type="firstName">
 
           <p *ngIf="signUpForm.get('firstName').hasError('required') && signUpForm.get('firstName').touched"
-            class="text-danger-500 pl-2">
+             class="text-danger-500 pl-2">
             {{errorMessages.firstName.required | translate}}
           </p>
           <p *ngIf="signUpForm.get('firstName').hasError('pattern')  && signUpForm.get('firstName').touched"
-            class="text-danger-500 pl-2">
+             class="text-danger-500 pl-2">
             {{errorMessages.firstName.pattern | translate}}
           </p>
         </div>
 
         <div class="text-left mb-6">
-          <label class="font-bold text-neutral-800 block mb-2" for="lastName">{{'SIGN_UP.LAST_NAME' | translate }}</label>
+          <label class="font-bold text-neutral-800 block mb-2"
+                 for="lastName">{{'SIGN_UP.LAST_NAME' | translate }}</label>
           <input (focus)="signUpForm.get('lastName').markAsUntouched()"
-                [class.border-danger-500]="signUpForm.get('lastName').invalid && signUpForm.get('lastName').touched"
-                class="app-input block w-full" formControlName="lastName" id="lastName" type="lastName">
+                 [class.border-danger-500]="signUpForm.get('lastName').invalid && signUpForm.get('lastName').touched"
+                 class="app-input block w-full" formControlName="lastName" id="lastName" type="lastName">
 
           <p *ngIf="signUpForm.get('lastName').hasError('required') && signUpForm.get('lastName').touched"
-            class="text-danger-500 pl-2">
+             class="text-danger-500 pl-2">
             {{errorMessages.lastName.required | translate}}
           </p>
           <p *ngIf="signUpForm.get('lastName').hasError('pattern')  && signUpForm.get('lastName').touched"
-            class="text-danger-500 pl-2">
+             class="text-danger-500 pl-2">
             {{errorMessages.lastName.pattern | translate}}
           </p>
         </div>
 
         <div class="text-left mb-6">
           <label class="font-bold text-neutral-800 block mb-2"
-                for="lastName">{{'SIGN_UP.BIRTH_DATE' | translate }}</label>
+                 for="lastName">{{'SIGN_UP.BIRTH_DATE' | translate }}</label>
           <input (click)="picker.open()"
-                (focus)="signUpForm.get('birthDate').markAsUntouched()"
-                [class.border-danger-500]="signUpForm.get('birthDate').invalid && signUpForm.get('birthDate').touched"
-                [matDatepicker]="picker" class="app-input block w-full" formControlName="birthDate" id="birthDate"
-                readonly>
+                 (focus)="signUpForm.get('birthDate').markAsUntouched()"
+                 [class.border-danger-500]="signUpForm.get('birthDate').invalid && signUpForm.get('birthDate').touched"
+                 [matDatepicker]="picker" class="app-input block w-full" formControlName="birthDate" id="birthDate"
+                 readonly>
           <mat-datepicker #picker></mat-datepicker>
 
           <p *ngIf="signUpForm.get('birthDate').hasError('required') && signUpForm.get('birthDate').touched"
-            class="text-danger-500 pl-2">
+             class="text-danger-500 pl-2">
             {{errorMessages.birthDate.required | translate}}
           </p>
           <p *ngIf="signUpForm.get('birthDate').hasError('olderThan') && signUpForm.get('birthDate').touched"
-            class="text-danger-500 pl-2">
+             class="text-danger-500 pl-2">
             {{errorMessages.birthDate.olderThan | translate}}
+          </p>
+        </div>
+
+        <div class="text-left mb-6">
+          <label class="font-bold text-neutral-800 block mb-2" for="cpf">{{'SIGN_UP.CPF' | translate }}</label>
+          <input (focus)="signUpForm.get('cpf').markAsUntouched()" maxlength="11"
+                 [class.border-danger-500]="signUpForm.get('cpf').invalid && signUpForm.get('cpf').touched"
+                 class="app-input block w-full" formControlName="cpf" id="cpf" type="text">
+
+          <p *ngIf="signUpForm.get('cpf').hasError('required') && signUpForm.get('cpf').touched"
+             class="text-danger-500 pl-2">
+            {{errorMessages.cpf.required | translate}}
+          </p>
+          <p *ngIf="signUpForm.get('cpf').hasError('pattern')  && signUpForm.get('cpf').touched"
+             class="text-danger-500 pl-2">
+            {{errorMessages.cpf.pattern | translate}}
           </p>
         </div>
 
         <div class="text-left mb-6">
           <label class="font-bold text-neutral-800 block mb-2" for="email">{{'SIGN_UP.EMAIL' | translate }}</label>
           <input (focus)="signUpForm.get('email').markAsUntouched()"
-                [class.border-danger-500]="signUpForm.get('email').invalid && signUpForm.get('email').touched"
-                class="app-input block w-full" formControlName="email" id="email" type="email">
+                 [class.border-danger-500]="signUpForm.get('email').invalid && signUpForm.get('email').touched"
+                 class="app-input block w-full" formControlName="email" id="email" type="email">
 
           <p *ngIf="signUpForm.get('email').hasError('required') && signUpForm.get('email').touched"
-            class="text-danger-500 pl-2">
+             class="text-danger-500 pl-2">
             {{errorMessages.email.required | translate}}
           </p>
           <p *ngIf="signUpForm.get('email').hasError('pattern')  && signUpForm.get('email').touched"
-            class="text-danger-500 pl-2">
+             class="text-danger-500 pl-2">
             {{errorMessages.email.pattern | translate}}
           </p>
         </div>
 
         <div class="text-left mb-4">
-          <label class="font-bold text-neutral-800 block mb-2" for="password">{{'SIGN_UP.PASSWORD' | translate }}</label>
+          <label class="font-bold text-neutral-800 block mb-2"
+                 for="password">{{'SIGN_UP.PASSWORD' | translate }}</label>
           <div class="relative">
             <input #password
-                  (focus)="signUpForm.get('password').markAsUntouched()"
-                  [class.border-danger-500]="signUpForm.get('password').invalid && signUpForm.get('password').touched"
-                  class="app-input block w-full" formControlName="password" id="password" type="password">
+                   (focus)="signUpForm.get('password').markAsUntouched()"
+                   [class.border-danger-500]="signUpForm.get('password').invalid && signUpForm.get('password').touched"
+                   class="app-input block w-full" formControlName="password" id="password" type="password">
             <div class="absolute top-0 right-0 h-full p-1 pr-2 flex items-center">
               <i (click)="password.type = password.type === 'password' ? 'text' : 'password'"
-                class="uil uil-eye text-xl bg-white cursor-pointer" [class.uil-eye]="password.type === 'password'"
-                [class.uil-eye-slash]="password.type !== 'password'"></i>
+                 class="uil uil-eye text-xl bg-white cursor-pointer" [class.uil-eye]="password.type === 'password'"
+                 [class.uil-eye-slash]="password.type !== 'password'"></i>
             </div>
           </div>
 
           <p *ngIf="signUpForm.get('password').hasError('required') && signUpForm.get('password').touched"
-            class="text-danger-500 pl-2">
+             class="text-danger-500 pl-2">
             {{errorMessages.password.required | translate}}
           </p>
           <p *ngIf="signUpForm.get('password').hasError('minlength') && signUpForm.get('password').touched"
-            class="text-danger-500 pl-2">
+             class="text-danger-500 pl-2">
             {{errorMessages.password.minlength | translate}}
           </p>
           <p *ngIf="signUpForm.get('password').hasError('passwordsMatch') && signUpForm.get('password').touched"
-            class="text-danger-500 pl-2">
+             class="text-danger-500 pl-2">
             {{errorMessages.password.passwordsMatch | translate}}
           </p>
         </div>
 
         <div class="text-left mb-4">
           <label class="font-bold text-neutral-800 block mb-2"
-                for="passwordVerification">{{'SIGN_UP.PASSWORD_VERIFICATION' | translate }}</label>
+                 for="passwordVerification">{{'SIGN_UP.PASSWORD_VERIFICATION' | translate }}</label>
           <div class="relative">
             <input #passwordVerification (focus)="signUpForm.get('passwordVerification').markAsUntouched()"
-                  [class.border-danger-500]="signUpForm.get('passwordVerification').invalid && signUpForm.get('passwordVerification').touched"
-                  class="app-input block w-full" formControlName="passwordVerification" id="passwordVerification"
-                  type="password">
+                   [class.border-danger-500]="signUpForm.get('passwordVerification').invalid && signUpForm.get('passwordVerification').touched"
+                   class="app-input block w-full" formControlName="passwordVerification" id="passwordVerification"
+                   type="password">
             <div class="absolute top-0 right-0 h-full p-1 pr-2 flex items-center">
               <i (click)="passwordVerification.type = passwordVerification.type === 'password' ? 'text' : 'password'"
-                class="uil uil-eye text-xl bg-white cursor-pointer"
-                [class.uil-eye]="passwordVerification.type === 'password'"
-                [class.uil-eye-slash]="passwordVerification.type !== 'password'"></i>
+                 class="uil uil-eye text-xl bg-white cursor-pointer"
+                 [class.uil-eye]="passwordVerification.type === 'password'"
+                 [class.uil-eye-slash]="passwordVerification.type !== 'password'"></i>
             </div>
           </div>
           <p
@@ -138,7 +156,7 @@
               <label class="app-checkbox text-left text-sm" [for]="interest.key">
                 <input [id]="interest.key" type="checkbox" (change)="toggleInterest(interest.key, $event)">
                 <svg class="checkmark" fill="none" focusable="false" height="8" tabindex="-1" viewBox="0 0 10 8"
-                    width="10">
+                     width="10">
                   <path
                     d="M9.47346 0.806635C9.41149 0.744149 9.33775 0.694553 9.25651 0.660707C9.17527 0.626861 9.08814 0.609436 9.00013 0.609436C8.91212 0.609436 8.82498 0.626861 8.74374 0.660707C8.6625 0.694553 8.58877 0.744149 8.5268 0.806635L3.56013 5.77997L1.47346 3.68663C1.40911 3.62448 1.33315 3.5756 1.24992 3.5428C1.16668 3.50999 1.0778 3.49391 0.988344 3.49546C0.89889 3.497 0.810617 3.51615 0.728565 3.55182C0.646513 3.58748 0.572288 3.63895 0.510129 3.7033C0.44797 3.76765 0.399094 3.84361 0.366292 3.92685C0.333489 4.01008 0.317402 4.09897 0.31895 4.18842C0.320497 4.27787 0.339649 4.36615 0.375311 4.4482C0.410974 4.53025 0.462448 4.60448 0.526796 4.66664L3.0868 7.22663C3.14877 7.28912 3.22251 7.33872 3.30374 7.37256C3.38498 7.40641 3.47212 7.42383 3.56013 7.42383C3.64814 7.42383 3.73527 7.40641 3.81651 7.37256C3.89775 7.33872 3.97149 7.28912 4.03346 7.22663L9.47346 1.78664C9.54113 1.72421 9.59514 1.64844 9.63208 1.56411C9.66901 1.47977 9.68808 1.3887 9.68808 1.29664C9.68808 1.20457 9.66901 1.1135 9.63208 1.02916C9.59514 0.944831 9.54113 0.869063 9.47346 0.806635Z"
                     fill="white"/>
@@ -146,7 +164,11 @@
                 {{interest.label}}
               </label>
             </div>
+
           </div>
+          <p *ngIf="!interests.length && interestsTouched" class="text-danger-500 pl-2">
+            {{errorMessages.interests.required | translate}}
+          </p>
         </div>
 
         <button class="app-button bg-primary-500 min-width-18 mb-6 block mx-auto uppercase" type="submit">
@@ -154,7 +176,7 @@
         </button>
 
         <p class="text-2xs font-bold text-center uppercase mb-3" *ngIf="config.showSignUpFacebookButton"
-          style="letter-spacing: 1.3px">{{'SIGN_UP.SIGN_UP_OPTION_LABEL' | translate }}</p>
+           style="letter-spacing: 1.3px">{{'SIGN_UP.SIGN_UP_OPTION_LABEL' | translate }}</p>
 
       </div>
 
@@ -164,6 +186,17 @@
       </button>
 
       <div>
+        <label class="app-checkbox text-left mb-6" for="accept-offers">
+          <input id="accept-offers" type="checkbox" formControlName="acceptOffers">
+          <svg class="checkmark" fill="none" focusable="false" height="8" tabindex="-1" viewBox="0 0 10 8" width="10">
+            <path
+              d="M9.47346 0.806635C9.41149 0.744149 9.33775 0.694553 9.25651 0.660707C9.17527 0.626861 9.08814 0.609436 9.00013 0.609436C8.91212 0.609436 8.82498 0.626861 8.74374 0.660707C8.6625 0.694553 8.58877 0.744149 8.5268 0.806635L3.56013 5.77997L1.47346 3.68663C1.40911 3.62448 1.33315 3.5756 1.24992 3.5428C1.16668 3.50999 1.0778 3.49391 0.988344 3.49546C0.89889 3.497 0.810617 3.51615 0.728565 3.55182C0.646513 3.58748 0.572288 3.63895 0.510129 3.7033C0.44797 3.76765 0.399094 3.84361 0.366292 3.92685C0.333489 4.01008 0.317402 4.09897 0.31895 4.18842C0.320497 4.27787 0.339649 4.36615 0.375311 4.4482C0.410974 4.53025 0.462448 4.60448 0.526796 4.66664L3.0868 7.22663C3.14877 7.28912 3.22251 7.33872 3.30374 7.37256C3.38498 7.40641 3.47212 7.42383 3.56013 7.42383C3.64814 7.42383 3.73527 7.40641 3.81651 7.37256C3.89775 7.33872 3.97149 7.28912 4.03346 7.22663L9.47346 1.78664C9.54113 1.72421 9.59514 1.64844 9.63208 1.56411C9.66901 1.47977 9.68808 1.3887 9.68808 1.29664C9.68808 1.20457 9.66901 1.1135 9.63208 1.02916C9.59514 0.944831 9.54113 0.869063 9.47346 0.806635Z"
+              fill="white"/>
+          </svg>
+
+          <p [innerHTML]="config.signUpAcceptOffersHtml"></p>
+        </label>
+
         <label class="app-checkbox text-left mb-6" for="accept-terms">
           <input id="accept-terms" type="checkbox" formControlName="acceptTerms">
           <svg class="checkmark" fill="none" focusable="false" height="8" tabindex="-1" viewBox="0 0 10 8" width="10">
@@ -175,20 +208,9 @@
           <p [innerHTML]="config.signUpAcceptTermsHtml"></p>
           <p
             *ngIf="signUpForm.get('acceptTerms').hasError('required') && signUpForm.get('acceptTerms').touched"
-            class="text-danger-500 pl-2">
+            class="text-danger-500 font-bold">
             {{errorMessages.acceptTerms.required | translate}}
           </p>
-        </label>
-
-        <label class="app-checkbox text-left mb-6" for="accept-offers">
-          <input id="accept-offers" type="checkbox" formControlName="acceptOffers">
-          <svg class="checkmark" fill="none" focusable="false" height="8" tabindex="-1" viewBox="0 0 10 8" width="10">
-            <path
-              d="M9.47346 0.806635C9.41149 0.744149 9.33775 0.694553 9.25651 0.660707C9.17527 0.626861 9.08814 0.609436 9.00013 0.609436C8.91212 0.609436 8.82498 0.626861 8.74374 0.660707C8.6625 0.694553 8.58877 0.744149 8.5268 0.806635L3.56013 5.77997L1.47346 3.68663C1.40911 3.62448 1.33315 3.5756 1.24992 3.5428C1.16668 3.50999 1.0778 3.49391 0.988344 3.49546C0.89889 3.497 0.810617 3.51615 0.728565 3.55182C0.646513 3.58748 0.572288 3.63895 0.510129 3.7033C0.44797 3.76765 0.399094 3.84361 0.366292 3.92685C0.333489 4.01008 0.317402 4.09897 0.31895 4.18842C0.320497 4.27787 0.339649 4.36615 0.375311 4.4482C0.410974 4.53025 0.462448 4.60448 0.526796 4.66664L3.0868 7.22663C3.14877 7.28912 3.22251 7.33872 3.30374 7.37256C3.38498 7.40641 3.47212 7.42383 3.56013 7.42383C3.64814 7.42383 3.73527 7.40641 3.81651 7.37256C3.89775 7.33872 3.97149 7.28912 4.03346 7.22663L9.47346 1.78664C9.54113 1.72421 9.59514 1.64844 9.63208 1.56411C9.66901 1.47977 9.68808 1.3887 9.68808 1.29664C9.68808 1.20457 9.66901 1.1135 9.63208 1.02916C9.59514 0.944831 9.54113 0.869063 9.47346 0.806635Z"
-              fill="white"/>
-          </svg>
-
-          <p [innerHTML]="config.signUpAcceptOffersHtml"></p>
         </label>
       </div>
     </form>
