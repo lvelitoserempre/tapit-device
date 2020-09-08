@@ -6,8 +6,9 @@
       <img class="img-menu block" width="26" src="../assets/images/hMenu.svg">
       <ul class="fixed w-10/12 p-5 bg-neutral-100 h-full top-0 border-4 border-white" id="menu" *ngIf="!user">
         <li class="py-2"><img class="w-2/3" src="../assets/images/tap-it_black-orange.svg"></li>
-        <li class="py-2"><a (click)="loginCloseMenu()" class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
-            routerLink="/auth/login">INICIA SESIÓN</a></li>
+        <li class="py-2"><a (click)="loginCloseMenu()"
+                            class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
+                            routerLink="/auth/login">INICIA SESIÓN</a></li>
         <li><img width="30" class="absolute icon-close" src="../assets/images/ic_close.svg"></li>
       </ul>
       <ul *ngIf="user" class="fixed w-10/12 p-6 bg-neutral-100 pt-2 h-full top-0 border-4 border-white" id="menu">
@@ -25,17 +26,24 @@
              class="font-bold text-md uppercase text-neutral-700 inline-block mr-8 align-middle focus:outline-none"><i
             class="uil uil-store text-lg"></i> Market</a>
         </li>
+        <li class="inline-block align-middle border-b border-neutral-500 w-full py-4">
+          <a href="{{marketUrl}}/comprar-regalo"
+             class="font-bold text-md uppercase text-neutral-700 inline-block mr-8 align-middle focus:outline-none"><i
+            class="uil uil-gift text-lg"></i> Regalos</a>
+        </li>
         <li class="inline-block align-middle border-b border-neutral-500 w-full py-4 hidden">
           <a
             class="font-bold text-md uppercase text-neutral-700 inline-block mr-8 align-middle focus:outline-none app-link"
-            routerLink="/user/codes" routerLinkActive="active" (click)="loginCloseMenu()"><i class="uil uil-ticket text-lg"
-                                                                  queryParamsHandling="merge"></i> Mis Códigos</a>
+            routerLink="/user/codes" routerLinkActive="active" (click)="loginCloseMenu()"><i
+            class="uil uil-ticket text-lg"
+            queryParamsHandling="merge"></i> Mis Códigos</a>
         </li>
         <li class="inline-block align-middle w-full py-4">
           <a
             class="font-bold text-md uppercase text-neutral-700 inline-block mr-8 align-middle focus:outline-none app-link"
-            routerLink="/user/profile" routerLinkActive="active" (click)="loginCloseMenu()"><i class="uil uil-user-circle text-lg"
-                                                                    queryParamsHandling="merge"></i> Perfil</a>
+            routerLink="/user/profile" routerLinkActive="active" (click)="loginCloseMenu()"><i
+            class="uil uil-user-circle text-lg"
+            queryParamsHandling="merge"></i> Perfil</a>
         </li>
         <li><img class="absolute icon-close" src="../assets/images/ic_close.svg" width="30"></li>
       </ul>
@@ -53,6 +61,12 @@
                class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none"><i
               class="uil uil-store text-base inline-block align-middle leading-none"></i> <span
               class="inline-block align-middle">Market</span></a>
+          </li>
+          <li *ngIf="user" class="hidden sm:inline-block align-middle ml-8">
+            <a href="{{marketUrl}}/comprar-regalo"
+               class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none"><i
+              class="uil uil-gift text-base inline-block align-middle leading-none"></i> <span
+              class="inline-block align-middle">Regalos</span></a>
           </li>
           <li *ngIf="user" class="hidden  align-middle">
             <a
@@ -92,8 +106,9 @@
         </ul>
         <ul *ngIf="showLoginButton" class="relative">
           <ul class="relative inline-block">
-            <li><a class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
-                   routerLink="/auth/login">INICIA SESIÓN</a></li>
+            <li><a
+              class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
+              routerLink="/auth/login">INICIA SESIÓN</a></li>
           </ul>
         </ul>
       </div>
