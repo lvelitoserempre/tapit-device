@@ -31,8 +31,6 @@ const BRAHMA_CONFIG_LOCAL = {
     /* Boolean type parameter to show the sign form. */
     showOffersOption: false,
     /* Boolean type parameter to show offers options. */
-    preCheckOffers: false,
-    /* Boolean type parameter to pre accept the sending of offers. */
     loginEmail: '',
     /* String type parameter for sample mail to be displayed as a value within the email field. */
     loginEmailHint: '',

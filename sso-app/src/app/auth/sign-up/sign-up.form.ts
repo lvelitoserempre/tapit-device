@@ -10,7 +10,7 @@ export default class SignUpForm {
     password: ['', [Validators.required, Validators.minLength(6), SignUpForm.passwordsMatch]],
     passwordVerification: ['', [Validators.required, SignUpForm.passwordsMatch]],
     acceptTerms: ['', {validators: [Validators.requiredTrue], updateOn: 'change'}],
-    acceptOffers: [true, []]
+    acceptOffers: ['']
   };
 
   static readonly ERROR_MESSAGES = {

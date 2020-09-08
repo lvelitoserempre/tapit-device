@@ -15,7 +15,6 @@ export class SSOConfigService {
     showSignUpFacebookButton: true,
     showSignUPWithFields: true,
     showOffersOption: false,
-    preCheckOffers: true,
     loginEmail: '',
     project: 'pola',
     loginEmailHint: '',
