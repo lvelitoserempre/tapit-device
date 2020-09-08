@@ -57,6 +57,10 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     this.configService.getConfig().subscribe(config => {
       this.config = config;
       this._adapter.setLocale(this.i18n.getCurrentLanguage());
+
+      if (!config.showCPFInput) {
+        this.signUpForm.removeControl('cpf')
+      }
     });
   }
 
