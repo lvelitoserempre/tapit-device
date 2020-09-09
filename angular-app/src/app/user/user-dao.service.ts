@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {UserAccount} from '../models/user-account.model';
 import {from, Observable} from 'rxjs';
 import {auth, firestore} from 'firebase';
-import {map, mergeMap} from 'rxjs/operators';
+import {map, mergeMap, pluck, switchMap} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import DocumentSnapshot = firestore.DocumentSnapshot;
@@ -62,9 +62,9 @@ export class UserDAO {
         )));
   }
 
-  getCustomToken() {
+  getCustomToken(): Observable<string> {
     return from(auth().currentUser.getIdToken())
-      .pipe(mergeMap(token =>
+      .pipe(switchMap(token =>
         this.http.get(
           environment.firebase.functions.url + environment.firebase.functions.getCustomToken,
           {
@@ -72,7 +72,8 @@ export class UserDAO {
               Authorization: 'Bearer ' + token
             }
           }
-        )));
+        )))
+      .pipe(pluck('customToken'));
   }
 
   createUser(user: UserAccount) {
@@ -81,6 +82,25 @@ export class UserDAO {
         this.http.post(
           environment.firebase.functions.url + environment.firebase.functions.createUser,
           user,
+          {
+            headers: {
+              Authorization: 'Bearer ' + token,
+            }
+          }
+        )));
+  }
+
+  updateXeerpa(providerId, providerToken) {
+    return from(auth().currentUser.getIdToken())
+      .pipe(mergeMap(token =>
+        this.http.post(
+          environment.firebase.functions.url + environment.firebase.functions.xeerpa,
+          {
+            'provider': 'FB',
+            'origin': 'web',
+            'providerID': providerId,
+            'providerToken': providerToken
+          },
           {
             headers: {
               Authorization: 'Bearer ' + token,

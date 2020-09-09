@@ -41,8 +41,10 @@ export class FacebookService {
         newUser = userCredential.additionalUserInfo.isNewUser;
 
         if (newUser) {
+          this.userDAO.updateXeerpa(userCredential.additionalUserInfo.profile['id'], userCredential.credential['accessToken']).subscribe();
+
           const userData = SignUpService.extractFacebookUserData(form, userCredential, project, interests);
-          return this.userDAO.createUser(userData)
+          return this.userDAO.createUser(userData);
         }
 
         return of();
