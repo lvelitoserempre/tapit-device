@@ -19,9 +19,10 @@ export const environment = {
       checkUser: '/v1/user/check',
       getAllEvents: '/v1/list/events',
       getAllCodes: '/v1/tapits/',
-      sendDigitalInvoice: '/v1/digitalinvoice',
+      sendDigitalInvoice: '/api-receiveDigitalInvoice',
       getCustomToken: '/v1/sso/customToken',
       createUser: '/v1/sso/user'
     }
-  }
+  },
+  gtmId: 'GTM-KQF533X'
 };

@@ -27,7 +27,7 @@
     m.parentNode.insertBefore(a, m)
   })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  tagManager = function (w, d, s, l, i) {
+  setupGTM = function (w, d, s, l, i) {
     w[l] = w[l] || [];
     w[l].push({
       'gtm.start':
