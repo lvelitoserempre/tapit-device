@@ -5,7 +5,13 @@ export class GtmService {
   private constructor() {
   }
 
-  static sendEvent(action, label) {
+  static sendEvent(uid, action: string, label: string) {
+    if (uid) {
+      dataLayer.push({
+        'userId': uid
+      });
+    }
+
     dataLayer.push({
       'category': 'sso_page',
       'action': action,

@@ -25,5 +25,6 @@ export const environment = {
       xeerpa: '/v1/xeerpa'
     }
   },
-  gtmId: 'GTM-KQF533X'
+  gtmId: 'GTM-KQF533X',
+  googleAnalyticsId: 'UA-159252784-6'
 };
