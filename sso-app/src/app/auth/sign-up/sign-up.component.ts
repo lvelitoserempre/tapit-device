@@ -9,7 +9,7 @@ import {IframeMessagingService} from '../../shared/services/iframe-messaging.ser
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {from} from 'rxjs';
 import {auth} from 'firebase';
-import {switchMap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import SignUpForm from './sign-up.form';
 import {SignUpService} from '../sign-up.service';
 import {ActivatedRoute} from '@angular/router';
@@ -24,6 +24,8 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import {I18nService} from 'src/app/shared/services/i18n.service';
 import {GtmService} from '../../gtm.service';
 import UserCredential = firebase.auth.UserCredential;
+
+declare var ga;
 
 @Component({
   selector: 'app-sign-up',
@@ -82,10 +84,11 @@ export class SignUpComponent implements OnInit, AfterViewInit {
       this.loaderService.show();
       from(auth().createUserWithEmailAndPassword(formValue.email, formValue.password))
         .pipe(switchMap((userCredential: UserCredential) => {
-          return this.userDAO.createUser(SignUpService.extractFormUserData(formValue, this.config.project, this.interests));
+          return this.userDAO.createUser(SignUpService.extractFormUserData(formValue, this.config.project, this.interests)).pipe(map(() => userCredential));
         }))
-        .subscribe(user => {
-          GtmService.sendEvent('signup_all_websites', 'signup_email')
+        .subscribe(userCredential => {
+          ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-email', eventLabel: ''});
+          GtmService.sendEvent(userCredential.user.uid, 'signup_all_websites', 'signup_email');
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
@@ -108,8 +111,9 @@ export class SignUpComponent implements OnInit, AfterViewInit {
       this.loaderService.show();
 
       this.facebookService.signUp(this.signUpForm.value, this.config.project, this.interests)
-        .subscribe(customToken => {
-          GtmService.sendEvent('signup_all_websites', 'signup_facebook')
+        .subscribe(userCredential => {
+          ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-facebook', eventLabel: ''});
+          GtmService.sendEvent(userCredential.user.uid, 'signup_all_websites', 'signup_facebook');
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
