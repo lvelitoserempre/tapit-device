@@ -27,8 +27,8 @@ BUILD_MAP = {
     env: 'production',
     deploy: 'firebase deploy --only hosting:tapit-app-production && firebase deploy --only hosting:tapit-sso-test'
   },
-  BRAHMA_SSO_DEV: {
-    env: 'develop',
+  BRAHMA_SSO_PRODUCTION: {
+    env: 'production',
     deploy: 'firebase deploy --only hosting:clube-brahma-sso && firebase deploy --only hosting:clube-brahma-sso-example'
   },
 }

@@ -9,5 +9,6 @@ export interface UserAccount {
   referralCode?: any;
   idToken?: string;
   refreshToken?: string;
+  customToken?: string;
   points?: number;
 }

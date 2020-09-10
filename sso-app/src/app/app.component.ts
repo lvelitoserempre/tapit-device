@@ -10,6 +10,9 @@ import {auth, initializeApp} from 'firebase';
 import {ActivatedRoute} from '@angular/router';
 import {CookiesService} from '../../../library/cookies.service';
 
+declare var setupGTM;
+declare var ga;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -49,6 +52,9 @@ export class AppComponent implements OnInit {
         })
       }
     });
+
+    ga('create', environment.googleAnalyticsId, 'auto');
+    setupGTM(window, document, 'script', 'dataLayer', environment.gtmId);
   }
 
   private addCustomStyles(styles: string) {

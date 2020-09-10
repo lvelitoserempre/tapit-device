@@ -101,15 +101,46 @@ export default function FooterSection(props) {
           </div>
         </div>
         <DownloadFooter isMobile={props.isMobile}/>
-        <div className="border-t-2 border-neutral-500 py-5 mt-12 ">
-          <img className='inline-block align-middle' src={i18next.t("Footer.Logo")}/>
-          <p className='inline-block text-neutral-700 ml-1 pl-2 border-l border-neutral-600 align-middle text-xs'>
-            <span dangerouslySetInnerHTML={{__html: i18next.t("Footer.Copyright")}}/>
-          </p>
+
+        <div className="block md:hidden visible px-5 mt-6"><p className="text-neutral-black text-xs">“El exceso de alcohol es
+          perjudicial para la salud. Prohíbase el expendio de bebidas embriagantes a menores de edad” </p></div>
+        <div className="border-t-2 border-neutral-500 py-5 px-5 md:px-0 mt-8 md:mt-12 flex flex-wrap">
+          <div className="w-full mt-4 sm:mt-1 order-1 md:w-1/3 sm:w-3/5">
+            <img className="inline-block align-middle"
+                 src="https://market.tapit.com.co/arquivos/tap-it_black-orange.png"/>
+            <p className="inline-block text-neutral-700 ml-1 pl-2 border-l border-neutral-600 align-middle text-xs"><span>Todos los derechos reservados © 2020</span>
+            </p></div>
+          <div className="w-full mt-4 sm:mt-1 order-2 sm:order-3 sm:w-3/5 md:order-4 md:w-1/3 text-xs text-neutral-700">
+            Prohíbase el expendio de bebidas embriagantes a menores de edad.
+          </div>
+          <div
+            className="w-full mt-4 sm:mt-1 order-3 sm:order-5 sm:w-3/5 md:order-2 md:w-1/3 md:pl-12 text-xs text-neutral-700">
+            El exceso de alcohol es perjudicial para la salud.
+          </div>
+          <div
+            className="w-full mt-4 sm:mt-1 order-4 sm:order-2 sm:w-2/5 sm:pl-4 md:order-5 md:w-1/3 md:pl-12 text-xs text-neutral-700">
+            No comparta este contenido con menores de edad.
+          </div>
+          <div
+            className="w-full mt-4 sm:mt-1 order-5 sm:order-4 sm:w-2/5 sm:pl-4 md:order-3 md:w-1/3 md:pl-2 text-xs text-black font-bold">
+            <span className="inline-block align-middle">www.hablemosdealcohol.com</span><span
+            className="inline-block align-middle md:hidden visible">
+        <img
+          className="inline-block align-middle" src="https://market.tapit.com.co/arquivos/footer-icon-1.png"/>
+        <img
+          className="inline-block align-middle ml-1" src="https://market.tapit.com.co/arquivos/footer-icon-2.png"/>
+        <img
+          className="inline-block align-middle ml-1" src="https://market.tapit.com.co/arquivos/footer-icon-3.png"/></span>
+          </div>
+          <div className="w-full mt-4 sm:mt-1 order-6 md:w-1/3 md:pl-2 hidden md:block visible">
+            <img
+              className="inline-block align-middle" src="https://market.tapit.com.co/arquivos/footer-icon-1.png"/>
+            <img
+              className="inline-block align-middle ml-1" src="https://market.tapit.com.co/arquivos/footer-icon-2.png"/>
+            <img
+              className="inline-block align-middle ml-1" src="https://market.tapit.com.co/arquivos/footer-icon-3.png"/></div>
         </div>
       </div>
     </footer>
   )
-
-
 }

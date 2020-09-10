@@ -5,5 +5,5 @@ export const RecoverPasswordValidators = {
 };
 
 export const RecoverPasswordValidationMessages = {
-  email: {required: 'RECOVER_PASSWORD.VALIDATIONS.EMAIL_REQUERIED', pattern: 'RECOVER_PASSWORD.VALIDATIONS.INVALID_EMAIL'},
+  email: {required: 'RECOVER_PASSWORD.VALIDATIONS.EMAIL_REQUIRED', pattern: 'RECOVER_PASSWORD.VALIDATIONS.INVALID_EMAIL'},
 };

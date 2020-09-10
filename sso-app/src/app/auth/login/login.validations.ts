@@ -7,6 +7,6 @@ export const LoginValidators = {
 };
 
 export const LoginValidationMessages = {
-  email: {required: 'LOGIN.VALIDATIONS.EMAIL_REQUERIED', pattern: 'LOGIN.VALIDATIONS.INVALID_EMAIL'},
+  email: {required: 'LOGIN.VALIDATIONS.EMAIL_REQUIRED', pattern: 'LOGIN.VALIDATIONS.INVALID_EMAIL'},
   password: {required: 'LOGIN.VALIDATIONS.PASSWORD_REQUIRED'},
 };

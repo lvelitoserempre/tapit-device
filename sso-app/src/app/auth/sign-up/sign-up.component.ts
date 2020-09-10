@@ -9,20 +9,23 @@ import {IframeMessagingService} from '../../shared/services/iframe-messaging.ser
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {from} from 'rxjs';
 import {auth} from 'firebase';
-import {switchMap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import SignUpForm from './sign-up.form';
 import {SignUpService} from '../sign-up.service';
 import {ActivatedRoute} from '@angular/router';
 import {ScrollService} from '../../shared/services/scroll.service';
 import {UserAgentService} from '../../../../../library/user-agent.service';
-import UserCredential = firebase.auth.UserCredential;
 import {
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-import { I18nService } from 'src/app/shared/services/i18n.service';
+import {I18nService} from 'src/app/shared/services/i18n.service';
+import {GtmService} from '../../gtm.service';
+import UserCredential = firebase.auth.UserCredential;
+
+declare var ga;
 
 @Component({
   selector: 'app-sign-up',
@@ -43,20 +46,23 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   interests: string[] = [];
   signUpForm: FormGroup;
   errorMessages = SignUpForm.ERROR_MESSAGES;
-  interestsTouched:boolean = false;
-  
+  interestsTouched: boolean = false;
+
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeMessagingService,
               private configService: SSOConfigService, private route: ActivatedRoute, private _adapter: DateAdapter<any>,
-              private i18n: I18nService ) {
+              private i18n: I18nService) {
     this.signUpForm = this.formBuilder.group(SignUpForm.CONFIG, {updateOn: 'blur'});
   }
 
   ngOnInit(): void {
     this.configService.getConfig().subscribe(config => {
       this.config = config;
-      this.signUpForm.get('acceptOffers').setValue(this.config.preCheckOffers);
       this._adapter.setLocale(this.i18n.getCurrentLanguage());
+
+      if (!config.showCPFInput) {
+        this.signUpForm.removeControl('cpf')
+      }
     });
   }
 
@@ -78,9 +84,11 @@ export class SignUpComponent implements OnInit, AfterViewInit {
       this.loaderService.show();
       from(auth().createUserWithEmailAndPassword(formValue.email, formValue.password))
         .pipe(switchMap((userCredential: UserCredential) => {
-          return this.userDAO.createUser(SignUpService.extractFormUserData(formValue, this.config.project, this.interests));
+          return this.userDAO.createUser(SignUpService.extractFormUserData(formValue, this.config.project, this.interests)).pipe(map(() => userCredential));
         }))
-        .subscribe(user => {
+        .subscribe(userCredential => {
+          ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-email', eventLabel: ''});
+          GtmService.sendEvent(userCredential.user.uid, 'signup_all_websites', 'signup_email');
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
@@ -103,7 +111,9 @@ export class SignUpComponent implements OnInit, AfterViewInit {
       this.loaderService.show();
 
       this.facebookService.signUp(this.signUpForm.value, this.config.project, this.interests)
-        .subscribe(customToken => {
+        .subscribe(userCredential => {
+          ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-facebook', eventLabel: ''});
+          GtmService.sendEvent(userCredential.user.uid, 'signup_all_websites', 'signup_facebook');
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
