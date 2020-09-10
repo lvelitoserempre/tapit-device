@@ -69,10 +69,10 @@ export class LoginComponent implements OnInit {
 
         auth().onAuthStateChanged((user: User) => {
           if (user) {
-            this.userDAO.getCustomToken().subscribe((res: any) => {
+            this.userDAO.getCustomToken().subscribe((customToken: any) => {
               this.sendDataToParent({
                 appId: this.incomingData.appId,
-                customToken: res.customToken
+                customToken: customToken
               });
             });
           } else {

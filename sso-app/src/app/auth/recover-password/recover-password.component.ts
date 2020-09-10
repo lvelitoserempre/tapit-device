@@ -48,7 +48,7 @@ export class RecoverPasswordComponent implements OnInit {
       from(auth().sendPasswordResetEmail(formValue.email))
         .subscribe(resp => {
           this.emailSent = true;
-          GtmService.sendEvent('recover_password_all_websites', 'recover_password');
+          GtmService.sendEvent(null, 'recover_password_all_websites', 'recover_password');
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();

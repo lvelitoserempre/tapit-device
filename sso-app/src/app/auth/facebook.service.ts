@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {auth} from 'firebase';
 import {from, Observable, of, throwError} from 'rxjs';
-import {catchError, mergeMap} from 'rxjs/operators';
+import {catchError, map, mergeMap} from 'rxjs/operators';
 import {SignUpService} from './sign-up.service';
 import {UserDAO} from '../user/user-dao.service';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
@@ -18,7 +18,7 @@ export class FacebookService {
     //this.facebookAuthProvider.addScope('user_birthday');
   }
 
-  login(): Observable<any> {
+  login(): Observable<UserCredential> {
     let newUser;
 
     return from(auth().signInWithPopup(this.facebookAuthProvider))
@@ -33,7 +33,7 @@ export class FacebookService {
       }));
   }
 
-  signUp(form, project: string, interests?: string[]): Observable<any> {
+  signUp(form, project: string, interests?: string[]): Observable<UserCredential> {
     let newUser;
 
     return from(auth().signInWithPopup(this.facebookAuthProvider))
@@ -41,11 +41,13 @@ export class FacebookService {
         newUser = userCredential.additionalUserInfo.isNewUser;
 
         if (newUser) {
+          //this.userDAO.updateXeerpa(userCredential.additionalUserInfo.profile['id'], userCredential.credential['accessToken']).subscribe();
+
           const userData = SignUpService.extractFacebookUserData(form, userCredential, project, interests);
-          return this.userDAO.createUser(userData)
+          return this.userDAO.createUser(userData).pipe(map(() => userCredential));
         }
 
-        return of();
+        return of(userCredential);
       }))
       .pipe(catchError(err => {
         if (newUser) {
