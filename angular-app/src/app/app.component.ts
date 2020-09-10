@@ -5,7 +5,7 @@ import {initializeApp} from 'firebase';
 import {UserDAO} from './user/user-dao.service';
 import {CookiesService} from '../../../library/cookies.service';
 
-declare var tagManager;
+declare var setupGTM;
 declare var ga;
 
 @Component({
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     initializeApp(environment.firebase.config);
     this.authService.setupLoggedUserObserver();
     this.redirectIfUserIsAChild();
-    this.setUpStats();
+    this.setUpStats()
   }
 
   /**
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
   }
 
   private setUpStats() {
-    tagManager(window, document, 'script', 'dataLayer', environment.googleTagManagerId);
+    setupGTM(window, document, 'script', 'dataLayer', environment.googleTagManagerId);
     ga('create', environment.googleAnalyticsId, 'auto');
   }
 }
