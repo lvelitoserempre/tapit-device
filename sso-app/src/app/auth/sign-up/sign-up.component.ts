@@ -118,7 +118,6 @@ export class SignUpComponent implements OnInit, AfterViewInit {
         }, error => {
           this.loaderService.hide();
           this.dialogService.manageError(error);
-          auth().currentUser.delete().then();
         });
     }
   }
