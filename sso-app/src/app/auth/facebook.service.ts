@@ -1,9 +1,12 @@
 import {Injectable} from '@angular/core';
-import {auth} from 'firebase';
+import {auth} from 'firebase/app';
 import {from, Observable, of, throwError} from 'rxjs';
-import {catchError, map, mergeMap} from 'rxjs/operators';
+import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
 import {SignUpService} from './sign-up.service';
 import {UserDAO} from '../user/user-dao.service';
+import 'firebase/auth';
+import {UserAccount} from '../user/user-account';
+import {AuthService} from './auth.service';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
 import UserCredential = firebase.auth.UserCredential;
 
@@ -13,12 +16,12 @@ import UserCredential = firebase.auth.UserCredential;
 export class FacebookService {
   facebookAuthProvider: FacebookAuthProvider;
 
-  constructor(private userDAO: UserDAO) {
+  constructor(private userDAO: UserDAO, private authService: AuthService) {
     this.facebookAuthProvider = new FacebookAuthProvider();
     //this.facebookAuthProvider.addScope('user_birthday');
   }
 
-  login(): Observable<UserCredential> {
+  login(): Observable<UserAccount> {
     let newUser;
 
     return from(auth().signInWithPopup(this.facebookAuthProvider))
@@ -30,10 +33,11 @@ export class FacebookService {
         }
 
         return of(userCredential);
-      }));
+      }))
+      .pipe(switchMap((userCredential: UserCredential) => this.authService.setCurrentUser(userCredential)));
   }
 
-  signUp(form, project: string, interests?: string[]): Observable<UserCredential> {
+  signUp(form, project: string, interests?: string[]): Observable<UserAccount> {
     let newUser;
 
     return from(auth().signInWithPopup(this.facebookAuthProvider))
@@ -55,6 +59,7 @@ export class FacebookService {
         }
 
         return throwError(err);
-      }));
+      }))
+      .pipe(switchMap((userCredential: UserCredential) => this.authService.setCurrentUser(userCredential)));
   }
 }

@@ -7,11 +7,7 @@ import {FacebookService} from '../facebook.service';
 import {UserDAO} from '../../user/user-dao.service';
 import {IframeMessagingService} from '../../shared/services/iframe-messaging.service';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
-import {from} from 'rxjs';
-import {auth} from 'firebase';
-import {map, switchMap} from 'rxjs/operators';
 import SignUpForm from './sign-up.form';
-import {SignUpService} from '../sign-up.service';
 import {ActivatedRoute} from '@angular/router';
 import {ScrollService} from '../../shared/services/scroll.service';
 import {UserAgentService} from '../../../../../library/user-agent.service';
@@ -23,7 +19,8 @@ import {
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {I18nService} from 'src/app/shared/services/i18n.service';
 import {GtmService} from '../../gtm.service';
-import UserCredential = firebase.auth.UserCredential;
+import {AuthService} from '../auth.service';
+import {UserAccount} from '../../user/user-account';
 
 declare var ga;
 
@@ -51,7 +48,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeMessagingService,
               private configService: SSOConfigService, private route: ActivatedRoute, private _adapter: DateAdapter<any>,
-              private i18n: I18nService) {
+              private i18n: I18nService, private authService: AuthService) {
     this.signUpForm = this.formBuilder.group(SignUpForm.CONFIG, {updateOn: 'blur'});
   }
 
@@ -79,21 +76,19 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     this.interestsTouched = true;
     const interestsValidation = this.config.interests && this.config.interests.length ? true : false;
     const areInterestsValid = !interestsValidation ? true : (this.interests.length ? true : false);
+
     if (this.signUpForm.valid && areInterestsValid) {
       const formValue = this.signUpForm.value;
       this.loaderService.show();
-      from(auth().createUserWithEmailAndPassword(formValue.email, formValue.password))
-        .pipe(switchMap((userCredential: UserCredential) => {
-          return this.userDAO.createUser(SignUpService.extractFormUserData(formValue, this.config.project, this.interests)).pipe(map(() => userCredential));
-        }))
-        .subscribe(userCredential => {
+
+      this.authService.signUp(formValue, this.config, this.interests)
+        .subscribe((userAccount: UserAccount) => {
           ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-email', eventLabel: ''});
-          GtmService.sendEvent(userCredential.user.uid, 'signup_all_websites', 'signup_email');
+          GtmService.sendEvent(userAccount.id, 'signup_all_websites', 'signup_email');
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
           this.dialogService.manageError(error);
-          auth().currentUser.delete().then((res) => console.log('user deleted', res));
         });
     }
   }
@@ -111,14 +106,13 @@ export class SignUpComponent implements OnInit, AfterViewInit {
       this.loaderService.show();
 
       this.facebookService.signUp(this.signUpForm.value, this.config.project, this.interests)
-        .subscribe(userCredential => {
+        .subscribe((userAccount: UserAccount) => {
           ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-facebook', eventLabel: ''});
-          GtmService.sendEvent(userCredential.user.uid, 'signup_all_websites', 'signup_facebook');
+          GtmService.sendEvent(userAccount.id, 'signup_all_websites', 'signup_facebook');
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
           this.dialogService.manageError(error);
-          auth().currentUser.delete().then();
         });
     }
   }
