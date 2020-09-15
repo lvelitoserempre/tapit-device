@@ -23,6 +23,7 @@ import {
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {I18nService} from 'src/app/shared/services/i18n.service';
 import {GtmService} from '../../gtm.service';
+import {Title} from '@angular/platform-browser';
 import UserCredential = firebase.auth.UserCredential;
 
 declare var ga;
@@ -48,10 +49,11 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   errorMessages = SignUpForm.ERROR_MESSAGES;
   interestsTouched: boolean = false;
 
-  constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
+  constructor(title: Title, private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeMessagingService,
               private configService: SSOConfigService, private route: ActivatedRoute, private _adapter: DateAdapter<any>,
               private i18n: I18nService) {
+    title.setTitle('TapIt - Registro')
     this.signUpForm = this.formBuilder.group(SignUpForm.CONFIG, {updateOn: 'blur'});
   }
 

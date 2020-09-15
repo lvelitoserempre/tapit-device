@@ -15,6 +15,8 @@ import {AUTH_ERRORS} from 'src/app/auth/auth-error.enum';
 import {AuthService} from '../auth.service';
 import {UserAgentService} from '../../../../../library/user-agent.service';
 import {GtmService} from '../../gtm.service';
+import {Title} from '@angular/platform-browser';
+
 declare var ga;
 
 @Component({
@@ -27,10 +29,11 @@ export class LoginComponent implements OnInit {
   validationMessages = LoginValidationMessages;
   config: SSOConfig;
 
-  constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
+  constructor(title: Title, private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeMessagingService: IframeMessagingService,
               private configService: SSOConfigService, private router: Router, private route: ActivatedRoute,
               private authService: AuthService) {
+    title.setTitle('TapIt - Iniciar Sesión')
     this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
   }
 
@@ -79,7 +82,7 @@ export class LoginComponent implements OnInit {
 
     this.facebookService.login()
       .subscribe(userCredential => {
-          ga('send', {hitType: 'event', eventCategory: 'login', eventAction: 'login-facebook', eventLabel: ''});
+        ga('send', {hitType: 'event', eventCategory: 'login', eventAction: 'login-facebook', eventLabel: ''});
         GtmService.sendEvent(userCredential.user.uid, 'login_all_websites', 'login_facebook')
         this.loaderService.hide();
       }, error => {
