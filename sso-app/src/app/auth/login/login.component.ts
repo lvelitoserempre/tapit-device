@@ -14,6 +14,7 @@ import {AuthService} from '../auth.service';
 import {UserAgentService} from '../../../../../library/user-agent.service';
 import {GtmService} from '../../gtm.service';
 import {UserAccount} from '../../user/user-account';
+import {Title} from '@angular/platform-browser';
 
 declare var ga;
 
@@ -27,10 +28,11 @@ export class LoginComponent implements OnInit {
   validationMessages = LoginValidationMessages;
   config: SSOConfig;
 
-  constructor(private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
+  constructor(title: Title, private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeMessagingService: IframeMessagingService,
               private configService: SSOConfigService, private router: Router, private route: ActivatedRoute,
               private authService: AuthService) {
+    title.setTitle('TapIt - Iniciar Sesión')
     this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
   }
 

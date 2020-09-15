@@ -9,6 +9,7 @@ import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RecoverPasswordValidationMessages, RecoverPasswordValidators} from './recover-password.validations';
 import {GtmService} from '../../gtm.service';
+import {Title} from '@angular/platform-browser';
 
 
 @Component({
@@ -23,8 +24,9 @@ export class RecoverPasswordComponent implements OnInit {
   config: SSOConfig;
   emailSent = false;
 
-  constructor(private loaderService: LoaderService, private dialogService: DialogService, private formBuilder: FormBuilder,
+  constructor(title: Title, private loaderService: LoaderService, private dialogService: DialogService, private formBuilder: FormBuilder,
               private configService: SSOConfigService, private router: Router, private activatedRoute: ActivatedRoute) {
+    title.setTitle('TapIt - Recuperar Contraseña');
     this.recoverPasswordForm = this.formBuilder.group(RecoverPasswordValidators, {updateOn: 'blur'});
     const email = this.activatedRoute.snapshot.params['email'] || '';
     this.recoverPasswordForm.controls['email'].setValue(email);
