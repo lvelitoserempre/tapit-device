@@ -1,0 +1,11 @@
+@font-face {
+  font-family: futura-extra-bold;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('futura-extra-bold.ttf') format('truetype');
+}
+
+.font-futura-extra-bold {
+  font-family: futura-extra-bold, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif'  !important;
+}

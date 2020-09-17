@@ -6,7 +6,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {I18nService} from './shared/services/i18n.service';
 import {SSOConfigService} from './single-sign-on/sso-config.service';
 import {LoaderService} from './loader/loader-service/loader.service';
-import {auth, initializeApp} from 'firebase';
+import {auth, initializeApp} from 'firebase/app';
 import {ActivatedRoute} from '@angular/router';
 import {CookiesService} from '../../../library/cookies.service';
 
@@ -46,7 +46,6 @@ export class AppComponent implements OnInit {
           }
         });
       } else {
-        this.authService.setupLoggedUserObserver();
         this.authService.getCurrentUser().subscribe(user => {
           this.iframeMessagingService.sendDataToParent('set-logged-user', user);
         })

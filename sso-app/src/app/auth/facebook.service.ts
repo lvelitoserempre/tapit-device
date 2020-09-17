@@ -1,9 +1,12 @@
 import {Injectable} from '@angular/core';
-import {auth, User} from 'firebase';
+import {auth, User} from 'firebase/app';
 import {from, Observable, of, throwError} from 'rxjs';
 import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
 import {SignUpService} from './sign-up.service';
 import {UserDAO} from '../user/user-dao.service';
+import 'firebase/auth';
+import {UserAccount} from '../user/user-account';
+import {AuthService} from './auth.service';
 import {HttpClient} from '@angular/common/http';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
 import UserCredential = firebase.auth.UserCredential;
@@ -14,7 +17,7 @@ import UserCredential = firebase.auth.UserCredential;
 export class FacebookService {
   facebookAuthProvider: FacebookAuthProvider;
 
-  constructor(private userDAO: UserDAO, private httpClient: HttpClient) {
+  constructor(private userDAO: UserDAO, private authService: AuthService, private httpClient: HttpClient) {
     this.facebookAuthProvider = new FacebookAuthProvider();
     this.facebookAuthProvider.addScope('user_birthday');
     this.facebookAuthProvider.addScope('email');
@@ -26,26 +29,25 @@ export class FacebookService {
     this.facebookAuthProvider.addScope('user_posts');
   }
 
-  login(): Observable<UserCredential> {
-    let user: User;
-    let facebookAccessToken: string;
+  login(): Observable<UserAccount> {
     let isNewUser;
 
     return from(auth().signInWithPopup(this.facebookAuthProvider))
       .pipe(mergeMap((userCredential: UserCredential) => {
-        user = userCredential.user;
+        let user = userCredential.user;
         isNewUser = userCredential.additionalUserInfo.isNewUser;
-        facebookAccessToken = userCredential.credential['accessToken'];
+        let facebookAccessToken = userCredential.credential['accessToken'];
 
         if (isNewUser) {
           return this.deleteUser(user, facebookAccessToken).pipe(switchMap(() => throwError({code: 'facebook-sign-up-in-wrong-tab'})));
         }
 
         return of(userCredential);
-      }));
+      }))
+      .pipe(switchMap((userCredential: UserCredential) => this.authService.setCurrentUser(userCredential)));
   }
 
-  signUp(form, project: string, interests?: string[]): Observable<UserCredential> {
+  signUp(form, project: string, interests?: string[]): Observable<UserAccount> {
     let user: User;
     let facebookAccessToken: string;
     let isNewUser;
@@ -71,7 +73,8 @@ export class FacebookService {
         }
 
         return throwError(error);
-      }));
+      }))
+      .pipe(switchMap((userCredential: UserCredential) => this.authService.setCurrentUser(userCredential)));
   }
 
   deleteUser(user: User, facebookAccessToken: string) {
