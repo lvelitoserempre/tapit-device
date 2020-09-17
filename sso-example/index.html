@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>SSO EXAMPLE</title>
   <meta content="width=device-width,initial-scale=1" name="viewport">
-  <link rel="stylesheet" href="https://preview.tapit.com.co/assets/styles/tailwind.css">
+  <link rel="stylesheet" href="https://tapit.com.co/assets/styles/tailwind.css">
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-firestore.js"></script>
@@ -105,7 +105,16 @@
 
     function showSSOPopup(path) {
       const loginElement = document.getElementById('login-popup');
+      ssoClient.ssoExecuteAction('config', config.ssoConfig);
       ssoClient.ssoExecuteAction('navigateTo', path);
+      loginElement.classList.remove('hidden');
+    }
+
+    function showSSOPopup2(path) {
+      const loginElement = document.getElementById('login-popup');
+      const ssoConfigCopy = Object.assign({}, config.ssoConfig)
+      ssoConfigCopy.sloganHtml = 'NEW SLOGAN FROM NEW CONFIG';
+      ssoClient.ssoExecuteAction('config', ssoConfigCopy);
       loginElement.classList.remove('hidden');
     }
 
@@ -124,6 +133,11 @@
   <button class="app-button bg-primary-500 text-white" onclick="showSSOPopup('/login')">INICIAR SESIÓN</button>
   <button class="app-button bg-secondary-500 text-white" onclick="showSSOPopup('/sign-up')">REGISTRARSE</button>
   <button class="app-button bg-danger-500 text-white" onclick="logout()">CERRAR SESIÓN</button>
+</div>
+
+<div class="text-center my-32">
+  <button class="app-button bg-primary-500 text-white" onclick="showSSOPopup2('/login')">INICIAR SESIÓN CONFIG 2
+  </button>
 </div>
 
 <div class="m-4 rounded-lg bg-neutral-200 p-4">

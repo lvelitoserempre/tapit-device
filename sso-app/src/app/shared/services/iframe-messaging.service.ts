@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {fromEvent} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {filter, map, take} from 'rxjs/operators';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {AuthService} from '../../auth/auth.service';
 import SSOConfig from '../../single-sign-on/sso-config';
@@ -19,7 +19,9 @@ export class IframeMessagingService {
 
   sendDataToParent(action: string, data) {
     this.configService.getConfig()
+      .pipe(take(1))
       .subscribe((config) => {
+        console.log(action, config)
         const referrer = config.reference || document.referrer;
 
         if (window.parent) {
