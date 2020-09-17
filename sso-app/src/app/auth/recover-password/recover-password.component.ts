@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LoaderService} from '../../loader/loader-service/loader.service';
 import {DialogService} from '../../dialog/dialog-service/dialog.service';
-import {auth} from 'firebase';
+import {auth} from 'firebase/app';
 import {from} from 'rxjs';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import SSOConfig from '../../single-sign-on/sso-config';
