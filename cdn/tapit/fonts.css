@@ -1,0 +1,35 @@
+@font-face {
+  font-family: filson-soft-book;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('filson-soft-book.otf') format('opentype');
+}
+
+@font-face {
+  font-family: filson-soft-regular;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('filson-soft-regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: filson-soft-bold;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('filson-soft-bold.otf') format('opentype');
+}
+
+.font-filson-soft-book {
+  font-family: filson-soft-book, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif' !important;
+}
+
+.font-filson-soft-regular {
+  font-family: filson-soft-regular, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif' !important;
+}
+
+.font-filson-soft-bold {
+  font-family: filson-soft-bold, '-apple-system', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif' !important;
+}
