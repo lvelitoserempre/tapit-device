@@ -22,6 +22,7 @@ import {GtmService} from '../../gtm.service';
 import {Title} from '@angular/platform-browser';
 import {AuthService} from '../auth.service';
 import {UserAccount} from '../../user/user-account';
+import {GoogleService} from '../google.service';
 
 declare var ga;
 
@@ -47,6 +48,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   interestsTouched: boolean = false;
 
   constructor(title: Title, private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
+              private googleService: GoogleService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeMessagingService,
               private configService: SSOConfigService, private route: ActivatedRoute, private _adapter: DateAdapter<any>,
               private i18n: I18nService, private authService: AuthService) {
@@ -69,6 +71,10 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     this.route.queryParams.subscribe(queryParams => {
       if (queryParams.provider === 'facebook') {
         ScrollService.scrollToElement('facebook-button');
+      }
+
+      if (queryParams.provider === 'google') {
+        ScrollService.scrollToElement('google-button');
       }
     });
   }
@@ -111,6 +117,24 @@ export class SignUpComponent implements OnInit, AfterViewInit {
         .subscribe((userAccount: UserAccount) => {
           ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-facebook', eventLabel: ''});
           GtmService.sendEvent(userAccount.id, 'signup_all_websites', 'signup_facebook');
+          this.loaderService.hide();
+        }, error => {
+          this.loaderService.hide();
+          this.dialogService.manageError(error);
+        });
+    }
+  }
+
+  signUpWithGoogle() {
+    this.signUpForm.get('acceptTerms').markAsTouched();
+
+    if (this.signUpForm.get('acceptTerms').valid) {
+      this.loaderService.show();
+
+      this.googleService.signUp(this.signUpForm.value, this.config.project, this.interests)
+        .subscribe(userCredential => {
+          ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-google', eventLabel: ''});
+          GtmService.sendEvent(userCredential.user.uid, 'signup_all_websites', 'signup_google');
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
