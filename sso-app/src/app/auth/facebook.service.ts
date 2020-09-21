@@ -39,7 +39,7 @@ export class FacebookService {
         let facebookAccessToken = userCredential.credential['accessToken'];
 
         if (isNewUser) {
-          return this.deleteUser(user, facebookAccessToken).pipe(switchMap(() => throwError({code: 'facebook-sign-up-in-wrong-tab'})));
+          return from(auth().currentUser.delete()).pipe(() => throwError({code: 'sign-up-in-wrong-tab'}));
         }
 
         return of(userCredential);

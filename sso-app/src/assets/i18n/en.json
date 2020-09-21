@@ -7,6 +7,7 @@
   },
   "LOGIN": {
     "FACEBOOK_LOGIN": "Login with Facebook",
+    "GOOGLE_LOGIN": "Login with Google",
     "EMAIL_LABEL": "or with your email account",
     "EMAIL": "Email",
     "PASSWORD": "Password",
@@ -31,6 +32,7 @@
     "SIGN_UP": "Sign up",
     "SIGN_UP_OPTION_LABEL": "or register with facebook",
     "FACEBOOK_SIGN_UP": "Register with Facebook",
+    "GOOGLE_SIGN_UP": "Register with Google",
     "LEGEND_ACCEPTANCE": "By registering you are accepting:",
     "SELECT_INTERESTS": "Select your interests",
     "VALIDATIONS": {

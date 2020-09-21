@@ -15,6 +15,7 @@ import {UserAgentService} from '../../../../../library/user-agent.service';
 import {GtmService} from '../../gtm.service';
 import {UserAccount} from '../../user/user-account';
 import {Title} from '@angular/platform-browser';
+import {GoogleService} from '../google.service';
 
 declare var ga;
 
@@ -28,7 +29,9 @@ export class LoginComponent implements OnInit {
   validationMessages = LoginValidationMessages;
   config: SSOConfig;
 
-  constructor(title: Title, private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
+  constructor(title: Title, private loaderService: LoaderService, private dialogService: DialogService,
+              private facebookService: FacebookService,
+              private googleService: GoogleService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeMessagingService: IframeMessagingService,
               private configService: SSOConfigService, private router: Router, private route: ActivatedRoute,
               private authService: AuthService) {
@@ -95,6 +98,24 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  loginWithGoogle() {
+    this.loaderService.show();
+
+    this.googleService.login()
+      .subscribe(userAccount => {
+        ga('send', {hitType: 'event', eventCategory: 'login', eventAction: 'login-google', eventLabel: ''});
+        GtmService.sendEvent(userAccount.id, 'login_all_websites', 'login_google')
+        this.loaderService.hide();
+      }, error => {
+        this.loaderService.hide();
+        this.dialogService.manageError(error);
+        if (error.code !== AUTH_ERRORS.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL) {
+          this.router.navigateByUrl('sign-up?provider=google');
+        }
+      });
+
+  }
+
   recoverPassword() {
     this.router.navigateByUrl('recover-password/' + this.loginForm.value.email);
   }
@@ -108,4 +129,5 @@ export class LoginComponent implements OnInit {
     const fields = document.querySelectorAll('input[type="password"]')
     fields.forEach((field: any) => field.autocomplete = 'on');
   }
+
 }
