@@ -113,7 +113,7 @@
     "FACEBOOK_REQUIRED_EMAIL": "You must authorize the use of your email.",
     "FACEBOOK_REQUIRED_PUBLIC_PROFILE": "You must authorize the use of your public profile.",
     "FACEBOOK_REQUIRED_USER_BIRTHDAY": "You must authorize the use of your birthday.",
-    "FACEBOOK_SIGN_UP_IN_WRONG_TAB": "Please sign up in the sign up tab.",
+    "SIGN_UP_IN_WRONG_TAB": "Please sign up in the sign up tab.",
     "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": "You have already registered with this email {{email}}! Do not you remember your password? Get it back!",
     "UKNOWN_ERROR": "An unknown error has occurred.",
     "ERROR_MESSAGE": {

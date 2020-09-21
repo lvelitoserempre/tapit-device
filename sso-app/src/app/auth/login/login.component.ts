@@ -85,7 +85,6 @@ export class LoginComponent implements OnInit {
 
     this.facebookService.login()
       .subscribe((userAccount: UserAccount) => {
-        console.log(userAccount)
         ga('send', {hitType: 'event', eventCategory: 'login', eventAction: 'login-facebook', eventLabel: ''});
         GtmService.sendEvent(userAccount.id, 'login_all_websites', 'login_facebook')
         this.loaderService.hide();

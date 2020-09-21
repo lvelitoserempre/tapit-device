@@ -80,8 +80,8 @@ export class DialogService {
       this.openWrongPasswordErrorDialog();
     } else if (error.code === AUTH_ERRORS.USER_CANCELLED || error.code === AUTH_ERRORS.POPUP_CLOSED_BY_USER) {
       this.openWrongPasswordErrorDialog('DIALOG.USER_CANCELLED');
-    } else if (error.code === AUTH_ERRORS.FACEBOOK_SIGN_UP_IN_WRONG_TAB) {
-      this.showErrorMessage('DIALOG.FACEBOOK_SIGN_UP_IN_WRONG_TAB');
+    } else if (error.code === 'sign-up-in-wrong-tab') {
+      this.showErrorMessage('DIALOG.SIGN_UP_IN_WRONG_TAB');
     } else if (error.code === AUTH_ERRORS.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL) {
       this.translate.get('DIALOG.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL', {email: error.email }).subscribe((message) => {
         this.showErrorMessage(message);
