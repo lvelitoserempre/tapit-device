@@ -29,8 +29,9 @@
     "PASSWORD": "Contraseña",
     "PASSWORD_VERIFICATION": "Verificar Contraseña",
     "SIGN_UP": "Registrarme",
-    "SIGN_UP_OPTION_LABEL": "o registrate con facebook",
+    "SIGN_UP_OPTION_LABEL": "o registrate con",
     "FACEBOOK_SIGN_UP": "Registrarme con Facebook",
+    "GOOGLE_SIGN_UP": "Registrarme con Google",
     "LEGEND_ACCEPTANCE": "Al registrarte estás aceptando:",
     "SELECT_INTERESTS": "Selecciona tus intereses",
     "VALIDATIONS": {

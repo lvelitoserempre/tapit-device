@@ -24,6 +24,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import {I18nService} from 'src/app/shared/services/i18n.service';
 import {GtmService} from '../../gtm.service';
 import {Title} from '@angular/platform-browser';
+import {GoogleService} from '../google.service';
 import UserCredential = firebase.auth.UserCredential;
 
 declare var ga;
@@ -50,6 +51,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   interestsTouched: boolean = false;
 
   constructor(title: Title, private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
+              private googleService: GoogleService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeMessagingService,
               private configService: SSOConfigService, private route: ActivatedRoute, private _adapter: DateAdapter<any>,
               private i18n: I18nService) {
@@ -114,6 +116,26 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
       this.facebookService.signUp(this.signUpForm.value, this.config.project, this.interests)
         .subscribe(userCredential => {
+          ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-facebook', eventLabel: ''});
+          GtmService.sendEvent(userCredential.user.uid, 'signup_all_websites', 'signup_facebook');
+          this.loaderService.hide();
+        }, error => {
+          this.loaderService.hide();
+          this.dialogService.manageError(error);
+          auth().currentUser.delete().then();
+        });
+    }
+  }
+
+  signUpWithGoogle() {
+    this.signUpForm.get('acceptTerms').markAsTouched();
+
+    if (this.signUpForm.get('acceptTerms').valid) {
+      this.loaderService.show();
+
+      this.googleService.signUp(this.signUpForm.value, this.config.project, this.interests)
+        .subscribe(userCredential => {
+          console.log(userCredential)
           ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-facebook', eventLabel: ''});
           GtmService.sendEvent(userCredential.user.uid, 'signup_all_websites', 'signup_facebook');
           this.loaderService.hide();

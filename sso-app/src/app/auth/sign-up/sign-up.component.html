@@ -185,6 +185,11 @@
         {{'SIGN_UP.FACEBOOK_SIGN_UP' | translate }}
       </button>
 
+      <button id="google-button" (click)="signUpWithGoogle()" *ngIf="config.showSignUpGoogleButton"
+              class="app-button google-button min-width-280 mb-6 block mx-auto uppercase text-black border-2" type="button">
+        {{'SIGN_UP.GOOGLE_SIGN_UP' | translate }}
+      </button>
+
       <div>
         <label class="app-checkbox text-left mb-6" for="accept-offers">
           <input id="accept-offers" type="checkbox" formControlName="acceptOffers">

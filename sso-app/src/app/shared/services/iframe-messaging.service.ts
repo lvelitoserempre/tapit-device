@@ -21,7 +21,6 @@ export class IframeMessagingService {
     this.configService.getConfig()
       .pipe(take(1))
       .subscribe((config) => {
-        console.log(action, config)
         const referrer = config.reference || document.referrer;
 
         if (window.parent) {
