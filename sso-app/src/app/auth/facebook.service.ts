@@ -26,7 +26,7 @@ export class FacebookService {
         newUser = userCredential.additionalUserInfo.isNewUser;
 
         if (newUser) {
-          return from(auth().currentUser.delete()).pipe(() => throwError({code: 'facebook-sign-up-in-wrong-tab'}));
+          return from(auth().currentUser.delete()).pipe(() => throwError({code: 'sign-up-in-wrong-tab'}));
         }
 
         return of(userCredential);

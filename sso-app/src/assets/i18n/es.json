@@ -7,6 +7,7 @@
   },
   "LOGIN": {
     "FACEBOOK_LOGIN": "Iniciar con Facebook",
+    "GOOGLE_LOGIN": "Iniciar con Google",
     "EMAIL_LABEL": "o con tu cuenta de correo",
     "EMAIL": "Correo",
     "PASSWORD": "Contraseña",

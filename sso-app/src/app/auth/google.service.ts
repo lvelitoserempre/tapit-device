@@ -26,7 +26,7 @@ export class GoogleService {
         isNewUser = userCredential.additionalUserInfo.isNewUser;
 
         if (isNewUser) {
-          return from(auth().currentUser.delete()).pipe(() => throwError({code: 'facebook-sign-up-in-wrong-tab'}));
+          return from(auth().currentUser.delete()).pipe(() => throwError({code: 'sign-up-in-wrong-tab'}));
         }
 
         return of(userCredential);

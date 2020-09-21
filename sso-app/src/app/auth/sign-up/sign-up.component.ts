@@ -75,6 +75,10 @@ export class SignUpComponent implements OnInit, AfterViewInit {
       if (queryParams.provider === 'facebook') {
         ScrollService.scrollToElement('facebook-button');
       }
+
+      if (queryParams.provider === 'google') {
+        ScrollService.scrollToElement('google-button');
+      }
     });
   }
 
@@ -135,9 +139,8 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
       this.googleService.signUp(this.signUpForm.value, this.config.project, this.interests)
         .subscribe(userCredential => {
-          console.log(userCredential)
-          ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-facebook', eventLabel: ''});
-          GtmService.sendEvent(userCredential.user.uid, 'signup_all_websites', 'signup_facebook');
+          ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-google', eventLabel: ''});
+          GtmService.sendEvent(userCredential.user.uid, 'signup_all_websites', 'signup_google');
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
