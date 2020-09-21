@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {auth, User} from 'firebase/app';
 import {from, Observable, of, throwError} from 'rxjs';
 import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
-import {SignUpService} from './sign-up.service';
 import {UserDAO} from '../user/user-dao.service';
 import 'firebase/auth';
 import {UserAccount} from '../user/user-account';
@@ -29,14 +28,26 @@ export class FacebookService {
     this.facebookAuthProvider.addScope('user_posts');
   }
 
+  static extractUserData(form, userCredential: UserCredential, project: string, interests?: string[]) {
+    const profile: any = userCredential.additionalUserInfo.profile;
+
+    return {
+      firstName: profile.first_name,
+      lastName: profile.last_name,
+      origin: project,
+      getExclusiveEmails: form.acceptOffers,
+      ...(profile.gender ? {gender: profile.gender} : {}),
+      ...(profile.birthday ? {birthDate: (new Date(profile.birthday)).toISOString()} : {}),
+      ...((interests && interests.length) ? {interests: interests} : {}),
+    };
+  }
+
   login(): Observable<UserAccount> {
     let isNewUser;
 
     return from(auth().signInWithPopup(this.facebookAuthProvider))
       .pipe(mergeMap((userCredential: UserCredential) => {
-        let user = userCredential.user;
         isNewUser = userCredential.additionalUserInfo.isNewUser;
-        let facebookAccessToken = userCredential.credential['accessToken'];
 
         if (isNewUser) {
           return from(auth().currentUser.delete()).pipe(() => throwError({code: 'sign-up-in-wrong-tab'}));
@@ -61,7 +72,7 @@ export class FacebookService {
         if (this.hasRequiredScopes(userCredential) && isNewUser) {
           this.userDAO.updateXeerpa(userCredential.additionalUserInfo.profile['id'], userCredential.credential['accessToken']).subscribe();
 
-          const userData = SignUpService.extractFacebookUserData(form, userCredential, project, interests);
+          const userData = FacebookService.extractUserData(form, userCredential, project, interests);
           return this.userDAO.createUser(userData).pipe(map(() => userCredential));
         }
 
@@ -87,7 +98,7 @@ export class FacebookService {
     const array: string[] = userCredential.additionalUserInfo.profile['granted_scopes'];
 
     if (!array.includes('email')) {
-      throw {code: 'facebook-required-email'};
+      throw {code: 'auth-provider-required-email'};
     }
 
     if (!array.includes('public_profile')) {
@@ -95,7 +106,7 @@ export class FacebookService {
     }
 
     if (!array.includes('user_birthday')) {
-      throw {code: 'facebook-required-user-birthday'};
+      throw {code: 'auth-provider-required-birthday'};
     }
 
     return true;

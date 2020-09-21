@@ -109,10 +109,10 @@
       "MESSAGE": "La dirección de correo electrónico se encuentra en uso por otra cuenta.\n¿Es posible que ya estés registrado/a?",
       "BUTTON_LABEL": "Aceptar"
     },
-    "USER_CANCELLED": "Debes autorizar el uso de tus datos en la ventana de facebook.",
-    "FACEBOOK_REQUIRED_EMAIL": "Debes autorizar el uso de tu correo electrónico.",
+    "USER_CANCELLED": "Debes autorizar el uso de tus datos en la ventana emergente.",
+    "REQUIRED_EMAIL": "Debes autorizar el uso de tu correo electrónico.",
     "FACEBOOK_REQUIRED_PUBLIC_PROFILE": "Debes autorizar el uso de tu perfil publico.",
-    "FACEBOOK_REQUIRED_USER_BIRTHDAY": "Debes autorizar el uso de tu fecha de nacimiento.",
+    "REQUIRED_BIRTHDAY": "Debes autorizar el uso de tu fecha de nacimiento.",
     "SIGN_UP_IN_WRONG_TAB": "Por favor registrate en la pestaña de registro.",
     "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": "¡Ya te has registrado anteriormente con este correo {{email}}! ¿No recuerdas tu contraseña? Recuperala!",
     "UKNOWN_ERROR": "Se ha producido un error desconocido.",

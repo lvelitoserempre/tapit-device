@@ -3,8 +3,5 @@ export enum AUTH_ERRORS {
   USER_NOT_FOUND = 'auth/user-not-found',
   WRONG_PASSWORD = 'auth/wrong-password',
   TOO_MANY_REQUESTS = 'auth/too-many-requests',
-  USER_CANCELLED = 'auth/user-cancelled',
-  POPUP_CLOSED_BY_USER = 'auth/popup-closed-by-user',
-  FACEBOOK_REQUIRED_EMAIL = 'facebook-not-authorized-email',
   ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL = 'auth/account-exists-with-different-credential'
 }

@@ -109,10 +109,10 @@
       "MESSAGE": "The email address is in use by another account. \nIs it possible that you are already registered?",
       "BUTTON_LABEL": "Agree"
     },
-    "USER_CANCELLED": "You must authorize the use of your data in the facebook window.",
-    "FACEBOOK_REQUIRED_EMAIL": "You must authorize the use of your email.",
+    "USER_CANCELLED": "You must authorize the use of your data in the popup window.",
+    "REQUIRED_EMAIL": "You must authorize the use of your email.",
     "FACEBOOK_REQUIRED_PUBLIC_PROFILE": "You must authorize the use of your public profile.",
-    "FACEBOOK_REQUIRED_USER_BIRTHDAY": "You must authorize the use of your birthday.",
+    "REQUIRED_BIRTHDAY": "You must authorize the use of your birthday.",
     "SIGN_UP_IN_WRONG_TAB": "Please sign up in the sign up tab.",
     "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": "You have already registered with this email {{email}}! Do not you remember your password? Get it back!",
     "UKNOWN_ERROR": "An unknown error has occurred.",

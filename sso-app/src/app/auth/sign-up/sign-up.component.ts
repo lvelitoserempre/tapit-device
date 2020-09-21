@@ -132,9 +132,9 @@ export class SignUpComponent implements OnInit, AfterViewInit {
       this.loaderService.show();
 
       this.googleService.signUp(this.signUpForm.value, this.config.project, this.interests)
-        .subscribe(userCredential => {
+        .subscribe(userAccount => {
           ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-google', eventLabel: ''});
-          GtmService.sendEvent(userCredential.user.uid, 'signup_all_websites', 'signup_google');
+          GtmService.sendEvent(userAccount.id, 'signup_all_websites', 'signup_google');
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();

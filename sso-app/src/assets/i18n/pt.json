@@ -109,10 +109,10 @@
       "MESSAGE": "O endereço de email está em uso por outra conta.\n Caso não se recorde, clique em Recuperar Senha",
       "BUTTON_LABEL": "Retornar"
     },
-    "USER_CANCELLED": "Você deve autorizar o uso de seus dados na janela do Facebook.",
-    "FACEBOOK_REQUIRED_EMAIL": "Você deve autorizar o uso do seu email.",
+    "USER_CANCELLED": "Você deve autorizar o uso de seus dados na janela emergente.",
+    "REQUIRED_EMAIL": "Você deve autorizar o uso do seu email.",
     "FACEBOOK_REQUIRED_PUBLIC_PROFILE": "Você deve autorizar o uso do seu perfil público.",
-    "FACEBOOK_REQUIRED_USER_BIRTHDAY": "Você deve autorizar o uso do seu data de nascimento.",
+    "REQUIRED_BIRTHDAY": "Você deve autorizar o uso do seu data de nascimento.",
     "SIGN_UP_IN_WRONG_TAB": "Registre-se na guia de registro",
     "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": "Você já se cadastrou com este e-mail {{email}}! Você não se lembra da sua senha? Clique em Recuperar Senha para receber um email com instruções para reiniciar sua senha.",
     "UKNOWN_ERROR": "Um erro desconhecido ocorreu",
