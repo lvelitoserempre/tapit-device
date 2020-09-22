@@ -9,13 +9,13 @@ import SSOConfig from '../../single-sign-on/sso-config';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AUTH_ERRORS} from 'src/app/auth/auth-error.enum';
 import {AuthService} from '../auth.service';
 import {UserAgentService} from '../../../../../library/user-agent.service';
 import {GtmService} from '../../gtm.service';
 import {UserAccount} from '../../user/user-account';
 import {Title} from '@angular/platform-browser';
 import {GoogleService} from '../google.service';
+import AuthErrorService from '../auth-error.service';
 
 declare var ga;
 
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
-          this.dialogService.manageError(error);
+          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error)).subscribe();
         });
     }
   }
@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
   loginWithFacebook() {
     if (UserAgentService.isNotSupported()) {
       this.dialogService.showErrorMessage('El ingreso por facebook actualmente no esta soportado en este navegador. ' +
-        'Por favor abre esta aplicación en el navegador haciendo click en el menu -> Abrir en navegador');
+        'Por favor abre esta aplicación en el navegador haciendo click en el menu -> Abrir en navegador').subscribe();
       return;
     }
 
@@ -90,8 +90,9 @@ export class LoginComponent implements OnInit {
         this.loaderService.hide();
       }, error => {
         this.loaderService.hide();
-        this.dialogService.manageError(error);
-        if (error.code !== AUTH_ERRORS.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL) {
+        this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error)).subscribe();
+
+        if (error.code !== 'auth/account-exists-with-different-credential') {
           this.router.navigateByUrl('sign-up?provider=facebook');
         }
       });
@@ -107,8 +108,8 @@ export class LoginComponent implements OnInit {
         this.loaderService.hide();
       }, error => {
         this.loaderService.hide();
-        this.dialogService.manageError(error);
-        if (error.code !== AUTH_ERRORS.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL) {
+        this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error)).subscribe();
+        if (error.code !== 'auth/account-exists-with-different-credential') {
           this.router.navigateByUrl('sign-up?provider=google');
         }
       });

@@ -23,6 +23,7 @@ import {Title} from '@angular/platform-browser';
 import {AuthService} from '../auth.service';
 import {UserAccount} from '../../user/user-account';
 import {GoogleService} from '../google.service';
+import AuthErrorService from '../auth-error.service';
 
 declare var ga;
 
@@ -96,7 +97,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
-          this.dialogService.manageError(error);
+          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error)).subscribe();
         });
     }
   }
@@ -104,7 +105,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   signUpWithFacebook() {
     if (UserAgentService.isNotSupported()) {
       this.dialogService.showErrorMessage('El ingreso por facebook actualmente no esta soportado en este navegador. ' +
-        'Por favor abre esta aplicación en el navegador haciendo click en el menu -> Abrir en navegador');
+        'Por favor abre esta aplicación en el navegador haciendo click en el menu -> Abrir en navegador').subscribe();
       return;
     }
 
@@ -120,7 +121,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
-          this.dialogService.manageError(error);
+          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error)).subscribe();
         });
     }
   }
@@ -138,7 +139,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
-          this.dialogService.manageError(error);
+          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error)).subscribe();
         });
     }
   }

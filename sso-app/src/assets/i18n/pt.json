@@ -113,9 +113,11 @@
     "REQUIRED_EMAIL": "Você deve autorizar o uso do seu email.",
     "FACEBOOK_REQUIRED_PUBLIC_PROFILE": "Você deve autorizar o uso do seu perfil público.",
     "REQUIRED_BIRTHDAY": "Você deve autorizar o uso do seu data de nascimento.",
+    "INCOMPLETE_BIRTHDAY": "Your birthday is incomplete on your provider account.",
+    "USER_UNDER_LEGAL_AGE": "You must be 18-years-old to access to this app.",
     "SIGN_UP_IN_WRONG_TAB": "Registre-se na guia de registro",
     "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": "Você já se cadastrou com este e-mail {{email}}! Você não se lembra da sua senha? Clique em Recuperar Senha para receber um email com instruções para reiniciar sua senha.",
-    "UKNOWN_ERROR": "Um erro desconhecido ocorreu",
+    "UNKNOWN_ERROR": "Um erro desconhecido ocorreu",
     "ERROR_MESSAGE": {
       "TITLE": "Erro",
       "BUTTON_LABEL": "Retornar"

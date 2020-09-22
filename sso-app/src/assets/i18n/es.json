@@ -113,9 +113,11 @@
     "REQUIRED_EMAIL": "Debes autorizar el uso de tu correo electrónico.",
     "FACEBOOK_REQUIRED_PUBLIC_PROFILE": "Debes autorizar el uso de tu perfil publico.",
     "REQUIRED_BIRTHDAY": "Debes autorizar el uso de tu fecha de nacimiento.",
+    "INCOMPLETE_BIRTHDAY": "Tu fecha de nacimiento esta incompleta en tu proveedor de cuenta.",
+    "USER_UNDER_LEGAL_AGE": "Debes ser mayor de 18 años para acceder a esta aplicación.",
     "SIGN_UP_IN_WRONG_TAB": "Por favor registrate en la pestaña de registro.",
     "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": "¡Ya te has registrado anteriormente con este correo {{email}}! ¿No recuerdas tu contraseña? Recuperala!",
-    "UKNOWN_ERROR": "Se ha producido un error desconocido.",
+    "UNKNOWN_ERROR": "Se ha producido un error desconocido.",
     "ERROR_MESSAGE": {
       "TITLE": "Error",
       "BUTTON_LABEL": "Aceptar"

@@ -113,9 +113,11 @@
     "REQUIRED_EMAIL": "You must authorize the use of your email.",
     "FACEBOOK_REQUIRED_PUBLIC_PROFILE": "You must authorize the use of your public profile.",
     "REQUIRED_BIRTHDAY": "You must authorize the use of your birthday.",
+    "INCOMPLETE_BIRTHDAY": "Your birthday is incomplete on your provider account.",
+    "USER_UNDER_LEGAL_AGE": "You must be 18-years-old to access to this app.",
     "SIGN_UP_IN_WRONG_TAB": "Please sign up in the sign up tab.",
     "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": "You have already registered with this email {{email}}! Do not you remember your password? Get it back!",
-    "UKNOWN_ERROR": "An unknown error has occurred.",
+    "UNKNOWN_ERROR": "An unknown error has occurred.",
     "ERROR_MESSAGE": {
       "TITLE": "Error",
       "BUTTON_LABEL": "Agree"

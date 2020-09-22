@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {RecoverPasswordValidationMessages, RecoverPasswordValidators} from './recover-password.validations';
 import {GtmService} from '../../gtm.service';
 import {Title} from '@angular/platform-browser';
+import AuthErrorService from '../auth-error.service';
 
 
 @Component({
@@ -54,7 +55,7 @@ export class RecoverPasswordComponent implements OnInit {
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
-          this.dialogService.manageError(error);
+          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error)).subscribe();
         });
     }
   }

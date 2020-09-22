@@ -10,6 +10,7 @@ import {HttpClient} from '@angular/common/http';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
 import UserCredential = auth.UserCredential;
 import GoogleAuthProvider = auth.GoogleAuthProvider;
+import AgeValidatorService from './age-validator.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +22,10 @@ export class GoogleService {
               private authService: AuthService,
               private httpClient: HttpClient) {
     this.googleProvider = new GoogleAuthProvider();
-    this.googleProvider.addScope('https://www.googleapis.com/auth/user.birthday.read')
+    this.googleProvider.addScope('https://www.googleapis.com/auth/user.birthday.read');
   }
 
-  static extractUserData(form, userCredential: UserCredential, project: string, interests?: string[]) {
+  static createEntity(form, userCredential: UserCredential, project: string, birthDate: Date, interests?: string[]) {
     const profile: any = userCredential.additionalUserInfo.profile;
 
     return {
@@ -32,8 +33,7 @@ export class GoogleService {
       lastName: profile.family_name,
       origin: project,
       getExclusiveEmails: form.acceptOffers,
-      ...(profile.gender ? {gender: profile.gender} : {}),
-      ...(profile.birthday ? {birthDate: (new Date(profile.birthday)).toISOString()} : {}),
+      birthDate: birthDate.toISOString(),
       ...((interests && interests.length) ? {interests: interests} : {}),
     };
   }
@@ -65,10 +65,23 @@ export class GoogleService {
         isNewUser = userCredential.additionalUserInfo.isNewUser;
         accessToken = userCredential.credential['accessToken'];
         console.log(userCredential)
+
         if (this.hasRequiredScopes(userCredential) && isNewUser) {
-          const userData = GoogleService.extractUserData(form, userCredential, project, interests);
-          //this.httpClient.get('https://www.googleapis.com/oauth2/v2/userinfo')
-          return this.userDAO.createUser(userData).pipe(map(() => userCredential));
+          return this.getGoogleBirthDate(accessToken)
+            .pipe(map(birthDate => {
+              console.log(birthDate);
+              if (!birthDate) {
+                throw {code: 'auth-provider-incomplete-birthday'};
+              }
+
+              if(!AgeValidatorService.olderThan(birthDate, 18)){
+                throw {code: 'user-under-legal-age'};
+              }
+
+              return GoogleService.createEntity(form, userCredential, project, birthDate, interests);
+            }))
+            .pipe(switchMap(entity => this.userDAO.createUser(entity)))
+            .pipe(map(() => userCredential));
         }
 
         return of(userCredential);
@@ -85,10 +98,7 @@ export class GoogleService {
 
   deleteUser(user: User, accessToken: string) {
     return this.httpClient.get('https://accounts.google.com/o/oauth2/revoke?token=' + accessToken)
-      .pipe(switchMap((res) => {
-        console.log(res)
-        return user.delete();
-      }))
+      .pipe(switchMap((res) => user.delete()))
       .pipe(catchError(err => user.delete()))
   }
 
@@ -100,5 +110,21 @@ export class GoogleService {
     }
 
     return true;
+  }
+
+  getGoogleBirthDate(accessToken) {
+    const url = 'https://people.googleapis.com/v1/people/me?personFields=birthdays&access_token=' + accessToken;
+    return this.httpClient.get(url)
+      .pipe(map((res: { birthdays: [] }) => {
+        return this.getValidDate(res.birthdays);
+      }));
+  }
+
+  getValidDate(birthDates: { date: { year: number, month: number, day: number } }[]) {
+    for (const birthDate of birthDates) {
+      if (birthDate.date.year != null && birthDate.date.month != null && birthDate.date.day != null) {
+        return new Date(birthDate.date.year, birthDate.date.month - 1, birthDate.date.day);
+      }
+    }
   }
 }
