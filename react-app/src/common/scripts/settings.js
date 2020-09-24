@@ -12,7 +12,8 @@ i18next.init({
                         UrlSignup: '/app/auth/signup',
                         LoginText: 'INICIA SESIÓN',
                         SignupText: 'Regístrate',
-                        IconClose: '../assets/images/ic_close.svg'
+                        IconClose: '../assets/images/ic_close.svg',
+                        LogoutText: 'Cerrar Sesión'
                     },
                     Section1: {
                         Title: 'Tapit y Polas Recargadas te traen experiencias increíbles',
@@ -191,7 +192,9 @@ i18next.init({
                 PordEnvironment: 'https://tapit.com.co',
                 ApiUrlDev: 'https://api-dev.tapit.com.co/',
                 ApiUrlProd: 'https://api.tapit.com.co/',
-                EventsUrl: 'v1/list/events'
+                EventsUrl: 'v1/list/events',
+                MarketDevUrl: 'https://market-dev.tapit.com.co',
+                MarketProdUrl: 'https://market.tapit.com.co'
             }
         }
     }

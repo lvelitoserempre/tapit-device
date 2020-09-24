@@ -2,7 +2,6 @@ import React from "react";
 import UrlBuilderService from "../services/url-builder.service";
 
 export default function Header(props) {
-
   function setMenu(e) {
     if (e.target.checked) {
       document.body.classList.add('overflow-hidden');
@@ -49,25 +48,23 @@ export default function Header(props) {
             </ul>
           </div>
           <div className="inline-block text-center md:text-right w-1/2 align-middle text-right pr-2">
-            {
-              props.user ?
-                <ul>
-                  <li>
-                    {`${props.user.firstName} ${props.user.lastName ? props.user.lastName : ''}`}
-                  </li>
-                </ul>
-                :
-                <ul>
-                  <li className="inline-block">
-                    <a
-                      className="app-button border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm"
-                      href={UrlBuilderService.buildUrl('angular', 'auth/login')}>
-                      {i18next.t("BillLayout.Header.LoginText")}
-                    </a>
-                  </li>
-                </ul>
-            }
-
+            
+            <ul>
+              <li className="inline-block">
+                <a
+                  className="app-button border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer mx-2 uppercase hover:bg-primary-300 hover:border-primary-300"
+                  onClick={()=>props.showSSOPopup('/sign-up')}>
+                  {i18next.t("BillLayout.Header.SignupText")}
+                </a>
+              </li>
+              <li className="inline-block">
+                <a
+                  className="app-button border-2 border-black bg-white text-black text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-black hover:text-white"
+                  onClick={()=>props.showSSOPopup('/login')}>
+                  {i18next.t("BillLayout.Header.LoginText")}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
