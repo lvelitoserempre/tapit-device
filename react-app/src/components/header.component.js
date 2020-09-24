@@ -2,7 +2,6 @@ import React from "react";
 import UrlBuilderService from "../services/url-builder.service";
 
 export default function Header(props) {
-  console.log(props)
   function setMenu(e) {
     if (e.target.checked) {
       document.body.classList.add('overflow-hidden');
