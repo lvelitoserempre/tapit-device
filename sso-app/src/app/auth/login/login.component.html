@@ -2,7 +2,7 @@
   <app-header selectedTab="login"></app-header>
 
   <div class="container mx-auto relative bg-white px-6 pt-8 pb-24 overflow-y-auto flex-1"
-       [ngClass]="{'bg-bubble-4':config.showContainerBackground}">
+       [ngClass]="{'bg-footer-bubble':config.showContainerBackground}">
     <button (click)="loginWithFacebook()" *ngIf="config.showLoginFacebookButton"
             class="app-button facebook-button min-width-280 mb-6 block mx-auto uppercase" type="button">
       {{'LOGIN.FACEBOOK_LOGIN' | translate }}

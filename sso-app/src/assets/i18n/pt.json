@@ -65,7 +65,7 @@
         "REQUIRED": "Você deve digitar sua senha novamente",
         "PASSWORD_MATCH": "Suas senhas não conferem"
       },
-      "INTERESTS":{
+      "INTERESTS": {
         "REQUIRED": "Você deve aceitar pelo menos um interesse"
       },
       "ACCEPT_TERMS": {
@@ -77,7 +77,7 @@
     "TITLE": "Recuperar senha",
     "INSTRUCTIONS": "Digite seu email, enviaremos um link para que você possa redefinir sua senha.",
     "EMAIL": "Email",
-    "RECOVER_PASSWORD":"Recuperar senha",
+    "RECOVER_PASSWORD": "Recuperar senha",
     "EMAIL_SENT": "Email enviado!",
     "EMAIL_SENT_TEXT": "Enviamos um link para seu e-mail para criar uma nova senha.",
     "LOGIN": "Login",
@@ -88,7 +88,12 @@
       "INVALID_EMAIL": "Endereço de email inválido. Digite seu email novamente"
     }
   },
-  "DIALOG": {
+  "ERRORS": {
+    "USER_UNDER_LEGAL_AGE": {
+      "TITLE": "¡Você é menor! \uD83D\uDE2E",
+      "MESSAGE": "Você deve ter mais de 18 anos para fazer parte do Tap it. Esperamos por você quando você os tiver!",
+      "BUTTON_LABEL": "Retornar"
+    },
     "TOO_MANY_FAILED_ATTEMPTS": {
       "TITLE": "Erro de autenticação",
       "MESSAGE": "Você excedeu o limite de tentativas erradas. Por favor, tente novamente mais tarde.",
@@ -109,15 +114,44 @@
       "MESSAGE": "O endereço de email está em uso por outra conta.\n Caso não se recorde, clique em Recuperar Senha",
       "BUTTON_LABEL": "Retornar"
     },
-    "USER_CANCELLED": "Você deve autorizar o uso de seus dados na janela do Facebook.",
-    "FACEBOOK_REQUIRED_EMAIL": "Você deve autorizar o uso do seu email.",
-    "FACEBOOK_REQUIRED_PUBLIC_PROFILE": "Você deve autorizar o uso do seu perfil público.",
-    "FACEBOOK_REQUIRED_USER_BIRTHDAY": "Você deve autorizar o uso do seu data de nascimento.",
-    "FACEBOOK_SIGN_UP_IN_WRONG_TAB": "Registre-se na guia de registro",
-    "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": "Você já se cadastrou com este e-mail {{email}}! Você não se lembra da sua senha? Clique em Recuperar Senha para receber um email com instruções para reiniciar sua senha.",
-    "UKNOWN_ERROR": "Um erro desconhecido ocorreu",
-    "ERROR_MESSAGE": {
-      "TITLE": "Erro",
+    "USER_CANCELLED": {
+      "TITLE": "Erro de autenticação",
+      "MESSAGE": "Você deve autorizar o uso de seus dados na janela emergente.",
+      "BUTTON_LABEL": "Retornar"
+    },
+    "REQUIRED_EMAIL": {
+      "TITLE": "Erro de autenticação",
+      "MESSAGE": "Você deve autorizar o uso do seu email.",
+      "BUTTON_LABEL": "Retornar"
+    },
+    "FACEBOOK_REQUIRED_PUBLIC_PROFILE": {
+      "TITLE": "Erro de autenticação",
+      "MESSAGE": "Você deve autorizar o uso do seu perfil público.",
+      "BUTTON_LABEL": "Retornar"
+    },
+    "REQUIRED_BIRTHDAY": {
+      "TITLE": "Erro de autenticação",
+      "MESSAGE": "Você deve autorizar o uso do seu data de nascimento.",
+      "BUTTON_LABEL": "Retornar"
+    },
+    "INCOMPLETE_BIRTHDAY": {
+      "TITLE": "Erro de autenticação",
+      "MESSAGE": "Your birthday is incomplete on your provider account.",
+      "BUTTON_LABEL": "Retornar"
+    },
+    "SIGN_UP_IN_WRONG_TAB": {
+      "TITLE": "Erro de autenticação",
+      "MESSAGE": "Registre-se na guia de registro",
+      "BUTTON_LABEL": "Retornar"
+    },
+    "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": {
+      "TITLE": "Erro de autenticação",
+      "MESSAGE": "Você já se cadastrou com este e-mail {{email}}! Você não se lembra da sua senha? Clique em Recuperar Senha para receber um email com instruções para reiniciar sua senha.",
+      "BUTTON_LABEL": "Retornar"
+    },
+    "UNKNOWN": {
+      "TITLE": "Erro de autenticação",
+      "MESSAGE": "Um erro desconhecido ocorreu",
       "BUTTON_LABEL": "Retornar"
     }
   }

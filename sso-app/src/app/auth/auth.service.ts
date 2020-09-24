@@ -14,7 +14,6 @@ import UserCredential = auth.UserCredential;
 })
 export class AuthService {
   private currentUser: ReplaySubject<UserAccount>;
-  private cancelUserListener: () => void;
 
   constructor(private http: HttpClient, private userDAO: UserDAO) {
     this.currentUser = new ReplaySubject<UserAccount>(0);
@@ -67,6 +66,13 @@ export class AuthService {
 
   login(email: string, password: string): Observable<UserAccount> {
     return from(auth().signInWithEmailAndPassword(email, password))
+      .pipe(catchError(error => {
+        if (error.code === 'auth/account-exists-with-different-credential') {
+          error.params = {email: error.email};
+        }
+
+        return throwError(error);
+      }))
       .pipe(switchMap((userCredential: UserCredential) => this.setCurrentUser(userCredential)));
   }
 
@@ -76,6 +82,9 @@ export class AuthService {
         return this.userDAO.createUser(SignUpService.extractFormUserData(formValue, config.project, interests)).pipe(map(() => userCredential));
       }))
       .pipe(catchError(error => {
+        if (error.code === 'auth/account-exists-with-different-credential') {
+          error.params = {email: error.email};
+        }
 
         if (auth().currentUser) {
           auth().currentUser.delete().then((res) => console.log('user deleted', res));

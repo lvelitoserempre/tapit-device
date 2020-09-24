@@ -65,7 +65,7 @@
         "REQUIRED": "You must enter your password again",
         "PASSWORD_MATCH": "Your passwords do not match"
       },
-      "INTERESTS":{
+      "INTERESTS": {
         "REQUIRED": "You must accept at least one interest"
       },
       "ACCEPT_TERMS": {
@@ -77,7 +77,7 @@
     "TITLE": "Recover password",
     "INSTRUCTIONS": "Enter your email, we will send you a link so you can reset your password.",
     "EMAIL": "Mail",
-    "RECOVER_PASSWORD":"Recover password",
+    "RECOVER_PASSWORD": "Recover password",
     "EMAIL_SENT": "Email sent!",
     "EMAIL_SENT_TEXT": "We have sent a link to your email to create a new password",
     "LOGIN": "Log in",
@@ -88,7 +88,12 @@
       "INVALID_EMAIL": "Incorrect mail format"
     }
   },
-  "DIALOG": {
+  "ERRORS": {
+    "USER_UNDER_LEGAL_AGE": {
+      "TITLE": "¡You are a minor! \uD83D\uDE2E",
+      "MESSAGE": "You must be 18 years or older to be part of Tap it  ¡We wait for you when you have them!",
+      "BUTTON_LABEL": "Agree"
+    },
     "TOO_MANY_FAILED_ATTEMPTS": {
       "TITLE": "Authentication Error",
       "MESSAGE": "Too many failed attempts. Please try again later.",
@@ -105,19 +110,48 @@
       "BUTTON_LABEL": "Agree"
     },
     "SIGN_UP_EMAIL_ALREADY_IN_USE": {
-      "TITLE": "Error en alta de usuario",
+      "TITLE": "Authentication Error",
       "MESSAGE": "The email address is in use by another account. \nIs it possible that you are already registered?",
       "BUTTON_LABEL": "Agree"
     },
-    "USER_CANCELLED": "You must authorize the use of your data in the facebook window.",
-    "FACEBOOK_REQUIRED_EMAIL": "You must authorize the use of your email.",
-    "FACEBOOK_REQUIRED_PUBLIC_PROFILE": "You must authorize the use of your public profile.",
-    "FACEBOOK_REQUIRED_USER_BIRTHDAY": "You must authorize the use of your birthday.",
-    "FACEBOOK_SIGN_UP_IN_WRONG_TAB": "Please sign up in the sign up tab.",
-    "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": "You have already registered with this email {{email}}! Do not you remember your password? Get it back!",
-    "UKNOWN_ERROR": "An unknown error has occurred.",
-    "ERROR_MESSAGE": {
-      "TITLE": "Error",
+    "USER_CANCELLED": {
+      "TITLE": "Authentication Error",
+      "MESSAGE": "You must authorize the use of your data in the popup window.",
+      "BUTTON_LABEL": "Agree"
+    },
+    "REQUIRED_EMAIL": {
+      "TITLE": "Authentication Error",
+      "MESSAGE": "You must authorize the use of your email.",
+      "BUTTON_LABEL": "Agree"
+    },
+    "FACEBOOK_REQUIRED_PUBLIC_PROFILE": {
+      "TITLE": "Authentication Error",
+      "MESSAGE": "You must authorize the use of your public profile.",
+      "BUTTON_LABEL": "Agree"
+    },
+    "REQUIRED_BIRTHDAY": {
+      "TITLE": "Authentication Error",
+      "MESSAGE": "You must authorize the use of your birthday.",
+      "BUTTON_LABEL": "Agree"
+    },
+    "INCOMPLETE_BIRTHDAY": {
+      "TITLE": "Authentication Error",
+      "MESSAGE": "Your birthday is incomplete on your provider account.",
+      "BUTTON_LABEL": "Agree"
+    },
+    "SIGN_UP_IN_WRONG_TAB": {
+      "TITLE": "Authentication Error",
+      "MESSAGE": "Please sign up in the sign up tab.",
+      "BUTTON_LABEL": "Agree"
+    },
+    "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": {
+      "TITLE": "Authentication Error",
+      "MESSAGE": "You have already registered with this email {{email}}! Do not you remember your password? Get it back!",
+      "BUTTON_LABEL": "Agree"
+    },
+    "UNKNOWN": {
+      "TITLE": "Authentication Error",
+      "MESSAGE": "An unknown error has occurred.",
       "BUTTON_LABEL": "Agree"
     }
   }

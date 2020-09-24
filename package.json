@@ -20,8 +20,8 @@
   },
   "scripts": {
     "start": "gulp serve-dist",
-    "serve": "gulp serve-static",
-    "serve-sso": "gulp serve-sso",
+    "s": "gulp serve-static",
+    "s-sso": "gulp serve-sso",
     "b-tapit-dev": "cross-env ENV=TAPIT_DEV gulp build",
     "b-tw": "gulp build-tailwind",
     "d-tapit-dev": "cross-env ENV=TAPIT_DEV gulp deploy-tapit",
