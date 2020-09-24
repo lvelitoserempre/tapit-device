@@ -96,8 +96,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
           GtmService.sendEvent(userAccount.id, 'signup_all_websites', 'signup_email');
           this.loaderService.hide();
         }, error => {
-          this.loaderService.hide();
-          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params).subscribe();
+          this.manageError(error);
         });
     }
   }
@@ -120,8 +119,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
           GtmService.sendEvent(userAccount.id, 'signup_all_websites', 'signup_facebook');
           this.loaderService.hide();
         }, error => {
-          this.loaderService.hide();
-          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params).subscribe();
+          this.manageError(error);
         });
     }
   }
@@ -138,8 +136,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
           GtmService.sendEvent(userAccount.id, 'signup_all_websites', 'signup_google');
           this.loaderService.hide();
         }, error => {
-          this.loaderService.hide();
-          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params).subscribe();
+          this.manageError(error);
         });
     }
   }
@@ -155,5 +152,11 @@ export class SignUpComponent implements OnInit, AfterViewInit {
         this.interests.splice(i, 1);
       }
     }
+  }
+
+  manageError(error) {
+    const redirectUrl = error.code === 'user-under-legal-age' ? 'https://www.tapintoyourbeer.com/' : null;
+    this.loaderService.hide();
+    this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params, redirectUrl).subscribe();
   }
 }
