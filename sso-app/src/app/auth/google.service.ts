@@ -7,10 +7,10 @@ import {UserAccount} from '../user/user-account';
 import {AuthService} from './auth.service';
 import {User} from 'firebase';
 import {HttpClient} from '@angular/common/http';
+import AgeValidatorService from './age-validator.service';
 import FacebookAuthProvider = auth.FacebookAuthProvider;
 import UserCredential = auth.UserCredential;
 import GoogleAuthProvider = auth.GoogleAuthProvider;
-import AgeValidatorService from './age-validator.service';
 
 @Injectable({
   providedIn: 'root'
@@ -39,10 +39,12 @@ export class GoogleService {
   }
 
   login(): Observable<UserAccount> {
+    let email;
     let isNewUser;
 
     return from(auth().signInWithPopup(this.googleProvider))
       .pipe(mergeMap((userCredential: UserCredential) => {
+        email = userCredential.user.email
         isNewUser = userCredential.additionalUserInfo.isNewUser;
 
         if (isNewUser) {
@@ -50,6 +52,13 @@ export class GoogleService {
         }
 
         return of(userCredential);
+      }))
+      .pipe(catchError(error => {
+        if (error.code === 'auth/account-exists-with-different-credential') {
+          error.params = {email: error.email};
+        }
+
+        return throwError(error);
       }))
       .pipe(switchMap((userCredential: UserCredential) => this.authService.setCurrentUser(userCredential)));
   }
@@ -64,17 +73,15 @@ export class GoogleService {
         user = userCredential.user;
         isNewUser = userCredential.additionalUserInfo.isNewUser;
         accessToken = userCredential.credential['accessToken'];
-        console.log(userCredential)
 
         if (this.hasRequiredScopes(userCredential) && isNewUser) {
           return this.getGoogleBirthDate(accessToken)
             .pipe(map(birthDate => {
-              console.log(birthDate);
               if (!birthDate) {
                 throw {code: 'auth-provider-incomplete-birthday'};
               }
 
-              if(!AgeValidatorService.olderThan(birthDate, 18)){
+              if (!AgeValidatorService.olderThan(birthDate, 18)) {
                 throw {code: 'user-under-legal-age'};
               }
 
@@ -87,6 +94,10 @@ export class GoogleService {
         return of(userCredential);
       }))
       .pipe(catchError(error => {
+        if (error.code === 'auth/account-exists-with-different-credential') {
+          error.params = {email: error.email};
+        }
+
         if (isNewUser) {
           return this.deleteUser(user, accessToken).pipe(switchMap(() => throwError(error)));
         }

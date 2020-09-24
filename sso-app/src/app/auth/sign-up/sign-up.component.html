@@ -2,7 +2,7 @@
   <app-header selectedTab="sign-up"></app-header>
 
   <div class="container mx-auto relative bg-white px-6 pt-8 pb-24 overflow-y-auto flex-1"
-       [ngClass]="{'bg-bubble-4':config.showContainerBackground}">
+       [ngClass]="{'bg-footer-bubble':config.showContainerBackground}">
 
     <form (ngSubmit)="signUp()" [formGroup]="signUpForm">
       <div *ngIf="config.showSignUPWithFields">

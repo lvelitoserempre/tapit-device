@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
-          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error)).subscribe();
+          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params).subscribe();
         });
     }
   }
@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
         this.loaderService.hide();
       }, error => {
         this.loaderService.hide();
-        this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error)).subscribe();
+        this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params).subscribe();
 
         if (error.code !== 'auth/account-exists-with-different-credential') {
           this.router.navigateByUrl('sign-up?provider=facebook');
@@ -108,7 +108,7 @@ export class LoginComponent implements OnInit {
         this.loaderService.hide();
       }, error => {
         this.loaderService.hide();
-        this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error)).subscribe();
+        this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params).subscribe();
         if (error.code !== 'auth/account-exists-with-different-credential') {
           this.router.navigateByUrl('sign-up?provider=google');
         }

@@ -1,32 +1,32 @@
 export default class AuthErrorService {
   private static ERRORS = {
-    'auth/too-many-requests': 'DIALOG.TOO_MANY_FAILED_ATTEMPTS.MESSAGE',
-    'auth/email-already-in-use': 'DIALOG.SIGN_UP_EMAIL_ALREADY_IN_USE.MESSAGE',
-    'auth/user-not-found': 'DIALOG.USER_NOT_FOUND.MESSAGE',
-    'auth/wrong-password': 'DIALOG.WRONG_PASSWORD.MESSAGE',
-    'auth/user-cancelled': 'DIALOG.USER_CANCELLED',
-    'auth/popup-closed-by-user': 'DIALOG.USER_CANCELLED',
-    'sign-up-in-wrong-tab': 'DIALOG.SIGN_UP_IN_WRONG_TAB',
-    'auth/account-exists-with-different-credential': 'DIALOG.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL',
-    'auth-provider-required-email': 'DIALOG.REQUIRED_EMAIL',
-    'facebook-required-public-profile': 'DIALOG.FACEBOOK_REQUIRED_PUBLIC_PROFILE',
-    'auth-provider-required-birthday': 'DIALOG.REQUIRED_BIRTHDAY',
-    'auth-provider-incomplete-birthday': 'DIALOG.INCOMPLETE_BIRTHDAY',
-    'user-under-legal-age': 'DIALOG.USER_UNDER_LEGAL_AGE',
+    'auth/too-many-requests': 'ERRORS.TOO_MANY_FAILED_ATTEMPTS',
+    'auth/email-already-in-use': 'ERRORS.SIGN_UP_EMAIL_ALREADY_IN_USE',
+    'auth/user-not-found': 'ERRORS.USER_NOT_FOUND',
+    'auth/wrong-password': 'ERRORS.WRONG_PASSWORD',
+    'auth/user-cancelled': 'ERRORS.USER_CANCELLED',
+    'auth/popup-closed-by-user': 'ERRORS.USER_CANCELLED',
+    'sign-up-in-wrong-tab': 'ERRORS.SIGN_UP_IN_WRONG_TAB',
+    'auth/account-exists-with-different-credential': 'ERRORS.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL',
+    'auth-provider-required-email': 'ERRORS.REQUIRED_EMAIL',
+    'facebook-required-public-profile': 'ERRORS.FACEBOOK_REQUIRED_PUBLIC_PROFILE',
+    'auth-provider-required-birthday': 'ERRORS.REQUIRED_BIRTHDAY',
+    'auth-provider-incomplete-birthday': 'ERRORS.INCOMPLETE_BIRTHDAY',
+    'user-under-legal-age': 'ERRORS.USER_UNDER_LEGAL_AGE',
   };
 
   private constructor() {
   }
 
-  static getErrorMessage(error: { code: string }, translationParams?) {
+  static getErrorMessage(error: { code: string }) {
     if (!error.code) {
       console.error('MALFORMED ERROR OBJECT', error);
-      return 'DIALOG.UNKNOWN_ERROR';
+      return 'ERRORS.UNKNOWN';
     }
 
     if (!this.ERRORS[error.code]) {
       console.error('UNKNOWN ERROR', error);
-      return 'DIALOG.UNKNOWN_ERROR';
+      return 'ERRORS.UNKNOWN';
     }
 
     return this.ERRORS[error.code];

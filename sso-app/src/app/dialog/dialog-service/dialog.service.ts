@@ -13,18 +13,26 @@ export class DialogService {
   constructor(private dialog: MatDialog, private translateService: TranslateService) {
   }
 
-  showErrorMessage(message: string, translationParams?): Observable<MatDialogRef<DialogComponent>> {
-    const observable = translationParams ? this.translateService.get(message, translationParams) : of(message);
+  showErrorMessage(translationObjectKey: string, translationParams?): Observable<MatDialogRef<DialogComponent>> {
+    if (translationParams) {
+      return this.translateService.get(translationObjectKey + '.MESSAGE', translationParams)
+        .pipe(map(messageText => {
+          return this.showMessage('error', translationObjectKey + '.TITLE', messageText, translationObjectKey + '.BUTTON_LABEL');
+        }));
+    }
 
-    return observable.pipe(map(message => {
-      return this.dialog.open(DialogComponent, {
-        panelClass: ['border', 'border-primary-500'],
-        data: {
-          title: 'DIALOG.ERROR_MESSAGE.TITLE',
-          message,
-          buttonOne: 'DIALOG.ERROR_MESSAGE.BUTTON_LABEL'
-        }
-      });
-    }));
+    return of(this.showMessage('error', translationObjectKey + '.TITLE', translationObjectKey + '.MESSAGE', translationObjectKey + '.BUTTON_LABEL'));
+  }
+
+  showMessage(type: string, title: string, message: string, buttonOne: string): MatDialogRef<DialogComponent> {
+    return this.dialog.open(DialogComponent, {
+      panelClass: ['app-dialog'],
+      data: {
+        type: type,
+        title: title,
+        message: message,
+        buttonOne: buttonOne
+      }
+    });
   }
 }

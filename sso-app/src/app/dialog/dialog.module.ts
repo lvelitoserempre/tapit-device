@@ -4,6 +4,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {CommonModule} from '@angular/common';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -13,6 +14,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [DialogComponent],
   entryComponents: [DialogComponent],
   imports: [
+    CommonModule,
     MatDialogModule,
     TranslateModule.forRoot({
       loader: {

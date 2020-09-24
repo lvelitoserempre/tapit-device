@@ -97,7 +97,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
-          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error)).subscribe();
+          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params).subscribe();
         });
     }
   }
@@ -121,7 +121,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
-          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error)).subscribe();
+          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params).subscribe();
         });
     }
   }
@@ -139,7 +139,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
-          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error)).subscribe();
+          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params).subscribe();
         });
     }
   }

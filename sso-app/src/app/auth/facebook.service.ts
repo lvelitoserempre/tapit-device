@@ -55,6 +55,13 @@ export class FacebookService {
 
         return of(userCredential);
       }))
+      .pipe(catchError(error => {
+        if (error.code === 'auth/account-exists-with-different-credential') {
+          error.params = {email: error.email};
+        }
+
+        return throwError(error);
+      }))
       .pipe(switchMap((userCredential: UserCredential) => this.authService.setCurrentUser(userCredential)));
   }
 
@@ -79,6 +86,10 @@ export class FacebookService {
         return of(userCredential);
       }))
       .pipe(catchError(error => {
+        if (error.code === 'auth/account-exists-with-different-credential') {
+          error.params = {email: error.email};
+        }
+
         if (isNewUser) {
           return this.deleteUser(user, facebookAccessToken).pipe(switchMap(() => throwError(error)));
         }
@@ -88,8 +99,8 @@ export class FacebookService {
       .pipe(switchMap((userCredential: UserCredential) => this.authService.setCurrentUser(userCredential)));
   }
 
-  deleteUser(user: User, facebookAccessToken: string) {
-    return this.httpClient.get('https://graph.facebook.com/me/permissions?method=delete&access_token=' + facebookAccessToken, {})
+  deleteUser(user: User, accessToken: string) {
+    return this.httpClient.get('https://graph.facebook.com/me/permissions?method=delete&access_token=' + accessToken, {})
       .pipe(switchMap(() => user.delete()))
       .pipe(catchError(err => user.delete()))
   }
