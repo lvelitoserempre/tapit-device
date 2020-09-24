@@ -169,7 +169,7 @@ export default function Index() {
   const Home = () => (
     <div>
       <Header 
-      showSSOPopup={()=>showSSOPopup()}
+      showSSOPopup={showSSOPopup}
       logout={()=>logout()}
       userData={userData}
       user={user}/>

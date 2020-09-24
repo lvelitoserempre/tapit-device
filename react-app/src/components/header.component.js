@@ -49,32 +49,23 @@ export default function Header(props) {
             </ul>
           </div>
           <div className="inline-block text-center md:text-right w-1/2 align-middle text-right pr-2">
-            {
-              props.userData ?
-                <ul>
-                  <li className="align-middle inline-block mx-2">
-                    {`${props.userData.firstName} ${props.userData.lastName ? props.userData.lastName : ''}`}
-                  </li>
-                  <li className="align-middle inline-block uppercase">
-                    <a
-                      className="app-button border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer"
-                      onClick={()=>props.logout()}>
-                      {i18next.t("BillLayout.Header.LogoutText")}
-                    </a>
-                  </li>
-                </ul>
-                :
-                <ul>
-                  <li className="inline-block">
-                    <a
-                      className="app-button border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer"
-                      onClick={()=>props.showSSOPopup('/login')}>
-                      {i18next.t("BillLayout.Header.LoginText")}
-                    </a>
-                  </li>
-                </ul>
-            }
-
+            
+            <ul>
+              <li className="inline-block">
+                <a
+                  className="app-button border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer mx-2 uppercase"
+                  onClick={()=>props.showSSOPopup('/sign-up')}>
+                  {i18next.t("BillLayout.Header.SignupText")}
+                </a>
+              </li>
+              <li className="inline-block">
+                <a
+                  className="app-button border-2 border-black bg-white text-black text-center p-3 py-2 text-sm cursor-pointer uppercase"
+                  onClick={()=>props.showSSOPopup('/login')}>
+                  {i18next.t("BillLayout.Header.LoginText")}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
