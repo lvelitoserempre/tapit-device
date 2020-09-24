@@ -68,8 +68,7 @@ export class LoginComponent implements OnInit {
           GtmService.sendEvent(user.id, 'login_all_websites', 'login_email')
           this.loaderService.hide();
         }, error => {
-          this.loaderService.hide();
-          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params).subscribe();
+          this.manageError(error);
         });
     }
   }
@@ -89,12 +88,7 @@ export class LoginComponent implements OnInit {
         GtmService.sendEvent(userAccount.id, 'login_all_websites', 'login_facebook')
         this.loaderService.hide();
       }, error => {
-        this.loaderService.hide();
-        this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params).subscribe();
-
-        if (error.code !== 'auth/account-exists-with-different-credential') {
-          this.router.navigateByUrl('sign-up?provider=facebook');
-        }
+        this.manageError(error);
       });
   }
 
@@ -107,13 +101,19 @@ export class LoginComponent implements OnInit {
         GtmService.sendEvent(userAccount.id, 'login_all_websites', 'login_google')
         this.loaderService.hide();
       }, error => {
-        this.loaderService.hide();
-        this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params).subscribe();
-        if (error.code !== 'auth/account-exists-with-different-credential') {
-          this.router.navigateByUrl('sign-up?provider=google');
-        }
+        this.manageError(error);
       });
 
+  }
+
+  manageError(error) {
+    const redirectUrl = error.code === 'user-under-legal-age' ? 'https://www.tapintoyourbeer.com/' : null;
+    this.loaderService.hide();
+    this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params, redirectUrl).subscribe();
+
+    if (error.code === 'sign-up-in-wrong-tab') {
+      this.router.navigateByUrl('sign-up?provider=facebook');
+    }
   }
 
   recoverPassword() {
@@ -129,5 +129,4 @@ export class LoginComponent implements OnInit {
     const fields = document.querySelectorAll('input[type="password"]')
     fields.forEach((field: any) => field.autocomplete = 'on');
   }
-
 }
