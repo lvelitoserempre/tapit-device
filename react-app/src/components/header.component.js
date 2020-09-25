@@ -27,10 +27,17 @@ export default function Header(props) {
               <li className="py-2">
                 <img className="w-2/3" src={i18next.t("BillLayout.Header.Logo")}/>
               </li>
-              <li className="py-2">
+              <li className="inline-block py-2 w-full">
                 <a
-                  className="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
-                  href={UrlBuilderService.buildUrl('angular', 'auth/login')}>
+                  className="app-button border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-primary-300 hover:border-primary-300 w-full"
+                  onClick={()=>props.showSSOPopup('/sign-up')}>
+                  {i18next.t("BillLayout.Header.SignupText")}
+                </a>
+              </li>
+              <li className="inline-block py-2 w-full">
+                <a
+                  className="app-button border-2 border-black bg-white text-black text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-black hover:text-white w-full"
+                  onClick={()=>props.showSSOPopup('/login')}>
                   {i18next.t("BillLayout.Header.LoginText")}
                 </a>
               </li>
@@ -52,14 +59,14 @@ export default function Header(props) {
             <ul>
               <li className="inline-block">
                 <a
-                  className="app-button border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer mx-2 uppercase hover:bg-primary-300 hover:border-primary-300"
+                  className="app-button md:inline-block hidden border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer mx-2 uppercase hover:bg-primary-300 hover:border-primary-300"
                   onClick={()=>props.showSSOPopup('/sign-up')}>
                   {i18next.t("BillLayout.Header.SignupText")}
                 </a>
               </li>
               <li className="inline-block">
                 <a
-                  className="app-button border-2 border-black bg-white text-black text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-black hover:text-white"
+                  className="app-button md:inline-block hidden border-2 border-black bg-white text-black text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-black hover:text-white"
                   onClick={()=>props.showSSOPopup('/login')}>
                   {i18next.t("BillLayout.Header.LoginText")}
                 </a>
