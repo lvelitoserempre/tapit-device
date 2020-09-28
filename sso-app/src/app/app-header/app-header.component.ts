@@ -11,13 +11,21 @@ import {IframeMessagingService} from '../shared/services/iframe-messaging.servic
 })
 export class AppHeaderComponent implements OnInit {
   @Input()
-  isShowingBackButton: any;
+  isShowingBackButton: boolean;
+  @Input()
+  isShowingLogo = true;
+  @Input()
+  isShowingSlogan = true;
+  @Input()
+  isShowingTabs = true;
   @Input()
   selectedTab: string;
   config: SSOConfig;
 
 
-  constructor(private router: Router, private configService: SSOConfigService, private iframeMessagingService: IframeMessagingService) {
+  constructor(private router: Router,
+              private configService: SSOConfigService,
+              private iframeMessagingService: IframeMessagingService) {
   }
 
   ngOnInit(): void {
@@ -31,6 +39,6 @@ export class AppHeaderComponent implements OnInit {
   }
 
   navigateBack() {
-    this.router.navigateByUrl('/sso/login');
+    this.router.navigate(['../']);
   }
 }
