@@ -19,6 +19,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import { RecoverPasswordComponent } from './auth/recover-password/recover-password.component';
+import {AgeValidatorComponent} from './auth/age-validator/age-validator.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'sign-up',
     component: SignUpComponent
+  },
+  {
+    path: 'age-validator',
+    component: AgeValidatorComponent
   },
   {
     path: 'recover-password',
@@ -53,7 +58,8 @@ const routes: Routes = [
     AppHeaderComponent,
     AppComponent,
     SignUpComponent,
-    RecoverPasswordComponent
+    RecoverPasswordComponent,
+    AgeValidatorComponent
   ],
   imports: [
     BrowserModule,

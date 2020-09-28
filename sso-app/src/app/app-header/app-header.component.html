@@ -1,28 +1,28 @@
 <header class="bg-neutral-100">
-  <a (click)="closePopup()" class="text-xl cursor-pointer absolute right-0 top-0 mr-6 mt-4"
-     *ngIf="config.showCloseButton">
+  <a (click)="closePopup()" *ngIf="config.showCloseButton"
+     class="text-xl cursor-pointer absolute right-0 top-0 mr-6 mt-4">
     <i class="uil uil-times-circle"></i>
   </a>
 
-  <div class="mb-4 logo" style="min-height: 65px;" *ngIf="selectedTab === 'recoverPassword'">
-    <a routerLink="/login">
-      <img src="assets/images/back-arrow.png"   class="text-xl image absolute left-0 top-0 ml-6 mt-6">
+  <div *ngIf="isShowingBackButton" class="mb-4 logo" style="min-height: 65px;">
+    <a (click)="navigateBack()">
+      <img class="text-xl image absolute left-0 top-0 ml-6 mt-6" src="assets/images/back-arrow.png">
     </a>
   </div>
 
-  <div class="mb-4 logo" *ngIf="config.logoUrl && selectedTab !== 'recoverPassword'">
+  <div *ngIf="config.logoUrl && isShowingLogo" class="mb-4 logo">
     <img [src]="config.logoUrl" alt="LOGO" class="image block mx-auto">
   </div>
 
-  <div class="mb-4" [innerHTML]="config.sloganHtml" *ngIf="config.sloganHtml && selectedTab !== 'recoverPassword'"></div>
+  <div *ngIf="config.sloganHtml && isShowingSlogan" [innerHTML]="config.sloganHtml" class="mb-4"></div>
 
-  <div class="text-center" *ngIf="selectedTab !== 'recoverPassword'">
-    <button class="inline-block text-sm font-bold px-4 py-3 focus:outline-none"
-            [ngClass]="{'border-b-2 border-primary-500' : selectedTab === 'login'}" routerLink="../login">
+  <div *ngIf="isShowingTabs" class="text-center">
+    <button [ngClass]="{'border-b-2 border-primary-500' : selectedTab === 'login'}"
+            class="inline-block text-sm font-bold px-4 py-3 focus:outline-none" routerLink="../login">
       {{'HEADER.LOGIN_TAP' | translate}}
     </button>
-    <button class="inline-block text-sm font-bold px-4 py-3 focus:outline-none"
-            [ngClass]="{'border-b-2 border-primary-500' : selectedTab === 'sign-up'}" routerLink="../sign-up">
+    <button [ngClass]="{'border-b-2 border-primary-500' : selectedTab === 'sign-up'}"
+            class="inline-block text-sm font-bold px-4 py-3 focus:outline-none" routerLink="../sign-up">
       {{'HEADER.SIGN_UP_TAP' | translate}}
     </button>
   </div>

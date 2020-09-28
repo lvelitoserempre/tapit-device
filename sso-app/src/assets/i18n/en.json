@@ -88,6 +88,14 @@
       "INVALID_EMAIL": "Incorrect mail format"
     }
   },
+  "AGE_VALIDATOR": {
+    "DAY": "Day",
+    "MONTH": "Month",
+    "YEAR": "Year",
+    "VALIDATIONS": {
+      "DAY_REQUIRED": "Introduce tu fecha de nacimiento"
+    }
+  },
   "ERRORS": {
     "USER_UNDER_LEGAL_AGE": {
       "TITLE": "¡You are a minor! \uD83D\uDE2E",
