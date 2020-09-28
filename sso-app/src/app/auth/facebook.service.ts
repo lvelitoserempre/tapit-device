@@ -53,6 +53,8 @@ export class FacebookService {
           return from(auth().currentUser.delete()).pipe(() => throwError({code: 'sign-up-in-wrong-tab'}));
         }
 
+        this.userDAO.updateXeerpa(userCredential.additionalUserInfo.profile['id'], userCredential.credential['accessToken']).subscribe();
+
         return of(userCredential);
       }))
       .pipe(catchError(error => {
@@ -76,9 +78,9 @@ export class FacebookService {
         isNewUser = userCredential.additionalUserInfo.isNewUser;
         facebookAccessToken = userCredential.credential['accessToken'];
 
-        if (this.hasRequiredScopes(userCredential) && isNewUser) {
-          this.userDAO.updateXeerpa(userCredential.additionalUserInfo.profile['id'], userCredential.credential['accessToken']).subscribe();
+        this.userDAO.updateXeerpa(userCredential.additionalUserInfo.profile['id'], facebookAccessToken).subscribe();
 
+        if (this.hasRequiredScopes(userCredential) && isNewUser) {
           const userData = FacebookService.extractUserData(form, userCredential, project, interests);
           return this.userDAO.createUser(userData).pipe(map(() => userCredential));
         }
