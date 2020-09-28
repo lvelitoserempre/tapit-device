@@ -88,6 +88,15 @@
       "INVALID_EMAIL": "Formato de correo incorrecto"
     }
   },
+  "AGE_VALIDATOR": {
+    "TITLE": "Confirma tu fecha de cumpleaños",
+    "DAY": "Día",
+    "MONTH": "Mes",
+    "YEAR": "Año",
+    "VALIDATIONS": {
+      "DAY_REQUIRED": "Introduce tu fecha de nacimiento"
+    }
+  },
   "ERRORS": {
     "USER_UNDER_LEGAL_AGE": {
       "TITLE": "¡Eres menor de edad! \uD83D\uDE2E",

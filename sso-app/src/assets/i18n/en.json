@@ -89,11 +89,18 @@
     }
   },
   "AGE_VALIDATOR": {
+    "TITLE": "Confirm your birthdate",
     "DAY": "Day",
     "MONTH": "Month",
     "YEAR": "Year",
+    "SUBMIT_BUTTON": "VERIFY",
     "VALIDATIONS": {
-      "DAY_REQUIRED": "Introduce tu fecha de nacimiento"
+      "DAY_REQUIRED": "Introduce your birth day",
+      "DAY_PATTERN": "Introduce a valid day",
+      "MONTH_REQUIRED": "Introduce your birth month",
+      "MONTH_PATTERN": "Introduce a valid month",
+      "YEAR_REQUIRED": "Introduce your birth year",
+      "YEAR_PATTERN": "Introduce a valid year"
     }
   },
   "ERRORS": {

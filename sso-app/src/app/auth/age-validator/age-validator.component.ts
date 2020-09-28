@@ -36,6 +36,11 @@ export class AgeValidatorComponent implements OnInit {
   }
 
   submit() {
+    this.form.markAllAsTouched();
+
+    if (this.form.valid) {
+
+    }
   }
 
   closePopup() {
