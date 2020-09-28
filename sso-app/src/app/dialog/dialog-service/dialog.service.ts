@@ -18,11 +18,11 @@ export class DialogService {
     if (translationParams) {
       return this.translateService.get(translationObjectKey + '.MESSAGE', translationParams)
         .pipe(map(messageText => {
-          return this.showMessage('error', translationObjectKey + '.TITLE', messageText, translationObjectKey + '.BUTTON_LABEL', redirectUrl);
+          return this.showMessage('error', translationObjectKey + '.TITLE', messageText, translationObjectKey + '.OK_BUTTON', redirectUrl);
         }));
     }
 
-    return of(this.showMessage('error', translationObjectKey + '.TITLE', translationObjectKey + '.MESSAGE', translationObjectKey + '.BUTTON_LABEL', redirectUrl));
+    return of(this.showMessage('error', translationObjectKey + '.TITLE', translationObjectKey + '.MESSAGE', translationObjectKey + '.OK_BUTTON', redirectUrl));
   }
 
   showMessage(type: string, title: string, message: string, buttonOne: string, redirectUrl?:string): MatDialogRef<DialogComponent> {

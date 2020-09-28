@@ -7,6 +7,7 @@ import {DialogService} from '../../dialog/dialog-service/dialog.service';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ValidationMessages, Validations} from './age-validator.validations';
+import AgeValidatorService from '../age-validator.service';
 
 @Component({
   selector: 'app-age-validator',
@@ -39,7 +40,13 @@ export class AgeValidatorComponent implements OnInit {
     this.form.markAllAsTouched();
 
     if (this.form.valid) {
+      const date = new Date(this.form.value.year, this.form.value.month - 1, this.form.value.day);
 
+      if(AgeValidatorService.olderThan(date, 18)){
+        console.log(date);
+      } else {
+        this.router.navigate(['/under-age']);
+      }
     }
   }
 

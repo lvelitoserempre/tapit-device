@@ -88,71 +88,91 @@
       "INVALID_EMAIL": "Endereço de email inválido. Digite seu email novamente"
     }
   },
+  "AGE_VALIDATOR": {
+    "TITLE": "Confirme sua data de aniversário",
+    "DAY": "Dia",
+    "MONTH": "Mês",
+    "YEAR": "Ano",
+    "OK_BUTTON": "VERIFY",
+    "VALIDATIONS": {
+      "DAY_REQUIRED": "Digite seu dia de nascimento",
+      "DAY_PATTERN": "Por favor insira um dia válido",
+      "MONTH_REQUIRED": "Digite seu mês de nascimento\n",
+      "MONTH_PATTERN": "Insira um mês válido",
+      "YEAR_REQUIRED": "Digite seu ano de nascimento",
+      "YEAR_PATTERN": "Por favor insira um ano válido"
+    }
+  },
+  "UNDER_AGE": {
+    "TITLE": "¡Você é menor! \uD83D\uDE2E",
+    "MESSAGE": "Você deve ter mais de 18 anos para fazer parte do Tap it. Esperamos por você quando você os tiver!",
+    "OK_BUTTON": "RETORNAR"
+  },
   "ERRORS": {
     "USER_UNDER_LEGAL_AGE": {
       "TITLE": "¡Você é menor! \uD83D\uDE2E",
       "MESSAGE": "Você deve ter mais de 18 anos para fazer parte do Tap it. Esperamos por você quando você os tiver!",
-      "BUTTON_LABEL": "Retornar"
+      "OK_BUTTON": "RETORNAR"
     },
     "TOO_MANY_FAILED_ATTEMPTS": {
       "TITLE": "Erro de autenticação",
       "MESSAGE": "Você excedeu o limite de tentativas erradas. Por favor, tente novamente mais tarde.",
-      "BUTTON_LABEL": "Retornar"
+      "OK_BUTTON": "RETORNAR"
     },
     "WRONG_PASSWORD": {
       "TITLE": "Erro de autenticação",
       "MESSAGE": "Senha incorreta ou inexistente",
-      "BUTTON_LABEL": "Tentar Novamente"
+      "OK_BUTTON": "Tentar Novamente"
     },
     "USER_NOT_FOUND": {
       "TITLE": "Erro de autenticação",
       "MESSAGE": "Usuário ou senha não encontrados",
-      "BUTTON_LABEL": "Tentar novamente"
+      "OK_BUTTON": "Tentar novamente"
     },
     "SIGN_UP_EMAIL_ALREADY_IN_USE": {
       "TITLE": "Erro de cadastro do usuário",
       "MESSAGE": "O endereço de email está em uso por outra conta.\n Caso não se recorde, clique em Recuperar Senha",
-      "BUTTON_LABEL": "Retornar"
+      "OK_BUTTON": "RETORNAR"
     },
     "USER_CANCELLED": {
       "TITLE": "Erro de autenticação",
       "MESSAGE": "Você deve autorizar o uso de seus dados na janela emergente.",
-      "BUTTON_LABEL": "Retornar"
+      "OK_BUTTON": "RETORNAR"
     },
     "REQUIRED_EMAIL": {
       "TITLE": "Erro de autenticação",
       "MESSAGE": "Você deve autorizar o uso do seu email.",
-      "BUTTON_LABEL": "Retornar"
+      "OK_BUTTON": "RETORNAR"
     },
     "FACEBOOK_REQUIRED_PUBLIC_PROFILE": {
       "TITLE": "Erro de autenticação",
       "MESSAGE": "Você deve autorizar o uso do seu perfil público.",
-      "BUTTON_LABEL": "Retornar"
+      "OK_BUTTON": "RETORNAR"
     },
     "REQUIRED_BIRTHDAY": {
       "TITLE": "Erro de autenticação",
       "MESSAGE": "Você deve autorizar o uso do seu data de nascimento.",
-      "BUTTON_LABEL": "Retornar"
+      "OK_BUTTON": "RETORNAR"
     },
     "INCOMPLETE_BIRTHDAY": {
       "TITLE": "Erro de autenticação",
       "MESSAGE": "Your birthday is incomplete on your provider account.",
-      "BUTTON_LABEL": "Retornar"
+      "OK_BUTTON": "RETORNAR"
     },
     "SIGN_UP_IN_WRONG_TAB": {
       "TITLE": "Erro de autenticação",
       "MESSAGE": "Registre-se na guia de registro",
-      "BUTTON_LABEL": "Retornar"
+      "OK_BUTTON": "RETORNAR"
     },
     "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": {
       "TITLE": "Erro de autenticação",
       "MESSAGE": "Você já se cadastrou com este e-mail {{email}}! Você não se lembra da sua senha? Clique em Recuperar Senha para receber um email com instruções para reiniciar sua senha.",
-      "BUTTON_LABEL": "Retornar"
+      "OK_BUTTON": "RETORNAR"
     },
     "UNKNOWN": {
       "TITLE": "Erro de autenticação",
       "MESSAGE": "Um erro desconhecido ocorreu",
-      "BUTTON_LABEL": "Retornar"
+      "OK_BUTTON": "RETORNAR"
     }
   }
 }
