@@ -105,13 +105,13 @@
   },
   "UNDER_AGE": {
     "TITLE": "¡You are a minor! \uD83D\uDE2E",
-    "MESSAGE": "You must be 18 years or older to be part of Tap it  ¡We wait for you when you have them!",
+    "MESSAGE": "You must have 18 years or older to belong into the Tap it Community. We will be here until that day, stay safe!",
     "OK_BUTTON": "AGREE"
   },
   "ERRORS": {
     "USER_UNDER_LEGAL_AGE": {
       "TITLE": "¡You are a minor! \uD83D\uDE2E",
-      "MESSAGE": "You must be 18 years or older to be part of Tap it  ¡We wait for you when you have them!",
+      "MESSAGE": "You must have 18 years or older to belong into the Tap it Community. We will be here until that day, stay safe!",
       "OK_BUTTON": "AGREE"
     },
     "TOO_MANY_FAILED_ATTEMPTS": {
