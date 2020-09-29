@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {SSOConfigService} from '../single-sign-on/sso-config.service';
 import SSOConfig from '../single-sign-on/sso-config';
 import {IframeMessagingService} from '../shared/services/iframe-messaging.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -24,6 +25,7 @@ export class AppHeaderComponent implements OnInit {
 
 
   constructor(private router: Router,
+              private location: Location,
               private configService: SSOConfigService,
               private iframeMessagingService: IframeMessagingService) {
   }
@@ -39,6 +41,6 @@ export class AppHeaderComponent implements OnInit {
   }
 
   navigateBack() {
-    this.router.navigate(['../']);
+    this.location.back();
   }
 }

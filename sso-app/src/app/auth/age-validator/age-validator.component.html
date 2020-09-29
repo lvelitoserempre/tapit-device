@@ -7,7 +7,7 @@
 
     <h3 class="font-bold text-lg text-center mb-8">{{'AGE_VALIDATOR.TITLE' | translate}}</h3>
 
-    <form (ngSubmit)="submit()" [formGroup]="form" autocomplete="on">
+    <form (ngSubmit)="submit()" [formGroup]="form" autocomplete="on" class="max-w-sm mx-auto">
       <div class="grid grid-cols-3 gap-4 mb-2">
         <div class="relative">
           <label class="font-bold text-sm text-neutral-800 block mb-2"
@@ -45,8 +45,10 @@
         {{validationMessages.day.required | translate}}
       </p>
 
-      <p *ngIf="form.get('day').hasError('pattern')  && form.get('day').touched"
-         class="text-danger-500 pl-2">
+      <p
+        *ngIf="(form.get('day').hasError('pattern') || form.get('day').hasError('min') || form.get('day').hasError('max'))
+          && form.get('day').touched"
+        class="text-danger-500 pl-2">
         {{validationMessages.day.pattern | translate}}
       </p>
 
@@ -55,7 +57,8 @@
         {{validationMessages.month.required | translate}}
       </p>
 
-      <p *ngIf="form.get('month').hasError('pattern')  && form.get('month').touched"
+      <p  *ngIf="(form.get('month').hasError('pattern') || form.get('month').hasError('min') || form.get('month').hasError('max'))
+          && form.get('month').touched"
          class="text-danger-500 pl-2">
         {{validationMessages.month.pattern | translate}}
       </p>
@@ -65,13 +68,14 @@
         {{validationMessages.year.required | translate}}
       </p>
 
-      <p *ngIf="form.get('year').hasError('pattern')  && form.get('year').touched"
+      <p *ngIf="(form.get('year').hasError('pattern') || form.get('year').hasError('min') || form.get('year').hasError('max'))
+          && form.get('year').touched"
          class="text-danger-500 pl-2">
         {{validationMessages.year.pattern | translate}}
       </p>
 
       <button class="app-button bg-primary-500 my-8 block mx-auto uppercase w-full max-w-xs" type="submit">
-        {{'AGE_VALIDATOR.SUBMIT_BUTTON' | translate }}
+        {{'AGE_VALIDATOR.OK_BUTTON' | translate }}
       </button>
     </form>
   </div>

@@ -93,7 +93,7 @@
     "DAY": "Day",
     "MONTH": "Month",
     "YEAR": "Year",
-    "SUBMIT_BUTTON": "VERIFY",
+    "OK_BUTTON": "VERIFY",
     "VALIDATIONS": {
       "DAY_REQUIRED": "Introduce your birth day",
       "DAY_PATTERN": "Introduce a valid day",
@@ -103,71 +103,76 @@
       "YEAR_PATTERN": "Introduce a valid year"
     }
   },
+  "UNDER_AGE": {
+    "TITLE": "¡You are a minor! \uD83D\uDE2E",
+    "MESSAGE": "You must have 18 years or older to belong into the Tap it Community. We will be here until that day, stay safe!",
+    "OK_BUTTON": "AGREE"
+  },
   "ERRORS": {
     "USER_UNDER_LEGAL_AGE": {
       "TITLE": "¡You are a minor! \uD83D\uDE2E",
-      "MESSAGE": "You must be 18 years or older to be part of Tap it  ¡We wait for you when you have them!",
-      "BUTTON_LABEL": "Agree"
+      "MESSAGE": "You must have 18 years or older to belong into the Tap it Community. We will be here until that day, stay safe!",
+      "OK_BUTTON": "AGREE"
     },
     "TOO_MANY_FAILED_ATTEMPTS": {
       "TITLE": "Authentication Error",
       "MESSAGE": "Too many failed attempts. Please try again later.",
-      "BUTTON_LABEL": "Agree"
+      "OK_BUTTON": "AGREE"
     },
     "WRONG_PASSWORD": {
       "TITLE": "Authentication Error",
       "MESSAGE": "The password is not correct or the user does not exist",
-      "BUTTON_LABEL": "Agree"
+      "OK_BUTTON": "AGREE"
     },
     "USER_NOT_FOUND": {
       "TITLE": "Authentication Error",
       "MESSAGE": "There is no user record with this identify. The user may have been removed.",
-      "BUTTON_LABEL": "Agree"
+      "OK_BUTTON": "AGREE"
     },
     "SIGN_UP_EMAIL_ALREADY_IN_USE": {
       "TITLE": "Authentication Error",
       "MESSAGE": "The email address is in use by another account. \nIs it possible that you are already registered?",
-      "BUTTON_LABEL": "Agree"
+      "OK_BUTTON": "AGREE"
     },
     "USER_CANCELLED": {
       "TITLE": "Authentication Error",
       "MESSAGE": "You must authorize the use of your data in the popup window.",
-      "BUTTON_LABEL": "Agree"
+      "OK_BUTTON": "AGREE"
     },
     "REQUIRED_EMAIL": {
       "TITLE": "Authentication Error",
       "MESSAGE": "You must authorize the use of your email.",
-      "BUTTON_LABEL": "Agree"
+      "OK_BUTTON": "AGREE"
     },
     "FACEBOOK_REQUIRED_PUBLIC_PROFILE": {
       "TITLE": "Authentication Error",
       "MESSAGE": "You must authorize the use of your public profile.",
-      "BUTTON_LABEL": "Agree"
+      "OK_BUTTON": "AGREE"
     },
     "REQUIRED_BIRTHDAY": {
       "TITLE": "Authentication Error",
       "MESSAGE": "You must authorize the use of your birthday.",
-      "BUTTON_LABEL": "Agree"
+      "OK_BUTTON": "AGREE"
     },
     "INCOMPLETE_BIRTHDAY": {
       "TITLE": "Authentication Error",
       "MESSAGE": "Your birthday is incomplete on your provider account.",
-      "BUTTON_LABEL": "Agree"
+      "OK_BUTTON": "AGREE"
     },
     "SIGN_UP_IN_WRONG_TAB": {
       "TITLE": "Authentication Error",
       "MESSAGE": "Please sign up in the sign up tab.",
-      "BUTTON_LABEL": "Agree"
+      "OK_BUTTON": "AGREE"
     },
     "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": {
       "TITLE": "Authentication Error",
       "MESSAGE": "You have already registered with this email {{email}}! Do not you remember your password? Get it back!",
-      "BUTTON_LABEL": "Agree"
+      "OK_BUTTON": "AGREE"
     },
     "UNKNOWN": {
       "TITLE": "Authentication Error",
       "MESSAGE": "An unknown error has occurred.",
-      "BUTTON_LABEL": "Agree"
+      "OK_BUTTON": "AGREE"
     }
   }
 }
