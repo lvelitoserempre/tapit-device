@@ -42,7 +42,8 @@ export class UserProfileComponent implements OnInit {
     this.userAuthenticationService.logout()
       .subscribe(() => {
         this.loaderService.hide();
-        window.location.replace('/');
+        this.router.navigateByUrl('auth/login');
+        //window.location.replace('/app/auth');
       }, (error) => {
         console.error(error);
         this.loaderService.hide();
