@@ -1,29 +1,16 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>RECOMENDACIONES PARA RECIBIR PEDIDOS</title>
-  <link href="assets/styles/tailwind.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    @font-face {
-      font-family: filson-soft;
-      src: url('assets/fonts/FilsonSoftBook.woff2') format('woff2'), url('./assets/fonts/FilsonSoftBook.woff') format('woff');
-      font-weight: 400;
-      font-display: swap;
-      font-style: normal;
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0;
     }
 
-    @font-face {
-      font-family: filson-soft;
-      src: url('assets/fonts/FilsonSoft-Bold.woff2') format('woff2'), url('assets/fonts/FilsonSoft-Bold.woff') format('woff');
-      font-weight: 600;
-      font-display: swap;
-      font-style: normal;
-    }
-
-    html {
-      font-size: 16px;
+    *:focus {
+      outline: none;
     }
 
     html, body {
@@ -32,50 +19,30 @@
   </style>
 </head>
 <body>
-<div class="container mx-auto p-4 md:p-8 break-words">
-  <h1 class="text-xl md:text-2xl mt-8 mb-2 font-bold">RECOMENDACIONES PARA RECIBIR PEDIDOS</h1>
-  <p class="text-neutral-800 md:text-base my-4"><br></p>
-  <p class="text-neutral-800 md:text-base my-4">A raíz de la evolución global del virus COVID-19, queremos que recibas
-    algunos consejos y recomendaciones a la hora
-    de recibir tus compras.
-  </p>
+<div id="adobe-dc-view"></div>
 
-  <p class="text-neutral-800 md:text-base my-4"><b>¿Qué debes hacer si estás esperando un pedido?</b>
-  </p>
-  <h3 class="text-lg md:text-xl mt-8 mb-2 font-bold">DISTANCIAMIENTO</h3>
-  <p class="text-neutral-800 md:text-base my-4">Toma un (1) metro de distancia de la persona que te entrega tu pedido.
-  </p>
-  <div class="text-center">
-    <img class="inline-block" src="assets/images/Picture1.png"/>
-  </div>
+<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script>
+  const devClientId = 'f0e5577313a549cd9d74313715bcae5e';
+  const prodClientId = 'd71d679e1ffe4043a78c27d2681a3327';
+  const documentName = 'RECOMENDACIONES COVID';
+  const fileName = 'recomendacionescovid.pdf';
+  const documentUrl = 'https://firebasestorage.googleapis.com/v0/b/rei-imagining-loyalty.appspot.com/o/Documents%2F' + fileName + '?alt=media';
 
-  <h3 class="text-lg md:text-xl mt-8 mb-2 font-bold">LAVA TUS MANOS</h3>
-  <p class="text-neutral-800 md:text-base my-4">Usa un desinfectante a base de alcohol o lava tus manos con agua y jabón
-    antes y después de manipular el paquete, y
-    evita tocarte la cara.
-  </p>
-  <div class="text-center">
-    <img src="assets/images/Picture3.png"/>
-  </div>
-
-  <h3 class="text-lg md:text-xl mt-8 mb-2 font-bold">UTILIZA TUS ELEMENTOS</h3>
-  <p class="text-neutral-800 md:text-base my-4">Ten a la mano tu lapicero, para el momento de firmar la entrega.
-  </p>
-  <div class="text-center">
-    <img class="inline-block" src="assets/images/Picture5.png"/>
-  </div>
-  <h3 class="text-lg md:text-xl mt-8 mb-2 font-bold">DESINFECTA</h3>
-  <p class="text-neutral-800 md:text-base my-4">Un desinfectante común es suficiente, no olvides usarlo cuando recibas el
-    paquete y en las superficies donde lo
-    pusiste antes de desinfectar.
-  </p>
-  <div class="text-center">
-    <img src="assets/images/Picture4.png"/>
-  </div>
-
-  <div class="text-center">
-    <img class="inline-block" src="assets/images/Picture2.png"/>
-  </div>
-</div>
+  document.title = documentName;
+  document.addEventListener("adobe_dc_view_sdk.ready", function () {
+    var adobeDCView = new AdobeDC.View({clientId: devClientId, divId: "adobe-dc-view"});
+    adobeDCView.previewFile({
+        content: {
+          location: {url: documentUrl}
+        },
+        metaData: {fileName: documentName}
+      },
+      {
+        showDownloadPDF: false,
+        showAnnotationTools: true
+      });
+  });
+</script>
 </body>
 </html>
