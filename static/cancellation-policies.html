@@ -1,29 +1,16 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>POLÍTICAS DE CANCELACIÓN CAMBIOS Y DEVOLUCIONES</title>
-  <link href="assets/styles/tailwind.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    @font-face {
-      font-family: filson-soft;
-      src: url('assets/fonts/FilsonSoftBook.woff2') format('woff2'), url('./assets/fonts/FilsonSoftBook.woff') format('woff');
-      font-weight: 400;
-      font-display: swap;
-      font-style: normal;
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0;
     }
 
-    @font-face {
-      font-family: filson-soft;
-      src: url('assets/fonts/FilsonSoft-Bold.woff2') format('woff2'), url('assets/fonts/FilsonSoft-Bold.woff') format('woff');
-      font-weight: 600;
-      font-display: swap;
-      font-style: normal;
-    }
-
-    html {
-      font-size: 16px;
+    *:focus {
+      outline: none;
     }
 
     html, body {
@@ -32,78 +19,30 @@
   </style>
 </head>
 <body>
-<div class="container mx-auto p-4 md:p-8 break-words">
-  <h1 class="text-xl md:text-2xl mt-8 mb-2 font-bold">POLÍTICAS DE CANCELACIÓN <br>CAMBIOS Y DEVOLUCIONES</h1>
-  <p class="text-neutral-800 md:text-base my-4"><b>CANCELACIÓN</b>
-  </p>
-  <p class="text-neutral-800 md:text-base my-4">Cuando un usuario requiera cancelar su pedido por motivos que corresponden a
-    su necesidad, deberá notificar
-    por el correo electrónico info@tapit.com.co en un término no mayor a las cinco (5) horas posteriores a la
-    realización de su compra. El usuario reconoce que una vez realizado el pago, el responsable de la devolución
-    del dinero es Mercado Pago, pues es la pasarela de pagos encargada de la recepción del dinero y como tal, de
-    dicha devolución; por lo tanto la solicitud de devolución del dinero se debe hacer directamente ante dicha
-    plataforma y su seguimiento será responsabilidad del usuario.</br>
-    El correo electrónico a enviar deberá tener las siguientes características:
-  </p>
+<div id="adobe-dc-view"></div>
 
-  <ul class="list-disc list-inside p-2 md:p-4">
-    <li class="my-2 text-neutral-800 md:text-base">Asunto: Cancelación</li>
-    <li class="my-2 text-neutral-800 md:text-base">Hacer meción al correo electrónico registrado en Tap It.
-    </li>
-    <li class="my-2 text-neutral-800 md:text-base">Número del pedido.
-    </li>
-  </ul>
+<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script>
+  const devClientId = 'f0e5577313a549cd9d74313715bcae5e';
+  const prodClientId = 'd71d679e1ffe4043a78c27d2681a3327';
+  const documentName = 'POLITICAS DE CANCELACION';
+  const fileName = 'politicasdecancelacion.pdf';
+  const documentUrl = 'https://firebasestorage.googleapis.com/v0/b/rei-imagining-loyalty.appspot.com/o/Documents%2F' + fileName + '?alt=media';
 
-  <p class="text-neutral-800 md:text-base my-4"><b>DEVOLUCIÓN O CAMBIOS</b>
-  </p>
-
-  <p class="text-neutral-800 md:text-base my-4">El Usuario podrá solicitar cambios de producto, garantizando que los
-    productos conserven las
-    características originales. Los cambios podrán ser solicitados máximo 12 horas después de recibido el
-    producto. Para todos los cambios se debe realizar la solicitud por escrito a través del correo electrónico
-    info@tapit.com.co
-    <br>El correo electrónico a enviar deberá tener las siguientes características:
-  </p>
-
-  <ul class="list-disc list-inside p-2 md:p-4">
-    <li class="my-2 text-neutral-800 md:text-base">Asunto: Devolución/Cambios
-    </li>
-    <li class="my-2 text-neutral-800 md:text-base">Hacer meción al correo electrónico registrado en Tap It.
-    </li>
-    <li class="my-2 text-neutral-800 md:text-base">Número del pedido.
-    </li>
-  </ul>
-
-  <p class="text-neutral-800 md:text-base my-4"><b>GARANTÍA</b>
-  </p>
-
-  <p class="text-neutral-800 md:text-base my-4">Si los productos no se ajustan a la calidad, idoneidad o seguridad propias y
-    necesarias, el Usuario podrá
-    solicitar un cambio por concepto de garantía de estos, a través de la línea de servicio de Tap It, o el
-    correo electrónico, que se encuentran en el presente documento; siempre que haya fundamento jurídico y
-    racional para ello, para lo cual el equipo de soporte de Tap It, trasladará tal solicitud a ZX VENTURES
-    S.A.S, que decidirá la procedencia o no de ésta en su calidad de productor y único responsable respecto de
-    las características objetivas ofertadas. La garantía solo aplica para características objetivas de los
-    productos.
-    <br>El correo electrónico a enviar deberá tener las siguientes características:
-  </p>
-
-  <ul class="list-disc list-inside p-2 md:p-4">
-    <li class="my-2 text-neutral-800 md:text-base">Asunto: Garantía
-    </li>
-    <li class="my-2 text-neutral-800 md:text-base">Hacer meción al correo electrónico registrado en Tap It.
-    </li>
-    <li class="my-2 text-neutral-800 md:text-base">Número del pedido.
-    </li>
-  </ul>
-  <p class="text-neutral-800 md:text-base my-4"><b>RETRACTO POR PARTE DE TAP IT</b>
-  </p>
-
-  <p class="text-neutral-800 md:text-base my-4">TAP IT se reserva el derecho a cancelar pedidos y/o anular beneficios que
-    considere sospechosos de
-    incumplir cualquiera de los términos de este documento y no está en la obligación de notificar previamente
-    al usuario.
-  </p>
-</div>
+  document.title = documentName;
+  document.addEventListener("adobe_dc_view_sdk.ready", function () {
+    var adobeDCView = new AdobeDC.View({clientId: devClientId, divId: "adobe-dc-view"});
+    adobeDCView.previewFile({
+        content: {
+          location: {url: documentUrl}
+        },
+        metaData: {fileName: documentName}
+      },
+      {
+        showDownloadPDF: false,
+        showAnnotationTools: true
+      });
+  });
+</script>
 </body>
 </html>
