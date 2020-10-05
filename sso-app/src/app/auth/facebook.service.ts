@@ -21,7 +21,6 @@ export class FacebookService {
     this.facebookAuthProvider.addScope('user_birthday');
     this.facebookAuthProvider.addScope('email');
     this.facebookAuthProvider.addScope('public_profile');
-    this.facebookAuthProvider.addScope('user_friends');
     this.facebookAuthProvider.addScope('user_gender');
     this.facebookAuthProvider.addScope('user_likes');
     this.facebookAuthProvider.addScope('user_location');
