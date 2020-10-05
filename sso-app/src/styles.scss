@@ -6,30 +6,27 @@
   outline: none !important;
 }
 
-.dialog {
-  .mat-dialog-container {
-    border-radius: 2rem;
-    @media (max-width: $xs) {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      padding: 24px 18px;
-    }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.app-dialog {
+  max-width: 95vw !important;
+  width: 95vw;
+
+  @media (min-width: 640px) {
+    width: 350px;
   }
 
-  &.dialog-full {
-    @media (max-width: $xs) {
-      bottom: 0;
-      max-height: 80%;
-      max-width: none !important;
-      position: absolute !important;
-      width: 100%;
-    }
-
-    .scroll-view {
-      @media (max-width: $xs) {
-        max-height: 60vh;
-      }
-    }
+  .mat-dialog-container {
+    border-radius: 1.2rem;
+    padding: 0;
   }
 }
 
@@ -45,13 +42,8 @@
   background: #4267b2;
 }
 
-.bg-pattern {
-  background: url("assets/images/bg.svg") no-repeat;
-  background-size: cover;
-}
-
-.bg-bubble-4 {
-  background: url("assets/images/bubble_4.png") no-repeat left -3em bottom -1rem;
+.bg-footer-bubble {
+  background: url("assets/images/footer-bubble.png") no-repeat left -3em bottom -1rem;
   background-size: 144px;
 }
 

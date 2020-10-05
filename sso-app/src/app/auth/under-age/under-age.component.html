@@ -1,0 +1,19 @@
+<div class="fixed inset-0 flex flex-col">
+  <app-header [isShowingBackButton]="true" [isShowingLogo]="false" [isShowingSlogan]="false"
+              [isShowingTabs]="false"></app-header>
+
+  <div [ngClass]="{'bg-footer-bubble' : config.showContainerBackground}"
+       class="container mx-auto relative bg-white px-6 pt-8 pb-24 overflow-y-auto flex-1">
+    <section class="max-w-sm mx-auto">
+      <div class="my-8">
+        <img class="mx-auto" src="assets/images/alert-error.png" style="max-width: 108px">
+      </div>
+
+      <h1 class="font-fs-bold text-center text-lg mb-4">{{ 'UNDER_AGE.TITLE' | translate}}</h1>
+
+      <p class="text-neutral-800 text-sm sm:text-base font-bold mb-8">{{ 'UNDER_AGE.MESSAGE' | translate }}</p>
+
+      <a class="app-button bg-primary-500 w-full text-center" href="https://www.tapintoyourbeer.com">{{ 'UNDER_AGE.OK_BUTTON' | translate }}</a>
+    </section>
+  </div>
+</div>

@@ -7,11 +7,7 @@ import {FacebookService} from '../facebook.service';
 import {UserDAO} from '../../user/user-dao.service';
 import {IframeMessagingService} from '../../shared/services/iframe-messaging.service';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
-import {from} from 'rxjs';
-import {auth} from 'firebase';
-import {map, switchMap} from 'rxjs/operators';
 import SignUpForm from './sign-up.form';
-import {SignUpService} from '../sign-up.service';
 import {ActivatedRoute} from '@angular/router';
 import {ScrollService} from '../../shared/services/scroll.service';
 import {UserAgentService} from '../../../../../library/user-agent.service';
@@ -24,7 +20,10 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import {I18nService} from 'src/app/shared/services/i18n.service';
 import {GtmService} from '../../gtm.service';
 import {Title} from '@angular/platform-browser';
-import UserCredential = firebase.auth.UserCredential;
+import {AuthService} from '../auth.service';
+import {UserAccount} from '../../user/user-account';
+import {GoogleService} from '../google.service';
+import AuthErrorService from '../auth-error.service';
 
 declare var ga;
 
@@ -50,9 +49,10 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   interestsTouched: boolean = false;
 
   constructor(title: Title, private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
+              private googleService: GoogleService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeCommunicatorService: IframeMessagingService,
               private configService: SSOConfigService, private route: ActivatedRoute, private _adapter: DateAdapter<any>,
-              private i18n: I18nService) {
+              private i18n: I18nService, private authService: AuthService) {
     title.setTitle('TapIt - Registro')
     this.signUpForm = this.formBuilder.group(SignUpForm.CONFIG, {updateOn: 'blur'});
   }
@@ -73,6 +73,10 @@ export class SignUpComponent implements OnInit, AfterViewInit {
       if (queryParams.provider === 'facebook') {
         ScrollService.scrollToElement('facebook-button');
       }
+
+      if (queryParams.provider === 'google') {
+        ScrollService.scrollToElement('google-button');
+      }
     });
   }
 
@@ -81,21 +85,18 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     this.interestsTouched = true;
     const interestsValidation = this.config.interests && this.config.interests.length ? true : false;
     const areInterestsValid = !interestsValidation ? true : (this.interests.length ? true : false);
+
     if (this.signUpForm.valid && areInterestsValid) {
       const formValue = this.signUpForm.value;
       this.loaderService.show();
-      from(auth().createUserWithEmailAndPassword(formValue.email, formValue.password))
-        .pipe(switchMap((userCredential: UserCredential) => {
-          return this.userDAO.createUser(SignUpService.extractFormUserData(formValue, this.config.project, this.interests)).pipe(map(() => userCredential));
-        }))
-        .subscribe(userCredential => {
+
+      this.authService.signUp(formValue, this.config, this.interests)
+        .subscribe((userAccount: UserAccount) => {
           ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-email', eventLabel: ''});
-          GtmService.sendEvent(userCredential.user.uid, 'signup_all_websites', 'signup_email');
+          GtmService.sendEvent(userAccount.id, 'signup_all_websites', 'signup_email');
           this.loaderService.hide();
         }, error => {
-          this.loaderService.hide();
-          this.dialogService.manageError(error);
-          auth().currentUser.delete().then((res) => console.log('user deleted', res));
+          this.manageError(error);
         });
     }
   }
@@ -103,7 +104,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   signUpWithFacebook() {
     if (UserAgentService.isNotSupported()) {
       this.dialogService.showErrorMessage('El ingreso por facebook actualmente no esta soportado en este navegador. ' +
-        'Por favor abre esta aplicación en el navegador haciendo click en el menu -> Abrir en navegador');
+        'Por favor abre esta aplicación en el navegador haciendo click en el menu -> Abrir en navegador').subscribe();
       return;
     }
 
@@ -113,14 +114,29 @@ export class SignUpComponent implements OnInit, AfterViewInit {
       this.loaderService.show();
 
       this.facebookService.signUp(this.signUpForm.value, this.config.project, this.interests)
-        .subscribe(userCredential => {
+        .subscribe((userAccount: UserAccount) => {
           ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-facebook', eventLabel: ''});
-          GtmService.sendEvent(userCredential.user.uid, 'signup_all_websites', 'signup_facebook');
+          GtmService.sendEvent(userAccount.id, 'signup_all_websites', 'signup_facebook');
           this.loaderService.hide();
         }, error => {
+          this.manageError(error);
+        });
+    }
+  }
+
+  signUpWithGoogle() {
+    this.signUpForm.get('acceptTerms').markAsTouched();
+
+    if (this.signUpForm.get('acceptTerms').valid) {
+      this.loaderService.show();
+
+      this.googleService.signUp(this.signUpForm.value, this.config.project, this.interests)
+        .subscribe(userAccount => {
+          ga('send', {hitType: 'event', eventCategory: 'signup', eventAction: 'signup-google', eventLabel: ''});
+          GtmService.sendEvent(userAccount.id, 'signup_all_websites', 'signup_google');
           this.loaderService.hide();
-          this.dialogService.manageError(error);
-          auth().currentUser.delete().then();
+        }, error => {
+          this.manageError(error);
         });
     }
   }
@@ -136,5 +152,11 @@ export class SignUpComponent implements OnInit, AfterViewInit {
         this.interests.splice(i, 1);
       }
     }
+  }
+
+  manageError(error) {
+    const redirectUrl = error.code === 'user-under-legal-age' ? 'https://www.tapintoyourbeer.com/' : null;
+    this.loaderService.hide();
+    this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params, redirectUrl).subscribe();
   }
 }

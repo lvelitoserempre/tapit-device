@@ -2,7 +2,7 @@
   <app-header selectedTab="sign-up"></app-header>
 
   <div class="container mx-auto relative bg-white px-6 pt-8 pb-24 overflow-y-auto flex-1"
-       [ngClass]="{'bg-bubble-4':config.showContainerBackground}">
+       [ngClass]="{'bg-footer-bubble':config.showContainerBackground}">
 
     <form (ngSubmit)="signUp()" [formGroup]="signUpForm">
       <div *ngIf="config.showSignUPWithFields">
@@ -181,9 +181,14 @@
       </div>
 
       <button id="facebook-button" (click)="signUpWithFacebook()" *ngIf="config.showSignUpFacebookButton"
-              class="app-button facebook-button min-width-280 mb-6 block mx-auto uppercase" type="button">
+              class="app-button facebook-button min-width-280 mb-6 block mx-auto uppercase border-2" type="button">
         {{'SIGN_UP.FACEBOOK_SIGN_UP' | translate }}
       </button>
+
+     <!-- <button id="google-button" (click)="signUpWithGoogle()" *ngIf="config.showSignUpGoogleButton"
+              class="app-button google-button min-width-280 mb-6 block mx-auto uppercase text-black border-2" type="button">
+        {{'SIGN_UP.GOOGLE_SIGN_UP' | translate }}
+      </button>-->
 
       <div>
         <label class="app-checkbox text-left mb-6" for="accept-offers">

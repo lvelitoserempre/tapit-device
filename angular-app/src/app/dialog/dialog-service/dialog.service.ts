@@ -77,7 +77,7 @@ export class DialogService {
       this.openUserNotFoundErrorDialog();
     } else if (error.code === AUTH_ERRORS.WRONG_PASSWORD) {
       this.openWrongPasswordErrorDialog();
-    } else if (error.code === AUTH_ERRORS.USER_CANCELLED || error.code === AUTH_ERRORS.POPUP_CLOSED_BY_USER) {
+    } else if (error.code === 'auth/user-cancelled' || error.code === 'auth/popup-closed-by-user') {
       this.openWrongPasswordErrorDialog('Debes autorizar el uso de tus datos en la ventana de facebook.');
     } else {
       this.showErrorMessage('Se ha producido un error desconocido.');

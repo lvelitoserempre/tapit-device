@@ -1,4 +1,5 @@
 import {AbstractControl, ValidationErrors, Validators} from '@angular/forms';
+import AgeValidatorService from '../age-validator.service';
 
 export default class SignUpForm {
   static readonly CONFIG = {
@@ -63,13 +64,11 @@ export default class SignUpForm {
   }
 
   private static olderThan(years: number) {
-    const time = Date.now() - (31536000000 * years);
-
     return (control: AbstractControl): ValidationErrors => {
       if (control.value) {
-        const a = new Date(control.value);
+        const date = new Date(control.value);
 
-        if (a.getTime() > time) {
+        if (!AgeValidatorService.olderThan(date, years)) {
           return {olderThan: true};
         }
       }

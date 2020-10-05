@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LoaderService} from '../../loader/loader-service/loader.service';
 import {DialogService} from '../../dialog/dialog-service/dialog.service';
-import {auth} from 'firebase';
+import {auth} from 'firebase/app';
 import {from} from 'rxjs';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import SSOConfig from '../../single-sign-on/sso-config';
@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {RecoverPasswordValidationMessages, RecoverPasswordValidators} from './recover-password.validations';
 import {GtmService} from '../../gtm.service';
 import {Title} from '@angular/platform-browser';
+import AuthErrorService from '../auth-error.service';
 
 
 @Component({
@@ -54,7 +55,7 @@ export class RecoverPasswordComponent implements OnInit {
           this.loaderService.hide();
         }, error => {
           this.loaderService.hide();
-          this.dialogService.manageError(error);
+          this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error)).subscribe();
         });
     }
   }

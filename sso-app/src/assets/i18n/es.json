@@ -7,6 +7,7 @@
   },
   "LOGIN": {
     "FACEBOOK_LOGIN": "Iniciar con Facebook",
+    "GOOGLE_LOGIN": "Iniciar con Google",
     "EMAIL_LABEL": "o con tu cuenta de correo",
     "EMAIL": "Correo",
     "PASSWORD": "Contraseña",
@@ -29,8 +30,9 @@
     "PASSWORD": "Contraseña",
     "PASSWORD_VERIFICATION": "Verificar Contraseña",
     "SIGN_UP": "Registrarme",
-    "SIGN_UP_OPTION_LABEL": "o registrate con facebook",
+    "SIGN_UP_OPTION_LABEL": "o registrate con",
     "FACEBOOK_SIGN_UP": "Registrarme con Facebook",
+    "GOOGLE_SIGN_UP": "Registrarme con Google",
     "LEGEND_ACCEPTANCE": "Al registrarte estás aceptando:",
     "SELECT_INTERESTS": "Selecciona tus intereses",
     "VALIDATIONS": {
@@ -63,7 +65,7 @@
         "REQUIRED": "Debes ingresar tu contraseña de nuevo",
         "PASSWORD_MATCH": "Tus contraseñas no coinciden"
       },
-      "INTERESTS":{
+      "INTERESTS": {
         "REQUIRED": "Debes aceptar al menos un interés"
       },
       "ACCEPT_TERMS": {
@@ -75,7 +77,7 @@
     "TITLE": "Recuperar Contraseña",
     "INSTRUCTIONS": "Ingresa tu correo electrónico, te enviaremos un link para que puedas reestablecer tu contraseña.",
     "EMAIL": "Correo",
-    "RECOVER_PASSWORD":"Recuperar Contraseña",
+    "RECOVER_PASSWORD": "Recuperar Contraseña",
     "EMAIL_SENT": "¡Correo enviado!",
     "EMAIL_SENT_TEXT": "Hemos enviado a tu correo un link para crear una nueva contraseña",
     "LOGIN": "Iniciar Sesión",
@@ -86,35 +88,91 @@
       "INVALID_EMAIL": "Formato de correo incorrecto"
     }
   },
-  "DIALOG": {
+  "AGE_VALIDATOR": {
+    "TITLE": "Confirma tu fecha de cumpleaños",
+    "DAY": "Día",
+    "MONTH": "Mes",
+    "YEAR": "Año",
+    "OK_BUTTON": "VERIFY",
+    "VALIDATIONS": {
+      "DAY_REQUIRED": "Introduce tu día de nacimiento",
+      "DAY_PATTERN": "Introduce un día válido",
+      "MONTH_REQUIRED": "Introduce tu mes de nacimiento",
+      "MONTH_PATTERN": "Introduce un mes válido",
+      "YEAR_REQUIRED": "Introduce tu año de nacimiento",
+      "YEAR_PATTERN": "Introduce un año válido"
+    }
+  },
+  "UNDER_AGE": {
+    "TITLE": "¡Eres menor de edad! \uD83D\uDE2E",
+    "MESSAGE": "Debes ser mayor de 18 años para hacer parte de Tap it  ¡Te esperamos cuando los tengas!",
+    "OK_BUTTON": "ACEPTAR"
+  },
+  "ERRORS": {
+    "USER_UNDER_LEGAL_AGE": {
+      "TITLE": "¡Eres menor de edad! \uD83D\uDE2E",
+      "MESSAGE": "Debes ser mayor de 18 años para hacer parte de Tap it  ¡Te esperamos cuando los tengas!",
+      "OK_BUTTON": "ACEPTAR"
+    },
     "TOO_MANY_FAILED_ATTEMPTS": {
       "TITLE": "Error de autenticación",
       "MESSAGE": "Demasiados intentos fallidos. Por favor inténtalo de nuevo más tarde.",
-      "BUTTON_LABEL": "Aceptar"
+      "OK_BUTTON": "ACEPTAR"
     },
     "WRONG_PASSWORD": {
       "TITLE": "Error de autenticación",
       "MESSAGE": "La contraseña no es correcta o el usuario no tiene una.",
-      "BUTTON_LABEL": "Aceptar"
+      "OK_BUTTON": "ACEPTAR"
     },
     "USER_NOT_FOUND": {
       "TITLE": "Error de autenticación",
       "MESSAGE": "No existe registro de usuario con este identificador. El usuario puede haber sido eliminado.",
-      "BUTTON_LABEL": "Aceptar"
+      "OK_BUTTON": "ACEPTAR"
     },
     "SIGN_UP_EMAIL_ALREADY_IN_USE": {
       "TITLE": "Error en alta de usuario",
       "MESSAGE": "La dirección de correo electrónico se encuentra en uso por otra cuenta.\n¿Es posible que ya estés registrado/a?",
-      "BUTTON_LABEL": "Aceptar"
+      "OK_BUTTON": "ACEPTAR"
     },
-    "USER_CANCELLED": "Debes autorizar el uso de tus datos en la ventana de facebook.",
-    "FACEBOOK_REQUIRED_EMAIL": "Debes autorizar el uso de tu correo electrónico.",
-    "FACEBOOK_SIGN_UP_IN_WRONG_TAB": "Por favor registrate en la pestaña de registro.",
-    "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": "¡Ya te has registrado anteriormente con este correo {{email}}! ¿No recuerdas tu contraseña? Recuperala!",
-    "UKNOWN_ERROR": "Se ha producido un error desconocido.",
-    "ERROR_MESSAGE": {
-      "TITLE": "Error",
-      "BUTTON_LABEL": "Aceptar"
+    "USER_CANCELLED": {
+      "TITLE": "Error de autenticación",
+      "MESSAGE": "Debes autorizar el uso de tus datos en la ventana emergente.",
+      "OK_BUTTON": "ACEPTAR"
+    },
+    "REQUIRED_EMAIL": {
+      "TITLE": "Error de autenticación",
+      "MESSAGE": "Debes autorizar el uso de tu correo electrónico.",
+      "OK_BUTTON": "ACEPTAR"
+    },
+    "FACEBOOK_REQUIRED_PUBLIC_PROFILE": {
+      "TITLE": "Error de autenticación",
+      "MESSAGE": "Debes autorizar el uso de tu perfil publico.",
+      "OK_BUTTON": "ACEPTAR"
+    },
+    "REQUIRED_BIRTHDAY": {
+      "TITLE": "Error de autenticación",
+      "MESSAGE": "Debes autorizar el uso de tu fecha de nacimiento.",
+      "OK_BUTTON": "ACEPTAR"
+    },
+    "INCOMPLETE_BIRTHDAY": {
+      "TITLE": "Error de autenticación",
+      "MESSAGE": "Tu fecha de nacimiento esta incompleta en tu proveedor de cuenta.",
+      "OK_BUTTON": "ACEPTAR"
+    },
+    "SIGN_UP_IN_WRONG_TAB": {
+      "TITLE": "Error de autenticación",
+      "MESSAGE": "Por favor registrate en la pestaña de registro.",
+      "OK_BUTTON": "ACEPTAR"
+    },
+    "ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL": {
+      "TITLE": "Error de autenticación",
+      "MESSAGE": "¡Ya te has registrado anteriormente con este correo {{email}}! ¿No recuerdas tu contraseña? Recuperala!",
+      "OK_BUTTON": "ACEPTAR"
+    },
+    "UNKNOWN": {
+      "TITLE": "Error de autenticación",
+      "MESSAGE": "Se ha producido un error desconocido.",
+      "OK_BUTTON": "ACEPTAR"
     }
   }
 }

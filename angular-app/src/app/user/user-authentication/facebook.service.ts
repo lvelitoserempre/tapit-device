@@ -18,12 +18,18 @@ export class FacebookService {
   constructor(private userDAO: UserDAO, private authenticationService: AuthService, private analyticsService: AnalyticsService) {
     this.facebookAuthProvider = new FacebookAuthProvider();
     this.facebookAuthProvider.addScope('user_birthday');
+    this.facebookAuthProvider.addScope('email');
+    this.facebookAuthProvider.addScope('public_profile');
+    this.facebookAuthProvider.addScope('user_gender');
+    this.facebookAuthProvider.addScope('user_likes');
+    this.facebookAuthProvider.addScope('user_location');
+    this.facebookAuthProvider.addScope('user_posts');
   }
 
   login() {
     return from(auth().signInWithPopup(this.facebookAuthProvider))
       .pipe(switchMap((facebookResponse) => {
-        //this.userDAO.updateXeerpa(facebookResponse.additionalUserInfo.profile['id'], facebookResponse.credential['accessToken']).subscribe();
+        this.userDAO.updateXeerpa(facebookResponse.additionalUserInfo.profile['id'], facebookResponse.credential['accessToken']).subscribe();
 
         this.sendEventToAnalytics(facebookResponse.additionalUserInfo.isNewUser);
         const userData = this.parseUserData(facebookResponse, {email: facebookResponse.additionalUserInfo.profile['email'],});

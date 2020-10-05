@@ -4,6 +4,7 @@ import {AuthService} from '../user-authentication/user-authentication-service/au
 import {LoaderService} from '../../loader/loader-service/loader.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,8 +19,11 @@ export class UserProfileComponent implements OnInit {
   sharePlainMessage: string;
   facebookAppId = environment.production ? '1703386173129451' : '656082591823070';
 
-  constructor(private loaderService: LoaderService, private userAuthenticationService: AuthService,
-              private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private loaderService: LoaderService,
+              private userAuthenticationService: AuthService,
+              private router: Router,
+              private location: Location,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -39,6 +43,7 @@ export class UserProfileComponent implements OnInit {
       .subscribe(() => {
         this.loaderService.hide();
         this.router.navigateByUrl('auth/login');
+        //window.location.replace('/app/auth');
       }, (error) => {
         console.error(error);
         this.loaderService.hide();

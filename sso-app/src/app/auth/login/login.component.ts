@@ -3,19 +3,19 @@ import {LoaderService} from '../../loader/loader-service/loader.service';
 import {DialogService} from '../../dialog/dialog-service/dialog.service';
 import {FacebookService} from '../facebook.service';
 import {UserDAO} from '../../user/user-dao.service';
-import {auth} from 'firebase';
-import {from} from 'rxjs';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {IframeMessagingService} from '../../shared/services/iframe-messaging.service';
 import SSOConfig from '../../single-sign-on/sso-config';
 import {SSOConfigService} from '../../single-sign-on/sso-config.service';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AUTH_ERRORS} from 'src/app/auth/auth-error.enum';
 import {AuthService} from '../auth.service';
 import {UserAgentService} from '../../../../../library/user-agent.service';
 import {GtmService} from '../../gtm.service';
+import {UserAccount} from '../../user/user-account';
 import {Title} from '@angular/platform-browser';
+import {GoogleService} from '../google.service';
+import AuthErrorService from '../auth-error.service';
 
 declare var ga;
 
@@ -29,7 +29,9 @@ export class LoginComponent implements OnInit {
   validationMessages = LoginValidationMessages;
   config: SSOConfig;
 
-  constructor(title: Title, private loaderService: LoaderService, private dialogService: DialogService, private facebookService: FacebookService,
+  constructor(title: Title, private loaderService: LoaderService, private dialogService: DialogService,
+              private facebookService: FacebookService,
+              private googleService: GoogleService,
               private userDAO: UserDAO, private formBuilder: FormBuilder, private iframeMessagingService: IframeMessagingService,
               private configService: SSOConfigService, private router: Router, private route: ActivatedRoute,
               private authService: AuthService) {
@@ -53,8 +55,9 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const formValue = this.loginForm.value;
       this.loaderService.show();
-      from(auth().signInWithEmailAndPassword(formValue.email, formValue.password))
-        .subscribe(userCredential => {
+
+      this.authService.login(formValue.email, formValue.password)
+        .subscribe((user: UserAccount) => {
           if (formValue.remember) {
             this.rememberUser(formValue.email);
           } else {
@@ -62,11 +65,10 @@ export class LoginComponent implements OnInit {
           }
 
           ga('send', {hitType: 'event', eventCategory: 'login', eventAction: 'login-email', eventLabel: ''});
-          GtmService.sendEvent(userCredential.user.uid, 'login_all_websites', 'login_email')
+          GtmService.sendEvent(user.id, 'login_all_websites', 'login_email')
           this.loaderService.hide();
         }, error => {
-          this.loaderService.hide();
-          this.dialogService.manageError(error);
+          this.manageError(error);
         });
     }
   }
@@ -74,24 +76,44 @@ export class LoginComponent implements OnInit {
   loginWithFacebook() {
     if (UserAgentService.isNotSupported()) {
       this.dialogService.showErrorMessage('El ingreso por facebook actualmente no esta soportado en este navegador. ' +
-        'Por favor abre esta aplicación en el navegador haciendo click en el menu -> Abrir en navegador');
+        'Por favor abre esta aplicación en el navegador haciendo click en el menu -> Abrir en navegador').subscribe();
       return;
     }
 
     this.loaderService.show();
 
     this.facebookService.login()
-      .subscribe(userCredential => {
+      .subscribe((userAccount: UserAccount) => {
         ga('send', {hitType: 'event', eventCategory: 'login', eventAction: 'login-facebook', eventLabel: ''});
-        GtmService.sendEvent(userCredential.user.uid, 'login_all_websites', 'login_facebook')
+        GtmService.sendEvent(userAccount.id, 'login_all_websites', 'login_facebook')
         this.loaderService.hide();
       }, error => {
-        this.loaderService.hide();
-        this.dialogService.manageError(error);
-        if (error.code !== AUTH_ERRORS.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL) {
-          this.router.navigateByUrl('sign-up?provider=facebook');
-        }
+        this.manageError(error);
       });
+  }
+
+  loginWithGoogle() {
+    this.loaderService.show();
+
+    this.googleService.login()
+      .subscribe(userAccount => {
+        ga('send', {hitType: 'event', eventCategory: 'login', eventAction: 'login-google', eventLabel: ''});
+        GtmService.sendEvent(userAccount.id, 'login_all_websites', 'login_google')
+        this.loaderService.hide();
+      }, error => {
+        this.manageError(error);
+      });
+
+  }
+
+  manageError(error) {
+    const redirectUrl = error.code === 'user-under-legal-age' ? 'https://www.tapintoyourbeer.com/' : null;
+    this.loaderService.hide();
+    this.dialogService.showErrorMessage(AuthErrorService.getErrorMessage(error), error.params, redirectUrl).subscribe();
+
+    if (error.code === 'sign-up-in-wrong-tab') {
+      this.router.navigateByUrl('sign-up?provider=facebook');
+    }
   }
 
   recoverPassword() {
