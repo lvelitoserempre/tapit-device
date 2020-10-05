@@ -17,12 +17,8 @@ input[type=number] {
 }
 
 .app-dialog {
-  max-width: 95vw !important;
-  width: 95vw;
-
-  @media (min-width: 640px) {
-    width: 350px;
-  }
+  max-width: 24rem !important;
+  width: 100%;
 
   .mat-dialog-container {
     border-radius: 1.2rem;

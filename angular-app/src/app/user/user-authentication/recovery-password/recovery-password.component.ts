@@ -59,7 +59,7 @@ export class RecoveryPasswordComponent implements OnInit {
     if (this.emailForm.valid) {
       this.loaderService.show();
 
-      auth().sendPasswordResetEmail(this.emailForm.controls.email.value, {url: window.location.origin + '/app/auth/login'}).then(res => {
+      auth().sendPasswordResetEmail(this.emailForm.controls.email.value, {url: window.location.origin}).then(res => {
         this.stage = 'sentEmail';
       }).catch(error => {
         this.dialogService.showErrorMessage(RecoveryPasswordErrorService.getErrorMessage(error));
