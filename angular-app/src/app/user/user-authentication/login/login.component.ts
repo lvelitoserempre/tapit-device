@@ -73,9 +73,7 @@ export class LoginComponent implements OnInit {
   }
 
   redirectUser(user: UserAccount) {
-    CookiesService.setValue('setItems', 'false');
-    const redirectUrl = this.backUrl ? this.backUrl : environment.marketUrl + '?customToken=' + user.customToken;
-    window.location.replace(redirectUrl);
+    this.router.navigate(['user/profile'])
   }
 
 }
