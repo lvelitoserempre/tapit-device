@@ -93,7 +93,7 @@
     "DAY": "Dia",
     "MONTH": "Mês",
     "YEAR": "Ano",
-    "OK_BUTTON": "VERIFY",
+    "OK_BUTTON": "VERIFICA",
     "VALIDATIONS": {
       "DAY_REQUIRED": "Digite seu dia de nascimento",
       "DAY_PATTERN": "Por favor insira um dia válido",
