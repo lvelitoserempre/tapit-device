@@ -15,8 +15,6 @@ export class IframeMessagingService {
   constructor(private configService: SSOConfigService, private authService: AuthService, private router: Router) {
   }
 
-// config
-
   sendDataToParent(action: string, data) {
     this.configService.getConfig()
       .pipe(take(1))
