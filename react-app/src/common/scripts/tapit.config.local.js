@@ -17,7 +17,7 @@ const TAPIT_CONFIG_LOCAL = {
     measurementId: 'G-L8M3HWX53Q'
   },
   ssoConfig: {
-    showCPFInput: false,
-    project: 'pola',
+    project: 'web',
+    showSignUPWithFields: false,
   }
 };

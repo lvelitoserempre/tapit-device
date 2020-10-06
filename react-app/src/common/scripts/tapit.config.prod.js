@@ -17,7 +17,7 @@ const TAPIT_CONFIG_PROD = {
     measurementId: 'G-SJR2YLNKJS'
   },
   ssoConfig: {
-    showCPFInput: false,
-    project: 'pola'
+    project: 'web',
+    showSignUPWithFields: false,
   }
 }
