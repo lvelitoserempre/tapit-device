@@ -89,11 +89,11 @@
     }
   },
   "AGE_VALIDATOR": {
-    "TITLE": "Confirma tu fecha de cumpleaños",
+    "TITLE": "Confirma tu fecha de nacimiento",
     "DAY": "Día",
     "MONTH": "Mes",
     "YEAR": "Año",
-    "OK_BUTTON": "VERIFY",
+    "OK_BUTTON": "VERIFICAR",
     "VALIDATIONS": {
       "DAY_REQUIRED": "Introduce tu día de nacimiento",
       "DAY_PATTERN": "Introduce un día válido",
