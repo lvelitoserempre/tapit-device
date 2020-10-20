@@ -12,31 +12,37 @@ const rename = require('gulp-rename');
 
 BUILD_MAP = {
   TAPIT_DEV: {
-    env: 'develop',
-    deploy: 'firebase deploy --only hosting:tapit-app-dev && firebase deploy --only hosting:tapit-sso-test'
+    assetsLinks: 'assetlinks.dev.json',
+    buildCommand: 'npm run b',
+    deployCommand: 'firebase deploy --only hosting:tapit-app-dev && firebase deploy --only hosting:tapit-sso-test'
   },
   TAPIT_TESTING: {
-    env: 'develop',
-    deploy: 'firebase deploy --only hosting:tapit-app-testing && firebase deploy --only hosting:tapit-sso-test'
+    assetsLinks: 'assetlinks.dev.json',
+    buildCommand: 'npm run b',
+    deployCommand: 'firebase deploy --only hosting:tapit-app-testing && firebase deploy --only hosting:tapit-sso-test'
+  },
+  TAPIT_QA: {
+    assetsLinks: 'assetlinks.dev.json',
+    buildCommand: 'npm run b-qa',
+    deployCommand: 'firebase deploy --only hosting:tapit-qa'
   },
   TAPIT_PREVIEW: {
-    env: 'production',
-    deploy: 'firebase deploy --only hosting:tapit-app-preview && firebase deploy --only hosting:tapit-sso-test'
+    assetsLinks: 'assetlinks.prod.json',
+    buildCommand: 'npm run b-prod',
+    deployCommand: 'firebase deploy --only hosting:tapit-app-preview && firebase deploy --only hosting:tapit-sso-test'
   },
   TAPIT_PRODUCTION: {
-    env: 'production',
-    deploy: 'firebase deploy --only hosting:tapit-app-production && firebase deploy --only hosting:tapit-sso-test'
+    assetsLinks: 'assetlinks.prod.json',
+    buildCommand: 'npm run b-prod',
+    deployCommand: 'firebase deploy --only hosting:tapit-app-production && firebase deploy --only hosting:tapit-sso-test'
   },
   BRAHMA_SSO_PRODUCTION: {
-    env: 'production',
-    deploy: 'firebase deploy --only hosting:clube-brahma-sso && firebase deploy --only hosting:clube-brahma-sso-example'
+    assetsLinks: 'assetlinks.prod.json',
+    buildCommand: 'npm run b-prod',
+    deployCommand: 'firebase deploy --only hosting:clube-brahma-sso && firebase deploy --only hosting:clube-brahma-sso-example'
   },
 }
 
-
-function isProductionBuild() {
-  return BUILD_MAP[process.env.ENV].env === 'production';
-}
 
 function runCommand(command, folder) {
   return run(command, {cwd: folder})
@@ -85,7 +91,7 @@ task('copy-fonts', function () {
 });
 
 task('copy-assetlinks', function () {
-  const file = isProductionBuild() ? 'assetlinks.prod.json' : 'assetlinks.dev.json';
+  const file =  BUILD_MAP[process.env.ENV].assetsLinks;
   return src('.well-known/' + file)
     .pipe(rename("assetlinks.json"))
     .pipe(dest("./dist/.well-known"));
@@ -107,28 +113,28 @@ task('build-tailwind', function () {
 })
 
 task('build-react-app', function () {
-  const command = 'npm i && npm run ' + (isProductionBuild() ? 'build-prod' : 'build-prod')
+  const command = 'npm i && npm run b-prod';
   const folder = './react-app';
 
   return runCommand(command, folder);
 })
 
 task('build-angular-app', function () {
-  const command = 'npm i && npm run ' + (isProductionBuild() ? 'build-prod' : 'build')
+  const command = 'npm i && ' + BUILD_MAP[process.env.ENV].buildCommand
   const folder = './angular-app';
 
   return runCommand(command, folder);
 })
 
 task('build-sso-app', function () {
-  const command = 'npm i && npm run ' + (isProductionBuild() ? 'build-prod' : 'build')
+  const command = 'npm i && ' + BUILD_MAP[process.env.ENV].buildCommand
   const folder = './sso-app';
 
   return runCommand(command, folder);
 })
 
 task('deploy', function () {
-  const command = BUILD_MAP[process.env.ENV].deploy;
+  const command = BUILD_MAP[process.env.ENV].deployCommand;
   const folder = './';
 
   return runCommand(command, folder);

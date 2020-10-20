@@ -23,6 +23,7 @@
     "s": "gulp serve-static",
     "s-sso": "gulp serve-sso",
     "b-tapit-dev": "cross-env ENV=TAPIT_DEV gulp build",
+    "b-tapit-qa": "cross-env ENV=TAPIT_QA gulp build",
     "b-tw": "gulp build-tailwind",
     "d-tapit-dev": "cross-env ENV=TAPIT_DEV gulp deploy-tapit",
     "d-tapit-test": "cross-env ENV=TAPIT_TESTING gulp deploy-tapit",
