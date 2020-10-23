@@ -14,7 +14,7 @@ export const environment = {
       userAccount: 'user_account_tap'
     },
     functions: {
-      url: 'https://api.tapit.com.co',
+      url: 'https://api.qa.tapit.com.co',
       checkUser: '/v1/user/check',
       getAllEvents: '/v1/list/events',
       getAllCodes: '/v1/tapits/',

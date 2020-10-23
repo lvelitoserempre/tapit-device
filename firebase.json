@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "site": "tapit-qa",
+      "site": "tapit-app-qa",
       "public": "dist",
       "ignore": [
         "firebase.json",

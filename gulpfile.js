@@ -24,7 +24,7 @@ BUILD_MAP = {
   TAPIT_QA: {
     assetsLinks: 'assetlinks.dev.json',
     buildCommand: 'npm run b-qa',
-    deployCommand: 'firebase deploy --only hosting:tapit-qa'
+    deployCommand: 'firebase deploy --only hosting:tapit-app-qa'
   },
   TAPIT_PREVIEW: {
     assetsLinks: 'assetlinks.prod.json',
