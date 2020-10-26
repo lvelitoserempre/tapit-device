@@ -14,7 +14,7 @@ export default class ConfigService {
         api: 'https://api-dev.tapit.com.co',
       },
       qa: {
-        market: 'https://market-dev.tapit.com.co',
+        market: 'https://market.qa.tapit.com.co',
         angular: 'https://qa.tapit.com.co/app',
         react: 'https://qa.tapit.com.co',
         api: 'https://api.qa.tapit.com.co',

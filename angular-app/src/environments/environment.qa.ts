@@ -24,7 +24,7 @@ export const environment = {
       xeerpa: '/v1/xeerpa'
     }
   },
-  marketUrl: 'https://market.tapit.com.co/api/vtexid/pub/logout?scope=bavariaco&returnUrl=https://market.tapit.com.co',
+  marketUrl: 'https://market.qa.tapit.com.co/api/vtexid/pub/logout?scope=bavariaco&returnUrl=https://market.qa.tapit.com.co',
   googleAnalyticsId: 'UA-159252784-5',
   googleTagManagerId: 'GTM-MGL9B93'
 };
