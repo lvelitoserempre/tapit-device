@@ -5,6 +5,7 @@ import {Subscription} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {take} from 'rxjs/operators';
+import {remoteConfig} from 'firebase/app';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,7 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
   user: UserAccount;
   marketUrl = environment.production ? 'https://market.tapit.com.co' : 'https://market-dev.tapit.com.co';
   showLoginButton = false;
+  showMicrogifting = true;
   private userSubscription: Subscription;
 
   constructor(private userAuthenticationService: AuthService, private route: ActivatedRoute, private router: Router) {
@@ -47,6 +49,19 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
         this.user = user;
         this.showLoginButton = !user
       });
+
+    remoteConfig().settings = {
+      minimumFetchIntervalMillis: 900000,
+      fetchTimeoutMillis: 60000
+    };
+
+    remoteConfig().defaultConfig = {
+      microgifting_enabled : false
+    };
+
+    remoteConfig().fetchAndActivate().then(res => {
+      this.showMicrogifting = remoteConfig().getBoolean('microgifting_enabled');
+    });
   }
 
   ngOnDestroy(): void {
