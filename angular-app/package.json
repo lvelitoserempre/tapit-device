@@ -4,8 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build -c=testing --output-path=../dist/app --base-href=/app/",
-    "build-prod": "ng build --prod --output-path=../dist/app --base-href=/app/",
+    "b": "ng build -c=dev --output-path=../dist/app --base-href=/app/",
+    "b-qa": "ng build -c=qa --output-path=../dist/app --base-href=/app/",
+    "b-prod": "ng build --prod --output-path=../dist/app --base-href=/app/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

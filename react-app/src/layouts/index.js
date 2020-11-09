@@ -24,7 +24,10 @@ export default function Index() {
   const [userDate, setUserDate] = useState(null);
   const [ssoClient, setSsoClient] = useState(null);
   const [userData, setUserData] = useState(null);
-  const config = window.location.origin == i18next.t("PordEnvironment") ? TAPIT_CONFIG_PROD : TAPIT_CONFIG_DEV;
+  const config = ({
+    'https://tapit.com.co': TAPIT_CONFIG_PROD,
+    'https://qa.tapit.com.co': TAPIT_CONFIG_QA
+  }[window.location.origin]) || TAPIT_CONFIG_DEV;
   const isBillLayout = i18next.t("BillLayout.Active");
 
   useEffect(() => {
@@ -41,10 +44,10 @@ export default function Index() {
     if (!anonymousUserBirthDate) {
       document.body.style.overflow = "hidden";
     }
-    if(!ssoClient) {
-        setSsoClient(new SsoClient(config.clientConfig, config.ssoConfig));
+    if (!ssoClient) {
+      setSsoClient(new SsoClient(config.clientConfig, config.ssoConfig));
     } else {
-        ssoClient.init();
+      ssoClient.init();
     }
   }, [ssoClient]);
 
@@ -76,7 +79,7 @@ export default function Index() {
         if (data) {
           document.getElementById('login-popup').classList.add('hidden');
           signInWithCustomToken(data.customToken);
-        } 
+        }
         break;
 
       case 'close-popup':
@@ -87,7 +90,7 @@ export default function Index() {
 
 
   if (!firebase.apps.length) {
-      firebase.initializeApp(config.firebaseConfig);
+    firebase.initializeApp(config.firebaseConfig);
   }
 
   firebase.auth().onAuthStateChanged(function (userCredential) {
@@ -95,7 +98,7 @@ export default function Index() {
       firebase.firestore().collection('user_account_tap').doc(userCredential.uid).get()
         .then(function (documentSnapshot) {
           let user = documentSnapshotToObject(documentSnapshot)
-          if(!userData) {
+          if (!userData) {
             setUserData(user);
           }
         })
@@ -108,8 +111,8 @@ export default function Index() {
   function signInWithCustomToken(customToken) {
     firebase.auth().signInWithCustomToken(customToken)
       .then(userCredential => {
-        let url = window.location.origin == i18next.t("PordEnvironment")? i18next.t("MarketProdUrl"): i18next.t("MarketDevUrl")
-        window.location.href = url + '?customToken='+customToken;
+        let url = window.location.origin == i18next.t("PordEnvironment") ? i18next.t("MarketProdUrl") : i18next.t("MarketDevUrl")
+        window.location.href = url + '?customToken=' + customToken;
       })
       .catch(function (error) {
         console.error(error);
@@ -140,6 +143,7 @@ export default function Index() {
     ssoClient.ssoExecuteAction('navigateTo', path);
     loginElement.classList.remove('hidden');
   }
+
   function logout() {
     ssoClient.ssoExecuteAction('logout');
     firebase.auth().signOut().then(function () {
@@ -168,11 +172,11 @@ export default function Index() {
 
   const Home = () => (
     <div>
-      <Header 
-      showSSOPopup={showSSOPopup}
-      logout={()=>logout()}
-      userData={userData}
-      user={user}/>
+      <Header
+        showSSOPopup={showSSOPopup}
+        logout={() => logout()}
+        userData={userData}
+        user={user}/>
       <div className="mt-12">
         <div className="container">
           <StartSection/>
