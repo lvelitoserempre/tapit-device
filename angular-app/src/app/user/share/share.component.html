@@ -1,0 +1,37 @@
+<section class="border-4 border-white bg-neutral-100 p-4 pl-8 md:pl-4 shadow relative overflow-hidden min-h-full transition-all duration-700" #section>
+  <i (click)="goBack()" class="uil uil-angle-left-b text-xl absolute left-0 md:hidden" style="top: 140px"></i>
+
+  <img class="mx-auto mb-4 lg:absolute top-0 right-0 beers-image" src="assets/images/beers-with-friends.png"
+       style="width: 200px; top: -25px; right: -25px">
+
+  <h1 class="font-bold"><span class="text-primary-500">Invita</span> a tus amigos beerlovers</h1>
+
+  <p class="text-sm text-neutral-800 mb-16 lg:w-4/6 xl:w-5/6">Puedes invitar hasta 10 amigos al mes, por cada amigo que use tu
+    código ganarás <span
+      class="text-white bg-image px-6 py-2 whitespace-no-wrap">120 pts</span>.
+  </p>
+
+  <div class="text-center mb-4">
+    <div class="bg-white code-container inline-block px-12 py-4 rounded-md shadow text-black text-center mb-4">
+      <h6 class="text-2xs tracking-widest mb-2 font-bold">TU CÓDIGO DE REFERIDO</h6>
+      <p class="font-bold">{{user.referralCode}}</p>
+    </div>
+
+    <p class="text-sm text-neutral-800">Ganarás puntos cuando tus amigos usen este código para crear sus cuentas. </p>
+  </div>
+
+  <div class="text-center">
+    <a
+      class="app-button mx-2 text-black border-black border-2 py-2 mb-4 text-sm sm:text-base bg-neutral-100"
+      href="https://www.facebook.com/dialog/share?app_id={{facebookAppId}}&display=popup&quote={{sharePlainMessage}}&href={{shareUrl}}&redirect_uri={{shareRedirectUrl}}}"
+      target="_blank">FACEBOOK <i class="text-xl uil uil-facebook-f"></i></a>
+    <a
+      class="app-button mx-2 text-black border-black border-2 py-2 mb-4 text-sm sm:text-base bg-neutral-100"
+      href="https://twitter.com/share?url={{shareUrl}}&text={{sharePlainMessage}}" target="_blank">TWITTER <i
+      class="text-xl uil uil-twitter"></i></a>
+    <a
+      class="app-button mx-2 sm:mx-2 text-black border-black border-2 py-2 mb-4 text-sm sm:text-base bg-neutral-100"
+      href="https://api.whatsapp.com/send?text={{shareMessage}}" target="_blank">WHATSAPP <i
+      class="text-xl uil uil-whatsapp"></i></a>
+  </div>
+</section>

@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
-import {DialogConfigurationModel} from 'src/app/models/dialog-configuration.model';
+import {DialogConfiguration} from 'src/app/dialog/dialog-configuration';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-dialog',
@@ -8,7 +9,9 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent {
+  environment = environment;
+
   constructor(public dialogRef: MatDialogRef<DialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: DialogConfigurationModel) {
+              @Inject(MAT_DIALOG_DATA) public dialogConfig: DialogConfiguration) {
   }
 }
