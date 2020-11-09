@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from './user/user-authentication/user-authentication-service/auth.service';
+import {AuthService} from './auth/auth.service';
 import {environment} from '../environments/environment';
-import {initializeApp} from 'firebase';
 import {UserDAO} from './user/user-dao.service';
 import {CookiesService} from '../../../library/cookies.service';
+import firebase from 'firebase/app';
+import initializeApp = firebase.initializeApp;
 
 declare var setupGTM;
 declare var ga;

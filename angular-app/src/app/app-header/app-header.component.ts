@@ -1,11 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {UserAccount} from '../models/user-account.model';
-import {AuthService} from '../user/user-authentication/user-authentication-service/auth.service';
+import {UserAccount} from '../user/user-account.model';
+import {AuthService} from '../auth/auth.service';
 import {Subscription} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {take} from 'rxjs/operators';
-import {remoteConfig} from 'firebase/app';
+import firebase from 'firebase/app';
+import 'firebase/remote-config';
+import remoteConfig = firebase.remoteConfig;
 
 @Component({
   selector: 'app-header',
@@ -56,7 +58,7 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
     };
 
     remoteConfig().defaultConfig = {
-      microgifting_enabled : false
+      microgifting_enabled: false
     };
 
     remoteConfig().fetchAndActivate().then(res => {

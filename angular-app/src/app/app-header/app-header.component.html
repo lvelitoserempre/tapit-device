@@ -3,27 +3,27 @@
     <div class="absolute block w-full" id="menuToggle">
       <input (click)="setMenu($event)" class="block absolute" id="toggleMenu" type="checkbox">
       <div (click)="loginCloseMenu()" class="background"></div>
-      <img class="img-menu block" src="../assets/images/hMenu.svg" width="26">
+      <img class="img-menu block" src="assets/images/hMenu.svg" width="26">
 
       <ul *ngIf="!user" class="fixed w-10/12 p-5 bg-neutral-100 h-full top-0 border-4 border-white text-sm sm:text-base"
           id="menu">
-        <li class="py-2"><img class="w-2/3" src="../assets/images/tap-it_black-orange.svg"></li>
+        <li class="py-2"><img class="w-2/3" src="assets/images/tap-it_black-orange.svg"></li>
         <li class="py-2"><a (click)="loginCloseMenu()"
                             class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
                             routerLink="/auth/login">INICIA SESIÓN</a></li>
-        <li><img class="absolute icon-close" src="../assets/images/ic_close.svg" width="30"></li>
+        <li><img class="absolute icon-close" src="assets/images/ic_close.svg" width="30"></li>
       </ul>
 
       <ul *ngIf="user"
           class="fixed w-10/12 p-6 bg-neutral-100 pt-2 h-full top-0 border-4 border-white text-sm sm:text-base"
           id="menu">
-        <li class="cursor-pointer inline-block align-middle focus:outline-none p-0" routerLink="/user/profile">
-          <img src="../assets/images/profile-placeholder.png" width="100">
+        <li class="cursor-pointer inline-block align-middle focus:outline-none p-0" routerLink="/user/profile/share">
+          <img src="assets/images/profile-placeholder.png" width="100">
         </li>
         <li
           (click)="loginCloseMenu()"
           class="font-bold text-md uppercase text-primary-500 cursor-pointer block mr-4 align-middle focus:outline-none py-4"
-          routerLink="/user/profile">
+          routerLink="/user/profile/share">
           <span class="block">{{ user.firstName }} {{ user.lastName }}</span>
           <span class="text-neutral-700 normal-case text-xs font-normal block mt-2">{{user.email}}</span>
         </li>
@@ -52,11 +52,11 @@
           <a
             (click)="loginCloseMenu()"
             class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none app-link"
-            routerLink="/user/profile" routerLinkActive="active"><i
+            routerLink="/user/profile/share" routerLinkActive="active"><i
             class="uil uil-user-circle text-lg"
             queryParamsHandling="merge"></i> Perfil</a>
         </li>
-        <li><img class="absolute icon-close" src="../assets/images/ic_close.svg" width="30"></li>
+        <li><img class="absolute icon-close" src="assets/images/ic_close.svg" width="30"></li>
       </ul>
     </div>
   </nav>
@@ -104,7 +104,7 @@
           <ul class="relative hidden sm:inline-block py-2 profile-header" routerLinkActive="active">
             <li
               class="font-bold text-sm uppercase text-neutral-700 cursor-pointer inline-block mr-4 align-middle focus:outline-none app-link"
-              routerLink="/user/profile" routerLinkActive="active">
+              routerLink="/user/profile/share" routerLinkActive="active">
               <i class="uil uil-user-circle text-base inline-block align-middle inline-block align-middle"
                  queryParamsHandling="merge"></i>
               <span class="inline-block align-middle">{{ user.firstName }}</span>

@@ -1,0 +1,21 @@
+@import "../../../assets/styles/variables";
+
+.bg-bubbles {
+  background-image: url('../../../assets/images/background_3-mobile.png');
+
+  @media (min-width: $xs) {
+    background-image: url('../../../assets/images/background_3.png');
+  }
+}
+
+.bg-image {
+  background: url("/assets/images/points-background.png") no-repeat center/contain;
+}
+
+.beers-image {
+  margin-top: -50px;
+
+  @media (min-width: $lg) {
+    margin-top: 0;
+  }
+}
