@@ -30,14 +30,14 @@ export default function Header(props) {
               <li className="inline-block py-2 w-full">
                 <a
                   className="app-button border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-primary-300 hover:border-primary-300 w-full"
-                  onClick={()=>props.showSSOPopup('/sign-up')}>
+                  onClick={()=>props.showSSOPopup()}>
                   {i18next.t("BillLayout.Header.SignupText")}
                 </a>
               </li>
               <li className="inline-block py-2 w-full">
                 <a
                   className="app-button border-2 border-black bg-white text-black text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-black hover:text-white w-full"
-                  onClick={()=>props.showSSOPopup('/login')}>
+                  onClick={()=>props.showSSOPopup()}>
                   {i18next.t("BillLayout.Header.LoginText")}
                 </a>
               </li>
@@ -55,19 +55,19 @@ export default function Header(props) {
             </ul>
           </div>
           <div className="inline-block text-center md:text-right w-1/2 align-middle text-right pr-2">
-            
+
             <ul>
               <li className="inline-block">
                 <a
                   className="app-button md:inline-block hidden border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer mx-2 uppercase hover:bg-primary-300 hover:border-primary-300"
-                  onClick={()=>props.showSSOPopup('/sign-up')}>
+                  onClick={()=>props.showSSOPopup()}>
                   {i18next.t("BillLayout.Header.SignupText")}
                 </a>
               </li>
               <li className="inline-block">
                 <a
                   className="app-button md:inline-block hidden border-2 border-black bg-white text-black text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-black hover:text-white"
-                  onClick={()=>props.showSSOPopup('/login')}>
+                  onClick={()=>props.showSSOPopup()}>
                   {i18next.t("BillLayout.Header.LoginText")}
                 </a>
               </li>
