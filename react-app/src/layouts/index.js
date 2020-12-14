@@ -49,11 +49,26 @@ export default function Index() {
       if (userCredential) {
         window.ssoApp.getCustomToken(userCredential)
           .subscribe(customToken => {
-            let url = window.location.origin == i18next.t("PordEnvironment") ? i18next.t("MarketProdUrl") : i18next.t("MarketDevUrl")
+            let url = 'https://market-dev.tapit.com.co';
+
+            switch (window.location.hostname) {
+              case 'tapit.com.co':
+                url = 'https://market.tapit.com.co';
+                break;
+
+              case 'qa.tapit.com.co':
+                url = 'https://market.qa.tapit.com.co';
+                break;
+
+              case 'dev.tapit.com.co':
+                url = 'https://market-dev.tapit.com.co';
+                break;
+            }
+
             window.location.replace(url + '?customToken=' + customToken);
           });
 
-        /*firestore.collection('user_account_tap').doc(userCredential.uid).get()
+        firestore.collection('user_account_tap').doc(userCredential.uid).get()
           .then(function (documentSnapshot) {
             let user = documentSnapshotToObject(documentSnapshot)
             console.log(user, documentSnapshot)
@@ -61,7 +76,7 @@ export default function Index() {
           })
           .catch(function (error) {
             console.error(error);
-          });*/
+          });
       }
     });
   }
@@ -95,7 +110,7 @@ export default function Index() {
     return object;
   }
 
-  function showSSOPopup() {
+    function showSSOPopup() {
     window.ssoApp.showApp();
   }
 
@@ -163,10 +178,7 @@ export default function Index() {
             : null
         }
         {
-          <HashRouter>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/polas-recargadas" component={BillLayout}/>
-          </HashRouter>
+          <Home></Home>
         }
         <FooterSection isMobile={isMobile}/>
         <ModalSso/>
