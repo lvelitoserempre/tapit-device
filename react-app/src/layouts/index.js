@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
-import {HashRouter, Route} from "react-router-dom";
 import "./../styles/main.less";
 import Header from "./../components/header.component";
 import Agegate from "./../components/agegate.component";
@@ -15,7 +14,6 @@ import ComoParticiparSection from "./../components/billLayout/comoParticipar.com
 import EventsSection from "./../components/billLayout/events.component";
 import {CookiesService} from "../services/cookies.service";
 import UrlBuilder from "../services/url-builder.service";
-import ModalSso from "./../components/sso.component";
 
 export default function Index() {
   const [isMobile, setMobile] = useState(null);
@@ -181,7 +179,6 @@ export default function Index() {
           <Home></Home>
         }
         <FooterSection isMobile={isMobile}/>
-        <ModalSso/>
       </div>
     )
   )

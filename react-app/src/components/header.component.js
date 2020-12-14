@@ -1,5 +1,4 @@
 import React from "react";
-import UrlBuilderService from "../services/url-builder.service";
 
 export default function Header(props) {
   function setMenu(e) {
@@ -27,20 +26,31 @@ export default function Header(props) {
               <li className="py-2">
                 <img className="w-2/3" src={i18next.t("BillLayout.Header.Logo")}/>
               </li>
-              <li className="inline-block py-2 w-full">
-                <a
-                  className="app-button border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-primary-300 hover:border-primary-300 w-full"
-                  onClick={()=>props.showSSOPopup()}>
-                  {i18next.t("BillLayout.Header.SignupText")}
-                </a>
-              </li>
-              <li className="inline-block py-2 w-full">
-                <a
-                  className="app-button border-2 border-black bg-white text-black text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-black hover:text-white w-full"
-                  onClick={()=>props.showSSOPopup()}>
-                  {i18next.t("BillLayout.Header.LoginText")}
-                </a>
-              </li>
+
+              {
+                props.userData ?
+                  <li className="align-middle inline-block mx-2">
+                    {`${props.userData.firstName} ${props.userData.lastName ? props.userData.lastName : ''}`}
+                  </li>
+                  :
+                  <div>
+                    <li className="inline-block py-2 w-full">
+                      <a
+                        className="app-button border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-primary-300 hover:border-primary-300 w-full"
+                        onClick={() => props.showSSOPopup()}>
+                        {i18next.t("BillLayout.Header.SignupText")}
+                      </a>
+                    </li>
+                    <li className="inline-block py-2 w-full">
+                      <a
+                        className="app-button border-2 border-black bg-white text-black text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-black hover:text-white w-full"
+                        onClick={() => props.showSSOPopup()}>
+                        {i18next.t("BillLayout.Header.LoginText")}
+                      </a>
+                    </li>
+                  </div>
+              }
+
               <img width="30" className="absolute icon-close" src={i18next.t("BillLayout.Header.IconClose")}/>
             </ul>
           </div>
@@ -61,16 +71,8 @@ export default function Header(props) {
                   <li className="align-middle inline-block mx-2">
                     {`${props.userData.firstName} ${props.userData.lastName ? props.userData.lastName : ''}`}
                   </li>
-                  <li className="align-middle inline-block uppercase">
-                    <a
-                      className="app-button border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer"
-                      onClick={() => props.logout()}>
-                      {i18next.t("BillLayout.Header.LogoutText")}
-                    </a>
-                  </li>
                 </ul>
                 :
-
                 <ul>
                   <li className="inline-block">
                     <a
