@@ -14,12 +14,12 @@ BUILD_MAP = {
   TAPIT_DEV: {
     assetsLinks: 'assetlinks.dev.json',
     buildCommand: 'npm run b',
-    deployCommand: 'firebase deploy --only hosting:tapit-app-dev && firebase deploy --only hosting:tapit-sso-test'
+    deployCommand: 'firebase deploy --only hosting:tapit-app-dev'
   },
   TAPIT_TESTING: {
     assetsLinks: 'assetlinks.dev.json',
     buildCommand: 'npm run b',
-    deployCommand: 'firebase deploy --only hosting:tapit-app-testing && firebase deploy --only hosting:tapit-sso-test'
+    deployCommand: 'firebase deploy --only hosting:tapit-app-testing'
   },
   TAPIT_QA: {
     assetsLinks: 'assetlinks.dev.json',
@@ -29,12 +29,12 @@ BUILD_MAP = {
   TAPIT_PREVIEW: {
     assetsLinks: 'assetlinks.prod.json',
     buildCommand: 'npm run b-prod',
-    deployCommand: 'firebase deploy --only hosting:tapit-app-preview && firebase deploy --only hosting:tapit-sso-test'
+    deployCommand: 'firebase deploy --only hosting:tapit-app-preview'
   },
   TAPIT_PRODUCTION: {
     assetsLinks: 'assetlinks.prod.json',
     buildCommand: 'npm run b-prod',
-    deployCommand: 'firebase deploy --only hosting:tapit-app-production && firebase deploy --only hosting:tapit-sso-test'
+    deployCommand: 'firebase deploy --only hosting:tapit-app-production'
   },
   BRAHMA_SSO_PRODUCTION: {
     assetsLinks: 'assetlinks.prod.json',
