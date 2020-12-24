@@ -40,6 +40,7 @@ export default function Index() {
   }, []);
 
   window.configTapitSso = () => {
+    const params = (new URL(window.location)).searchParams;
     const auth = ssoApp.auth;
     const firestore = ssoApp.firestore;
 
@@ -63,6 +64,7 @@ export default function Index() {
                 break;
             }
 
+            url = params.get('returnUrl') || url;
             window.location.replace(url + '?customToken=' + customToken);
           });
 
@@ -75,6 +77,10 @@ export default function Index() {
           .catch(function (error) {
             console.error(error);
           });
+      } else {
+        if (params.get('showSSO') === 'true') {
+          window.ssoApp.showApp();
+        }
       }
     });
   }
@@ -108,7 +114,7 @@ export default function Index() {
     return object;
   }
 
-    function showSSOPopup() {
+  function showSSOPopup() {
     window.ssoApp.showApp();
   }
 
