@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import SSOConfig from './sso-config';
 import {ReplaySubject} from 'rxjs';
+import {remoteConfig} from 'firebase/app';
+import 'firebase/remote-config';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +40,20 @@ export class SSOConfigService {
   }
 
   setConfig(config: SSOConfig) {
+    const showSignUpWithFields = remoteConfig().getString('sso_show_sign_up_with_fields');
+
+    if (showSignUpWithFields) {
+      switch (showSignUpWithFields) {
+        case 'always':
+          config.showSignUPWithFields = true;
+          break;
+
+        case 'never':
+          config.showSignUPWithFields = false;
+          break;
+      }
+    }
+
     Object.assign(this.config, config);
     this.replaySubject.next(this.config);
   }

@@ -6,7 +6,8 @@ import {TranslateService} from '@ngx-translate/core';
 import {I18nService} from './shared/services/i18n.service';
 import {SSOConfigService} from './single-sign-on/sso-config.service';
 import {LoaderService} from './loader/loader-service/loader.service';
-import {auth, initializeApp} from 'firebase/app';
+import {auth, initializeApp, remoteConfig} from 'firebase/app';
+import 'firebase/remote-config';
 import {ActivatedRoute} from '@angular/router';
 import {CookiesService} from '../../../library/cookies.service';
 
@@ -26,6 +27,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     initializeApp(environment.firebase.config);
+    remoteConfig().defaultConfig = {
+      'sso_show_sign_up_with_fields': 'never'
+    };
+    remoteConfig().fetchAndActivate().then(activated => { 
+      // @ts-ignore
+      this.configService.setConfig({});
+    });
+
     this.iframeMessagingService.listenWindowMessages();
 
     this.configService.getConfig().subscribe(config => {

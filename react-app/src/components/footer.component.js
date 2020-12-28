@@ -102,13 +102,15 @@ export default function FooterSection(props) {
         </div>
         <DownloadFooter isMobile={props.isMobile}/>
 
-        <div className="block md:hidden visible px-5 mt-6"><p className="text-neutral-black text-xs">“El exceso de alcohol es
-          perjudicial para la salud. Prohíbase el expendio de bebidas embriagantes a menores de edad” </p></div>
-        <div className="border-t-2 border-neutral-500 py-5 px-5 md:px-0 mt-8 md:mt-12 flex flex-wrap">
+        <p className="px-2 py-6 text-xs">ZX VENTURES COLOMBIA S.A.S. NIT: 830.094.751-7 Dirección: Cra 53ª No. 127 – 35,
+          Bogotá. Correo electrónico para notificaciones: impuestos@bogotabeercompany.com</p>
+
+        <div className="border-t-2 border-neutral-500 py-5 px-5 md:px-0 flex flex-wrap">
           <div className="w-full mt-4 sm:mt-1 order-1 md:w-1/3 sm:w-3/5">
             <img className="inline-block align-middle"
                  src="https://market.tapit.com.co/arquivos/tap-it_black-orange.png"/>
-            <p className="inline-block text-neutral-700 ml-1 pl-2 border-l border-neutral-600 align-middle text-xs"><span>Todos los derechos reservados © 2020</span>
+            <p className="inline-block text-neutral-700 ml-1 pl-2 border-l border-neutral-600 align-middle text-xs">
+              <span>Todos los derechos reservados © 2020</span>
             </p></div>
           <div className="w-full mt-4 sm:mt-1 order-2 sm:order-3 sm:w-3/5 md:order-4 md:w-1/3 text-xs text-neutral-700">
             Prohíbase el expendio de bebidas embriagantes a menores de edad.
@@ -130,7 +132,8 @@ export default function FooterSection(props) {
         <img
           className="inline-block align-middle ml-1" src="https://market.tapit.com.co/arquivos/footer-icon-2.png"/>
         <img
-          className="inline-block align-middle ml-1" src="https://market.tapit.com.co/arquivos/footer-icon-3.png"/></span>
+          className="inline-block align-middle ml-1"
+          src="https://market.tapit.com.co/arquivos/footer-icon-3.png"/></span>
           </div>
           <div className="w-full mt-4 sm:mt-1 order-6 md:w-1/3 md:pl-2 hidden md:block visible">
             <img
@@ -138,7 +141,8 @@ export default function FooterSection(props) {
             <img
               className="inline-block align-middle ml-1" src="https://market.tapit.com.co/arquivos/footer-icon-2.png"/>
             <img
-              className="inline-block align-middle ml-1" src="https://market.tapit.com.co/arquivos/footer-icon-3.png"/></div>
+              className="inline-block align-middle ml-1" src="https://market.tapit.com.co/arquivos/footer-icon-3.png"/>
+          </div>
         </div>
       </div>
     </footer>

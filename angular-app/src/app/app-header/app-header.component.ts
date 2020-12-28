@@ -16,7 +16,7 @@ import remoteConfig = firebase.remoteConfig;
 })
 export class AppHeaderComponent implements OnInit, OnDestroy {
   user: UserAccount;
-  marketUrl = environment.production ? 'https://market.tapit.com.co' : 'https://market-dev.tapit.com.co';
+  marketUrl = environment.marketUrl;
   showLoginButton = false;
   showMicrogifting = true;
   private userSubscription: Subscription;
