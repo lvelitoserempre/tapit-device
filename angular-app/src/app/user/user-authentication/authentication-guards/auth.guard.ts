@@ -19,7 +19,9 @@ export class AuthGuard implements CanActivate {
           subscriber.next(true);
         } else {
           //if (window.location.hostname !== 'localhost') {
-            window.location.replace(window.location.protocol + '//' + window.location.host + '?showSSO=true&returnUrl=' + encodeURIComponent(window.location.href))
+            const showSSOParam = '?showSSO=true';
+            const showReturnUrl = window.location.href.search('recovery-password') == -1 ? '?&returnUrl=' + encodeURIComponent(window.location.href) : ''
+            window.location.replace(window.location.protocol + '//' + window.location.host + showSSOParam + showReturnUrl);
           //}
 
           subscriber.next(false);

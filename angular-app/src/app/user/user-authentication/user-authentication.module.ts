@@ -10,11 +10,11 @@ import {RecoveryPasswordModule} from './recovery-password/recovery-password.modu
 
 
 const routes: Routes = [
-  {
+  /*{
     path: 'login',
     component: LoginComponent,
     canActivate: [AlreadyLoggedInGuard]
-  },
+  },*/
   {
     path: 'recovery-password',
     component: RecoveryPasswordComponent

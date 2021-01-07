@@ -37,6 +37,18 @@
           "destination": "/sso/index.html"
         }
       ],
+      "redirects": [
+        {
+          "source": "/app/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
+        },
+        {
+          "source": "/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
+        }
+      ],
       "headers": [
         {
           "source": "**/*.@(eot|otf|ttf|ttc|woff|woff2|font.css)",
@@ -66,6 +78,18 @@
           "source": "/sso/**",
           "destination": "/sso/index.html"
         }
+      ],
+      "redirects": [
+        {
+          "source": "/app/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
+        },
+        {
+          "source": "/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
+        }
       ]
     },
     {
@@ -84,6 +108,18 @@
         {
           "source": "/sso/**",
           "destination": "/sso/index.html"
+        }
+      ],
+      "redirects": [
+        {
+          "source": "/app/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
+        },
+        {
+          "source": "/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
         }
       ],
       "headers": [
@@ -202,6 +238,18 @@
         "**/.*",
         "**/node_modules/**"
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/app/auth/login",
+      "destination": "/",
+      "type": 301
+    },
+    {
+      "source": "/auth/login",
+      "destination": "/",
+      "type": 301
     }
   ]
 }
