@@ -1,0 +1,122 @@
+.seasonal-slide {
+  box-shadow: 0px 5px 10px rgba(52, 16, 0, 0.08), 0px 15px 25px rgba(52, 16, 0, 0.06);
+  width: 80vw;
+
+  @media (min-width: 768px) {
+    width: 100%;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .image-container {
+    height: 265px;
+
+    @media (min-width: 768px) {
+      height: 550px
+    }
+  }
+}
+
+.slick-track {
+  background: #FAFAFA;
+}
+
+.catalog-slide {
+  img {
+    width: 92px;
+
+    @media (min-width: 768px) {
+      width: 92px;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.shadow {
+  height: 6px;
+  width: 47px;
+  background: #9F9A99;
+  filter: blur(5px);
+  border-radius: 50%;
+}
+
+.next {
+  position: absolute;
+  top: 50%;
+  right: -58px;
+  color: #FF5005;
+  background: white;
+  opacity: 0.9;
+  border-radius: 50%;
+  padding: 15px;
+  line-height: 0;
+  transform: translateY(-50%);
+
+  &:before {
+    position: relative;
+    left: -12px;
+  }
+}
+
+.before {
+  position: absolute;
+  top: 50%;
+  left: -58px;
+  color: #FF5005;
+  background: white;
+  opacity: 0.9;
+  border-radius: 50%;
+  padding: 15px;
+  line-height: 0;
+  transform: translateY(-50%);
+
+  &:before {
+    position: relative;
+    right: -12px;
+  }
+}
+
+ngx-slick-carousel {
+  margin: 0 -20px;
+}
+.slick-slider {
+  height: 280px;
+}
+
+::ng-deep {
+  div {
+    /*font-size: 14px !important;*/
+    line-height: 24px;
+    h6 {
+      font-weight: 700 !important;
+    }
+    p {
+      span {
+        color: #ff5005;
+      }
+    }
+  }
+  .border-orange-400 {
+    border-color: #FF8D5C;
+  }
+  .pl-small {
+    padding-left: 0.25rem;
+  }
+  .p-small {
+    padding-bottom: 1px;
+    padding-top: 1px;
+  }
+  .word-s-1 {
+    word-spacing: 0.2rem;
+  }
+  .points-stars {
+    position: absolute;
+    right: -3px;
+    top: -2px;
+  }
+}

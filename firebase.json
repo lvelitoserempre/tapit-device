@@ -14,6 +14,10 @@
           "destination": "/app/index.html"
         },
         {
+          "source": "/home/**",
+          "destination": "/home/index.html"
+        },
+        {
           "source": "/sso/**",
           "destination": "/sso/index.html"
         }
@@ -33,8 +37,24 @@
           "destination": "/app/index.html"
         },
         {
+          "source": "/home/**",
+          "destination": "/home/index.html"
+        },
+        {
           "source": "/sso/**",
           "destination": "/sso/index.html"
+        }
+      ],
+      "redirects": [
+        {
+          "source": "/app/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
+        },
+        {
+          "source": "/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
         }
       ],
       "headers": [
@@ -63,8 +83,24 @@
           "destination": "/app/index.html"
         },
         {
+          "source": "/home/**",
+          "destination": "/home/index.html"
+        },
+        {
           "source": "/sso/**",
           "destination": "/sso/index.html"
+        }
+      ],
+      "redirects": [
+        {
+          "source": "/app/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
+        },
+        {
+          "source": "/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
         }
       ]
     },
@@ -84,6 +120,18 @@
         {
           "source": "/sso/**",
           "destination": "/sso/index.html"
+        }
+      ],
+      "redirects": [
+        {
+          "source": "/app/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
+        },
+        {
+          "source": "/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
         }
       ],
       "headers": [
@@ -202,6 +250,18 @@
         "**/.*",
         "**/node_modules/**"
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/app/auth/login",
+      "destination": "/",
+      "type": 301
+    },
+    {
+      "source": "/auth/login",
+      "destination": "/",
+      "type": 301
     }
   ]
 }

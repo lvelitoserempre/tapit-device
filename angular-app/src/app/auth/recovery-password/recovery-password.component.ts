@@ -20,10 +20,12 @@ export class RecoveryPasswordComponent implements OnInit {
   passwordForm: FormGroup;
   private oobCode: string;
 
-  constructor(private loadingService: LoadingService,
-              private route: ActivatedRoute,
-              private dialogService: DialogService,
-              formBuilder: FormBuilder) {
+  constructor(
+    private loadingService: LoadingService,
+    private route: ActivatedRoute,
+    private dialogService: DialogService,
+    formBuilder: FormBuilder
+  ) {
     this.emailForm = formBuilder.group({
       email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]]
     }, {updateOn: 'blur'});

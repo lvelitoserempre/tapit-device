@@ -1,0 +1,9 @@
+@import "~@angular/material/theming";
+@import "colors";
+
+@include mat-core();
+$primary-palette: mat-palette($primary-colors);
+$accent-palette: mat-palette($accent-colors);
+$warn-palette: mat-palette($warn-colors);
+$app-theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
+@include angular-material-theme($app-theme);

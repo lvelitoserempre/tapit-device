@@ -1,0 +1,167 @@
+@import "assets/styles/tailwind.css";
+@import "assets/styles/variables";
+
+.dialog {
+  .mat-dialog-container {
+    border-radius: 2rem;
+    @media (max-width: $xs) {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: 24px 18px;
+    }
+  }
+
+  &.dialog-full {
+    @media (max-width: $xs) {
+      bottom: 0;
+      max-height: 80%;
+      max-width: none !important;
+      position: absolute !important;
+      width: 100%;
+    }
+
+    .scroll-view {
+      @media (max-width: $xs) {
+        max-height: 60vh;
+      }
+    }
+  }
+}
+
+.slick-slider {
+  .slick-arrow {
+    bottom: -100px;
+    top: auto;
+
+    &.slick-next {
+      right: calc(50% - 70px);
+    }
+
+    &.slick-prev {
+      left: calc(50% - 70px);
+    }
+
+    &.slick-prev,
+    &.slick-next {
+      background-color: transparent;
+      border-radius: 56px;
+      color: white;
+      height: 56px;
+      width: 56px;
+    }
+
+    &.slick-prev:hover,
+    &.slick-prev:focus,
+    &.slick-next:hover,
+    &.slick-next:focus {
+      background-color: transparent;
+      opacity: 0.8;
+    }
+
+    &.slick-next::before {
+      content: url("../../react-app/src/assets/images/next-arrow.svg");
+    }
+
+    &.slick-prev::before {
+      content: url("../../react-app/src/assets/images/prev-arrow.svg");
+    }
+  }
+
+  .slick-dots {
+    li {
+      &.slick-active {
+        button:before {
+          color: #ff5005;
+          opacity: 1;
+        }
+      }
+
+      button {
+        border-radius: 15px;
+        border: 2px solid white;
+        height: 17px;
+        padding: 2px;
+        width: 17px;
+
+        &:before {
+          color: #dad8d7;
+          font-size: 11px;
+          height: 17px;
+          line-height: 19px;
+          opacity: 1;
+          width: 17px;
+        }
+
+        &:hover {
+          &:before {
+            color: #ff5005;
+          }
+        }
+      }
+    }
+  }
+}
+
+.min-width-18 {
+  min-width: 18rem;
+}
+
+.facebook-button {
+  background: #4267b2;
+}
+
+.bg-pattern {
+  background: url("assets/images/bg.svg") no-repeat;
+  background-size: cover;
+}
+
+.app-checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  user-select: none;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2px;
+    width: 24px;
+    height: 24px;
+    background: #FFFFFF;
+    border: 2px solid #191419;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input:checked ~ .checkmark {
+    display: block;
+    background-color: #FF5005;
+    border-color: #FF5005;
+  }
+}
+
+body {
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    box-shadow: none;
+  }
+}

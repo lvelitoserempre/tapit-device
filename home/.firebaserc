@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "re-imagining-loyalty-dev": {
+      "hosting": {
+        "home": [
+          "tapit-home-dev"
+        ]
+      }
+    }
+  }
+}

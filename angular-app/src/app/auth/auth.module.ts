@@ -8,10 +8,10 @@ import {RecoveryPasswordModule} from './recovery-password/recovery-password.modu
 
 
 const routes: Routes = [
-  {
+  /*{
     path: 'login',
     component: LoginComponent
-  },
+  },*/
   {
     path: 'recovery-password',
     component: RecoveryPasswordComponent

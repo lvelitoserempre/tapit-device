@@ -21,8 +21,10 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
   showMicrogifting = true;
   private userSubscription: Subscription;
 
-  constructor(private userAuthenticationService: AuthService, private route: ActivatedRoute, private router: Router) {
-  }
+  constructor(
+    private userAuthenticationService: AuthService, 
+    private route: ActivatedRoute, private router: Router
+  ) { }
 
   setMenu(event: any) {
     if (event.target.checked) {
