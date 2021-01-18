@@ -25,10 +25,7 @@
 
 .catalog-slide {
   img {
-    width: 92px;
-
     @media (min-width: 768px) {
-      width: 92px;
     }
   }
 
@@ -47,55 +44,27 @@
 
 .next {
   position: absolute;
-  top: 50%;
-  right: -58px;
-  color: #FF5005;
-  background: white;
-  opacity: 0.9;
-  border-radius: 50%;
-  padding: 15px;
-  line-height: 0;
-  transform: translateY(-50%);
-
-  &:before {
-    position: relative;
-    left: -12px;
-  }
+  top: 40%;
+  width: 30px;
+  height: 60px;
+  right: 0px;
 }
 
 .before {
   position: absolute;
-  top: 50%;
-  left: -58px;
-  color: #FF5005;
-  background: white;
-  opacity: 0.9;
-  border-radius: 50%;
-  padding: 15px;
-  line-height: 0;
-  transform: translateY(-50%);
-
-  &:before {
-    position: relative;
-    right: -12px;
-  }
-}
-
-ngx-slick-carousel {
-  margin: 0 -20px;
-}
-.slick-slider {
-  height: 280px;
+  top: 40%;
+  width: 30px;
+  height: 60px;
+  transform: rotate(180deg);
 }
 
 ::ng-deep {
   div {
-    /*font-size: 14px !important;*/
     line-height: 24px;
     h6 {
       font-weight: 700 !important;
     }
-    p {
+    p, strong {
       span {
         color: #ff5005;
       }

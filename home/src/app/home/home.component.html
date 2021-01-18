@@ -1,12 +1,13 @@
-
-<div *ngIf="welcomeSection.type"
-  [innerHTML]="user ? welcomeSection.messageAuthenticated : welcomeSection.messageAnonymous"
-  class="container mx-auto px-4 px-5 py-2 mb-2 border-b border-solid border-neutral-500 bg-neutral-100 text-sm">
+<div class="mb-2 border-b border-solid border-neutral-500 bg-neutral-100">
+  <div *ngIf="welcomeSection.type"
+    [innerHTML]="user ? welcomeSection.messageAuthenticated : welcomeSection.messageAnonymous"
+    class="container mx-auto py-2 px-4 px-5 text-sm text-secondary-500">
+  </div>
 </div>
 
-<article class="container mx-auto">
-  <section *ngFor="let section of sections;">
-    <!---->
+<article class="">
+  <section *ngFor="let section of sections;" class="">
+    <!--
       <div *ngIf="section.type==='seasonal_section'" [class.pl-5]="section.slides.length > 1" class="pl-5 md:pl-0">
       <ngx-slick-carousel [config]="seasonalConfig">
         <div *ngFor="let slide of section.slides; let i=index;"
@@ -27,26 +28,28 @@
         </div>
       </ngx-slick-carousel>
     </div>
-    <!---->
+    -->
 
-    <div *ngIf="section.type==='catalog'" [class.pl-5]="section.slides.length > 1" class="p-6">
-      <div [innerHTML]="section.title" class="text-xl font-bold mb-2"></div>
-      <div [innerHTML]="section.description" class="text-sm mb-2"></div>
+    <div *ngIf="section.type==='catalog'">
+      <div [innerHTML]="section.title" class="container mx-auto py-2 px-5 text-lg font-bold mb-2 text-secondary-500"></div>
+      <div [innerHTML]="section.description" class="container mx-auto py-2 px-5 text-sm mb-2 text-secondary-500"></div>
 
       <div class="relative">
-        <ngx-slick-carousel #slickModal="slick-carousel" [config]="catalogConfig" class="bg-neutral-100 pt-5">
+        <ngx-slick-carousel #slickModal="slick-carousel" [config]="catalogConfig" class="bg-neutral-100 pt-5 pb-8 inline-block">
           <a *ngFor="let slide of section.slides; let i=index;"
              [href]="slide.link"
-             class="catalog-slide md:p-8 relative flex flex-col content-center justify-center items-center relative"
+             class="catalog-slide relative flex flex-col content-center justify-center items-center relative"
              ngxSlickItem>
             <img [src]="slide.image" class="mx-auto" alt="bottle"/>
-            <div class="shadow mt-6 mx-auto"></div>
+            <img src="./assets/images/shadow.svg" alt="shadow" class="mx-auto mt-4 mb-8">
           </a>
         </ngx-slick-carousel>
 
-        <i (click)="slickModal.slickPrev()" class="uil uil-angle-left text-xl before cursor-pointer"></i>
-        <i (click)="slickModal.slickNext()" class="uil uil-angle-right text-xl next cursor-pointer"></i>
-        <div class="absolute top-0 w-full bg-neutral-100"></div>
+        <img src="./assets/images/next-prev-nav.svg" alt="previous" (click)="slickModal.slickPrev()" class="text-xl before cursor-pointer">
+        <img src="./assets/images/next-prev-nav.svg" alt="next" (click)="slickModal.slickNext()" class="text-xl next cursor-pointer">
+      </div>
+      <div class="text-center mt-4">
+        <a class="app-button border-2 border-black bg-white text-black text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-black hover:text-white" [href]="section.data.cta.uri">{{section.data.cta.title}}</a>
       </div>
     </div>
   </section>

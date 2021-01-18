@@ -109,7 +109,6 @@ export class HomeComponent implements OnInit {
   }
 
   private replacePoints(html: string): string {
-    //console.log(html);
     if (this.user) {
       const points = formatNumber(this.user.points, 'es-CO', '1.0');
       return html.replace(/{{ *user\.points *}}/gi, '<span class="text-xs inline-block align-middle relative rounded-full pl-small ' + 
