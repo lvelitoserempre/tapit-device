@@ -31,6 +31,6 @@ export const environment = {
   facebook: {
     appId: '1267417616962530'
   },
-  drupalUrl: 'https://tapit.test-abinbev.acsitefactory.com/api/homepage',
+  drupalUrl: 'http://tapit.test-abinbev.acsitefactory.com/api/homepage',
   ssoApp: 'https://sso.qa.tapit.com.co/v3/tapit.sso.main.js'
 };

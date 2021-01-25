@@ -12,8 +12,11 @@
         <div *ngFor="let slide of section.slides; let i=index;"
           class="seasonal-slide md:m-4 md:mb-6 overflow-hidden"
           ngxSlickItem>
-          <div class="overflow-hidden image-container md:container md:mx-auto rounded-lg m-2 mb-4 md:m-4 md:mb-6">
-            <img [src]="slide.image" class="mx-auto" alt="image slide"/>
+          <div class="overflow-hidden image-container md:container md:mx-auto rounded-lg m-2 mb-4 md:m-4 md:mb-6 sm:hidden">
+            <img [src]="slide.data.imageMobile.image_url" class="mx-auto" alt="image slide"/>
+          </div>
+          <div class="overflow-hidden image-container md:container md:mx-auto rounded-lg m-2 mb-4 md:m-4 md:mb-6 hidden sm:block">
+            <img [src]="slide.data.imageDesktop.image_url" class="mx-auto" alt="image slide"/>
           </div>
 
           <div class="p-5 block rounded-lg md:container md:mx-auto shadow-lg m-2 mb-4 md:m-4 md:mb-6">

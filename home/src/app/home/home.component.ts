@@ -63,6 +63,10 @@ export class HomeComponent implements OnInit {
 
           if (section.type === 'seasonal_section') {
             this.seasonalConfig.variableWidth = section.slides.length > 1 && window.screen.width < 768;
+            for (const slide of section.slides) {
+              slide.data.imageMobile.image_url= slide.data.imageMobile.image_url.replace('styles/large/public/', '');
+              slide.data.imageDesktop.image_url = slide.data.imageDesktop.image_url.replace('styles/large/public/', '');
+            }
           }
         }
       });
