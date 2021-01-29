@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "home",
-      "public": "dist/home/dist/home/browser",
+      "public": "dist\\home\\dist\\home\\browser",
       "ignore": [
         "**/.*"
       ],
@@ -19,7 +19,7 @@
       ],
       "rewrites": [
         {
-          "source": "**",
+          "source": "/",
           "function": "ssr"
         }
       ]

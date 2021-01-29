@@ -1,4 +1,5 @@
 import 'zone.js/dist/zone-node';
+import 'globalthis/auto';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
@@ -9,7 +10,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
 // The Express app is exported so that it can be used by serverless Functions.
-export function app(): express.Express {
+export function app() {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/home/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
@@ -23,7 +24,10 @@ export function app(): express.Express {
   server.set('views', distFolder);
 
   // Example Express Rest API endpoints
-  // server.get('/api/**', (req, res) => { });
+  server.get('/api/**', (req, res) => { 
+    console.log(req);
+    console.log(res);
+  });
   // Serve static files from /browser
   server.get('*.*', express.static(distFolder, {
     maxAge: '1y'

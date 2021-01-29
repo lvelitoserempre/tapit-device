@@ -14,6 +14,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import localeEs from '@angular/common/locales/es-CO';
 import {registerLocaleData} from '@angular/common';
+import {TransferHttpCacheModule } from '@nguniversal/common';
 
 registerLocaleData(localeEs, 'es-CO');
 
@@ -31,7 +32,8 @@ registerLocaleData(localeEs, 'es-CO');
     SlickCarouselModule,
     AngularFireModule.initializeApp(environment.firebase.config),
     AngularFireAuthModule,
-    AngularFireRemoteConfigModule
+    AngularFireRemoteConfigModule,
+    TransferHttpCacheModule
   ],
   providers: [],
   bootstrap: [AppComponent]

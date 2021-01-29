@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {UserAccount} from '../user/user-account';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
@@ -6,6 +6,8 @@ import {map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {DrupalService} from '../drupal.service';
 import {formatNumber} from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer  } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -40,12 +42,18 @@ export class HomeComponent implements OnInit {
   constructor(
     private angularFireAuth: AngularFireAuth,
     private angularFirestore: AngularFirestore,
-    private drupalService: DrupalService
-  ) { }
+    private drupalService: DrupalService,
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {
+    
+  }
 
   ngOnInit(): void {
+    console.log(isPlatformBrowser(this.platformId));
+    console.log(isPlatformServer (this.platformId));
     this.angularFireAuth.user
     .pipe(switchMap(user => {
+      console.log(user);
       return user ? this.angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
     }))
     .subscribe(user => {
