@@ -25,14 +25,12 @@ export class HomeComponent implements OnInit {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    variableWidth: window.screen.width < 768
   };
   catalogConfig = {
     arrows: false,
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: (window.screen.width < 768 ? 3 : 8),
     slidesToScroll: 1,
     variableWidth: false,
     height: '280px'
@@ -53,7 +51,6 @@ export class HomeComponent implements OnInit {
     console.log(isPlatformServer (this.platformId));
     this.angularFireAuth.user
     .pipe(switchMap(user => {
-      console.log(user);
       return user ? this.angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
     }))
     .subscribe(user => {
@@ -70,7 +67,7 @@ export class HomeComponent implements OnInit {
           }
 
           if (section.type === 'seasonal_section') {
-            this.seasonalConfig.variableWidth = section.slides.length > 1 && window.screen.width < 768;
+            //this.seasonalConfig.variableWidth = section.slides.length > 1 && window.screen.width < 768;
             for (const slide of section.slides) {
               slide.data.imageMobile.image_url= slide.data.imageMobile.image_url.replace('styles/large/public/', '');
               slide.data.imageDesktop.image_url = slide.data.imageDesktop.image_url.replace('styles/large/public/', '');

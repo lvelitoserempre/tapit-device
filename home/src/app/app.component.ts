@@ -23,16 +23,16 @@ export class AppComponent implements OnInit {
       }
     });
 
-    this.injectSsoApp();
+    //this.injectSsoApp();
 
     // @ts-ignore
-    window.configTapitSso = () => {
-    };
+    /*window.configTapitSso = () => {
+    };*/
   }
 
   injectSsoApp(): void {
-    const scriptElement = document.createElement('script');
+    /*const scriptElement = document.createElement('script');
     scriptElement.setAttribute('src', environment.ssoApp);
-    document.body.insertAdjacentElement('beforeend', scriptElement);
+    document.body.insertAdjacentElement('beforeend', scriptElement);*/
   }
 }

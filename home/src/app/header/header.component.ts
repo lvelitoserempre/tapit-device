@@ -31,14 +31,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   setMenu(event: any) {
     if (event.target.checked) {
-      document.body.classList.add('overflow-hidden');
+      //document.body.classList.add('overflow-hidden');
     } else {
-      document.body.classList.remove('overflow-hidden');
+      //document.body.classList.remove('overflow-hidden');
     }
   }
 
   loginCloseMenu() {
-    document.getElementById('toggleMenu').click()
+    //document.getElementById('toggleMenu').click()
   }
 
   ngOnInit(): void {

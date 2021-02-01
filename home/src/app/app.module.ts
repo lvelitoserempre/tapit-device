@@ -10,11 +10,12 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFireRemoteConfigModule} from '@angular/fire/remote-config';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import localeEs from '@angular/common/locales/es-CO';
 import {registerLocaleData} from '@angular/common';
 import {TransferHttpCacheModule } from '@nguniversal/common';
+import {BrowserstateInterceptor} from './browserstate.interceptor'
 
 registerLocaleData(localeEs, 'es-CO');
 
@@ -35,7 +36,13 @@ registerLocaleData(localeEs, 'es-CO');
     AngularFireRemoteConfigModule,
     TransferHttpCacheModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BrowserstateInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -11,7 +11,7 @@ export class FooterComponent implements OnInit {
 
   constructor() {
   }
-  detectIos() {
+  /*detectIos() {
     const toMatch = [
       /iPhone/i,
       /iPod/i
@@ -27,11 +27,11 @@ export class FooterComponent implements OnInit {
     return toMatch.some((toMatchItem) => {
       return navigator.userAgent.match(toMatchItem);
     });
-  }
+  }*/
 
   ngOnInit() {
-    this.isAndroid = this.detectAndroid();
-    this.isIOs = this.detectIos();
+    /*this.isAndroid = this.detectAndroid();
+    this.isIOs = this.detectIos();*/
   }
 
 }

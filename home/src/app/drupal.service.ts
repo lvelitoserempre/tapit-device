@@ -14,12 +14,14 @@ export class DrupalService {
   }
 
   getHomeData(): Observable<any[]> {
+    console.log(environment.drupalUrl);
     return this.httpClient.get(environment.drupalUrl)
     .pipe(map(response => this.processResponse(response)));
     //return of(this.processResponse(json));
   }
 
   private processResponse(response: any): any[] {
+    console.log(response);
     let sections = [];
 
     if (response && response[0]) {
@@ -75,6 +77,7 @@ export class DrupalService {
   }
 
   private isMobile(): boolean {
-    return window.screen.width < 768;
+    //return window.screen.width < 768;
+    return false;
   }
 }
