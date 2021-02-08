@@ -25,10 +25,10 @@ export function app() {
   server.set('views', distFolder);
 
   // Example Express Rest API endpoints
-  server.get('/cache/**', async (request, response) => {
+  server.get('/cache/**', (request, response) => {
     const realImageUrl = request.url.replace('/cache/', 'http://');
 
-    return get(realImageUrl, {}, drupalResponse => {
+    get(realImageUrl, {}, drupalResponse => {
       drupalResponse.pipe(response);
     });
   });
