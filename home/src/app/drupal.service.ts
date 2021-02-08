@@ -18,6 +18,10 @@ export class DrupalService {
     .pipe(map(response => this.processResponse(response)));
   }
 
+  private replaceUrl(imageUrl): string {
+    return imageUrl ? ('/cache/' + imageUrl.replace(/https?:\/\//gi, '')) : imageUrl;
+  }
+
   private processResponse(response: any): any[] {
     let sections = [];
 
@@ -40,8 +44,16 @@ export class DrupalService {
 
             if (slides) {
               for (const slide of slides) {
-                slide.image = this.isMobile() ? slide.data.imageMobile.image_url : slide.data.imageDesktop.image_url;
-                console.log(slide.image);
+                /*slide.image = this.isMobile() ? slide.data.imageMobile.image_url : slide.data.imageDesktop.image_url;
+                slide.image = this.replaceUrl(slide.image);*/
+                if (slide.data.imageMobile) {
+                  slide.data.imageMobile.image_url = this.replaceUrl(slide.data.imageMobile.image_url);
+                }
+
+                if (slide.data.imageDesktop) {
+                  slide.data.imageDesktop.image_url = this.replaceUrl(slide.data.imageDesktop.image_url);
+                }
+
                 slide.description = slide.data.copy.value;
                 slide.button = {
                   link: slide.data.cta.uri,
@@ -60,7 +72,7 @@ export class DrupalService {
 
             if (slides) {
               for (const slide of slides) {
-                slide.image = slide.data.imageDesktop.image_url;
+                slide.image = this.replaceUrl(slide.data.imageDesktop.image_url);
                 slide.link = slide.data.buyLink?.uri;
               }
             }

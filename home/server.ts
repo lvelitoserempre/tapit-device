@@ -5,11 +5,12 @@ import { enableProdMode } from '@angular/core';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
-import { join } from 'path';
+import {join} from 'path';
+import {get} from 'http';
 
-import { AppServerModule } from './src/main.server';
-import { APP_BASE_HREF } from '@angular/common';
-import { existsSync } from 'fs';
+import {AppServerModule} from './src/main.server';
+import {APP_BASE_HREF} from '@angular/common';
+import {existsSync} from 'fs';
 
 enableProdMode();
  
@@ -37,10 +38,12 @@ export function app(): express.Express {
   server.set('views', distFolder);
 
   // Example Express Rest API endpoints
-  server.get('/api/**', (req, res) => { 
-    console.log(req);
-    console.log(res);
-    res.send(req.path);
+  server.get('/cache/**', async (request, response) => {
+    const realImageUrl = request.url.replace('/cache/', 'http://');
+
+    return get(realImageUrl, {}, drupalResponse => {
+      drupalResponse.pipe(response);
+    });
   });
   // Serve static files from /browser
   server.get('*.*', express.static(distFolder, {
@@ -49,7 +52,7 @@ export function app(): express.Express {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
-    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    res.render(indexHtml, {req, providers: [{provide: APP_BASE_HREF, useValue: req.baseUrl}]});
   });
 
   return server;

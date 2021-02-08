@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "home",
-      "public": "dist\\home\\dist\\home\\browser",
+      "public": "dist/home/dist/home/browser",
       "ignore": [
         "**/.*"
       ],
@@ -23,7 +23,7 @@
           "function": "ssr"
         },
         {
-          "source": "/api/**",
+          "source": "/cache/**",
           "function": "ssr"
         }
       ]
