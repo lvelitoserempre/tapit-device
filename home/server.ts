@@ -40,7 +40,7 @@ export function app(): express.Express {
   // Example Express Rest API endpoints
   server.get('/cache/**', (request, response) => {
     const realImageUrl = request.url.replace('/cache/', 'http://');
-    response.set('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+    response.set('Cache-Control', 'public, max-age=86400, s-maxage=86400');
     // response.set('Connection', 'keep-alive');
 
     get(realImageUrl, {}, drupalResponse => {

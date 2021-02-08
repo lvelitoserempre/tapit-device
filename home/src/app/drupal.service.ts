@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {environment} from '../environments/environment';
-import json from './json';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,15 +10,20 @@ export class DrupalService {
 
   constructor(
     private httpClient: HttpClient
-  ) { }
+  ) {
+  }
 
   getHomeData(): Observable<any[]> {
     return this.httpClient.get('http://tapit.dev-abinbev.acsitefactory.com/api/homepage')
-    .pipe(map(response => this.processResponse(response)));
+      .pipe(map(response => this.processResponse(response)));
   }
 
   private replaceUrl(imageUrl): string {
-    return imageUrl ? ('/cache/' + imageUrl.replace(/https?:\/\//gi, '')) : imageUrl;
+    if (!imageUrl.startsWith('/cache')) {
+      return imageUrl ? ('/cache/' + imageUrl.replace(/https?:\/\//gi, '')) : imageUrl;
+    } else {
+      return imageUrl;
+    }
   }
 
   private processResponse(response: any): any[] {
