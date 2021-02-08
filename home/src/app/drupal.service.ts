@@ -19,12 +19,10 @@ export class DrupalService {
   }
 
   private replaceUrl(imageUrl): string {
-    console.log(imageUrl);
     return imageUrl ? ('/cache/' + imageUrl.replace(/https?:\/\//gi, '')) : imageUrl;
   }
 
   private processResponse(response: any): any[] {
-    console.log(response);
     let sections = [];
 
     if (response && response[0]) {
@@ -74,7 +72,7 @@ export class DrupalService {
 
             if (slides) {
               for (const slide of slides) {
-                slide.image = slide.data.imageDesktop.image_url;
+                slide.image = this.replaceUrl(slide.data.imageDesktop.image_url);
                 slide.link = slide.data.buyLink?.uri;
               }
             }

@@ -26,11 +26,7 @@ export function app() {
 
   // Example Express Rest API endpoints
   server.get('/cache/**', async (request, response) => {
-    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-    console.log(request.url);
     const realImageUrl = request.url.replace('/cache/', 'http://');
-    console.log(realImageUrl);
-    console.log(JSON.stringify(request.headers));
 
     return get(realImageUrl, {}, drupalResponse => {
       drupalResponse.pipe(response);
