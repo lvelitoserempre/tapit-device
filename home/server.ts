@@ -13,7 +13,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {existsSync} from 'fs';
 
 enableProdMode();
- 
+
 const domino = require('domino');
 
 const template = '';
@@ -40,6 +40,8 @@ export function app(): express.Express {
   // Example Express Rest API endpoints
   server.get('/cache/**', (request, response) => {
     const realImageUrl = request.url.replace('/cache/', 'http://');
+    response.set('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+    // response.set('Connection', 'keep-alive');
 
     get(realImageUrl, {}, drupalResponse => {
       drupalResponse.pipe(response);
