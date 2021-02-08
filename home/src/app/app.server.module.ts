@@ -3,8 +3,6 @@ import { ServerModule, ServerTransferStateModule } from '@angular/platform-serve
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ServerStateInterceptor } from './serverstate.interceptor';
 
 @NgModule({
   imports: [
@@ -13,10 +11,5 @@ import { ServerStateInterceptor } from './serverstate.interceptor';
     ServerTransferStateModule
   ],
   bootstrap: [AppComponent],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: ServerStateInterceptor,
-    multi: true
-  }],
 })
 export class AppServerModule {}

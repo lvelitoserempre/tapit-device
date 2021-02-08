@@ -21,6 +21,10 @@
         {
           "source": "/",
           "function": "ssr"
+        },
+        {
+          "source": "/api/**",
+          "function": "ssr"
         }
       ]
     }

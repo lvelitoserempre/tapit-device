@@ -1,27 +1,24 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {environment} from '../environments/environment';
 import json from './json';
-
 @Injectable({
   providedIn: 'root'
 })
 export class DrupalService {
 
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
   getHomeData(): Observable<any[]> {
-    console.log(environment.drupalUrl);
-    return this.httpClient.get(environment.drupalUrl)
+    return this.httpClient.get('http://tapit.dev-abinbev.acsitefactory.com/api/homepage')
     .pipe(map(response => this.processResponse(response)));
-    //return of(this.processResponse(json));
   }
 
   private processResponse(response: any): any[] {
-    console.log(response);
     let sections = [];
 
     if (response && response[0]) {
@@ -44,6 +41,7 @@ export class DrupalService {
             if (slides) {
               for (const slide of slides) {
                 slide.image = this.isMobile() ? slide.data.imageMobile.image_url : slide.data.imageDesktop.image_url;
+                console.log(slide.image);
                 slide.description = slide.data.copy.value;
                 slide.button = {
                   link: slide.data.cta.uri,
@@ -77,7 +75,6 @@ export class DrupalService {
   }
 
   private isMobile(): boolean {
-    //return window.screen.width < 768;
-    return false;
+    return window.innerWidth < 768;
   }
 }

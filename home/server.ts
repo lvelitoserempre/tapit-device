@@ -1,6 +1,8 @@
 import 'zone.js/dist/zone-node';
 import 'globalthis/auto';
 
+import { enableProdMode } from '@angular/core';
+
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
 import { join } from 'path';
@@ -9,8 +11,19 @@ import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
+enableProdMode();
+ 
+const domino = require('domino');
+
+const template = '';
+// Shim for the global window and document objects.
+const window = domino.createWindow(template);
+global['window'] = window;
+global['document'] = window.document;
+global['innerWidth'] = window.innerWidth;
+
 // The Express app is exported so that it can be used by serverless Functions.
-export function app() {
+export function app(): express.Express {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/home/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
@@ -27,6 +40,7 @@ export function app() {
   server.get('/api/**', (req, res) => { 
     console.log(req);
     console.log(res);
+    res.send(req.path);
   });
   // Serve static files from /browser
   server.get('*.*', express.static(distFolder, {
