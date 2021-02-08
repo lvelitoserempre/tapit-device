@@ -3,19 +3,19 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {environment} from '../environments/environment';
-
+import json from './json';
 @Injectable({
   providedIn: 'root'
 })
 export class DrupalService {
 
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
   getHomeData(): Observable<any[]> {
-    return this.httpClient.get(environment.drupalUrl)
-      .pipe(map(response => this.processResponse(response)));
-    //return of(this.processResponse(json));
+    return this.httpClient.get('http://tapit.dev-abinbev.acsitefactory.com/api/homepage')
+    .pipe(map(response => this.processResponse(response)));
   }
 
   private replaceUrl(imageUrl): string {
@@ -87,7 +87,6 @@ export class DrupalService {
   }
 
   private isMobile(): boolean {
-    //return window.screen.width < 768;
-    return false;
+    return window.innerWidth < 768;
   }
 }
