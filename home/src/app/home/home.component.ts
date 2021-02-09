@@ -45,39 +45,38 @@ export class HomeComponent implements OnInit {
     private drupalService: DrupalService,
     @Inject(PLATFORM_ID) private platformId: any
   ) {
-    
-  }
-
-  ngOnInit(): void {
     this.angularFireAuth.user
     .pipe(switchMap(user => {
       return user ? this.angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
     }))
     .subscribe(user => {
       this.user = user;
+    });
+    this.drupalService.getHomeData()
+    .pipe(map(sections => this.fillPlaceholders(sections)))
+    .subscribe(sections => {
+      this.sections = sections;
 
-      this.drupalService.getHomeData()
-      .pipe(map(sections => this.fillPlaceholders(sections)))
-      .subscribe(sections => {
-        this.sections = sections;
+      for (const section of sections) {
+        if (section.type === 'welcome_message') {
+          this.welcomeSection = section;
+        }
 
-        for (const section of sections) {
-          if (section.type === 'welcome_message') {
-            this.welcomeSection = section;
-          }
-
-          if (section.type === 'seasonal_section') {
-            if (isPlatformBrowser(this.platformId)) {
-              this.seasonalConfig.variableWidth = section.slides.length > 1 && window.innerWidth < 768;
-            }
-            for (const slide of section.slides) {
-              slide.data.imageMobile.image_url= slide.data.imageMobile.image_url.replace('styles/large/public/', '');
-              slide.data.imageDesktop.image_url = slide.data.imageDesktop.image_url.replace('styles/large/public/', '');
-            }
+        if (section.type === 'seasonal_section') {
+          //if (isPlatformBrowser(this.platformId)) {
+            this.seasonalConfig.variableWidth = section.slides.length > 1 && window.innerWidth < 768;
+          //}
+          for (const slide of section.slides) {
+            slide.data.imageMobile.image_url= slide.data.imageMobile.image_url.replace('styles/large/public/', '');
+            slide.data.imageDesktop.image_url = slide.data.imageDesktop.image_url.replace('styles/large/public/', '');
           }
         }
-      });
+      }
     });
+  }
+
+  ngOnInit(): void {
+
   }
 
   private fillPlaceholders(sections: any[]): any[] {
@@ -122,7 +121,7 @@ export class HomeComponent implements OnInit {
   private replacePoints(html: string): string {
     if (this.user) {
       const points = formatNumber(this.user.points, 'es-CO', '1.0');
-      return html.replace(/{{ *user\.points *}}/gi, '<span class="text-xs inline-block align-middle relative rounded-full pl-small ' + 
+      return html.replace(/{{ *user\.points *}}/gi, '<span class="text-xs inline-block align-middle relative rounded-full pl-small ' +
         'bg-primary-500 word-s-1 pr-2 p-small rounded-full text-white border-2 border-orange-400 font-bold leading-none">' +
         '  <img class="inline-block align-middle" src="./assets/images/points-bubble.png?v=637408799586700000">\n' +
         '  <span class="inline-block align-middle product-points">' + points + '</span> pts\n' +

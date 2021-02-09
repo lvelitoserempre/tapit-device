@@ -42,7 +42,6 @@ export function app(): express.Express {
     const realImageUrl = request.url.replace('/cache/', 'http://');
     response.set('Cache-Control', 'public, max-age=86400, s-maxage=86400');
     // response.set('Connection', 'keep-alive');
-
     get(realImageUrl, {}, drupalResponse => {
       drupalResponse.pipe(response);
     });
@@ -54,6 +53,7 @@ export function app(): express.Express {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
+    res.set('Cache-Control', 'public, max-age=3600, s-maxage=3600');
     res.render(indexHtml, {req, providers: [{provide: APP_BASE_HREF, useValue: req.baseUrl}]});
   });
 
