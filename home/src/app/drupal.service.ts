@@ -10,12 +10,11 @@ export class DrupalService {
 
   constructor(
     private httpClient: HttpClient
-  ) {
-  }
+  ) {}
 
   getHomeData(): Observable<any[]> {
     return this.httpClient.get('http://tapit.dev-abinbev.acsitefactory.com/api/homepage')
-      .pipe(map(response => this.processResponse(response)));
+    .pipe(map(response => this.processResponse(response)));
   }
 
   private replaceUrl(imageUrl): string {
@@ -48,8 +47,6 @@ export class DrupalService {
 
             if (slides) {
               for (const slide of slides) {
-                /*slide.image = this.isMobile() ? slide.data.imageMobile.image_url : slide.data.imageDesktop.image_url;
-                slide.image = this.replaceUrl(slide.image);*/
                 if (slide.data.imageMobile) {
                   slide.data.imageMobile.image_url = this.replaceUrl(slide.data.imageMobile.image_url);
                 }

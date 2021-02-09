@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
     private angularFireAuth: AngularFireAuth
   ) { }
 
-
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       if (params.customToken) {

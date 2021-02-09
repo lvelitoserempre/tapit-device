@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {UserAccount} from '../user/user-account';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
@@ -6,15 +6,13 @@ import {map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {DrupalService} from '../drupal.service';
 import {formatNumber} from '@angular/common';
-import { PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser, isPlatformServer  } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   user: UserAccount;
   points: number;
   sections: any[];
@@ -43,15 +41,7 @@ export class HomeComponent implements OnInit {
     private angularFireAuth: AngularFireAuth,
     private angularFirestore: AngularFirestore,
     private drupalService: DrupalService,
-    @Inject(PLATFORM_ID) private platformId: any
   ) {
-    this.angularFireAuth.user
-    .pipe(switchMap(user => {
-      return user ? this.angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
-    }))
-    .subscribe(user => {
-      this.user = user;
-    });
     this.drupalService.getHomeData()
     .pipe(map(sections => this.fillPlaceholders(sections)))
     .subscribe(sections => {
@@ -63,9 +53,7 @@ export class HomeComponent implements OnInit {
         }
 
         if (section.type === 'seasonal_section') {
-          //if (isPlatformBrowser(this.platformId)) {
-            this.seasonalConfig.variableWidth = section.slides.length > 1 && window.innerWidth < 768;
-          //}
+          this.seasonalConfig.variableWidth = section.slides.length > 1 && window.innerWidth < 768;
           for (const slide of section.slides) {
             slide.data.imageMobile.image_url= slide.data.imageMobile.image_url.replace('styles/large/public/', '');
             slide.data.imageDesktop.image_url = slide.data.imageDesktop.image_url.replace('styles/large/public/', '');
@@ -75,15 +63,18 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-
-  }
-
   private fillPlaceholders(sections: any[]): any[] {
     for (const section of sections) {
       if (section && section.type === 'welcome_message') {
-        section.messageAuthenticated = this.fillUserData(section.messageAuthenticated);
-        section.messageAnonymous = this.fillUserData(section.messageAnonymous);
+        this.angularFireAuth.user
+        .pipe(switchMap(user => {
+          return user ? this.angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
+        }))
+        .subscribe(user => {
+          this.user = user;
+          section.messageAuthenticated = this.fillUserData(section.messageAuthenticated);
+        });
+        section.messageAnonymous = section.messageAnonymous;
       }
     }
 
