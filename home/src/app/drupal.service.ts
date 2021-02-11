@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class DrupalService {
   ) {}
 
   getHomeData(): Observable<any[]> {
-    return this.httpClient.get('http://tapit.dev-abinbev.acsitefactory.com/api/homepage')
+    return this.httpClient.get(environment.drupalUrl)
     .pipe(map(response => this.processResponse(response)));
   }
 

@@ -6,6 +6,13 @@
           "tapit-app-dev"
         ]
       }
+    },
+    "re-imagining-loyalty-qa": {
+      "hosting": {
+        "home": [
+          "tapit-home-qa"
+        ]
+      }
     }
   }
 }

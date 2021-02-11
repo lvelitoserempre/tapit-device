@@ -85,7 +85,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "501kb",
                   "maximumError": "2mb"
                 },
                 {
@@ -106,7 +106,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "502kb",
                   "maximumError": "2mb"
                 },
                 {
@@ -202,7 +202,7 @@
             ]
           },
           "configurations": {
-            "production": {
+            "dev": {
               "outputHashing": "media",
               "fileReplacements": [
                 {
@@ -213,8 +213,25 @@
               "sourceMap": false,
               "optimization": true
             },
-            "dev": {
+            "qa": {
               "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qa.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            },
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.ts"
+                }
+              ],
               "sourceMap": false,
               "optimization": true
             }
@@ -230,6 +247,14 @@
             "production": {
               "browserTarget": "home:build:production",
               "serverTarget": "home:server:production"
+            },
+            "qa": {
+              "browserTarget": "home:build:qa",
+              "serverTarget": "home:server:qa"
+            },
+            "dev": {
+              "browserTarget": "home:server:dev",
+              "serverTarget": "home:server:dev"
             }
           }
         },
@@ -249,7 +274,22 @@
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {
-            "ssr": true
+            "ssr": true,
+            "functionsNodeVersion": 12
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "home:build:production",
+              "firebaseProject": "home"
+            },
+            "qa": {
+              "buildTarget": "home:build:qa",
+              "firebaseProject": "re-imagining-loyalty-qa"
+            },
+            "dev": {
+              "buildTarget": "home:build:dev",
+              "firebaseProject": "re-imagining-loyalty-dev"
+            }
           }
         }
       }
