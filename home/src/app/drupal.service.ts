@@ -1,22 +1,29 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {environment} from '../environments/environment';
-import json from './json';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DrupalService {
 
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(
+    private httpClient: HttpClient
+  ) {}
 
   getHomeData(): Observable<any[]> {
     return this.httpClient.get(environment.drupalUrl)
     .pipe(map(response => this.processResponse(response)));
-    //return of(this.processResponse(json));
+  }
+
+  private replaceUrl(imageUrl): string {
+    if (!imageUrl.startsWith('/cache')) {
+      return imageUrl ? ('/cache/' + imageUrl.replace(/https?:\/\//gi, '')) : imageUrl;
+    } else {
+      return imageUrl;
+    }
   }
 
   private processResponse(response: any): any[] {
@@ -41,7 +48,14 @@ export class DrupalService {
 
             if (slides) {
               for (const slide of slides) {
-                slide.image = this.isMobile() ? slide.data.imageMobile.image_url : slide.data.imageDesktop.image_url;
+                if (slide.data.imageMobile) {
+                  slide.data.imageMobile.image_url = this.replaceUrl(slide.data.imageMobile.image_url);
+                }
+
+                if (slide.data.imageDesktop) {
+                  slide.data.imageDesktop.image_url = this.replaceUrl(slide.data.imageDesktop.image_url);
+                }
+
                 slide.description = slide.data.copy.value;
                 slide.button = {
                   link: slide.data.cta.uri,
@@ -60,7 +74,7 @@ export class DrupalService {
 
             if (slides) {
               for (const slide of slides) {
-                slide.image = slide.data.imageDesktop.image_url;
+                slide.image = this.replaceUrl(slide.data.imageDesktop.image_url);
                 slide.link = slide.data.buyLink?.uri;
               }
             }
@@ -75,6 +89,6 @@ export class DrupalService {
   }
 
   private isMobile(): boolean {
-    return window.screen.width < 768;
+    return window.innerWidth < 768;
   }
 }

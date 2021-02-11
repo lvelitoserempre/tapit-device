@@ -1,12 +1,27 @@
 import 'zone.js/dist/zone-node';
+import 'globalthis/auto';
+
+import { enableProdMode } from '@angular/core';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
-import { join } from 'path';
+import {join} from 'path';
+import {get} from 'http';
 
-import { AppServerModule } from './src/main.server';
-import { APP_BASE_HREF } from '@angular/common';
-import { existsSync } from 'fs';
+import {AppServerModule} from './src/main.server';
+import {APP_BASE_HREF} from '@angular/common';
+import {existsSync} from 'fs';
+
+enableProdMode();
+
+const domino = require('domino');
+
+const template = '';
+// Shim for the global window and document objects.
+const window = domino.createWindow(template);
+global['window'] = window;
+global['document'] = window.document;
+global['innerWidth'] = window.innerWidth;
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -23,7 +38,14 @@ export function app(): express.Express {
   server.set('views', distFolder);
 
   // Example Express Rest API endpoints
-  // server.get('/api/**', (req, res) => { });
+  server.get('/cache/**', (request, response) => {
+    const realImageUrl = request.url.replace('/cache/', 'http://');
+    response.set('Cache-Control', 'public, max-age=86400, s-maxage=86400');
+    // response.set('Connection', 'keep-alive');
+    get(realImageUrl, {}, drupalResponse => {
+      drupalResponse.pipe(response);
+    });
+  });
   // Serve static files from /browser
   server.get('*.*', express.static(distFolder, {
     maxAge: '1y'
@@ -31,7 +53,8 @@ export function app(): express.Express {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
-    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    res.set('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+    res.render(indexHtml, {req, providers: [{provide: APP_BASE_HREF, useValue: req.baseUrl}]});
   });
 
   return server;

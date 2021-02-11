@@ -4,7 +4,6 @@
     class="container mx-auto py-2 px-4 px-5 text-sm text-secondary-500">
   </div>
 </div>
-
 <article>
   <section *ngFor="let section of sections;">
       <div *ngIf="section.type==='seasonal_section'" [class.pl-5]="section.slides.length > 1" class="pl-5 md:pl-0">

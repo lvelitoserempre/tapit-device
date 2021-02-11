@@ -3,7 +3,14 @@
     "re-imagining-loyalty-dev": {
       "hosting": {
         "home": [
-          "tapit-home-dev"
+          "tapit-app-dev"
+        ]
+      }
+    },
+    "re-imagining-loyalty-qa": {
+      "hosting": {
+        "home": [
+          "tapit-home-qa"
         ]
       }
     }
