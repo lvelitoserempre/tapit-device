@@ -13,36 +13,41 @@ const rename = require('gulp-rename');
 BUILD_MAP = {
   TAPIT_DEV: {
     assetsLinks: 'assetlinks.dev.json',
+    appleAppSiteAssociation: 'apple-app-site-association.dev',
     buildCommand: 'npm run b',
     deployCommand: 'firebase deploy --only hosting:tapit-app-dev'
   },
   TAPIT_TESTING: {
     assetsLinks: 'assetlinks.dev.json',
+    appleAppSiteAssociation: 'apple-app-site-association.dev',
     buildCommand: 'npm run b',
     deployCommand: 'firebase deploy --only hosting:tapit-app-testing'
   },
   TAPIT_QA: {
     assetsLinks: 'assetlinks.dev.json',
+    appleAppSiteAssociation: 'apple-app-site-association.dev',
     buildCommand: 'npm run b-qa',
     deployCommand: 'firebase deploy --only hosting:tapit-app-qa'
   },
   TAPIT_PREVIEW: {
     assetsLinks: 'assetlinks.prod.json',
+    appleAppSiteAssociation: 'apple-app-site-association.prod',
     buildCommand: 'npm run b-prod',
     deployCommand: 'firebase deploy --only hosting:tapit-app-preview'
   },
   TAPIT_PRODUCTION: {
     assetsLinks: 'assetlinks.prod.json',
+    appleAppSiteAssociation: 'apple-app-site-association.prod',
     buildCommand: 'npm run b-prod',
     deployCommand: 'firebase deploy --only hosting:tapit-app-production'
   },
   BRAHMA_SSO_PRODUCTION: {
     assetsLinks: 'assetlinks.prod.json',
+    appleAppSiteAssociation: 'apple-app-site-association.prod',
     buildCommand: 'npm run b-prod',
     deployCommand: 'firebase deploy --only hosting:clube-brahma-sso && firebase deploy --only hosting:clube-brahma-sso-example'
   },
 }
-
 
 function runCommand(command, folder) {
   return run(command, {cwd: folder})
@@ -98,8 +103,10 @@ task('copy-assetlinks', function () {
 });
 
 task('copy-applefile', function () {
-  const file = 'apple-app-site-association';
+  const file =  BUILD_MAP[process.env.ENV].appleAppSiteAssociation;
+  //const file = 'apple-app-site-association';
   return src('.well-known/' + file)
+    .pipe(rename("apple-app-site-association"))
     .pipe(dest("./dist/.well-known"));
 });
 
