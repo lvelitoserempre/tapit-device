@@ -104,7 +104,6 @@ task('copy-assetlinks', function () {
 
 task('copy-applefile', function () {
   const file =  BUILD_MAP[process.env.ENV].appleAppSiteAssociation;
-  //const file = 'apple-app-site-association';
   return src('.well-known/' + file)
     .pipe(rename("apple-app-site-association"))
     .pipe(dest("./dist/.well-known"));
