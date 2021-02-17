@@ -1,0 +1,15 @@
+{
+    "applinks": {
+        "details": [
+            {
+              "appIDs": [ "WMB8HCJXS9.com.abinbev.tapit" ],
+              "components": [
+                {
+                  "/": "/*",
+                  "comment": "We are currently matching any url"
+                }
+              ]
+            }
+        ]
+    }
+}
