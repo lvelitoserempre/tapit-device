@@ -85,6 +85,28 @@ export default function Index() {
     });
   }
 
+  let ssoScript = 'https://sso.dev.tapit.com.co/v3/tapit.sso.main.js';
+
+  switch (window.location.hostname) {
+    case 'tapit.com.co':
+      ssoScript = 'https://sso.tapit.com.co/v3/tapit.sso.main.js';
+      break;
+
+    case 'qa.tapit.com.co':
+      ssoScript = 'https://sso.qa.tapit.com.co/v3/tapit.sso.main.js';
+      break;
+
+    case 'dev.tapit.com.co':
+      ssoScript = 'https://sso.dev.tapit.com.co/v3/tapit.sso.main.js';
+      break;
+  }
+
+  if (!document.getElementById('sso-script')) {
+    const scriptElement = document.createElement('script');
+    scriptElement.setAttribute('src', ssoScript)
+    scriptElement.setAttribute('id', 'sso-script')
+    document.body.insertAdjacentElement('beforeend', scriptElement);
+  }
 
   function saveBirthDate(value) {
     setUserDate(value);
