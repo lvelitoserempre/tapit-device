@@ -2,14 +2,14 @@
   "targets": {
     "re-imagining-loyalty-dev": {
       "hosting": {
-        "home": [
+        "home-dev": [
           "tapit-app-dev"
         ]
       }
     },
     "re-imagining-loyalty-qa": {
       "hosting": {
-        "home": [
+        "home-qa": [
           "tapit-home-qa"
         ]
       }

@@ -13,6 +13,8 @@
     "dev:ssr": "ng run home:serve-ssr",
     "serve:ssr": "node dist/home/server/main.js",
     "build:ssr": "ng build --prod && ng run home:server:production",
+    "serve:ssrdev": "ng build -c=dev && ng run home:server:dev && npm run serve:ssr",
+    "serve:ssrqa": "ng build -c=qa && ng run home:server:qa && npm run serve:ssr",
     "prerender": "ng run home:prerender"
   },
   "private": true,

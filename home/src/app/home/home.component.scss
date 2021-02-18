@@ -1,6 +1,7 @@
 .seasonal-slide {
   box-shadow: 0px 5px 10px rgba(52, 16, 0, 0.08), 0px 15px 25px rgba(52, 16, 0, 0.06);
   width: 80vw;
+  /*padding-left: 20px;*/
 
   @media (min-width: 768px) {
     width: 100%;
@@ -24,10 +25,10 @@
 }
 
 .catalog-slide {
-  img {
+  /*img {
     @media (min-width: 768px) {
     }
-  }
+  }*/
 
   &:focus {
     outline: none;

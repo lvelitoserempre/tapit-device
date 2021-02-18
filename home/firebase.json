@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "home",
+      "target": "home-dev",
       "public": "dist/home/dist/home/browser",
       "ignore": [
         "**/.*"
@@ -29,7 +29,7 @@
       ]
     },
     {
-      "target": "tapit-home-qa",
+      "target": "home-qa",
       "public": "dist/home/dist/home/browser",
       "ignore": [
         "**/.*"
