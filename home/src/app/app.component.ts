@@ -9,29 +9,40 @@ import {environment} from '../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  isOnWebView = false;
 
-  constructor(
-    private route: ActivatedRoute,
-    private angularFireAuth: AngularFireAuth
-  ) { }
+  constructor(private route: ActivatedRoute,
+              private angularFireAuth: AngularFireAuth) {
+  }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      if (params.customToken) {
-        this.angularFireAuth.signInWithCustomToken(params.customToken);
-      }
-    });
+    const search = new URLSearchParams(window.location.search);
 
-    this.injectSsoApp();
+    if (search.get('customToken')) {
+      this.angularFireAuth.signInWithCustomToken(search.get('customToken'))
+        .then(user => {
+          console.log(user);
+        });
+    }
 
-    // @ts-ignore
-    window.configTapitSso = () => {
-    };
+    if (search.get('source')) {
+      this.isOnWebView = true;
+    } else {
+      this.injectSsoApp();
+
+      // @ts-ignore
+      window.configTapitSso = () => {
+      };
+    }
+
   }
 
   injectSsoApp(): void {
-    const scriptElement = document.createElement('script');
-    scriptElement.setAttribute('src', environment.ssoApp);
-    document.body.insertAdjacentElement('beforeend', scriptElement);
+    if (!document.getElementById('sso-script')) {
+      const scriptElement = document.createElement('script');
+      scriptElement.setAttribute('src', environment.ssoApp);
+      scriptElement.setAttribute('id', 'sso-script');
+      document.body.insertAdjacentElement('beforeend', scriptElement);
+    }
   }
 }
