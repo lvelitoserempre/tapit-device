@@ -474,161 +474,169 @@ export default [{
         value: '<p>Nuestros <span style="color:#ff5005;">recomendados</span></p>\r\n',
         format: 'rich_text',
         processed: '<p>Nuestros <span style="color:#ff5005;">recomendados</span></p>\n'
-      }, recommendedContent: [{
-        type: 'recommended_content', data: {
-          description: {
-            value: '<p>Introducida por Adolphus Busch en 1876, aún se elabora con el mismo cuidado, alta calidad y estándares exigentes. Comenzó como una cerveza original de Estados Unidos, hoy es una marca global, se bebe en 85 países.</p>\r\n',
-            format: 'rich_text',
-            processed: '<p>Introducida por Adolphus Busch en 1876, aún se elabora con el mismo cuidado, alta calidad y estándares exigentes. Comenzó como una cerveza original de Estados Unidos, hoy es una marca global, se bebe en 85 países.</p>\n'
-          },
-          imageDesktop: {
-            target_id: '56',
-            alt: '',
-            title: '',
-            width: '424',
-            height: '1600',
-            image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/budweiser_0.png?itok=cQm54KLM'
-          },
-          imageMobile: {
-            target_id: '61',
-            alt: '',
-            title: '',
-            width: '424',
-            height: '1600',
-            image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/budweiser_1.png?itok=HXVS_tyA'
-          },
-          cta: {uri: 'https://market.tapit.com', title: 'Comprar', options: []}
+      },
+      recommendedContent: [
+        {
+          type: 'recommended_content',
+          data: {
+            title: {
+              value: '<p><span style="color:#ff5005;">Cerveza Poker</span></p>\r\n',
+              format: 'rich_text',
+              processed: '<p>Introducida por Adolphus Busch en 1876, aún se elabora con el mismo cuidado, alta calidad y estándares exigentes. Comenzó como una cerveza original de Estados Unidos, hoy es una marca global, se bebe en 85 países.</p>\n'
+            },
+            description: {
+              value: '<p>Introducida por Adolphus Busch en 1876, aún se elabora con el mismo cuidado, alta calidad y estándares exigentes. Comenzó como una cerveza original de Estados Unidos, hoy es una marca global, se bebe en 85 países.</p>\r\n',
+              format: 'rich_text',
+              processed: '<p>Introducida por Adolphus Busch en 1876, aún se elabora con el mismo cuidado, alta calidad y estándares exigentes. Comenzó como una cerveza original de Estados Unidos, hoy es una marca global, se bebe en 85 países.</p>\n'
+            },
+            imageDesktop: {
+              target_id: '56',
+              alt: '',
+              title: '',
+              width: '424',
+              height: '1600',
+              image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/budweiser_0.png?itok=cQm54KLM'
+            },
+            imageMobile: {
+              target_id: '61',
+              alt: '',
+              title: '',
+              width: '424',
+              height: '1600',
+              image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/budweiser_1.png?itok=HXVS_tyA'
+            },
+            cta: {uri: 'https://market.tapit.com', title: 'Comprar', options: []}
+          }
+        }, {
+          type: 'recommended_content',
+          data: {
+            description: {
+              value: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\r\n',
+              format: 'rich_text',
+              processed: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\n'
+            },
+            imageDesktop: {
+              target_id: '76',
+              alt: '',
+              title: '',
+              width: '424',
+              height: '1600',
+              image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_1.png?itok=alq6BA85'
+            },
+            imageMobile: {
+              target_id: '71',
+              alt: '',
+              title: '',
+              width: '424',
+              height: '1600',
+              image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_0.png?itok=kHpIWL15'
+            },
+            cta: {uri: 'https://market.tapit.com', title: 'Comprar', options: []}
+          }
+        }, {
+          type: 'recommended_content',
+          data: {
+            description: {
+              value: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\r\n',
+              format: 'rich_text',
+              processed: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\n'
+            },
+            imageDesktop: {
+              target_id: '76',
+              alt: '',
+              title: '',
+              width: '424',
+              height: '1600',
+              image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_1.png?itok=alq6BA85'
+            },
+            imageMobile: {
+              target_id: '71',
+              alt: '',
+              title: '',
+              width: '424',
+              height: '1600',
+              image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_0.png?itok=kHpIWL15'
+            },
+            cta: {uri: 'https://market.tapit.com', title: 'Comprar', options: []}
+          }
+        }, {
+          type: 'recommended_content',
+          data: {
+            description: {
+              value: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\r\n',
+              format: 'rich_text',
+              processed: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\n'
+            },
+            imageDesktop: {
+              target_id: '76',
+              alt: '',
+              title: '',
+              width: '424',
+              height: '1600',
+              image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_1.png?itok=alq6BA85'
+            },
+            imageMobile: {
+              target_id: '71',
+              alt: '',
+              title: '',
+              width: '424',
+              height: '1600',
+              image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_0.png?itok=kHpIWL15'
+            },
+            cta: {uri: 'https://market.tapit.com', title: 'Comprar', options: []}
+          }
+        }, {
+          type: 'recommended_content', data: {
+            description: {
+              value: '<p>Introducida por Adolphus Busch en 1876, aún se elabora con el mismo cuidado, alta calidad y estándares exigentes. Comenzó como una cerveza original de Estados Unidos, hoy es una marca global, se bebe en 85 países.</p>\r\n',
+              format: 'rich_text',
+              processed: '<p>Introducida por Adolphus Busch en 1876, aún se elabora con el mismo cuidado, alta calidad y estándares exigentes. Comenzó como una cerveza original de Estados Unidos, hoy es una marca global, se bebe en 85 países.</p>\n'
+            },
+            imageDesktop: {
+              target_id: '56',
+              alt: '',
+              title: '',
+              width: '424',
+              height: '1600',
+              image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/budweiser_0.png?itok=cQm54KLM'
+            },
+            imageMobile: {
+              target_id: '61',
+              alt: '',
+              title: '',
+              width: '424',
+              height: '1600',
+              image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/budweiser_1.png?itok=HXVS_tyA'
+            },
+            cta: {uri: 'https://market.tapit.com', title: 'Comprar', options: []}
+          }
+        }, {
+          type: 'recommended_content',
+          data: {
+            description: {
+              value: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\r\n',
+              format: 'rich_text',
+              processed: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\n'
+            },
+            imageDesktop: {
+              target_id: '76',
+              alt: '',
+              title: '',
+              width: '424',
+              height: '1600',
+              image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_1.png?itok=alq6BA85'
+            },
+            imageMobile: {
+              target_id: '71',
+              alt: '',
+              title: '',
+              width: '424',
+              height: '1600',
+              image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_0.png?itok=kHpIWL15'
+            },
+            cta: {uri: 'https://market.tapit.com', title: 'Comprar', options: []}
+          }
         }
-      }, {
-        type: 'recommended_content',
-        data: {
-          description: {
-            value: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\r\n',
-            format: 'rich_text',
-            processed: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\n'
-          },
-          imageDesktop: {
-            target_id: '76',
-            alt: '',
-            title: '',
-            width: '424',
-            height: '1600',
-            image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_1.png?itok=alq6BA85'
-          },
-          imageMobile: {
-            target_id: '71',
-            alt: '',
-            title: '',
-            width: '424',
-            height: '1600',
-            image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_0.png?itok=kHpIWL15'
-          },
-          cta: {uri: 'https://market.tapit.com', title: 'Comprar', options: []}
-        }
-      }, {
-        type: 'recommended_content',
-        data: {
-          description: {
-            value: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\r\n',
-            format: 'rich_text',
-            processed: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\n'
-          },
-          imageDesktop: {
-            target_id: '76',
-            alt: '',
-            title: '',
-            width: '424',
-            height: '1600',
-            image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_1.png?itok=alq6BA85'
-          },
-          imageMobile: {
-            target_id: '71',
-            alt: '',
-            title: '',
-            width: '424',
-            height: '1600',
-            image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_0.png?itok=kHpIWL15'
-          },
-          cta: {uri: 'https://market.tapit.com', title: 'Comprar', options: []}
-        }
-      }, {
-        type: 'recommended_content',
-        data: {
-          description: {
-            value: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\r\n',
-            format: 'rich_text',
-            processed: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\n'
-          },
-          imageDesktop: {
-            target_id: '76',
-            alt: '',
-            title: '',
-            width: '424',
-            height: '1600',
-            image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_1.png?itok=alq6BA85'
-          },
-          imageMobile: {
-            target_id: '71',
-            alt: '',
-            title: '',
-            width: '424',
-            height: '1600',
-            image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_0.png?itok=kHpIWL15'
-          },
-          cta: {uri: 'https://market.tapit.com', title: 'Comprar', options: []}
-        }
-      }, {
-        type: 'recommended_content', data: {
-          description: {
-            value: '<p>Introducida por Adolphus Busch en 1876, aún se elabora con el mismo cuidado, alta calidad y estándares exigentes. Comenzó como una cerveza original de Estados Unidos, hoy es una marca global, se bebe en 85 países.</p>\r\n',
-            format: 'rich_text',
-            processed: '<p>Introducida por Adolphus Busch en 1876, aún se elabora con el mismo cuidado, alta calidad y estándares exigentes. Comenzó como una cerveza original de Estados Unidos, hoy es una marca global, se bebe en 85 países.</p>\n'
-          },
-          imageDesktop: {
-            target_id: '56',
-            alt: '',
-            title: '',
-            width: '424',
-            height: '1600',
-            image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/budweiser_0.png?itok=cQm54KLM'
-          },
-          imageMobile: {
-            target_id: '61',
-            alt: '',
-            title: '',
-            width: '424',
-            height: '1600',
-            image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/budweiser_1.png?itok=HXVS_tyA'
-          },
-          cta: {uri: 'https://market.tapit.com', title: 'Comprar', options: []}
-        }
-      }, {
-        type: 'recommended_content',
-        data: {
-          description: {
-            value: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\r\n',
-            format: 'rich_text',
-            processed: '<p>La primera cerveza colombiana estimulada con música en vivo dentro de su planta de producción durante el proceso de fermentación y maduración de la cerveza</p>\n'
-          },
-          imageDesktop: {
-            target_id: '76',
-            alt: '',
-            title: '',
-            width: '424',
-            height: '1600',
-            image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_1.png?itok=alq6BA85'
-          },
-          imageMobile: {
-            target_id: '71',
-            alt: '',
-            title: '',
-            width: '424',
-            height: '1600',
-            image_url: 'http://tapit.dev-abinbev.acsitefactory.com/sites/g/files/wnfebl166/files/styles/large/public/2020-12/costen%CC%83a_bacana_0.png?itok=kHpIWL15'
-          },
-          cta: {uri: 'https://market.tapit.com', title: 'Comprar', options: []}
-        }
-      }
       ]
     }
   }]

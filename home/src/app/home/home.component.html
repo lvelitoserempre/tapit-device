@@ -74,17 +74,19 @@
       <div class="relative">
         <ngx-slick-carousel [config]="recommendedConfig">
           <div *ngFor="let slide of section.slides; let i=index;"
-               class="recommended-slide mr-4 rounded-md grid grid-cols-2 grid"
+               class="recommended-slide m-4 relative"
                ngxSlickItem>
-            <div class="col-span-1 p-5">
-              <h6 [innerHTML]="slide.title" class="text-lg font-bold text-primary-500"></h6>
-              <p [innerHTML]="slide.description" class="text-sm mb-3 md:mb-0"></p>
+            <div class="rounded-md p-5 h-full text-box flex flex-col justify-between">
+              <header>
+                <h6 [innerHTML]="slide.title" class="text-lg font-bold text-primary-500 mb-4"></h6>
+                <p [innerHTML]="slide.description" class="text-sm mb-3 md:mb-0"></p>
+              </header>
               <a [href]="slide.cta.uri"
-                 class="app-button border-2 border-black bg-white text-black text-center p-3 py-3 text-xs cursor-pointer uppercase hover:bg-black hover:text-white">{{slide.cta.title}}</a>
+                 class="app-button border-2 border-black bg-white text-black text-center p-3 py-3 text-xs cursor-pointer uppercase hover:bg-black hover:text-white ml-0">{{slide.cta.title}}</a>
             </div>
-            <div class="col-span-1 image-container">
-              <img [src]="slide.data.imageMobile.image_url" alt="image slide" class="mobile w-auto h-full"/>
-              <img [src]="slide.data.imageDesktop.image_url" alt="image slide" class="desktop w-auto h-full"/>
+            <div class="image-container">
+              <img [src]="slide.data.imageMobile.image_url" alt="image slide" class="desktop w-auto h-full"/>
+              <img [src]="slide.data.imageDesktop.image_url" alt="image slide" class="mobile w-auto h-full"/>
             </div>
           </div>
         </ngx-slick-carousel>

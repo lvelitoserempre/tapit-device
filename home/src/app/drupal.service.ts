@@ -15,6 +15,7 @@ export class DrupalService {
   ) {}
 
   getHomeData(): Observable<any[]> {
+    // return this.httpClient.get(environment.drupalUrl)
     return of(json)
     .pipe(map(response => this.processResponse(response)));
   }
@@ -89,6 +90,7 @@ export class DrupalService {
 
             if (slides) {
               for (const slide of slides) {
+                slide.title = slide.data.title?.value;
                 slide.description = slide.data.description.value;
                 slide.image = this.replaceUrl(slide.data.imageDesktop.image_url);
                 slide.cta = slide.data.cta;

@@ -40,7 +40,7 @@ export class HomeComponent {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: (window.innerWidth < 768 ? 1 : 4),
+    slidesToShow: (window.innerWidth < 768 ? 1 : 3),
     slidesToScroll: 1,
     variableWidth: false
   };
