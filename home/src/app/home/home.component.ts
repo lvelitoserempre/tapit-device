@@ -38,11 +38,11 @@ export class HomeComponent {
   recommendedConfig = {
     arrows: false,
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: (window.innerWidth < 768 ? 1 : 4),
     slidesToScroll: 1,
-    variableWidth: window.innerWidth < 768
+    variableWidth: false
   };
   welcomeSection: any = {};
 
@@ -64,7 +64,7 @@ export class HomeComponent {
         if (section.type === 'seasonal_section') {
           this.seasonalConfig.variableWidth = section.slides.length > 1 && window.innerWidth < 768;
           for (const slide of section.slides) {
-            slide.data.imageMobile.image_url= slide.data.imageMobile.image_url.replace('styles/large/public/', '');
+            slide.data.imageMobile.image_url = slide.data.imageMobile.image_url.replace('styles/large/public/', '');
             slide.data.imageDesktop.image_url = slide.data.imageDesktop.image_url.replace('styles/large/public/', '');
           }
         }

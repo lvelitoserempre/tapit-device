@@ -68,8 +68,8 @@
       </div>
     </div>
 
-    <div *ngIf="section.type==='recommended_section'" class="md:pl-0">
-      <div [innerHTML]="section.title" class="container mx-auto px-5 text-lg font-bold text-secondary-500"></div>
+    <div *ngIf="section.type==='recommended_section'" class="container mx-auto">
+      <div [innerHTML]="section.title" class="px-5 mb-5 text-lg font-bold text-secondary-500"></div>
 
       <div class="relative">
         <ngx-slick-carousel [config]="recommendedConfig">
@@ -83,8 +83,8 @@
                  class="app-button border-2 border-black bg-white text-black text-center p-3 py-3 text-xs cursor-pointer uppercase hover:bg-black hover:text-white">{{slide.cta.title}}</a>
             </div>
             <div class="col-span-1 image-container">
-              <img [src]="slide.data.imageMobile.image_url" alt="image slide" class="sm:hidden w-auto h-full"/>
-              <img [src]="slide.data.imageDesktop.image_url" alt="image slide" class="hidden sm:block w-auto h-full"/>
+              <img [src]="slide.data.imageMobile.image_url" alt="image slide" class="mobile w-auto h-full"/>
+              <img [src]="slide.data.imageDesktop.image_url" alt="image slide" class="desktop w-auto h-full"/>
             </div>
           </div>
         </ngx-slick-carousel>
