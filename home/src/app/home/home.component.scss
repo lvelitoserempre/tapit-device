@@ -20,6 +20,28 @@
   }
 }
 
+.recommended-slide {
+  box-shadow: 0px 5px 10px rgba(52, 16, 0, 0.08), 0px 15px 25px rgba(52, 16, 0, 0.06);
+  display: grid;
+  grid-template-columns: auto auto;
+
+  @media (min-width: 768px) {
+    width: 100%;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .image-container {
+    height: 400px;
+
+    @media (min-width: 768px) {
+      height: 400px
+    }
+  }
+}
+
 .slick-track {
   background: #FAFAFA;
 }

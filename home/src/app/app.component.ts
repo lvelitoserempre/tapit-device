@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
       }
     });
 
-    this.injectSsoApp();
+    //this.injectSsoApp();
 
     // @ts-ignore
     window.configTapitSso = () => {

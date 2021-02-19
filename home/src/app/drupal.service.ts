@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import json from './json';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class DrupalService {
   ) {}
 
   getHomeData(): Observable<any[]> {
-    return this.httpClient.get(environment.drupalUrl)
+    return of(json)
     .pipe(map(response => this.processResponse(response)));
   }
 
@@ -76,6 +77,21 @@ export class DrupalService {
               for (const slide of slides) {
                 slide.image = this.replaceUrl(slide.data.imageDesktop.image_url);
                 slide.link = slide.data.buyLink?.uri;
+              }
+            }
+
+            section.slides = slides;
+          }
+
+          if (section.type === 'recommended_section') {
+            section.title = section.data.title.value;
+            const slides = section.data.recommendedContent;
+
+            if (slides) {
+              for (const slide of slides) {
+                slide.description = slide.data.description.value;
+                slide.image = this.replaceUrl(slide.data.imageDesktop.image_url);
+                slide.cta = slide.data.cta;
               }
             }
 

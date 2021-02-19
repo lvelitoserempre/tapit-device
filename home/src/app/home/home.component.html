@@ -1,21 +1,23 @@
 <div class="mb-4 md:mb-8 border-b border-solid border-neutral-500 bg-neutral-100">
   <div *ngIf="welcomeSection.type"
-    [innerHTML]="user ? welcomeSection.messageAuthenticated : welcomeSection.messageAnonymous"
-    class="container mx-auto py-2 px-4 px-5 text-sm text-secondary-500">
+       [innerHTML]="user ? welcomeSection.messageAuthenticated : welcomeSection.messageAnonymous"
+       class="container mx-auto py-2 px-4 px-5 text-sm text-secondary-500">
   </div>
 </div>
 <article>
   <section *ngFor="let section of sections;">
-      <div *ngIf="section.type==='seasonal_section'" class="md:pl-0">
+    <div *ngIf="section.type==='seasonal_section'" class="md:pl-0">
       <ngx-slick-carousel [config]="seasonalConfig">
         <div *ngFor="let slide of section.slides; let i=index;"
-          class="seasonal-slide overflow-hidden mr-4 rounded-md"
-          ngxSlickItem>
-          <div class="overflow-hidden image-container md:container md:mx-auto rounded-md m-2 mb-4 md:m-4 md:mb-6 sm:hidden">
-            <img [src]="slide.data.imageMobile.image_url" class="mx-auto" alt="image slide"/>
+             class="seasonal-slide overflow-hidden mr-4 rounded-md"
+             ngxSlickItem>
+          <div
+            class="overflow-hidden image-container md:container md:mx-auto rounded-md m-2 mb-4 md:m-4 md:mb-6 sm:hidden">
+            <img [src]="slide.data.imageMobile.image_url" alt="image slide" class="mx-auto"/>
           </div>
-          <div class="m-4 shadow-md relative overflow-hidden image-container md:container md:mx-auto rounded-md hidden sm:block">
-            <img [src]="slide.data.imageDesktop.image_url" class="mx-auto" alt="image slide"/>
+          <div
+            class="m-4 shadow-md relative overflow-hidden image-container md:container md:mx-auto rounded-md hidden sm:block">
+            <img [src]="slide.data.imageDesktop.image_url" alt="image slide" class="mx-auto"/>
             <div class="absolute bottom-0 p-3 block container mx-auto sm:block bg-white">
               <div class="relative flex flex-col md:flex-row md:justify-between md:items-center">
                 <p [innerHTML]="slide.description" class="text-sm font-bold mb-3 md:mb-0"></p>
@@ -30,8 +32,8 @@
             <div class="relative flex flex-col">
               <p [innerHTML]="slide.description" class="text-sm font-bold mb-3"></p>
               <a [href]="slide.button.link"
-                class="app-button bg-primary-500 text-center w-full uppercase text-xs py-3"
-                target="_blank">{{slide.button.label}}</a>
+                 class="app-button bg-primary-500 text-center w-full uppercase text-xs py-3"
+                 target="_blank">{{slide.button.label}}</a>
             </div>
           </div>
         </div>
@@ -43,21 +45,49 @@
       <div [innerHTML]="section.description" class="container mx-auto py-2 px-5 text-sm mb-2 text-secondary-500"></div>
 
       <div class="relative">
-        <ngx-slick-carousel #slickModal="slick-carousel" [config]="catalogConfig" class="bg-neutral-100 pt-5 pb-8 inline-block">
+        <ngx-slick-carousel #slickModal="slick-carousel" [config]="catalogConfig"
+                            class="bg-neutral-100 pt-5 pb-8 inline-block">
           <a *ngFor="let slide of section.slides; let i=index;"
              [href]="slide.link"
              class="catalog-slide relative flex flex-col content-center justify-center items-center relative"
              ngxSlickItem>
-            <img [src]="slide.image" class="mx-auto" alt="bottle"/>
-            <img src="./assets/images/shadow.svg" alt="shadow" class="mx-auto mt-4 mb-8">
+            <img [src]="slide.image" alt="bottle" class="mx-auto"/>
+            <img alt="shadow" class="mx-auto mt-4 mb-8" src="./assets/images/shadow.svg">
           </a>
         </ngx-slick-carousel>
 
-        <img src="./assets/images/next-prev-nav.svg" alt="previous" (click)="slickModal.slickPrev()" class="text-xl before cursor-pointer">
-        <img src="./assets/images/next-prev-nav.svg" alt="next" (click)="slickModal.slickNext()" class="text-xl next cursor-pointer">
+        <img (click)="slickModal.slickPrev()" alt="previous" class="text-xl before cursor-pointer"
+             src="./assets/images/next-prev-nav.svg">
+        <img (click)="slickModal.slickNext()" alt="next" class="text-xl next cursor-pointer"
+             src="./assets/images/next-prev-nav.svg">
       </div>
       <div class="text-center mt-4 md:mb-12">
-        <a class="app-button border-2 border-black bg-white text-black text-center p-3 py-3 text-xs cursor-pointer uppercase hover:bg-black hover:text-white md:w-56" [href]="section.data.cta.uri">{{section.data.cta.title}}</a>
+        <a
+          [href]="section.data.cta.uri"
+          class="app-button border-2 border-black bg-white text-black text-center p-3 py-3 text-xs cursor-pointer uppercase hover:bg-black hover:text-white md:w-56">{{section.data.cta.title}}</a>
+      </div>
+    </div>
+
+    <div *ngIf="section.type==='recommended_section'" class="md:pl-0">
+      <div [innerHTML]="section.title" class="container mx-auto px-5 text-lg font-bold text-secondary-500"></div>
+
+      <div class="relative">
+        <ngx-slick-carousel [config]="recommendedConfig">
+          <div *ngFor="let slide of section.slides; let i=index;"
+               class="recommended-slide mr-4 rounded-md grid grid-cols-2 grid"
+               ngxSlickItem>
+            <div class="col-span-1 p-5">
+              <h6 [innerHTML]="slide.title" class="text-lg font-bold text-primary-500"></h6>
+              <p [innerHTML]="slide.description" class="text-sm mb-3 md:mb-0"></p>
+              <a [href]="slide.cta.uri"
+                 class="app-button border-2 border-black bg-white text-black text-center p-3 py-3 text-xs cursor-pointer uppercase hover:bg-black hover:text-white">{{slide.cta.title}}</a>
+            </div>
+            <div class="col-span-1 image-container">
+              <img [src]="slide.data.imageMobile.image_url" alt="image slide" class="sm:hidden w-auto h-full"/>
+              <img [src]="slide.data.imageDesktop.image_url" alt="image slide" class="hidden sm:block w-auto h-full"/>
+            </div>
+          </div>
+        </ngx-slick-carousel>
       </div>
     </div>
   </section>

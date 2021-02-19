@@ -35,6 +35,15 @@ export class HomeComponent {
     variableWidth: false,
     height: '280px'
   };
+  recommendedConfig = {
+    arrows: false,
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    variableWidth: window.innerWidth < 768
+  };
   welcomeSection: any = {};
 
   constructor(
