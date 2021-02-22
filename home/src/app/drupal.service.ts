@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
-import json from './json';
+import {environment} from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +11,13 @@ export class DrupalService {
 
   constructor(
     private httpClient: HttpClient
-  ) {}
+  ) {
+  }
 
   getHomeData(): Observable<any[]> {
-    // return this.httpClient.get(environment.drupalUrl)
-    return of(json)
-    .pipe(map(response => this.processResponse(response)));
+    // return of(json)
+    return this.httpClient.get(environment.drupalUrl)
+      .pipe(map(response => this.processResponse(response)));
   }
 
   private replaceUrl(imageUrl): string {

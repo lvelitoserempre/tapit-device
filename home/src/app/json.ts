@@ -480,7 +480,7 @@ export default [{
           type: 'recommended_content',
           data: {
             title: {
-              value: '<p><span style="color:#ff5005;">Cerveza Poker</span></p>\r\n',
+              value: '<p><span style="color:#ff5005;">Cerveza Poker Artesanal 5 Estrellas</span></p>\r\n',
               format: 'rich_text',
               processed: '<p>Introducida por Adolphus Busch en 1876, aún se elabora con el mismo cuidado, alta calidad y estándares exigentes. Comenzó como una cerveza original de Estados Unidos, hoy es una marca global, se bebe en 85 países.</p>\n'
             },
