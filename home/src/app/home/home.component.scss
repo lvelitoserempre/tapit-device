@@ -20,6 +20,61 @@
   }
 }
 
+.recommended-slide {
+  height: 400px;
+
+  @media (min-width: 768px) {
+    width: 100%;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .title {
+    line-height: 24px;
+  }
+
+  .description {
+    line-height: 20px;
+  }
+
+  .text-box {
+    box-shadow: 0px 5px 10px rgba(52, 16, 0, 0.08), 0px 15px 25px rgba(52, 16, 0, 0.06);
+    margin-right: 53px;
+    padding-right: 60px;
+    line-height: 20px;
+  }
+
+  .image-container {
+    height: 400px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+
+    @media (min-width: 768px) {
+      height: 400px
+    }
+
+    .mobile {
+      display: block;
+
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+
+    .desktop {
+      display: none;
+
+      @media (min-width: 768px) {
+        display: block;
+      }
+    }
+  }
+}
+
 .slick-track {
   background: #FAFAFA;
 }
@@ -62,28 +117,35 @@
 ::ng-deep {
   div {
     line-height: 24px;
+
     h6 {
       font-weight: 700 !important;
     }
+
     p, strong {
       span {
         color: #ff5005;
       }
     }
   }
+
   .border-orange-400 {
     border-color: #FF8D5C;
   }
+
   .pl-small {
     padding-left: 0.25rem;
   }
+
   .p-small {
     padding-bottom: 1px;
     padding-top: 1px;
   }
+
   .word-s-1 {
     word-spacing: 0.2rem;
   }
+
   .points-stars {
     position: absolute;
     right: -3px;

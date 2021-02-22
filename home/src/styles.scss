@@ -165,13 +165,3 @@ body {
     box-shadow: none;
   }
 }
-@media (min-width: 768px) and
- (min-width: 1024px) {
-
-   .md\:container {
-     max-width: 1024px !important;
-    }
-  }
-  .container {
-    max-width: 1024px !important;
-  }

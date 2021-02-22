@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import {environment} from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +11,13 @@ export class DrupalService {
 
   constructor(
     private httpClient: HttpClient
-  ) {}
+  ) {
+  }
 
   getHomeData(): Observable<any[]> {
+    // return of(json)
     return this.httpClient.get(environment.drupalUrl)
-    .pipe(map(response => this.processResponse(response)));
+      .pipe(map(response => this.processResponse(response)));
   }
 
   private replaceUrl(imageUrl): string {
@@ -76,6 +78,22 @@ export class DrupalService {
               for (const slide of slides) {
                 slide.image = this.replaceUrl(slide.data.imageDesktop.image_url);
                 slide.link = slide.data.buyLink?.uri;
+              }
+            }
+
+            section.slides = slides;
+          }
+
+          if (section.type === 'recommended_section') {
+            section.title = section.data.title.value;
+            const slides = section.data.recommendedContent;
+
+            if (slides) {
+              for (const slide of slides) {
+                slide.title = slide.data.title?.value;
+                slide.description = slide.data.description.value;
+                slide.image = this.replaceUrl(slide.data.imageDesktop.image_url);
+                slide.cta = slide.data.cta;
               }
             }
 

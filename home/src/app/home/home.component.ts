@@ -35,6 +35,35 @@ export class HomeComponent {
     variableWidth: false,
     height: '280px'
   };
+  recommendedConfig = {
+    arrows: false,
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    variableWidth: false,
+    responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
+  };
   welcomeSection: any = {};
 
   constructor(
@@ -43,37 +72,37 @@ export class HomeComponent {
     private drupalService: DrupalService,
   ) {
     this.drupalService.getHomeData()
-    .pipe(map(sections => this.fillPlaceholders(sections)))
-    .subscribe(sections => {
-      this.sections = sections;
+      .pipe(map(sections => this.fillPlaceholders(sections)))
+      .subscribe(sections => {
+        this.sections = sections;
 
-      for (const section of sections) {
-        if (section.type === 'welcome_message') {
-          this.welcomeSection = section;
-        }
+        for (const section of sections) {
+          if (section.type === 'welcome_message') {
+            this.welcomeSection = section;
+          }
 
-        if (section.type === 'seasonal_section') {
-          this.seasonalConfig.variableWidth = section.slides.length > 1 && window.innerWidth < 768;
-          for (const slide of section.slides) {
-            slide.data.imageMobile.image_url= slide.data.imageMobile.image_url.replace('styles/large/public/', '');
-            slide.data.imageDesktop.image_url = slide.data.imageDesktop.image_url.replace('styles/large/public/', '');
+          if (section.type === 'seasonal_section') {
+            this.seasonalConfig.variableWidth = section.slides.length > 1 && window.innerWidth < 768;
+            for (const slide of section.slides) {
+              slide.data.imageMobile.image_url = slide.data.imageMobile.image_url.replace('styles/large/public/', '');
+              slide.data.imageDesktop.image_url = slide.data.imageDesktop.image_url.replace('styles/large/public/', '');
+            }
           }
         }
-      }
-    });
+      });
   }
 
   private fillPlaceholders(sections: any[]): any[] {
     for (const section of sections) {
       if (section && section.type === 'welcome_message') {
         this.angularFireAuth.user
-        .pipe(switchMap(user => {
-          return user ? this.angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
-        }))
-        .subscribe(user => {
-          this.user = user;
-          section.messageAuthenticated = this.fillUserData(section.messageAuthenticated);
-        });
+          .pipe(switchMap(user => {
+            return user ? this.angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
+          }))
+          .subscribe(user => {
+            this.user = user;
+            section.messageAuthenticated = this.fillUserData(section.messageAuthenticated);
+          });
         section.messageAnonymous = section.messageAnonymous;
       }
     }

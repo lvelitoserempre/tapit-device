@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
           console.log(user);
         });
     }
+    //this.injectSsoApp();
 
     if (search.get('source')) {
       this.isOnWebView = true;
