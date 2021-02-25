@@ -90,9 +90,16 @@ export class DrupalService {
 
             if (slides) {
               for (const slide of slides) {
+                if (slide.data.imageMobile) {
+                  slide.data.imageMobile.image_url = this.replaceUrl(slide.data.imageMobile.image_url);
+                }
+
+                if (slide.data.imageDesktop) {
+                  slide.data.imageDesktop.image_url = this.replaceUrl(slide.data.imageDesktop.image_url);
+                }
+
                 slide.title = slide.data.title?.value;
                 slide.description = slide.data.description.value;
-                slide.image = this.replaceUrl(slide.data.imageDesktop.image_url);
                 slide.cta = slide.data.cta;
               }
             }
