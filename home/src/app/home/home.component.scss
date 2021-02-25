@@ -4,11 +4,16 @@
   /*padding-left: 20px;*/
 
   @media (min-width: 768px) {
+    box-shadow: none;
     width: 100%;
   }
 
   &:focus {
     outline: none;
+  }
+
+  .description {
+    line-height: 20px;
   }
 
   .image-container {
@@ -101,7 +106,7 @@
 .next {
   position: absolute;
   top: 40%;
-  width: 30px;
+  width: 48px;
   height: 60px;
   right: 0px;
 }
@@ -109,7 +114,7 @@
 .before {
   position: absolute;
   top: 40%;
-  width: 30px;
+  width: 48px;
   height: 60px;
   transform: rotate(180deg);
 }
