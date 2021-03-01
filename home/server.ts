@@ -1,16 +1,14 @@
 import 'zone.js/dist/zone-node';
-import 'globalthis/auto';
-
-import { enableProdMode } from '@angular/core';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
-import {join} from 'path';
-import {get} from 'http';
+import { join } from 'path';
 
-import {AppServerModule} from './src/main.server';
-import {APP_BASE_HREF} from '@angular/common';
-import {existsSync} from 'fs';
+import { AppServerModule } from './src/main.server';
+import { APP_BASE_HREF } from '@angular/common';
+import { existsSync } from 'fs';
+import { enableProdMode } from '@angular/core';
+import { get } from 'http';
 
 enableProdMode();
 
@@ -22,7 +20,7 @@ const window = domino.createWindow(template);
 global['window'] = window;
 global['document'] = window.document;
 global['innerWidth'] = window.innerWidth;
-
+global['location'] = window.location;
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
@@ -54,7 +52,7 @@ export function app(): express.Express {
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
     res.set('Cache-Control', 'public, max-age=3600, s-maxage=3600');
-    res.render(indexHtml, {req, providers: [{provide: APP_BASE_HREF, useValue: req.baseUrl}]});
+    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
 
   return server;

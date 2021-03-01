@@ -20,7 +20,7 @@ export class DrupalService {
       .pipe(map(response => this.processResponse(response)));
   }
 
-  private replaceUrl(imageUrl): string {
+  private replaceUrl(imageUrl:any): string {
     if (!imageUrl.startsWith('/cache')) {
       return imageUrl ? ('/cache/' + imageUrl.replace(/https?:\/\//gi, '')) : imageUrl;
     } else {

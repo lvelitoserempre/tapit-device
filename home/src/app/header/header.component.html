@@ -8,9 +8,10 @@
       <ul *ngIf="!user" class="fixed w-10/12 p-5 bg-neutral-100 h-full top-0 border-4 border-white text-sm sm:text-base"
           id="menu">
         <li class="py-2"><img class="w-2/3" src="../assets/images/tap-it_black-orange.svg"></li>
-        <li class="py-2"><a (click)="loginCloseMenu()"
-                            class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
-                            href="/">INICIA SESIÓN</a></li>
+        <li class="py-2">
+          <button (click)="loginCloseMenu();ssoOpen();"
+            class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm">INICIA SESIÓN</button>
+          </li>
         <li><img class="absolute icon-close" src="../assets/images/ic_close.svg" width="30"></li>
       </ul>
 
@@ -118,11 +119,11 @@
             </li>
           </ul>
         </ul>
-        <ul *ngIf="showLoginButton" class="relative">
+        <ul *ngIf="showLoginButton" class="relative hidden sm:block">
           <ul class="relative inline-block">
-            <li><a
+            <li><button
               class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
-              href="/">INICIA SESIÓN</a></li>
+              (click)="ssoOpen()">INICIA SESIÓN</button></li>
           </ul>
         </ul>
       </div>

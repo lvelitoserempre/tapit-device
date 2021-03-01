@@ -1,7 +1,6 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {of, Subscription} from 'rxjs';
+import {Component, OnDestroy} from '@angular/core';
+import {of} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {UserAccount} from '../user/user-account';
 import firebase from 'firebase/app';
 import 'firebase/remote-config';
@@ -11,12 +10,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { switchMap, take } from 'rxjs/operators';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnDestroy {
   user: UserAccount;
   marketUrl = environment.production ? 'https://market.tapit.com.co' : 'https://market-dev.tapit.com.co';
   showLoginButton = false;
@@ -25,9 +25,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     private afs:AngularFireRemoteConfig,
     private angularFireAuth: AngularFireAuth,
-    private angularFirestore: AngularFirestore,
-    private route: ActivatedRoute, private router: Router
-  ) { }
+    private angularFirestore: AngularFirestore
+  ) {
+    this.angularFireAuth.user
+    .pipe(switchMap(user => {
+      return user ? this.angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
+    }))
+    .subscribe(user => {
+      this.user = user;
+      this.showLoginButton = !this.user;
+    })
+  }
 
   setMenu(event: any) {
     if (event.target.checked) {
@@ -42,16 +50,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.angularFireAuth.user
-    .pipe(switchMap(user => {
-      return user ? this.angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
-    }))
-    .subscribe(user => {
-      this.user = user;
-    })
+
   }
 
   ngOnDestroy(): void {
     //this.userSubscription.unsubscribe();
+  }
+  
+  ssoOpen():void {
+    ssoApp.showApp();
   }
 }

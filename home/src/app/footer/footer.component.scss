@@ -2,7 +2,7 @@
 @import "../../assets/styles/colors";
 
 .bg-footer {
-  background-image: url('../../../../dist/assets/images/footer/background-footer.svg');
+  background-image: url('../../assets/images/footer/background-footer.svg');
   @media screen and (max-width: $xs) {
     background-position: 10vw bottom;
   }
@@ -34,7 +34,7 @@
 
   &__social {
     li {
-      background-image: url('../../../../dist/assets/images/footer/bg-social.svg');
+      background-image: url('../../assets/images/footer/bg-social.svg');
       height: 50px;
       margin: 0 10px;
       text-align: center;

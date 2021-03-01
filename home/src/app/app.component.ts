@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {ActivatedRoute} from '@angular/router';
-import {environment} from '../environments/environment';
-
+import { ScriptService } from './services/script.service';
+import { PLATFORM_ID } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,8 +11,16 @@ import {environment} from '../environments/environment';
 export class AppComponent implements OnInit {
   isOnWebView = false;
 
-  constructor(private route: ActivatedRoute,
-              private angularFireAuth: AngularFireAuth) {
+  constructor(
+    private angularFireAuth: AngularFireAuth,
+    private scriptService: ScriptService
+  ) {
+    this.scriptService.loadScript('ssoApp')
+    .then(function() {
+      // @ts-ignore
+      window.configTapitSso = () => {
+      };
+    })
   }
 
   ngOnInit(): void {
@@ -20,30 +28,13 @@ export class AppComponent implements OnInit {
 
     if (search.get('customToken')) {
       this.angularFireAuth.signInWithCustomToken(search.get('customToken'))
-        .then(user => {
-          console.log(user);
-        });
+      .then(user => {
+        console.log(user);
+      });
     }
-    //this.injectSsoApp();
 
     if (search.get('source')) {
       this.isOnWebView = true;
-    } else {
-      this.injectSsoApp();
-
-      // @ts-ignore
-      window.configTapitSso = () => {
-      };
-    }
-
-  }
-
-  injectSsoApp(): void {
-    if (!document.getElementById('sso-script')) {
-      const scriptElement = document.createElement('script');
-      scriptElement.setAttribute('src', environment.ssoApp);
-      scriptElement.setAttribute('id', 'sso-script');
-      document.body.insertAdjacentElement('beforeend', scriptElement);
     }
   }
 }

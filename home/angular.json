@@ -18,8 +18,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+              "path": "extra-webpack.config.js",
+              "mergeStrategies": { "externals": "replace" }
+            },
             "outputPath": "dist/home/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -219,7 +223,8 @@
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
             "browserTarget": "home:build",
-            "serverTarget": "home:server"
+            "serverTarget": "home:server",
+            "port": 4201
           },
           "configurations": {
             "production": {
