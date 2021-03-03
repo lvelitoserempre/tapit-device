@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LoaderService } from "src/app/loader/loader-service/loader.service";
 import Code from '../codes';
+import {LoadingService} from '../../../loading.service';
 
 @Component({
   selector: 'app-code-detail-dialog',
@@ -13,14 +13,14 @@ export class CodeDetailDialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public code: Code,
-    private loaderService: LoaderService,
+    private loadingService: LoadingService,
   ) { }
 
   scrollModal() {
-    this.loaderService.show();
+    this.loadingService.show();
     setTimeout(() => {
       document.getElementById('scroll-view').scrollTo(0, 0);
-      this.loaderService.hide();
+      this.loadingService.hide();
     }, 500);
   }
 

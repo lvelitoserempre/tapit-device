@@ -2,97 +2,13 @@
 @import "../../assets/styles/colors";
 
 .bg-footer {
-  background-image: url('../../../../dist/assets/images/footer/background-footer.svg');
+  background-image: url('/assets/images/background-footer.svg');
   @media screen and (max-width: $xs) {
       background-position: 10vw bottom;
   }
 }
 
 .footer {
-  // flex: 1 0 auto !important;
-  // .disclaimer {
-  //   background-color: #eeeeee;
-  //   font-size: 18px;
-  //   font-weight: $semi-bold;
-  //   padding: 20px 5%;
-  //   margin-bottom: 10px;
-  // }
-
-  // .contact-info {
-  //   background-color: black;
-  //   color: white;
-  //   padding: 20px 5%;
-
-  //   img {
-  //     width: 150px;
-  //   }
-
-  //   a:link, a:visited {
-  //     color: white;
-  //   }
-  // }
-  // .links {
-  //   a {
-  //     color: white;
-  //     text-decoration:none
-  //   }
-  // }
-  // &-logged {
-  //   background-color: #262424;
-  //   color: white;
-  //   font-size: 14px;
-  //   .links {
-  //     margin-bottom: 25px;
-  //     &-redes {
-  //       a {
-  //         margin: 0 15px;
-  //         img {
-  //           width: 43px;
-  //         }
-  //       }
-  //     }
-  //     a {
-  //       margin-right: 5px;
-  //       @media screen and (max-width: $maxWidthTablet) {
-  //         margin: 5px 0;
-  //       }
-  //     }
-  //     .btn-danger-poker {
-  //       cursor: pointer;
-  //       font-size: 20px;
-  //       margin-right: 30px;
-  //       @media screen and (max-width: $maxWidthTablet) {
-  //         margin: 5px 0;
-  //       }
-  //     }
-  //     span {
-  //       color: $redColor;
-  //       margin-right: 5px;
-  //     }
-  //   }
-  //   .disclaimer {
-  //     background-color: transparent;
-  //     border-top: 1px solid $redColor;
-  //     color: $redColor;
-  //     font-family: 'Helvetica Neue', sans-serif;
-  //     font-weight: normal;
-  //     text-align: center;
-  //     width: 100%;
-  //     &-image {
-  //       color: $redColor;
-  //       font-size: 12px;
-  //       img {
-  //         margin-left: 10px;
-  //         width: 80px;
-  //       }
-  //     }
-  //   }
-  //   .contact-info {
-  //     background-color: transparent;
-  //     max-width: $maxWidth;
-  //     padding: 15px 0;
-  //   }
-  // }
   background-color: $darkGrayColor;
   color: white;
   font-size: 18px;
@@ -118,7 +34,7 @@
 
   &__social {
     li {
-      background-image: url('../../../../dist/assets/images/footer/bg-social.svg');
+      background-image: url('/assets/images/bg-social.svg');
       height: 50px;
       margin: 0 10px;
       text-align: center;

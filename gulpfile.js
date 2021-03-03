@@ -139,6 +139,13 @@ task('build-sso-app', function () {
   return runCommand(command, folder);
 })
 
+task('build-home-app', function () {
+  const command = 'npm i && ' + BUILD_MAP[process.env.ENV].buildCommand
+  const folder = './home';
+
+  return runCommand(command, folder);
+})
+
 task('deploy', function () {
   const command = BUILD_MAP[process.env.ENV].deployCommand;
   const folder = './';
@@ -147,9 +154,9 @@ task('deploy', function () {
 })
 
 task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
-  'build-react-app', 'build-angular-app', 'build-sso-app'));
+  'build-react-app', 'build-angular-app', 'build-sso-app', 'build-home-app'));
 
 task('deploy-tapit', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
-  'build-react-app', 'build-angular-app', 'build-sso-app', 'deploy'));
+  'build-react-app', 'build-angular-app', 'build-sso-app', 'build-home-app', 'deploy'));
 
 task('deploy-brahma-sso', series('clear', 'copy-fonts', 'build-sso-app', 'deploy'));

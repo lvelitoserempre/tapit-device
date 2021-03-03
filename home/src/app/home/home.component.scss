@@ -1,0 +1,159 @@
+.seasonal-slide {
+  box-shadow: 0px 5px 10px rgba(52, 16, 0, 0.08), 0px 15px 25px rgba(52, 16, 0, 0.06);
+  width: 80vw;
+  /*padding-left: 20px;*/
+
+  @media (min-width: 768px) {
+    box-shadow: none;
+    width: 100%;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .description {
+    line-height: 20px;
+  }
+
+  .image-container {
+    height: 265px;
+
+    @media (min-width: 768px) {
+      height: 550px
+    }
+  }
+}
+
+.recommended-slide {
+  height: 400px;
+
+  @media (min-width: 768px) {
+    width: 100%;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .title {
+    line-height: 24px;
+  }
+
+  .description {
+    line-height: 20px;
+  }
+
+  .text-box {
+    box-shadow: 0px 5px 10px rgba(52, 16, 0, 0.08), 0px 15px 25px rgba(52, 16, 0, 0.06);
+    margin-right: 53px;
+    padding-right: 60px;
+    line-height: 20px;
+  }
+
+  .image-container {
+    height: 400px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+
+    @media (min-width: 768px) {
+      height: 400px
+    }
+
+    .mobile {
+      display: block;
+
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+
+    .desktop {
+      display: none;
+
+      @media (min-width: 768px) {
+        display: block;
+      }
+    }
+  }
+}
+
+.slick-track {
+  background: #FAFAFA;
+}
+
+.catalog-slide {
+  /*img {
+    @media (min-width: 768px) {
+    }
+  }*/
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.shadow {
+  height: 6px;
+  width: 47px;
+  background: #9F9A99;
+  filter: blur(5px);
+  border-radius: 50%;
+}
+
+.next {
+  position: absolute;
+  top: 40%;
+  width: 48px;
+  height: 60px;
+  right: 0px;
+}
+
+.before {
+  position: absolute;
+  top: 40%;
+  width: 48px;
+  height: 60px;
+  transform: rotate(180deg);
+}
+
+::ng-deep {
+  div {
+    line-height: 24px;
+
+    h6 {
+      font-weight: 700 !important;
+    }
+
+    p, strong {
+      span {
+        color: #ff5005;
+      }
+    }
+  }
+
+  .border-orange-400 {
+    border-color: #FF8D5C;
+  }
+
+  .pl-small {
+    padding-left: 0.25rem;
+  }
+
+  .p-small {
+    padding-bottom: 1px;
+    padding-top: 1px;
+  }
+
+  .word-s-1 {
+    word-spacing: 0.2rem;
+  }
+
+  .points-stars {
+    position: absolute;
+    right: -3px;
+    top: -2px;
+  }
+}

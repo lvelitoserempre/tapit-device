@@ -14,6 +14,10 @@
           "destination": "/app/index.html"
         },
         {
+          "source": "/home/**",
+          "destination": "/home/index.html"
+        },
+        {
           "source": "/sso/**",
           "destination": "/sso/index.html"
         }
@@ -31,6 +35,10 @@
         {
           "source": "/app/**",
           "destination": "/app/index.html"
+        },
+        {
+          "source": "/home/**",
+          "destination": "/home/index.html"
         },
         {
           "source": "/sso/**",
@@ -73,6 +81,10 @@
         {
           "source": "/app/**",
           "destination": "/app/index.html"
+        },
+        {
+          "source": "/home/**",
+          "destination": "/home/index.html"
         },
         {
           "source": "/sso/**",

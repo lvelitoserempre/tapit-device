@@ -1,10 +1,14 @@
 import {Injectable} from '@angular/core';
-import {UserAccount} from '../models/user-account.model';
+import {UserAccount} from './user-account.model';
 import {from, Observable} from 'rxjs';
-import {auth, firestore} from 'firebase';
 import {map, mergeMap, pluck, switchMap} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+import firestore = firebase.firestore;
+import auth = firebase.auth;
 import DocumentSnapshot = firestore.DocumentSnapshot;
 import DocumentReference = firestore.DocumentReference;
 import Timestamp = firestore.Timestamp;

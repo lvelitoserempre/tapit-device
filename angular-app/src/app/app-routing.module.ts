@@ -5,14 +5,10 @@ import {RouterModule, Routes} from '@angular/router';
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: () => import('./user/user-authentication/user-authentication.module').then(m => m.UserAuthenticationModule)
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: 'user',
-    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
-  },
-  {
-    path: 'app/user',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   },
   {

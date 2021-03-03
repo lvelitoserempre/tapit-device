@@ -1,16 +1,18 @@
 import {Injectable} from '@angular/core';
-import {from, Observable, of} from 'rxjs';
-import {auth, firestore} from 'firebase';
+import {from, Observable} from 'rxjs';
 import {map, mergeMap} from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import Code from './codes';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import auth = firebase.auth;
 
 @Injectable({
   providedIn: 'root'
 })
 export class CodeDAO {
-  
+
   constructor(private http: HttpClient) {
   }
 
@@ -26,21 +28,21 @@ export class CodeDAO {
             }
           }
         )))
-        .pipe(map((objects: any[]) => {
-          const codes: Code[] = [];
+      .pipe(map((objects: any[]) => {
+        const codes: Code[] = [];
 
-          for (const object of objects) {
-            codes.push({ 
-              name: object.commercialEstablishment.name, 
-              amount: object.amount,
-              expireDate: new Date(object.validTo),
-              image: object.commercialEstablishment.icon,
-              tags: object.tags,
-              qrCodeUrl: object.qrCodeUrl,
-              description: object.description
-             });
-          }
-          return codes;
-        }));
+        for (const object of objects) {
+          codes.push({
+            name: object.commercialEstablishment.name,
+            amount: object.amount,
+            expireDate: new Date(object.validTo),
+            image: object.commercialEstablishment.icon,
+            tags: object.tags,
+            qrCodeUrl: object.qrCodeUrl,
+            description: object.description
+          });
+        }
+        return codes;
+      }));
   }
 }
