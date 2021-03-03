@@ -1,8 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {ActivatedRoute} from '@angular/router';
 import { ScriptService } from './services/script.service';
-import { PLATFORM_ID } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

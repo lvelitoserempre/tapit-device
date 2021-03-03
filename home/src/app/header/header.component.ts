@@ -49,10 +49,6 @@ export class HeaderComponent implements OnDestroy {
     document.getElementById('toggleMenu').click()
   }
 
-  ngOnInit(): void {
-
-  }
-
   ngOnDestroy(): void {
     //this.userSubscription.unsubscribe();
   }
