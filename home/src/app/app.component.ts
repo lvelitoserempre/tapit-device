@@ -6,6 +6,7 @@ import {CookiesService} from './services/cookies.service';
 import { PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { AgeGateComponent } from './age-gate/age-gate.component';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,8 +19,10 @@ export class AppComponent implements OnInit {
   constructor(
     private angularFireAuth: AngularFireAuth,
     private scriptService: ScriptService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private ngxService: NgxUiLoaderService
   ) {
+    this.ngxService.start();
     this.loadSSOScript();
   }
 
@@ -55,8 +58,10 @@ export class AppComponent implements OnInit {
     }
   }
 
-
   ngAfterViewInit() {
-    this.readCookies();
+    if (!this.isOnWebView) {
+      this.readCookies();
+    }
+    this.ngxService.stop();
   }
 }

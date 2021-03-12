@@ -34,6 +34,7 @@
     "firebase": "^8.2.6",
     "jquery": "^3.5.1",
     "ngx-slick-carousel": "^0.5.1",
+    "ngx-ui-loader": "^10.0.0",
     "rxjs": "~6.6.0",
     "slick-carousel": "^1.8.1",
     "tslib": "^2.0.0",

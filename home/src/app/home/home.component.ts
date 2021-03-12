@@ -6,6 +6,7 @@ import {map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {DrupalService} from '../services/drupal.service';
 import {formatNumber} from '@angular/common';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-home',
@@ -70,7 +71,9 @@ export class HomeComponent {
     private angularFireAuth: AngularFireAuth,
     private angularFirestore: AngularFirestore,
     private drupalService: DrupalService,
+    private ngxService: NgxUiLoaderService
   ) {
+    this.ngxService.start();
     this.drupalService.getHomeData()
     .pipe(map(sections => this.fillPlaceholders(sections)))
     .subscribe(sections => {
@@ -89,6 +92,7 @@ export class HomeComponent {
           }
         }
       }
+      this.ngxService.stop();
     });
   }
 
