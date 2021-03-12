@@ -8,7 +8,7 @@ import remoteConfig = firebase.remoteConfig;
 import {AngularFireRemoteConfig} from '@angular/fire/remote-config';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { switchMap, take } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 
 @Component({

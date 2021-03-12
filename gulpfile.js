@@ -116,6 +116,7 @@ task('build-tailwind', function () {
     .pipe(dest('react-app/src/assets/styles'))
     .pipe(dest('angular-app/src/assets/styles'))
     .pipe(dest('sso-app/src/assets/styles'))
+    .pipe(dest('home/src/assets/styles'))
 })
 
 task('build-react-app', function () {

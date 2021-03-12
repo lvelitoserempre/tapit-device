@@ -15,6 +15,9 @@ import {SlickCarouselModule} from 'ngx-slick-carousel';
 import localeEs from '@angular/common/locales/es-CO';
 import {registerLocaleData} from '@angular/common';
 import {TransferHttpCacheModule } from '@nguniversal/common';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AgeGateComponent } from './age-gate/age-gate.component';
+import {FormsModule} from "@angular/forms";
 
 registerLocaleData(localeEs, 'es-CO');
 
@@ -24,6 +27,7 @@ registerLocaleData(localeEs, 'es-CO');
     HomeComponent,
     HeaderComponent,
     FooterComponent,
+    AgeGateComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
@@ -33,7 +37,9 @@ registerLocaleData(localeEs, 'es-CO');
     AngularFireModule.initializeApp(environment.firebase.config),
     AngularFireAuthModule,
     AngularFireRemoteConfigModule,
-    TransferHttpCacheModule
+    TransferHttpCacheModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
