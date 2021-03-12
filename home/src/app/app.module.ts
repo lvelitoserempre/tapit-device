@@ -15,8 +15,33 @@ import {SlickCarouselModule} from 'ngx-slick-carousel';
 import localeEs from '@angular/common/locales/es-CO';
 import {registerLocaleData} from '@angular/common';
 import {TransferHttpCacheModule } from '@nguniversal/common';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AgeGateComponent } from './age-gate/age-gate.component';
+import {FormsModule} from "@angular/forms";
+import {
+  NgxUiLoaderModule,
+  NgxUiLoaderConfig,
+  NgxUiLoaderHttpModule
+} from "ngx-ui-loader";
 
 registerLocaleData(localeEs, 'es-CO');
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  blur: 5,
+  fastFadeOut: true,
+  fgsColor: "#ff5005",
+  fgsPosition: "center-center",
+  fgsSize: 70,
+  fgsType: "chasing-dots",
+  gap: 55,
+  masterLoaderId: "master",
+  text: "CARGANDO",
+  textColor: "white",
+  textPosition: "center-center",
+  maxTime: -1,
+  minTime: 300,
+  overlayColor: "rgba(40,40,40,0.9)",
+  hasProgressBar: false
+};
 
 @NgModule({
   declarations: [
@@ -24,6 +49,7 @@ registerLocaleData(localeEs, 'es-CO');
     HomeComponent,
     HeaderComponent,
     FooterComponent,
+    AgeGateComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
@@ -33,7 +59,11 @@ registerLocaleData(localeEs, 'es-CO');
     AngularFireModule.initializeApp(environment.firebase.config),
     AngularFireAuthModule,
     AngularFireRemoteConfigModule,
-    TransferHttpCacheModule
+    TransferHttpCacheModule,
+    NgbModule,
+    FormsModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    NgxUiLoaderHttpModule.forRoot({ showForeground: true })
   ],
   providers: [],
   bootstrap: [AppComponent],

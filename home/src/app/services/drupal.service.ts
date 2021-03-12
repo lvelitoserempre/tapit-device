@@ -11,13 +11,12 @@ export class DrupalService {
 
   constructor(
     private httpClient: HttpClient
-  ) {
-  }
+  ) { }
 
   getHomeData(): Observable<any[]> {
     // return of(json)
     return this.httpClient.get(environment.drupalUrl)
-      .pipe(map(response => this.processResponse(response)));
+    .pipe(map(response => this.processResponse(response)));
   }
 
   private replaceUrl(imageUrl:any): string {

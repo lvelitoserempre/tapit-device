@@ -1,0 +1,59 @@
+.agegate {
+  font-size: 28px;
+  >.row {
+    margin: 0;
+    padding: 0;
+  }
+  .section__text {
+    margin-block-start: 0.5em;
+    margin-block-end: 0.7em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    color: #777777;
+    &.cookies-policies {
+      line-height: 18px;
+    }
+  }
+  &__content {
+    border-radius: 20px;
+    padding: 20px 30px;
+    @media screen and (max-width: 576px) {
+      border-radius: 0;
+    }
+    .section__button {
+      border-radius: 36px;
+      font-size: 26px;
+      margin: 20px 0 0;
+      padding: 24px 50px;
+      font-family: "filson-soft-bold", sans-serif;
+    }
+    #day, #month {
+      width: 100px;
+      @media screen and (max-width: 576px) {
+        width: 18vw;
+      }
+    }
+    #year {
+      width: 150px;
+      @media screen and (max-width: 576px) {
+        width: 22vw;
+      }
+    }
+    input[type="number"],
+    input[type="text"] {
+      appearance: none;
+      -moz-appearance: textfield;
+      border: 1px solid #DDDDDD;
+      border-radius: 5px;
+      margin: 0 10px 10px;
+      padding: 0;
+      text-align: center;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      appearance: none;
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}
