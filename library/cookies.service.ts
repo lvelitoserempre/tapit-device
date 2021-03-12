@@ -1,5 +1,5 @@
 export class CookiesService {
-  static setObject(key: string, object: any) {
+  static setObject(key: string, object) {
     this.setValue(key, (object ? encodeURIComponent(JSON.stringify(object)) : ''));
   }
 
@@ -15,12 +15,10 @@ export class CookiesService {
   }
 
   static getValue(key: string) {
-    let returnedCookieValue = '';
     const cookieValue = document.cookie.match(key + '=[^ ;]*');
 
     if (cookieValue) {
-      returnedCookieValue = cookieValue[0].replace(key + '=', '');
+      return cookieValue[0].replace(key + '=', '');
     }
-    return returnedCookieValue;
   }
 }

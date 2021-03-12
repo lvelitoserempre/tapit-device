@@ -9,14 +9,16 @@
     <div *ngIf="section.type==='seasonal_section'" class="md:pl-0 pl-5 mb-16">
       <ngx-slick-carousel [config]="seasonalConfig">
         <div *ngFor="let slide of section.slides; let i=index;"
-          class="seasonal-slide overflow-hidden mr-4 rounded-md mb-4 md:mr-0"
-          ngxSlickItem>
-          <div class="overflow-hidden image-container md:container md:mx-auto rounded-md rounded-b-none mb-4 md:m-4 md:mb-6 sm:hidden">
+             class="seasonal-slide overflow-hidden mr-4 rounded-md mb-4 md:mr-0"
+             ngxSlickItem>
+          <div
+            class="overflow-hidden image-container md:container md:mx-auto rounded-md rounded-b-none mb-4 md:m-4 md:mb-6 sm:hidden">
             <img [src]="slide.data.imageMobile.image_url" alt="image slide" class="mx-auto"/>
           </div>
-          <div class="m-4 shadow-md relative overflow-hidden image-container md:container md:mx-auto rounded-md hidden sm:block">
+          <div
+            class="m-4 shadow-md relative overflow-hidden image-container md:container md:mx-auto rounded-md hidden sm:block">
             <img [src]="slide.data.imageDesktop.image_url" alt="image slide" class="mx-auto"/>
-            <div class="container mx-auto absolute bottom-0 p-4 block sm:block bg-white" style="padding-left: 20px; padding-right: 20px;">
+            <div class="absolute bottom-0 p-4 block container mx-auto sm:block bg-white">
               <div class="relative flex flex-col md:flex-row md:justify-between md:items-center">
                 <p [innerHTML]="slide.description" class="text-lg mb-3 md:mb-0 description"></p>
                 <a [href]="slide.button.link"

@@ -3,33 +3,23 @@
     <div class="absolute block w-full" id="menuToggle">
       <input (click)="setMenu($event)" class="block absolute" id="toggleMenu" type="checkbox" aria-label="toggle menu">
       <div (click)="loginCloseMenu()" class="background"></div>
-      <img class="img-menu block" src="../assets/images/hMenu.svg" width="26" alt="Abrir menú">
+      <img class="img-menu block" src="../assets/images/hMenu.svg" width="26">
 
-      <ul *ngIf="!user" class="fixed w-10/12 p-5 bg-neutral-100 h-full top-0 border-4 border-white text-sm sm:text-base" id="menu">
+      <ul *ngIf="!user" class="fixed w-10/12 p-5 bg-neutral-100 h-full top-0 border-4 border-white text-sm sm:text-base"
+          id="menu">
+        <li class="py-2"><img class="w-2/3" src="../assets/images/tap-it_black-orange.svg"></li>
         <li class="py-2">
-          <img class="w-2/3" src="../assets/images/tap-it_black-orange.svg" alt="Tapit logo">
-        </li>
-        <li class="py-2">
-          <button
-            class="app-button border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-primary-300 hover:border-primary-300 w-full"
-            (click)="loginCloseMenu();ssoOpen();">
-            REGÍSTRATE
-          </button>
-        <li class="py-2">
-          <button 
-            (click)="loginCloseMenu();ssoOpen();"
-            class="app-button border-2 border-black bg-white text-black text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-black hover:text-white w-full">
-            INICIA SESIÓN
-          </button>
+          <button (click)="loginCloseMenu();ssoOpen();"
+            class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm">INICIA SESIÓN</button>
           </li>
-          <li>
-            <img class="absolute icon-close" src="../assets/images/ic_close.svg"  alt="Cerrar menú" width="30">
-          </li>
+        <li><img class="absolute icon-close" src="../assets/images/ic_close.svg" width="30"></li>
       </ul>
 
-      <ul *ngIf="user" class="fixed w-10/12 p-6 bg-neutral-100 pt-2 h-full top-0 border-4 border-white text-sm sm:text-base" id="menu">
+      <ul *ngIf="user"
+          class="fixed w-10/12 p-6 bg-neutral-100 pt-2 h-full top-0 border-4 border-white text-sm sm:text-base"
+          id="menu">
         <li class="cursor-pointer inline-block align-middle focus:outline-none p-0" routerLink="/user/profile">
-          <img src="../assets/images/profile-placeholder.png" width="100" alt="Icono Perfil">
+          <img src="../assets/images/profile-placeholder.png" width="100">
         </li>
         <li
           (click)="loginCloseMenu()"
@@ -67,7 +57,7 @@
             class="uil uil-user-circle text-lg"
             queryParamsHandling="merge"></i> Perfil</a>
         </li>
-        <li><img class="absolute icon-close" src="../assets/images/ic_close.svg" width="30" alt="cerrar"></li>
+        <li><img class="absolute icon-close" src="../assets/images/ic_close.svg" width="30"></li>
       </ul>
     </div>
   </nav>
@@ -129,16 +119,12 @@
             </li>
           </ul>
         </ul>
-        <ul *ngIf="showLoginButton" class="flex-grow relative hidden sm:block">
-          <li class="float-right">
-            <button
-              class="app-button md:inline-block hidden border-2 border-black bg-white text-black text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-black hover:text-white"
-              (click)="ssoOpen()">INICIA SESIÓN</button>
-          </li>
-          <li class="float-right">
-            <button class="app-button md:inline-block hidden border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer mx-2 uppercase hover:bg-primary-300 hover:border-primary-300"
-              (click)="ssoOpen()">REGÍSTRATE</button>
-          </li>
+        <ul *ngIf="showLoginButton" class="relative hidden sm:block">
+          <ul class="relative inline-block">
+            <li><button
+              class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
+              (click)="ssoOpen()">INICIA SESIÓN</button></li>
+          </ul>
         </ul>
       </div>
     </div>
