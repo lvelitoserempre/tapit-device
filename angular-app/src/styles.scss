@@ -61,11 +61,11 @@
     }
 
     &.slick-next::before {
-      content: url("../../react-app/src/assets/images/next-arrow.svg");
+      content: url("assets/images/next-arrow.svg");
     }
 
     &.slick-prev::before {
-      content: url("../../react-app/src/assets/images/prev-arrow.svg");
+      content: url("assets/images/prev-arrow.svg");
     }
   }
 }

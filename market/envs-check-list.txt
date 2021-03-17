@@ -1,7 +1,0 @@
-- Marge master
-- Cambiar el nombre de la cuenta en package
-- Cambiar la url del import de tailwind
-  dev: https://dev.tapit.com.co/assets/styles/tailwind.css
-  prod: https://tapit.com.co/assets/styles/tailwind.css
-- Verificar urls de ambientes en header y footer
-- Verificar ids de shelfs en templates de categorias

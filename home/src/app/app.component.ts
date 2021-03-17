@@ -1,12 +1,13 @@
 import {Component, Inject, OnInit,ViewChild} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { ScriptService } from './services/script.service';
-import {CookiesService} from './services/cookies.service';
 
 import { PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { AgeGateComponent } from './age-gate/age-gate.component';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { CookieService } from "ngx-cookie-universal";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit {
     private angularFireAuth: AngularFireAuth,
     private scriptService: ScriptService,
     @Inject(PLATFORM_ID) private platformId: Object,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private cookies: CookieService
   ) {
     this.ngxService.start();
     this.loadSSOScript();
@@ -37,7 +39,7 @@ export class AppComponent implements OnInit {
 
   private readCookies(): void {
     if (isPlatformBrowser(this.platformId)) {
-      if (!CookiesService.getValue('anonymousUserBirthDate')) {
+      if (!this.cookies.get('anonymousUserBirthDate')) {
         this.ageGate.openAgeGate();
       }
     }

@@ -1,7 +1,7 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { BirthDate } from './BirthDate';
-import {CookiesService} from '../services/cookies.service';
+import { CookieService } from "ngx-cookie-universal";
 
 @Component({
   selector: 'app-age-gate',
@@ -16,6 +16,7 @@ export class AgeGateComponent {
 
   constructor(
     private modalService: NgbModal,
+    private cookies: CookieService
   ) { }
 
   public openAgeGate() {
@@ -60,7 +61,7 @@ export class AgeGateComponent {
         this.isAdult = 'invalid';
       } else {
         this.isAdult = true;
-        CookiesService.setValue('anonymousUserBirthDate', dateToLocal.toString());
+        this.cookies.put('anonymousUserBirthDate', dateToLocal.toString());
         this.modalService.dismissAll();
       }
     } else {

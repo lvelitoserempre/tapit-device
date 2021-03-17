@@ -24,6 +24,8 @@ import {
   NgxUiLoaderHttpModule
 } from "ngx-ui-loader";
 
+import { BrowserCookiesModule } from 'ngx-cookie-universal';
+
 registerLocaleData(localeEs, 'es-CO');
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   blur: 5,
@@ -63,7 +65,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgbModule,
     FormsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
-    NgxUiLoaderHttpModule.forRoot({ showForeground: true })
+    NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
+    BrowserCookiesModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

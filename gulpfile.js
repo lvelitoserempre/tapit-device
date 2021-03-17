@@ -56,6 +56,53 @@ function runCommand(command, folder) {
     })
 }
 
+/* Task to clear the dist folder */
+task('clear', function () {
+  return del('dist/*');
+});
+task('clear2', function () {
+  return del('home/dist/*');
+});
+/* Task to build tailwindcss and add to apps */
+task('build-tailwind', function () {
+  return src('tailwindcss/tailwind.css')
+    .pipe(postcss([postcssImport, tailwindcss, autoprefixer, cssnano]))
+    .pipe(dest('static/assets/styles'))
+    //.pipe(dest('react-app/src/assets/styles'))
+    .pipe(dest('angular-app/src/assets/styles'))
+    //.pipe(dest('sso-app/src/assets/styles'))
+    .pipe(dest('home/src/assets/styles'))
+})
+/* Task to copy static pages to dist folder */
+task('copy-static', function () {
+  return src('static/**').pipe(copy('dist', {prefix: 1}));
+});
+/* Task to copy assetlinks to dist folder */
+task('copy-assetlinks', function () {
+  const file =  BUILD_MAP[process.env.ENV].assetsLinks;
+  return src('.well-known/' + file)
+    .pipe(rename("assetlinks.json"))
+    .pipe(dest("./dist/.well-known"));
+});
+/* Task to copy apple deeplins */
+task('copy-applefile', function () {
+  const file =  BUILD_MAP[process.env.ENV].appleAppSiteAssociation;
+  return src('.well-known/' + file)
+    .pipe(rename("apple-app-site-association"))
+    .pipe(dest("./dist/.well-known"));
+});
+/* Task to build angular app (profile) */
+task('build-angular-app', function () {
+  const command = 'npm i && ' + BUILD_MAP[process.env.ENV].buildCommand
+  const folder = './angular-app';
+
+  return runCommand(command, folder);
+});
+task('copy-to-home', function () {
+  return src('dist/**').pipe(copy('home/dist/home/dist/home/browser', {prefix: 1}));
+});
+
+/* serve scripts */
 task('serve-dist', function () {
   const server = liveServer.static('dist', 3000);
   server.start();
@@ -83,56 +130,18 @@ task('serve-sso', function () {
   });
 });
 
-task('clear', function () {
-  return del('dist/*');
-});
-
-task('copy-static', function () {
-  return src('static/**').pipe(copy('dist', {prefix: 1}));
-});
-
 task('copy-fonts', function () {
   return src('static/assets/fonts/**').pipe(copy('dist', {prefix: 1}));
 });
 
-task('copy-assetlinks', function () {
-  const file =  BUILD_MAP[process.env.ENV].assetsLinks;
-  return src('.well-known/' + file)
-    .pipe(rename("assetlinks.json"))
-    .pipe(dest("./dist/.well-known"));
-});
-
-task('copy-applefile', function () {
-  const file =  BUILD_MAP[process.env.ENV].appleAppSiteAssociation;
-  return src('.well-known/' + file)
-    .pipe(rename("apple-app-site-association"))
-    .pipe(dest("./dist/.well-known"));
-});
-
-task('build-tailwind', function () {
-  return src('tailwindcss/tailwind.css')
-    .pipe(postcss([postcssImport, tailwindcss, autoprefixer, cssnano]))
-    .pipe(dest('static/assets/styles'))
-    .pipe(dest('react-app/src/assets/styles'))
-    .pipe(dest('angular-app/src/assets/styles'))
-    .pipe(dest('sso-app/src/assets/styles'))
-    .pipe(dest('home/src/assets/styles'))
-})
-
+/* DEPRECATED */
 task('build-react-app', function () {
   const command = 'npm i && npm run b-prod';
   const folder = './react-app';
 
   return runCommand(command, folder);
 })
-
-task('build-angular-app', function () {
-  const command = 'npm i && ' + BUILD_MAP[process.env.ENV].buildCommand
-  const folder = './angular-app';
-
-  return runCommand(command, folder);
-})
-
+/* DEPRECATED */
 task('build-sso-app', function () {
   const command = 'npm i && ' + BUILD_MAP[process.env.ENV].buildCommand
   const folder = './sso-app';
@@ -141,7 +150,7 @@ task('build-sso-app', function () {
 })
 
 task('build-home-app', function () {
-  const command = 'npm i && ' + BUILD_MAP[process.env.ENV].buildCommand
+  const command = 'npm run d';
   const folder = './home';
 
   return runCommand(command, folder);
@@ -154,10 +163,10 @@ task('deploy', function () {
   return runCommand(command, folder);
 })
 
-task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
-  'build-react-app', 'build-angular-app', 'build-sso-app', 'build-home-app'));
+task('build', series('clear', 'clear2', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
+  'build-angular-app', 'copy-to-home', 'build-home-app'));
 
 task('deploy-tapit', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
-  'build-react-app', 'build-angular-app', 'build-sso-app', 'build-home-app', 'deploy'));
+  'build-angular-app', 'build-home-app', 'deploy'));
 
 task('deploy-brahma-sso', series('clear', 'copy-fonts', 'build-sso-app', 'deploy'));

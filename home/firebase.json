@@ -25,6 +25,22 @@
         {
           "source": "/cache/**",
           "function": "ssr"
+        },
+        {
+          "source": "/app/**",
+          "destination": "/app/index.html"
+        }
+      ],
+      "redirects": [
+        {
+          "source": "/app/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
+        },
+        {
+          "source": "/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
         }
       ]
     },
@@ -53,6 +69,22 @@
         {
           "source": "/cache/**",
           "function": "ssr"
+        },
+        {
+          "source": "/app/**",
+          "destination": "/app/index.html"
+        }
+      ],
+      "redirects": [
+        {
+          "source": "/app/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
+        },
+        {
+          "source": "/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
         }
       ]
     }
