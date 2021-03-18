@@ -2,9 +2,9 @@ import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core
 import {UserAccount} from '../user-account.model';
 import {environment} from '../../../environments/environment';
 import {Subscription} from 'rxjs';
-import {ActivatedRoute, Router} from '@angular/router';
 import {LoggedUserService} from '../../logged-user.service';
 import {ProfileService} from '../profile/profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-share',
@@ -22,18 +22,16 @@ export class ShareComponent implements OnInit, OnDestroy {
   facebookAppId = environment.production ? '1703386173129451' : '656082591823070';
   private subscription: Subscription;
 
-  constructor(private loggedUser: LoggedUserService,
-              private router: Router,
-              private ps: ProfileService,
-              private activatedRoute: ActivatedRoute) {
-  }
+  constructor(
+    private loggedUser: LoggedUserService,
+    private router: Router,
+    private ps: ProfileService
+  ) { }
 
   ngOnInit(): void {
+    this.loggedUser.getUser();
     this.subscription = this.loggedUser.subscribe(user => {
       this.user = user;
-    });
-
-    this.activatedRoute.data.subscribe(data => {
       this.shareUrl = 'https://tapit.com.co/?utm_source=referredCode&utm_medium=referral';
       this.shareRedirectUrl = 'https://tapit.com.co/app/user/profile';
       this.shareMessage = 'Hola! Me estoy tomando una pola fría y me acorde de ti, entra a ' +

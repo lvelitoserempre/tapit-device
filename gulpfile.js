@@ -164,7 +164,7 @@ task('deploy', function () {
 })
 
 task('build', series('clear', 'clear2', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
-  'build-angular-app', 'copy-to-home', 'build-home-app'));
+  'build-angular-app', 'copy-to-home'));
 
 task('deploy-tapit', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
   'build-angular-app', 'build-home-app', 'deploy'));

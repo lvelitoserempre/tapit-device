@@ -33,5 +33,6 @@ export const environment = {
     appId: '1703386173129451'
   },
   drupalUrl: 'http://tapit.abinbev.acsitefactory.com/api/homepage',
-  ssoApp: 'https://sso.tapit.com.co/v3/tapit.sso.main.js'
+  ssoApp: 'https://sso.tapit.com.co/v3/tapit.sso.main.js',
+  marketUrl: 'https://market.tapit.com.co'
 };

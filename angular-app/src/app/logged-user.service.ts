@@ -28,4 +28,14 @@ export class LoggedUserService extends Subject<UserAccount> {
       }
     })
   }
+
+  getUser() {
+    let user = auth().currentUser;
+    if (user) {
+      firestore().collection(environment.firebase.collections.userAccount).doc(user.uid)
+      .onSnapshot(snapshot => {
+        this.next(UserDAO.snapshotToUser(snapshot));
+      })
+    }
+  }
 }

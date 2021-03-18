@@ -18,7 +18,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnDestroy {
   user: UserAccount;
-  marketUrl = environment.production ? 'https://market.tapit.com.co' : 'https://market-dev.tapit.com.co';
+  marketUrl = environment.marketUrl;
   showLoginButton = false;
   showMicrogifting = true;
 
