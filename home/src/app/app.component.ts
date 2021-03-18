@@ -1,12 +1,15 @@
 import {Component, Inject, OnInit,ViewChild} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { ScriptService } from './services/script.service';
-
+import {environment} from '../environments/environment';
 import { PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { AgeGateComponent } from './age-gate/age-gate.component';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CookieService } from "ngx-cookie-universal";
+
+declare var setupGTM: any;
+declare var ga: any;
 
 @Component({
   selector: 'app-root',
@@ -26,6 +29,9 @@ export class AppComponent implements OnInit {
   ) {
     this.ngxService.start();
     this.loadSSOScript();
+    if (isPlatformBrowser(this.platformId)) {
+      this.setUpStats()
+    }
   }
 
   private loadSSOScript(): void {
@@ -65,5 +71,10 @@ export class AppComponent implements OnInit {
       this.readCookies();
     }
     this.ngxService.stop();
+  }
+
+  private setUpStats() {
+    setupGTM(window, document, 'script', 'dataLayer', environment.googleTagManagerId);
+    ga('create', environment.googleAnalyticsId, 'auto');
   }
 }

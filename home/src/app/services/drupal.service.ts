@@ -59,8 +59,8 @@ export class DrupalService {
 
                 slide.description = slide.data.copy.value;
                 slide.button = {
-                  link: slide.data.cta.uri,
-                  label: slide.data.cta.title
+                  link: slide.data.cta? slide.data.cta.uri: '',
+                  label: slide.data.cta? slide.data.cta.title: ''
                 };
               }
             }

@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Integrate age gate in homepage (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-2992)
 - Integrate SSO in new home of TapIt (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-2854)
 - Age gate appears after the user login on iOS web [safari and chrome] (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3073)
+- Hide banner buttons when link and text from CTA are empty (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3077)
+- Added Google Tag Manager (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3078)
 
 ### Changed
 - Changed script for deployment SSR angular new home page (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3071)

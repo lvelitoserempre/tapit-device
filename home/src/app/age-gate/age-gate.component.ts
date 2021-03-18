@@ -61,7 +61,9 @@ export class AgeGateComponent {
         this.isAdult = 'invalid';
       } else {
         this.isAdult = true;
-        this.cookies.put('anonymousUserBirthDate', dateToLocal.toString());
+        this.cookies.put('anonymousUserBirthDate', dateToLocal.toString(), {
+          domain: 'tapit.com.co'
+        });
         this.modalService.dismissAll();
       }
     } else {

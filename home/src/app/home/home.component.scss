@@ -13,6 +13,9 @@
 
   .description {
     line-height: 20px;
+    @media (min-width: 768px) {
+      line-height: 40px;
+    }
   }
 
   .image-container {
@@ -149,4 +152,11 @@
     right: -3px;
     top: -2px;
   }
+}
+
+.seasonal-div-text-small {
+  min-height: 150px;
+}
+.seasonal-div-text {
+  min-height: 72px;
 }
