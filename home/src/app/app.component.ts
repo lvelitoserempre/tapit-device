@@ -41,6 +41,12 @@ export class AppComponent implements OnInit {
       window.configTapitSso = () => {
       };
     })
+    if (!this.isOnWebView) {
+      this.scriptService.loadScript('optanon')
+      .then(function() {
+        function OptanonWrapper() {}
+      })
+    }
   }
 
   private readCookies(): void {

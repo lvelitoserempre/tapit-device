@@ -19,7 +19,7 @@
   }
 
   .image-container {
-    height: 265px;
+    min-height: 265px;
 
     @media (min-width: 768px) {
       height: 550px

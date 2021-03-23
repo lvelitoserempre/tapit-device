@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added Google Tag Manager (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3078)
 - Fix: The users can't see their points and the referal code in the profile section. (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3065)
 - Fix: The Market button wasn't redirecting to the corresponding market (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3082)
+- Fix: Cards wasn't displayed right on mobile web version and also hidding cookie bar in app (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3033)
+- Tapit logo redirects to homepage (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3090)
 
 ### Changed
 - Changed script for deployment SSR angular new home page (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3071)

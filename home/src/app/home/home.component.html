@@ -11,7 +11,7 @@
         <div *ngFor="let slide of section.slides; let i=index;"
           class="seasonal-slide overflow-hidden mr-4 rounded-md mb-4 md:mr-0"
           ngxSlickItem>
-          <div class="overflow-hidden image-container md:container md:mx-auto rounded-md rounded-b-none mb-4 md:m-4 md:mb-6 sm:hidden">
+          <div class="overflow-hidden image-container md:container md:mx-auto rounded-md rounded-b-none mb-4 md:m-4 md:mb-6 sm:hidden content">
             <img [src]="slide.data.imageMobile.image_url" alt="image slide" class="mx-auto"/>
           </div>
           <div class="m-4 shadow-md relative overflow-hidden image-container md:container md:mx-auto rounded-md hidden sm:block">

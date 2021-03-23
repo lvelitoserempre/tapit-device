@@ -9,8 +9,8 @@
           id="menu">
         <li class="py-2"><img class="w-2/3" src="assets/images/tap-it_black-orange.svg"></li>
         <li class="py-2"><a (click)="loginCloseMenu()"
-                            class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
-                            href="/">INICIA SESIÓN</a></li>
+          class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
+          href="/">INICIA SESIÓN</a></li>
         <li><img class="absolute icon-close" src="../assets/images/ic_close.svg" width="30"></li>
       </ul>
 
@@ -66,19 +66,18 @@
       <div class="flex-1 text-left">
         <ul>
           <li class="inline-block align-middle">
-            <img class="main-logo ml-12 sm:ml-0" src="assets/images/tapit-logo.png" style="width: 70px;"/>
+            <a href="/"><img class="main-logo ml-12 sm:ml-0" src="assets/images/tapit-logo.png" style="width: 70px;" alt="tapit logo"/></a>
           </li>
           <li *ngIf="user" class="hidden sm:inline-block align-middle ml-8">
             <a [href]="marketUrl"
-               class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none"><i
+              class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none"><i
               class="uil uil-store text-base inline-block align-middle leading-none"></i> <span
               class="inline-block align-middle">Market</span></a>
           </li>
           <li *ngIf="user && showMicrogifting" class="hidden sm:inline-block align-middle">
             <a class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none"
                href="{{marketUrl}}/comprar-regalo">
-              <img class="text-base inline-block align-middle leading-none mr-1" src="assets/images/red-heart.png"
-                   style="max-width: 15px;">
+              <img class="text-base inline-block align-middle leading-none mr-1" src="assets/images/red-heart.png" style="max-width: 15px;" alt="red heart">
               <span class="inline-block align-middle">RESCATE POKER ROJA</span>
             </a>
           </li>

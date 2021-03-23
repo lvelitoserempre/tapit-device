@@ -9,6 +9,7 @@ const tailwindcss = require('tailwindcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const rename = require('gulp-rename');
+const homeDist = 'home/dist/home/dist/home/browser/';
 
 BUILD_MAP = {
   TAPIT_DEV: {
@@ -58,10 +59,11 @@ function runCommand(command, folder) {
 
 /* Task to clear the dist folder */
 task('clear', function () {
-  return del('dist/*');
-});
-task('clear2', function () {
-  return del('home/dist/*');
+  return del([
+    'dist/**',
+    'dist/.well-known',
+    'home/dist/**'
+  ]);
 });
 /* Task to build tailwindcss and add to apps */
 task('build-tailwind', function () {
@@ -75,21 +77,22 @@ task('build-tailwind', function () {
 })
 /* Task to copy static pages to dist folder */
 task('copy-static', function () {
-  return src('static/**').pipe(copy('dist', {prefix: 1}));
+  return src('static/**')
+  .pipe(copy(homeDist, {prefix: 1}));
 });
 /* Task to copy assetlinks to dist folder */
 task('copy-assetlinks', function () {
   const file =  BUILD_MAP[process.env.ENV].assetsLinks;
   return src('.well-known/' + file)
     .pipe(rename("assetlinks.json"))
-    .pipe(dest("./dist/.well-known"));
+    .pipe(dest(homeDist + '.well-known'));
 });
 /* Task to copy apple deeplins */
 task('copy-applefile', function () {
   const file =  BUILD_MAP[process.env.ENV].appleAppSiteAssociation;
   return src('.well-known/' + file)
     .pipe(rename("apple-app-site-association"))
-    .pipe(dest("./dist/.well-known"));
+    .pipe(dest(homeDist + '.well-known'));
 });
 /* Task to build angular app (profile) */
 task('build-angular-app', function () {
@@ -97,9 +100,6 @@ task('build-angular-app', function () {
   const folder = './angular-app';
 
   return runCommand(command, folder);
-});
-task('copy-to-home', function () {
-  return src('dist/**').pipe(copy('home/dist/home/dist/home/browser', {prefix: 1}));
 });
 
 /* serve scripts */
@@ -149,13 +149,6 @@ task('build-sso-app', function () {
   return runCommand(command, folder);
 })
 
-task('build-home-app', function () {
-  const command = 'npm run d';
-  const folder = './home';
-
-  return runCommand(command, folder);
-})
-
 task('deploy', function () {
   const command = BUILD_MAP[process.env.ENV].deployCommand;
   const folder = './';
@@ -163,10 +156,10 @@ task('deploy', function () {
   return runCommand(command, folder);
 })
 
-task('build', series('clear', 'clear2', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
-  'build-angular-app', 'copy-to-home'));
+task('build', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
+  'build-angular-app'));
 
-task('deploy-tapit', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
-  'build-angular-app', 'build-home-app', 'deploy'));
+/*task('deploy-tapit', series('clear', 'build-tailwind', 'copy-static', 'copy-assetlinks', 'copy-applefile',
+  'build-angular-app', 'copy-to-home'));*/
 
 task('deploy-brahma-sso', series('clear', 'copy-fonts', 'build-sso-app', 'deploy'));
