@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix: The Market button wasn't redirecting to the corresponding market (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3082)
 - Fix: Cards wasn't displayed right on mobile web version and also hidding cookie bar in app (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3033)
 - Tapit logo redirects to homepage (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3090)
+- Added redirect to onelink for using deeplink when navigating to /earnpoints
 
 ### Changed
 - Changed script for deployment SSR angular new home page (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3071)

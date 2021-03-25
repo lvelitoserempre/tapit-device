@@ -30,7 +30,7 @@ export const environment = {
       xeerpa: '/v1/xeerpa'
     }
   },
-  googleTagManagerId: 'GTM-KQF533X',
+  googleTagManagerId: 'GTM-NFCC7RC',
   googleAnalyticsId: 'UA-159252784-6',
   hosting: '',
   facebook: {
