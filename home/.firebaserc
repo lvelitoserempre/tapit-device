@@ -13,6 +13,13 @@
           "tapit-app-qa"
         ]
       }
+    },
+    "rei-imagining-loyalty": {
+      "hosting": {
+        "home": [
+          "tapit-web-preview"
+        ]
+      }
     }
   }
 }

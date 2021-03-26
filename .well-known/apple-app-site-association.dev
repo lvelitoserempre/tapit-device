@@ -5,6 +5,14 @@
               "appIDs": [ "WMB8HCJXS9.com.abinbev.tapit.qa" ],
               "components": [
                 {
+                  "/": "/earnpoints",
+                  "comment": "We are currently matching any url"
+                },
+                {
+                  "/": "/app/user/profile/share",
+                  "comment": "We are currently matching any url"
+                },
+                {
                   "/": "/*",
                   "comment": "We are currently matching any url"
                 }

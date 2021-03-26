@@ -19,13 +19,13 @@ BUILD_MAP = {
     deployCommand: 'firebase deploy --only hosting:tapit-app-dev'
   },
   TAPIT_TESTING: {
-    assetsLinks: 'assetlinks.dev.json',
+    assetsLinks: 'assetlinks.qa.json',
     appleAppSiteAssociation: 'apple-app-site-association.dev',
     buildCommand: 'npm run b',
     deployCommand: 'firebase deploy --only hosting:tapit-app-testing'
   },
   TAPIT_QA: {
-    assetsLinks: 'assetlinks.dev.json',
+    assetsLinks: 'assetlinks.qa.json',
     appleAppSiteAssociation: 'apple-app-site-association.dev',
     buildCommand: 'npm run b-qa',
     deployCommand: 'firebase deploy --only hosting:tapit-app-qa'
@@ -52,9 +52,9 @@ BUILD_MAP = {
 
 function runCommand(command, folder) {
   return run(command, {cwd: folder})
-    .exec(undefined, (error) => {
-      console.log(error);
-    })
+  .exec(undefined, (error) => {
+    console.log(error);
+  })
 }
 
 /* Task to clear the dist folder */

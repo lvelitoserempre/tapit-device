@@ -97,6 +97,55 @@
           "type": 301
         }
       ]
+    },
+    {
+      "target": "home",
+      "public": "dist/home/dist/home/browser",
+      "ignore": [
+        "**/.*"
+      ],
+      "headers": [
+        {
+          "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public,max-age=31536000,immutable"
+            }
+          ]
+        }
+      ],
+      "rewrites": [
+        {
+          "source": "/",
+          "function": "ssr"
+        },
+        {
+          "source": "/cache/**",
+          "function": "ssr"
+        },
+        {
+          "source": "/app/**",
+          "destination": "/app/index.html"
+        }
+      ],
+      "redirects": [
+        {
+          "source": "/app/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
+        },
+        {
+          "source": "/auth/login",
+          "destination": "/app/index.html",
+          "type": 301
+        },
+        {
+          "source": "/earnpoints",
+          "destination": "http://onelink.to/r3rafj",
+          "type": 301
+        }
+      ]
     }
   ],
   "functions": {
