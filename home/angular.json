@@ -261,7 +261,7 @@
             "ssr": true,
             "functionsNodeVersion": 12,
             "buildTarget": "home:build:production",
-            "firebaseProject": "re-imagining-loyalty-dev"
+            "firebaseProject": "rei-imagining-loyalty"
           }
         }
       }
