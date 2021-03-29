@@ -10,7 +10,14 @@
     "re-imagining-loyalty-qa": {
       "hosting": {
         "home-qa": [
-          "tapit-home-qa"
+          "tapit-app-qa"
+        ]
+      }
+    },
+    "rei-imagining-loyalty": {
+      "hosting": {
+        "home": [
+          "tapit-web-preview"
         ]
       }
     }

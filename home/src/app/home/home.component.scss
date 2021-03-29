@@ -1,7 +1,6 @@
 .seasonal-slide {
   box-shadow: 0px 5px 10px rgba(52, 16, 0, 0.08), 0px 15px 25px rgba(52, 16, 0, 0.06);
   width: 80vw;
-  /*padding-left: 20px;*/
 
   @media (min-width: 768px) {
     box-shadow: none;
@@ -14,10 +13,13 @@
 
   .description {
     line-height: 20px;
+    @media (min-width: 768px) {
+      line-height: 40px;
+    }
   }
 
   .image-container {
-    height: 265px;
+    min-height: 265px;
 
     @media (min-width: 768px) {
       height: 550px
@@ -85,11 +87,6 @@
 }
 
 .catalog-slide {
-  /*img {
-    @media (min-width: 768px) {
-    }
-  }*/
-
   &:focus {
     outline: none;
   }
@@ -121,8 +118,7 @@
 
 ::ng-deep {
   div {
-    line-height: 24px;
-
+    /*line-height: 24px;*/
     h6 {
       font-weight: 700 !important;
     }
@@ -156,4 +152,16 @@
     right: -3px;
     top: -2px;
   }
+}
+
+.seasonal-div-text-small {
+  min-height: 150px;
+}
+.seasonal-div-text {
+  min-height: 72px;
+}
+
+#div__recommended_section {
+  padding-left: 0px;
+  padding-right: 0px;
 }

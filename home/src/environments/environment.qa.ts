@@ -25,12 +25,13 @@ export const environment = {
       xeerpa: '/v1/xeerpa'
     }
   },
-  gtmId: 'GTM-KQF533X',
+  googleTagManagerId: 'GTM-NFCC7RC',
   googleAnalyticsId: 'UA-159252784-6',
   hosting: 'https://tapit-sso-qa.web.app/v3',
   facebook: {
     appId: '1267417616962530'
   },
   drupalUrl: 'http://tapit.test-abinbev.acsitefactory.com/api/homepage',
-  ssoApp: 'https://sso.qa.tapit.com.co/v3/tapit.sso.main.js'
+  ssoApp: 'https://sso.qa.tapit.com.co/v3/tapit.sso.main.js',
+  marketUrl: 'https://market.qa.tapit.com.co'
 };

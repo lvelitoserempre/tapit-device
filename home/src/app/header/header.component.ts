@@ -8,7 +8,7 @@ import remoteConfig = firebase.remoteConfig;
 import {AngularFireRemoteConfig} from '@angular/fire/remote-config';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { switchMap, take } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -18,7 +18,7 @@ import { switchMap, take } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnDestroy {
   user: UserAccount;
-  marketUrl = environment.production ? 'https://market.tapit.com.co' : 'https://market-dev.tapit.com.co';
+  marketUrl = environment.marketUrl;
   showLoginButton = false;
   showMicrogifting = true;
 
@@ -47,10 +47,6 @@ export class HeaderComponent implements OnDestroy {
 
   loginCloseMenu() {
     document.getElementById('toggleMenu').click()
-  }
-
-  ngOnInit(): void {
-
   }
 
   ngOnDestroy(): void {

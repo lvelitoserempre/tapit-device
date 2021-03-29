@@ -4,8 +4,9 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
-import {DrupalService} from '../drupal.service';
+import {DrupalService} from '../services/drupal.service';
 import {formatNumber} from '@angular/common';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-home',
@@ -70,26 +71,29 @@ export class HomeComponent {
     private angularFireAuth: AngularFireAuth,
     private angularFirestore: AngularFirestore,
     private drupalService: DrupalService,
+    private ngxService: NgxUiLoaderService
   ) {
+    this.ngxService.start();
     this.drupalService.getHomeData()
-      .pipe(map(sections => this.fillPlaceholders(sections)))
-      .subscribe(sections => {
-        this.sections = sections;
+    .pipe(map(sections => this.fillPlaceholders(sections)))
+    .subscribe(sections => {
+      this.sections = sections;
 
-        for (const section of sections) {
-          if (section.type === 'welcome_message') {
-            this.welcomeSection = section;
-          }
+      for (const section of sections) {
+        if (section.type === 'welcome_message') {
+          this.welcomeSection = section;
+        }
 
-          if (section.type === 'seasonal_section') {
-            this.seasonalConfig.variableWidth = section.slides.length > 1 && window.innerWidth < 768;
-            for (const slide of section.slides) {
-              slide.data.imageMobile.image_url = slide.data.imageMobile.image_url.replace('styles/large/public/', '');
-              slide.data.imageDesktop.image_url = slide.data.imageDesktop.image_url.replace('styles/large/public/', '');
-            }
+        if (section.type === 'seasonal_section') {
+          this.seasonalConfig.variableWidth = section.slides.length > 1 && window.innerWidth < 768;
+          for (const slide of section.slides) {
+            slide.data.imageMobile.image_url = slide.data.imageMobile.image_url.replace('styles/large/public/', '');
+            slide.data.imageDesktop.image_url = slide.data.imageDesktop.image_url.replace('styles/large/public/', '');
           }
         }
-      });
+      }
+      this.ngxService.stop();
+    });
   }
 
   private fillPlaceholders(sections: any[]): any[] {

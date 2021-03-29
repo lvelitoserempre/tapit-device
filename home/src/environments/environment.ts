@@ -30,14 +30,15 @@ export const environment = {
       xeerpa: '/v1/xeerpa'
     }
   },
-  gtmId: 'GTM-KQF533X',
+  googleTagManagerId: 'GTM-NFCC7RC',
   googleAnalyticsId: 'UA-159252784-6',
   hosting: '',
   facebook: {
     appId: '656082591823070'
   },
   drupalUrl: 'http://tapit.dev-abinbev.acsitefactory.com/api/homepage',
-  ssoApp: 'https://sso.dev.tapit.com.co/v3/tapit.sso.main.js'
+  ssoApp: 'https://sso.dev.tapit.com.co/v3/tapit.sso.main.js',
+  marketUrl: 'https://market-dev.tapit.com.co'
 };
 
 /*

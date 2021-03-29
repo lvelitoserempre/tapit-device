@@ -6,6 +6,7 @@ interface Scripts {
 }
 export const ScriptStore: Scripts[] = [
   { name: 'ssoApp', src: environment.ssoApp },
+  { name: 'optanon', src: 'https://cdn.cookielaw.org/consent/44dd15b4-540a-4abb-9b8e-2f4ff1174ad4.js' },
 ];
 
 @Injectable({
