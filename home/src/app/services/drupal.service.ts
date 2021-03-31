@@ -84,7 +84,7 @@ export class DrupalService {
           }
 
           if (section.type === 'recommended_section') {
-            section.title = section.data.title.value;
+            section.title = section.data.title?section.data.title.value:'';
             const slides = section.data.recommendedContent;
 
             if (slides) {
@@ -98,7 +98,7 @@ export class DrupalService {
                 }
 
                 slide.title = slide.data.title?.value;
-                slide.description = slide.data.description.value;
+                slide.description = slide.data.description? slide.data.description.value: '';
                 slide.cta = slide.data.cta;
               }
             }
