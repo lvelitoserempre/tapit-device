@@ -54,11 +54,8 @@
               <img alt="shadow" class="mx-auto my-2" src="./assets/images/shadow.svg">
             </a>
           </ngx-slick-carousel>
-
-          <img (click)="slickModal.slickPrev()" alt="previous" class="text-xl before cursor-pointer"
-               src="./assets/images/next-prev-nav.svg">
-          <img (click)="slickModal.slickNext()" alt="next" class="text-xl next cursor-pointer"
-               src="./assets/images/next-prev-nav.svg">
+          <img (click)="slickModal.slickPrev()" alt="previous" class="text-xl before cursor-pointer" src="./assets/images/next-prev-nav.svg">
+          <img (click)="slickModal.slickNext()" alt="next" class="text-xl next cursor-pointer" src="./assets/images/next-prev-nav.svg">
         </div>
       </div>
       <div class="text-center mb-8">
@@ -73,9 +70,7 @@
 
       <div class="relative">
         <ngx-slick-carousel [config]="recommendedConfig">
-          <div *ngFor="let slide of section.slides; let i=index;"
-               class="recommended-slide m-4 relative"
-               ngxSlickItem>
+          <div *ngFor="let slide of section.slides; let i=index;" class="recommended-slide mr-4 mb-4 relative" ngxSlickItem>
             <div class="rounded-md p-5 h-full text-box flex flex-col justify-between">
               <header>
                 <h6 [innerHTML]="slide.title" class="text-lg font-bold text-primary-500 mb-2 h-20 title"></h6>
