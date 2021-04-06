@@ -17,16 +17,13 @@
           pts</p>
       </div>
 
-      <a
-        #rla="routerLinkActive"
+      <a #rla="routerLinkActive"
         (click)="goTo('/user/profile/share')"
         class="font-bold cursor-pointer block p-3 border-b-2 border-neutral-500 flex flex-row justify-between items-center"
         routerLink="/user/profile/share"
-        routerLinkActive="active-link">Invita amigos beerlovers
-        <i *ngIf="rla.isActive" class="uil uil-arrow-right text-xl"></i>
+        routerLinkActive="active-link">Invita amigos beerlovers<i *ngIf="rla.isActive" class="uil uil-arrow-right text-xl"></i>
       </a>
-      <a (click)="logout()"
-         class="text-primary-500 cursor-pointer p-3 pb-6 border-b-2 border-neutral-500 text-sm">Cerrar Sesión</a>
+      <a (click)="logout()" class="text-primary-500 cursor-pointer p-3 pb-6 border-b-2 border-neutral-500 text-sm">Cerrar Sesión</a>
     </aside>
 
     <div class="col-span-2 md:col-span-1">

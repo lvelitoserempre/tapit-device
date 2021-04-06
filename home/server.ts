@@ -51,7 +51,7 @@ export function app(): express.Express {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
-    res.set('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+    /*res.set('Cache-Control', 'public, max-age=3600, s-maxage=3600');*/
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
 
