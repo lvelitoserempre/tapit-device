@@ -21,13 +21,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
   showNavbar = true;
   private subscription: Subscription;
 
-  constructor(private loadingService: LoadingService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private ngZone: NgZone,
-              private ps: ProfileService,
-              private loggedUser: LoggedUserService) {
-  }
+  constructor(
+    private loadingService: LoadingService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private ngZone: NgZone,
+    private ps: ProfileService,
+    private loggedUser: LoggedUserService
+  ) { }
 
   ngOnInit(): void {
     if (window.screen.width < 768) {
@@ -35,11 +36,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.navbar.nativeElement.classList.add('hidden');
       }
     }
-    /*this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-      }
-    })*/
-
+    this.goTo('/user/profile/share');
     this.ps.subscribe(show => {
       if (window.screen.width < 768) {
         this.navbar.nativeElement.classList.remove('hidden');
