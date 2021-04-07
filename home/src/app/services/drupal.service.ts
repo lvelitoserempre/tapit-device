@@ -15,7 +15,12 @@ export class DrupalService {
 
   getHomeData(): Observable<any[]> {
     // return of(json)
-    return this.httpClient.get(environment.drupalUrl)
+    const headers = {
+      headers: {
+        'x-token': environment.drupalToken
+      }
+    }
+    return this.httpClient.get(environment.drupalUrl, headers)
     .pipe(map(response => this.processResponse(response)));
   }
 
