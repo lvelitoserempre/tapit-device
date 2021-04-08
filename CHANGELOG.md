@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Loaded share and referal code by default when visiting user profile
 - Added a header to provide a token when consuming the now protected drupal API
 - Fixed the missing image on the recovery password section
+- Added lazy loading to images
 
 ### Changed
 - Changed script for deployment SSR angular new home page (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3071)
