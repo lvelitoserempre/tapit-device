@@ -9,6 +9,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 import { enableProdMode } from '@angular/core';
 import { get } from 'http';
+import {environment} from 'src/environments/environment';
 
 enableProdMode();
 
@@ -51,7 +52,7 @@ export function app(): express.Express {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
-    res.set('Cache-Control', 'public, max-age=300, s-maxage=60');
+    res.set('Cache-Control', 'public, max-age='+environment.maxAge+', s-maxage='+environment.sMaxAge);
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
 

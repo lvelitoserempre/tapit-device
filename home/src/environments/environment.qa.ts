@@ -34,5 +34,7 @@ export const environment = {
   drupalUrl: 'http://tapit.test-abinbev.acsitefactory.com/api/homepage',
   drupalToken: 'a697c03d-b6da-45bd-9418-e05f727010bc',
   ssoApp: 'https://sso.qa.tapit.com.co/v3/tapit.sso.main.js',
-  marketUrl: 'https://market.qa.tapit.com.co'
+  marketUrl: 'https://market.qa.tapit.com.co',
+  maxAge: 300,
+  sMaxAge: 60
 };
