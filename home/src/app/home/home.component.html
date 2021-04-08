@@ -12,10 +12,10 @@
           class="seasonal-slide overflow-hidden mr-4 rounded-md mb-4 md:mr-0"
           ngxSlickItem>
           <div class="overflow-hidden image-container md:container md:mx-auto rounded-md rounded-b-none mb-4 md:m-4 md:mb-6 sm:hidden content">
-            <img [src]="slide.data.imageMobile.image_url" alt="image slide" class="mx-auto"/>
+            <img [src]="slide.data.imageMobile.image_url" loading="lazy" alt="image slide" class="mx-auto"/>
           </div>
           <div class="m-4 shadow-md relative overflow-hidden image-container md:container md:mx-auto rounded-md hidden sm:block">
-            <img [src]="slide.data.imageDesktop.image_url" alt="image slide" class="mx-auto"/>
+            <img [src]="slide.data.imageDesktop.image_url" loading="lazy" alt="image slide" class="mx-auto"/>
             <div class="seasonal-div-text container mx-auto absolute bottom-0 p-4 block sm:block bg-white" style="padding-left: 20px; padding-right: 20px;">
               <div class="relative flex flex-col md:flex-row md:justify-between md:items-center">
                 <p [innerHTML]="slide.description" class="text-lg mb-3 md:mb-0 description"></p>
@@ -50,8 +50,8 @@
                [href]="slide.link"
                class="catalog-slide relative flex flex-col content-center justify-center items-center relative"
                ngxSlickItem>
-              <img [src]="slide.image" alt="bottle" class="mx-auto"/>
-              <img alt="shadow" class="mx-auto my-2" src="./assets/images/shadow.svg">
+              <img [src]="slide.image" loading="lazy" alt="bottle" class="mx-auto"/>
+              <img alt="shadow" loading="lazy" class="mx-auto my-2" src="./assets/images/shadow.svg">
             </a>
           </ngx-slick-carousel>
           <img (click)="slickModal.slickPrev()" alt="previous" class="text-xl before cursor-pointer" src="./assets/images/next-prev-nav.svg">

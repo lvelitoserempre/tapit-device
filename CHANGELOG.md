@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v2.0.1]
+## [v2.0.3]
 ### Added
 - Recommended Section (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-2471)
 - Earn points section (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-2938)
@@ -23,6 +23,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a misaligned recommended section component in mobile
 - Fixed eye icon to display the password on recovery password section
 - Loaded share and referal code by default when visiting user profile
+- Added a header to provide a token when consuming the now protected drupal API
+- Fixed the missing image on the recovery password section
+- Added lazy loading to images
 
 ### Changed
 - Changed script for deployment SSR angular new home page (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3071)
