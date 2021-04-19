@@ -9,7 +9,7 @@ import 'firebase/auth';
 import auth = firebase.auth;
 
 // Helpers
-import { scrollTop } from 'src/app/helpers/scrollTop.helper';
+import { scrollTop } from '../../helpers/scrollTop.helper';
 
 @Component({
   selector: 'app-profile',

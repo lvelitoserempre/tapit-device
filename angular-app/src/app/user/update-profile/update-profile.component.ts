@@ -3,7 +3,7 @@ import { ProfileService } from '../profile/profile.service';
 import { Router } from '@angular/router';
 
 // Helpers
-import { scrollTop } from 'src/app/helpers/scrollTop.helper';
+import { scrollTop } from '../../helpers/scrollTop.helper';
 
 // Components
 import { ProfileComponent } from '../profile/profile.component';
