@@ -9,9 +9,21 @@
     </p>
 
     <div class="grid grid-cols-12 items-center">
-        <div class="col-span-12 mb-6" *ngIf="itemsExists">
+        <div class="col-span-12" *ngIf="itemsExists">
             <p class="text-primary-500 history__title border-b-2 pb-3">
                 Tus puntos
+            </p>
+        </div>
+        <div class="col-span-12 my-20 text-center" *ngIf="itemsExists">
+            <img src="assets/images/historial/remember-points.png" width="300" class="mx-auto"/>
+            <p class="text-black font-fs-bold text-lg mt-4">
+                ¡Recuerda!
+            </p>
+            <p class="text-neutral-800 mt-4">
+                <span class="text-primary-500">5 Maltas</span> = 1 Punto Tap It
+            </p>
+            <p class="text-neutral-800">
+                <span class="text-primary-500">1 Punto Tap It</span> = $250
             </p>
         </div>
         <div class="col-span-12">
