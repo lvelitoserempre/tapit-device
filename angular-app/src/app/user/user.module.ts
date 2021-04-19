@@ -7,6 +7,9 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ShareComponent} from './share/share.component';
+import {UpdateProfileComponent} from './update-profile/update-profile.component';
+import {FormProfileComponent} from './update-profile/form-profile/form-profile.component';
+import {InfoProfileComponent} from './update-profile/info-profile/info-profile.component';
 
 const routes: Routes = [
   {
@@ -16,6 +19,10 @@ const routes: Routes = [
       {
         path: 'share',
         component: ShareComponent
+      },
+      {
+        path: 'editar-perfil',
+        component: UpdateProfileComponent
       }
     ]
   },
@@ -26,7 +33,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ProfileComponent, MyCodesComponent, CodeDetailDialogComponent, ShareComponent],
+  declarations: [ProfileComponent, MyCodesComponent, CodeDetailDialogComponent, ShareComponent, UpdateProfileComponent, FormProfileComponent, InfoProfileComponent],
   imports: [
     CommonModule,
     FormsModule,

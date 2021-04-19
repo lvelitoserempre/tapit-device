@@ -1,0 +1,24 @@
+<div class="mx-4 mb-6 block md:hidden">
+    <app-info-profile></app-info-profile>
+</div>
+
+<section class="md:block mx-4 border-4 border-white bg-neutral-100 p-4 pl-8 md:pl-4 shadow relative overflow-hidden">  
+    <i (click)="goBack()" class="uil uil-angle-left-b text-xl absolute left-0 md:hidden cursor-pointer" style="top: 10px"></i>
+
+    <h1 class="font-bold">Editar perfil</h1>
+  
+    <p class="text-sm text-neutral-700 mt-2 mb-6">
+        Verifica o actualiza tus datos
+    </p>
+
+    <div class="grid grid-cols-5 gap-8 items-center">
+        <div class="col-span-5 hidden lg:block lg:col-span-3 xl:col-span-2">
+            <app-info-profile></app-info-profile>
+        </div>
+        <div class="col-span-5 lg:col-span-2 xl:col-span-3">
+            <app-form-profile></app-form-profile>
+        </div>
+    </div>
+    
+  </section>
+  
