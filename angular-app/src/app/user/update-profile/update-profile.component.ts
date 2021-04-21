@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../profile/profile.service';
 import { Router } from '@angular/router';
-
-// Helpers
-import { scrollTop } from '../../helpers/scrollTop.helper';
+declare var $: any;
 
 // Components
 import { ProfileComponent } from '../profile/profile.component';
@@ -26,11 +24,18 @@ export class UpdateProfileComponent implements OnInit {
 
   // Go back to profile
   goBack() {
-    scrollTop();
+    this.scrollTop();
     this._profileComponent.showNavbar = true;
     setTimeout(() => {
       this.router.navigateByUrl('/user/profile');
       this.ps.next(true);
     }, 300);
+  }
+
+  // Scroll top page
+  scrollTop() {
+    $('html,body').animate({
+        scrollTop: 0
+    }, 'fast');
   }
 }

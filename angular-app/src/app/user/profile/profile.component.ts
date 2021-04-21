@@ -7,9 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import auth = firebase.auth;
-
-// Helpers
-import { scrollTop } from '../../helpers/scrollTop.helper';
+declare var $: any;
 
 @Component({
   selector: 'app-profile',
@@ -77,7 +75,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   // Go to X route
   goTo(route: string) {
-    scrollTop();
+    this.scrollTop();
     this.router.navigateByUrl(route);
     this.isMobile ? this.showNavbar = false : this.showNavbar = true;
   }
@@ -95,5 +93,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
       console.error(error);
       this.loadingService.hide();
     });
+  }
+
+  // Scroll top page
+  scrollTop() {
+    $('html,body').animate({
+        scrollTop: 0
+    }, 'fast');
   }
 }

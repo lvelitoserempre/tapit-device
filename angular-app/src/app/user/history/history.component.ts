@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ProfileService} from '../profile/profile.service';
-
-// Helpers
-import { scrollTop } from '../../helpers/scrollTop.helper';
+declare var $: any;
 
 // Components
 import { ProfileComponent } from '../profile/profile.component';
@@ -39,8 +37,9 @@ export class HistoryComponent implements OnInit {
     this.items.length > 0 ? this.itemsExists = true : this.itemsExists = false;
   }
 
+  // Go to profile route
   goBack() {
-    scrollTop();
+    this.scrollTop();
     this._profileComponent.showNavbar = true;
     setTimeout(() => {
       this.router.navigateByUrl('/user/profile');
@@ -48,4 +47,10 @@ export class HistoryComponent implements OnInit {
     }, 300);
   }
 
+  // Scroll top page
+  scrollTop() {
+    $('html,body').animate({
+        scrollTop: 0
+    }, 'fast');
+  }
 }
