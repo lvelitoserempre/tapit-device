@@ -36,7 +36,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadSize();
-    this.goTo('/user/profile/editar-perfil');
+    // this.goTo('/user/profile/editar-perfil');
+    this.goTo('/user/profile/historial');
     this.subscription = this.loggedUser.subscribe(user => {
       this.user = user;
     });
