@@ -1,0 +1,33 @@
+@import "../../assets/styles/colors.scss";
+
+input,
+button:focus,
+select {
+  outline: none;
+}
+
+input::placeholder,
+select {
+  color: lighten($color: $darkGrayColor, $amount: 40);
+  font-family: "filson-soft-book";
+}
+select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.select__box {
+  position: relative;
+}
+.select__box:after {
+  content: url("/assets/images/verify/angle-down.svg");
+  right: 12px;
+  top: 65%;
+  transform: translateY(-50%);
+  position: absolute;
+  pointer-events: none;
+}
+button:disabled {
+  background-color: lighten($color: $darkGrayColor, $amount: 50);
+  cursor: not-allowed;
+}
