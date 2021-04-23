@@ -7,6 +7,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { AgeGateComponent } from './age-gate/age-gate.component';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CookieService } from "ngx-cookie-universal";
+import { VerifyIdentityComponent } from './verify-identity/verify-identity.component';
 
 declare var setupGTM: any;
 declare var ga: any;
@@ -19,6 +20,7 @@ declare var ga: any;
 export class AppComponent implements OnInit {
   isOnWebView = false;
   @ViewChild('ageGate') private ageGate: AgeGateComponent;
+  @ViewChild('verifyIdentity') private verifyIdentity: VerifyIdentityComponent;
 
   constructor(
     private angularFireAuth: AngularFireAuth,
@@ -28,7 +30,7 @@ export class AppComponent implements OnInit {
     private cookies: CookieService
   ) {
     this.ngxService.start();
-    this.loadSSOScript();
+    // this.loadSSOScript();
     if (isPlatformBrowser(this.platformId)) {
       this.setUpStats()
     }
@@ -68,6 +70,7 @@ export class AppComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    this.verifyIdentity.openVerifyIdentity();
     if (!this.isOnWebView) {
       this.readCookies();
     }

@@ -1,13 +1,13 @@
-import {Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {UserAccount} from '../user-account.model';
 import {LoggedUserService} from '../../logged-user.service';
 import {LoadingService} from '../../loading.service';
-import {from, Subscription} from 'rxjs';
+import { from, Subscription, Observable, fromEvent } from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProfileService} from './profile.service';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import auth = firebase.auth;
+declare var $: any;
 
 @Component({
   selector: 'app-profile',
@@ -15,68 +15,90 @@ import auth = firebase.auth;
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-  @ViewChild('navbar', {static: true})
-  navbar: ElementRef;
+
   user: UserAccount = {firstName: '', lastName: ''};
-  showNavbar = true;
   private subscription: Subscription;
+
+  // Resize
+  resizeObservable$: Observable<Event>
+  resizeSubscription$: Subscription;
+  isMobile: boolean;
+  public showNavbar: boolean = true;
 
   constructor(
     private loadingService: LoadingService,
     private route: ActivatedRoute,
     private router: Router,
-    private ngZone: NgZone,
-    private ps: ProfileService,
     private loggedUser: LoggedUserService
   ) { }
 
   ngOnInit(): void {
-    if (window.screen.width < 768) {
-      if (this.route.children.length > 0) {
-        this.navbar.nativeElement.classList.add('hidden');
-      }
-    }
-    this.goTo('/user/profile/share');
-    this.ps.subscribe(show => {
-      if (window.screen.width < 768) {
-        this.navbar.nativeElement.classList.remove('hidden');
-        this.navbar.nativeElement.style = '';
-      }
-    });
-
+    this.loadSize();
+    this.goTo('/user/profile/editar-perfil');
     this.subscription = this.loggedUser.subscribe(user => {
       this.user = user;
     });
   }
 
-  logout() {
-    this.loadingService.show();
-    from(auth().signOut())
-      .subscribe(() => {
-        this.loadingService.hide();
-
-        if (window.origin !== 'http://localhost:4200') {
-          window.location.replace('/');
-        }
-      }, (error) => {
-        console.error(error);
-        this.loadingService.hide();
-      });
+  ngAfterViewInit(): void {
+    this.resizeWidth();
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  goTo(route: string) {
-    if (window.screen.width < 768) {
-      this.navbar.nativeElement.style = 'transform: translateX(-600px)'
-      setTimeout(() => {
-        this.router.navigateByUrl(route);
-        this.navbar.nativeElement.classList.add('hidden');
-      }, 300);
+  // // This method allows to obtain by means of an observable the screen size
+  resizeWidth() {
+    this.resizeObservable$ = fromEvent(window, 'resize');
+    this.resizeSubscription$ = this.resizeObservable$.subscribe(evt => {
+      if (evt.target['innerWidth'] > 768) {
+        this.showNavbar = true;
+        this.isMobile = false;
+      } else {
+        this.route.children.length === 0 ? this.showNavbar = true : this.showNavbar = false;
+        this.isMobile = true;
+      }
+    });
+  }
+
+  // This method allows to obtain the screen size
+  loadSize() {
+    if (window.innerWidth > 768) {
+      this.showNavbar = true;
+      this.isMobile = false;
     } else {
-      this.router.navigateByUrl(route);
+      this.showNavbar = false;
+      this.isMobile = true;
     }
+  }
+
+  // Go to X route
+  goTo(route: string) {
+    this.scrollTop();
+    this.router.navigateByUrl(route);
+    this.isMobile ? this.showNavbar = false : this.showNavbar = true;
+  }
+
+  // Logout user auth
+  logout() {
+    this.loadingService.show();
+    from(auth().signOut())
+    .subscribe(() => {
+      this.loadingService.hide();
+      if (window.origin !== 'http://localhost:4200') {
+        window.location.replace('/');
+      }
+    }, (error) => {
+      console.error(error);
+      this.loadingService.hide();
+    });
+  }
+
+  // Scroll top page
+  scrollTop() {
+    $('html,body').animate({
+        scrollTop: 0
+    }, 'fast');
   }
 }

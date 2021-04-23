@@ -7,6 +7,11 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ShareComponent} from './share/share.component';
+import {UpdateProfileComponent} from './update-profile/update-profile.component';
+import {FormProfileComponent} from './update-profile/form-profile/form-profile.component';
+import {InfoProfileComponent} from './update-profile/info-profile/info-profile.component';
+import {HistoryComponent} from './history/history.component';
+import {ItemPointsComponent} from './history/item-points/item-points.component';
 
 const routes: Routes = [
   {
@@ -16,6 +21,14 @@ const routes: Routes = [
       {
         path: 'share',
         component: ShareComponent
+      },
+      {
+        path: 'editar-perfil',
+        component: UpdateProfileComponent
+      },
+      {
+        path: 'historial',
+        component: HistoryComponent
       }
     ]
   },
@@ -26,7 +39,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ProfileComponent, MyCodesComponent, CodeDetailDialogComponent, ShareComponent],
+  declarations: [ProfileComponent, MyCodesComponent, CodeDetailDialogComponent, ShareComponent, UpdateProfileComponent, FormProfileComponent, InfoProfileComponent, HistoryComponent, ItemPointsComponent],
   imports: [
     CommonModule,
     FormsModule,

@@ -1,0 +1,46 @@
+<section class="md:block mx-4 border-4 border-white bg-neutral-100 p-4 pl-8 md:pl-4 shadow relative overflow-hidden h-full">  
+    <i (click)="goBack()" class="uil uil-angle-left-b text-xl absolute left-0 md:hidden cursor-pointer" style="top: 10px"></i>
+
+    <h1 class="font-bold">Historial</h1>
+  
+    <p class="text-sm text-neutral-700 mt-2 mb-6">
+        <span *ngIf="itemsExists">Revisa los puntos que has acumulado y usado en Tap it.</span>
+        <span *ngIf="!itemsExists">Revisa tus compras anteriores y el resumen de los puntos que has acumulado</span>
+    </p>
+
+    <div class="grid grid-cols-12 items-center">
+        <div class="col-span-12" *ngIf="itemsExists">
+            <p class="text-primary-500 history__title border-b-2 pb-3">
+                Tus puntos
+            </p>
+        </div>
+        <div class="col-span-12 my-10 text-center" *ngIf="itemsExists">
+            <img src="assets/images/historial/remember-points.png" width="300" class="mx-auto"/>
+            <p class="text-black font-fs-bold text-lg my-4">
+                ¡Recuerda!
+            </p>
+            <p class="text-neutral-800 my-2 w-full md:w-2/5 bg-neutral-300 mx-auto">
+                <span class="text-primary-500">5 Maltas</span> = 1 Punto Tap It
+            </p>
+            <p class="text-neutral-800 my-2 w-full md:w-2/5 bg-neutral-300 mx-auto">
+                <span class="text-primary-500">1 Punto Tap It</span> = $250
+            </p>
+        </div>
+        <div class="col-span-12">
+            <ng-container *ngIf="itemsExists">
+                <app-item-points *ngFor="let item of items" [item]="item"></app-item-points>
+            </ng-container>
+            <ng-container *ngIf="!itemsExists">
+                <img src="assets/images/historial/not-points.svg" class="mx-auto mt-12"/>
+                <h1 class="text-neutral-700 text-lg mt-8 text-center"><b>Ups... !No hay resultados!</b></h1>
+                <p class="mx-auto mb-8 text-center mt-6 w-full lg:w-7/12">
+                    No tienes puntos diponibles en el momento, ve a la sección de 
+                    <a routerLink="/user/profile/gana-puntos" class="text-primary-500">Gana Puntos</a>
+                    y revisa como puedes ganar más 🍺
+                </p>
+            </ng-container>
+        </div>
+    </div>
+    
+  </section>
+  
