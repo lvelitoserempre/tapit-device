@@ -1,47 +1,28 @@
-<div class="container mx-auto py-4 mt-4">
+<div class="container mx-auto py-4">
+  <h3 class="text-lg font-bold text-black mb-6 p-2 hidden md:block">Tu <span class="text-primary-500">Perfil</span></h3>
+
   <section class="grid" style="grid-template-columns: min-content auto">
-    <aside *ngIf="showNavbar" class="col-span-2 md:col-span-1 flex flex-col p-2 nav transition-transform duration-200">
-      <h3 class="text-lg font-bold text-black mb-6 p-2">Tu <span class="text-primary-500">Perfil</span></h3>
+    <aside #navbar class="col-span-2 md:col-span-1 flex flex-col p-2 nav transition-transform duration-700">
+      <h3 class="text-lg font-bold text-black mb-6 md:hidden">Tu <span class="text-primary-500">Perfil</span>
+      </h3>
 
-      <!-- <img class="mx-auto mb-6" src="assets/images/profile-placeholder.png" style="max-width: 100px"> -->
-      <img class="mx-auto mb-6" src="assets/images/profile/profile-pic.svg" style="max-width: 100px">
+      <img class="mx-auto mb-6" src="assets/images/profile-placeholder.png" style="max-width: 100px">
 
-      <!-- <h3 class="text-center font-bold text-xl mb-6">{{user.firstName + ' ' + user.lastName}}</h3> -->
-      <h3 class="text-center font-bold text-xl mb-2">Juan David <br> Pérez Rodríguez</h3>
-      <p class="text-center font-fs-book text-base mb-6 text-neutral-800">juanperex@tapit.com</p>
+      <h3 class="text-center font-bold text-xl mb-6">{{user.firstName + ' ' + user.lastName}}</h3>
 
       <div class="mb-12 text-center">
         <h3 class="text-2xs tracking-widest text-neutral-800 font-bold">TUS PUNTOS</h3>
-        <!-- <p class="text-xs inline-block text-md text-center text-white font-bold px-4 py-2 bg-image"
+        <p class="text-xs inline-block text-md text-center text-white font-bold px-4 py-2 bg-image"
            style="min-width: 120px; min-height: 30px">{{user.points | number : '1.0'}}
-          pts</p> -->
-          <p class="text-xs inline-block text-md text-center text-white font-bold px-4 py-2 bg-image" style="min-width: 120px; min-height: 30px">{{1200 | number : '1.0'}} pts</p>
-          <!-- <p class="text-xs text-neutral-700 font-fs-book"><span class="font-bold text-neutral-900">258</span> próximos a vencer</p>
-          <p class="text-xs text-neutral-900 font-fs-book">30/09/2020</p> -->
+          pts</p>
       </div>
 
-      <a #rlperfil="routerLinkActive"
-        (click)="goTo('/user/profile/editar-perfil')"
-        class="font-bold cursor-pointer block p-3 border-b-2 border-neutral-500 justify-between items-center"
-        routerLink="/user/profile/editar-perfil"
-        routerLinkActive="active-link">
-          Perfil<i *ngIf="rlperfil.isActive" class="uil uil-arrow-right text-xl float-right"></i>
-          <div class="text-xs text-neutral-700 font-light mt-2">Verifica tus datos</div>
-      </a>
-      <a #rlhistory="routerLinkActive"
-        (click)="goTo('/user/profile/historial')"
-        class="font-bold cursor-pointer block p-3 border-b-2 border-neutral-500 justify-between items-center"
-        routerLink="/user/profile/historial"
-        routerLinkActive="active-link">
-          Historial<i *ngIf="rlhistory.isActive" class="uil uil-arrow-right text-xl float-right"></i>
-          <div class="text-xs text-neutral-700 font-light mt-2">Revisa tu historial de puntos</div>
-      </a>
-      <!-- <a #rlshare="routerLinkActive"
+      <a #rla="routerLinkActive"
         (click)="goTo('/user/profile/share')"
         class="font-bold cursor-pointer block p-3 border-b-2 border-neutral-500 flex flex-row justify-between items-center"
         routerLink="/user/profile/share"
-        routerLinkActive="active-link">Invita amigos beerlovers<i *ngIf="rlshare.isActive" class="uil uil-arrow-right text-xl"></i>
-      </a> -->
+        routerLinkActive="active-link">Invita amigos beerlovers<i *ngIf="rla.isActive" class="uil uil-arrow-right text-xl"></i>
+      </a>
       <a (click)="logout()" class="text-primary-500 cursor-pointer p-3 pb-6 border-b-2 border-neutral-500 text-sm">Cerrar Sesión</a>
     </aside>
 
