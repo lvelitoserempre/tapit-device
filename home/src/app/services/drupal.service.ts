@@ -61,11 +61,10 @@ export class DrupalService {
                 if (slide.data.imageDesktop) {
                   slide.data.imageDesktop.image_url = this.replaceUrl(slide.data.imageDesktop.image_url);
                 }
-
-                slide.description = slide.data.copy.value;
                 slide.button = {
                   link: slide.data.cta? slide.data.cta.uri: '',
-                  label: slide.data.cta? slide.data.cta.title: ''
+                  label: slide.data.cta? slide.data.cta.title: '',
+                  target : slide.data.cta? slide.data.cta.target: ''
                 };
               }
             }
@@ -89,6 +88,7 @@ export class DrupalService {
           }
 
           if (section.type === 'recommended_section') {
+
             section.title = section.data.title?section.data.title.value:'';
             const slides = section.data.recommendedContent;
 

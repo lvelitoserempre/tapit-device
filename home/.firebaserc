@@ -17,7 +17,7 @@
     "rei-imagining-loyalty": {
       "hosting": {
         "home": [
-          "tapit-web-preview"
+          "tapit-app-production"
         ]
       }
     }

@@ -20,7 +20,7 @@ export class HeaderComponent implements OnDestroy {
   user: UserAccount;
   marketUrl = environment.marketUrl;
   showLoginButton = false;
-  showMicrogifting = true;
+  showMicrogifting = false;
 
   constructor(
     private afs:AngularFireRemoteConfig,

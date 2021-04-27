@@ -24,7 +24,7 @@ export class HomeComponent {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    variableWidth: window.innerWidth < 768
+    variableWidth: false,
   };
   catalogConfig = {
     arrows: false,

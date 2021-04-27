@@ -3,8 +3,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [v2.0.3]
+## [v2.0.4] - To be released
+### Added
+- The user can now add a CTA in drupal that leads the user to a section in the homepage
+## [v2.0.3] - 2021-04-12
+### Added
+- Added a header to provide a token when consuming the now protected drupal API
+- Fixed the missing image on the recovery password section
+- Added lazy loading to images
+## [v2.0.2]
+### Added
+- Fixed eye icon to display the password on recovery password section
+- Loaded share and referal code by default when visiting user profile
+## [v2.0.1]
+### Added
+- Fixed a misaligned recommended section component in mobile
+## [v2.0.0]
 ### Added
 - Recommended Section (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-2471)
 - Earn points section (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-2938)
@@ -20,12 +34,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added redirect to onelink for using deeplink when navigating to /earnpoints
 - Added QA assetlinks file
 - Corrected and added deployment scripts to includ QA asset links file and deploy to prod and prod-preview
-- Fixed a misaligned recommended section component in mobile
-- Fixed eye icon to display the password on recovery password section
-- Loaded share and referal code by default when visiting user profile
-- Added a header to provide a token when consuming the now protected drupal API
-- Fixed the missing image on the recovery password section
-- Added lazy loading to images
 
 ### Changed
 - Changed script for deployment SSR angular new home page (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3071)

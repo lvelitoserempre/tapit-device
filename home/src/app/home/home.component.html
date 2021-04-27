@@ -5,12 +5,10 @@
   </div>
 </div>
 <article>
-  <section *ngFor="let section of sections;">
-    <div *ngIf="section.type==='seasonal_section'" class="md:pl-0 pl-5 mb-16">
+  <section *ngFor="let section of sections;" id="{{section.section_id}}">
+    <div *ngIf="section.type==='seasonal_section'" class="md:pl-0 mb-16 ml-5">
       <ngx-slick-carousel [config]="seasonalConfig">
-        <div *ngFor="let slide of section.slides; let i=index;"
-          class="seasonal-slide overflow-hidden mr-4 rounded-md mb-4 md:mr-0"
-          ngxSlickItem>
+        <div *ngFor="let slide of section.slides; let i=index;" class="seasonal-slide overflow-hidden mr-4 rounded-md mb-4 md:mr-0" ngxSlickItem>
           <div class="overflow-hidden image-container md:container md:mx-auto rounded-md rounded-b-none mb-4 md:m-4 md:mb-6 sm:hidden content">
             <img [src]="slide.data.imageMobile.image_url" loading="lazy" alt="image slide" class="mx-auto"/>
           </div>
@@ -19,9 +17,7 @@
             <div class="seasonal-div-text container mx-auto absolute bottom-0 p-4 block sm:block bg-white" style="padding-left: 20px; padding-right: 20px;">
               <div class="relative flex flex-col md:flex-row md:justify-between md:items-center">
                 <p [innerHTML]="slide.description" class="text-lg mb-3 md:mb-0 description"></p>
-                <a [href]="slide.button.link" *ngIf="slide.button.link"
-                   class="app-button bg-primary-500 text-center w-full md:w-56 md:mx-0 uppercase text-xs py-3"
-                   target="_blank">{{slide.button.label}}</a>
+                <a [href]="slide.button.link" *ngIf="slide.button.link" class="app-button bg-primary-500 text-center w-full md:w-56 md:mx-0 uppercase text-xs py-3" [target]="slide.button.target">{{slide.button.label}}</a>
               </div>
             </div>
           </div>
@@ -30,8 +26,8 @@
             <div class="relative flex flex-col">
               <p [innerHTML]="slide.description" class="text-sm mb-3 h-16 description"></p>
               <a [href]="slide.button.link" *ngIf="slide.button.link"
-                 class="app-button bg-primary-500 text-center w-full uppercase text-xs py-3"
-                 target="_blank">{{slide.button.label}}</a>
+                class="app-button bg-primary-500 text-center w-full uppercase text-xs py-3"
+                [target]="slide.button.target">{{slide.button.label}}</a>
             </div>
           </div>
         </div>
@@ -44,8 +40,7 @@
 
       <div class="mb-4 bg-neutral-100">
         <div class="container mx-auto relative">
-          <ngx-slick-carousel #slickModal="slick-carousel" [config]="catalogConfig"
-                              class="py-5 inline-block">
+          <ngx-slick-carousel #slickModal="slick-carousel" [config]="catalogConfig" class="py-5 inline-block">
             <a *ngFor="let slide of section.slides; let i=index;"
                [href]="slide.link"
                class="catalog-slide relative flex flex-col content-center justify-center items-center relative"
