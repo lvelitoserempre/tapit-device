@@ -1,7 +1,7 @@
 <div class="mb-4 md:mb-8 border-b border-solid border-neutral-500 bg-neutral-100">
   <div *ngIf="welcomeSection.type"
-       [innerHTML]="user ? welcomeSection.messageAuthenticated : welcomeSection.messageAnonymous"
-       class="container mx-auto py-2 px-4 px-5 text-sm text-secondary-500">
+    [innerHTML]="user ? welcomeSection.messageAuthenticated : welcomeSection.messageAnonymous"
+    class="container mx-auto py-2 px-4 px-5 text-sm text-secondary-500">
   </div>
 </div>
 <article>
@@ -16,18 +16,18 @@
             <img [src]="slide.data.imageDesktop.image_url" loading="lazy" alt="image slide" class="mx-auto"/>
             <div class="seasonal-div-text container mx-auto absolute bottom-0 p-4 block sm:block bg-white" style="padding-left: 20px; padding-right: 20px;">
               <div class="relative flex flex-col md:flex-row md:justify-between md:items-center">
-                <p [innerHTML]="slide.description" class="text-lg mb-3 md:mb-0 description"></p>
-                <a [href]="slide.button.link" *ngIf="slide.button.link" class="app-button bg-primary-500 text-center w-full md:w-56 md:mx-0 uppercase text-xs py-3" [target]="slide.button.target">{{slide.button.label}}</a>
+                <p [innerHTML]="slide.data.copy.value" class="text-lg mb-3 md:mb-0 description"></p>
+                <a (click)="scrollToSection(slide.button.link, slide.button.target)" [href]="" *ngIf="slide.button.link" class="app-button bg-primary-500 text-center w-full md:w-56 md:mx-0 uppercase text-xs py-3 sso-cursor-pointer">{{slide.button.label}}</a>
               </div>
             </div>
           </div>
-
           <div class="seasonal-div-text-small p-4 block rounded-md sm:hidden">
             <div class="relative flex flex-col">
-              <p [innerHTML]="slide.description" class="text-sm mb-3 h-16 description"></p>
-              <a [href]="slide.button.link" *ngIf="slide.button.link"
+              <p [innerHTML]="slide.data.copy.value" class="text-sm mb-3 h-16 description"></p>
+              <a [href]="" *ngIf="slide.button.link"
                 class="app-button bg-primary-500 text-center w-full uppercase text-xs py-3"
-                [target]="slide.button.target">{{slide.button.label}}</a>
+                (click)="scrollToSection(slide.button.link, slide.button.target)"
+                >{{slide.button.label}}</a>
             </div>
           </div>
         </div>

@@ -154,4 +154,18 @@ export class HomeComponent {
 
     return html;
   }
+
+  public scrollToSection(sectionId: string, target: string): void {
+    if (target == '_self') {
+      let cleanedSectionId = sectionId.substring(1, sectionId.length);
+      let section = document.getElementById(cleanedSectionId);
+      window.scrollTo(0, section.offsetTop);
+    } else {
+      var externalLinkButton = document.createElement('a');
+      externalLinkButton.target= target;
+      externalLinkButton.href=sectionId;
+      externalLinkButton.click();
+      externalLinkButton.remove();
+    }
+  }
 }
