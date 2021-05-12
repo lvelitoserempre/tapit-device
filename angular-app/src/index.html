@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>TapIt</title>
@@ -9,9 +10,10 @@
   <link href="/assets/styles/tailwind.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.8/css/unicons.css">
 </head>
+
 <body>
   <div id="fb-root"></div>
-<app-root></app-root>
+  <app-root></app-root>
 </body>
 
 <script>
@@ -41,13 +43,36 @@
     f.parentNode.insertBefore(j, f);
   }
 </script>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v7.0"></script>
+<script async defer crossorigin="anonymous"
+  src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v7.0"></script>
 <!-- Start of tapit Zendesk Widget script -->
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=937891de-391f-4450-8c55-170599f3d5ef"> </script>
+<script id="ze-snippet"
+  src="https://static.zdassets.com/ekr/snippet.js?key=937891de-391f-4450-8c55-170599f3d5ef"> </script>
 <!-- End of tapit Zendesk Widget script -->
 <script type="text/javascript" src="/scripts/zendesk.js"></script>
-<script src="https://cdn.cookielaw.org/consent/44dd15b4-540a-4abb-9b8e-2f4ff1174ad4.js" type="text/javascript" charset="UTF-8"></script>
+<script src="https://cdn.cookielaw.org/consent/44dd15b4-540a-4abb-9b8e-2f4ff1174ad4.js" type="text/javascript"
+  charset="UTF-8"></script>
+
+<!-- Facebook Pixel Code -->
+<script>
+  !function (f, b, e, v, n, t, s) {
+    if (f.fbq) return; n = f.fbq = function () {
+      n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+    };
+    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+    n.queue = []; t = b.createElement(e); t.async = !0;
+    t.src = v; s = b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t, s)
+  }(window, document, 'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1374695322930119&ev=PageView&noscript=1" /></noscript>
+<!-- End Facebook Pixel Code -->
+
 <script type="text/javascript">
   function OptanonWrapper() { }
 </script>
+
 </html>

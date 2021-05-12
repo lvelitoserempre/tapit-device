@@ -8,6 +8,7 @@ import initializeApp = firebase.initializeApp;
 
 declare var setupGTM;
 declare var ga;
+declare var fbq: any;
 
 @Component({
   selector: 'app-root',
@@ -50,5 +51,7 @@ export class AppComponent implements OnInit {
   private setUpStats() {
     setupGTM(window, document, 'script', 'dataLayer', environment.googleTagManagerId);
     ga('create', environment.googleAnalyticsId, 'auto');
+    fbq('init', environment.facebookPixelId);
+    fbq('track', 'PageView');
   }
 }
