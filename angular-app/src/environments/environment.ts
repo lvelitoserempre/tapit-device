@@ -27,5 +27,6 @@ export const environment = {
   },
   marketUrl: 'https://market-dev.tapit.com.co/api/vtexid/pub/logout?scope=bavariacotest&returnUrl=https://market-dev.tapit.com.co',
   googleAnalyticsId: 'UA-159252784-3',
-  googleTagManagerId: 'GTM-NFCC7RC'
+  googleTagManagerId: 'GTM-NFCC7RC',
+  facebookPixelId: '1374695322930119',
 };
