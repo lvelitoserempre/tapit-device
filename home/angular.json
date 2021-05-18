@@ -1,8 +1,5 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "cli": {
-    "analytics": "ca3975ef-cc3d-4c8c-bec4-80a5734ca18b"
-  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -25,9 +22,7 @@
           "options": {
             "customWebpackConfig": {
               "path": "extra-webpack.config.js",
-              "mergeStrategies": {
-                "externals": "replace"
-              }
+              "mergeStrategies": { "externals": "replace" }
             },
             "outputPath": "dist/home/browser",
             "index": "src/index.html",
@@ -68,13 +63,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "5mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "500kb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "5kb",
-                  "maximumError": "5kb"
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ]
             },
@@ -95,13 +90,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "5mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "501kb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "5kb",
-                  "maximumError": "5kb"
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ]
             },
@@ -116,13 +111,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "5mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "502kb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "5kb",
-                  "maximumError": "5kb"
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ]
             }

@@ -1,22 +1,11 @@
 @import "../../../assets/styles/variables";
 
 .bg-image {
-  background: url("/assets/images/points-background.png") no-repeat
-    center/contain;
-}
-
-.points {
-  border-width: 3px;
-  border-color: #FF8D5C;
+  background: url("/assets/images/points-background.png") no-repeat center/contain;
 }
 
 .active-link {
   border-color: #ff5005 !important;
-  background-color: #FAFAFA;
-}
-
-i::before {
-  color: #ff5005;
 }
 
 .nav {

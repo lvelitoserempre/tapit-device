@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild, EventEmitter, Output } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { BirthDate } from './BirthDate';
 import { CookieService } from "ngx-cookie-universal";
@@ -13,8 +13,6 @@ export class AgeGateComponent {
   @ViewChild('ageGate', { read: TemplateRef }) private ageGate:TemplateRef<any>;
   birthdate: BirthDate = {};
   isAdult: any = null;
-
-  @Output('showVerifyIdentity') showVerifyIdentity: any = new EventEmitter<boolean>();
 
   constructor(
     private modalService: NgbModal,
@@ -67,7 +65,6 @@ export class AgeGateComponent {
           domain: 'tapit.com.co'
         });
         this.modalService.dismissAll();
-        this.showVerifyIdentity.emit(true);
       }
     } else {
       this.isAdult = 'invalid';
