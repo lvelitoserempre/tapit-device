@@ -5,6 +5,7 @@ import {AuthService} from '../auth.service';
 import {DialogService} from '../../dialog/dialog-service/dialog.service';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {FacebookService} from '../facebook.service';
+import {UserAccount} from '../../user/user-account.model';
 import AuthErrorService from '../../auth-error.service';
 import {LoadingService} from '../../loading.service';
 import {from} from 'rxjs';
@@ -21,15 +22,13 @@ export class LoginComponent implements OnInit {
   validationMessages = LoginValidationMessages;
   private backUrl: string;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute,
-    private loadingService: LoadingService,
-    private dialogService: DialogService,
-    private userAuthenticationService: AuthService,
-    private facebookService: FacebookService
-  ) {
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private route: ActivatedRoute,
+              private loadingService: LoadingService,
+              private dialogService: DialogService,
+              private userAuthenticationService: AuthService,
+              private facebookService: FacebookService) {
     this.loginForm = this.formBuilder.group(LoginValidators, {updateOn: 'blur'});
   }
 

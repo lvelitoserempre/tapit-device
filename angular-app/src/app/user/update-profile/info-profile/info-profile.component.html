@@ -1,0 +1,87 @@
+<div class="py-6 px-10 bg-white rounded-xl font-fs-book bg-profile hidden lg:block h-full xl:h-80 mb-6" style="background-image: url('assets/images/profile/bg-profile.jpg')">
+    <div class="grid grid-cols-12">
+        <div class="col-span-4">
+            <div class="grid grid-cols-10 gap-4 lg:my-4 xl:my-6 text-white">
+                <div class="col-span-2">
+                    <p class="font-fs-bold text-2xl text-primary-500">1.</p>
+                </div> 
+                <div class="col-span-8 text-left">
+                    <p class="mt-2 text-neutral-800 lg:text-sm xl:text-base font-fs-book">
+                        <span class="font-fs-bold text-black">Visita</span> alguno de los 
+                        <a href="assets/files/Tap It - Comercios Aliados.pdf" download><span class="font-fs-regular text-primary-500 cursor-pointer"><u>puntos de venta aliados</u></span></a>
+                    </p>
+                </div>
+            </div>
+            <div class="grid grid-cols-10 gap-4 lg:my-4 xl:my-6 text-white">
+                <div class="col-span-2">
+                    <p class="font-fs-bold text-2xl text-primary-500">2.</p>
+                </div>
+                <div class="col-span-8 text-left">
+                    <p class="mt-2 text-neutral-800 lg:text-sm xl:text-base font-fs-book">
+                        <span class="font-fs-bold text-black">Suma</span> dando tu número de cédula al mesero
+                    </p>
+                </div>
+            </div>
+            <div class="grid grid-cols-10 gap-4 lg:mt-4 xl:mt-6 text-white mb-6">
+                <div class="col-span-2">
+                    <p class="font-fs-bold text-2xl text-primary-500">3.</p>
+                </div>
+                <div class="col-span-8 text-left">
+                    <p class="mt-2 text-neutral-800 lg:text-sm xl:text-base font-fs-book">
+                        <span class="font-fs-bold text-black">Redime</span> mostrando tu cédula al mesero
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="block lg:hidden">
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem trackBy class="slide py-2 mr-4">
+            <div class="py-6 px-10 rounded-xl font-fs-book bg-profile-small h-92" style="background-image: url('assets/images/profile/bg-profile-small.png');"></div>
+        </div>
+        <div ngxSlickItem trackBy class="slide py-2 mr-4">
+            <div class="py-6 px-6 rounded-xl font-fs-book bg-white bg-profile-small-bubbles h-92" style="background-image: url('assets/images/profile/bg-modal.png');">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12 text-center mt-4">
+                        <h2 class="text-lg font-fs-bold">¡Empieza a acumular!</h2>
+                    </div>
+                    <div class="col-span-12 mt-6">
+                        <div class="grid grid-cols-10 gap-4 my-6 text-white">
+                            <div class="col-span-2">
+                                <p class="font-fs-bold text-2xl text-primary-500">1.</p>
+                            </div> 
+                            <div class="col-span-8 text-left">
+                                <p class="mt-2 font-light text-neutral-800 text-sm xl:text-base font-fs-book">
+                                    <span class="font-fs-bold text-black">Visita</span> alguno de los 
+                                    <a href="assets/files/Tap It - Comercios Aliados.pdf" download><span class="font-fs-regular text-primary-500 cursor-pointer"><u>puntos de venta aliados</u></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-10 gap-4 my-6 text-white">
+                            <div class="col-span-2">
+                                <p class="font-fs-bold text-2xl text-primary-500">2.</p>
+                            </div>
+                            <div class="col-span-8 text-left">
+                                <p class="mt-2 font-light text-neutral-800 text-sm xl:text-base font-fs-book">
+                                    <span class="font-fs-bold text-black">Suma</span> dando tu número de cédula al mesero
+                                </p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-10 gap-4 my-6 text-white">
+                            <div class="col-span-2">
+                                <p class="font-fs-bold text-2xl text-primary-500">3.</p>
+                            </div>
+                            <div class="col-span-8 text-left">
+                                <p class="mt-2 font-light text-neutral-800 text-sm xl:text-base font-fs-book">
+                                    <span class="font-fs-bold text-black">Redime</span> mostrando tu cédula al mesero
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ngx-slick-carousel>
+</div>

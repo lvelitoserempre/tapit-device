@@ -11,6 +11,7 @@ import {DialogModule} from './dialog/dialog.module';
 import {AppCommonModule} from './app-common.module';
 import localeEs from '@angular/common/locales/es-CO';
 import {registerLocaleData} from '@angular/common';
+import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
 
 registerLocaleData(localeEs, 'es-CO');
 
@@ -27,7 +28,15 @@ registerLocaleData(localeEs, 'es-CO');
     DialogModule,
     HttpClientModule,
     AppCommonModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.threeBounce,
+      backdropBackgroundColour: 'rgba(250,250,250,1)', 
+      backdropBorderRadius: '4px',
+      primaryColour: '#ff5005', 
+      secondaryColour: '#ff5005', 
+      tertiaryColour: '#ff5005'
+    })
   ],
   bootstrap: [AppComponent],
   providers: [{provide: LOCALE_ID, useValue: 'es-CO'}]
