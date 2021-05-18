@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiFernando: 'https://4e17ad7785bb.ngrok.io',
+
   firebase: {
     config: {
       apiKey: 'AIzaSyBbMDkDVAUJ8MWcKMVtU7Onrzv5JVlfSbA',

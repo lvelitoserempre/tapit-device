@@ -19,7 +19,7 @@ import { UserDAO } from 'src/app/user/user-dao.service';
 })
 export class AuthService {
 
-	public apiUrl: string = environment.apiFernando;
+
 
 	private currentUser: ReplaySubject<UserAccount>;
 	private cancelUserListener: () => void;
