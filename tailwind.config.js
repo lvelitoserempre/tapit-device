@@ -7,7 +7,7 @@ module.exports = {
       sm: '640px',
       md: '768px',
       lg: '1024px',
-      xl: '1280px',
+      xl: '1280px'
     },
     colors: {
       transparent: 'transparent',
@@ -91,6 +91,13 @@ module.exports = {
       '48': '12rem',
       '56': '14rem',
       '64': '16rem',
+      '72': '18rem',
+      '76': '20rem',
+      '80': '22rem',
+      '84': '24rem',
+      '88': '26rem',
+      '92': '28rem',
+      '106': '30rem'
     },
     backgroundColor: theme => theme('colors'),
     backgroundPosition: {

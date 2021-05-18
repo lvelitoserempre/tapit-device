@@ -6,9 +6,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [v2.0.4] - To be released
 ### Added
 - The user can now add a CTA in drupal that leads the user to a section in the homepage
-### Changed
-- CTA for internal sections won't change URL in order to avoid redirection on user login
-- Fixed the description on banner sections that wasn't displaying the copy text
 ## [v2.0.3] - 2021-04-12
 ### Added
 - Added a header to provide a token when consuming the now protected drupal API

@@ -3,10 +3,11 @@ import {UserAccount} from '../user/user-account.model';
 import {AuthService} from '../auth/auth.service';
 import {Subscription} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {take} from 'rxjs/operators';
 import firebase from 'firebase/app';
 import 'firebase/remote-config';
+import { ProfileService } from '../user/profile/profile.service';
 import remoteConfig = firebase.remoteConfig;
 
 @Component({
@@ -23,7 +24,8 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private userAuthenticationService: AuthService, 
-    private route: ActivatedRoute, private router: Router
+    private router: Router,
+    private _profileSvc: ProfileService
   ) { }
 
   setMenu(event: any) {
@@ -70,5 +72,9 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
+  }
+
+  goToProfile() {
+    this._profileSvc.changeShowNavbar(true);
   }
 }
