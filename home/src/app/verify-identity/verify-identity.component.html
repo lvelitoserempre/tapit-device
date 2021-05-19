@@ -3,7 +3,7 @@
     <div class='flex justify-center items-center bg-modal w-full sm:w-2/4 md:w-2/5 lg:w-2/5 xl:w-3/12 bg-white p-10 rounded-2xl text-center'>
       <section *ngIf="!isDocumentValid" class="px-0 md:px-0 lg:px-12 xl:px-8">
         <p class="text-lg xl:text-xl font-fs-bold inline-block title_text">
-          Hola Beer Lover! 👋
+          ¡Hola Beer Lover! 👋
         </p>
         <p class="text-sm xl:text-base font-fs-regular text-neutral-800 mt-8 mb-0 title_p">
           Ahora puedes <span class="text-primary-500 font-fs-bold">sumar</span> y <span class="text-primary-500 font-fs-bold">redimir</span> puntos Tap It en nuestros comercios aliados.
@@ -43,7 +43,7 @@
             </div>
         </div>
         <p class="text-base font-fs-regular text-primary-500 my-8 title_p">
-          <a href="#" target="_blank" class="text-primary-500 font-bold"><u>Aplican Términos y Condiciones.</u></a>
+          <a href="https://tapit.com.co/terms.html" target="_blank" class="text-primary-500 font-bold"><u>Aplican Términos y Condiciones.</u></a>
         </p>
         <button type="button" class="uppercase bg-primary-500 px-4 py-3 rounded-xl text-white w-full mt-4 font-fs-bold" (click)="isDocumentValid = true;">
             ¡Empezar ya!
@@ -54,7 +54,7 @@
           <p class="text-sm xl:text-base font-fs-regular text-neutral-800 mb-8 title_p">
             Agrega tu número de identificación para que puedas <span class="text-primary-500 font-fs-bold">sumar y redimir tus puntos en bares o restaurantes.</span>
           </p>
-          <form [formGroup]="formDataUser" (ngSubmit)="updateDataUser()" autocomplete="off">
+          <form [formGroup]="formDataUser" (ngSubmit)="updateDataUser()" autocomplete="off" class="mx-4">
               <div class="flex flex-col my-4">
                   <label for="identityType" class="text-neutral-800 font-bold text-left text-sm title_p">Tipo de documento</label>
                   <label class="w-full select__box">
@@ -134,11 +134,11 @@
                         <div class="img_error">
                           <img src="/assets/images/verify/alert-error.svg" width="18" height="18"/>
                         </div>  
-                        <span class="text-danger-500 text-2xs">
+                        <span class="text-danger-500 text-2xs font-fs-book">
                             {{ validation.message }}
                         </span>
                     </div>
-                    <div *ngIf="formDataUser.errors?.verifyDocument && !formDataUser.pristine" class="text-danger-500 text-2xs">
+                    <div *ngIf="formDataUser.errors?.verifyDocument && !formDataUser.pristine" class="text-danger-500 text-2xs font-fs-book">
                       <div class="img_error">
                         <img src="/assets/images/verify/alert-error.svg" width="18" height="18"/>
                       </div>  
@@ -146,7 +146,7 @@
                   </div>
                 </div> 
             </div>
-              <button [disabled]="formDataUser.invalid" type="submit" class="uppercase bg-primary-500 px-4 py-3 rounded-xl text-white w-full mt-4 font-fs-bold">
+              <button [disabled]="formDataUser.invalid" type="submit" class="uppercase bg-primary-500 px-4 py-3 rounded-xl text-white w-full mt-12 mb-6 font-fs-bold">
                   Descubre Tap It
               </button>
           </form>
