@@ -61,7 +61,7 @@ export class UserDAO {
   }
 
 
-  updateXeerpa(providerId, providerToken) {
+  updateXeerpa(providerId:any, providerToken:any) {
     return from(auth().currentUser.getIdToken())
       .pipe(mergeMap(token =>
         this.http.post(
@@ -86,7 +86,7 @@ export class UserDAO {
   }
 
   signInWith(provider: string, accessTokenOrPassword: string, origin: string, email?: string, acceptTerms?: boolean, acceptOffers?: boolean,
-             interests?): Observable<string> {
+             interests?:any): Observable<string> {
     const entity: any = {
       provider,
       origin,

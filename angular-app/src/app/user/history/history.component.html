@@ -1,0 +1,61 @@
+<section class="md:block mx-4 border-4 border-white bg-neutral-100 p-4 shadow relative overflow-hidden h-full">  
+    <div class="arrow-bottom bg-primary-500 pt-2 cursor-pointer" (click)="scrollTop();" *ngIf="items.length">
+        <img src="assets/images/historial/arrow-up.svg" class="mx-auto"/>
+    </div>
+    <i (click)="goBack()" class="uil uil-angle-left-b text-base absolute md:hidden cursor-pointer" style="top: 15px;left: 5px"></i>
+
+    <h1 class="font-bold ml-4 lg:ml-0">Historial</h1>
+  
+    <p class="text-sm text-neutral-700 mt-2 mb-6">
+        Revisa los puntos que has acumulado y usado en Tap It.
+    </p>
+
+    <div class="grid grid-cols-12 items-center">
+        <ngx-loading [show]="loading"></ngx-loading>
+        <div class="col-span-12 my-10 text-center" *ngIf="items.length && isUserMaltas">
+            <img src="assets/images/historial/remember-points.png" width="300" class="mx-auto"/>
+            <p class="text-black font-fs-bold text-lg my-4">
+                ¡Recuerda!
+            </p>
+            <div class="grid grid-cols-11 bg-neutral-300 my-2 w-full md:w-3/4 lg:w-2/5 mx-auto">
+                <div class="col-span-5 text-right pr-2">
+                    <span class="text-primary-500"><span class="font-fs-bold">1000</span> Maltas</span>
+                </div>
+                <div class="col-span-1 text-center">
+                    =
+                </div>
+                <div class="col-span-5 text-left pl-2 text-neutral-800">
+                    <span class="font-fs-bold">60</span> pts Tap It
+                </div>
+            </div>
+            <div class="grid grid-cols-11 bg-neutral-300 my-2 w-full md:w-3/4 lg:w-2/5 mx-auto">
+                <div class="col-span-5 text-right pr-2 text-neutral-800">
+                    <span class="font-fs-bold">60</span> pts Tap It
+                </div>
+                <div class="col-span-1 text-center">
+                    =
+                </div>
+                <div class="col-span-5 text-left pl-2">
+                    <span class="text-primary-500"><span class="font-fs-bold">$1000</span> pesos</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-12" *ngIf="items.length">
+            <p class="text-primary-500 history__title border-b-2 mb-8">
+                Tus puntos
+            </p>
+        </div>
+        <div class="col-span-12">
+            <ng-container *ngIf="items.length">
+                <app-item-points *ngFor="let item of items" [item]="item"></app-item-points>
+            </ng-container>
+            <ng-container *ngIf="!items.length">
+                <img src="assets/images/historial/not-points.svg" class="mx-auto mt-12"/>
+                <h1 class="text-neutral-700 text-lg mt-8 text-center"><b>Ups... !No hay resultados!</b></h1>
+                <p class="mx-auto mb-8 text-center mt-6 w-full lg:w-7/12">
+                    No tienes puntos diponibles en el momento, revisa cómo puedes <span class="text-primary-500">ganar más</span> 🍺
+                </p>
+            </ng-container>
+        </div>
+    </div>
+</section>  

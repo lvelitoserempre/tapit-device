@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {from, Observable, ReplaySubject} from 'rxjs';
 import {UserAccount} from '../user/user-account.model';
 import {environment} from '../../environments/environment';
@@ -14,15 +14,19 @@ import UserCredential = firebase.auth.UserCredential;
 import auth = firebase.auth;
 import User = firebase.User;
 import firestore = firebase.firestore;
+import { __assign } from 'tslib';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  public tokenCustom: string = null;
+  public token$ = new EventEmitter;
   private currentUser: ReplaySubject<UserAccount>;
   private cancelUserListener: () => void;
 
   constructor(private http: HttpClient, private userDAO: UserDAO, private analyticsService: AnalyticsService) {
+    this.observerToken();
     this.currentUser = new ReplaySubject<UserAccount>(0);
   }
 
@@ -30,8 +34,9 @@ export class AuthService {
     auth().onAuthStateChanged((user: User) => {
       if (user && !this.cancelUserListener) {
         this.cancelUserListener = firestore().collection(environment.firebase.collections.userAccount).doc(user.uid)
-          .onSnapshot(snapshot => {
-            this.setCurrentUser(UserDAO.snapshotToUser(snapshot));
+          .onSnapshot(async(snapshot) => {
+            const res = await this.setCurrentUser(UserDAO.snapshotToUser(snapshot));
+            this.token$.emit(res.idToken);
           });
       } else {
         if (this.cancelUserListener) {
@@ -114,5 +119,10 @@ export class AuthService {
       idToken: data.idToken,
       refreshToken: data.refreshToken
     } : null;
+  }
+  observerToken() {
+    this.token$.subscribe(token => {
+      this.tokenCustom = token;
+    });
   }
 }

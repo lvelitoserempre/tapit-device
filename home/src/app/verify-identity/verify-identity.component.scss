@@ -1,0 +1,87 @@
+@import "../../assets/styles/colors.scss";
+
+.bg-modal {
+  background-image: url('/assets/images/verify/bg-modal.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+input,
+button:focus,
+select {
+  outline: none;
+}
+input {
+  color: black;
+  position: relative;
+}
+input::placeholder,
+select {
+  color: #BDBDBD;
+  font-family: "filson-soft-book";
+}
+select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.select__box {
+  position: relative;
+}
+.select__box:after {
+  content: url("/assets/images/verify/angle-down.svg");
+  right: 12px;
+  top: 65%;
+  transform: translateY(-50%);
+  position: absolute;
+  pointer-events: none;
+}
+button:disabled {
+  background-color: lighten($color: $darkGrayColor, $amount: 60);
+  color: $darkGrayColor;
+  cursor: not-allowed;
+}
+.font-18px {
+  font-size: 18px;
+}
+//IS INVALID/VALID INPUT
+.is-valid {
+  border: 1px solid black;
+  color: black;
+}
+.is-valid-selected {
+  color: black;
+}
+.is-invalid {
+  border: 1px solid $dangerColor;
+}
+.img_error {
+  top: -34px;
+  position: absolute;
+  right: 12px;
+  background-color: white;
+}
+
+@media (max-height: 760px) {
+  .title_text {
+    font-size: 0.9rem;
+  }
+  .title_p {
+    font-size: 0.7rem;
+  }
+  select, input, button {
+    padding: 5px !important;
+    border-radius: 10px;
+  }
+  .img_error {
+    top: -26px;
+  }
+  .select__box:after {
+    top: 70%;
+    transform: translateY(-50%);
+  }
+  input::placeholder,
+  select {
+    font-size: 0.85rem;
+  }
+}

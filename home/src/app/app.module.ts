@@ -17,7 +17,7 @@ import {registerLocaleData} from '@angular/common';
 import {TransferHttpCacheModule } from '@nguniversal/common';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AgeGateComponent } from './age-gate/age-gate.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule,ReactiveFormsModule} from "@angular/forms";
 import {
   NgxUiLoaderModule,
   NgxUiLoaderConfig,
@@ -25,6 +25,7 @@ import {
 } from "ngx-ui-loader";
 
 import { BrowserCookiesModule } from 'ngx-cookie-universal';
+import { VerifyIdentityComponent } from './verify-identity/verify-identity.component';
 
 registerLocaleData(localeEs, 'es-CO');
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -52,6 +53,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HeaderComponent,
     FooterComponent,
     AgeGateComponent,
+    VerifyIdentityComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
@@ -64,6 +66,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     TransferHttpCacheModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
     BrowserCookiesModule.forRoot(),

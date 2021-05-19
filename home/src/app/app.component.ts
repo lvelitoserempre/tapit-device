@@ -7,6 +7,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { AgeGateComponent } from './age-gate/age-gate.component';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CookieService } from "ngx-cookie-universal";
+import {AuthService} from "./services/auth/auth.service"
 
 declare var setupGTM: any;
 declare var ga: any;
@@ -26,7 +27,8 @@ export class AppComponent implements OnInit {
     private scriptService: ScriptService,
     @Inject(PLATFORM_ID) private platformId: Object,
     private ngxService: NgxUiLoaderService,
-    private cookies: CookieService
+    private cookies: CookieService,
+    private _authService: AuthService
   ) {
     this.ngxService.start();
     this.loadSSOScript();
@@ -49,9 +51,13 @@ export class AppComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       if (!this.cookies.get('anonymousUserBirthDate')) {
         this.ageGate.openAgeGate();
+      } else {
+        this._authService.getUser();
       }
     }
   }
+
+ 
 
   ngOnInit(): void {
     const search = new URLSearchParams(window.location.search);
@@ -84,7 +90,11 @@ export class AppComponent implements OnInit {
   private setUpStats() {
     setupGTM(window, document, 'script', 'dataLayer', environment.googleTagManagerId);
     ga('create', environment.googleAnalyticsId, 'auto');
-    fbq('init', environment.facebookPixelId);
-    fbq('track', 'PageView');
+    // fbq('init', environment.facebookPixelId);
+    // fbq('track', 'PageView');
+  }
+
+  showVerifyIdentity(evt: boolean) {  
+    this._authService.getUser();
   }
 }
