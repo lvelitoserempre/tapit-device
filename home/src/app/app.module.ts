@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
-import {VerifyIdentityComponent} from './verify-identity/verify-identity.component';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
@@ -18,7 +17,7 @@ import {registerLocaleData} from '@angular/common';
 import {TransferHttpCacheModule } from '@nguniversal/common';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AgeGateComponent } from './age-gate/age-gate.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormsModule} from "@angular/forms";
 import {
   NgxUiLoaderModule,
   NgxUiLoaderConfig,
@@ -53,7 +52,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HeaderComponent,
     FooterComponent,
     AgeGateComponent,
-    VerifyIdentityComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
@@ -65,7 +63,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AngularFireRemoteConfigModule,
     TransferHttpCacheModule,
     NgbModule,
-    FormsModule, ReactiveFormsModule,
+    FormsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
     BrowserCookiesModule.forRoot(),

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {UserAccount} from '../user/user-account';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
@@ -13,7 +13,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   user: UserAccount;
   points: number;
   sections: any[];
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // variableWidth: false,
+    variableWidth: false,
   };
   catalogConfig = {
     arrows: false,
@@ -78,12 +78,14 @@ export class HomeComponent implements OnInit {
     .pipe(map(sections => this.fillPlaceholders(sections)))
     .subscribe(sections => {
       this.sections = sections;
+
       for (const section of sections) {
         if (section.type === 'welcome_message') {
           this.welcomeSection = section;
         }
+
         if (section.type === 'seasonal_section') {
-          // this.seasonalConfig.variableWidth = section.slides.length > 1 && window.innerWidth < 768;
+          this.seasonalConfig.variableWidth = section.slides.length > 1 && window.innerWidth < 768;
           for (const slide of section.slides) {
             slide.data.imageMobile.image_url = slide.data.imageMobile.image_url.replace('styles/large/public/', '');
             slide.data.imageDesktop.image_url = slide.data.imageDesktop.image_url.replace('styles/large/public/', '');
@@ -93,8 +95,6 @@ export class HomeComponent implements OnInit {
       this.ngxService.stop();
     });
   }
-
-  ngOnInit(): void {}
 
   private fillPlaceholders(sections: any[]): any[] {
     for (const section of sections) {
@@ -153,5 +153,19 @@ export class HomeComponent implements OnInit {
     }
 
     return html;
+  }
+
+  public scrollToSection(sectionId: string, target: string): void {
+    if (target == '_self') {
+      let cleanedSectionId = sectionId.substring(1, sectionId.length);
+      let section = document.getElementById(cleanedSectionId);
+      window.scrollTo(0, section.offsetTop);
+    } else {
+      var externalLinkButton = document.createElement('a');
+      externalLinkButton.target= target;
+      externalLinkButton.href=sectionId;
+      externalLinkButton.click();
+      externalLinkButton.remove();
+    }
   }
 }

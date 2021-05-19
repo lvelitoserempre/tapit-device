@@ -24,20 +24,24 @@ export class UserDAO {
 
   static snapshotToUser(documentSnapshot: DocumentSnapshot): UserAccount {
     let object: DocumentData = {};
+
     if (documentSnapshot) {
       object = documentSnapshot.data() || {};
       object.id = documentSnapshot.id;
+
       for (const objectKey in object) {
         if (object.hasOwnProperty(objectKey)) {
           if (object[objectKey] instanceof Timestamp) {
             object[objectKey] = object[objectKey].toDate();
           }
+
           if (object[objectKey] instanceof DocumentReference) {
             object[objectKey] = object[objectKey].id;
           }
         }
       }
     }
+
     return object;
   }
 
@@ -56,21 +60,24 @@ export class UserDAO {
       }).pipe(pluck('customToken'));
   }
 
-  updateXeerpa(providerId: any, providerToken: any) {
-    return from(auth().currentUser.getIdToken()).pipe(mergeMap(token =>
-      this.http.post(
-        environment.firebase.functions.url + environment.firebase.functions.xeerpa,
-        {
-          provider: 'FB',
-          origin: 'web',
-          providerID: providerId,
-          providerToken
-        },
-        {
-          headers: { Authorization: 'Bearer ' + token }
-        }
-      ))
-    );
+
+  updateXeerpa(providerId, providerToken) {
+    return from(auth().currentUser.getIdToken())
+      .pipe(mergeMap(token =>
+        this.http.post(
+          environment.firebase.functions.url + environment.firebase.functions.xeerpa,
+          {
+            provider: 'FB',
+            origin: 'web',
+            providerID: providerId,
+            providerToken
+          },
+          {
+            headers: {
+              Authorization: 'Bearer ' + token,
+            }
+          }
+        )));
   }
 
   createUser(userAccount: UserAccount): Observable<string> {
@@ -78,7 +85,8 @@ export class UserDAO {
       .pipe(pluck('data'));
   }
 
-  signInWith(provider: string, accessTokenOrPassword: string, origin: string, email?: string, acceptTerms?: boolean, acceptOffers?: boolean, interests?: any): Observable<string> {
+  signInWith(provider: string, accessTokenOrPassword: string, origin: string, email?: string, acceptTerms?: boolean, acceptOffers?: boolean,
+             interests?): Observable<string> {
     const entity: any = {
       provider,
       origin,

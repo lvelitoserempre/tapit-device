@@ -27,18 +27,17 @@
           </li>
       </ul>
 
-      <ul *ngIf="user" 
-          class="fixed w-10/12 p-6 bg-neutral-100 pt-2 h-full top-0 border-4 border-white text-sm sm:text-base" 
-          id="menu">
-        <li class="cursor-pointer inline-block align-middle focus:outline-none p-0" routerLink="/app/user/profile/editar-perfil">
-          <img src="../assets/images/profile/profile-pic.svg" width="100" class="mt-4" alt="Icono Perfil">
+      <ul *ngIf="user" class="fixed w-10/12 p-6 bg-neutral-100 pt-2 h-full top-0 border-4 border-white text-sm sm:text-base" id="menu">
+        <li class="cursor-pointer inline-block align-middle focus:outline-none p-0">
+          <a href="/app/user/profile"><img src="../assets/images/profile-placeholder.png" width="100" alt="Icono Perfil"></a>
         </li>
         <li
           (click)="loginCloseMenu()"
-          class="font-bold text-md uppercase text-primary-500 cursor-pointer block mr-4 align-middle focus:outline-none py-4"
-          routerLink="/app/user/profile/editar-perfil">
-            <span class="block text-lg capitalize text-black">{{ user.firstName }} {{ user.lastName }}</span>
-            <span class="text-neutral-800 normal-case text-xs font-normal block mt-2">{{user.email}}</span>
+          class="font-bold text-md uppercase text-primary-500 cursor-pointer block mr-4 align-middle focus:outline-none py-4">
+          <a href="/app/user/profile">
+            <span class="block">{{ user.firstName }} {{ user.lastName }}</span>
+            <span class="text-neutral-700 normal-case text-xs font-normal block mt-2">{{user.email}}</span>
+          </a>
         </li>
         <li class="inline-block align-middle border-b border-neutral-500 w-full py-4">
           <a [href]="marketUrl"
@@ -118,7 +117,7 @@
               class="font-bold text-sm uppercase text-neutral-700 cursor-pointer inline-block mr-4 align-middle focus:outline-none app-link">
               <i class="uil uil-user-circle text-base inline-block align-middle inline-block align-middle"
                 queryParamsHandling="merge"></i>
-              <a href="/app/user/profile"><span class="inline-block align-middle">{{ user.firstName }} {{user.lastName}}</span></a>
+              <a href="/app/user/profile"><span class="inline-block align-middle">{{ user.firstName }}</span></a>
             </li>
             <li class="relative h-6 top-0 bottom-0 border-l border-neutral-500 inline-block align-middle"></li>
             <li class="inline-block ml-4 align-middle">

@@ -18,11 +18,11 @@ declare var fbq: any;
 export class AppComponent implements OnInit {
 
   constructor(private authService: AuthService, private userDAO: UserDAO) {
-    initializeApp(environment.firebase.config);
-    this.authService.setupLoggedUserObserver();
   }
 
   ngOnInit(): void {
+    initializeApp(environment.firebase.config);
+    this.authService.setupLoggedUserObserver();
     this.redirectIfUserIsAChild();
     this.setUpStats()
   }
@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
   private redirectIfUserIsAChild() {
     this.authService.getCurrentUser()
       .subscribe(user => user => {
+        console.log('listener', user)
         if (!user) {
           if (window.location.hostname !== 'localhost') {
             if (!CookiesService.getValue('anonymousUserBirthDate')) {
