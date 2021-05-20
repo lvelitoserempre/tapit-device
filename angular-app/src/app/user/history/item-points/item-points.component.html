@@ -12,7 +12,7 @@
         <span 
             class="font-bold text-xl sm:text-lg" 
             [ngClass]="{ 'text-primary-500': (item.originType !== 'redemption' || item.originType !== 'maltasExpiration'), 'text-neutral-900': (item.originType === 'redemption' || item.originType === 'maltasExpiration')}"
-        > {{(item.originType === 'redemption' || item.originType === 'maltasExpiration') ? '-' : '+'}} {{item.quantity | number : '1.0'}} pts</span>
+        > {{(item.originType === 'redemption' || item.originType === 'maltasExpiration') ? '' : '+'}} {{item.quantity | number : '1.0'}} pts</span>
     </div>
     <div class="col-span-6 sm:col-span-6 lg:col-span-5 xl:col-span-5 text-left">
         <p class="m-0 text-xs sm:text-base">
