@@ -61,6 +61,12 @@ button:disabled {
   right: 12px;
   background-color: white;
 }
+.img_error_document {
+  top: 48px;
+  position: absolute;
+  right: 12px;
+  background-color: white;
+}
 @media (max-height: 760px) {
   .title_text {
     font-size: 0.9rem;
@@ -82,5 +88,8 @@ button:disabled {
   input::placeholder,
   select {
     font-size: 0.85rem;
+  }
+  .img_error_document {
+    top: 39px;
   }
 }
