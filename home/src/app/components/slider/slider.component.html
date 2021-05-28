@@ -1,0 +1,25 @@
+<ngx-slick-carousel [config]="config">
+  <div *ngFor="let slide of slides; let i=index;" class="seasonal-slide overflow-hidden mr-4 rounded-md mb-4 md:mr-0" ngxSlickItem>
+    <div class="overflow-hidden image-container md:container md:mx-auto rounded-md rounded-b-none mb-4 md:m-4 md:mb-6 sm:hidden content">
+      <img [src]="slide.imageMobile.uri" [alt]="slide.imageMobile.uri" loading="lazy" class="mx-auto"/>
+    </div>
+    <div class="m-4 shadow-md relative overflow-hidden image-container md:container md:mx-auto rounded-md hidden sm:block">
+      <img [src]="slide.image.uri" loading="lazy" [alt]="slide.image.uri" class="mx-auto"/>
+      <div class="seasonal-div-text container mx-auto absolute bottom-0 p-4 block sm:block bg-white" style="padding-left: 20px; padding-right: 20px;">
+        <div class="relative flex flex-col md:flex-row md:justify-between md:items-center">
+          <p [innerHTML]="slide.body" class="text-lg mb-3 md:mb-0 description"></p>
+          <a (click)="scrollToSection(slide.link.uri, slide.link.target)" [href]="" *ngIf="slide.link.uri" class="app-button bg-primary-500 text-center w-full md:w-56 md:mx-0 uppercase text-xs py-3 sso-cursor-pointer">{{slide.link.title}}</a>
+        </div>
+      </div>
+    </div>
+    <div class="seasonal-div-text-small p-4 block rounded-md sm:hidden">
+      <div class="relative flex flex-col">
+        <p [innerHTML]="slide.body" class="text-sm mb-3 h-16 description"></p>
+        <a [href]="" *ngIf="slide.link.uri"
+          class="app-button bg-primary-500 text-center w-full uppercase text-xs py-3"
+          (click)="scrollToSection(slide.link.uri, slide.link.target)"
+          >{{slide.link.title}}</a>
+      </div>
+    </div>
+  </div>
+</ngx-slick-carousel>

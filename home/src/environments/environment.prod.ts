@@ -33,8 +33,12 @@ export const environment = {
     appId: '1703386173129451'
   },
   facebookPixelId: '946672495822340',
-  drupalUrl: 'http://tapit.abinbev.acsitefactory.com/api/homepage',
-  drupalToken: 'e572e1c3-516f-462a-9688-20370f77b598',
+  drupal:{
+    url: 'http://tapit.abinbev.acsitefactory.com',
+    oldApiPath: '/api/homepage',
+    newApiPath: '/api/v1/pages',
+    token: 'e572e1c3-516f-462a-9688-20370f77b598'
+  },
   ssoApp: 'https://sso.tapit.com.co/v3/tapit.sso.main.js',
   marketUrl: 'https://market.tapit.com.co',
   maxAge: 86400,

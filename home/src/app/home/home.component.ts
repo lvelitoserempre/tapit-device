@@ -17,7 +17,8 @@ export class HomeComponent {
   user: UserAccount;
   points: number;
   sections: any[];
-  seasonalConfig = {
+
+  sliderConfig = {
     arrows: false,
     dots: true,
     infinite: true,
@@ -65,7 +66,6 @@ export class HomeComponent {
       }
     ]
   };
-  welcomeSection: any = {};
 
   constructor(
     private angularFireAuth: AngularFireAuth,
@@ -74,44 +74,28 @@ export class HomeComponent {
     private ngxService: NgxUiLoaderService
   ) {
     this.ngxService.start();
-    this.drupalService.getHomeData()
+    this.drupalService.getPage('home')
     .pipe(map(sections => this.fillPlaceholders(sections)))
     .subscribe(sections => {
       this.sections = sections;
-
-      for (const section of sections) {
-        if (section.type === 'welcome_message') {
-          this.welcomeSection = section;
-        }
-
-        if (section.type === 'seasonal_section') {
-          this.seasonalConfig.variableWidth = section.slides.length > 1 && window.innerWidth < 768;
-          for (const slide of section.slides) {
-            slide.data.imageMobile.image_url = slide.data.imageMobile.image_url.replace('styles/large/public/', '');
-            slide.data.imageDesktop.image_url = slide.data.imageDesktop.image_url.replace('styles/large/public/', '');
-          }
-        }
-      }
       this.ngxService.stop();
     });
   }
 
   private fillPlaceholders(sections: any[]): any[] {
     for (const section of sections) {
-      if (section && section.type === 'welcome_message') {
+      if (section && section.type === 'userText') {
         this.angularFireAuth.user
           .pipe(switchMap(user => {
             return user ? this.angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
           }))
           .subscribe(user => {
             this.user = user;
-            section.messageAuthenticated = this.fillUserData(section.messageAuthenticated);
+            section.body = this.fillUserData(section.body);
           });
-        section.messageAnonymous = section.messageAnonymous;
       }
     }
-
-    return sections;
+    return sections
   }
 
   private fillUserData(html: string): string {
@@ -138,7 +122,6 @@ export class HomeComponent {
         });
       }
     }
-
     return html;
   }
 

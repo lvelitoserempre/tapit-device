@@ -1,0 +1,29 @@
+.seasonal-slide {
+  box-shadow: 0px 5px 10px rgba(52, 16, 0, 0.08), 0px 15px 25px rgba(52, 16, 0, 0.06);
+  /*margin-left: 20px !important;*/
+  width: 80vw;
+
+  @media (min-width: 768px) {
+    box-shadow: none;
+    width: 100%;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .description {
+    line-height: 20px;
+    @media (min-width: 768px) {
+      line-height: 40px;
+    }
+  }
+
+  .image-container {
+    min-height: 265px;
+
+    @media (min-width: 768px) {
+      height: 550px
+    }
+  }
+}

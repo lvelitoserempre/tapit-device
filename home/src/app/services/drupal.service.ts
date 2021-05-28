@@ -17,11 +17,22 @@ export class DrupalService {
     // return of(json)
     const headers = {
       headers: {
-        'x-token': environment.drupalToken
+        'x-token': environment.drupal?.token
       }
     }
-    return this.httpClient.get(environment.drupalUrl, headers)
+    return this.httpClient.get(`${environment.drupal?.url}/${environment.drupal?.oldApiPath}`, headers)
     .pipe(map(response => this.processResponse(response)));
+  }
+
+  getPage(page:string): Observable<any[]> {
+    // return of(json)
+    const headers = {
+      headers: {
+        'x-token': environment.drupal?.token
+      }
+    }
+    return this.httpClient.get(`${environment.drupal?.url}/${environment.drupal?.newApiPath}?alias=/${page}`, headers)
+    .pipe(map(response => this.processResponse2(response)));
   }
 
   private replaceUrl(imageUrl:any): string {
@@ -32,9 +43,12 @@ export class DrupalService {
     }
   }
 
+  private processResponse2(response: any): any[] {
+    return response.sections;
+  }
+
   private processResponse(response: any): any[] {
     let sections = [];
-
     if (response && response[0]) {
       sections = response[0].content;
 

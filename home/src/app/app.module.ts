@@ -4,6 +4,9 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
+import {SliderComponent} from './components/slider/slider.component';
+import {BeerCarrouselComponent} from './components/beerCarrousel/beerCarrousel.component';
+import {userText} from './components/userText/userText.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {AngularFireAuthModule} from '@angular/fire/auth';
@@ -50,6 +53,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   declarations: [
     AppComponent,
     HomeComponent,
+    SliderComponent,
+    BeerCarrouselComponent,
+    userText,
     HeaderComponent,
     FooterComponent,
     AgeGateComponent,

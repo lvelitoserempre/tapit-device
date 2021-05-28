@@ -1,0 +1,49 @@
+<!-- CATALOG -->
+<div *ngIf="variant==='catalog'">
+  <div [innerHTML]="title" class="container mx-auto px-5 text-lg font-bold text-secondary-500"></div>
+  <div [innerHTML]="description" class="container mx-auto py-2 px-5 text-sm mb-2 text-secondary-500"></div>
+  <div class="mb-4 bg-neutral-100">
+    <div class="container mx-auto relative">
+      <ngx-slick-carousel #slickModal="slick-carousel" [config]="config" class="py-5 inline-block">
+        <a *ngFor="let slide of slides; let i=index;"
+           [href]="slide.link.uri"
+           class="catalog-slide relative flex flex-col content-center justify-center items-center relative"
+           ngxSlickItem>
+          <img [src]="slide.image.uri" loading="lazy" alt="bottle" class="mx-auto"/>
+          <img alt="shadow" loading="lazy" class="mx-auto my-2" src="./assets/images/shadow.svg">
+        </a>
+      </ngx-slick-carousel> 
+      <img (click)="slickModal.slickPrev()" alt="previous" class="text-xl before cursor-pointer" src="./assets/images/next-prev-nav.svg">
+      <img (click)="slickModal.slickNext()" alt="next" class="text-xl next cursor-pointer" src="./assets/images/next-prev-nav.svg">
+    </div>
+  </div>
+  <div *ngIf="link" class="text-center mb-8">
+    <a
+      [href]="link.uri"
+      class="app-button border-2 border-black bg-white text-black text-center p-3 py-3 text-xs cursor-pointer uppercase hover:bg-black hover:text-white md:w-56">{{link.title}}</a>
+  </div>
+</div>
+
+<!-- RECOMENDED -->
+<div *ngIf="variant==='recommended'" class="container mx-auto mb-16" id="div__recommended_section">
+  <div [innerHTML]="title" class="px-5 text-lg font-bold text-secondary-500"></div>
+
+  <div class="relative">
+    <ngx-slick-carousel [config]="config">
+      <div *ngFor="let slide of slides; let i=index;" class="recommended-slide mr-4 mb-4 relative" ngxSlickItem>
+        <div class="rounded-md p-5 h-full text-box flex flex-col justify-between">
+          <header>
+            <h6 [innerHTML]="slide.title" class="text-lg font-bold text-primary-500 mb-2 h-20 title"></h6>
+            <p [innerHTML]="slide.body" class="text-sm mb-3 md:mb-0 text-neutral-800 description"></p>
+          </header>
+          <a [href]="slide.link.uri"
+             class="app-button border-2 border-black bg-white text-black text-center p-3 py-3 text-xs cursor-pointer uppercase hover:bg-black hover:text-white ml-0">{{slide.link.title}}</a>
+        </div>
+        <div class="image-container">
+          <img [src]="slide.image.uri" alt="image slide" class="mobile w-auto h-full"/>
+          <img [src]="slide.image.uri" alt="image slide" class="desktop w-auto h-full"/>
+        </div>
+      </div>
+    </ngx-slick-carousel>
+  </div>
+</div>
