@@ -91,6 +91,7 @@ export class HomeComponent {
           }))
           .subscribe(user => {
             this.user = user;
+            section.show = (user && !section.permissions?.logged) || (!user && section.permissions?.logged) ? false : true
             section.body = this.fillUserData(section.body);
           });
       }
