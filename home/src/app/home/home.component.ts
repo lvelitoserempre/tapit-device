@@ -14,6 +14,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  isOnWebView = false;
   user: UserAccount;
   points: number;
   sections: any[];
@@ -80,6 +81,10 @@ export class HomeComponent {
       this.sections = sections;
       this.ngxService.stop();
     });
+    const search = new URLSearchParams(window.location.search);
+    if (search.get('source')) {
+      this.isOnWebView = true;
+    }
   }
 
   private fillPlaceholders(sections: any[]): any[] {

@@ -1,17 +1,17 @@
 {
   "description": "",
   "devDependencies": {
-    "autoprefixer": "^9.8.0",
+    "autoprefixer": "^10.2.6",
     "cross-env": "^7.0.2",
-    "cssnano": "^4.1.10",
+    "cssnano": "^5.0.5",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-copy": "^4.0.1",
     "gulp-live-server": "0.0.31",
-    "gulp-postcss": "^8.0.0",
+    "gulp-postcss": "^9.0.0",
     "gulp-run": "^1.7.1",
-    "postcss-import": "^12.0.1",
-    "tailwindcss": "^1.4.6"
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^2.1.4"
   },
   "name": "tapit-web",
   "repository": {

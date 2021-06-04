@@ -1,7 +1,7 @@
 <article>
   <section *ngFor="let section of sections;" id="{{section.id}}">
     <app-user-text 
-      *ngIf="section.type==='userText'"  
+      *ngIf="section.type==='userText' && !isOnWebView"
       [html]="section.body"
       [show]="section.show"
     >

@@ -9,9 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add transaction historic (https://abi-consumerdigitalproducts.atlassian.net/browse/MAL-175)
 - Add highlighted items for Maltas and expiration points (https://abi-consumerdigitalproducts.atlassian.net/browse/MAL-36)
 - Add screen to update ID and trigger point synchronization processes (https://abi-consumerdigitalproducts.atlassian.net/browse/MAL-174)
+- Changed Drupal API endpoint and adapted to new response structure
 ### Changed
 - CTA for internal sections won't change URL in order to avoid redirection on user login
 - Fixed the description on banner sections that wasn't displaying the copy text
+- The header section that displays points is now hidden when homepage is visited in mobile apps
+- Upgraded dependencies version
 ## [v2.0.3] - 2021-04-12
 ### Added
 - Added a header to provide a token when consuming the now protected drupal API

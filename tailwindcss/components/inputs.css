@@ -1,5 +1,5 @@
 .app-input {
-  @apply px-4 py-4 text-black inline-block mx-auto align-bottom rounded-lg border border-neutral-500;
+  @apply px-4 py-4 text-black inline-block mx-auto align-bottom rounded-lg border-0 border-neutral-500;
 }
 
 .app-input:focus {

@@ -45,8 +45,8 @@ export class DrupalService {
 
   private processResponse2(response: any): any[] {
     let data = JSON.stringify(response.sections, null, 4),
-        pathFind = `${environment.drupal?.url}/sites/g/files`,
-        newPath = `${environment.drupal?.url.replace('http://', '/cache/')}/sites/g/files`;
+    pathFind = `${environment.drupal?.url}/sites/g/files`,
+    newPath = `${environment.drupal?.url.replace('http://', '/cache/')}/sites/g/files`;
     return JSON.parse(data.replaceAll(pathFind, newPath));
   }
 
