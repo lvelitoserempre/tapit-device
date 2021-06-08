@@ -22,6 +22,10 @@ export class VerifyIdentityComponent implements OnDestroy {
 
   isValidate: boolean = true;
 
+  isError500: boolean = false;
+  textButton500: string = 'Cerrar';
+  text500: string = '¡Lo sentimos! No hemos podido completar la validación de tus datos. Por favor, inténtalo más tarde.';
+
   token: string;
 
   flagOpenModal: boolean = false;
@@ -60,6 +64,12 @@ export class VerifyIdentityComponent implements OnDestroy {
     this._authService.user$.unsubscribe();
     this._authService.token$.unsubscribe();
     this.flagOpenModal = false;
+  }
+
+  changeIdentity(evt: any) {
+    if (evt) {
+      this.textError = null;
+    }
   }
 
   // Subscription to user auth
@@ -125,6 +135,9 @@ export class VerifyIdentityComponent implements OnDestroy {
       }, err => {
         this.textError = err.error?.data?.message || null;
         this.isValidate = false;
+        if (!err.error?.data?.message) {
+          this.isError500 = true;
+        }
       });
     }
   }

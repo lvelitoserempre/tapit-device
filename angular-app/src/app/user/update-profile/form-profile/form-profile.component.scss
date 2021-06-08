@@ -9,6 +9,9 @@ input {
   color: #828282;
   position: relative;
 }
+.border {
+  border-width: 1px !important;
+}
 input::placeholder,
 select {
   color: #BDBDBD;

@@ -94,6 +94,7 @@
                     pattern="[0-9]*"
                     placeholder="Ingrese solo números" 
                     autocomplete="off" 
+                    (ngModelChange)="changeIdentity($event)"
                   />
                   <div class="text-left" *ngFor="let validation of validation_messages.identity">
                       <div *ngIf="formDataUser.get('identity').hasError(validation.type) && (formDataUser.get('identity').dirty || formDataUser.get('identity').touched)">
@@ -144,9 +145,15 @@
                   </div>
                 </div> 
             </div>
-              <button [disabled]="formDataUser.invalid" type="submit" class="uppercase bg-primary-500 px-4 py-3 rounded-xl text-white w-full mt-12 mb-6 font-fs-bold">
-                  Descubre Tap It
-              </button>
+            <p *ngIf="isError500" class="text-left text-danger-500 text-sm font-fs-book">
+              {{text500}}
+            </p>
+            <button *ngIf="isError500" type="button" class="uppercase bg-primary-500 px-4 py-3 rounded-xl text-white w-full mt-12 mb-6 font-fs-bold" (click)="closeModal();">
+              Cerrar
+            </button>
+            <button *ngIf="!isError500" [disabled]="formDataUser.invalid" type="submit" class="uppercase bg-primary-500 px-4 py-3 rounded-xl text-white w-full mt-12 mb-6 font-fs-bold">
+              Descubre Tap It
+          </button>
           </form>
         </section>
     </div>
