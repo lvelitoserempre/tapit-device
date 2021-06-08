@@ -75,3 +75,11 @@
   height: 60px;
   transform: rotate(180deg);
 }
+
+#div__recommended_section {
+  padding-left: 20px;
+  padding-right: 0px;
+  @media (min-width: 768px) {
+    padding-left: 0px;
+  }
+}

@@ -27,6 +27,15 @@ export class HomeComponent {
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          centerMode: true,
+          centerPadding: '20px'
+        }
+      }
+    ]
   };
   catalogConfig = {
     arrows: false,
