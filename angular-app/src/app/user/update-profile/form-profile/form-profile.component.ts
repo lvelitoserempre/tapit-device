@@ -16,8 +16,8 @@ export class FormProfileComponent implements OnInit {
   // INVALID DOCUMENT
   textError: string = null;
 
-  isError500: boolean = false;
-  text500: string = '¡Lo sentimos! No hemos podido completar la validación de tus datos. Por favor, inténtalo más tarde.';
+  isErrorAny: boolean = false;
+  textErrorAny: string = '¡Lo sentimos! No hemos podido completar la validación de tus datos. Por favor, inténtalo más tarde.';
 
   // USER
   user: any;
@@ -72,10 +72,10 @@ export class FormProfileComponent implements OnInit {
       this.loading = false;
       this.textError = null;
     }, err => {
-      this.textError = err.error?.data?.message || null;
+      this.textError = err.error?.data?.message;
       this.loading = false;
       if (!err.error?.data?.message) {
-        this.isError500 = true;
+        this.isErrorAny = true;
       }
     });
   }

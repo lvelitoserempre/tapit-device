@@ -22,9 +22,9 @@ export class VerifyIdentityComponent implements OnDestroy {
 
   isValidate: boolean = true;
 
-  isError500: boolean = false;
-  textButton500: string = 'Cerrar';
-  text500: string = '¡Lo sentimos! No hemos podido completar la validación de tus datos. Por favor, inténtalo más tarde.';
+  isErrorAny: boolean = false;
+  textButtonErrorAny: string = 'Cerrar';
+  textErrorAny: string = '¡Lo sentimos! No hemos podido completar la validación de tus datos. Por favor, inténtalo más tarde.';
 
   token: string;
 
@@ -133,10 +133,10 @@ export class VerifyIdentityComponent implements OnDestroy {
         this.textError = null;
         this.closeModal();
       }, err => {
-        this.textError = err.error?.data?.message || null;
+        this.textError = err.error?.data?.message;
         this.isValidate = false;
         if (!err.error?.data?.message) {
-          this.isError500 = true;
+          this.isErrorAny = true;
         }
       });
     }
