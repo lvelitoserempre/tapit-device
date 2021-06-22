@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add highlighted items for Maltas and expiration points (https://abi-consumerdigitalproducts.atlassian.net/browse/MAL-36)
 - Add screen to update ID and trigger point synchronization processes (https://abi-consumerdigitalproducts.atlassian.net/browse/MAL-174)
 - Changed Drupal API endpoint and adapted to new response structure
+- Added a static Sitemap to the Home page (https://github.com/ab-inbev-global-martech/TapIt-Web/)
 ### Changed
 - CTA for internal sections won't change URL in order to avoid redirection on user login
 - Fixed the description on banner sections that wasn't displaying the copy text
