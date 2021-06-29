@@ -1,0 +1,150 @@
+name: Build
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+jobs:
+  build:
+   name: Build environment
+   runs-on: ubuntu-latest
+   env:
+     NODE_OPTIONS: --max-old-space-size=4096
+   strategy:
+     matrix:
+       node-version: [10.x,12.x, 14.x, 15.x]
+   steps:
+   - uses: actions/checkout@v2
+   - name: Use Node.js ${{ matrix.node-version }}
+     uses: actions/setup-node@v1
+     with:
+       node-version: ${{ matrix.node-version }}
+   - run: npm ci
+     working-directory: ./angular-app
+   #- name: lint
+   #  run: npm run lint
+   #  working-directory: ./angular-app
+   - name: build
+     run: npm run b 
+     working-directory: ./angular-app
+        
+  secret_scan_trufflehog:
+    name: Secret Scan Trufflehog
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: trufflehog-actions-scan
+      uses: edplato/trufflehog-actions-scan@master
+      with:
+        scanArguments: "--regex --entropy=False"
+  
+  gitleaks:
+    name: Secret Scan GitLeaks
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+    - name: gitleaks-action
+      uses: zricethezav/gitleaks-action@master
+    
+  snyk_scan:
+    name: Snyk Scan
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Snyk 
+      uses: snyk/actions/setup@master
+    - name: Snyk test to check for vulnerabilities
+      run: snyk test --org=${{ secrets.SNYK_ORGANIZATION }} --fail-on=all  > ../comment-body-snyk.txt
+      working-directory: ./angular-app/
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    - run: cat comment-body-snyk.txt
+    - name: Write errors
+      if: ${{ failure() }}
+      id: get-comment-body
+      run: |
+        body=$(echo "$(echo '### Snyk Scan'; head -n $( grep -n "Organization:" comment-body-snyk.txt | cut -d: -f1) comment-body-snyk.txt )")
+        body="${body//'%'/'%25'}"
+        body="${body//$'\n'/'%0A'}"
+        body="${body//$'\r'/'%0D'}" 
+        echo ::set-output name=body::$body
+    - name: Find Comment
+      if: ${{ failure() }}
+      uses: peter-evans/find-comment@v1
+      id: fc
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
+        body-includes: Snyk Scan
+    - name: Create or update comment
+      if: ${{ failure() }}
+      uses: peter-evans/create-or-update-comment@v1
+      with:
+        comment-id: ${{ steps.fc.outputs.comment-id }}
+        issue-number: ${{ github.event.pull_request.number }}
+        body: ${{ steps.get-comment-body.outputs.body }}
+        edit-mode: replace
+        reactions: eyes
+  
+  sonarqube_scan:
+    name: SonarQube Scan
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup sonarqube
+      uses: warchant/setup-sonar-scanner@v3
+    - name: Run sonarqube
+      run: sonar-scanner scan
+           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+           -Dsonar.projectName='${{ github.event.repository.name }}' 
+           -Dsonar.host.url=${{ secrets.SONAR_URL }}
+           -Dsonar.projectKey='${{ github.event.repository.name }}'
+           -Dsonar.java.binaries=.
+           -Dsonar.sources=angular-app/src/
+           -Dsonar.qualitygate.wait=true
+           -Dsonar.qualitygate=true
+           -Dsonar.branch.name=${{ github.ref }} > comment-body-sonarqube.txt
+    - run: cat comment-body-sonarqube.txt  
+    - id: get-comment-body
+      run: |
+        body=$(grep  "you can browse" comment-body-sonarqube.txt | awk '{  print "### SonarQube Scan \n" $0}' )
+        body="${body//'%'/'%25'}"
+        body="${body//$'\n'/'%0A'}"
+        body="${body//$'\r'/'%0D'}" 
+        echo ::set-output name=body::$body
+    - name: Find Comment
+      uses: peter-evans/find-comment@v1
+      id: fc
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
+        body-includes: SonarQube Scan
+    - name: Create or update comment
+      uses: peter-evans/create-or-update-comment@v1
+      with:
+        comment-id: ${{ steps.fc.outputs.comment-id }}
+        issue-number: ${{ github.event.pull_request.number }}
+        body: ${{ steps.get-comment-body.outputs.body }}
+        edit-mode: replace
+        reactions: eyes
+
+  checkmarx_scan:
+    name: Checkmarx Scan
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Checkmarx CxFlow Action
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1
+      with:
+        checkmarx_url: ${{ secrets.CHECKMARX_SERVER }}
+        checkmarx_username:  ${{ secrets.CHECKMARX_USER }}
+        checkmarx_password:  ${{ secrets.CHECKMARX_PASSWD }}
+        checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
+        project: "ab-inbev-global-martech@${{ github.event.repository.name }}"
+        team: '/CxServer/AB-InBev/NAZ/MarTech/DigitalProducts'
+        scanners: sast
+        bug_tracker: GITHUBPULL
+        # break_build: true
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.head_ref }} --merge-id=${{ github.event.number }}
