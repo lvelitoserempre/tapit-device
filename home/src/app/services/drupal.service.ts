@@ -93,9 +93,11 @@ export class DrupalService {
 
   private processResponse2(response: any): any[] {
     let data = JSON.stringify(response.sections, null, 4),
-    pathFind = `${environment.drupal?.url}/sites/g/files`,
-    newPath = `${environment.drupal?.url.replace('http://', '/cache/')}/sites/g/files`;
-    return JSON.parse(data.replaceAll(pathFind, newPath));
+        pathFind = `${environment.drupal?.url}/sites/g/files`,
+        newPath = `${environment.drupal?.url.replace('https://', '/cache/')}/sites/g/files`;
+    //return JSON.parse(data.replaceAll(pathFind, newPath));
+    const json = data.split(pathFind).reduce((acc, item, index) =>  acc + (index > 0 ? (newPath+item) : item), '')
+    return JSON.parse(json);
   }
 
   private processResponse(response: any): any[] {
