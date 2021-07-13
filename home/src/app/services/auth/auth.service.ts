@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
+import { ignoreElements, switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -13,6 +13,7 @@ import firestore = firebase.firestore;
 import { CookiesService } from '../cookies.service';
 import { UserAccount } from 'src/app/user/user-account';
 import { UserDAO } from 'src/app/user/user-dao.service';
+import { DrupalService } from 'src/app/services/drupal.service';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,8 @@ export class AuthService {
 
 	constructor(
 		private _angularFireAuth: AngularFireAuth,
-		private _angularFirestore: AngularFirestore
+		private _angularFirestore: AngularFirestore,
+		private drupalService: DrupalService
 	) {
 		this.observerUser();
 		this.currentUser = new ReplaySubject<UserAccount>(0);
@@ -66,7 +68,9 @@ export class AuthService {
 		auth().onAuthStateChanged((user: User) => {
 			if (user && !this.cancelUserListener) {
 				this.cancelUserListener = firestore().collection(environment.firebase.collections.userAccount).doc(user.uid)
-				.onSnapshot(async(snapshot) => {			
+				.onSnapshot(async(snapshot) => {
+					if(!this.drupalService.getSession())
+						this.drupalService.auth(JSON.stringify(user))	
 					const res = await this.setCurrentUser(UserDAO.snapshotToUser(snapshot));
 					this.token$.emit(res.idToken);
 				});

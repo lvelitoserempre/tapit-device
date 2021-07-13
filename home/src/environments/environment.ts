@@ -41,7 +41,9 @@ export const environment = {
     url: 'http://tapit.dev-abinbev.acsitefactory.com',
     oldApiPath: '/api/homepage',
     newApiPath: '/api/v1/pages',
-    token: 'a697c03d-b6da-45bd-9418-e05f727010bc'
+    apiAuth: '/oauth/token',
+    token: 'a697c03d-b6da-45bd-9418-e05f727010bc',
+    client_id: 'fe1b0adf-19fe-464a-9f5a-a247e564e505'
   },
   ssoApp: 'https://sso.dev.tapit.com.co/v3/tapit.sso.main.js',
   marketUrl: 'https://market-dev.tapit.com.co',

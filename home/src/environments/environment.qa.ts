@@ -33,10 +33,12 @@ export const environment = {
   },
   facebookPixelId: '1374695322930119',
   drupal:{
-    url: 'http://tapit.test-abinbev.acsitefactory.com',
+    url: 'https://qa-content.abi-rewards.de',
     oldApiPath: '/api/homepage',
     newApiPath: '/api/v1/pages',
-    token: 'a697c03d-b6da-45bd-9418-e05f727010bc'
+    apiAuth: '/oauth/token',
+    token: 'a697c03d-b6da-45bd-9418-e05f727010bc',
+    client_id: 'd5f111fb-6ab8-482b-8053-780931ed2453'
   },
   ssoApp: 'https://sso.qa.tapit.com.co/v3/tapit.sso.main.js',
   marketUrl: 'https://market.qa.tapit.com.co',

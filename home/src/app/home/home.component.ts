@@ -7,6 +7,7 @@ import {of} from 'rxjs';
 import {DrupalService} from '../services/drupal.service';
 import {formatNumber} from '@angular/common';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { CookiesService } from '../services/cookies.service';
 
 @Component({
   selector: 'app-home',
@@ -90,6 +91,12 @@ export class HomeComponent {
       this.sections = sections;
       this.ngxService.stop();
     });
+    const path = CookiesService.getValue('LOGIN_REDIRECTION');
+    if(path && path.includes('#') && CookiesService.getValue('DRUPAL_SESSION')) {
+      const section = document.getElementById(path.replace('#', ''));
+      if(section)
+        window.scrollTo(0, section.offsetTop);
+    }
     const search = new URLSearchParams(window.location.search);
     if (search.get('source')) {
       this.isOnWebView = true;
@@ -105,7 +112,6 @@ export class HomeComponent {
           }))
           .subscribe(user => {
             this.user = user;
-            section.show = (user && !section.permissions?.logged) || (!user && section.permissions?.logged) ? false : true
             section.body = this.fillUserData(section.body);
           });
       }

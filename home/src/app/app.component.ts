@@ -8,6 +8,7 @@ import { AgeGateComponent } from './age-gate/age-gate.component';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CookieService } from "ngx-cookie-universal";
 import {AuthService} from "./services/auth/auth.service"
+import {DrupalService} from "./services/drupal.service"
 
 declare var setupGTM: any;
 declare var ga: any;
@@ -20,6 +21,8 @@ declare var fbq: any;
 })
 export class AppComponent implements OnInit {
   isOnWebView = false;
+  private listenerRunning : boolean = false;
+
   @ViewChild('ageGate') private ageGate: AgeGateComponent;
 
   constructor(
@@ -28,7 +31,8 @@ export class AppComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object,
     private ngxService: NgxUiLoaderService,
     private cookies: CookieService,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private drupalService: DrupalService
   ) {
     this.ngxService.start();
     this.loadSSOScript();
@@ -85,6 +89,13 @@ export class AppComponent implements OnInit {
       })
     }
     this.ngxService.stop();
+  }
+
+  ngAfterViewChecked() {
+    if(window.ssoApp && !this.listenerRunning){
+      this.drupalService.onLoginCompleate();
+      this.listenerRunning = true;
+    }
   }
 
   private setUpStats() {

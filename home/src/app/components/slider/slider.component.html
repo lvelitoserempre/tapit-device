@@ -8,16 +8,18 @@
       <div class="seasonal-div-text container mx-auto absolute bottom-0 p-4 block sm:block bg-white" style="padding-left: 20px; padding-right: 20px;">
         <div class="relative flex flex-col md:flex-row md:justify-between md:items-center">
           <p [innerHTML]="slide.body" class="text-lg mb-3 md:mb-0 description"></p>
-          <a (click)="scrollToSection(slide.link.uri, slide.link.target)" [href]="" *ngIf="slide.link.uri" class="app-button bg-primary-500 text-center w-full md:w-56 md:mx-0 uppercase text-xs py-3 sso-cursor-pointer">{{slide.link.title}}</a>
+          <a (click)="callToAction(slide)" [href]="" *ngIf="slide.link.uri" class="app-button bg-primary-500 text-center w-full md:w-56 md:mx-0 uppercase text-xs py-3 sso-cursor-pointer">{{slide.link.title}}</a>
         </div>
       </div>
     </div>
     <div class="seasonal-div-text-small p-4 block rounded-md sm:hidden">
       <div class="relative flex flex-col">
         <p [innerHTML]="slide.body" class="text-sm mb-3 h-16 description"></p>
-        <a [href]="" *ngIf="slide.link.uri"
+        <a 
+          [href]="" 
+          *ngIf="slide.link.uri"
           class="app-button bg-primary-500 text-center w-full uppercase text-xs py-3"
-          (click)="scrollToSection(slide.link.uri, slide.link.target)"
+          (click)="callToAction(slide)"
           >{{slide.link.title}}</a>
       </div>
     </div>

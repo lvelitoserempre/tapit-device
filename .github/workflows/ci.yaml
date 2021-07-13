@@ -143,7 +143,7 @@ jobs:
         checkmarx_password:  ${{ secrets.CHECKMARX_PASSWD }}
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
         project: "ab-inbev-global-martech@${{ github.event.repository.name }}"
-        team: '/CxServer/AB-InBev/NAZ/MarTech/DigitalProducts'
+        team: ${{ secrets.CHECKMARX_TEAM }}
         scanners: sast
         bug_tracker: GITHUBPULL
         # break_build: true

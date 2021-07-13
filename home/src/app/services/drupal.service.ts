@@ -3,36 +3,84 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {environment} from 'src/environments/environment';
-
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { CookiesService } from './cookies.service';
 @Injectable({
   providedIn: 'root'
 })
 export class DrupalService {
 
   constructor(
-    private httpClient: HttpClient
-  ) { }
+    private httpClient: HttpClient,
+		private ngxService: NgxUiLoaderService
+  ) { 
+  }
 
   getHomeData(): Observable<any[]> {
     // return of(json)
-    const headers = {
-      headers: {
-        'x-token': environment.drupal?.token
-      }
-    }
+    const headers = this.getHeaders()
     return this.httpClient.get(`${environment.drupal?.url}/${environment.drupal?.oldApiPath}`, headers)
     .pipe(map(response => this.processResponse(response)));
   }
 
   getPage(page:string): Observable<any[]> {
     // return of(json)
-    const headers = {
-      headers: {
-        'x-token': environment.drupal?.token
-      }
-    }
+    const headers = this.getHeaders()
     return this.httpClient.get(`${environment.drupal?.url}/${environment.drupal?.newApiPath}?alias=/${page}`, headers)
     .pipe(map(response => this.processResponse2(response)));
+  }
+
+  getHeaders() {
+    const drupalSession = this.getSession()
+    return {
+      headers: drupalSession ?
+        {
+          'x-token': environment.drupal?.token,
+          'Authorization': `Bearer ${drupalSession}`
+        }
+      :
+        {
+          'x-token': environment.drupal?.token
+        }
+    }
+  }
+
+  auth(data:any) { 
+    const fd = new FormData();
+    fd.append('grant_type', 'sso');
+    fd.append('client_id', environment.drupal?.client_id);
+    fd.append('credentials', data);
+    this.ngxService.start();
+    this.httpClient.post<any>(
+      `${environment.drupal?.url}${environment.drupal?.apiAuth}`, 
+      fd,
+      {
+        headers:{
+          'enctype':'multipart/form-data',
+        }
+      }
+    ).subscribe((response) => {
+      CookiesService.setValue('DRUPAL_SESSION', response?.access_token);
+      this.ngxService.stop();
+    })
+  }
+
+  onLoginCompleate() {
+    window.ssoApp?.onFlowCompleted().subscribe((res: any) => {
+			if(res.status === "done") {
+				const path = CookiesService.getValue('LOGIN_REDIRECTION');
+        if(path && !path.includes('#'))  {
+          CookiesService.setValue('LOGIN_REDIRECTION', null);
+          window.location.href = path.includes('http') ? path : ('/'+path);
+        }else{
+          window.location.reload();
+        }
+			}
+		});
+  }
+
+  getSession(): string {
+    return CookiesService.getValue('DRUPAL_SESSION')
   }
 
   private replaceUrl(imageUrl:any): string {

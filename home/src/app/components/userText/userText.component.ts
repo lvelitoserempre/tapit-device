@@ -9,6 +9,4 @@ import {Component, Input} from '@angular/core';
 export class userText {
   @Input()
   html: any;
-  @Input()
-  show: any;
 }

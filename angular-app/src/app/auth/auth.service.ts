@@ -76,6 +76,7 @@ export class AuthService {
   logout(): Observable<void> {
     return from(auth().signOut()).pipe(map(() => {
       CookiesService.setObject('loggedUser', null);
+      CookiesService.setValue('DRUPAL_SESSION', null);
     }));
   }
 

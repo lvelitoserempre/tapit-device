@@ -94,6 +94,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     from(auth().signOut())
     .subscribe(() => {
       this.loadingService.hide();
+      document.cookie = 'DRUPAL_SESSION=;path=/;SameSite=Strict;max-age=0;' + (window.location.hostname == 'localhost' ? '' : 'domain=tapit.com.co;');
       if (window.origin !== 'http://localhost:4200') {
         window.location.replace('/');
       }
