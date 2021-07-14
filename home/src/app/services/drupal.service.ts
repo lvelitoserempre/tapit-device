@@ -1,10 +1,13 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Inject} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {environment} from 'src/environments/environment';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CookiesService } from './cookies.service';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +15,8 @@ export class DrupalService {
 
   constructor(
     private httpClient: HttpClient,
-		private ngxService: NgxUiLoaderService
+		private ngxService: NgxUiLoaderService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { 
   }
 
@@ -26,12 +30,12 @@ export class DrupalService {
   getPage(page:string): Observable<any[]> {
     // return of(json)
     const headers = this.getHeaders()
-    return this.httpClient.get(`${environment.drupal?.url}/${environment.drupal?.newApiPath}?alias=/${page}`, headers)
+    return this.httpClient.get(`${environment.drupal?.url}${environment.drupal?.newApiPath}?alias=/${page}`, headers)
     .pipe(map(response => this.processResponse2(response)));
   }
 
   getHeaders() {
-    const drupalSession = this.getSession()
+    const drupalSession = this.getSession();
     return {
       headers: drupalSession ?
         {
@@ -80,7 +84,7 @@ export class DrupalService {
   }
 
   getSession(): string {
-    return CookiesService.getValue('DRUPAL_SESSION')
+    return isPlatformBrowser(this.platformId) ? CookiesService.getValue('DRUPAL_SESSION') : null
   }
 
   private replaceUrl(imageUrl:any): string {
@@ -94,7 +98,7 @@ export class DrupalService {
   private processResponse2(response: any): any[] {
     let data = JSON.stringify(response.sections, null, 4),
         pathFind = `${environment.drupal?.url}/sites/g/files`,
-        newPath = `${environment.drupal?.url.replace('https://', '/cache/')}/sites/g/files`;
+        newPath = `${environment.drupal?.url.replace(environment.drupal.url?.includes('https') ? 'https://' : 'http://' , '/cache/')}/sites/g/files`;
     //return JSON.parse(data.replaceAll(pathFind, newPath));
     const json = data.split(pathFind).reduce((acc, item, index) =>  acc + (index > 0 ? (newPath+item) : item), '')
     return JSON.parse(json);
