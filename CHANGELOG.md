@@ -53,3 +53,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - React home page, SSO example and market (https://abi-consumerdigitalproducts.atlassian.net/browse/ANH001-3071)
 
 ## [1.0.0] - 2021-03-31
+
+## Changed
+- Add changes at history component, to display redem mode, in this case "Por medio de promocodigo Aguila", shows icons and labels.
+
+- This branch was created from 'dev' branch.

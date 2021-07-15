@@ -13,6 +13,8 @@ export class TypeColorPipe implements PipeTransform {
         return 'earn-points-orange.svg';
       case 'promoCode':
         return 'earn-points-orange.svg';
+        case 'promoCuponeraAguila':
+          return 'earn-points-orange.svg';
       case 'referral':
         return 'earn-points-orange.svg';
       case 'qrCode':

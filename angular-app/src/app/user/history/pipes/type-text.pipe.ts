@@ -13,6 +13,8 @@ export class TypeTextPipe implements PipeTransform {
         return 'Por registro en Tap It';
       case 'promoCode':
         return 'Por promo code';
+      case 'promoCuponeraAguila':
+        return ' Por cupón redimido de Aguila';
       case 'referral':
         return 'Por referir a un amigo';
       case 'qrCode':

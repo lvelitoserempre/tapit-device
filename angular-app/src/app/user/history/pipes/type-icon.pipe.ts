@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'typeIcon'
 })
 export class TypeIconPipe implements PipeTransform {
-
+//cases
   transform(value: string): string {
     switch (value) {
       case 'onboardingQuiz':
@@ -13,6 +13,8 @@ export class TypeIconPipe implements PipeTransform {
         return 'starship.svg';
       case 'promoCode':
         return 'ticket.svg';
+      case 'promoCuponeraAguila':
+        return 'ticket.svg';  
       case 'referral':
         return 'users.svg';
       case 'qrCode':
