@@ -10,6 +10,7 @@ import { existsSync } from 'fs';
 import { enableProdMode } from '@angular/core';
 import { get } from 'http';
 import {environment} from 'src/environments/environment';
+import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
 
 enableProdMode();
 
@@ -53,7 +54,8 @@ export function app(): express.Express {
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
     res.set('Cache-Control', 'public, max-age='+environment.maxAge+', s-maxage='+environment.sMaxAge);
-    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    res.render(indexHtml, { req, res, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }, {provide: REQUEST, useValue: req},
+      {provide: RESPONSE, useValue: res}] });
   });
 
   return server;

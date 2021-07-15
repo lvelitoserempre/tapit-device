@@ -3,12 +3,14 @@ import { ServerModule, ServerTransferStateModule } from '@angular/platform-serve
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
+import { CookieBackendModule } from 'ngx-cookie-backend';
 
 @NgModule({
   imports: [
     AppModule,
     ServerModule,
-    ServerTransferStateModule
+    ServerTransferStateModule,
+    CookieBackendModule.forRoot()
   ],
   bootstrap: [AppComponent],
 })

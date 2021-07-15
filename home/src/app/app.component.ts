@@ -12,8 +12,6 @@ import {DrupalService} from "./services/drupal.service"
 
 declare var setupGTM: any;
 declare var ga: any;
-declare var fbq: any;
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -34,11 +32,12 @@ export class AppComponent implements OnInit {
     private _authService: AuthService,
     private drupalService: DrupalService
   ) {
-    this.ngxService.start();
+    //this.ngxService.start();
     this.loadSSOScript();
     if (isPlatformBrowser(this.platformId)) {
       this.setUpStats()
     }
+    this._authService.getUser().then(user => console.log(user));
   }
 
   private loadSSOScript(): void {
@@ -101,8 +100,6 @@ export class AppComponent implements OnInit {
   private setUpStats() {
     setupGTM(window, document, 'script', 'dataLayer', environment.googleTagManagerId);
     ga('create', environment.googleAnalyticsId, 'auto');
-    // fbq('init', environment.facebookPixelId);
-    // fbq('track', 'PageView');
   }
 
   showVerifyIdentity(evt: boolean) {  

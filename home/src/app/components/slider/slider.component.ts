@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {DrupalService} from '../../services/drupal.service';
-import { CookiesService } from '../../services/cookies.service';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
   selector: 'app-slider',
@@ -17,14 +17,15 @@ export class SliderComponent {
   config: any;
 
   constructor(
-    private drupalService: DrupalService
+    private drupalService: DrupalService,
+    private cookieService: CookieService
   ) {
   }
   public callToAction(slide:any): void{
-    if((slide.permissions.logged && this.drupalService.getSession()) || slide.permissions.anonymous) {
+    if ((slide.permissions.logged && this.drupalService.getDrupalSession()) || slide.permissions.anonymous) {
       this.scrollToSection(slide.link.uri, slide.link.target);
-    }else{
-      CookiesService.setValue('LOGIN_REDIRECTION', slide.link.uri);
+    } else {
+      this.cookieService.put('LOGIN_REDIRECTION', slide.link.uri);
       ssoApp.showApp();
     }
   }

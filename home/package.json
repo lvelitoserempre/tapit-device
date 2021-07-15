@@ -37,6 +37,8 @@
     "express": "^4.15.2",
     "firebase": "^8.2.6",
     "jquery": "^3.5.1",
+    "ngx-cookie": "^5.0.2",
+    "ngx-cookie-backend": "^5.0.2",
     "ngx-slick-carousel": "^0.5.1",
     "ngx-ui-loader": "^10.0.0",
     "prop-types": "^15.7.2",

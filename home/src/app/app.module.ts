@@ -29,6 +29,8 @@ import {
 
 import { BrowserCookiesModule } from 'ngx-cookie-universal';
 import { VerifyIdentityComponent } from './verify-identity/verify-identity.component';
+import { CookieModule } from 'ngx-cookie';
+
 
 registerLocaleData(localeEs, 'es-CO');
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -74,8 +76,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     FormsModule,
     ReactiveFormsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
-    NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
+    //NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
     BrowserCookiesModule.forRoot(),
+    CookieModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
