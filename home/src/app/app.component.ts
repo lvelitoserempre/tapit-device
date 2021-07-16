@@ -37,7 +37,6 @@ export class AppComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       this.setUpStats()
     }
-    this._authService.getUser().then(user => console.log(user));
   }
 
   private loadSSOScript(): void {

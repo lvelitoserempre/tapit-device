@@ -38,7 +38,7 @@ export const environment = {
   },
   facebookPixelId: '1374695322930119',
   drupal:{
-    url: 'http://tapit.dev-abinbev.acsitefactory.com',
+    url: 'https://dev-content.abi-rewards.de',
     oldApiPath: '/api/homepage',
     newApiPath: '/api/v1/pages',
     apiAuth: '/oauth/token',
