@@ -12,6 +12,7 @@ import {AppCommonModule} from './app-common.module';
 import localeEs from '@angular/common/locales/es-CO';
 import {registerLocaleData} from '@angular/common';
 import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
+import { WalletComponent } from './wallet/wallet.component';
 
 registerLocaleData(localeEs, 'es-CO');
 
@@ -19,7 +20,8 @@ registerLocaleData(localeEs, 'es-CO');
   declarations: [
     AppComponent,
     AppHeaderComponent,
-    AppFooterComponent
+    AppFooterComponent,
+    WalletComponent
   ],
   imports: [
     BrowserModule,

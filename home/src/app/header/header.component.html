@@ -27,7 +27,7 @@
           </li>
       </ul>
 
-      <ul *ngIf="user" class="fixed w-10/12 p-6 bg-neutral-100 pt-2 h-full top-0 border-4 border-white text-sm sm:text-base" id="menu">
+      <ul *ngIf="!user" class="fixed w-10/12 p-6 bg-neutral-100 pt-2 h-full top-0 border-4 border-white text-sm sm:text-base" id="menu">
         <li class="cursor-pointer inline-block align-middle focus:outline-none p-0">
           <a href="/app/user/profile"><img src="../assets/images/profile-placeholder.png" width="100" alt="Icono Perfil"></a>
         </li>
@@ -43,6 +43,11 @@
           <a [href]="marketUrl"
              class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none"><i
             class="uil uil-store text-lg"></i> Market</a>
+        </li>
+        <li class="inline-block align-middle border-b border-neutral-500 w-full py-4">
+          <a href="/app/wallet"
+             class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none"><i
+            class="uil uil-store text-lg"></i> Wallet</a>
         </li>
         <li *ngIf="showMicrogifting" class="inline-block align-middle border-b border-neutral-500 w-full py-4">
           <a class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none"
@@ -85,6 +90,11 @@
               class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none"><i
               class="uil uil-store text-base inline-block align-middle leading-none"></i> <span
               class="inline-block align-middle">Market</span></a>
+          </li>
+          <li class="inline-block align-middle border-b border-neutral-500 w-full py-4">
+            <a href="/app/wallet"
+               class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none"><i
+              class="uil uil-store text-lg"></i> Wallet</a>
           </li>
           <li *ngIf="user && showMicrogifting" class="hidden sm:inline-block align-middle">
             <a class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none"
