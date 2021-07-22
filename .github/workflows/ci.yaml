@@ -55,6 +55,11 @@ jobs:
     - uses: actions/checkout@v2
     - name: Setup Snyk 
       uses: snyk/actions/setup@master
+    - name: Snyk monitoring to generate report
+      run: snyk monitor --org=${{ secrets.SNYK_ORGANIZATION }} --fail-on=all  
+      working-directory: ./angular-app/
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     - name: Snyk test to check for vulnerabilities
       run: snyk test --org=${{ secrets.SNYK_ORGANIZATION }} --fail-on=all  > ../comment-body-snyk.txt
       working-directory: ./angular-app/
@@ -144,7 +149,8 @@ jobs:
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
         project: "ab-inbev-global-martech@${{ github.event.repository.name }}"
         team: ${{ secrets.CHECKMARX_TEAM }}
+        preset: ASA_SDLC_Ready
         scanners: sast
         bug_tracker: GITHUBPULL
-        # break_build: true
+        break_build: false
         params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.head_ref }} --merge-id=${{ github.event.number }}
