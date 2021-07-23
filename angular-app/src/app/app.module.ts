@@ -12,7 +12,8 @@ import {AppCommonModule} from './app-common.module';
 import localeEs from '@angular/common/locales/es-CO';
 import {registerLocaleData} from '@angular/common';
 import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
-import { WalletComponent } from './wallet/wallet.component';
+import { WalletModule } from './wallet/wallet.module';
+import { CookieModule } from 'ngx-cookie';
 
 registerLocaleData(localeEs, 'es-CO');
 
@@ -21,7 +22,6 @@ registerLocaleData(localeEs, 'es-CO');
     AppComponent,
     AppHeaderComponent,
     AppFooterComponent,
-    WalletComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +31,8 @@ registerLocaleData(localeEs, 'es-CO');
     HttpClientModule,
     AppCommonModule,
     SlickCarouselModule,
+    WalletModule,
+    CookieModule.forRoot(),
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.threeBounce,
       backdropBackgroundColour: 'rgba(250,250,250,1)', 

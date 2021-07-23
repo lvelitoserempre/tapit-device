@@ -29,4 +29,8 @@ export const environment = {
   googleAnalyticsId: 'UA-159252784-3',
   googleTagManagerId: 'GTM-NFCC7RC',
   facebookPixelId: '1374695322930119',
+  drupal:{
+    url: 'https://dev-content.abi-rewards.de',
+    promoPath: '/api/v1/promotions'
+  },
 };

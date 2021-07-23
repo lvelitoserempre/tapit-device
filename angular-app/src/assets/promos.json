@@ -1,0 +1,68 @@
+{
+    "page": "1",
+    "pager_total": 2,
+    "num_per_page": 5,
+    "pager_total_items": 6,
+    "data": [
+      {
+        "id": "7",
+        "created": "2021-07-14T11:55:59-0500",
+        "updated": "2021-07-15T11:42:20-0500",
+        "title": "Poker 2x1",
+        "image": "https://local.tapit.com/sites/tapit/files/2021-07/Screen%20Shot%202021-07-14%20at%2011.57.43%20AM.png",
+        "promotion": "2x1",
+        "brand": {
+          "id": "58",
+          "name": "Poker"
+        }
+      },
+      {
+        "id": "8",
+        "created": "2021-07-14T11:55:59-0500",
+        "updated": "2021-07-15T11:42:08-0500",
+        "title": "Aguila 6x5",
+        "image": "https://local.tapit.com/sites/tapit/files/2021-07/Screen%20Shot%202021-07-14%20at%2011.58.29%20AM.png",
+        "promotion": "6x5",
+        "brand": {
+          "id": "57",
+          "name": "Aguila"
+        }
+      },
+      {
+        "id": "12",
+        "created": "2021-07-14T11:55:59-0500",
+        "updated": "2021-07-14T12:00:53-0500",
+        "title": "Club nuevo sabor",
+        "image": "https://local.tapit.com/sites/tapit/files/2021-07/Screen%20Shot%202021-07-14%20at%2011.59.08%20AM_2.png",
+        "promotion": "Gratis nuevo sabor",
+        "brand": {
+          "id": "59",
+          "name": "Club Colombia"
+        }
+      },
+      {
+        "id": "11",
+        "created": "2021-07-14T11:55:59-0500",
+        "updated": "2021-07-14T12:00:26-0500",
+        "title": "Club nuevo sabor",
+        "image": "https://local.tapit.com/sites/tapit/files/2021-07/Screen%20Shot%202021-07-14%20at%2011.59.08%20AM_1.png",
+        "promotion": "Gratis nuevo sabor",
+        "brand": {
+          "id": "59",
+          "name": "Club Colombia"
+        }
+      },
+      {
+        "id": "10",
+        "created": "2021-07-14T11:55:59-0500",
+        "updated": "2021-07-14T12:00:12-0500",
+        "title": "Club nuevo sabor",
+        "image": "https://local.tapit.com/sites/tapit/files/2021-07/Screen%20Shot%202021-07-14%20at%2011.59.08%20AM_0.png",
+        "promotion": "Gratis nuevo sabor",
+        "brand": {
+          "id": "59",
+          "name": "Club Colombia"
+        }
+      }
+    ]
+  }

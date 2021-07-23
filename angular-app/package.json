@@ -27,6 +27,7 @@
     "firebase": "^8.0.1",
     "jquery": "^3.5.0",
     "moment": "^2.29.1",
+    "ngx-cookie": "^5.0.2",
     "ngx-loading": "^8.0.0",
     "ngx-slick-carousel": "^0.5.1",
     "rxjs": "~6.6.6",
