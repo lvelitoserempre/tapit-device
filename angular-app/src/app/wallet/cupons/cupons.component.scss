@@ -1,7 +1,87 @@
 .c-orange {
-    color: #FF5005;
+  color: #FF5005;
+}
+
+.bg-yellow {
+  background-color: #F7CD5D;
+}
+
+.bg-yellow-2 {
+  background-color: #F0DC32;
+}
+
+.bg-red {
+  background-color: #D20F28;
+}
+
+.bg-green {
+  background-color: #7BCA68;
+}
+
+.box-product {
+  box-shadow: 4px 8px 16px rgba(231, 228, 226, 0.9);
+  
+  &--img {
+    height: 120px;
+    margin: 0 auto;
+  }
+
+  &--title {
+    min-height: 80px;
+  }
+
+  .glop {
+    position: absolute;
+    transform: rotate(16deg);
+    top: -6px;
+    text-transform: uppercase;
+    right: -10%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    @media (min-width: 768px) {
+      right: 10%;
+    }
+  }
+}
+
+.list-product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  &--promo {
+    grid-template-columns: 1fr;
+    display: grid;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__item {
+      min-height: 120px;
+    }
   }
   
-  .bg-yellow {
-    background-color: #F7CD5D;
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
   }
+
+  @media (min-width: 992px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  &--item {
+    @media (min-width: 992px) {
+      width: 100%;
+    }
+  }
+}
+
+.points {
+  border-width: 3px;
+  border-color: #FF8D5C;
+
+  &--black {
+    border-width: 3px;
+    border-color: #949494;
+  }
+}

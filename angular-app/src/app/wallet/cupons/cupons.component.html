@@ -1,43 +1,157 @@
-<div class="tab-content hidden bg-white">
-  <div class="bg-yellow p-4">
-    <div class="flex items-start">
-      <img src="../../assets/images/cerveza-2.png" alt="">
-      <div class="pl-4 w-full">
-        <p class="text-xs font-bold">Cupón activo</p>
-        <p class="text-xl font-bold leading-none">Poker</p>
-        <p class="text-xs text-neutral-700">330ml Retornable</p>
-        <p class="mt-2 text-primary-500">200 puntos</p>
-        <button class="uppercase mt-4 rounded-full bg-white text-primary-500 w-full text-center p-3 text-sm">mostrar código QR</button>
-        <button class="uppercase mt-1 rounded-full text-white w-full text-center p-3 text-sm">devolver cupón</button>
-      </div>
+<div class="tab-content hidden p5 bg-white">
+  <div class="flex mt-5 md:mt-10 mb-2 md:pr-3 md:pl-3">
+    <div class="md:w-1/5"></div>
+    <div class="md:w-2/3">
+      <p class="text-xl font-bold leading-none mb-2">
+        Abre ésta sección desde tu app para canjear tu Cupón en tu tienda más cercana, <span class="c-orange">muestra el código QR al tendero y disfruta tu pola.</span></p>
+      <p class="text-xs text-neutral-700">Paga con puntos</p>
     </div>
   </div>
-  <div class="p-4">
-    <div class="flex items-start border-b-2 border-neutral-500 pt-3 pb-3">
-      <img src="../../assets/images/cerveza-3.png" alt="">
-      <div class="pl-4 w-full">
-        <p class="text-xs text-neutral-500 font-bold uppercase">redimido el 12/12/2021</p>
-        <p class="text-xl font-bold leading-none">BBC Negra</p>
-        <p class="text-xs text-neutral-700">330ml Retornable</p>
-        <p class="text-primary-500">200 puntos</p>
+
+  <div class="flex">
+    <div class="hidden md:block md:w-1/5 pr-6">
+      <div class="mt-16">
+        <p class="text-xs px-3 border-neutral-500 border-b-2 pb-1">FILTRAR POR:</p>
+        <div class="border-neutral-500 border-b-2 p-3">
+          <div class="flex justify-between">
+            <span class="text-xs">MARCA</span>
+            <div class="flex items-center px-2 text-neutral-700">
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="flex items-start border-b-2 border-neutral-500 pt-3 pb-3">
-      <img src="../../assets/images/cerveza-3.png" alt="">
-      <div class="pl-4 w-full">
-        <p class="text-xs text-neutral-500 font-bold uppercase">redimido el 12/12/2021</p>
-        <p class="text-xl font-bold leading-none">Corona</p>
-        <p class="text-xs text-neutral-700">330ml Retornable</p>
-        <p class="text-primary-500">200 puntos</p>
+    <div class="w-full md:w-4/5">
+      <div class="flex md:justify-end justify-between mb-3 lg:mb-8">
+        <div>
+          <div class="flex items-center relative md:hidden">
+            <select class="text-xs block appearance-none bg-white pr-4 py-2 pr-8 mt-1 leading-tight focus:outline-none">
+              <option>FILTRAR</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 c-orange">
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            </div>
+          </div>
+          <div class="hidden md:flex">
+            <div class="flex items-center border-neutral-500 border-b-2">
+              <span class="text-xs pr-3 pl-4">ORDENAR POR</span>
+              <div class="flex items-center relative">
+                <select class="text-xs block appearance-none text-neutral-700 bg-white pr-4 py-2 pr-8 mt-1 leading-tight focus:outline-none">
+                  <option>Mas vendido</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-neutral-700">
+                  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="flex md:hidden items-center relative">
+            <select class="text-xs block appearance-none bg-white pr-4 py-2 pr-8 leading-tight mt-1 focus:outline-none">
+              <option>ORDENAR POR</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 c-orange">
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="flex items-start border-b-2 border-neutral-500 pt-3 pb-3">
-      <img src="../../assets/images/cerveza-3.png" alt="">
-      <div class="pl-4 w-full">
-        <p class="text-xs text-neutral-500 font-bold uppercase">redimido el 12/12/2021</p>
-        <p class="text-xl font-bold leading-none">Stella Artois</p>
-        <p class="text-xs text-neutral-700">330ml Retornable</p>
-        <p class="text-primary-500">200 puntos</p>
+      <div class="container list-product--promo">
+        <div class="w-full">
+          <div class="bg-yellow p-5 md:mr-3 rounded-md mb-3">
+            <div class="flex items-start">
+              <img src="../../assets/images/cerveza-2.png" alt="">
+              <div class="pl-4 w-full">
+                <p class="text-xs font-bold uppercase">Cupón activo</p>
+                <p class="text-xl font-bold leading-none">Poker</p>
+                <p class="text-xs">1 Botella de 330 ml</p>
+                <p class="mt-2">200 Pts.</p>
+                <button class="uppercase mt-4 rounded-full border-2 border-primary-500 bg-white text-primary-500 w-full text-center p-3 text-sm">mostrar código al tendero</button>
+                <button class="uppercase mt-1 rounded-full w-full text-center p-3 text-sm underline">devolver cupón</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full">
+          <div class="bg-green p-5 md:ml-3 rounded-md mb-3">
+            <div class="flex items-start">
+              <img src="../../assets/images/cerveza-2.png" alt="">
+              <div class="pl-4 w-full">
+                <p class="text-xs font-bold">Cupón activo</p>
+                <p class="text-xl font-bold leading-none">Poker</p>
+                <p class="text-xs">1 Botella de 330 ml</p>
+                <p class="mt-2">200 Pts.</p>
+                <button class="uppercase mt-4 rounded-full border-2 border-primary-500 bg-white text-primary-500 w-full text-center p-3 text-sm">mostrar código al tendero</button>
+                <button class="uppercase mt-1 rounded-full w-full text-center p-3 text-sm underline">devolver cupón</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container list-product--promo">
+        <div class="w-full">
+          <div class="flex items-center border-b-2 border-neutral-500 pt-3 pb-3 md:mr-3">
+            <img src="../../assets/images/cerveza-3.png" alt="">
+            <div class="pl-4 w-full">
+              <p class="text-xs text-neutral-500 font-bold uppercase">CANJEADO el 12/12/2021</p>
+              <p class="text-xl font-bold leading-none">BBC Negra</p>
+              <p class="text-xs text-neutral-700">330ml Retornable</p>
+              <p class="text-sm inline-block text-md text-center text-white font-bold mt-2 px-5 bg-black rounded-full points--black">150 Pts.</p>
+            </div>
+          </div>
+        </div>
+        <div class="full">
+          <div class="flex items-start border-b-2 border-neutral-500 pt-3 pb-3 md:ml-3">
+            <img src="../../assets/images/cerveza-3.png" alt="">
+            <div class="pl-4 w-full">
+              <p class="text-xs text-neutral-500 font-bold uppercase">CANJEADO el 12/12/2021</p>
+              <p class="text-xl font-bold leading-none">Corona</p>
+              <p class="text-xs text-neutral-700">330ml Retornable</p>
+              <p class="text-sm inline-block text-md text-center text-white font-bold mt-2 px-5 bg-black rounded-full points--black">150 Pts.</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-full">
+          <div class="flex items-center border-b-2 border-neutral-500 pt-3 pb-3 md:mr-3">
+            <img src="../../assets/images/cerveza-3.png" alt="">
+            <div class="pl-4 w-full">
+              <p class="text-xs text-neutral-500 font-bold uppercase">CANJEADO el 12/12/2021</p>
+              <p class="text-xl font-bold leading-none">BBC Negra</p>
+              <p class="text-xs text-neutral-700">330ml Retornable</p>
+              <p class="text-sm inline-block text-md text-center text-white font-bold mt-2 px-5 bg-black rounded-full points--black">150 Pts.</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-full">
+          <div class="flex items-center border-b-2 border-neutral-500 pt-3 pb-3 md:ml-3">
+            <img src="../../assets/images/cerveza-3.png" alt="">
+            <div class="pl-4 w-full">
+              <p class="text-xs text-neutral-500 font-bold uppercase">CANJEADO el 12/12/2021</p>
+              <p class="text-xl font-bold leading-none">BBC Negra</p>
+              <p class="text-xs text-neutral-700">330ml Retornable</p>
+              <p class="text-sm inline-block text-md text-center text-white font-bold mt-2 px-5 bg-black rounded-full points--black">150 Pts.</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-full">
+          <div class="flex items-center border-b-2 border-neutral-500 pt-3 pb-3 md:mr-3">
+            <img src="../../assets/images/cerveza-3.png" alt="">
+            <div class="pl-4 w-full">
+              <p class="text-xs text-neutral-500 font-bold uppercase">CANJEADO el 12/12/2021</p>
+              <p class="text-xl font-bold leading-none">BBC Negra</p>
+              <p class="text-xs text-neutral-700">330ml Retornable</p>
+              <p class="text-sm inline-block text-md text-center text-white font-bold mt-2 px-5 bg-black rounded-full points--black">150 Pts.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
