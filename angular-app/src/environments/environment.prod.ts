@@ -30,7 +30,7 @@ export const environment = {
   googleTagManagerId: 'GTM-MGL9B93',
   facebookPixelId: '946672495822340',
   drupal:{
-    url: 'https://dev-content.abi-rewards.de',
+    url: 'https://content.abi-rewards.de',
     promoPath: '/api/v1/promotions'
   },
 };

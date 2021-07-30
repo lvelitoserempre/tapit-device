@@ -5,13 +5,14 @@ import { PromosComponent } from './promos/promos.component';
 import { CuponsComponent } from './cupons/cupons.component';
 import { ShopPointsComponent } from './shop-points/shop-points.component';
 import { PromoCardComponent } from './promos/promo-card/promo-card.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll'
 
 
 
 @NgModule({
   declarations: [WalletComponent, PromosComponent, CuponsComponent, ShopPointsComponent, PromoCardComponent],
   imports: [
-    CommonModule
+    CommonModule, InfiniteScrollModule
   ]
 })
 export class WalletModule { }
