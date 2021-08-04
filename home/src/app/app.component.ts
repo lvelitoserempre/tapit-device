@@ -45,8 +45,7 @@ export class AppComponent implements OnInit {
       // @ts-ignore
       window.configTapitSso = () => {
       };
-    })
-    
+    });
   }
 
   private readCookies(): void {
@@ -59,7 +58,7 @@ export class AppComponent implements OnInit {
     }
   }
 
- 
+
 
   ngOnInit(): void {
     const search = new URLSearchParams(window.location.search);
@@ -93,6 +92,7 @@ export class AppComponent implements OnInit {
     if(window.ssoApp && !this.listenerRunning){
       this.drupalService.onLoginCompleate();
       this.listenerRunning = true;
+      this.openSso();
     }
   }
 
@@ -101,7 +101,13 @@ export class AppComponent implements OnInit {
     ga('create', environment.googleAnalyticsId, 'auto');
   }
 
-  showVerifyIdentity(evt: boolean) {  
+  showVerifyIdentity(evt: boolean) {
     this._authService.getUser();
+  }
+  openSso(){
+    const smsStepSSO = window.localStorage.getItem('sms-step');
+    if (smsStepSSO && smsStepSSO !== 'phone-verified') {
+      window.ssoApp.showApp(smsStepSSO);
+    }
   }
 }
