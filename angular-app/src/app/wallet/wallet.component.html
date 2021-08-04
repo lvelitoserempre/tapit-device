@@ -9,13 +9,16 @@
   <div class="container mx-auto">
     <div class="w-full">
       <!-- puntos en tienda -->
-      <app-shop-points></app-shop-points>
+      <app-shop-points (modalOpener)="modal.openModal()"></app-shop-points>
   
       <!-- promos del dia -->
       <app-promos></app-promos>
   
       <!-- mis cupones -->
       <app-cupons></app-cupons>
+
+      <!-- modal window -->
+      <app-modal-window #modal></app-modal-window>
     </div>
   </div>
 </div>

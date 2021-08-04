@@ -15,6 +15,7 @@ import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
 import { WalletModule } from './wallet/wallet.module';
 import { CookieModule } from 'ngx-cookie';
 
+
 registerLocaleData(localeEs, 'es-CO');
 
 @NgModule({
