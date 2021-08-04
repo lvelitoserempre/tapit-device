@@ -8,8 +8,6 @@ import { PromoCardComponent } from './promos/promo-card/promo-card.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll'
 
-
-
 @NgModule({
   declarations: [WalletComponent, PromosComponent, CuponsComponent, ShopPointsComponent, PromoCardComponent, ModalWindowComponent],
   imports: [

@@ -3,11 +3,11 @@ import {Subject} from 'rxjs';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-import {environment} from '../environments/environment';
-import {UserDAO} from './user/user-dao.service';
-import {UserAccount} from './user/user-account.model';
 import auth = firebase.auth;
 import firestore = firebase.firestore;
+import { environment } from 'src/environments/environment';
+import { UserAccount } from '../user/user-account.model';
+import { UserDAO } from '../user/user-dao.service';
 
 @Injectable({
   providedIn: 'root'

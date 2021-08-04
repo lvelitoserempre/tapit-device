@@ -1,8 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { LoadingService } from 'src/app/services/loading.service';
 import Code from '../codes';
-import {LoadingService} from '../../../loading.service';
-
 @Component({
   selector: 'app-code-detail-dialog',
   templateUrl: './code-detail-dialog.component.html',

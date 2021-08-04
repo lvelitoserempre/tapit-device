@@ -2,10 +2,9 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CodeDAO} from './code-dao.service';
 import Code from './codes';
 import {Subscription} from 'rxjs';
-import {DialogService} from 'src/app/dialog/dialog-service/dialog.service';
 import {MatDialog} from '@angular/material/dialog';
 import {CodeDetailDialogComponent} from './code-detail-dialog/code-detail-dialog.component';
-import {LoadingService} from '../../loading.service';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-codes',
@@ -19,7 +18,6 @@ export class MyCodesComponent implements OnInit, OnDestroy {
   constructor(
     private codeDAO: CodeDAO,
     private loadingService: LoadingService,
-    private dialogService: DialogService,
     private dialog: MatDialog
   ) {
   }

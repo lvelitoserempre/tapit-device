@@ -2,9 +2,9 @@ import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core
 import {UserAccount} from '../user-account.model';
 import {environment} from '../../../environments/environment';
 import {Subscription} from 'rxjs';
-import {LoggedUserService} from '../../logged-user.service';
 import {ProfileService} from '../profile/profile.service';
 import { Router } from '@angular/router';
+import { LoggedUserService } from 'src/app/services/logged-user.service';
 
 @Component({
   selector: 'app-share',

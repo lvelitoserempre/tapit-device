@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PromosService } from './promos.service';
 import { Subscription } from 'rxjs';
-import { LoadingService } from 'src/app/loading.service';
-
+import { LoadingService } from 'src/app/services/loading.service';
 @Component({
   selector: 'app-promos',
   templateUrl: './promos.component.html',

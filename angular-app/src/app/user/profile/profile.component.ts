@@ -1,13 +1,13 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import {UserAccount} from '../user-account.model';
-import {LoggedUserService} from '../../logged-user.service';
-import {LoadingService} from '../../loading.service';
 import { from, Subscription, Observable, fromEvent } from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { ProfileService } from './profile.service';
 import auth = firebase.auth;
+import { LoadingService } from 'src/app/services/loading.service';
+import { LoggedUserService } from 'src/app/services/logged-user.service';
 declare var $: any;
 
 @Component({
@@ -107,7 +107,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   // Scroll top page
   scrollTop() {
     $('html,body').animate({
-        scrollTop: 0
+      scrollTop: 0
     }, 'fast');
   }
 }

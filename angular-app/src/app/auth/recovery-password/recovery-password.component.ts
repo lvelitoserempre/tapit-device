@@ -5,7 +5,7 @@ import RecoveryPasswordErrorService from './recovery-password-error.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import {LoadingService} from '../../loading.service';
+import { LoadingService } from 'src/app/services/loading.service';
 import auth = firebase.auth;
 
 @Component({

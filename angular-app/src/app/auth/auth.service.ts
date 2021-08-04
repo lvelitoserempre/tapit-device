@@ -15,6 +15,7 @@ import auth = firebase.auth;
 import User = firebase.User;
 import firestore = firebase.firestore;
 import { __assign } from 'tslib';
+import { CookieService } from 'ngx-cookie';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,11 @@ export class AuthService {
   private currentUser: ReplaySubject<UserAccount>;
   private cancelUserListener: () => void;
 
-  constructor(private http: HttpClient, private userDAO: UserDAO, private analyticsService: AnalyticsService) {
+  constructor(
+    private userDAO: UserDAO,
+    private analyticsService: AnalyticsService,
+    private cookieService: CookieService
+  ) {
     this.observerToken();
     this.currentUser = new ReplaySubject<UserAccount>(0);
   }
@@ -66,7 +71,7 @@ export class AuthService {
   }
 
   saveUserToACookie(user: UserAccount) {
-    CookiesService.setObject('loggedUser', this.extractCookieData(user));
+    this.cookieService.put('loggedUser', this.extractCookieData(user));
   }
 
   getCurrentUser() {
@@ -125,5 +130,9 @@ export class AuthService {
     this.token$.subscribe(token => {
       this.tokenCustom = token;
     });
+  }
+
+  getDrupalAuthCookie(): string {
+    return this.cookieService.get('DRUPAL_SESSION');
   }
 }

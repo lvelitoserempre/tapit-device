@@ -5,11 +5,11 @@ import {AuthService} from '../auth.service';
 import {DialogService} from '../../dialog/dialog-service/dialog.service';
 import {LoginValidationMessages, LoginValidators} from './login.validations';
 import {FacebookService} from '../facebook.service';
-import AuthErrorService from '../../auth-error.service';
-import {LoadingService} from '../../loading.service';
 import {from} from 'rxjs';
 import firebase from 'firebase';
 import auth = firebase.auth;
+import { LoadingService } from 'src/app/services/loading.service';
+import AuthErrorService from 'src/app/services/auth-error.service';
 
 @Component({
   selector: 'app-login',

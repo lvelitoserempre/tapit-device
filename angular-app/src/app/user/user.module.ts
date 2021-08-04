@@ -18,8 +18,6 @@ import { TypeTextPipe } from './history/pipes/type-text.pipe';
 import { NgxLoadingModule } from 'ngx-loading';
 import { TypeColorPipe } from './history/pipes/type-color.pipe';
 import { TypeDocumentPipe } from './update-profile/form-profile/pipes/type-document.pipe';
-import { WalletComponent } from '../wallet/wallet.component';
-
 
 const routes: Routes = [
   {
