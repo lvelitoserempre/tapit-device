@@ -12,6 +12,7 @@ export class PromosComponent implements OnInit, OnDestroy {
   promos: any[];
   promosSubscription: Subscription;
   promoPage: number = 1;
+  actualPage: number;
 
   constructor(
     private promoService: PromosService,
@@ -20,12 +21,11 @@ export class PromosComponent implements OnInit, OnDestroy {
 
   // to add content from the next page of the API
   onScroll() {
-    let currentPage = this.promoPage;
-    if(currentPage < this.totalPages){
-      this.promoService.getPromos(currentPage + 1).subscribe((res:any) => {
+    if(this.actualPage < this.totalPages){
+      this.promoService.getPromos(this.actualPage + 1).subscribe((res:any) => {
         let response = res;
-        response.data.forEach(e => this.promos.push(e));
-        this.promoPage = response.page;
+        this.actualPage = parseInt(response.page);
+        return response.data.forEach(e => this.promos.push(e));
       }, err => {
         console.log(err);
       });
@@ -40,6 +40,7 @@ export class PromosComponent implements OnInit, OnDestroy {
       let response = res;
       this.promos = response.data;
       this.totalPages = response.pager_total;
+      this.actualPage = parseInt(response.page)
       this.loadingService.hide();
     }, err => {
       this.loadingService.hide();
