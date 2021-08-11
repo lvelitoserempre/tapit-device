@@ -7,3 +7,23 @@ button {
     border: 2px solid #FF935E;
     border-radius: 20px;
 }
+
+.promo-card > div {
+    border-radius: 0.25rem;
+}
+
+.text-lg {
+    font-size: 1.3rem;
+}
+
+@media (max-width: 640px) {
+    button{
+        padding: 0% 5%;
+    }
+}
+
+@media (max-width: 400px) {
+    .text-lg{
+        font-size: 1rem;
+    }
+}

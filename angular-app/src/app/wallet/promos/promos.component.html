@@ -70,7 +70,7 @@
         [infiniteScrollDistance]="2"
         [infiniteScrollThrottle]="50"
         (scrolled)="onScroll()">
-        <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-5">
           <div *ngFor="let promo of promos; let i = index" class="card">
             <app-promo-card 
               [title]="promo.title"
