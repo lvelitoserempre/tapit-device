@@ -1,12 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import { WalletComponent } from './wallet/wallet.component';
 
 
 const routes: Routes = [
   {
     path: 'wallet',
-    component: WalletComponent
+    loadChildren: () => import('./wallet/wallet.module').then(m => m.WalletModule)
   },
   {
     path: 'auth',
