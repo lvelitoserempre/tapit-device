@@ -1,0 +1,17 @@
+<div class="flex list-product--item w-full">
+  <div
+    class="w-full py-2 border-4 border-white shadow-sm cursor-pointer text-center box-product mb-3"
+    [ngClass]="{'bg-neutral-100':neutral, 'bg-yellow-2':yellow, 'bg-red':red, 'items-center': neutral}">
+    <div class="relative">
+      <img class="box-product--img" [src]='imgUrl' alt="" />
+      <!-- <span class="glop bg-black text-white text-xs font-bold rounded-full leading-none py-1 px-2">{{promoType}}</span> -->
+    </div>
+    <div class="box-product--title">
+      <p class="text-sm pt-4" [ngClass]="{'text-white': red}">{{product}}</p>
+      <p class="text-xs" [ngClass]="{'text-white': red}">{{presentation}}</p>
+    </div>
+    <p
+      class="text-sm inline-block text-md text-center text-white font-bold my-2 px-5 rounded-full points"
+      [ngClass]="{'bg-white': red, 'text-primary-500': red, 'bg-primary-500': !red}">{{points}} Pts.</p>
+  </div>
+</div>
