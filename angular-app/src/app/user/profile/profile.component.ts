@@ -8,6 +8,7 @@ import { ProfileService } from './profile.service';
 import auth = firebase.auth;
 import { LoadingService } from 'src/app/services/loading.service';
 import { LoggedUserService } from 'src/app/services/logged-user.service';
+import { CookieService } from 'ngx-cookie';
 declare var $: any;
 
 @Component({
@@ -33,7 +34,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private loggedUser: LoggedUserService,
-    private _profileSvc: ProfileService
+    private _profileSvc: ProfileService,
+    private cookieService: CookieService
   ) {
     this._profileSvc.showNabvar$.subscribe(show => this.showNavbar = show);
   }
@@ -94,7 +96,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     from(auth().signOut())
     .subscribe(() => {
       this.loadingService.hide();
-      document.cookie = 'DRUPAL_SESSION=;path=/;SameSite=Strict;max-age=0;' + (window.location.hostname == 'localhost' ? '' : 'domain=tapit.com.co;');
+      this.cookieService.remove('__session');
+      this.cookieService.remove('loggedUser');
+      this.cookieService.remove('DRUPAL_SESSION');
       if (window.origin !== 'http://localhost:4200') {
         window.location.replace('/');
       }

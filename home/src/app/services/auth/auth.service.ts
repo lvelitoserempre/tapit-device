@@ -13,7 +13,7 @@ import firestore = firebase.firestore;
 import { UserAccount } from 'src/app/user/user-account';
 import { UserDAO } from 'src/app/user/user-dao.service';
 import { HttpClient } from '@angular/common/http';
-import { CookieOptions, CookieService } from 'ngx-cookie';
+import { CookieService } from 'ngx-cookie';
 
 @Injectable({
   providedIn: 'root'
@@ -22,17 +22,7 @@ export class AuthService {
 
   private currentUser: ReplaySubject<UserAccount>;
   private drupalToken= new Subject<any>();
-  private cancelUserListener: () => void;  
-  options: CookieOptions = {
-    path: '/',
-    domain: window.location.hostname == 'localhost' ? '': 'tapit.com.co',
-    secure: true,
-    sameSite: 'none',
-    httpOnly: true,
-    storeUnencoded: true,
-    expires: '31536000'
-  }
-
+  private cancelUserListener: () => void;
   // Observer User
   public user: any = null;
   user$ = new EventEmitter;
@@ -111,6 +101,7 @@ export class AuthService {
         }
       ).subscribe((response) => {
         this.cookieService.put('DRUPAL_SESSION', response.access_token, {});
+        this.cookieService.put('__session', response.access_token, {});
         this.setDrupalToken(response.access_token);
       })
     }
@@ -132,7 +123,7 @@ export class AuthService {
     }
 
     saveUserToACookie(user: UserAccount) {
-      this.cookieService.putObject('loggedUser', this.extractCookieData(user), this.options);
+      this.cookieService.putObject('loggedUser', this.extractCookieData(user), {});
     }
 
     private extractCookieData(data: UserAccount): any {

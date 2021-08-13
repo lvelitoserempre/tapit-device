@@ -19,9 +19,9 @@ export class DrupalService {
   ) { }
 
   getPage(page:string): Observable<any[]> {
-    const headers = this.getHeaders()
+    const headers = this.getHeaders();
     return this.httpClient.get(`${environment.drupal?.url}/${environment.drupal?.newApiPath}?alias=/${page}`, headers)
-    .pipe(map(response => this.processResponse2(response)));
+    .pipe(map(response => this.processResponse(response)));
   }
 
   getHeaders() {
@@ -40,10 +40,10 @@ export class DrupalService {
   }
 
   getDrupalSession(): string {
-    return this.cookieService.get('DRUPAL_SESSION')
+    return this.cookieService.get('__session')
   }
 
-  private processResponse2(response: any): any[] {
+  private processResponse(response: any): any[] {
     let data = JSON.stringify(response.sections, null, 4),
     pathFind = `${environment.drupal?.url}/sites/g/files`,
     newPath = `${environment.drupal?.url.replace(environment.drupal.url?.includes('https') ? 'https://' : 'http://' , '/cache/')}/sites/g/files`;

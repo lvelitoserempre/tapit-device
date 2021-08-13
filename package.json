@@ -11,7 +11,7 @@
     "gulp-postcss": "^9.0.0",
     "gulp-run": "^1.7.1",
     "postcss-import": "^14.0.2",
-    "tailwindcss": "^2.1.4"
+    "tailwindcss": "^2.2.7"
   },
   "name": "tapit-web",
   "repository": {

@@ -6,7 +6,6 @@ import {HttpClient} from '@angular/common/http';
 import {map, switchMap} from 'rxjs/operators';
 import {UserDAO} from '../user/user-dao.service';
 import {AnalyticsService} from '../services/anaylitics/analytics.service';
-import {CookiesService} from '../../../../library/cookies.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -71,7 +70,7 @@ export class AuthService {
   }
 
   saveUserToACookie(user: UserAccount) {
-    this.cookieService.put('loggedUser', this.extractCookieData(user));
+    this.cookieService.put('loggedUser', this.extractCookieData(user), {});
   }
 
   getCurrentUser() {
@@ -80,8 +79,9 @@ export class AuthService {
 
   logout(): Observable<void> {
     return from(auth().signOut()).pipe(map(() => {
-      CookiesService.setObject('loggedUser', null);
-      CookiesService.setValue('DRUPAL_SESSION', null);
+      this.cookieService.remove('__session');
+      this.cookieService.remove('loggedUser');
+      this.cookieService.remove('DRUPAL_SESSION');
     }));
   }
 

@@ -58,8 +58,6 @@ export class AppComponent implements OnInit {
     }
   }
 
-
-
   ngOnInit(): void {
     const search = new URLSearchParams(window.location.search);
 
