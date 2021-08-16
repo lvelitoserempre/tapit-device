@@ -21,8 +21,8 @@ export class PromosComponent implements OnInit, OnDestroy {
 
   // to add content from the next page of the API
   onScroll() {
-    if(this.actualPage < this.totalPages){
-      this.promoService.getPromos(this.actualPage + 1).subscribe((res:any) => {
+    if (this.actualPage < this.totalPages) {
+      this.promoService.getPromos(this.actualPage + 1).subscribe((res: any) => {
         let response = res;
         this.actualPage = parseInt(response.page);
         return response.data.forEach(e => this.promos.push(e));
@@ -36,7 +36,7 @@ export class PromosComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadingService.show();
-    this.promosSubscription = this.promoService.getPromos(this.promoPage).subscribe((res:any) => {
+    this.promosSubscription = this.promoService.getPromos(this.promoPage).subscribe((res: any) => {
       let response = res;
       this.promos = response.data;
       this.totalPages = response.pager_total;
@@ -49,7 +49,7 @@ export class PromosComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnDestroy(): void{
+  ngOnDestroy(): void {
     this.promosSubscription.unsubscribe();
   }
 

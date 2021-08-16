@@ -21,7 +21,8 @@ export const environment = {
       sendDigitalInvoice: '/api-receiveDigitalInvoice',
       getCustomToken: '/v1/sso/customToken',
       createUser: '/v1/sso/user',
-      xeerpa: '/v1/xeerpa'
+      xeerpa: '/v1/xeerpa',
+      activatePromo: '/v1/coupon-wallet/coupons/activate'
     }
   },
   marketUrl: 'https://market.qa.tapit.com.co/api/vtexid/pub/logout?scope=bavariaco&returnUrl=https://market.qa.tapit.com.co',

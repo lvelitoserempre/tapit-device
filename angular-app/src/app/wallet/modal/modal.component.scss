@@ -1,0 +1,100 @@
+:host{
+    .modal--info {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0px;
+      bottom: 0;
+      background: rgba(25, 20, 25, 0.8);
+      display: flex;
+      align-items: flex-end;
+      z-index: 999999;
+    
+      @media (min-width: 992px) {
+        top: 0;
+        align-items: flex-start;
+        padding-top: 50px;
+      }
+    
+      @media (max-width: 768px) {
+        background: rgba(25, 20, 25, 0.3);
+      }
+    
+      &.active {
+        display: flex;
+      }
+    
+      &__cont {
+        border-radius: 20px 20px 0px 0px;
+        height: 94vh;
+        padding: 16px;
+        width: 100%;
+    
+        @media (min-width: 992px) {
+          height: initial;
+          width: 603px;
+          margin: 0 auto;
+          border-radius: 20px;
+        }
+    
+        .img-bg {
+          @media (min-width: 992px) {
+            content: "";
+            background: url("../../../assets/images/product-bg.svg");
+          } 
+        }
+
+        .image-bg{
+          box-shadow: 4px 8px 16px rgba(231, 228, 226, 0.9);
+          border-radius: 4px;
+        }
+
+        .promo-image{
+          height: 100%;
+          max-height: 286px;
+          width: auto;
+        }
+    
+        .detail {
+          border-bottom: 1px solid #D9D8D7;
+          border-top: 1px solid #D9D8D7;
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 15px;
+          padding-top: 15px;
+          margin-bottom: 15px;
+        }
+
+        .points {
+          border: 0.5px solid;
+        }
+
+        .loader > div {
+          width: 1.5rem;
+          height: 1.5rem;
+          margin: 3rem .5rem;
+          border-radius: 50%;
+          animation: loader-animation .6s infinite alternate;
+
+          &:nth-child(2){
+            animation-delay: .2s;
+          }
+
+          &:nth-child(3){
+            animation-delay: .4s;
+          }
+        }
+
+        @keyframes loader-animation{
+          to {
+            opacity: .1;
+            transform: translate3d(0, -1rem, 0);
+          }
+        }
+      }
+    }
+    
+    .m-0-auto {
+      margin: 0 auto;
+    }
+  }

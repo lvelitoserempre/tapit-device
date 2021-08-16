@@ -3,7 +3,8 @@
     <div class="md:w-1/5"></div>
     <div class="md:w-4/5 hidden md:block">
       <p class="text-xl font-bold leading-none mb-2">
-        Abre ésta sección desde tu app para canjear tu Cupón en tu tienda más cercana, <span class="text-primary-500">muestra el código QR al tendero y disfruta tu pola.</span></p>
+        Abre ésta sección desde tu app para canjear tu Cupón en tu tienda más cercana, <span
+          class="text-primary-500">muestra el código QR al tendero y disfruta tu pola.</span></p>
     </div>
   </div>
 
@@ -15,7 +16,9 @@
           <div class="flex justify-between">
             <span class="text-xs">MARCA</span>
             <div class="flex items-center px-2 text-neutral-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
             </div>
           </div>
         </div>
@@ -31,20 +34,26 @@
               <option>Option 3</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-primary-500">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
             </div>
           </div>
           <div class="hidden md:flex">
             <div class="flex items-center border-neutral-500 border-b-2">
               <span class="text-xs pr-3 pl-4">ORDENAR POR</span>
               <div class="flex items-center relative">
-                <select class="text-xs block appearance-none text-neutral-700 bg-white pr-4 py-2 pr-8 mt-1 leading-tight focus:outline-none">
+                <select
+                  class="text-xs block appearance-none text-neutral-700 bg-white pr-4 py-2 pr-8 mt-1 leading-tight focus:outline-none">
                   <option>Mas vendidas</option>
                   <option>Option 2</option>
                   <option>Option 3</option>
                 </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-neutral-700 pr-0">
-                  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                <div
+                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-neutral-700 pr-0">
+                  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
                 </div>
               </div>
             </div>
@@ -58,7 +67,9 @@
               <option>Option 3</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-primary-500 pr-0">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
             </div>
           </div>
         </div>
@@ -72,11 +83,13 @@
         (scrolled)="onScroll()">
         <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-5">
           <div *ngFor="let promo of promos; let i = index" class="card">
-            <app-promo-card 
+            <app-promo-card
               [title]="promo.title"
               [imgUrl]="promo.image"
               [promotion]="promo.promotion"
-            ></app-promo-card>
+              [id]="promo.promotion_id"
+              [promos]="promos">
+            </app-promo-card>
           </div>
         </div>
       </div>

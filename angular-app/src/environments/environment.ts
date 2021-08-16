@@ -22,7 +22,8 @@ export const environment = {
       sendDigitalInvoice: '/v1/digitalinvoice',
       getCustomToken: '/v1/sso/customToken',
       createUser: '/v1/sso/user',
-      xeerpa: '/v1/xeerpa'
+      xeerpa: '/v1/xeerpa',
+      activatePromo: '/v1/coupon-wallet/coupons/activate'
     }
   },
   marketUrl: 'https://market-dev.tapit.com.co/api/vtexid/pub/logout?scope=bavariacotest&returnUrl=https://market-dev.tapit.com.co',
