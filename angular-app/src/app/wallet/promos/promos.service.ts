@@ -44,7 +44,7 @@ export class PromosService {
   // activate single promo
   activatePromo(id: string) {
     return from(auth().currentUser.getIdToken()).pipe(mergeMap(token => {
-      return this.http.post(`${environment.firebase.functions.url}/v1/coupon-wallet/coupons/activate`, { couponId: id }, {
+      return this.http.post(`${environment.firebase.functions.url}${environment.firebase.functions.activatePromo}`, { couponId: id }, {
         headers: {
           Authorization: 'Bearer ' + token
         }
