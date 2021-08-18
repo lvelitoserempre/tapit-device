@@ -8,12 +8,13 @@ import { PromosService } from '../promos/promos.service'
 })
 export class ModalComponent implements OnInit, OnChanges {
   @Input() visible: boolean;
-  @Input() currentItem: [];
+  @Input() currentItem: any;
   @Input() cardType: string;
   @Output() close: EventEmitter<boolean> = new EventEmitter();
 
   item;
   activePromoItem;
+  qrcode;
   showActivatePromo: boolean = false;
   showActiveCouppon: boolean = false;
   errorMessage: boolean = false;
@@ -39,6 +40,8 @@ export class ModalComponent implements OnInit, OnChanges {
       this.showActivatePromo = false;
       this.showActiveCouppon = true;
       this.errorMessage = false;
+      this.qrcode = this.currentItem[0].qrcode;
+      this.activePromoItem = {'qrBase64': this.currentItem[0].qr, 'code': this.qrcode};
     }
   }
 

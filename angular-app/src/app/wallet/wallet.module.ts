@@ -6,6 +6,8 @@ import { PromosComponent } from './promos/promos.component';
 import { CuponsComponent } from './cupons/cupons.component';
 import { ShopPointsComponent } from './shop-points/shop-points.component';
 import { PromoCardComponent } from './promos/promo-card/promo-card.component';
+import { CouponCardComponent } from './cupons/coupon-card/coupon-card.component';
+import { CouponCardPromotedComponent } from './cupons/coupon-card-promoted/coupon-card-promoted.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ModalComponent } from './modal/modal.component';
@@ -35,7 +37,7 @@ const routes: Routes = [
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 @NgModule({
-  declarations: [WalletComponent, PromosComponent, CuponsComponent, ShopPointsComponent, PromoCardComponent, ModalWindowComponent,ShopCardComponent, ModalComponent],
+  declarations: [WalletComponent, PromosComponent, CuponsComponent, ShopPointsComponent, PromoCardComponent, ModalWindowComponent, CouponCardComponent, CouponCardPromotedComponent, ShopCardComponent, ModalComponent],
   imports: [
     CommonModule, InfiniteScrollModule, RouterModule.forChild(routes)
   ]

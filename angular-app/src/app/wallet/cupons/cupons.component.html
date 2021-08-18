@@ -68,62 +68,25 @@
           </div>
         </div>
 
-        <div class="md:inline-block md:pr-12 md:w-6/12 mb-4">
-          <div class="bg-neutral-100 pr-5 rounded-md flex items-start">
-            <img src="../../assets/images/cerveza-2.png" alt="" class="bg-complementary-1-500 pb-5 pl-2 pr-2 pt-5 rounded-md">
-            <div class="pl-4 pt-4 w-full">
-              <p class="text-xl font-bold leading-8">Poker</p>
-              <p class="text-xs leading-none">1 botella de 330ml</p>
-              <p class="text-sm font-bold mt-2 leading-none">200 Pts.</p>
-              <button class="uppercase mt-6 rounded-full bg-primary-500 text-neutral-100 w-full text-center p-3 text-xs font-bold tracking-wider border-2">mostrar código al tendero</button>
-              <button class="uppercase mt-4 rounded-full w-full text-center text-xs tracking-wider underline">desactiva cupón</button>
-            </div>
-          </div>
+        <!-- <app-coupon-card-promoted></app-coupon-card-promoted> -->
+        <div *ngFor="let promoted of promoteds; let i = index" 
+        class="md:inline-block md:pr-12 md:w-6/12 mb-4">
+          <app-coupon-card-promoted 
+            [brandData]="promoted.brand"
+            [qr]="promoted.qr"
+            [id]="promoted.id"
+            [qrcode]="promoted.qrcode"
+          ></app-coupon-card-promoted>
         </div>
-        <div class="md:inline-block md:pr-12 md:w-6/12 mb-4">
-          <div class="bg-neutral-100 pr-5 rounded-md flex items-start">
-            <img src="../../assets/images/cerveza-2.png" alt="" class="bg-complementary-3-500 pb-5 pl-2 pr-2 pt-5 rounded-md">
-            <div class="pl-4 pt-4 w-full">
-              <p class="text-xl font-bold leading-8">Poker</p>
-              <p class="text-xs leading-none">1 botella de 330ml</p>
-              <p class="text-sm font-bold mt-2 leading-none">200 Pts.</p>
-              <button class="uppercase mt-6 rounded-full bg-primary-500 text-neutral-100 w-full text-center p-3 text-xs font-bold tracking-wider border-2">mostrar código al tendero</button>
-              <button class="uppercase mt-4 rounded-full w-full text-center text-xs tracking-wider underline">desactiva cupón</button>
-            </div>
-          </div>
-        </div>
-        <div class="md:inline-block md:pr-12 md:w-6/12">
-          <div class="flex items-start border-b-2 border-neutral-500 p-5">
-            <img src="../../assets/images/cerveza-3.png" alt="botellita">
-            <div class="pl-4 w-full">
-              <p class="text-xs text-neutral-500 font-bold uppercase leading-none">canjeado el 12/12/2021</p>
-              <p class="text-xl font-bold leading-8">BBC Negra</p>
-              <p class="text-xs text-neutral-700 leading-none">330ml Retornable</p>
-              <p class="text-sm p-1 mt-2 leading-none rounded-full text-center bg-secondary-500 text-neutral-100 w-1/3">200 pts.</p>
-            </div>
-          </div>
-        </div>
-        <div class="md:inline-block md:pr-12 md:w-6/12">
-          <div class="flex items-start border-b-2 border-neutral-500 p-5">
-            <img src="../../assets/images/cerveza-3.png" alt="botellita">
-            <div class="pl-4 w-full">
-              <p class="text-xs text-neutral-500 font-bold uppercase leading-none">canjeado el 12/12/2021</p>
-              <p class="text-xl font-bold leading-8">Corona</p>
-              <p class="text-xs text-neutral-700 leading-none">330ml Retornable</p>
-              <p class="text-sm p-1 mt-2 leading-none rounded-full text-center bg-secondary-500 text-neutral-100 w-1/3">200 pts.</p>
-            </div>
-          </div>
-        </div>
-        <div class="md:inline-block md:pr-12 md:w-6/12">
-          <div class="flex items-start border-b-2 border-neutral-500 p-5">
-            <img src="../../assets/images/cerveza-3.png" alt="botellita">
-            <div class="pl-4 w-full">
-              <p class="text-xs text-neutral-500 font-bold uppercase leading-none">canjeado el 12/12/2021</p>
-              <p class="text-xl font-bold leading-8">Stella Artois</p>
-              <p class="text-xs text-neutral-700 leading-none">330ml Retornable</p>
-              <p class="text-sm p-1 mt-2 leading-none rounded-full text-center bg-secondary-500 text-neutral-100 w-1/3">200 pts.</p>
-            </div>
-          </div>
+        <div *ngFor="let consumed of consumeds; let i = index" 
+        class="md:inline-block md:pr-12 md:w-6/12">
+          <app-coupon-card 
+            [title]="consumed.brand.brand.name"
+            [imgUrl]="consumed.brand.image"
+            [date]="consumed.date"
+            [description]="consumed.brand.title"
+            [points]="consumed.brand.points"
+          ></app-coupon-card>
         </div>
       </div>
     </div>

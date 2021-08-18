@@ -23,7 +23,8 @@ export const environment = {
       getCustomToken: '/v1/sso/customToken',
       createUser: '/v1/sso/user',
       xeerpa: '/v1/xeerpa',
-      activatePromo: '/v1/coupon-wallet/coupons/activate'
+      activatePromo: '/v1/coupon-wallet/coupons/activate',
+      getCoupons: '/v1/coupon-wallet/coupons',
     }
   },
   marketUrl: 'https://market-dev.tapit.com.co/api/vtexid/pub/logout?scope=bavariacotest&returnUrl=https://market-dev.tapit.com.co',

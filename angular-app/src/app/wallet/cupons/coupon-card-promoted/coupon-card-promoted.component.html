@@ -1,0 +1,18 @@
+<app-modal
+  [visible]="myModal"
+  (close)="closeModal($event)"
+  [currentItem]="currentItem"
+  [cardType]="cardType">
+</app-modal>
+<div class="">
+  <div class="bg-neutral-100 pr-5 rounded-md flex items-start">
+    <img src="{{imgUrl}}" alt="" class="{{colorBg}}" style="max-height: 196px;">
+    <div class="pl-4 pt-4 w-full">
+      <p class="text-xl font-bold leading-8">{{title}}</p>
+      <p class="text-xs leading-none">{{description}}</p>
+      <p class="text-sm font-bold mt-2 leading-none">{{points}} Pts.</p>
+      <button class="uppercase mt-6 rounded-full bg-primary-500 text-neutral-100 w-full text-center p-3 text-xs font-bold tracking-wider border-2" (click)="openModal('couppon')">mostrar código al tendero</button>
+      <button class="uppercase mt-4 rounded-full w-full text-center text-xs tracking-wider underline">desactiva cupón</button>
+    </div>
+  </div>
+</div>
