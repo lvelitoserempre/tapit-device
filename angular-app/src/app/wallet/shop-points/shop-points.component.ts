@@ -1,60 +1,55 @@
-import { Component, OnInit, Output, EventEmitter, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ShopsService } from './shops.service'
+import { Subscription } from 'rxjs';
+import { LoadingService } from 'src/app/services/loading.service'
 
 @Component({
   selector: 'app-shop-points',
   templateUrl: './shop-points.component.html',
   styleUrls: ['./shop-points.component.scss']
 })
-export class ShopPointsComponent implements OnInit, AfterViewInit {
-  @Output() modalOpener = new EventEmitter();
+export class ShopPointsComponent implements OnInit, OnDestroy {
 
-  public boxes;
-  public mocks: Array<any>;
+  products: any[];
+  productSubscription: Subscription;
+  totalPages: number;
+  productPage: number = 1;
+  actualPage: number;
 
-  constructor(private elementRef:ElementRef) { 
-    this.mocks = [
-      {
-        neutral: false,
-        yellow: true,
-        red: false,
-        presentation: "1 Botella de 300 ml",
-        product: "Cerveza BBC Bacatá Blanca",
-        points: "200",
-        imgUrl: "../../assets/images/cerveza-item-2.png"
-      },
-      {
-        neutral: true,
-        yellow: false,
-        red: false,
-        presentation: "1 Botella de 300 ml",
-        product: "Cerveza BBC Bacatá Blanca",
-        points: "200",
-        imgUrl: "../../assets/images/cerveza-item-2.png"
-      },
-      {
-        neutral: false,
-        yellow: false,
-        red: true,
-        presentation: "1 Botella de 300 ml",
-        product: "Cerveza BBC Bacatá Blanca",
-        points: "200",
-        imgUrl: "../../assets/images/cerveza-item-2.png"
-      }
-    ]
+  constructor(private productService: ShopsService, private loadingService: LoadingService) { 
   }
 
-  ngAfterViewInit(): void {
-    this.boxes = this.elementRef.nativeElement.querySelectorAll('.list-product--item');
-    for(let i = 0; i < this.boxes.length; i++) {
-      this.boxes[i].addEventListener('click', this.modalOpen.bind(this));
+  onScroll(){
+    if(this.actualPage < this.totalPages){
+      this.productService.getProduct(this.actualPage + 1).subscribe((res:any) => {
+        let response = res;
+        this.actualPage = parseInt(response.page);
+        return response.data.forEach(e => this.products.push(e))
+      }, err => {
+        console.log(err)
+      });
+    } else {
+      return
     }
   }
 
   ngOnInit(): void {
+    this.loadingService.show();
+    this.productSubscription = this.productService.getProduct(this.productPage).subscribe((res: any) => {
+      let response = res;
+      this.products = response.data;
+      this.totalPages = response.pager_total;
+      this.actualPage = parseInt(response.page);
+      this.loadingService.hide();
+    }, err => {
+      this.loadingService.hide();
+      console.log(err);
+    })
   }
 
-  modalOpen(): void {
-    this.modalOpener.emit(null)
+  ngOnDestroy(): void {
+    this.productSubscription.unsubscribe();
   }
+
 
 }

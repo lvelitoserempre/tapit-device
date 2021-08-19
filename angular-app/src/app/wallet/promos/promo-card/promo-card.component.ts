@@ -15,7 +15,7 @@ export class PromoCardComponent implements OnInit, AfterViewInit {
 
   public modal;
   myModal = false;
-  currentItem: [];
+  currentItem: any;
   cardType: string;
 
   constructor(private elementRef: ElementRef) { }

@@ -63,15 +63,15 @@
         </div>
       </div>
       <div class="container grid grid-cols-6 md:grid-cols-12 gap-5">
-        <div *ngFor="let mock of mocks; let i = index" class="pt-1 pb-2 md:pb-5 flex list-product--item col-span-3 md:col-span-3">
+        <div *ngFor="let product of products; let i = index" class="pt-1 pb-2 md:pb-5 flex list-product--item col-span-3 md:col-span-3">
           <app-shop-card
-            [neutral]="mock.neutral"
-            [yellow]="mock.yellow"
-            [red]="mock.red"
-            [presentation]="mock.presentation"
-            [product]="mock.product"
-            [points]="mock.points"
-            [imgUrl]="mock.imgUrl" 
+            [title] = "product.title"
+            [imgUrl] = "product.image"
+            [promotion] = "product.promotion"
+            [id]="product.promotion_id"
+            [points]="product.points"
+            [products]= "products"
+            [color]= "product.brand.color"
             class="w-full"
             ></app-shop-card>
         </div>

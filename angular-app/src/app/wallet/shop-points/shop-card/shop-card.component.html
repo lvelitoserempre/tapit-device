@@ -1,14 +1,19 @@
-<div class="flex list-product--item w-full">
+<app-modal
+  [visible]="myModal"
+  (close)="closeModal($event)"
+  [currentItem]="currentItem"
+  [cardType]="cardType">
+</app-modal>
+<div (click)="openModal('promo')" class="flex list-product--item w-full">
   <div
-    class="w-full py-2 border-4 border-white shadow-sm cursor-pointer text-center box-product mb-3"
-    [ngClass]="{'bg-neutral-100':neutral, 'bg-yellow-2':yellow, 'bg-red':red, 'items-center': neutral}">
+    class="w-full py-2 border-4 border-white rounded-md shadow-sm cursor-pointer text-center box-product mb-3 bg-neutral-100">
     <div class="relative">
-      <img class="box-product--img" [src]='imgUrl' alt="" />
+      <img class="box-product--img bg-{{color}}-500 px-8 rounded-md" src="{{imgUrl}}" alt="" />
       <!-- <span class="glop bg-black text-white text-xs font-bold rounded-full leading-none py-1 px-2">{{promoType}}</span> -->
     </div>
     <div class="box-product--title">
-      <p class="text-sm pt-4" [ngClass]="{'text-white': red}">{{product}}</p>
-      <p class="text-xs" [ngClass]="{'text-white': red}">{{presentation}}</p>
+      <p class="text-sm pt-4 font-bold">{{title}}</p>
+      <p class="text-xs">{{promotion}}</p>
     </div>
     <p
       class="text-sm inline-block text-md text-center text-white font-bold my-2 px-5 rounded-full points"

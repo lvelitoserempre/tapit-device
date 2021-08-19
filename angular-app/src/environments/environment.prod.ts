@@ -23,7 +23,9 @@ export const environment = {
       getCustomToken: '/v1/sso/customToken',
       createUser: '/v1/sso/user',
       xeerpa: '/v1/xeerpa',
-      activatePromo: '/v1/coupon-wallet/coupons/activate'
+      activatePromo: '/v1/coupon-wallet/coupons/activate',
+      deactivateCoupon: '/v1/coupon-wallet/coupons/deactivate',
+      getCoupons: '/v1/coupon-wallet/coupons',
     }
   },
   marketUrl: 'https://market.tapit.com.co/api/vtexid/pub/logout?scope=bavariaco&returnUrl=https://market.tapit.com.co',

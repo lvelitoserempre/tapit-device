@@ -5,6 +5,7 @@
     </div>
     <div class="md:w-3/6 lg:w-10/12 m-0-auto">
 
+      <!-- show promo modal -->
       <div *ngIf="showActivatePromo">
         <h2 class="font-bold text-xl mb-1 leading-none lg:mb-6 lg:text-center">Confirma y canjea en tu tienda mas
           cercana</h2>
@@ -16,6 +17,9 @@
         </div>
       </div>
 
+      <img *ngIf="showActivatePromo" class="m-0-auto py-3" src="../../assets/images/llamada.svg" alt="">
+
+      <!-- show activated promo modal -->
       <div *ngIf="showActiveCouppon">
         <h2 class="font-bold text-xl mb-1 leading-none lg:mb-6 lg:text-center">Muestrale este codigo al tendero para que
           lo escanee</h2>
@@ -26,11 +30,12 @@
         </div>
       </div>
 
+      <!-- show error message modal -->
       <div *ngIf="errorMessage">
         <h2 class="font-bold text-xl mb-1 leading-none lg:mb-6 lg:text-center">Error del sistema</h2>
 
         <div>
-          <img class="m-auto w-12/12 h-auto promo-image" src="../../../assets//images/error.png" alt="">
+          <img class="m-auto w-12/12 h-auto promo-image" src="assets/images/error.svg" alt="">
           <p class="text-center font-bold mt-4">Algo ha salido mal!</p>
           <p class="text-center text-neutral-600 mt-3">Ha ocurrido un error intentalo mas tarde</p>
         </div>
@@ -39,19 +44,19 @@
           [routerLink]="'/wallet/coupons'">Regresar a mis Cupones</a>
       </div>
 
+      <!-- show loading in the modal -->
       <div *ngIf="isLoading" class="loader flex justify-center self-center m-0-auto h-80">
         <div class="bg-primary-500"></div>
         <div class="bg-primary-500"></div>
         <div class="bg-primary-500"></div>
       </div>
 
-      <img *ngIf="showActivatePromo" class="m-0-auto py-3" src="../../assets/images/llamada.svg" alt="">
 
       <div *ngIf="showActivatePromo || showActiveCouppon" class="detail m-0-auto w-11/12">
         <div class="w-1/2 md:w-2/3">
           <h3 class="text-xl font-bold leading-none">{{item[0].title}} <span
               class="text-primary-500">{{item[0].promotion}}</span></h3>
-          <p class="text-sm mt-1">1 Botella de 330 ml</p>
+          <p class="text-sm mt-1">{{item[0].detail_description}}</p>
           <p> <span class="text-xs">Gana hasta</span> <span
               class="text-sm inline-block text-md text-center text-primary-500 font-bold my-2 ml-1 px-2 border-primaryt-500 rounded-full points">{{item[0].points}}
               Pts.</span></p>
@@ -61,23 +66,23 @@
             <a class="text-xs uppercase text-neutral-800 underline leading-none pr-2 mt-1" href="">Ver tiendas</a>
             <img src="../../assets/images/tienda.svg" alt="">
           </div>
-          <p class="text-sm uppercase text-neutral-800">Vigencia 30/oct/21</p>
+          <p class="text-sm uppercase text-neutral-800">Vigencia {{promoExpirationDate}}</p>
           <a class="text-xs text-neutral-600 underline cursor-pointer" href={{item[0].terms}}>Términos y Condiciones</a>
         </div>
       </div>
 
       <a *ngIf="showActivatePromo"
         class="text-sm inline-block text-md text-center text-white font-bold my-2 py-2 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
-        (click)="activatePromo()">confirma y paga con puntos</a>
+        (click)="activatePromo()">{{btnMessage}}</a>
       <a *ngIf="showActivatePromo"
         class="text-sm inline-block text-md text-center text-primary-500 font-bold py-2 rounded-full w-full uppercase underline cursor-pointer"
         (click)="closeModal()">cerrar</a>
 
       <a *ngIf="showActiveCouppon"
         class="text-sm inline-block text-md text-center text-white font-bold my-2 py-2 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
-        [routerLink]="'/wallet/coupons'">ir a mi cuponera</a>
+        [routerLink]="'/wallet/coupons'">Volver a mis Cupones</a>
       <a *ngIf="showActiveCouppon"
-        class="text-sm inline-block text-md text-center text-neutral-800 font-bold py-2 rounded-full w-full uppercase underline cursor-pointer">desactivar
+        class="text-sm inline-block text-md text-center text-primary-500 font-bold py-2 rounded-full w-full uppercase underline cursor-pointer">desactivar
         cupon</a>
     </div>
   </div>

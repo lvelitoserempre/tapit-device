@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, Output, OnChanges, EventEmitter } from '@angular/core';
-import { PromosService } from '../promos/promos.service'
+import { PromosService } from '../promos/promos.service';
+import * as moment from 'moment';
+import 'moment/locale/es';
 
 @Component({
   selector: 'app-modal',
@@ -15,8 +17,12 @@ export class ModalComponent implements OnInit, OnChanges {
   item;
   activePromoItem;
   qrcode;
+  promoExpirationDate;
+  btnMessage: string;
   showActivatePromo: boolean = false;
   showActiveCouppon: boolean = false;
+  showProduct: boolean = false;
+  confirmDeactivation: boolean = false;
   errorMessage: boolean = false;
   isLoading: boolean = false;
 
@@ -30,16 +36,28 @@ export class ModalComponent implements OnInit, OnChanges {
   ngOnChanges() {
     if (this.currentItem == undefined) {
       return
+
     } else if (this.cardType === 'promo') {
       this.item = this.currentItem;
       this.showActivatePromo = true;
       this.showActiveCouppon = false;
       this.errorMessage = false;
+
+      let date = new Date(this.item[0].expiration * 1000);
+      this.promoExpirationDate = moment(date).format('DD/MMM/YY');
+
+      if(this.item[0].type === 'Product'){
+        this.btnMessage = "Confirma y paga con puntos"
+      } else if (this.item[0].type === 'Promotion'){
+        this.btnMessage = "Confirma y activa promo"
+      }
+
     } else if (this.cardType === 'couppon') {
       this.item = this.currentItem;
       this.showActivatePromo = false;
       this.showActiveCouppon = true;
       this.errorMessage = false;
+
       this.qrcode = this.currentItem[0].qrcode;
       this.activePromoItem = {'qrBase64': this.currentItem[0].qr, 'code': this.qrcode};
     }
@@ -61,6 +79,10 @@ export class ModalComponent implements OnInit, OnChanges {
       this.errorMessage = true;
       this.isLoading = false;
     });
+  }
+
+  deactivateCoupon(){
+    
   }
 
   closeModal() {

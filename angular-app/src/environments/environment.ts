@@ -24,6 +24,7 @@ export const environment = {
       createUser: '/v1/sso/user',
       xeerpa: '/v1/xeerpa',
       activatePromo: '/v1/coupon-wallet/coupons/activate',
+      deactivateCoupon: '/v1/coupon-wallet/coupons/deactivate',
       getCoupons: '/v1/coupon-wallet/coupons',
     }
   },

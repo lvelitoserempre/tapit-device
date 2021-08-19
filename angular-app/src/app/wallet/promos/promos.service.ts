@@ -32,7 +32,6 @@ export class PromosService {
         'Authorization': `Bearer ${drupalSession}`
       }
     }
-
   }
 
   // get promotions data
@@ -45,6 +44,17 @@ export class PromosService {
   activatePromo(id: string) {
     return from(auth().currentUser.getIdToken()).pipe(mergeMap(token => {
       return this.http.post(`${environment.firebase.functions.url}${environment.firebase.functions.activatePromo}`, { couponId: id }, {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      });
+    }))
+  }
+
+  // deativate promo
+  deactivateCoupon(id: string) {
+    return from(auth().currentUser.getIdToken()).pipe(mergeMap(token => {
+      return this.http.post(`${environment.firebase.functions.url}${environment.firebase.functions.deactivateCoupon}`, { couponId: id }, {
         headers: {
           Authorization: 'Bearer ' + token
         }

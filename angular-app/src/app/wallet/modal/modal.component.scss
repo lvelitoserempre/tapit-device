@@ -26,13 +26,14 @@
     
       &__cont {
         border-radius: 20px 20px 0px 0px;
-        height: 94vh;
+        height: auto;
         padding: 16px;
         width: 100%;
     
         @media (min-width: 992px) {
           height: initial;
-          width: 603px;
+          width: 100%;
+          max-width: 603px;
           margin: 0 auto;
           border-radius: 20px;
         }
