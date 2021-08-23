@@ -1,3 +1,9 @@
+::ng-deep .modal-open{
+  height: 100vh;
+  overflow-y: hidden;
+  padding-right: 15px; /* Avoid width reflow */
+}
+
 :host{
     .modal--info {
       position: fixed;
@@ -7,32 +13,34 @@
       bottom: 0;
       background: rgba(25, 20, 25, 0.8);
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       z-index: 999999;
+
+      @media(max-width: 414px){
+          align-items: flex-end;
+      }
     
       @media (min-width: 992px) {
         top: 0;
-        align-items: flex-start;
-        padding-top: 50px;
       }
     
       @media (max-width: 768px) {
         background: rgba(25, 20, 25, 0.3);
       }
-    
-      &.active {
-        display: flex;
-      }
-    
       &__cont {
         border-radius: 20px 20px 0px 0px;
         height: auto;
         padding: 16px;
         width: 100%;
+
+        @media (max-width: 640px){
+          max-height: 100vh;
+          overflow-y: auto;
+          width: 100%;
+        }
     
         @media (min-width: 992px) {
           height: initial;
-          width: 100%;
           max-width: 603px;
           margin: 0 auto;
           border-radius: 20px;

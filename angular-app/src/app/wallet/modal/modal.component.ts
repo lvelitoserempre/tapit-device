@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, Output, OnChanges, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, OnChanges, EventEmitter, Inject } from '@angular/core';
 import { PromosService } from '../promos/promos.service';
 import * as moment from 'moment';
 import 'moment/locale/es';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-modal',
@@ -27,13 +28,16 @@ export class ModalComponent implements OnInit, OnChanges {
   isLoading: boolean = false;
 
 
-  constructor(private promosService: PromosService) {
+  constructor(@Inject(DOCUMENT) private document: Document, private promosService: PromosService) {
   }
 
   ngOnInit(): void {
   }
 
   ngOnChanges() {
+
+    this.visible ? this.document.body.classList.add('modal-open') : this.document.body.classList.remove('modal-open');
+
     if (this.currentItem == undefined) {
       return
 
