@@ -1,25 +1,26 @@
-import {Component, Inject, OnInit,ViewChild} from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { ScriptService } from './services/script.service';
-import {environment} from '../environments/environment';
+import { environment } from '../environments/environment';
 import { PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { AgeGateComponent } from './age-gate/age-gate.component';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { CookieService } from "ngx-cookie-universal";
-import {AuthService} from "./services/auth/auth.service"
-import {DrupalService} from "./services/drupal.service"
+import { CookieService } from 'ngx-cookie-universal';
+import { AuthService } from './services/auth/auth.service';
+import { DrupalService } from './services/drupal.service';
+import { ActivatedRoute } from '@angular/router';
 
 declare var setupGTM: any;
 declare var ga: any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   isOnWebView = false;
-  private listenerRunning : boolean = false;
+  private listenerRunning: boolean = false;
 
   @ViewChild('ageGate') private ageGate: AgeGateComponent;
 
@@ -30,21 +31,20 @@ export class AppComponent implements OnInit {
     private ngxService: NgxUiLoaderService,
     private cookies: CookieService,
     private _authService: AuthService,
-    private drupalService: DrupalService
+    private drupalService: DrupalService,
+    private route: ActivatedRoute
   ) {
     //this.ngxService.start();
     this.loadSSOScript();
     if (isPlatformBrowser(this.platformId)) {
-      this.setUpStats()
+      this.setUpStats();
     }
   }
 
   private loadSSOScript(): void {
-    this.scriptService.loadScript('ssoApp')
-    .then(function() {
+    this.scriptService.loadScript('ssoApp').then(function () {
       // @ts-ignore
-      window.configTapitSso = () => {
-      };
+      window.configTapitSso = () => {};
     });
   }
 
@@ -59,13 +59,18 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    /* This function redirects to an external website in case we receive the redirection query param
+    If we don't receive the redirection param we keep with the normal flow */
+    this.redirect();
+
     const search = new URLSearchParams(window.location.search);
 
     if (search.get('customToken')) {
-      this.angularFireAuth.signInWithCustomToken(search.get('customToken'))
-      .then(user => {
-        console.log(user);
-      });
+      this.angularFireAuth
+        .signInWithCustomToken(search.get('customToken'))
+        .then((user) => {
+          console.log(user);
+        });
     }
 
     if (search.get('source')) {
@@ -78,16 +83,15 @@ export class AppComponent implements OnInit {
       this.readCookies();
     }
     if (!this.isOnWebView) {
-      this.scriptService.loadScript('optanon')
-      .then(function() {
+      this.scriptService.loadScript('optanon').then(function () {
         function OptanonWrapper() {}
-      })
+      });
     }
     this.ngxService.stop();
   }
 
   ngAfterViewChecked() {
-    if(window.ssoApp && !this.listenerRunning){
+    if (window.ssoApp && !this.listenerRunning) {
       this.drupalService.onLoginCompleate();
       this.listenerRunning = true;
       this.openSso();
@@ -95,17 +99,34 @@ export class AppComponent implements OnInit {
   }
 
   private setUpStats() {
-    setupGTM(window, document, 'script', 'dataLayer', environment.googleTagManagerId);
+    setupGTM(
+      window,
+      document,
+      'script',
+      'dataLayer',
+      environment.googleTagManagerId
+    );
     ga('create', environment.googleAnalyticsId, 'auto');
   }
 
   showVerifyIdentity(evt: boolean) {
     this._authService.getUser();
   }
-  openSso(){
+  openSso() {
     const smsStepSSO = window.localStorage.getItem('sms-step');
     if (smsStepSSO && smsStepSSO !== 'phone-verified') {
       window.ssoApp.showApp(smsStepSSO);
     }
+  }
+
+  //funtion that redirects in case we receive the redirection query param "rl"
+  private redirect(): void {
+    this.route.queryParams.subscribe({
+      next: (params) => {
+        if (params.rl) {
+          window.location.href = `https://www.${params.rl}`;
+        }
+      },
+    });
   }
 }
