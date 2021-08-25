@@ -22,4 +22,12 @@ export class CuponsService {
       }
     });
   }
+
+  deactivateCoupons(token:string ,id:string ): Observable<any> {
+    return this.http.post(`${environment.firebase.functions.url}${environment.firebase.functions.deactivateCoupon}`, { couponId: id }, {
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  });
+}
 }

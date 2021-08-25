@@ -55,7 +55,8 @@ export class CuponsComponent implements AfterViewInit{
           }
           this.promoteds.push(elToPush);
         } else {
-          let d = new Date(0).setUTCSeconds(e.dateEnd);
+          // let d = new Date(0).setUTCSeconds(e.deactivatedAt);
+          let d = new Date(e.deactivatedAt);
           let dateNow = new Date(d);
           let day = dateNow.getUTCDate();
           let month = dateNow.getUTCMonth() + 1;

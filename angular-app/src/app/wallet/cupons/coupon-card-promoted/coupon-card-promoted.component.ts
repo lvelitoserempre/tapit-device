@@ -15,6 +15,7 @@ export class CouponCardPromotedComponent implements OnInit, AfterViewInit {
   public description: string;
   public points: string;
   public colorBg: string;
+  public couponId: string;
 
   public modal;
   myModal = false;
@@ -28,8 +29,9 @@ export class CouponCardPromotedComponent implements OnInit, AfterViewInit {
       this.description = this.brandData.title;
       this.points = this.brandData.points;
       this.imgUrl = this.brandData.image;
+      this.couponId = this.id;
       this.colorBg = 'bg-'+this.brandData.brand.color + '-500 pb-5 pl-2 pr-2 pt-5 rounded-md';
-      this.currentItem = [{ 'description': this.description, 'title': this.title, 'points': this.points, 'qr': this.qr, 'qrcode': this.qrcode }];
+      this.currentItem = [{ 'description': this.description, 'id': this.couponId, 'title': this.title, 'points': this.points, 'qr': this.qr, 'qrcode': this.qrcode }];
   }
 
   ngAfterViewInit(): void {

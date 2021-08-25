@@ -17,6 +17,35 @@
         </div>
       </div>
 
+      <div *ngIf="showActiveWarning">
+        <p class="text-xl font-bold py-10 mb-1 text-center">
+          ¿Estás seguro de que quieres cancelar el cupón?
+        </p>
+        <p class="text-base text-color-gray px-8 mb-14">Al cancelar el cupón, tus puntos serán regresados a tu cuenta.</p>
+        <div class="flex mt-16">
+          <a
+            class="text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-white text-primary-500 rounded-full w-full uppercase cursor-pointer"
+            (click)="deactivateCoupon()">CANCELA CUPÓN</a>
+          <a
+            class="text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
+            (click)="returnToCoupon()">NO CANCELAR</a>
+        </div>
+      </div>
+
+      <div *ngIf="showActiveSuccess">
+        <p class="text-xl font-bold pt-10 pb-6 mb-1 text-center">
+          Tu cupón fue cancelado
+        </p>
+        <img class="mx-auto mb-10" src="../../assets/images/success.png" alt="">
+        <p class="text-base text-color-gray px-8 mb-2">Te reembolsamos 240 puntos, ahora tienes 2500 Pts.</p>
+        <p class="text-base text-color-gray px-8 mb-14">Te esperamos con más pomociones que podrían gustarte.</p>
+        <div class="flex mt-16">
+          <a
+            class="text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
+            >VER CUPONES</a>
+        </div>
+      </div>
+
       <img *ngIf="showActivatePromo" class="m-0-auto py-3" src="../../assets/images/llamada.svg" alt="">
 
       <!-- show activated promo modal -->
@@ -82,7 +111,7 @@
         class="text-sm inline-block text-md text-center text-white font-bold my-2 py-2 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
         [routerLink]="'/wallet/coupons'">Volver a mis Cupones</a>
       <a *ngIf="showActiveCouppon"
-        class="text-sm inline-block text-md text-center text-primary-500 font-bold py-2 rounded-full w-full uppercase underline cursor-pointer">desactivar
+        class="text-sm inline-block text-md text-center text-primary-500 font-bold py-2 rounded-full w-full uppercase underline cursor-pointer" (click)="showWarning()">desactivar
         cupon</a>
     </div>
   </div>

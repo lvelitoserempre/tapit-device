@@ -5,6 +5,10 @@
 }
 
 :host{
+    .text-color-gray {
+      color: #706C6A;
+    }
+
     .modal--info {
       position: fixed;
       top: 0;
