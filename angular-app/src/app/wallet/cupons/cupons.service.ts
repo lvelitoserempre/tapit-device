@@ -15,8 +15,8 @@ export class CuponsService {
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
-  getCoupons(token): Observable<any> {
-      return this.http.post(`${environment.firebase.functions.url}${environment.firebase.functions.getCoupons}`, { pageLength: 10, pageNumber: 1 }, {
+  getCoupons(token, pageNumber): Observable<any> {
+      return this.http.post(`${environment.firebase.functions.url}${environment.firebase.functions.getCoupons}`, { pageLength: 10, pageNumber: `${pageNumber}` }, {
       headers: {
         Authorization: 'Bearer ' + token
       }

@@ -35,6 +35,7 @@ export class ModalComponent implements OnInit, OnChanges {
   confirmDeactivation: boolean = false;
   errorMessage: boolean = false;
   isLoading: boolean = false;
+  largeText: boolean = false;
 
 
   constructor(@Inject(DOCUMENT) private document: Document, private promosService: PromosService, private cuponService: CuponsService) {
@@ -68,6 +69,12 @@ export class ModalComponent implements OnInit, OnChanges {
         this.btnMessage = "Confirma y activa promo"
       }
 
+      if(this.item[0].title.length > 7 || this.item[0].promotion.length > 7){
+        this.largeText = true;
+      } else {
+        this.largeText = false;
+      }
+
     } else if (this.cardType === 'couppon') {
       this.item = this.currentItem;
       this.showActivatePromo = false;
@@ -80,6 +87,7 @@ export class ModalComponent implements OnInit, OnChanges {
       this.qrcode = this.currentItem[0].qrcode;
       this.couponId = this.currentItem[0].id;
       this.activePromoItem = {'qrBase64': this.currentItem[0].qr, 'code': this.qrcode};
+
     } else if (this.cardType === 'deactivate') {
       this.item = this.currentItem;
       this.showActivatePromo = false;
@@ -118,7 +126,6 @@ export class ModalComponent implements OnInit, OnChanges {
     this.showActiveWarning = false;
 
     auth().currentUser.getIdToken().then(tkn => {
-      console.log('this is the token: ',tkn);
       this.cuponService.deactivateCoupons(tkn,this.couponId).subscribe(res => {
         this.showActiveWarning = false;
         this.showActiveSuccess = true;

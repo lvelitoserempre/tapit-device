@@ -11,9 +11,21 @@ export class CouponCardComponent implements OnInit {
   @Input() date: string;
   @Input() description: string;
   @Input() points: string;
+  @Input() status: string;
+  public currentStatus: string
   
-  constructor() { }
+  constructor() {
+    this.checkStatus();
+  }
 
   ngOnInit(): void { }
+
+  checkStatus(){
+    if(this.status === 'Deactivated'){
+      this.currentStatus = "Desactivado"
+    } else {
+      this.currentStatus = "Canjeado"
+    }
+  }
 
 }

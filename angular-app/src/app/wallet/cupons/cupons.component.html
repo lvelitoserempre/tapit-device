@@ -69,13 +69,19 @@
         </div>
 
         <!-- <app-coupon-card-promoted></app-coupon-card-promoted> -->
-        <div *ngFor="let promoted of promoteds; let i = index" 
+        <div
+          infiniteScroll
+          [infiniteScrollDistance]="2"
+          [infiniteScrollThrottle]="50"
+          (scrolled)="onScroll()">
+          <div *ngFor="let promoted of promoteds; let i = index" 
         class="md:inline-block md:pr-12 md:w-6/12 mb-4">
           <app-coupon-card-promoted 
             [brandData]="promoted.brand"
             [qr]="promoted.qr"
             [id]="promoted.id"
             [qrcode]="promoted.qrcode"
+            [date]="promoted.date"
           ></app-coupon-card-promoted>
         </div>
         <div *ngFor="let consumed of consumeds; let i = index" 
@@ -86,7 +92,9 @@
             [date]="consumed.date"
             [description]="consumed.brand.title"
             [points]="consumed.brand.points"
+            [status]="consumed.status"
           ></app-coupon-card>
+        </div>
         </div>
       </div>
     </div>

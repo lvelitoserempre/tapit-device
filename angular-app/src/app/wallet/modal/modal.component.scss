@@ -44,7 +44,8 @@
         }
     
         @media (min-width: 992px) {
-          height: initial;
+          max-height: 100vh;
+          overflow-y: auto;
           max-width: 603px;
           margin: 0 auto;
           border-radius: 20px;
@@ -54,6 +55,7 @@
           @media (min-width: 992px) {
             content: "";
             background: url("../../../assets/images/product-bg.svg");
+            height: 256px;
           } 
         }
 
@@ -63,16 +65,18 @@
         }
 
         .promo-image{
-          height: 100%;
-          max-height: 286px;
+          height: 90%;
+          max-height: 250px;
           width: auto;
+
+          @media(max-width: 480px){
+            max-height: 196px;
+          }
         }
     
         .detail {
           border-bottom: 1px solid #D9D8D7;
           border-top: 1px solid #D9D8D7;
-          display: flex;
-          justify-content: space-between;
           padding-bottom: 15px;
           padding-top: 15px;
           margin-bottom: 15px;

@@ -7,6 +7,8 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import auth = firebase.auth;
 import { LoadingService } from 'src/app/services/loading.service';
+import * as moment from 'moment';
+import 'moment/locale/es';
 
 @Component({
   selector: 'app-cupons',
@@ -20,6 +22,9 @@ export class CuponsComponent implements AfterViewInit{
   public token;
   public checkUser;
   promosSubscription: Subscription;
+  totalPages: number;
+  actualPage: number;
+  couponsPage: number = 0;
 
   constructor(private http: HttpClient, private couponService: CuponsService, private loadingService: LoadingService) { }
   
@@ -43,15 +48,25 @@ export class CuponsComponent implements AfterViewInit{
   }
 
   loadCoupons(token) {
-    this.couponService.getCoupons(token).subscribe((res:any) => {
+    this.couponService.getCoupons(token, this.couponsPage + 1).subscribe((res:any) => {
       let response = res.items;
+
+      this.actualPage = this.couponsPage;
+      this.totalPages = res.totalPages;
+      this.couponsPage = this.couponsPage + 1;
+
       response.map(e => {
         if(e.status === 'Active') {
+
+          let date = new Date(e.dateEnd * 1000);
+          let deactivationDate = moment(date).format('DD/MMM/YY');
+
           let elToPush = {
             'qr': e.qrBase64,
             'qrcode': e.code,
             'id': e.id_coupon,
-            'brand': e.tapitCouponDrupal || ''
+            'brand': e.tapitCouponDrupal || '',
+            'date': deactivationDate
           }
           this.promoteds.push(elToPush);
         } else {
@@ -64,7 +79,8 @@ export class CuponsComponent implements AfterViewInit{
           let dateToShow = ('0'+day).slice(-2)+'/'+('0'+month).slice(-2)+'/'+year;
           let elToPush = {
             'brand': e.tapitCouponDrupal || '',
-            'date': dateToShow
+            'date': dateToShow,
+            'status': e.status
           }
           this.consumeds.push(elToPush);
         }
@@ -74,6 +90,14 @@ export class CuponsComponent implements AfterViewInit{
       this.loadingService.hide();
       console.log(err);
     });
+  }
+
+  onScroll(){
+    if(this.actualPage < this.totalPages){
+      this.loadToken();
+    } else {
+      return
+    }
   }
 
 
