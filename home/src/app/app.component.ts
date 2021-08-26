@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     private drupalService: DrupalService,
     private route: ActivatedRoute
   ) {
-    //this.ngxService.start();
+    this.ngxService.start();
     this.loadSSOScript();
     if (isPlatformBrowser(this.platformId)) {
       this.setUpStats();
@@ -87,7 +87,7 @@ export class AppComponent implements OnInit {
         function OptanonWrapper() {}
       });
     }
-    this.ngxService.stop();
+    this.ngxService.stopAll();
   }
 
   ngAfterViewChecked() {

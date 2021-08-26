@@ -88,12 +88,14 @@ export class HomeComponent {
     private authService: AuthService,
     private cookieService: CookieService
   ) {
-
     this.authService.getDrupalToken()
     .subscribe(_ => {
+      this.ngxService.start();
       this.getHomePage();
+      this.ngxService.stopAll();
     });
     this.getHomePage();
+    this.ngxService.stopAll();
     const search = new URLSearchParams(window.location.search);
     if (search.get('source')) {
       this.isOnWebView = true;
@@ -105,7 +107,6 @@ export class HomeComponent {
     .pipe(map(sections => this.fillPlaceholders(sections)))
     .subscribe(sections => {
       this.sections = sections;
-      //this.ngxService.stop();
     });
     if (isPlatformBrowser) {
       const path = this.cookieService.get('LOGIN_REDIRECTION');

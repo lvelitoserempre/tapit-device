@@ -14,6 +14,7 @@ import { UserAccount } from 'src/app/user/user-account';
 import { UserDAO } from 'src/app/user/user-dao.service';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,7 @@ export class AuthService {
     private _angularFirestore: AngularFirestore,
     private httpClient: HttpClient,
     private cookieService: CookieService,
+    private ngxService: NgxUiLoaderService
     ) {
       this.observerUser();
       this.currentUser = new ReplaySubject<UserAccount>(0);
@@ -74,7 +76,7 @@ export class AuthService {
               this.drupalAuth(accessToken);
             }
             this.token$.emit(accessToken);
-            //this.ngxService.stop();
+            //this.ngxService.stopAll();
           });
         } else {
           if (this.cancelUserListener) {
