@@ -8,12 +8,18 @@
   }
 }
 
+.logo-sic{
+  width: 100%;
+  max-width: 150px;
+}
+
 .footer {
   background-color: $darkGrayColor;
   color: white;
   font-size: 18px;
   padding: 0 0 100px;
   position: relative;
+
   @media screen and (max-width: $tablet) {
     padding: 0 0 30px;
   }
