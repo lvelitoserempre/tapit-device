@@ -8,30 +8,22 @@ import {Component, OnInit} from '@angular/core';
 export class FooterComponent implements OnInit {
   isAndroid= false;
   isIOs = false;
+  isOnWebView: boolean = false;
 
   constructor() {
   }
-  /*detectIos() {
-    const toMatch = [
-      /iPhone/i,
-      /iPod/i
-    ];
-    return toMatch.some((toMatchItem) => {
-      return navigator.userAgent.match(toMatchItem);
-    });
+
+  detectMobileDevice(){
+    if(navigator.userAgent.match(/Android/i)){
+      this.isAndroid = true;
+    } else if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+      this.isIOs = true;
+    }
   }
-  detectAndroid() {
-    const toMatch = [
-      /Android/i
-    ];
-    return toMatch.some((toMatchItem) => {
-      return navigator.userAgent.match(toMatchItem);
-    });
-  }*/
+  
 
   ngOnInit() {
-    /*this.isAndroid = this.detectAndroid();
-    this.isIOs = this.detectIos();*/
+    this.detectMobileDevice();
   }
 
 }

@@ -22,20 +22,7 @@
         </div>
       </div>
     </div>
-    <div class="w-full sm:w-3/12 xl:w-3/12 inline-block align-top px-2"><p
-      class="text-primary-500 uppercase mb-6 font-bold text-xs tracking-widest">Siguenos en</p>
-      <ul class="text-secondary-500">
-        <li class="mb-5 w-1/2 sm:w-full inline-block"><a href="https://www.facebook.com/gettap.it/" target="_blank">
-          <img
-            class="inline-block align-middle" src="../assets/images/footer/facebook-logo.svg"><span
-          class="align-middle ml-3">Facebook</span></a></li>
-        <li class="mb-5 w-1/2 sm:w-full inline-block"><a href="https://www.instagram.com/tapit_beer/"
-                                                         target="_blank">
-          <img class="inline-block align-middle"
-               src="../assets/images/footer/instagram-logo.svg"><span
-          class="align-middle ml-3">Instagram</span></a></li>
-      </ul>
-    </div>
+
     <div class="w-full sm:w-9/12 xl:w-9/12 px-2 inline-block pt-4">
       <div class="inline-block align-top w-full"><p
         class="text-primary-500 uppercase mb-6 font-bold text-xs tracking-widest">Soporte</p>
@@ -63,6 +50,22 @@
         </div>
       </div>
     </div>
+
+    <div class="w-full sm:w-3/12 xl:w-3/12 inline-block align-top px-2"><p
+      class="text-primary-500 uppercase mb-6 font-bold text-xs tracking-widest">Siguenos en</p>
+      <ul class="text-secondary-500">
+        <li class="mb-5 w-1/2 sm:w-full inline-block"><a href="https://www.facebook.com/gettap.it/" target="_blank">
+          <img
+            class="inline-block align-middle" src="../assets/images/footer/facebook-logo.svg"><span
+          class="align-middle ml-3">Facebook</span></a></li>
+        <li class="mb-5 w-1/2 sm:w-full inline-block"><a href="https://www.instagram.com/tapit_beer/"
+                                                         target="_blank">
+          <img class="inline-block align-middle"
+               src="../assets/images/footer/instagram-logo.svg"><span
+          class="align-middle ml-3">Instagram</span></a></li>
+      </ul>
+    </div>
+
     <section class="container px-2 transform mx-auto mt-2">
       <div class="bg-neutral-100 w-full md:w-11/12 lg:w-8/12 xl:w-6/12 py-8 border-4 border-white shadow-sm">
         <div class="w-11/12 mx-auto">
@@ -82,25 +85,13 @@
               </div>
               <p class="inline-block text-neutral-700 align-middle text-xs">* Disponible únicamente para dispositivos
                 móviles</p></div>
-            <div *ngIf="isIOs" class="mt-4 hidden sm:block">
-              <div class="">
-                <div class="inline-block"><a
-                  class="app-button border-2 border-primary-500 bg-primary-500 text-white px-2 py-2 uppercase text-xs"
-                  href="https://apps.apple.com/us/app/tapit/id1481852424?ls=1" target="_blank">
-                  <img
-                    class="inline-block align-middle mr-2" src="../assets/images/download/spotlight-icon.png">
-                  <p class="inline-block align-middle">Descargar app</p></a></div>
-              </div>
+            <div *ngIf="isIOs" class="mt-4 block">
+              <div class="inline-block"><a href="https://apps.apple.com/us/app/tapit/id1481852424?ls=1"
+                target="_blank"><img src="../assets/images/download/appStore.svg"></a></div>
             </div>
-            <div *ngIf="isAndroid" class="mt-4 hidden sm:block">
-              <div class="">
-                <div class="inline-block"><a
-                  class="app-button border-2 border-primary-500 bg-primary-500 text-white px-2 py-2 uppercase text-xs"
-                  href="https://play.google.com/store/apps/details?id=com.abinbev.tapit" target="_blank">
-                  <img
-                    class="inline-block align-middle mr-2" src="../assets/images/download/spotlight-icon.png">
-                  <p class="inline-block align-middle">Descargar app</p></a></div>
-              </div>
+            <div *ngIf="isAndroid" class="mt-4 block">
+              <div class="inline-block"><a href="https://play.google.com/store/apps/details?id=com.abinbev.tapit"
+                target="_blank"><img src="../assets/images/download/googlePlay.svg"></a></div>
             </div>
           </div>
           <div class="w-full sm:w-5/12 sm:inline-block align-top hidden">
@@ -124,7 +115,7 @@
         <p class="inline-block text-neutral-700 ml-1 pl-2 border-l border-neutral-600 align-middle text-xs"><span class="text-neutral-700">Todos los derechos reservados © 2021</span>
         </p></div>
         <div
-        class="w-full mt-4 sm:mt-1 order-3 sm:order-5 sm:w-3/5 md:order-2 md:w-1/3 md:pl-12 text-xs text-neutral-700">
+        class="w-full mt-4 sm:mt-1 order-1 sm:order-5 sm:w-3/5 md:order-2 md:w-1/3 md:pl-12 text-xs text-neutral-700">
         El exceso de alcohol es perjudicial para la salud.
       </div>
       <div class="w-full mt-4 sm:mt-1 order-2 sm:order-3 sm:w-3/5 md:order-4 md:w-1/3 text-xs text-neutral-700">

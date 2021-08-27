@@ -6,32 +6,24 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./app-footer.component.scss']
 })
 export class AppFooterComponent implements OnInit {
-  isAndroid: boolean;
-  isIOs: boolean;
+  isAndroid= false;
+  isIOs = false;
+  isOnWebView: boolean = false;
 
   constructor() {
   }
-  detectIos() {
-      const toMatch = [
-          /iPhone/i,
-          /iPod/i
-      ];
-      return toMatch.some((toMatchItem) => {
-          return navigator.userAgent.match(toMatchItem);
-      });
+
+  detectMobileDevice(){
+    if(navigator.userAgent.match(/Android/i)){
+      this.isAndroid = true;
+    } else if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+      this.isIOs = true;
+    }
   }
-  detectAndroid() {
-      const toMatch = [
-          /Android/i
-      ];
-      return toMatch.some((toMatchItem) => {
-          return navigator.userAgent.match(toMatchItem);
-      });
-  }
+  
 
   ngOnInit() {
-    this.isAndroid = this.detectAndroid();
-    this.isIOs = this.detectIos();
+    this.detectMobileDevice();
   }
 
 }
