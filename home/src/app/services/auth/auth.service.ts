@@ -149,4 +149,12 @@ export class AuthService {
     setDrupalToken(token:string) {
       this.drupalToken.next({data: token})
     }
+
+    signInWithCustomToken(token:string) {
+      auth().signInWithCustomToken(token)
+      .then(userCredential=> {        
+        userCredential.user.getIdToken()
+        .then(response => this.drupalAuth(response));
+      })
+    }
   }

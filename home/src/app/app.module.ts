@@ -76,7 +76,10 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     FormsModule,
     ReactiveFormsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
-    NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
+    NgxUiLoaderHttpModule.forRoot(
+      {
+        showForeground: true,
+      }),
     BrowserCookiesModule.forRoot(),
     CookieModule.forRoot()
   ],

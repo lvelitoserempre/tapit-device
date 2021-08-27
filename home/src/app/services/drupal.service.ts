@@ -40,7 +40,7 @@ export class DrupalService {
   }
 
   getDrupalSession(): string {
-    return this.cookieService.get('__session')
+    return this.cookieService.get('__session');
   }
 
   private processResponse(response: any): any[] {

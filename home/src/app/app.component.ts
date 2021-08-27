@@ -1,5 +1,4 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { ScriptService } from './services/script.service';
 import { environment } from '../environments/environment';
 import { PLATFORM_ID } from '@angular/core';
@@ -25,7 +24,6 @@ export class AppComponent implements OnInit {
   @ViewChild('ageGate') private ageGate: AgeGateComponent;
 
   constructor(
-    private angularFireAuth: AngularFireAuth,
     private scriptService: ScriptService,
     @Inject(PLATFORM_ID) private platformId: Object,
     private ngxService: NgxUiLoaderService,
@@ -58,23 +56,18 @@ export class AppComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    /* This function redirects to an external website in case we receive the redirection query param
-    If we don't receive the redirection param we keep with the normal flow */
-    this.redirect();
-
+  async ngOnInit(): Promise<void> {
     const search = new URLSearchParams(window.location.search);
-
-    if (search.get('customToken')) {
-      this.angularFireAuth
-        .signInWithCustomToken(search.get('customToken'))
-        .then((user) => {
-          console.log(user);
-        });
-    }
-
-    if (search.get('source')) {
+    const source = search.get('source');
+    if (source) {
       this.isOnWebView = true;
+      if (source == 'android') {
+        // @ts-ignore
+        var customToken = await window.Android.getCustomToken();
+        this._authService.signInWithCustomToken(customToken);
+      }
+    } else {
+      this.redirect();
     }
   }
 
