@@ -14,9 +14,9 @@ export class AppFooterComponent implements OnInit {
   }
 
   detectMobileDevice(){
-    if(navigator.userAgent.match(/Android/i)){
+    if(window.navigator.userAgent.match(/Android/i)){
       this.isAndroid = true;
-    } else if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+    } else if(window.navigator.userAgent.match(/iPhone/i) || window.navigator.userAgent.match(/iPad/i)) {
       this.isIOs = true;
     }
   }
