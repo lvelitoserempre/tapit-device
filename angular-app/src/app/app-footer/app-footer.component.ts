@@ -9,6 +9,7 @@ export class AppFooterComponent implements OnInit {
   isAndroid= false;
   isIOs = false;
   isOnWebView: boolean = false;
+  currentYear: number;
 
   constructor() {
   }
@@ -20,10 +21,15 @@ export class AppFooterComponent implements OnInit {
       this.isIOs = true;
     }
   }
-  
+
+  getCurrentYear(){
+    const date = new Date();
+    this.currentYear = date.getFullYear(); 
+  }
 
   ngOnInit() {
     this.detectMobileDevice();
+    this.getCurrentYear();
   }
 
 }
