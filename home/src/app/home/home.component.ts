@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import {UserAccount} from '../user/user-account';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFirestore} from '@angular/fire/firestore';
-import {map, switchMap} from 'rxjs/operators';
-import {of} from 'rxjs';
-import {DrupalService} from '../services/drupal.service';
-import {formatNumber} from '@angular/common';
+import { UserAccount } from '../user/user-account';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { map, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { DrupalService } from '../services/drupal.service';
+import { formatNumber } from '@angular/common';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AuthService } from '../services/auth/auth.service';
 import { CookieService } from 'ngx-cookie';
 import { isPlatformBrowser } from '@angular/common';
+import json from '../json';
 
 @Component({
   selector: 'app-home',
@@ -89,11 +90,11 @@ export class HomeComponent {
     private cookieService: CookieService
   ) {
     this.authService.getDrupalToken()
-    .subscribe(_ => {
-      this.ngxService.start();
-      this.getHomePage();
-      this.ngxService.stopAll();
-    });
+      .subscribe(_ => {
+        this.ngxService.start();
+        this.getHomePage();
+        this.ngxService.stopAll();
+      });
     this.getHomePage();
     this.ngxService.stopAll();
     const search = new URLSearchParams(window.location.search);
@@ -102,17 +103,17 @@ export class HomeComponent {
     }
   }
 
-  getHomePage():void {
+  getHomePage(): void {
     this.drupalService.getPage('home')
-    .pipe(map(sections => this.fillPlaceholders(sections)))
-    .subscribe(sections => {
-      this.sections = sections;
-    });
+      .pipe(map(sections => this.fillPlaceholders(sections)))
+      .subscribe(sections => {
+        this.sections = sections;
+      });
     if (isPlatformBrowser) {
       const path = this.cookieService.get('LOGIN_REDIRECTION');
-      if(path && path.includes('#') && this.cookieService.get('DRUPAL_SESSION')) {
+      if (path && path.includes('#') && this.cookieService.get('DRUPAL_SESSION')) {
         const section = document.getElementById(path.replace('#', ''));
-        if(section)
+        if (section)
           window.scrollTo(0, section.offsetTop);
       }
     }
@@ -126,13 +127,14 @@ export class HomeComponent {
     for (const section of sections) {
       if (section && section.type === 'userText') {
         this.angularFireAuth.user
-        .pipe(switchMap(user => {
-          return user ? this.angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
-        }))
-        .subscribe(user => {
-          this.user = user;
-          section.body = this.fillUserData(section.body);
-        });
+          .pipe(switchMap(user => {
+            return user ? this.angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
+          }))
+          .subscribe(user => {
+            this.user = user;
+            section.body = user ? json[0].content[0].messageAuthenticated : json[0].content[0].messageAnonymous;
+            section.body = this.fillUserData(section.body);
+          });
       }
     }
     return sections
@@ -185,8 +187,8 @@ export class HomeComponent {
       window.scrollTo(0, section.offsetTop);
     } else {
       var externalLinkButton = document.createElement('a');
-      externalLinkButton.target= target;
-      externalLinkButton.href=sectionId;
+      externalLinkButton.target = target;
+      externalLinkButton.href = sectionId;
       externalLinkButton.click();
       externalLinkButton.remove();
     }
