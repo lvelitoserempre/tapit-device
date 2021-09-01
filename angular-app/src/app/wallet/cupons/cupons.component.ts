@@ -1,8 +1,8 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, QueryList, ViewChildren } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {HttpClient} from '@angular/common/http';
 import { CuponsService } from './cupons.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import auth = firebase.auth;
@@ -21,10 +21,12 @@ export class CuponsComponent implements AfterViewInit{
   public consumeds = [];
   public token;
   public checkUser;
+  public tokenUser;
   promosSubscription: Subscription;
   totalPages: number;
   actualPage: number;
   couponsPage: number = 0;
+   
 
   constructor(private http: HttpClient, private couponService: CuponsService, private loadingService: LoadingService) { }
   
@@ -41,10 +43,19 @@ export class CuponsComponent implements AfterViewInit{
     if(auth().currentUser) {
       auth().currentUser.getIdToken().then(tkn => {
         this.loadCoupons(tkn);
+        this.tokenUser = tkn;
         return tkn
       });
       clearInterval( this.checkUser );
     }
+  }
+
+  reloadItems() {
+    this.loadingService.show();
+    this.promoteds = [];
+    this.consumeds = [];
+    this.couponsPage = 0;
+    this.loadCoupons(this.tokenUser);
   }
 
   loadCoupons(token) {

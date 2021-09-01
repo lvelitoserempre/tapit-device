@@ -14,6 +14,8 @@ import {registerLocaleData} from '@angular/common';
 import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
 import { WalletModule } from './wallet/wallet.module';
 import { CookieModule } from 'ngx-cookie';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 
 
 registerLocaleData(localeEs, 'es-CO');
@@ -32,6 +34,7 @@ registerLocaleData(localeEs, 'es-CO');
     HttpClientModule,
     AppCommonModule,
     SlickCarouselModule,
+    AngularFireModule.initializeApp(environment.firebase.config),
     WalletModule,
     CookieModule.forRoot(),
     NgxLoadingModule.forRoot({

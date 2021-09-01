@@ -74,18 +74,17 @@
           [infiniteScrollDistance]="2"
           [infiniteScrollThrottle]="50"
           (scrolled)="onScroll()">
-          <div *ngFor="let promoted of promoteds; let i = index" 
-        class="md:inline-block md:pr-12 md:w-6/12 mb-4">
+          <div *ngFor="let promoted of promoteds; let i = index" class="md:inline-block md:pr-12 md:w-6/12 mb-4">
           <app-coupon-card-promoted 
             [brandData]="promoted.brand"
             [qr]="promoted.qr"
             [id]="promoted.id"
             [qrcode]="promoted.qrcode"
             [date]="promoted.date"
+            (reloadItems)="reloadItems()"
           ></app-coupon-card-promoted>
         </div>
-        <div *ngFor="let consumed of consumeds; let i = index" 
-        class="md:inline-block md:pr-12 md:w-6/12">
+        <div *ngFor="let consumed of consumeds; let i = index" class="md:inline-block md:pr-12 md:w-6/12">
           <app-coupon-card 
             [title]="consumed.brand.brand.name"
             [imgUrl]="consumed.brand.image"

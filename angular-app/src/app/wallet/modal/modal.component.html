@@ -32,6 +32,19 @@
         </div>
       </div>
 
+      <div *ngIf="showActiveRedeem">
+        <p class="w-full text-xl font-bold text-primary-500 pt-10 mb-4 text-center">
+          Canjeaste tu cupón exitosamente
+        </p>
+        <p class="w-full text-center text-xl font-bold text-color-gray px-8 pb-14 relative">¡Beer Lover disfruta tu pola!</p>
+        <img class="mx-auto my-10" src="../../assets/images/beers.png" alt="">
+        <div class="flex mt-16">
+          <a
+            class="text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
+            (click)="closeModal()">VOLVER A MIS CUPONES</a>
+        </div>
+      </div>
+
       <div *ngIf="showActiveSuccess">
         <p class="text-xl font-bold pt-10 pb-6 mb-1 text-center">
           Tu cupón fue cancelado

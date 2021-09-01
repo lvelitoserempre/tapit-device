@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-coupon-card-promoted',
@@ -11,6 +11,7 @@ export class CouponCardPromotedComponent implements OnInit, AfterViewInit {
   @Input() id: string;
   @Input() qrcode: string;
   @Input() date: string;
+  @Output("reloadItems") reloadItems: EventEmitter<any> = new EventEmitter();
   public title: string;
   public imgUrl: string;
   public description: string;
@@ -39,10 +40,13 @@ export class CouponCardPromotedComponent implements OnInit, AfterViewInit {
     this.modal = this.elementRef.nativeElement.querySelector('#modal--info');
   }
 
-
   openModal(btnType: string) {
     this.myModal = true;
     this.cardType = btnType;
+  }
+
+  reloadItemsParent() {
+    this.reloadItems.emit();
   }
 
   closeModal(e) {

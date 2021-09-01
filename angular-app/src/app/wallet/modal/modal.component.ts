@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import auth = firebase.auth;
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-modal',
@@ -19,6 +20,7 @@ export class ModalComponent implements OnInit, OnChanges {
   @Input() currentItem: any;
   @Input() cardType: string;
   @Output() close: EventEmitter<boolean> = new EventEmitter();
+  @Output("reloadItemsParent") reloadItemsParent: EventEmitter<any> = new EventEmitter();
 
   item;
   activePromoItem;
@@ -30,15 +32,18 @@ export class ModalComponent implements OnInit, OnChanges {
   showActiveCouppon: boolean = false;
   showActiveWarning: boolean = false;
   showActiveSuccess: boolean = false;
+  showActiveRedeem: boolean = false;
   cameFromList: boolean = false;
   showProduct: boolean = false;
   confirmDeactivation: boolean = false;
   errorMessage: boolean = false;
   isLoading: boolean = false;
   largeText: boolean = false;
+  public checkCollection;
+  public item$: any[];
 
 
-  constructor(@Inject(DOCUMENT) private document: Document, private promosService: PromosService, private cuponService: CuponsService) {
+  constructor(@Inject(DOCUMENT) private document: Document, private promosService: PromosService, private cuponService: CuponsService, private fireStore: AngularFirestore) {
   }
 
   ngOnInit(): void {
@@ -87,6 +92,7 @@ export class ModalComponent implements OnInit, OnChanges {
       this.qrcode = this.currentItem[0].qrcode;
       this.couponId = this.currentItem[0].id;
       this.activePromoItem = {'qrBase64': this.currentItem[0].qr, 'code': this.qrcode};
+      this.checkCollection = setInterval(this.listenFirebase, 1000);
 
     } else if (this.cardType === 'deactivate') {
       this.item = this.currentItem;
@@ -121,6 +127,10 @@ export class ModalComponent implements OnInit, OnChanges {
     });
   }
 
+  launchReload() {
+    this.reloadItemsParent.emit();
+  }
+
   deactivateCoupon(){
     this.isLoading = true;
     this.showActiveWarning = false;
@@ -138,6 +148,28 @@ export class ModalComponent implements OnInit, OnChanges {
     });
   }
 
+  listenFirebase = () => {
+      const collection = this.fireStore.collection('user_account_tap').doc(auth().currentUser.uid).collection('promotion_coupons').stateChanges(['modified']);
+      collection.subscribe((coupon) => {
+        this.item$ = [];
+        coupon.forEach((couponData: any) => {
+          this.item$.push({id: couponData.payload.doc.id, data: couponData.payload.doc.data()});
+        });
+        if(this.item$.length) {
+          if(this.qrcode == this.item$[0].data.code && this.item$[0].data.status == 'Redeemed') {
+            this.showActiveRedeem = true;
+            this.showActivatePromo = false;
+            this.showActiveCouppon = false;
+            this.showActiveSuccess = false;
+            this.showActiveWarning = false;
+          } else {
+            return
+          }
+        }
+      });
+      clearInterval(this.checkCollection);
+  }
+
   returnToCoupon(){
     if(this.cameFromList) {
       this.closeModal();
@@ -153,7 +185,12 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   closeModal() {
+    if(this.showActiveRedeem) {
+      this.launchReload();
+    }
     this.close.emit(false);
+    this.showActiveRedeem = false;
+    clearInterval(this.checkCollection);
   }
 
 }
