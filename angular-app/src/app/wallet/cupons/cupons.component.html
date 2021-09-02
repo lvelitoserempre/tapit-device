@@ -1,14 +1,15 @@
 <div class="tab-content bg-white">
-  <div class="flex mt-5 md:mt-10 mb-2 pr-5 pl-5 md:pr-3 md:pl-3">
-    <div class="md:w-1/5"></div>
-    <div class="md:w-2/3">
+  <div class="flex mt-5 md:mt-12 mb-2 pr-5 pl-5 md:pr-3 md:pl-3">
+    <div class="hidden md:block md:w-1/5 pr-6"></div>
+    <div class="w-full md:w-4/5">
       <p class="text-xl font-bold leading-none mb-2">
-        Selecciona tu promo, canjea en un tu tienda mas cercana <span class="text-primary-500">y disfruta de tu pola.</span>
+        Abre ésta sección desde tu app para canjear tu Cupón en tu tienda más cercana, <span class="text-primary-500">muestra el código QR al tendero y disfruta tu pola.</span>
       </p>
+      <p class="text-base text-neutral-700">¡Paga con tus puntos!</p>
     </div>
   </div>
 
-  <div class="flex">
+  <div class="flex pr-5 pl-5 md:pr-3 md:pl-3">
 
       <div class="hidden md:block md:w-1/5 pr-6">
         <div class="mt-16">
@@ -69,32 +70,34 @@
         </div>
 
         <!-- <app-coupon-card-promoted></app-coupon-card-promoted> -->
-        <div
-          infiniteScroll
-          [infiniteScrollDistance]="2"
-          [infiniteScrollThrottle]="50"
-          (scrolled)="onScroll()">
-          <div *ngFor="let promoted of promoteds; let i = index" class="md:inline-block md:pr-12 md:w-6/12 mb-4">
-          <app-coupon-card-promoted 
-            [brandData]="promoted.brand"
-            [qr]="promoted.qr"
-            [id]="promoted.id"
-            [qrcode]="promoted.qrcode"
-            [date]="promoted.date"
-            (reloadItems)="reloadItems()"
-          ></app-coupon-card-promoted>
-        </div>
-        <div *ngFor="let consumed of consumeds; let i = index" class="md:inline-block md:pr-12 md:w-6/12">
-          <app-coupon-card 
-            [title]="consumed.brand.brand.name"
-            [imgUrl]="consumed.brand.image"
-            [date]="consumed.date"
-            [description]="consumed.brand.title"
-            [points]="consumed.brand.points"
-            [status]="consumed.status"
-          ></app-coupon-card>
-        </div>
-        </div>
+          <div
+            infiniteScroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="50"
+            (scrolled)="onScroll()">
+            <div class="grid md:grid-cols-2 gap-12">
+              <div *ngFor="let promoted of promoteds; let i = index" class="md:inline-block md:pr-0 md:w-full mb-4">
+                <app-coupon-card-promoted 
+                  [brandData]="promoted.brand"
+                  [qr]="promoted.qr"
+                  [id]="promoted.id"
+                  [qrcode]="promoted.qrcode"
+                  [date]="promoted.date"
+                  (reloadItems)="reloadItems()"
+                ></app-coupon-card-promoted>
+              </div>
+              <div *ngFor="let consumed of consumeds; let i = index" class="md:inline-block md:pr-0 md:w-full">
+                <app-coupon-card 
+                  [title]="consumed.brand.brand.name"
+                  [imgUrl]="consumed.brand.image"
+                  [date]="consumed.date"
+                  [description]="consumed.brand.title"
+                  [points]="consumed.brand.points"
+                  [status]="consumed.status"
+                ></app-coupon-card>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
 
