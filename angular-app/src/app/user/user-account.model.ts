@@ -1,4 +1,5 @@
 export interface UserAccount {
+  uid?: any;
   id?: string;
   birthDate?: string;
   code?: string;

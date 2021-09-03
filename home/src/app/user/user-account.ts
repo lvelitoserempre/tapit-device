@@ -18,4 +18,5 @@ export interface UserAccount {
   origin?: string;
   getExclusiveEmails?: boolean;
   termsAndConditions?: boolean;
+  uid?:string;
 }

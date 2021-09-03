@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed Drupal API endpoint and adapted to new response structure
 - Added a static Sitemap to the Home page (https://github.com/ab-inbev-global-martech/TapIt-Web/)
 - Logged/not logged version of the page is rendered by SSR
+- Logged version can be displayed in android and iOS
+- Session management in angular-app
+- Web allows a parameter in URL that will redirect to that page
 ### Changed
 - CTA for internal sections won't change URL in order to avoid redirection on user login
 - Fixed the description on banner sections that wasn't displaying the copy text
@@ -19,6 +22,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgraded dependencies version
 - Handling errors in document validation popup.
 - Add changes at history component, to display redem mode, in this case "Por medio de promocodigo Aguila", shows icons and labels.
+
+### Fixed
+- Footer elements when visiting with different devices and year
+- Fix for displaying SMS Validation modal
+- Fix on user information displayed after it's fully loaded
 ## [v2.0.3] - 2021-04-12
 ### Added
 - Added a header to provide a token when consuming the now protected drupal API

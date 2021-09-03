@@ -19,8 +19,6 @@ declare var ga: any;
 })
 export class AppComponent implements OnInit {
   isOnWebView = false;
-  private listenerRunning: boolean = false;
-
   @ViewChild('ageGate') private ageGate: AgeGateComponent;
 
   constructor(
@@ -40,9 +38,17 @@ export class AppComponent implements OnInit {
   }
 
   private loadSSOScript(): void {
-    this.scriptService.loadScript('ssoApp').then(function () {
+    this.scriptService.loadScript('ssoApp')
+    .then( () => {
       // @ts-ignore
-      window.configTapitSso = () => {};
+      window.configTapitSso = () => {
+        ssoApp.onFlowCompleted().subscribe((response: any) => {
+          const firestoreUser = response.userCredential.user;
+          this._authService.setCurrentSessionData(firestoreUser);
+          this.openSso();
+          this.drupalService.checkDrupalCTA();
+        })
+      };
     });
   }
 
@@ -51,7 +57,7 @@ export class AppComponent implements OnInit {
       if (!this.cookies.get('anonymousUserBirthDate')) {
         this.ageGate.openAgeGate();
       } else {
-        this._authService.getUser();
+        //this._authService.getUser();
       }
     }
   }
@@ -64,7 +70,12 @@ export class AppComponent implements OnInit {
       if (source == 'android') {
         // @ts-ignore
         var customToken = await window.Android.getCustomToken();
-        this._authService.signInWithCustomToken(customToken);
+        this._authService.loginUserByCustomToken (customToken);
+      }
+      if (source == 'ios') {
+        if ((window as any).webkit && (window as any).webkit.messageHandlers) {
+          (window as any).webkit.messageHandlers.getCustomToken.postMessage({});
+        }
       }
     } else {
       this.redirect();
@@ -76,19 +87,12 @@ export class AppComponent implements OnInit {
       this.readCookies();
     }
     if (!this.isOnWebView) {
-      this.scriptService.loadScript('optanon').then(function () {
+      this.scriptService.loadScript('optanon')
+      .then(function () {
         function OptanonWrapper() {}
-      });
+      }, error => console.error(error));
     }
     this.ngxService.stopAll();
-  }
-
-  ngAfterViewChecked() {
-    if (window.ssoApp && !this.listenerRunning) {
-      this.drupalService.onLoginCompleate();
-      this.listenerRunning = true;
-      this.openSso();
-    }
   }
 
   private setUpStats() {
@@ -103,8 +107,9 @@ export class AppComponent implements OnInit {
   }
 
   showVerifyIdentity(evt: boolean) {
-    this._authService.getUser();
+    //this._authService.getUser();
   }
+
   openSso() {
     const smsStepSSO = window.localStorage.getItem('sms-step');
     if (smsStepSSO && smsStepSSO !== 'phone-verified') {

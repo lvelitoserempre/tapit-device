@@ -14,7 +14,6 @@ import { UserAccount } from 'src/app/user/user-account';
 import { UserDAO } from 'src/app/user/user-dao.service';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Injectable({
   providedIn: 'root'
@@ -35,14 +34,15 @@ export class AuthService {
     private _angularFireAuth: AngularFireAuth,
     private _angularFirestore: AngularFirestore,
     private httpClient: HttpClient,
-    private cookieService: CookieService,
-    private ngxService: NgxUiLoaderService
+    private cookieService: CookieService
     ) {
-      this.observerUser();
-      this.currentUser = new ReplaySubject<UserAccount>(0);
+      //this.observerUser();
+      //this.currentUser = new ReplaySubject<UserAccount>(0);
     }
-
-    // Allows to observe changes in the user
+    /*
+      This Code commented should be deprecated since now we are storing the data and resolving after SSO finish its flow
+    */
+    /*// Allows to observe changes in the user
     private observerUser(): void {
       this.user$.subscribe(user => {
         this.user = user;
@@ -54,18 +54,18 @@ export class AuthService {
       this.token$.subscribe(token => {
         this.token = token;
       });
-    }
+    }*/
 
-    async getUser() {
+    /*async getUser() {
       await this._angularFireAuth.user.pipe(switchMap(user => {
         return user ? this._angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
       })).subscribe(user => {
         this.user$.emit(user);
       });
       this.setupLoggedUserObserver();
-    }
+    }*/
 
-    setupLoggedUserObserver() {
+    /*setupLoggedUserObserver() {
       auth().onAuthStateChanged((user: User) => {
         if (user && !this.cancelUserListener) {
           this.cancelUserListener = firestore().collection(environment.firebase.collections.userAccount).doc(user.uid)
@@ -76,7 +76,6 @@ export class AuthService {
               this.drupalAuth(accessToken);
             }
             this.token$.emit(accessToken);
-            //this.ngxService.stopAll();
           });
         } else {
           if (this.cancelUserListener) {
@@ -86,7 +85,7 @@ export class AuthService {
           this.setCurrentUser(null);
         }
       });
-    }
+    }*/
 
     drupalAuth(token:string): void {
       const fd = new FormData();
@@ -108,9 +107,30 @@ export class AuthService {
       })
     }
 
+    setCurrentSessionData(user: User) {
+      user.getIdToken()
+      .then((idToken: any) => {
+        this.cookieService.put('frbtkn', idToken, {});
+        this.drupalAuth(idToken);
+        this.getFireStoreUserDocument(user.uid)
+        .then(userDocument => {
+          const res = this.setCurrentUser(UserDAO.snapshotToUser(userDocument));
+          console.log(res);
+          /*this.saveUserToACookie(user);
+          this.currentUser.next(user);*/
+        }).catch(error => console.log(error))
+      }).catch(error => console.log(error));
+    }
+
+    getFireStoreUserDocument(userId: string) {
+      return firestore().collection(environment.firebase.collections.userAccount)
+      .doc(userId)
+      .get()
+    }
+
     async setCurrentUser(user: UserAccount) {
       await this.addIdToken(user);
-      this.currentUser.next(user);
+      //this.currentUser.next(user);
       this.saveUserToACookie(user);
 
       return user;
@@ -128,15 +148,16 @@ export class AuthService {
       this.cookieService.putObject('loggedUser', this.extractCookieData(user), {});
     }
 
-    private extractCookieData(data: UserAccount): any {
-      return data ? {
-        id: data.id,
-        email: data.email,
-        firstName: data.firstName || '',
-        lastName: data.lastName || '',
-        points: data.points || 0,
-        idToken: data.idToken,
-        refreshToken: data.refreshToken
+    private extractCookieData(user: UserAccount): any {
+      return user ? {
+        id: user.id,
+        email: user.email,
+        firstName: user.firstName || '',
+        lastName: user.lastName || '',
+        points: user.points || 0,
+        idToken: user.idToken,
+        refreshToken: user.refreshToken,
+        uid: user.uid
       } : null;
     }
 
@@ -150,7 +171,7 @@ export class AuthService {
       this.drupalToken.next({data: token})
     }
 
-    signInWithCustomToken(token:string) {
+    loginUserByCustomToken (token:string) {
       auth().signInWithCustomToken(token)
       .then(userCredential=> {        
         userCredential.user.getIdToken()

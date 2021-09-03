@@ -77,7 +77,7 @@ export class VerifyIdentityComponent implements OnDestroy {
    
     this._authService.user$.subscribe((user: any) => {
       
-      if (user && window.localStorage.getItem('sms-step') =='phone-verified') {
+      if (user && window.localStorage.getItem('sms-step') == 'phone-verified') {
        
         if ((!user.identity) && (user.identityType === 'NO-ID') && !this.flagOpenModal ) {
          

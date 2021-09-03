@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {AppComponent} from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AppHeaderComponent} from './app-header/app-header.component';
 import {AppFooterComponent} from './app-footer/app-footer.component';
 import {DialogModule} from './dialog/dialog.module';
@@ -14,6 +14,7 @@ import {registerLocaleData} from '@angular/common';
 import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
 import { WalletModule } from './wallet/wallet.module';
 import { CookieModule } from 'ngx-cookie';
+import { AuthInterceptor } from './auth.interceptor';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 
@@ -47,7 +48,15 @@ registerLocaleData(localeEs, 'es-CO');
     })
   ],
   bootstrap: [AppComponent],
-  providers: [{provide: LOCALE_ID, useValue: 'es-CO'}]
+  providers: [
+    {provide: LOCALE_ID, useValue: 'es-CO'},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+
+  ]
 })
 export class AppModule {
 }

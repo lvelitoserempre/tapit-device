@@ -115,15 +115,16 @@ export class AuthService {
     });
   }
 
-  private extractCookieData(data: UserAccount): any {
-    return data ? {
-      id: data.id,
-      email: data.email,
-      firstName: data.firstName || '',
-      lastName: data.lastName || '',
-      points: data.points || 0,
-      idToken: data.idToken,
-      refreshToken: data.refreshToken
+  private extractCookieData(user: UserAccount): any {
+    return user ? {
+      id: user.id,
+      email: user.email,
+      firstName: user.firstName || '',
+      lastName: user.lastName || '',
+      points: user.points || 0,
+      idToken: user.idToken,
+      refreshToken: user.refreshToken,
+      uid: user.uid
     } : null;
   }
   observerToken() {

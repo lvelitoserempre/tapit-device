@@ -17,7 +17,7 @@ export class ProfileService {
 
   updateDocument(form: any, token: string): Observable<any> {
     const {identity, identityType} = form;
-    return this._http.put(`${this.api}/v1/user`, {identity, identityType}, { headers: this.getHeaders(token) }).pipe(map((res: any) => {
+    return this._http.put(`${this.api}/v1/user`, {identity, identityType}).pipe(map((res: any) => {
       return res;
     }));
   }

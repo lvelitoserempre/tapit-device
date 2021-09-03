@@ -1,16 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { UserAccount } from '../user/user-account';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { map, switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { DrupalService } from '../services/drupal.service';
 import { formatNumber } from '@angular/common';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AuthService } from '../services/auth/auth.service';
 import { CookieService } from 'ngx-cookie';
 import { isPlatformBrowser } from '@angular/common';
-import json from '../json';
 
 @Component({
   selector: 'app-home',
@@ -87,14 +85,15 @@ export class HomeComponent {
     private drupalService: DrupalService,
     private ngxService: NgxUiLoaderService,
     private authService: AuthService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    @Inject(PLATFORM_ID) private platformId: Object,
   ) {
     this.authService.getDrupalToken()
-      .subscribe(_ => {
-        this.ngxService.start();
-        this.getHomePage();
-        this.ngxService.stopAll();
-      });
+    .subscribe(_ => {
+      this.ngxService.start();
+      this.getHomePage();
+      this.ngxService.stopAll();
+    });
     this.getHomePage();
     this.ngxService.stopAll();
     const search = new URLSearchParams(window.location.search);
@@ -117,24 +116,23 @@ export class HomeComponent {
           window.scrollTo(0, section.offsetTop);
       }
     }
-    const search = new URLSearchParams(window.location.search);
-    if (search.get('source')) {
-      this.isOnWebView = true;
-    }
   }
 
   private fillPlaceholders(sections: any[]): any[] {
     for (const section of sections) {
-      if (section && section.type === 'userText') {
-        this.angularFireAuth.user
-          .pipe(switchMap(user => {
-            return user ? this.angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
-          }))
+      if (section && section.type === 'userText' && section.id == 'mensaje_loggeado') {
+        const loggedMessage = section.body;
+        section.body = "CARGANDO...";
+        if (isPlatformBrowser(this.platformId)) {
+          this.angularFireAuth.user
           .subscribe(user => {
-            this.user = user;
-            section.body = user ? json[0].content[0].messageAuthenticated : json[0].content[0].messageAnonymous;
-            section.body = this.fillUserData(section.body);
-          });
+            this.angularFirestore.collection('user_account_tap').doc(user?.uid).valueChanges()
+            .subscribe(user => {
+              this.user = user;
+              section.body = this.fillUserData(loggedMessage);
+            })
+          })
+        }
       }
     }
     return sections

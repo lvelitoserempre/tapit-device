@@ -4,9 +4,6 @@ import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {environment} from 'src/environments/environment';
 import { CookieService } from 'ngx-cookie';
-import 'firebase/firestore';
-import 'firebase/auth';
-import { CookiesService } from './cookies.service';
 
 @Injectable({
   providedIn: 'root'
@@ -51,15 +48,11 @@ export class DrupalService {
     return JSON.parse(json);
   }
 
-  onLoginCompleate() {
-    window.ssoApp?.onFlowCompleted().subscribe((res: any) => {
-      if (res.status === 'done') {
-        const path = CookiesService.getValue('LOGIN_REDIRECTION');
-        if(path && !path.includes('#'))  {
-          CookiesService.setValue('LOGIN_REDIRECTION', null);
-          window.location.href = path.includes('http') ? path : ('/'+path);
-        }
-      }
-    });
+  checkDrupalCTA() {
+    const path = this.cookieService.get('LOGIN_REDIRECTION');
+    if (path && !path.includes('#')) {
+      this.cookieService.remove('LOGIN_REDIRECTION');
+      window.location.href = path.includes('http') ? path : ('/'+path);
+    }
   }
 }

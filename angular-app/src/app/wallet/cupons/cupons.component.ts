@@ -1,11 +1,6 @@
-import { AfterViewInit, Component, QueryList, ViewChildren } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import {HttpClient} from '@angular/common/http';
+import { Component } from '@angular/core';
 import { CuponsService } from './cupons.service';
-import { Observable, Subscription } from 'rxjs';
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import auth = firebase.auth;
+import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
 import * as moment from 'moment';
 import 'moment/locale/es';
@@ -15,8 +10,7 @@ import 'moment/locale/es';
   templateUrl: './cupons.component.html',
   styleUrls: ['./cupons.component.scss']
 })
-export class CuponsComponent implements AfterViewInit{
-  private collection = environment.firebase.collections.userAccount;
+export class CuponsComponent {
   public promoteds = [];
   public consumeds = [];
   public token;
@@ -28,26 +22,12 @@ export class CuponsComponent implements AfterViewInit{
   couponsPage: number = 0;
    
 
-  constructor(private http: HttpClient, private couponService: CuponsService, private loadingService: LoadingService) { }
-  
-
-  ngOnInit(): void {
+  constructor(
+    private couponService: CuponsService,
+    private loadingService: LoadingService
+  ) {
     this.loadingService.show();
-  }
-
-  ngAfterViewInit(): void {
-    this.checkUser = setInterval(this.loadToken, 1000);
-  }
-
-  loadToken = () => {
-    if(auth().currentUser) {
-      auth().currentUser.getIdToken().then(tkn => {
-        this.loadCoupons(tkn);
-        this.tokenUser = tkn;
-        return tkn
-      });
-      clearInterval( this.checkUser );
-    }
+    this.loadCoupons();
   }
 
   reloadItems() {
@@ -55,11 +35,11 @@ export class CuponsComponent implements AfterViewInit{
     this.promoteds = [];
     this.consumeds = [];
     this.couponsPage = 0;
-    this.loadCoupons(this.tokenUser);
+    this.loadCoupons();
   }
-
-  loadCoupons(token) {
-    this.couponService.getCoupons(token, this.couponsPage + 1).subscribe((res:any) => {
+  
+  loadCoupons() {
+    this.couponService.getCoupons(this.couponsPage + 1).subscribe((res:any) => {
       let response = res.items;
 
       this.actualPage = this.couponsPage;
@@ -103,13 +83,11 @@ export class CuponsComponent implements AfterViewInit{
     });
   }
 
-  onScroll(){
-    if(this.actualPage < this.totalPages){
-      this.loadToken();
+  onScroll() {
+    if (this.actualPage < this.totalPages) {
+      this.loadCoupons();
     } else {
       return
     }
   }
-
-
 }
