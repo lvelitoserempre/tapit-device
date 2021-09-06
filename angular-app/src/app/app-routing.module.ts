@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { PocDetailComponent } from './wallet/poc-detail/poc-detail.component';
 
 
 const routes: Routes = [
@@ -8,6 +9,10 @@ const routes: Routes = [
     path: 'wallet',
     loadChildren: () => import('./wallet/wallet.module').then(m => m.WalletModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'poc/:id',
+    component: PocDetailComponent,
   },
   {
     path: 'auth',

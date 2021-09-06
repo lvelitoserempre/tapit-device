@@ -1,0 +1,22 @@
+<div class="container mx-auto px-4 pb-8">
+    <div class="py-4">
+        <p (click)="back()" class="cursor-pointer hover:text-primary-500"> <i class="uil uil-arrow-left inline-block align-middle leading-none"></i> Volver</p>
+    </div>
+    <div class="grid grid-cols md:grid-cols-2 gap-4">
+        <img src="../../../assets//images//bar-discovery.png" alt="bar image">
+        <div class="poc-details">
+            <h3 class="font-bold text-xl mb-4 leading-none">{{poc.name}}</h3>
+            <div class="categories flex justify-start mb-3">
+                <span class="text-sm text-neutral-800 inline-block text-md text-center my-2 ml-1 px-4 rounded-xl bg-neutral-400" *ngFor="let category of poc.categories; let i = index">{{category}}</span>
+            </div>
+            <p class="text-neutral-600 mb-3">{{poc.address}}</p>
+            <p class="text-neutral-600 mb-3"><i class="uil uil-phone inline-block align-middle leading-none"></i> {{poc.contactInformation.phoneNumber}}</p>
+            <p class="text-xs"><span>L-V</span> 8AM-12M / <span>L-V</span> 2PM-6PM</p>
+            <div class="buttons mt-6">
+                <a href="https://www.google.com/maps/dir/?api=1&destination={{poc.lat}},{{poc.lng}}" target="_blank" class="app-button mr-2 text-black border-black border-2 rounded-md py-2 px-6 mb-4 text-sm sm:text-base uppercase hover:bg-primary-500 hover:text-white hover:border-primary-500">Como llegar</a>
+                <a href={{poc.pocURL}} target="_blank" class="app-button mx-2 text-black border-black border-2 rounded-md py-2 px-6 mb-4 text-sm sm:text-base uppercase hover:bg-primary-500 hover:text-white hover:border-primary-500">Sitio Web</a>
+            </div>
+            <p class="text-neutral-600">Cada día un menú diferente sale de nuestros fogones a sorprender su paladar con platos que exploran diferentes cocinas, sin perder la sencillez de la comida hecha en casa.</p>
+        </div>
+    </div>
+</div>
