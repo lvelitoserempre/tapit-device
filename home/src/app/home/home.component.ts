@@ -120,7 +120,7 @@ export class HomeComponent {
 
   private fillPlaceholders(sections: any[]): any[] {
     for (const section of sections) {
-      if (section && section.type === 'userText' && section.id == 'mensaje_loggeado') {
+      if (section && section.type === 'userText' && section.permissions.logged == true) {
         const loggedMessage = section.body;
         section.body = "CARGANDO...";
         if (isPlatformBrowser(this.platformId)) {
