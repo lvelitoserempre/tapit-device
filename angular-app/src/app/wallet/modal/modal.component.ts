@@ -118,9 +118,9 @@ export class ModalComponent implements OnInit, OnChanges {
       let response = res;
 
       this.activePromoItem = response;
+      this.couponId = this.activePromoItem.id_coupon;
       this.showActiveCouppon = true;
       this.isLoading = false;
-
     }, err => {
       this.errorMessage = true;
       this.isLoading = false;

@@ -41,7 +41,7 @@
         <div class="flex mt-16">
           <a
             class="text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
-            (click)="closeModal()">VOLVER A MIS CUPONES</a>
+            href="/wallet/coupons">VOLVER A MIS CUPONES</a>
         </div>
       </div>
 
@@ -53,7 +53,7 @@
         <p class="text-base text-color-gray px-8 mb-2">Te reembolsamos 240 puntos, ahora tienes 2500 Pts.</p>
         <p class="text-base text-color-gray px-8 mb-14">Te esperamos con más pomociones que podrían gustarte.</p>
         <div class="flex mt-16">
-          <a
+          <a href="/wallet/coupons"
             class="text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
             >VER CUPONES</a>
         </div>
@@ -83,7 +83,7 @@
         </div>
 
         <a class="text-sm inline-block text-md text-center text-white font-bold my-2 py-2 bg-primary-500 rounded-full w-full uppercase cursor-pointer mt-12 mb-10"
-          [routerLink]="'/wallet/coupons'">Regresar a mis Cupones</a>
+          href="/wallet/coupons">Regresar a mis Cupones</a>
       </div>
 
       <!-- show loading in the modal -->
@@ -145,7 +145,7 @@
 
       <a *ngIf="showActiveCouppon"
         class="text-sm inline-block text-md text-center text-white font-bold my-2 py-2 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
-        [routerLink]="'/wallet/coupons'">Volver a mis Cupones</a>
+        href="/wallet/coupons">Volver a mis Cupones</a>
       <a *ngIf="showActiveCouppon"
         class="text-sm inline-block text-md text-center text-primary-500 font-bold py-2 rounded-full w-full uppercase underline cursor-pointer" (click)="showWarning()">desactivar
         cupon</a>
