@@ -88,7 +88,7 @@
               </div>
               <div *ngFor="let consumed of consumeds; let i = index" class="md:inline-block md:pr-0 md:w-full">
                 <app-coupon-card 
-                  [title]="consumed.brand.brand.name"
+                  [title]="consumed.brand.name"
                   [imgUrl]="consumed.brand.image"
                   [date]="consumed.date"
                   [description]="consumed.brand.title"
