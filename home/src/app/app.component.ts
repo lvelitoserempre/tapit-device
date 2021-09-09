@@ -43,13 +43,16 @@ export class AppComponent implements OnInit {
       // @ts-ignore
       window.configTapitSso = () => {
         ssoApp.onFlowCompleted().subscribe((response: any) => {
+          this.ngxService.start();
           const firestoreUser = response.userCredential.user;
-          this._authService.setCurrentSessionData(firestoreUser);
-          this.openSso();
-          this.drupalService.checkDrupalCTA();
+          this._authService.setCurrentSessionData(firestoreUser)
+          .then(()=> {
+            this.openSso();
+            this.drupalService.checkDrupalCTA();
+          }).catch(error => console.error(error));
         })
       };
-    });
+    }).catch(error => console.error(error));
   }
 
   private readCookies(): void {

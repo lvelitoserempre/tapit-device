@@ -75,12 +75,9 @@ export class VerifyIdentityComponent implements OnDestroy {
   // Subscription to user auth
   subscriptionUserAuth(): void {    
    
-    this._authService.user$.subscribe((user: any) => {
-      
-      if (user && window.localStorage.getItem('sms-step') == 'phone-verified') {
-       
-        if ((!user.identity) && (user.identityType === 'NO-ID') && !this.flagOpenModal ) {
-         
+    this._authService.user$.subscribe((user: any) => {      
+      if (user && window.localStorage.getItem('sms-step') == 'phone-verified') {       
+        if ((!user.identity) && (user.identityType === 'NO-ID') && !this.flagOpenModal ) {         
           this.flagOpenModal = true;
           setTimeout(() => {
             this.openModal(this.verifyIdentity);

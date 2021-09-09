@@ -95,7 +95,6 @@ export class HomeComponent {
       this.ngxService.stopAll();
     });
     this.getHomePage();
-    this.ngxService.stopAll();
     const search = new URLSearchParams(window.location.search);
     if (search.get('source')) {
       this.isOnWebView = true;
@@ -104,10 +103,10 @@ export class HomeComponent {
 
   getHomePage(): void {
     this.drupalService.getPage('home')
-      .pipe(map(sections => this.fillPlaceholders(sections)))
-      .subscribe(sections => {
-        this.sections = sections;
-      });
+    .pipe(map(sections => this.fillPlaceholders(sections)))
+    .subscribe(sections => {
+      this.sections = sections;
+    });
     if (isPlatformBrowser) {
       const path = this.cookieService.get('LOGIN_REDIRECTION');
       if (path && path.includes('#') && this.cookieService.get('DRUPAL_SESSION')) {

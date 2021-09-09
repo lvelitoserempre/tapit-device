@@ -3,7 +3,7 @@ import { switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { of, ReplaySubject, Subject } from 'rxjs';
+import { Observable, of, ReplaySubject, Subject } from 'rxjs';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -35,64 +35,14 @@ export class AuthService {
     private _angularFirestore: AngularFirestore,
     private httpClient: HttpClient,
     private cookieService: CookieService
-    ) {
-      //this.observerUser();
-      //this.currentUser = new ReplaySubject<UserAccount>(0);
-    }
-    /*
-      This Code commented should be deprecated since now we are storing the data and resolving after SSO finish its flow
-    */
-    /*// Allows to observe changes in the user
-    private observerUser(): void {
-      this.user$.subscribe(user => {
-        this.user = user;
-      });
-    }
+    ) {}
 
-    // Allows to observe changes in the token
-    private observerToken(): void {
-      this.token$.subscribe(token => {
-        this.token = token;
-      });
-    }*/
-
-    /*async getUser() {
-      await this._angularFireAuth.user.pipe(switchMap(user => {
-        return user ? this._angularFirestore.collection('user_account_tap').doc(user.uid).valueChanges() : of(null);
-      })).subscribe(user => {
-        this.user$.emit(user);
-      });
-      this.setupLoggedUserObserver();
-    }*/
-
-    /*setupLoggedUserObserver() {
-      auth().onAuthStateChanged((user: User) => {
-        if (user && !this.cancelUserListener) {
-          this.cancelUserListener = firestore().collection(environment.firebase.collections.userAccount).doc(user.uid)
-          .onSnapshot(async(snapshot) => {
-            const res = await this.setCurrentUser(UserDAO.snapshotToUser(snapshot));
-            const accessToken = res.idToken;
-            if (!this.cookieService.get('DRUPAL_SESSION')) {
-              this.drupalAuth(accessToken);
-            }
-            this.token$.emit(accessToken);
-          });
-        } else {
-          if (this.cancelUserListener) {
-            this.cancelUserListener();
-          }
-          this.cancelUserListener = null;
-          this.setCurrentUser(null);
-        }
-      });
-    }*/
-
-    drupalAuth(token:string): void {
+    drupalAuth(token:string): Observable<any> {
       const fd = new FormData();
       fd.append('grant_type', 'sso');
       fd.append('client_id', environment.drupal.client_id);
       fd.append('access_token', token);
-      this.httpClient.post<any>(
+      return this.httpClient.post<any>(
         `${environment.drupal?.url}${environment.drupal?.apiAuth}`,
         fd,
         {
@@ -100,25 +50,23 @@ export class AuthService {
             'enctype':'multipart/form-data',
           }
         }
-      ).subscribe((response) => {
-        this.cookieService.put('DRUPAL_SESSION', response.access_token, {});
-        this.cookieService.put('__session', response.access_token, {});
-        this.setDrupalToken(response.access_token);
-      })
+      )
     }
 
-    setCurrentSessionData(user: User) {
-      user.getIdToken()
-      .then((idToken: any) => {
+    setCurrentSessionData(user: User): Promise<any> {
+      return user?.getIdToken()
+      .then(async (idToken: any) => {
         this.cookieService.put('frbtkn', idToken, {});
-        this.drupalAuth(idToken);
-        this.getFireStoreUserDocument(user.uid)
-        .then(userDocument => {
-          const res = this.setCurrentUser(UserDAO.snapshotToUser(userDocument));
-          console.log(res);
-          /*this.saveUserToACookie(user);
-          this.currentUser.next(user);*/
-        }).catch(error => console.log(error))
+        this.drupalAuth(idToken)
+        .subscribe((response) => {
+          this.cookieService.put('DRUPAL_SESSION', response.access_token, {});
+          this.cookieService.put('__session', response.access_token, {});
+          this.setDrupalToken(response.access_token);
+          return this.getFireStoreUserDocument(user.uid)
+          .then(userDocument => {
+            const res = this.setCurrentUser(UserDAO.snapshotToUser(userDocument));
+          }).catch(error => console.log(error));
+        })
       }).catch(error => console.log(error));
     }
 
@@ -130,7 +78,6 @@ export class AuthService {
 
     async setCurrentUser(user: UserAccount) {
       await this.addIdToken(user);
-      //this.currentUser.next(user);
       this.saveUserToACookie(user);
 
       return user;
@@ -172,10 +119,11 @@ export class AuthService {
     }
 
     loginUserByCustomToken (token:string) {
+      //alert(token);
       auth().signInWithCustomToken(token)
       .then(userCredential=> {        
         userCredential.user.getIdToken()
-        .then(response => this.drupalAuth(response));
-      })
+        .then(response => this.drupalAuth(response)).catch(error => console.error(error));
+      }).catch(error => console.error(error));
     }
   }
