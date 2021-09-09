@@ -79,7 +79,7 @@ export class CuponsComponent {
       this.loadingService.hide();
     }, err => {
       this.loadingService.hide();
-      console.log(err);
+      console.error(err);
     });
   }
 
