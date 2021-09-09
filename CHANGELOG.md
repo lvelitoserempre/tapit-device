@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Logged version can be displayed in android and iOS
 - Session management in angular-app
 - Web allows a parameter in URL that will redirect to that page
+- Added components /gana-puntos, /actualizar-cedula, /como-redimir, /comercios-aliados at Angular-app
+- Added options at menu header /home app && /angular-app, adjust styles & icons
 ### Changed
 - CTA for internal sections won't change URL in order to avoid redirection on user login
 - Fixed the description on banner sections that wasn't displaying the copy text

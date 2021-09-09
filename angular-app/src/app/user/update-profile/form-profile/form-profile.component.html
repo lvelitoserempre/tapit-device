@@ -13,7 +13,8 @@
         <p class="text-neutral-800 font-bold">Apellido</p>
         <p class="my-3 text-neutral-800 font-light font-fs-book">{{ user?.lastName }}</p>
     </div>
-    <div class="flex flex-col relative my-8">
+    <div *ngIf="user?.identityType === 'NO-ID'" class="flex flex-col relative my-8" id="changeDocument">
+        <label *ngIf="user?.identityType === 'NO-ID'" class="text-neutral-800 font-bold">Actualiza tu documento</label> <br>
         <label for="identityType" class="text-neutral-800 font-bold">Tipo de documento</label>
         <p *ngIf="user?.identityType !== 'NO-ID'" class="my-3 text-neutral-800 font-light font-fs-book">{{ user?.identityType | typeDocument }}</p>
         <label *ngIf="user?.identityType === 'NO-ID'" class="w-full select__box">

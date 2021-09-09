@@ -1,0 +1,106 @@
+<div class="bg-white escanea relative">
+    <div class="container mx-auto">
+        <h2 class="w-full text-bg text-left pb-3 t-4 w-auto escanea--title"> <a class="goBackBtn"
+            href="javascript: history.go(-1)">&lsaquo;</a> Así <span
+                class="w-full text-bg text-left pb-3 t-4 w-auto c-orange">redimes </span>tus puntos</h2>
+        <h2 class="w-full text-bg text-left pb-3 t-4 w-auto escanea--subtitle c-gray">Para
+            <span class="c-orange">sumar</span> y <span class="c-orange">redimir </span>puntos Tap It en nuestros
+            comercios aliados, lo único que debes hacer es:
+        </h2>
+
+        <div class="redemContainer">
+
+            <div class="redemContainer--item">
+                <img src="https://bavariaco.vteximg.com.br/arquivos/item-1.png" alt="">
+                <p class="redemParr"> <span class="redemSpan c-black"><strong>Visita</strong></span> alguno de los <a
+                      target="_blank"  href="/https://www.google.com/maps/d/u/0/embed?mid=1dVJQqjVUtRFz27yRhmYaS4zer-raroo-&ll=5.026375290065464%2C-73.86987775454514&z=8" class="redemLink">puntos de venta aliados</a></p>
+            </div>
+
+            <div class="redemContainer--item">
+                <img src="https://bavariaco.vteximg.com.br/arquivos/item-2.png" alt="">
+                <p class="redemParr"> <span class="redemSpan c-black"><strong>Suma</strong></span> dando tu número de
+                    cédula al
+                    mesero</p>
+            </div>
+
+            <div class="redemContainer--item">
+                <img src="https://bavariaco.vteximg.com.br/arquivos/item-3.png" alt="">
+                <p class="redemParr"> <span class="redemSpan c-black"><strong>Redime</strong></span> al momento de pagar
+                    mostrando
+                    tu cédula al mesero</p>
+            </div>
+
+            <div class="redemContainer--btnSection" *ngIf="user?.identityType === 'NO-ID'">
+                <p class="redemParr"> <span class="redemSpan c-black"><strong>¡Actualiza tu cédula y
+                            listo!</strong></span></p>
+                <a class="actualizarCedulaBtn" href="/app/user/profile/editar-perfil#changeDocument"> Actualizar </a>
+            </div>
+
+            <div class="redemContainer--btnSection" *ngIf="user?.identityType !== 'NO-ID'">
+                <p class="redemParr"> <span class="redemSpan c-black"><strong>Empieza a acumular y redimir
+                            ya!</strong></span></p>
+            </div>
+
+
+        </div>
+
+
+        <h2 class="w-full text-bg text-left pb-3 t-4 w-auto escanea--title">Conoce los puntos que acumulas en nuestros
+            diferentes sitios </h2>
+        <h2 class="w-full text-bg text-left pb-3 t-4 w-auto escanea--subtitle c-gray">Conoce los puntos que ganas por
+            cada transacción en:
+        </h2>
+
+
+        <div class="container mx-auto cards">
+            <!-- mini cards -->
+            <div class="minicardsContainer pb-3 t-4 w-full text-bg text-left pb-3 t-4 w-auto">
+                <!-- minicard 1 -->
+                <div class="minicard">
+                    <div class="minicard--image">
+                        <img src="https://bavariaco.vteximg.com.br/arquivos/Card-1.png" alt="">
+                    </div>
+
+                </div>
+
+                <!-- minicard 2 -->
+                <div class="minicard">
+                    <div class="minicard--image">
+                        <img src="https://bavariaco.vteximg.com.br/arquivos/Card-2.png" alt="">
+                    </div>
+                </div>
+
+                <!-- minicard 3 -->
+
+                <div class="minicard">
+                    <div class="minicard--image">
+                        <img src="https://bavariaco.vteximg.com.br/arquivos/Card-3.png" alt="">
+                    </div>
+                </div>
+
+                <!-- minicard 4 -->
+
+                <div class="minicard">
+                    <div class="minicard--image">
+                        <img src="https://bavariaco.vteximg.com.br/arquivos/Card-4.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="w-full text-bg text-left pb-3 t-4 w-auto escanea--title">Redime tus puntos</h2>
+            <h2 class="w-full text-bg text-left pb-3 t-4 w-auto escanea--subtitle c-gray">Ten en cuenta esta info a la hora de usar tus puntos: </h2>
+            <div class="minicardsContainer pb-3 t-4 w-full text-bg text-left pb-3 t-4 w-auto">
+                <img class="alert-img" src="https://bavariaco.vteximg.com.br/arquivos/alerta-image.png" alt="Redcuerdfa">
+                <h2 class="w-full text-bg text-center pb-3 t-4 w-auto escanea--title">¡Recuerda!</h2>
+                <p class="w-full text-bg text-center  w-auto escanea--subtitle c-gray"> <strong>60</strong> Pts Tap It <strong>= $1000 pesos</strong> </p>
+                <h2 class="w-full text-bg text-center  w-auto escanea--subtitle c-gray">Puedes pagar con tus puntos todo lo de tu factura, menos el <strong>IVA y la propina</strong></h2>
+
+
+            </div>
+
+
+        <div class="w-full">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

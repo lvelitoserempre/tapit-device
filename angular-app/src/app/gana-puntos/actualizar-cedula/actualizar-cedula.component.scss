@@ -1,0 +1,334 @@
+
+.escanea {
+    max-width: 970px;
+    margin: 1rem auto;
+    margin-bottom: 10rem;
+    background: #fafafa;
+    border: 5px solid white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 5px rgba(52, 16, 0, 0.13);
+    padding: 1rem;
+
+    @media (max-width: 768px) {
+        margin-bottom: 0;
+        width: 95%;
+        width: 100%;
+        padding: 0 1rem;
+        display: inline-block;
+        position: relative;
+
+    }
+    &--title,
+    &--title span {
+        font-size: 20px;
+        font-weight: 700;
+        font-family: filson-soft-bold !important;
+    }
+
+    &--subtitle {
+        font-size: 13px;
+        font-weight: 600;
+        width: 80%;
+        font-family: filson-soft-book !important;
+        margin-bottom: 2rem;
+        line-height: 20px;
+        @media (max-width: 768px) {
+            margin-bottom: 0;
+            width: 95%;
+
+        }
+    }
+
+    &--tab {
+        background: #fafafa;
+        border-top: 1px solid #d9d8d7;
+        border-bottom: 1px solid #d9d8d7;
+
+        @media (min-width: 992px) {
+            border-top: 0;
+            border-bottom: 0;
+        }
+
+        .active {
+            border-bottom: 2px solid #ff5005;
+            color: #ff5005;
+        }
+
+        a:hover {
+            color: #ff5005;
+        }
+    }
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+}
+
+.alert-img {
+    width: 100px;
+    margin: 0 auto;
+}
+
+.minicardsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background: #fafafa;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+}
+
+.minicard {
+    display: flex;
+    padding: 20px 0px 0px 20px;
+    box-shadow: 1px 4px 5px rgba(52, 16, 0, 0.13);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    max-width: 970px;
+    margin: 0 auto;
+    transition: all 0.5s ease-in-out;
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0px 8px 8px rgba(52, 16, 0, 0.13);
+    }
+}
+
+.card {
+    background: #fafafa;
+    display: flex;
+    padding: 20px 0px 0px 20px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    max-width: 970px;
+    margin: 0 auto;
+    transition: all 0.5s ease-in-out;
+}
+
+.minicard {
+    width: 48%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 10px;
+    align-items: center;
+    background: #FFFFFF;
+    margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+        width: 90%;
+        margin-bottom: 8px;
+    }
+
+    &--text h2 {
+        font-size: 18px;
+        font-weight: 700;
+        font-family: filson-soft-bold !important;
+    }
+
+    &--image {
+        width: 100%;
+        margin: 0 auto;
+
+        img {
+            margin: 0 auto;
+        }
+    }
+}
+
+.escaneBtn {
+    background: #ff5005;
+    display: flex;
+    margin: 0 auto;
+    width: 172px;
+    height: 45px;
+    text-align: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #ffffff;
+    border: 2px solid #ff5005;
+    font-weight: 600;
+    font-family: filson-soft-bold !important;
+    padding: 0px 30px;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 2rem;
+    &:hover {
+        background: #ffffff;
+        border: 2px solid #ff5005;
+        color: #ff5005;
+    }
+}
+
+.actualizarCedulaBtn {
+    background: #ff5005;
+    display: flex;
+    margin: 0 auto;
+    width: 125px;
+    height: 40px;
+    text-align: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #ffffff;
+    border: 2px solid #ff5005;
+    font-weight: 600;
+    font-family: filson-soft-bold !important;
+    padding: 0px 25px;
+    transition: all 0.3s ease-in-out;
+    margin: 0 10px;
+    font-size: 14px;
+    &:hover {
+        background: #ffffff;
+        border: 2px solid #ff5005;
+        color: #ff5005;
+    }
+    @media (max-width: 768px) {
+       margin: 0 auto;
+    }
+}
+
+.cardLeft {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+.cardRight {
+    width: 30%;
+    display: flex;
+}
+
+.titleCard,
+.titleCard span {
+    font-size: 20px;
+}
+
+.parrCard,
+.redemParr {
+    font-family: filson-soft-book !important;
+    padding-top: .5rem;
+    line-height: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #716c6a;
+}
+
+.parrminiCard {
+    font-family: filson-soft-book !important;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.parrminiCardTiny {
+    font-family: filson-soft-book !important;
+    line-height: 13px;
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.linkCard,
+.redemLink {
+    text-decoration: underline;
+    font-size: 11px;
+    line-height: 16px;
+    font-family: filson-soft-book;
+    color: #ff5005 !important;
+    font-weight: 600;
+
+}
+
+.redemContainer {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 550px;
+    margin-bottom: 4rem;
+
+    &--item {
+        display: flex;
+        width: 90%;
+        margin: 5px auto;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 2rem;
+        @media (max-width: 768px) {
+          padding-left: 0;
+    
+        }
+
+        img {
+            width: 42px;
+            height: 42px;
+        }
+    }
+
+    &--btnSection {
+        width: 75%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        margin: 5px auto;
+        padding-left: 2rem;
+        font-weight: 600;
+        @media (max-width: 768px) {
+            flex-direction: column;
+            padding-left: 0;
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+        }
+    
+
+        .redemParr {
+            color: black;
+            font-weight: 700;
+            font-size: 14px;
+            @media (max-width: 768px) {
+                font-size: 13px;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.redemParr {
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.redemSpan {
+    color: black !important;
+}
+
+.c-orange {
+    color: #ff5005;
+}
+.c-gray {
+    color: #716c6a;
+}
+
+.m-0-auto {
+    margin: 0 auto;
+}
+
+.goBackBtn {
+    color: #000;
+    font-size: 24px;
+    margin-right: 8px;
+    transition: all .3s ease-in-out;
+    &::hover {
+        color: #ff5005;
+    }
+}

@@ -1,0 +1,264 @@
+
+.ganapuntos {
+    max-width: 970px;
+    margin: 1rem auto;
+    margin-bottom: 10rem;
+    &--title,
+    &--title span {
+        font-size: 20px;
+        font-weight: 700;
+        font-family: filson-soft-bold !important;
+        @media (max-width: 768px) {
+            width: 90%;
+            margin: 0 auto ;
+        }
+    }
+
+    &--subtitle {
+        font-size: 14px;
+        font-weight: 600;
+        font-family: filson-soft-book !important;
+        @media (max-width: 768px) {
+            width: 90%;
+            margin: 0 auto ;
+        }
+
+    }
+
+    &--tab {
+        background: #fafafa;
+        border-top: 1px solid #d9d8d7;
+        border-bottom: 1px solid #d9d8d7;
+
+        @media (min-width: 992px) {
+            border-top: 0;
+            border-bottom: 0;
+        }
+
+        .active {
+            border-bottom: 2px solid #ff5005;
+            color: #ff5005;
+        }
+
+        a:hover {
+            color: #ff5005;
+        }
+    }
+}
+
+.tDesk {
+    display: block;
+    @media (max-width: 768px) {
+      display: none;
+    }
+}
+
+.tMob {
+    display: none;
+    @media (max-width: 768px) {
+        display: block;
+    }
+}
+
+ div.cardLeft--text > p {
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+
+
+.cards {
+    display: flex;
+    flex-direction: column;
+}
+
+.minicardsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background: white;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+}
+
+
+.card, .minicard {
+    display: flex;
+    padding: 20px 0px 0px 20px;
+    box-shadow: 0px 4px 5px rgba(52, 16, 0, 0.13);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    max-width: 970px;
+    margin: 0 auto;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0px 16px 27px rgba(52, 16, 0, 0.13);
+    }
+}
+
+.minicard {
+    width: 32%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 10px;
+    align-items: center;
+
+    @media (max-width: 768px) {
+        width: 90%;
+        margin-bottom: 8px;
+    }
+
+    &--text h2 {
+        font-size: 18px;
+        font-weight: 700;
+        font-family: filson-soft-bold !important;
+    }
+
+    &--image {
+        width: 110px;
+        img {
+            width: 100px;
+            max-width: 100px;
+        }
+    }
+}
+
+.imagePaga {
+
+}
+
+.cardLeft {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+.cardRight {
+    width: 30%;
+    display: flex;
+}
+
+.titleCard,
+.titleCard span {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+.parrCard {
+    font-family: filson-soft-book !important;
+    padding-top: .5rem;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.parrminiCard {
+    font-family: filson-soft-book !important;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.linkCard {
+    text-decoration: underline;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: filson-soft-book;
+    font-weight: 600;
+
+}
+
+.c-orange {
+    color: #ff5005;
+}
+.c-gray {
+    color: #716c6a;
+}
+
+.bg-yellow {
+    background-color: #f7cd5d;
+}
+
+.bg-yellow-2 {
+    background-color: #f0dc32;
+}
+
+.bg-red {
+    background-color: #d20f28;
+}
+
+.bg-green {
+    background-color: #7bca68;
+}
+
+.modal--info {
+    position: fixed;
+    top: 66px;
+    left: 0;
+    right: 0px;
+    bottom: 0;
+    background: rgba(25, 20, 25, 0.8);
+    display: none;
+    align-items: flex-end;
+    z-index: 999999;
+
+    @media (min-width: 992px) {
+        top: 0;
+        align-items: flex-start;
+        padding-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+        background: rgba(25, 20, 25, 0.3);
+    }
+
+    &.active {
+        display: flex;
+    }
+
+    &__cont {
+        border-radius: 20px 20px 0px 0px;
+        height: 90vh;
+        padding: 16px;
+        width: 100%;
+
+        @media (min-width: 992px) {
+            height: initial;
+            width: 540px;
+            margin: 0 auto;
+            border-radius: 20px;
+        }
+
+
+        .detail {
+            border-bottom: 1px solid #d9d8d7;
+            border-top: 1px solid #d9d8d7;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 15px;
+            padding-top: 15px;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.m-0-auto {
+    margin: 0 auto;
+}
+
+.goBackBtn {
+    color: #000;
+    font-size: 24px;
+    margin-right: 8px;
+    transition: all .3s ease-in-out;
+    &::hover {
+        color: #ff5005;
+    }
+}

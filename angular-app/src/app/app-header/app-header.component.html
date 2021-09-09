@@ -6,61 +6,85 @@
       <img class="img-menu block" src="assets/images/hMenu.svg" width="26">
 
       <ul *ngIf="!user" class="fixed w-10/12 p-5 bg-neutral-100 h-full top-0 border-4 border-white text-sm sm:text-base"
-          id="menu">
+        id="menu">
         <li class="py-2"><img class="w-2/3" src="assets/images/tap-it_black-orange.svg"></li>
         <li class="py-2"><a (click)="loginCloseMenu()"
-          class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
-          href="/">INICIA SESIÓN</a></li>
+            class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
+            href="/">INICIA SESIÓN</a></li>
         <li><img class="absolute icon-close" src="../assets/images/ic_close.svg" width="30"></li>
       </ul>
 
       <ul *ngIf="user"
-          class="fixed w-10/12 p-6 bg-neutral-100 pt-2 h-full top-0 border-4 border-white text-sm sm:text-base"
-          id="menu">
+        class="fixed w-10/12 p-6 bg-neutral-100 pt-2 h-full top-0 border-4 border-white text-sm sm:text-base" id="menu">
         <li class="cursor-pointer inline-block align-middle focus:outline-none p-0" routerLink="/user/profile/share">
           <img src="assets/images/profile-placeholder.png" width="100">
         </li>
-        <li
-          (click)="loginCloseMenu()"
+        <li (click)="loginCloseMenu()"
           class="font-bold text-md uppercase text-primary-500 cursor-pointer block mr-4 align-middle focus:outline-none py-4"
           routerLink="/user/profile/share">
           <span class="block">{{ user.firstName }} {{ user.lastName }}</span>
           <span class="text-neutral-700 normal-case text-xs font-normal block mt-2">{{user.email}}</span>
         </li>
-        <li class="inline-block align-middle border-b border-neutral-500 w-full py-4">
-          <a [href]="marketUrl"
-             class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none"><i
-            class="uil uil-store text-lg"></i> Market</a>
+
+
+        <li *ngIf="user" class="inline-block align-middle border-b borbot border-neutral-500 w-full py-4">
+          <a routerLink="/gana-puntos" (click)="loginCloseMenu()"
+            class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none">
+            <img class="inline-block align-middle cuppon-icon"
+              src="https://bavariaco.vteximg.com.br/arquivos/Uniongana-icon.svg" alt="">
+            <span class="inline-block align-middle ml-2">Gana Puntos</span></a>
         </li>
-        <li *ngIf="user" class="m:inline-block md:hidden align-left" (click)="loginCloseMenu()" >
-          <a routerLink="/wallet"
-            class="font-bold text-md uppercase text-neutral-700 inline-block mr-6 align-middle focus:outline-none">
+        <li *ngIf="user" class="inline-block align-middle border-b borbot border-neutral-500 w-full py-4">
+          <a routerLink="/como-redimir" (click)="loginCloseMenu()"
+            class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none">
+            <img class="inline-block align-middle cuppon-icon" src="assets/images/beer-icon-orange.png" alt="">
+            <span class="inline-block align-middle ml-2">¿Cómo Redimir?</span></a>
+        </li>
+
+        <li class="inline-block align-middle border-b borbot border-neutral-500 w-full py-4">
+          <a [href]="marketUrl"
+            class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none"><i
+              class="uil uil-store text-lg"></i> Redimir Puntos</a>
+        </li>
+        <li class="inline-block align-middle border-b borbot border-neutral-500 w-full py-4">
+          <a href="https://hayplan.tapit.com.co"
+            class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none">
+            <img class="inline-block align-middle cuppon-icon"
+              src="https://bavariaco.vteximg.com.br/arquivos/Vectorplan-icon.svg" alt="">
+            <span class="inline-block align-middle ml-2">Hay Plan</span></a>
+        </li>
+        <li *ngIf="user" class="inline-block align-middle border-b borbot border-neutral-500 w-full py-4">
+          <a routerLink="/wallet" (click)="loginCloseMenu()"
+            class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none">
             <img class="inline-block align-middle cuppon-icon" src="assets/images/ticket.png" alt="">
             <span class="inline-block align-middle ml-2">Cuponera</span></a>
         </li>
-        <li *ngIf="showMicrogifting" class="inline-block align-middle border-b border-neutral-500 w-full py-4">
+        <li class="inline-block align-middle border-b borbot border-neutral-500 w-full py-4">
+          <a href="https://tapit.com.co"
+            class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none">
+            <img class="inline-block align-middle cuppon-icon"
+              src="https://bavariaco.vteximg.com.br/arquivos/Vectorhome-icon.svg" alt="">
+            <span class="inline-block align-middle ml-2">Home</span></a>
+        </li>
+        <li *ngIf="showMicrogifting" class="inline-block align-middle border-b borbot border-neutral-500 w-full py-4">
           <a class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none"
-             href="{{marketUrl}}/comprar-regalo">
+            href="{{marketUrl}}/comprar-regalo">
             <img class="text-base inline-block align-middle leading-none mx-1" src="assets/images/red-heart.png"
-                 style="max-width: 20px;">
+              style="max-width: 20px;">
             RESCATE POKER ROJA
           </a>
         </li>
-        <li class="inline-block align-middle border-b border-neutral-500 w-full py-4 hidden">
-          <a
-            (click)="loginCloseMenu()"
+        <li class="inline-block align-middle border-b borbot border-neutral-500 w-full py-4 hidden">
+          <a (click)="loginCloseMenu()"
             class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none app-link"
-            routerLink="/user/codes" routerLinkActive="active"><i
-            class="uil uil-ticket text-lg"
-            queryParamsHandling="merge"></i> Mis Códigos</a>
+            routerLink="/user/codes" routerLinkActive="active"><i class="uil uil-ticket text-lg"
+              queryParamsHandling="merge"></i> Mis Códigos</a>
         </li>
-        <li class="inline-block align-middle w-full py-4">
-          <a
-            (click)="loginCloseMenu()"
+        <li class="inline-block align-middle w-full py-4  borbot">
+          <a (click)="loginCloseMenu()"
             class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none app-link"
-            routerLink="/user/profile/share" routerLinkActive="active"><i
-            class="uil uil-user-circle text-lg"
-            queryParamsHandling="merge"></i> Perfil</a>
+            routerLink="/user/profile/share" routerLinkActive="active"><i class="uil uil-user-circle text-lg"
+              queryParamsHandling="merge"></i> Perfil</a>
         </li>
         <li><img class="absolute icon-close" src="assets/images/ic_close.svg" width="30"></li>
       </ul>
@@ -72,32 +96,47 @@
       <div class="flex-1 text-left">
         <ul>
           <li class="inline-block align-middle">
-            <a href="/"><img class="main-logo ml-12 sm:ml-0" src="assets/images/tapit-logo.png" style="width: 70px;" alt="tapit logo"/></a>
+            <a href="/"><img class="main-logo ml-12 sm:ml-0" src="assets/images/tapit-logo.png" style="width: 70px;"
+                alt="tapit logo" /></a>
+          </li>
+
+          <li *ngIf="user" class="hidden sm:inline-block align-middle ml-8">
+            <a routerLink="/gana-puntos"
+              class="font-bold text-md uppercase text-neutral-700 inline-block mr-6 align-middle focus:outline-none">
+              <img class="inline-block align-middle cuppon-icon" src="assets/images/Union.png" alt="">
+              <span class="inline-block align-middle ml-2" style="font-size: 12px;">Gana Puntos</span></a>
+          </li>
+          <li *ngIf="user" class="hidden sm:inline-block align-middle ml-8">
+            <a routerLink="/como-redimir"
+              class="font-bold text-md uppercase text-neutral-700 inline-block mr-6 align-middle focus:outline-none">
+              <img class="inline-block align-middle cuppon-icon" src="assets/images/beer-icon-orange.png"
+                alt="BeerIcon">
+              <span class="inline-block align-middle ml-2" style="font-size: 12px;">¿Cómo Redimir?</span></a>
           </li>
           <li *ngIf="user" class="hidden sm:inline-block align-middle ml-8">
             <a [href]="marketUrl"
               class="font-bold text-sm uppercase text-neutral-700 inline-block mr-6 align-middle focus:outline-none"><i
-              class="uil uil-store text-base inline-block align-middle leading-none"></i> <span
-              class="inline-block align-middle">Market</span></a>
+                class="uil uil-store text-base inline-block align-middle leading-none"></i> <span
+                class="inline-block align-middle" style="font-size: 12px;">Redimir Puntos</span></a>
           </li>
-          <li *ngIf="user" class="hidden sm:inline-block align-middle">
+          <li *ngIf="user" class="hidden sm:inline-block align-middle ml-8">
             <a routerLink="/wallet"
               class="font-bold text-sm uppercase text-neutral-700 inline-block mr-6 align-middle focus:outline-none">
               <img class="inline-block align-middle cuppon-icon" src="assets/images/ticket.png" alt="">
-              <span class="inline-block align-middle ml-2">Cuponera</span></a>
+              <span class="inline-block align-middle ml-2" style="font-size: 12px;">Cuponera</span></a>
           </li>
           <li *ngIf="user && showMicrogifting" class="hidden sm:inline-block align-middle">
             <a class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none"
-               href="{{marketUrl}}/comprar-regalo">
-              <img class="text-base inline-block align-middle leading-none mr-1" src="assets/images/red-heart.png" style="max-width: 15px;" alt="red heart">
+              href="{{marketUrl}}/comprar-regalo">
+              <img class="text-base inline-block align-middle leading-none mr-1" src="assets/images/red-heart.png"
+                style="max-width: 15px;" alt="red heart">
               <span class="inline-block align-middle">RESCATE POKER ROJA</span>
             </a>
           </li>
           <li *ngIf="user" class="hidden  align-middle">
-            <a
-              class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none app-link"
+            <a class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none app-link"
               routerLink="/user/codes" routerLinkActive="active"><i
-              class="uil uil-ticket text-base inline-block align-middle leading-none" queryParamsHandling="merge"></i>
+                class="uil uil-ticket text-base inline-block align-middle leading-none" queryParamsHandling="merge"></i>
               <span class="inline-block align-middle">Mis Códigos</span></a>
           </li>
         </ul>
@@ -117,7 +156,7 @@
               class="font-bold text-sm uppercase text-neutral-700 cursor-pointer inline-block mr-4 align-middle focus:outline-none app-link"
               routerLink="/user/profile/share" routerLinkActive="active">
               <i class="uil uil-user-circle text-base inline-block align-middle inline-block align-middle"
-                 queryParamsHandling="merge"></i>
+                queryParamsHandling="merge"></i>
               <span class="inline-block align-middle">{{ user.firstName }}</span>
             </li>
             <li class="relative h-6 top-0 bottom-0 border-l border-neutral-500 inline-block align-middle"></li>
@@ -132,8 +171,8 @@
         <ul *ngIf="showLoginButton" class="relative">
           <ul class="relative inline-block">
             <li><a
-              class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
-              href="/">INICIA SESIÓN</a></li>
+                class="app-button border-2 border-primary-500 bg-primary-500 text-white w-full text-center p-3 text-sm"
+                href="/">INICIA SESIÓN</a></li>
           </ul>
         </ul>
       </div>

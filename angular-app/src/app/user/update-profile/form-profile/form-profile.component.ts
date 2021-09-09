@@ -47,12 +47,20 @@ export class FormProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.loading = true;
     this.userSubscription = this.userAuthenticationService.getCurrentUser()
       .subscribe(user => {
         this.user = user;
         this.loading = false;
     });
+
+    setTimeout(() => {
+      let changeDocContainer = document.querySelector('#changeDocument')
+      if(changeDocContainer) {
+        changeDocContainer.scrollIntoView();
+      }
+    }, 3500);
   }
 
   ngOnDestroy(): void {

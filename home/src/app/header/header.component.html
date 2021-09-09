@@ -5,7 +5,8 @@
       <div (click)="loginCloseMenu()" class="background"></div>
       <img class="img-menu block" src="../assets/images/hMenu.svg" width="26" alt="Abrir menú">
 
-      <ul *ngIf="!user" class="fixed w-10/12 p-5 bg-neutral-100 h-full top-0 border-4 border-white text-sm sm:text-base" id="menu">
+      <ul *ngIf="!user" class="fixed w-10/12 p-5 bg-neutral-100 h-full top-0 border-4 border-white text-sm sm:text-base"
+        id="menu">
         <li class="py-2">
           <img class="w-2/3" src="../assets/images/tap-it_black-orange.svg" alt="Tapit logo">
         </li>
@@ -16,65 +17,94 @@
             REGÍSTRATE
           </button>
         <li class="py-2">
-          <button 
-            (click)="loginCloseMenu();ssoOpen();"
+          <button (click)="loginCloseMenu();ssoOpen();"
             class="app-button border-2 border-black bg-white text-black text-center p-3 py-2 text-sm cursor-pointer uppercase hover:bg-black hover:text-white w-full">
             INICIA SESIÓN
           </button>
-          </li>
-          <li>
-            <img class="absolute icon-close" src="../assets/images/ic_close.svg"  alt="Cerrar menú" width="30">
-          </li>
+        </li>
+        <li>
+          <img class="absolute icon-close" src="../assets/images/ic_close.svg" alt="Cerrar menú" width="30">
+        </li>
       </ul>
 
-      <ul *ngIf="user" class="fixed w-10/12 p-6 bg-neutral-100 pt-2 h-full top-0 border-4 border-white text-sm sm:text-base" id="menu">
+      <ul *ngIf="user"
+        class="fixed w-10/12 p-6 bg-neutral-100 pt-2 h-full top-0 border-4 border-white text-sm sm:text-base" id="menu">
         <li class="cursor-pointer inline-block align-middle focus:outline-none p-0">
-          <a href="/app/user/profile"><img src="../assets/images/profile-placeholder.png" width="100" alt="Icono Perfil"></a>
+          <a href="/app/user/profile"><img src="../assets/images/profile-placeholder.png" width="100"
+              alt="Icono Perfil"></a>
         </li>
-        <li
-          (click)="loginCloseMenu()"
+        <li (click)="loginCloseMenu()"
           class="font-bold text-md uppercase text-primary-500 cursor-pointer block mr-4 align-middle focus:outline-none py-4">
           <a href="/app/user/profile">
             <span class="block">{{ user.firstName }} {{ user.lastName }}</span>
             <span class="text-neutral-700 normal-case text-xs font-normal block mt-2">{{user.email}}</span>
           </a>
         </li>
+        <li *ngIf="user" class="inline-block  align-middle border-b border-neutral-500 w-full py-4"
+          (click)="loginCloseMenu()">
+          <a href="/app/gana-puntos"
+            class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none">
+            <img class="inline-block align-middle cuppon-icon" src="assets/images/union-gray.png" alt="">
+            <span class="inline-block align-middle ml-2">Gana Puntos</span>
+          </a>
+        </li>
+        <li *ngIf="user" class="inline-block  align-middle border-b border-neutral-500 w-full py-4"
+          (click)="loginCloseMenu()">
+          <a href="/app/como-redimir"
+            class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none">
+            <img class="inline-block align-middle cuppon-icon" src="assets/images/como-redimir-icon-gray.png" alt="">
+            <span class="inline-block align-middle ml-2">¿Cómo Redimir?</span>
+          </a>
+        </li>
         <li class="inline-block align-middle border-b border-neutral-500 w-full py-4">
           <a [href]="marketUrl"
-             class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none"><i
-            class="uil uil-store text-lg"></i> Market</a>
+            class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none"><i
+              class="uil uil-store text-lg"></i> Redimir Puntos</a>
         </li>
-        <li *ngIf="user" class="inline-block  align-middle border-b border-neutral-500 w-full py-4" (click)="loginCloseMenu()">
+        <li *ngIf="user" class="inline-block  align-middle border-b border-neutral-500 w-full py-4"
+          (click)="loginCloseMenu()">
           <a href="/app/wallet"
-             class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none">
-             <img class="inline-block align-middle cuppon-icon" src="assets/images/ticket.png" alt="">
-            <span
-            class="inline-block align-middle ml-2">Cuponera</span>
-             </a>
+            class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none">
+            <img class="inline-block align-middle cuppon-icon" src="assets/images/ticket.png" alt="">
+            <span class="inline-block align-middle ml-2">Cuponera</span>
+          </a>
         </li>
+        <li *ngIf="user" class="inline-block  align-middle border-b border-neutral-500 w-full py-4"
+          (click)="loginCloseMenu()">
+          <a href="https://hayplan.tapit.com.co"
+            class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none">
+            <img class="inline-block align-middle cuppon-icon" src="https://bavariaco.vteximg.com.br/arquivos/Vectorplan-icon.svg" alt="">
+            <span class="inline-block align-middle ml-2">Hay Plan</span>
+          </a>
+        </li>
+        <li *ngIf="user" class="inline-block  align-middle border-b border-neutral-500 w-full py-4"
+          (click)="loginCloseMenu()">
+          <a href="/" class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none">
+            <img class="inline-block align-middle cuppon-icon" src="https://bavariaco.vteximg.com.br/arquivos/Vectorhome-icon.svg" alt="">
+            <span class="inline-block align-middle ml-2"> Home</span>
+          </a>
+        </li>
+
+
         <li *ngIf="showMicrogifting" class="inline-block align-middle border-b border-neutral-500 w-full py-4">
           <a class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none"
-             href="{{marketUrl}}/comprar-regalo">
+            href="{{marketUrl}}/comprar-regalo">
             <img class="text-base inline-block align-middle leading-none mx-1" src="assets/images/red-heart.png"
-                 style="max-width: 20px;">
+              style="max-width: 20px;">
             RESCATE POKER ROJA
           </a>
         </li>
         <li class="inline-block align-middle border-b border-neutral-500 w-full py-4 hidden">
-          <a
-            (click)="loginCloseMenu()"
+          <a (click)="loginCloseMenu()"
             class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none app-link"
-            routerLink="/user/codes" routerLinkActive="active"><i
-            class="uil uil-ticket text-lg"
-            queryParamsHandling="merge"></i> Mis Códigos</a>
+            routerLink="/user/codes" routerLinkActive="active"><i class="uil uil-ticket text-lg"
+              queryParamsHandling="merge"></i> Mis Códigos</a>
         </li>
         <li class="inline-block align-middle w-full py-4">
-          <a
-            (click)="loginCloseMenu()"
+          <a (click)="loginCloseMenu()"
             class="font-bold text-md uppercase text-neutral-700 inline-block align-middle focus:outline-none app-link"
-            href="/app/user/profile" routerLinkActive="active"><i
-            class="uil uil-user-circle text-lg"
-            queryParamsHandling="merge"></i> Perfil</a>
+            href="/app/user/profile" routerLinkActive="active"><i class="uil uil-user-circle text-lg"
+              queryParamsHandling="merge"></i> Perfil</a>
         </li>
         <li><img class="absolute icon-close" src="../assets/images/ic_close.svg" width="30" alt="cerrar"></li>
       </ul>
@@ -86,34 +116,47 @@
       <div class="flex-1 text-left">
         <ul>
           <li class="inline-block align-middle">
-            <img class="main-logo ml-12 sm:ml-0" src="assets/images/tapit-logo.png" style="width: 70px;" alt="tapit logo"/>
+            <img class="main-logo ml-12 sm:ml-0" src="assets/images/tapit-logo.png" style="width: 70px;"
+              alt="tapit logo" />
+          </li>
+
+          <li *ngIf="user" class="hidden md:inline-block align-middle ml-8">
+            <a href="/app/gana-puntos"
+              class="font-bold text-sm uppercase text-neutral-700 inline-block mr-6 align-middle focus:outline-none">
+              <img class="inline-block align-middle cuppon-icon" src="assets/images/Union.png" alt="">
+              <span class="inline-block align-middle ml-1"> Gana Puntos</span></a>
+          </li>
+          <li *ngIf="user" class="hidden md:inline-block align-middle ml-8">
+            <a href="/app/como-redimir"
+              class="font-bold text-sm uppercase text-neutral-700 inline-block mr-6 align-middle focus:outline-none">
+              <img class="inline-block align-middle cuppon-icon" src="assets/images/beer-icon-orange.png" alt="">
+              <span class="inline-block align-middle ml-1">¿Cómo Redimir?</span></a>
           </li>
           <li *ngIf="user" class="hidden md:inline-block align-middle ml-8">
             <a [href]="marketUrl"
               class="font-bold text-sm uppercase text-neutral-700 inline-block mr-6 align-middle focus:outline-none"><i
-              class="uil uil-store text-base inline-block align-middle leading-none"></i> <span
-              class="inline-block align-middle">Market</span></a>
+                class="uil uil-store text-base inline-block align-middle leading-none"></i> <span
+                class="inline-block align-middle ml-1">Redimir Puntos</span></a>
           </li>
           <li *ngIf="user" class="hidden md:inline-block align-middle">
             <a href="/app/wallet"
-               class="font-bold text-sm uppercase text-neutral-700 inline-block mr-6 align-middle focus:outline-none">
-               <img class="inline-block align-middle cuppon-icon" src="assets/images/ticket.png" alt="">
-              <span
-              class="inline-block align-middle ml-2">Cuponera</span>
-              </a>
+              class="font-bold text-sm uppercase text-neutral-700 inline-block mr-6 align-middle focus:outline-none">
+              <img class="inline-block align-middle cuppon-icon" src="assets/images/ticket.png" alt="">
+              <span class="inline-block align-middle ml-1">Cuponera</span>
+            </a>
           </li>
           <li *ngIf="user && showMicrogifting" class="hidden sm:inline-block align-middle">
             <a class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none"
               href="{{marketUrl}}/comprar-regalo">
-              <img class="text-base inline-block align-middle leading-none mr-1" src="assets/images/red-heart.png" style="max-width: 15px;" alt="red heart">
+              <img class="text-base inline-block align-middle leading-none mr-1" src="assets/images/red-heart.png"
+                style="max-width: 15px;" alt="red heart">
               <span class="inline-block align-middle">RESCATE POKER ROJA</span>
             </a>
           </li>
           <li *ngIf="user" class="hidden align-middle">
-            <a
-              class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none app-link"
+            <a class="font-bold text-sm uppercase text-neutral-700 inline-block mr-10 align-middle focus:outline-none app-link"
               routerLink="/user/codes" routerLinkActive="active"><i
-              class="uil uil-ticket text-base inline-block align-middle leading-none" queryParamsHandling="merge"></i>
+                class="uil uil-ticket text-base inline-block align-middle leading-none" queryParamsHandling="merge"></i>
               <span class="inline-block align-middle">Mis Códigos</span></a>
           </li>
         </ul>
@@ -151,7 +194,8 @@
               (click)="ssoOpen()">INICIA SESIÓN</button>
           </li>
           <li class="float-right">
-            <button class="app-button md:inline-block hidden border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer mx-2 uppercase hover:bg-primary-300 hover:border-primary-300"
+            <button
+              class="app-button md:inline-block hidden border-2 border-primary-500 bg-primary-500 text-white text-center p-3 py-2 text-sm cursor-pointer mx-2 uppercase hover:bg-primary-300 hover:border-primary-300"
               (click)="ssoOpen()">REGÍSTRATE</button>
           </li>
         </ul>

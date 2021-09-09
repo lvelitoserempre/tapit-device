@@ -4,6 +4,17 @@
         width: 76px;
     }
 }
+
+.cuppon-icon {
+    @media (max-width: 768px) {
+       filter: grayscale(1);
+       margin-left: .2rem;
+    }
+}
+
+.borbot {
+    border-bottom: 1px solid lightgrey;
+}
 #menuToggle {
     font-size: 16px;
     height: 0;
@@ -79,3 +90,39 @@ header {
         width: auto;
     }
 }
+
+.containerInfo {
+
+ 
+        background: #FAFAFA ;
+        border-top: 1px solid lightgrey ;
+        border-bottom: 1px solid lightgrey;
+        display: flex;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        
+        &__ul {
+            
+            max-width: 970px;
+            margin: 0 auto;
+            width: 80%;
+            display: flex;
+        }
+
+        .pointLabel {
+            background: #FF5005;
+            padding: 5px;
+            border-radius: 6px;
+            color: #FFFFFF;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            font-size: 12px;
+        }
+
+        .infoLabel {
+            font-size: 14px;
+            line-height: 24px;
+        }
+    
+} 

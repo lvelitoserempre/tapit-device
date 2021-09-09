@@ -13,6 +13,11 @@ import localeEs from '@angular/common/locales/es-CO';
 import {registerLocaleData} from '@angular/common';
 import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
 import { WalletModule } from './wallet/wallet.module';
+import { GanaPuntosModule } from './gana-puntos/gana-puntos.module';
+import { ComerciosAliadosModule } from './gana-puntos/comercios-aliados/comercios-aliados.module';
+import { ActualizarCedulaModule } from './gana-puntos/actualizar-cedula/actualizar-cedula.module';
+import { ComoRedimirModule } from './gana-puntos/como-redimir/como-redimir.module'
+import { EscaneaYaModule } from './gana-puntos/escanea-ya/escanea-ya.module';
 import { CookieModule } from 'ngx-cookie';
 import { AuthInterceptor } from './auth.interceptor';
 import { AngularFireModule } from '@angular/fire';
@@ -37,6 +42,11 @@ registerLocaleData(localeEs, 'es-CO');
     SlickCarouselModule,
     AngularFireModule.initializeApp(environment.firebase.config),
     WalletModule,
+    GanaPuntosModule,
+    ComerciosAliadosModule,
+    ActualizarCedulaModule,
+    ComoRedimirModule,
+    EscaneaYaModule,
     CookieModule.forRoot(),
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.threeBounce,

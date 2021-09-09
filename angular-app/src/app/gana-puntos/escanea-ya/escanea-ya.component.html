@@ -1,0 +1,68 @@
+<div class="bg-white escanea relative">
+    <div class="escanea--tab">
+        <div class="container mx-auto bg-gray-100 pr-3 pl-3 flex items-center">
+        </div>
+    </div>
+    <div class="container mx-auto">
+        <h2 class="w-full text-bg text-left pb-3 t-4 w-auto escanea--title"> <span
+                class="w-full text-bg text-left pb-3 t-4 w-auto c-orange"> <a class="goBackBtn"
+                    href="javascript: history.go(-1)">&lsaquo;</a> Escaneando </span>tapas</h2>
+        <h2 class="w-full text-bg text-left pb-3 t-4 w-auto escanea--subtitle c-gray">Tenemos códigos QR en las cervezas
+            Aguila y Club Colombia y también en nuestros productos exclusivos en tiendas o supermercados, hasta <span
+                class="c-orange">15 puntos</span> por cada tapa. ¡Para que todas tus cervezas sumen!</h2>
+
+        <div class="container mx-auto cards">
+
+            <!-- mini cards -->
+            <div class="minicardsContainer pb-3 t-4 w-full text-bg text-left pb-3 t-4 w-auto">
+                <!-- minicard 1 -->
+                <div class="minicard">
+                    <div class="minicard--image">
+                        <img src="https://bavariaco.vteximg.com.br/arquivos/Imageacepta-permisos.png" alt="">
+                    </div>
+                    <div class="minicard--text">
+                        <h2 class=""> <span class="c-orange">Acepta permisos </span></h2>
+                        <p class="parrminiCard c-black">Habilita los permisos de tu cel para poder usar tu cámara</p>
+                    </div>
+                </div>
+
+                <!-- minicard 2 -->
+                <div class="minicard">
+                    <div class="minicard--image">
+                        <img src="https://bavariaco.vteximg.com.br/arquivos/Imageescanea-tapas.png" alt="">
+                    </div>
+                    <div class="minicard--text">
+                        <h2 class=""> <span class="c-orange">Escanea tapas </span></h2>
+                        <p class="parrminiCard c-black">Escanea los códigos QR debajo de nuestras tapas.</p>
+                        <p class="parrminiCardTiny c-black">Puedes escanear hasta <strong>30 tapas</strong> al mes</p>
+                    </div>
+                </div>
+
+                <!-- minicard 3 -->
+
+                <div class="minicard">
+                    <div class="minicard--image">
+                        <img src="https://bavariaco.vteximg.com.br/arquivos/Imageusar-puntos.png" alt="">
+                    </div>
+                    <div class="minicard--text">
+                        <h2 class=""> <span class="c-orange">Usa tus puntos</span>
+                        </h2>
+                        <p class="parrminiCard c-black">Usa tus puntos en nuestra tienda o  <strong> <a href="https://www.google.com/maps/d/u/0/embed?mid=1dVJQqjVUtRFz27yRhmYaS4zer-raroo-&ll=5.026375290065464%2C-73.86987775454514&z=8" target="_blank" class="c-orange">comercios aliados</a> </strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card pb-3 t-4 w-full text-bg text-left pb-3 t-4 w-auto">
+                <a href="https://play.google.com/store/apps/details?id=com.abinbev.tapit" target="_blank"
+                    class="escaneBtn">¡ESCANEA YA!</a>
+            </div>
+
+
+
+        </div>
+        <div class="w-full">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
