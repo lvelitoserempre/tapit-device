@@ -4,13 +4,22 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { VerifyIdentityService } from './services/verify-identity.service';
 import { AuthService } from '../services/auth/auth.service';
 
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+import auth = firebase.auth;
+import User = firebase.User;
+import firestore = firebase.firestore;
+import { UserDAO } from '../user/user-dao.service';
+import { CookieService } from 'ngx-cookie';
+
 @Component({
   selector: 'app-verify-identity',
   templateUrl: './verify-identity.component.html',
   styleUrls: ['./verify-identity.component.scss']
 })
-export class VerifyIdentityComponent implements OnDestroy {
-  
+export class VerifyIdentityComponent {
+
   closeResult: string;
   @ViewChild('verifyIdentity', { read: TemplateRef }) private verifyIdentity: TemplateRef<any>;
 
@@ -51,19 +60,11 @@ export class VerifyIdentityComponent implements OnDestroy {
 
   constructor(
     private modalService: NgbModal,
-    private _verifyDocument: VerifyIdentityService,
-    private _authService: AuthService
+    private verifyIdentityService: VerifyIdentityService,
+    private _authService: AuthService,
+    private cookieService: CookieService
   ) {
     this.loadData();
-   
-    this.subscriptionUserAuth();
-    this.subscriptionTokenAuth();
-  }
-
-  ngOnDestroy(): void {
-    this._authService.user$.unsubscribe();
-    this._authService.token$.unsubscribe();
-    this.flagOpenModal = false;
   }
 
   changeIdentity(evt: any) {
@@ -72,29 +73,18 @@ export class VerifyIdentityComponent implements OnDestroy {
     }
   }
 
-  // Subscription to user auth
-  subscriptionUserAuth(): void {    
-   
-    this._authService.user$.subscribe((user: any) => {      
-      if (user && window.localStorage.getItem('sms-step') == 'phone-verified') {       
-        if ((!user.identity) && (user.identityType === 'NO-ID') && !this.flagOpenModal ) {         
-          this.flagOpenModal = true;
-          setTimeout(() => {
-            this.openModal(this.verifyIdentity);
-          }, 500);
-        }
+  openVerifyIdentity(user_id: string) {
+    this._authService.getFireStoreUserDocument(user_id)
+    .then(userDocument => {
+      const userData = UserDAO.snapshotToUser(userDocument)
+      if ((!userData.identity) && (userData.identityType === 'NO-ID')) {
+        this.openModal(this.verifyIdentity)
       }
-    });
-  }
-
-  subscriptionTokenAuth() {
-    this._authService.token$.subscribe(token => {
-      this.token = token;
-    });
+    })
+    .catch(error => console.error(error))
   }
 
   openModal(content: any) {
-
     const modalConfig = {
       ariaLabelledBy: 'modal-basic-title',
       ignoreBackdropClick: true,
@@ -124,8 +114,9 @@ export class VerifyIdentityComponent implements OnDestroy {
 
   // This method is responsible for calling the service to update a user data
   updateDataUser() {
-    if (this.formDataUser.valid) {  
-      this._verifyDocument.updateDocument(this.formDataUser.value, this.token).subscribe(res => {
+    if (this.formDataUser.valid) {
+      this.verifyIdentityService.updateDocument(this.formDataUser.value, this.token)
+      .subscribe(() => {
         this.isValidate = true;
         this.textError = null;
         this.closeModal();
@@ -155,6 +146,7 @@ export class VerifyIdentityComponent implements OnDestroy {
         Validators.required
       ])
     }, { validators: this.verifyDocument });
+    this.token = this.cookieService.get('frbtkn');
     this.clearData();
   }
 
@@ -165,7 +157,7 @@ export class VerifyIdentityComponent implements OnDestroy {
     return (document.value !== confirm_document.value) ? { verifyDocument: true } : null;
   };
 
-  // Clear form data 
+  // Clear form data
   clearData(): void {
     this.formDataUser.reset();
     this.formDataUser.setValue({

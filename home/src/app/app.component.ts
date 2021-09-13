@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ScriptService } from './services/script.service';
 import { environment } from '../environments/environment';
 import { PLATFORM_ID } from '@angular/core';
@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie-universal';
 import { AuthService } from './services/auth/auth.service';
 import { DrupalService } from './services/drupal.service';
 import { ActivatedRoute } from '@angular/router';
+import { VerifyIdentityComponent } from './verify-identity/verify-identity.component';
 
 declare var setupGTM: any;
 declare var ga: any;
@@ -20,6 +21,7 @@ declare var ga: any;
 export class AppComponent implements OnInit {
   isOnWebView = false;
   @ViewChild('ageGate') private ageGate: AgeGateComponent;
+  @ViewChild('verifyIdentity') private verifyIdentity: VerifyIdentityComponent;
 
   constructor(
     private scriptService: ScriptService,
@@ -31,8 +33,8 @@ export class AppComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.ngxService.start();
-    this.loadSSOScript();
     if (isPlatformBrowser(this.platformId)) {
+      this.loadSSOScript();
       this.setUpStats();
     }
   }
@@ -49,6 +51,7 @@ export class AppComponent implements OnInit {
           this._authService.setCurrentSessionData(firestoreUser)
           .then(()=> {
             this.drupalService.checkDrupalCTA();
+            this.verifyIdentity.openVerifyIdentity(firestoreUser.uid);
           }).catch(error => console.error(error));
         })
       };
@@ -59,8 +62,10 @@ export class AppComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       if (!this.cookies.get('anonymousUserBirthDate')) {
         this.ageGate.openAgeGate();
-      } else {
-        //this._authService.getUser();
+      }
+      if (this.cookies.get('loggedUser')) {
+        const userData = JSON.parse(this.cookies.get('loggedUser'))
+        this.verifyIdentity.openVerifyIdentity(userData.id)
       }
     }
   }
@@ -109,6 +114,7 @@ export class AppComponent implements OnInit {
     ga('create', environment.googleAnalyticsId, 'auto');
   }
 
+  /* DEPRECATED */
   showVerifyIdentity(evt: boolean) {
     //this._authService.getUser();
   }

@@ -1,8 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, of, ReplaySubject, Subject } from 'rxjs';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -31,8 +28,6 @@ export class AuthService {
   token$ = new EventEmitter;
 
   constructor(
-    private _angularFireAuth: AngularFireAuth,
-    private _angularFirestore: AngularFirestore,
     private httpClient: HttpClient,
     private cookieService: CookieService
     ) {}
@@ -70,7 +65,7 @@ export class AuthService {
       }).catch(error => console.log(error));
     }
 
-    getFireStoreUserDocument(userId: string) {
+    getFireStoreUserDocument(userId: string): Promise<any> {
       return firestore().collection(environment.firebase.collections.userAccount)
       .doc(userId)
       .get()
@@ -79,7 +74,6 @@ export class AuthService {
     async setCurrentUser(user: UserAccount) {
       await this.addIdToken(user);
       this.saveUserToACookie(user);
-
       return user;
     }
 
@@ -119,7 +113,6 @@ export class AuthService {
     }
 
     loginUserByCustomToken (token:string) {
-      //alert(token);
       auth().signInWithCustomToken(token)
       .then(userCredential=> {        
         userCredential.user.getIdToken()
