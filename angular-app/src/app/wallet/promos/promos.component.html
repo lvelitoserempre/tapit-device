@@ -2,13 +2,20 @@
   <div class="flex mt-5 md:mt-10 mb-2 pr-5 pl-5 md:pr-3 md:pl-3">
     <div class="md:w-1/5"></div>
     <div class="md:w-4/5 hidden md:block">
-      <p class="text-xl font-bold leading-none mb-2">
-        Abre ésta sección desde tu app para canjear tu Cupón en tu tienda más cercana, <span
+      <p class="text-xl font-bold leading-8 mb-2">
+        Abre ésta sección desde tu app para canjear tu Promo en tu tienda más cercana, <span
           class="text-primary-500">muestra el código QR al tendero y disfruta tu pola.</span></p>
     </div>
   </div>
 
-  <div class="flex">
+  <div *ngIf="noPromos" class="w-1/4 m-auto pt-16 pb-16 flex flex-col justify-center items-center text-center">
+    <div class="bg-primary-100 p-6 inline-block border rounded-full">
+      <img src="assets/images/no-coupon.svg" alt="cupon image">
+    </div>
+    <p class="text-neutral-600 bold pt-4">¡Ups! no tenemos promociones disponibles por el momento.</p>
+  </div>
+
+  <div *ngIf="!noPromos" class="flex">
     <div class="hidden md:block md:w-1/5 pr-6">
       <div class="mt-16">
         <p class="text-xs px-3 border-neutral-500 border-b-2 pb-1">FILTRAR POR:</p>

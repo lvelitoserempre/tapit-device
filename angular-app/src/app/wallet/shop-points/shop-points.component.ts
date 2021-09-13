@@ -15,6 +15,7 @@ export class ShopPointsComponent implements OnInit, OnDestroy {
   totalPages: number;
   productPage: number = 1;
   actualPage: number;
+  noProducts: boolean = false;
 
   constructor(private productService: ShopsService, private loadingService: LoadingService) { 
   }
@@ -40,9 +41,11 @@ export class ShopPointsComponent implements OnInit, OnDestroy {
       this.products = response.data;
       this.totalPages = response.pager_total;
       this.actualPage = parseInt(response.page);
+      this.noProducts = false;
       this.loadingService.hide();
     }, err => {
       this.loadingService.hide();
+      this.noProducts = true;
       console.log(err);
     })
   }

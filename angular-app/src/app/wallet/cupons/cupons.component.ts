@@ -20,6 +20,7 @@ export class CuponsComponent {
   totalPages: number;
   actualPage: number;
   couponsPage: number = 0;
+  noCoupons: boolean = false;
    
 
   constructor(
@@ -61,13 +62,8 @@ export class CuponsComponent {
           }
           this.promoteds.push(elToPush);
         } else {
-          // let d = new Date(0).setUTCSeconds(e.deactivatedAt);
-          let d = new Date(e.deactivatedAt);
-          let dateNow = new Date(d);
-          let day = dateNow.getUTCDate();
-          let month = dateNow.getUTCMonth() + 1;
-          let year = dateNow.getUTCFullYear();
-          let dateToShow = ('0'+day).slice(-2)+'/'+('0'+month).slice(-2)+'/'+year;
+          let date = new Date(e.deactivatedAt * 1000);
+          let dateToShow = moment(date).format('DD/MM/YY');
           let elToPush = {
             'brand': e.tapitCouponDrupal || '',
             'date': dateToShow,
@@ -76,9 +72,11 @@ export class CuponsComponent {
           this.consumeds.push(elToPush);
         }
       })
+      this.noCoupons = false;
       this.loadingService.hide();
     }, err => {
       this.loadingService.hide();
+      this.noCoupons = true;
       console.error(err);
     });
   }

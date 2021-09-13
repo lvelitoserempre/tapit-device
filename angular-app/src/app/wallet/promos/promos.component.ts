@@ -13,6 +13,7 @@ export class PromosComponent implements OnInit, OnDestroy {
   promosSubscription: Subscription;
   promoPage: number = 1;
   actualPage: number;
+  noPromos: boolean = false;
 
   constructor(
     private promoService: PromosService,
@@ -38,12 +39,14 @@ export class PromosComponent implements OnInit, OnDestroy {
     this.loadingService.show();
     this.promosSubscription = this.promoService.getPromos(this.promoPage).subscribe((res: any) => {
       let response = res;
+      this.noPromos = false;
       this.promos = response.data;
       this.totalPages = response.pager_total;
       this.actualPage = parseInt(response.page)
       this.loadingService.hide();
     }, err => {
       this.loadingService.hide();
+      this.noPromos = true;
       console.log(err);
     })
 
