@@ -41,7 +41,13 @@ export class ShopPointsComponent implements OnInit, OnDestroy {
       this.products = response.data;
       this.totalPages = response.pager_total;
       this.actualPage = parseInt(response.page);
-      this.noProducts = false;
+      
+      if(response.length === 0){
+        this.noProducts = true;
+      } else {
+        this.noProducts = false;
+      }
+
       this.loadingService.hide();
     }, err => {
       this.loadingService.hide();

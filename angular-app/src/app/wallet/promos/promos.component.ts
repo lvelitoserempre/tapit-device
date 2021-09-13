@@ -39,7 +39,13 @@ export class PromosComponent implements OnInit, OnDestroy {
     this.loadingService.show();
     this.promosSubscription = this.promoService.getPromos(this.promoPage).subscribe((res: any) => {
       let response = res;
-      this.noPromos = false;
+      
+      if(response.length === 0){
+        this.noPromos = true;
+      } else {
+        this.noPromos = false;
+      }
+
       this.promos = response.data;
       this.totalPages = response.pager_total;
       this.actualPage = parseInt(response.page)

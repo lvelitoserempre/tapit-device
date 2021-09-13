@@ -61,6 +61,16 @@ export class CuponsComponent {
             'date': deactivationDate
           }
           this.promoteds.push(elToPush);
+        } else if(e.status === 'Redeemed') {
+          let date = new Date(e.redeemedAt * 1000);
+          let deactivationDate = moment(date).format('DD/MM/YY');
+
+          let elToPush = {
+            'brand': e.tapitCouponDrupal || '',
+            'date': deactivationDate,
+            'status': e.status
+          }
+          this.consumeds.push(elToPush);
         } else {
           let date = new Date(e.deactivatedAt * 1000);
           let dateToShow = moment(date).format('DD/MM/YY');
@@ -72,7 +82,13 @@ export class CuponsComponent {
           this.consumeds.push(elToPush);
         }
       })
-      this.noCoupons = false;
+
+      if(response.length === 0){
+        this.noCoupons = true;
+      } else {
+        this.noCoupons = false;
+      }
+
       this.loadingService.hide();
     }, err => {
       this.loadingService.hide();

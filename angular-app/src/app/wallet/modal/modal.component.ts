@@ -64,6 +64,7 @@ export class ModalComponent implements OnInit, OnChanges {
       this.showActiveSuccess = false;
       this.cameFromList = false;
       this.errorMessage = false;
+      this.checkCollection = setInterval(this.listenFirebase, 1000);
 
       let date = new Date(this.item[0].expiration * 1000);
       this.promoExpirationDate = moment(date).format('DD/MMM/YY');
@@ -118,12 +119,14 @@ export class ModalComponent implements OnInit, OnChanges {
       let response = res;
 
       this.activePromoItem = response;
+      this.qrcode = this.activePromoItem.code;
       this.couponId = this.activePromoItem.id_coupon;
       this.showActiveCouppon = true;
       this.isLoading = false;
     }, err => {
       this.errorMessage = true;
       this.isLoading = false;
+      console.error(err)
     });
   }
 
@@ -143,6 +146,7 @@ export class ModalComponent implements OnInit, OnChanges {
       }, err => {
         this.errorMessage = true;
         this.isLoading = false;
+        console.error(err);
       })
       return tkn
     });

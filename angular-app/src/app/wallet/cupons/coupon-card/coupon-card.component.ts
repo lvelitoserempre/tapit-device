@@ -14,11 +14,11 @@ export class CouponCardComponent implements OnInit {
   @Input() status: string;
   public currentStatus: string
   
-  constructor() {
-    this.checkStatus();
-  }
+  constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.checkStatus();
+   }
 
   checkStatus(){
     if(this.status === 'Deactivated'){
