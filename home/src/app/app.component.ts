@@ -42,12 +42,12 @@ export class AppComponent implements OnInit {
     .then( () => {
       // @ts-ignore
       window.configTapitSso = () => {
+        this.openSso();
         ssoApp.onFlowCompleted().subscribe((response: any) => {
           this.ngxService.start();
           const firestoreUser = response.userCredential.user;
           this._authService.setCurrentSessionData(firestoreUser)
           .then(()=> {
-            this.openSso();
             this.drupalService.checkDrupalCTA();
           }).catch(error => console.error(error));
         })
