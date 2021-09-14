@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { WalletComponent } from './wallet.component';
 import { PromosComponent } from './promos/promos.component';
 import { CuponsComponent } from './cupons/cupons.component';
+import { PocMapComponent } from './poc-map/poc-map.component';
 import { ShopPointsComponent } from './shop-points/shop-points.component';
 import { PromoCardComponent } from './promos/promo-card/promo-card.component';
 import { CouponCardComponent } from './cupons/coupon-card/coupon-card.component';
@@ -13,6 +14,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ModalComponent } from './modal/modal.component';
 import { ShopCardComponent } from './shop-points/shop-card/shop-card.component';
 import { PocDetailComponent } from './poc-detail/poc-detail.component';
+import { GoogleMapsModule } from '@angular/google-maps'
 
 const routes: Routes = [
   {
@@ -31,6 +33,10 @@ const routes: Routes = [
         path: 'coupons',
         component: CuponsComponent
       },
+      {
+        path: 'map',
+        component: PocMapComponent
+      },
       { path: '', redirectTo: 'promos', pathMatch: 'full' },
       { path: '**', redirectTo: 'promos', pathMatch: 'full' }
     ]
@@ -38,9 +44,9 @@ const routes: Routes = [
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 @NgModule({
-  declarations: [WalletComponent, PromosComponent, CuponsComponent, ShopPointsComponent, PromoCardComponent, ModalWindowComponent, CouponCardComponent, CouponCardPromotedComponent, ShopCardComponent, ModalComponent, PocDetailComponent],
+  declarations: [WalletComponent, PromosComponent, CuponsComponent, ShopPointsComponent, PocMapComponent, PromoCardComponent, ModalWindowComponent, CouponCardComponent, CouponCardPromotedComponent, ShopCardComponent, ModalComponent, PocDetailComponent],
   imports: [
-    CommonModule, InfiniteScrollModule, RouterModule.forChild(routes)
+    CommonModule, InfiniteScrollModule, RouterModule.forChild(routes), GoogleMapsModule
   ]
 })
 export class WalletModule { }

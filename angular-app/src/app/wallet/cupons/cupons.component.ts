@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { CuponsService } from './cupons.service';
 import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
+import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import 'moment/locale/es';
+import { CouponCardPromotedComponent } from './coupon-card-promoted/coupon-card-promoted.component';
 
 @Component({
   selector: 'app-cupons',
   templateUrl: './cupons.component.html',
   styleUrls: ['./cupons.component.scss']
 })
-export class CuponsComponent {
+export class CuponsComponent implements OnInit, AfterViewInit {
+  @ViewChildren(CouponCardPromotedComponent) cards: QueryList<CouponCardPromotedComponent>
   public promoteds = [];
   public consumeds = [];
   public token;
@@ -20,15 +23,35 @@ export class CuponsComponent {
   totalPages: number;
   actualPage: number;
   couponsPage: number = 0;
+  idToCompare: string;
   noCoupons: boolean = false;
    
 
   constructor(
     private couponService: CuponsService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private route: ActivatedRoute
   ) {
     this.loadingService.show();
+  }
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if(params['id']){
+        this.idToCompare = params.id;
+      }
+    });
     this.loadCoupons();
+  }
+
+  ngAfterViewInit(): void {
+    this.cards.changes.subscribe(cards => {
+      cards.forEach(element => {
+        if(element.couponId == this.idToCompare) {
+          element.openModal('couppon');
+        }
+      });
+    });
   }
 
   reloadItems() {

@@ -1,23 +1,26 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
 import { ShopsService } from './shops.service'
 import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service'
+import { ActivatedRoute } from '@angular/router';
+import { ShopCardComponent } from './shop-card/shop-card.component';
 
 @Component({
   selector: 'app-shop-points',
   templateUrl: './shop-points.component.html',
   styleUrls: ['./shop-points.component.scss']
 })
-export class ShopPointsComponent implements OnInit, OnDestroy {
-
+export class ShopPointsComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChildren(ShopCardComponent) cards: QueryList<ShopCardComponent>
   products: any[];
   productSubscription: Subscription;
   totalPages: number;
   productPage: number = 1;
   actualPage: number;
+  idToCompare: string;
   noProducts: boolean = false;
 
-  constructor(private productService: ShopsService, private loadingService: LoadingService) { 
+  constructor(private productService: ShopsService, private loadingService: LoadingService, private route: ActivatedRoute) { 
   }
 
   onScroll(){
@@ -54,10 +57,26 @@ export class ShopPointsComponent implements OnInit, OnDestroy {
       this.noProducts = true;
       console.log(err);
     })
+
+    this.route.queryParams.subscribe(params => {
+      if(params['id']){
+        this.idToCompare = params.id;
+      }
+    });
   }
 
   ngOnDestroy(): void {
     this.productSubscription.unsubscribe();
+  }
+
+  ngAfterViewInit(): void {
+    this.cards.changes.subscribe(cards => {
+      cards.forEach(element => {
+        if(element.id == this.idToCompare) {
+          element.openModal('promo');
+        }
+      });
+    });
   }
 
 

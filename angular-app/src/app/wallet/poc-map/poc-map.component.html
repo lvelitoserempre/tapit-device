@@ -1,0 +1,76 @@
+<div class="g-map">
+  <!-- <div class="g-map--header hidden lg:block">
+    <h2 class="text-md font-bold">
+      Descubre bares y restaurante
+      <span class="text-primary-500">
+        cerca a tí
+      </span>
+    </h2>
+    <p class="text-xs text-neutral-700">
+      Encuentra los mejores establecimientos para ganar puntos
+    </p>
+  </div> -->
+  <div class="g-map--body">
+    <div class="g-map--body__left active">
+      <button class="uppercase my-2 mx-2 rounded-full bg-primary-500 text-neutral-100 w-1/4 text-center p-2 text-xs font-bold tracking-wider border-2" (click)="goBack()">Regresar</button>
+      <!-- <div class="pointer-events-auto w-full hidden lg:inline-flex flex-shrink-0 px-10 py-4">
+        <button class="rounded-full bg-secondary-500 text-neutral-100  inline-flex flex-1 justify-between items-center py-2 px-4 text-sm">
+          <span>¿Qué quieres hacer hoy?</span>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.7 0H3.3C2.42479 0 1.58542 0.347678 0.966548 0.966547C0.347678 1.58542 1.98966e-07 2.42478 1.98966e-07 3.3V4.587C-0.000157528 5.04124 0.093463 5.49061 0.275 5.907V5.973C0.430408 6.32607 0.650532 6.64692 0.924 6.919L7.7 13.651V20.9C7.69963 21.0869 7.7469 21.2709 7.83736 21.4345C7.92782 21.5981 8.05848 21.7359 8.217 21.835C8.39206 21.9435 8.59405 22.0007 8.8 22C8.9722 21.999 9.14175 21.9575 9.295 21.879L13.695 19.679C13.8764 19.5876 14.029 19.4477 14.1357 19.2749C14.2425 19.1021 14.2994 18.9031 14.3 18.7V13.651L21.032 6.919C21.3055 6.64692 21.5256 6.32607 21.681 5.973V5.907C21.8777 5.49387 21.9863 5.04436 22 4.587V3.3C22 2.42478 21.6523 1.58542 21.0335 0.966547C20.4146 0.347678 19.5752 0 18.7 0ZM12.419 12.419C12.3171 12.5218 12.2364 12.6437 12.1817 12.7777C12.1269 12.9117 12.0992 13.0552 12.1 13.2V18.018L9.9 19.118V13.2C9.90084 13.0552 9.87309 12.9117 9.81835 12.7777C9.76361 12.6437 9.68295 12.5218 9.581 12.419L3.751 6.6H18.249L12.419 12.419ZM19.8 4.4H2.2V3.3C2.2 3.00826 2.31589 2.72847 2.52218 2.52218C2.72847 2.31589 3.00826 2.2 3.3 2.2H18.7C18.9917 2.2 19.2715 2.31589 19.4778 2.52218C19.6841 2.72847 19.8 3.00826 19.8 3.3V4.4Z" fill="currentColor"></path>
+          </svg>
+        </button>
+      </div> -->
+      <div class="g-map--body__items flex flex-col px-0 md:px-4 lg:px-4 md:py-4 py-0 flex-1 pointer-events-auto">
+        <div class="pt-0 pb-2 g-map--body__slider" [style]="itemNumber">
+          <div class="item-map px-1 mx-2 py-1 md:w-11/12 md:mx-auto {{marker.status}}" *ngFor="let marker of markers;  let i = index">
+            <div class="item-map--img">
+              <img [src]="marker.image" [alt]="marker.title" class="w-full h-full object-cover">
+            </div>
+            <div class="item-map--cont px-3">
+              <div class="flex justify-between py-2">
+                <p class="text-xs text-primary-500 btn-tag py-0.5 px-2">{{ marker.tag }}</p>
+                <p class="font-bold flex km-text"><img class="mr-2 md:text-sm" src="../../assets/images/pin-orange.svg" /> 2,1 km</p>
+              </div>
+              <div class="my-2 flex justify-between items-center">
+                <div>
+                  <h3 class="font-bold text-base">{{marker.title}}</h3>
+                  <p class="text-xs">{{marker.info}}</p>
+                </div>
+                <svg class="text-primary-500 block md:hide" (click)="sliderMove(i)" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16.0659 12.2308L11.4725 7.63747C11.3718 7.53593 11.252 7.45533 11.12 7.40033C10.988 7.34533 10.8464 7.31702 10.7034 7.31702C10.5604 7.31702 10.4188 7.34533 10.2867 7.40033C10.1547 7.45533 10.0349 7.53593 9.9342 7.63746C9.73242 7.84044 9.61917 8.11501 9.61917 8.40121C9.61917 8.68742 9.73242 8.96199 9.9342 9.16496L13.7692 13L9.93419 16.835C9.73242 17.0379 9.61917 17.3125 9.61917 17.5987C9.61917 17.8849 9.73242 18.1595 9.93419 18.3625C10.0354 18.4629 10.1555 18.5423 10.2875 18.5962C10.4195 18.6501 10.5608 18.6775 10.7034 18.6766C10.8459 18.6775 10.9873 18.6501 11.1193 18.5962C11.2513 18.5423 11.3713 18.4629 11.4725 18.3625L16.0659 13.7691C16.1674 13.6684 16.248 13.5486 16.303 13.4166C16.358 13.2846 16.3863 13.143 16.3863 13C16.3863 12.857 16.358 12.7154 16.303 12.5833C16.248 12.4513 16.1674 12.3315 16.0659 12.2308Z" fill="currentColor"></path>
+                </svg>
+              </div>
+              
+              
+              <hr class="w-full my-1 border-neutral-300">
+              <button class="uppercase my-2 rounded-full bg-primary-500 text-neutral-100 w-full text-center p-2 text-xs font-bold tracking-wider border-2">MÁS INFORMACIÓN</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="g-map--body__right">
+      <google-map style="width: 100%; height: 100%" [zoom]="zoom"
+      [center]="center"
+      [options]="options"
+      (boundsChanged)="getCenter()">
+        <map-marker
+          #markerElem="mapMarker"
+          *ngFor="let marker of markers; let i = index"
+          [position]="marker.position"
+          [label]="marker.label"
+          [title]="marker.title"
+          [options]="marker.options"
+          (mapClick)="sliderChange(i)"
+        >
+        </map-marker>
+      </google-map>
+      <!-- <button (click)="zoomIn()">Zoom in</button>
+      <button (click)="zoomOut()">Zoom out</button>  -->
+    </div>
+    <!-- <div class="g-map--body__footer lg:hidden">
+      <button class="uppercase mt-6 rounded-full bg-primary-500 text-neutral-100 w-full text-center p-3 text-xs font-bold tracking-wider border-2">¿QUÉ QUIERES HACER HOY?</button>
+    </div> -->
+  </div>
+</div>
