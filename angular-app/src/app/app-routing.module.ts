@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { RemoteConfigGuard } from './remote-config.guard';
 import { PocDetailComponent } from './wallet/poc-detail/poc-detail.component';
 
 
@@ -8,11 +9,12 @@ const routes: Routes = [
   {
     path: 'wallet',
     loadChildren: () => import('./wallet/wallet.module').then(m => m.WalletModule),
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, RemoteConfigGuard]
   },
   {
     path: 'poc/:id',
     component: PocDetailComponent,
+    canActivate: [AuthGuard, RemoteConfigGuard]
   },
   {
     path: 'gana-puntos',
@@ -52,7 +54,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'user/profile'
+    redirectTo: 'user/profile',
+    canActivate: [AuthGuard]
   }
 ];
 

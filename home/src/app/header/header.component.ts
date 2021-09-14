@@ -2,13 +2,10 @@ import {Component, OnDestroy} from '@angular/core';
 import {of} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {UserAccount} from '../user/user-account';
-import firebase from 'firebase/app';
-import 'firebase/remote-config';
-import remoteConfig = firebase.remoteConfig;
-import {AngularFireRemoteConfig} from '@angular/fire/remote-config';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { switchMap } from 'rxjs/operators';
+import { DataRepoService } from '../services/data-repo.service';
 
 
 @Component({
@@ -21,11 +18,13 @@ export class HeaderComponent implements OnDestroy {
   marketUrl = environment.marketUrl;
   showLoginButton = false;
   showMicrogifting = false;
+  total: any;
+  showCuponeraButton$: false;
 
   constructor(
-    private afs:AngularFireRemoteConfig,
     private angularFireAuth: AngularFireAuth,
-    private angularFirestore: AngularFirestore
+    private angularFirestore: AngularFirestore,
+    private dataRepoService: DataRepoService
   ) {
     this.angularFireAuth.user
     .pipe(switchMap(user => {
@@ -34,6 +33,10 @@ export class HeaderComponent implements OnDestroy {
     .subscribe(user => {
       this.user = user;
       this.showLoginButton = !this.user;
+    })
+    this.dataRepoService.getShowWallet()
+    .subscribe((data:  any) => {
+      this.showCuponeraButton$ = data.data;
     })
   }
 
@@ -52,7 +55,7 @@ export class HeaderComponent implements OnDestroy {
   ngOnDestroy(): void {
     //this.userSubscription.unsubscribe();
   }
-  
+
   ssoOpen():void {
     ssoApp.showApp();
   }

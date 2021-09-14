@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from './auth/auth.service';
 import {environment} from '../environments/environment';
-import {UserDAO} from './user/user-dao.service';
 import {CookiesService} from '../../../library/cookies.service';
 import firebase from 'firebase/app';
 import initializeApp = firebase.initializeApp;
+import { RemoteConfigService } from './services/remote-config.service';
 
 declare var setupGTM;
 declare var ga;
@@ -17,11 +17,13 @@ declare var fbq: any;
 })
 export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService, private userDAO: UserDAO) {
-  }
+  constructor(
+    private authService: AuthService,
+    private remoteConfigService: RemoteConfigService
+  ) { }
 
   ngOnInit(): void {
-    initializeApp(environment.firebase.config);
+    this.remoteConfigService.getValues();
     this.authService.setupLoggedUserObserver();
     this.redirectIfUserIsAChild();
     this.setUpStats()

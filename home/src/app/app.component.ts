@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { ScriptService } from './services/script.service';
 import { environment } from '../environments/environment';
 import { PLATFORM_ID } from '@angular/core';
@@ -10,6 +10,7 @@ import { AuthService } from './services/auth/auth.service';
 import { DrupalService } from './services/drupal.service';
 import { ActivatedRoute } from '@angular/router';
 import { VerifyIdentityComponent } from './verify-identity/verify-identity.component';
+import { RemoteConfigService } from './services/remote-config.service';
 
 declare var setupGTM: any;
 declare var ga: any;
@@ -30,7 +31,8 @@ export class AppComponent implements OnInit {
     private cookies: CookieService,
     private _authService: AuthService,
     private drupalService: DrupalService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private remoteConfigService: RemoteConfigService
   ) {
     this.ngxService.start();
     if (isPlatformBrowser(this.platformId)) {
@@ -63,7 +65,7 @@ export class AppComponent implements OnInit {
       if (!this.cookies.get('anonymousUserBirthDate')) {
         this.ageGate.openAgeGate();
       }
-      if (this.cookies.get('loggedUser')) {
+      if (this.cookies.get('__session')) {
         const userData = JSON.parse(this.cookies.get('loggedUser'))
         this.verifyIdentity.openVerifyIdentity(userData.id)
       }
@@ -71,6 +73,9 @@ export class AppComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
+    if (isPlatformBrowser(this.platformId)) {
+      this.remoteConfigService.getValues();
+    }
     const search = new URLSearchParams(window.location.search);
     const source = search.get('source');
     if (source) {
@@ -93,11 +98,8 @@ export class AppComponent implements OnInit {
   ngAfterViewInit() {
     if (!this.isOnWebView) {
       this.readCookies();
-    }
-    if (!this.isOnWebView) {
       this.scriptService.loadScript('optanon')
-      .then(function () {
-        function OptanonWrapper() {}
+      .then(() => {
       }, error => console.error(error));
     }
     this.ngxService.stopAll();
@@ -112,11 +114,6 @@ export class AppComponent implements OnInit {
       environment.googleTagManagerId
     );
     ga('create', environment.googleAnalyticsId, 'auto');
-  }
-
-  /* DEPRECATED */
-  showVerifyIdentity(evt: boolean) {
-    //this._authService.getUser();
   }
 
   openSso() {
