@@ -224,3 +224,13 @@
   width: 100%!important;
   height: 100%!important;
 }
+
+.controls {
+  left: 20px;
+  bottom: 20px;
+
+  .bg-white {
+    background: rgba(255,255,255);
+    color: rgb(107, 114, 128);
+  }
+}

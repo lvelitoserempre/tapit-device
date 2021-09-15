@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {AuthService} from './auth/auth.service';
 import {environment} from '../environments/environment';
 import {CookiesService} from '../../../library/cookies.service';
 import firebase from 'firebase/app';
 import initializeApp = firebase.initializeApp;
 import { RemoteConfigService } from './services/remote-config.service';
+import { DOCUMENT } from '@angular/common';
 
 declare var setupGTM;
 declare var ga;
@@ -19,7 +20,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private remoteConfigService: RemoteConfigService
+    private remoteConfigService: RemoteConfigService,
+    @Inject(DOCUMENT) private doc: any
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +29,7 @@ export class AppComponent implements OnInit {
     this.authService.setupLoggedUserObserver();
     this.redirectIfUserIsAChild();
     this.setUpStats()
+    this.setGTagManager();
   }
 
   /**
@@ -44,6 +47,14 @@ export class AppComponent implements OnInit {
           }
         }
       });
+  }
+
+  private setGTagManager() {
+    const s = this.doc.createElement('script');
+    s.type = 'text/javascript';
+    s.src = "https://maps.googleapis.com/maps/api/js?key="+environment.firebase.config.apiKey;
+    const head = this.doc.getElementsByTagName('body')[0];
+    head.appendChild(s);
   }
 
   private redirectUserToMarket() {

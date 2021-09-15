@@ -49,8 +49,8 @@ export class PocMapComponent implements OnInit {
     this.markers = [
       {
         position: {
-          lat: -12.040568,
-          lng: -76.9229726,
+          lat: 4.6533326,
+          lng: -74.083652,
         },
         info: 'Avenida Coayacán',
         title: 'La Chilanguita',
@@ -63,8 +63,8 @@ export class PocMapComponent implements OnInit {
       },
       {
         position: {
-          lat: -12.065568,
-          lng: -76.9229846,
+          lat: 4.674710056281398,
+          lng: -74.10891231091537,
         },
         info: 'Costa Verde S/N',
         title: 'Restaurant Cala',
@@ -77,8 +77,8 @@ export class PocMapComponent implements OnInit {
       },
       {
         position: {
-          lat: -12.032068,
-          lng: -76.9229726,
+          lat: 4.638609067175679,
+          lng: -74.08264859361135,
         },
         info: 'Avenida Grau 678, Miraflores',
         title: 'Las Brujas de Cachiche',
@@ -90,6 +90,11 @@ export class PocMapComponent implements OnInit {
         status: ''
       }
     ];
+
+    this.center = {
+      lat: 4.6533326,
+      lng: -74.083652,
+    };
 
     this.itemNumber = 'width: '+this.markers.length * 100+'vw; transform: translateX('+this.margin+');';
   }
@@ -152,5 +157,6 @@ export class PocMapComponent implements OnInit {
     this.markers.forEach((marker) => marker.status = '');
     this.markers[i].status = 'active';
     this.itemNumber = 'width: '+this.markers.length * 100+'vw; transform: translateX(-'+parseInt(i) * 100+'vw);';
+    this.center = this.markers[i].position;
   }
 }
