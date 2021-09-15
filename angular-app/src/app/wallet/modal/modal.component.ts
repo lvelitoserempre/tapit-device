@@ -141,18 +141,17 @@ export class ModalComponent implements OnInit, OnChanges {
     this.isLoading = true;
     this.showActiveWarning = false;
 
-    auth().currentUser.getIdToken().then(tkn => {
-      this.cuponService.deactivateCoupons(tkn,this.couponId).subscribe(res => {
-        this.showActiveWarning = false;
-        this.showActiveSuccess = true;
-        this.isLoading = false;
-      }, err => {
-        this.errorMessage = true;
-        this.isLoading = false;
-        console.error(err);
-      })
-      return tkn
-    });
+    this.cuponService.deactivateCoupons(this.couponId)
+    .subscribe(() => {
+      this.showActiveWarning = false;
+      this.showActiveSuccess = true;
+      this.isLoading = false;
+    }, err => {
+      this.errorMessage = true;
+      this.isLoading = false;
+      console.error(err);
+    })
+      
   }
 
   listenFirebase = () => {

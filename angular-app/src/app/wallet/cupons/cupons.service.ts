@@ -14,7 +14,7 @@ export class CuponsService {
     return this.http.post(`${environment.firebase.functions.url}${environment.firebase.functions.getCoupons}`, { pageLength: 10, pageNumber: `${pageNumber}` });
   }
 
-  deactivateCoupons(token:string ,id:string ): Observable<any> {
+  deactivateCoupons(id:string ): Observable<any> {
     return this.http.post(`${environment.firebase.functions.url}${environment.firebase.functions.deactivateCoupon}`, { couponId: id });
   }
 }

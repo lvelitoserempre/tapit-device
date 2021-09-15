@@ -27,6 +27,7 @@
     "p-tapit-prod": "cross-env ENV=TAPIT_PRODUCTION gulp build && cd home && ng deploy home --preview",
     "b-tw": "gulp build-tailwind",
     "d-tapit-dev": "cross-env ENV=TAPIT_DEV gulp build && cd home && ng deploy home-dev",
+    "b-angularapp-qa": "cross-env ENV=TAPIT_QA gulp build",
     "d-tapit-qa": "cross-env ENV=TAPIT_QA gulp build && cd home && ng deploy home-qa",
     "d-tapit-test": "cross-env ENV=TAPIT_TESTING gulp deploy-tapit",
     "d-tapit-prev": "cross-env ENV=TAPIT_PREVIEW gulp deploy-tapit",
