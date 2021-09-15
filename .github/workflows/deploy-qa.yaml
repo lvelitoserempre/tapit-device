@@ -1,0 +1,44 @@
+name: Deploy QA
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  deploy:
+    environment: qa
+    runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --max-old-space-size=4096
+    steps:
+      - name: Init
+        uses: actions/checkout@v2
+      - name: SetUp Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - run: npm install -g npm@6.14.12
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+      - name: Install Gulp
+        run: npm install -g gulp-cli
+      - name: Install Dependencies home
+        working-directory: ./home
+        run: npm i
+      - name: Install Dependencies app
+        working-directory: ./angular-app
+        run: npm i
+      - name: Install Dependencies
+        working-directory: ./
+        run: npm i
+      - name: SetUp Google Cloud
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+      - name: Install Firebase CLI
+        run: npm i -g firebase-tools
+      - run: firebase use ${{ secrets.GCP_PROJECT_ID }}
+      - name: Deploy
+        working-directory: ./
+        run: npm run d-tapit-qa
