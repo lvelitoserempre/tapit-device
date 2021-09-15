@@ -13,10 +13,11 @@ export class RemoteConfigService {
 
   constructor(
     private dataRepoService: DataRepoService
-  ) { }
+  ) {
+    initializeApp(environment.firebase.config);
+  }
 
   getValues(): void {
-    initializeApp(environment.firebase.config);
     remoteConfig().settings = {
       minimumFetchIntervalMillis: 900000,
       fetchTimeoutMillis: 60000
@@ -39,8 +40,11 @@ export class RemoteConfigService {
     }).catch(error => console.error(error));
   }
 
-  getValue(attribute: string) {
-    return remoteConfig().getBoolean(attribute)
+  getValue(attribute: string): Promise<boolean> {
+    return remoteConfig().fetchAndActivate()
+    .then(() => {
+      return remoteConfig().getBoolean(attribute)
+    })
   }
 
 }

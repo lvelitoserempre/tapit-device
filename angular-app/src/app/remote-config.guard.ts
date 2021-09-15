@@ -14,13 +14,15 @@ export class RemoteConfigGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     /* this is temporary manually done, the idea here is to guard routes by remote config automatically */
-    if (state.url.indexOf('wallet') > -1) {
-      return this.remoteConfig.getValue('wallet_enabled')
-    } else if(state.url.indexOf('poc') > -1) {
-      return this.remoteConfig.getValue('discover_enabled')
-    } else {
-      return true;
-    }
+    return new Promise((resolve: Function, reject: Function) => {
+      if (state.url.indexOf('wallet') > -1) {
+        resolve(this.remoteConfig.getValue('wallet_enabled'));
+      } else if(state.url.indexOf('poc') > -1) {
+        resolve(this.remoteConfig.getValue('discover_enabled'));
+      } else {
+        resolve(true);
+      }
+    });
   }
   
 }
