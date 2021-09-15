@@ -35,7 +35,7 @@ export class RemoteConfigService {
       }
       this.dataRepoService.setShowDiscover(remoteConfig().getBoolean('discover_enabled'));
       this.dataRepoService.setShowWallet(remoteConfig().getBoolean('wallet_enabled'));
-      this.dataRepoService.setShowWallet(remoteConfig().getBoolean('microgifting_enabled'));
+      this.dataRepoService.setShowMicrogifting(remoteConfig().getBoolean('microgifting_enabled'));
     }).catch(error => console.error(error));
   }
 

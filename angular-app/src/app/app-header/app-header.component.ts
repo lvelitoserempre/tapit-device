@@ -20,7 +20,7 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
   marketUrl = environment.marketUrl;
   showLoginButton = false;
   private userSubscription: Subscription;
-  showCuponeraButton$: false;
+  showCuponeraButton$: boolean = false;
   showMicrogifting$ = false;
 
   constructor(
@@ -28,11 +28,11 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
     private router: Router,
     private dataRepoService: DataRepoService
   ) {
-    this.dataRepoService.getShowWallet().subscribe((data:  any) => {
-      this.showCuponeraButton$ = data.data;
+    this.dataRepoService.getShowWallet().subscribe((data: boolean) => {
+      this.showCuponeraButton$ = data;
     });
-    this.dataRepoService.getShowMicrogifting().subscribe((data:  any) => {
-      this.showMicrogifting$ = data.data;
+    this.dataRepoService.getShowMicrogifting().subscribe((data: boolean) => {
+      this.showMicrogifting$ = data;
     });
   }
 

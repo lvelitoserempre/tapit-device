@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {of} from 'rxjs';
+import {of, Subscription} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {UserAccount} from '../user/user-account';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -19,7 +19,8 @@ export class HeaderComponent implements OnDestroy {
   showLoginButton = false;
   showMicrogifting = false;
   total: any;
-  showCuponeraButton$: false;
+  showCuponeraButton$: boolean = false;
+  repoSubs: Subscription;
 
   constructor(
     private angularFireAuth: AngularFireAuth,
@@ -34,9 +35,9 @@ export class HeaderComponent implements OnDestroy {
       this.user = user;
       this.showLoginButton = !this.user;
     })
-    this.dataRepoService.getShowWallet()
+    this.repoSubs = this.dataRepoService.getShowWallet()
     .subscribe((data:  any) => {
-      this.showCuponeraButton$ = data.data;
+      this.showCuponeraButton$ = data;
     })
   }
 
@@ -53,7 +54,7 @@ export class HeaderComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    //this.userSubscription.unsubscribe();
+    this.repoSubs.unsubscribe();
   }
 
   ssoOpen():void {

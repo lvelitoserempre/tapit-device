@@ -66,8 +66,12 @@ export class AppComponent implements OnInit {
         this.ageGate.openAgeGate();
       }
       if (this.cookies.get('__session')) {
-        const userData = JSON.parse(this.cookies.get('loggedUser'))
-        this.verifyIdentity.openVerifyIdentity(userData.id)
+        try {
+          const userData = JSON.parse(this.cookies.get('loggedUser'))
+          this.verifyIdentity.openVerifyIdentity(userData.id)
+        } catch (e) {
+          this.ngxService.stopAll();
+        }
       }
     }
   }
