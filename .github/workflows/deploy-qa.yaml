@@ -38,7 +38,9 @@ jobs:
           export_default_credentials: true
       - name: Install Firebase CLI
         run: npm i -g firebase-tools
-      - run: firebase use ${{ secrets.GCP_PROJECT_ID }}
+      - name: Set firebase project
+        working-directory: ./home
+        run: firebase use ${{ secrets.GCP_PROJECT_ID }}
       - name: Deploy
         working-directory: ./
         run: npm run d-tapit-qa
