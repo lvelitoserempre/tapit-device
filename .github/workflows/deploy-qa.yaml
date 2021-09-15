@@ -41,6 +41,9 @@ jobs:
       - name: Set firebase project
         working-directory: ./home
         run: firebase use ${{ secrets.GCP_PROJECT_ID }}
-      - name: Deploy
+      - name: buildAngularApp
         working-directory: ./
-        run: npm run d-tapit-qa
+        run: cross-env ENV=TAPIT_QA gulp build
+      - name: Deploy
+        working-directory: ./home
+        run: ng deploy home-qa
