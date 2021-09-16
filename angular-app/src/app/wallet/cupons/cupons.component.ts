@@ -25,7 +25,7 @@ export class CuponsComponent implements OnInit, AfterViewInit {
   couponsPage: number = 0;
   idToCompare: string;
   noCoupons: boolean = false;
-   
+  public onlineOffline: boolean = window.navigator.onLine;
 
   constructor(
     private couponService: CuponsService,
@@ -106,7 +106,7 @@ export class CuponsComponent implements OnInit, AfterViewInit {
         }
       })
 
-      if(response.length === 0){
+      if(this.consumeds.length === 0 && this.promoteds.length === 0){
         this.noCoupons = true;
       } else {
         this.noCoupons = false;

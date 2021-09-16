@@ -5,29 +5,19 @@
         </p>
     </div>
     <div class="col-span-6 historial__icon">
-        <img *ngIf="!cuponeraItem" src="assets/images/historial/{{item.originType | typeIcon}}"/>
-        <img *ngIf="cuponeraItem" src="assets/images/historial/heart.svg"/>
+        <img src="assets/images/historial/{{item.originType | typeIcon}}"/>
     </div>
     <div class="col-span-12 sm:col-span-12 lg:col-span-3 xl:col-span-3">
-        <img *ngIf="!cuponeraItem" src="assets/images/historial/{{item.originType | typeColor}}" class="inline-block"/>
-        <img *ngIf="positiveTransaction" src="assets/images/historial/earn-points-orange.svg" class="inline-block"/>
-        <img *ngIf="!positiveTransaction" src="assets/images/historial/earn-points-black.svg" class="inline-block"/>
+        <img src="assets/images/historial/{{item.originType | typeColor}}" class="inline-block"/>
         <span
-            *ngIf="!cuponeraItem" 
             class="font-bold text-xl sm:text-lg" 
-            [ngClass]="{ 'text-primary-500': (item.originType !== 'redemption' || item.originType !== 'maltasExpiration'), 'text-neutral-900': (item.originType === 'redemption' || item.originType === 'maltasExpiration')}"
-        > {{(item.originType === 'redemption' || item.originType === 'maltasExpiration') ? '' : '+'}}{{item.quantity | number : '1.0'}} pts</span>
+            [ngClass]="{ 'text-primary-500': (item.originType !== 'redemption' || item.originType !== 'maltasExpiration' || item.originType !== 'tapit_cuponera_product_refund'), 'text-neutral-900': (item.originType === 'redemption' || item.originType === 'maltasExpiration' || item.originType === 'tapit_cuponera_product_refund')}"
+        > {{(item.originType === 'redemption' || item.originType === 'maltasExpiration' || item.originType === 'tapit_cuponera_product_refund') ? '' : '+'}}{{item.quantity | number : '1.0'}} pts</span>
 
-        <span 
-            class="font-bold text-xl sm:text-lg" 
-            [ngClass]="{ 'text-primary-500': positiveTransaction, 'text-neutral-900': !positiveTransaction}"> {{(item.quantity > 0) ? '+' : ''}}{{item.quantity | number : '1.0'}} pts</span>
     </div>
     <div class="col-span-6 sm:col-span-6 lg:col-span-5 xl:col-span-5 text-left">
-        <p *ngIf="!cuponeraItem" class="m-0 text-xs sm:text-base">
+        <p class="m-0 text-xs sm:text-base">
             {{item.originType | typeText}}
-        </p>
-        <p *ngIf="cuponeraItem" class="m-0 text-xs sm:text-base">
-            Por otros conceptos
         </p>
     </div>
     <div class="col-span-6 sm:col-span-6 lg:col-span-4 xl:col-span-4 text-right">

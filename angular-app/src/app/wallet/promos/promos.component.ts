@@ -18,6 +18,7 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
   actualPage: number;
   idToCompare: string;
   noPromos: boolean = false;
+  public onlineOffline: boolean = window.navigator.onLine;
 
   constructor(
     private promoService: PromosService,

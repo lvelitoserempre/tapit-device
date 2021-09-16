@@ -19,6 +19,7 @@ export class ShopPointsComponent implements OnInit, OnDestroy, AfterViewInit {
   actualPage: number;
   idToCompare: string;
   noProducts: boolean = false;
+  public onlineOffline: boolean = window.navigator.onLine;
 
   constructor(private productService: ShopsService, private loadingService: LoadingService, private route: ActivatedRoute) { 
   }

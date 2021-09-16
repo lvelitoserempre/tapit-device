@@ -7,12 +7,20 @@
     </div>
   </div>
 
-  <div *ngIf="noProducts" class="w-1/4 m-auto pt-16 pb-16 flex flex-col justify-center items-center text-center">
+  <div *ngIf="noProducts && onlineOffline" class="w-1/4 m-auto pt-16 pb-16 flex flex-col justify-center items-center text-center">
     <div class="bg-primary-100 p-6 inline-block border rounded-full">
       <img src="assets/images/no-product.svg" alt="cupon image">
     </div>
     <p class="text-neutral-600 bold pt-4">¡Ups! no tenemos producos disponibles por el momento</p>
     <p class="text-xs">Mantente atento, próximamente sumaremos más productos a nuestro catálogo. </p>
+  </div>
+
+  <div *ngIf="!onlineOffline" class="w-1/4 m-auto pt-16 pb-16 flex flex-col justify-center items-center text-center">
+    <div class="bg-primary-100 p-6 inline-block border rounded-full">
+      <img src="assets/images/no-connectivity.svg" alt="map image">
+    </div>
+    <p class="text-neutral-600 bold pt-4">¡Ups! no tienes conexión a internet</p>
+    <p class="text-xs">Conéctate a una red para que puedas ver todas las promos que tenemos para ti. </p>
   </div>
 
   <div *ngIf="!noProducts" class="flex">

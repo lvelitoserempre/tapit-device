@@ -33,6 +33,10 @@ export class TypeColorPipe implements PipeTransform {
         return 'earn-points-black.svg';
       case 'maltasExpiration':
         return 'earn-points-black.svg';
+      case 'tapIt_cuponera_Product':
+        return 'earn-points-orange.svg';
+      case 'tapit_cuponera_product_refund':
+        return 'earn-points-black.svg';
       default:
         return '';
     }
