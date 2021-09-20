@@ -114,6 +114,7 @@ export class VerifyIdentityComponent {
 
   // This method is responsible for calling the service to update a user data
   updateDataUser() {
+    this.token = this.cookieService.get('frbtkn');
     if (this.formDataUser.valid) {
       this.verifyIdentityService.updateDocument(this.formDataUser.value, this.token)
       .subscribe(() => {
@@ -146,7 +147,6 @@ export class VerifyIdentityComponent {
         Validators.required
       ])
     }, { validators: this.verifyDocument });
-    this.token = this.cookieService.get('frbtkn');
     this.clearData();
   }
 
