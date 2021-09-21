@@ -6,6 +6,28 @@ import { PocDetailComponent } from './wallet/poc-detail/poc-detail.component';
 
 
 const routes: Routes = [
+
+  {
+    path: 'gana-puntos',
+    loadChildren: () => import('./gana-puntos/gana-puntos.module').then(m => m.GanaPuntosModule),
+  },
+  {
+    path: 'comercios-aliados',
+    loadChildren: () => import('./gana-puntos/comercios-aliados/comercios-aliados.module').then(m => m.ComerciosAliadosModule),
+  },
+  {
+    path: 'actualizar-cedula',
+    loadChildren: () => import('./gana-puntos/actualizar-cedula/actualizar-cedula.module').then(m => m.ActualizarCedulaModule),
+  },
+  {
+    path: 'escanea-ya',
+    loadChildren: () => import('./gana-puntos/escanea-ya/escanea-ya.module').then(m => m.EscaneaYaModule),
+  },
+  {
+    path: 'como-redimir',
+    loadChildren: () => import('./gana-puntos/como-redimir/como-redimir.module').then(m => m.ComoRedimirModule),
+  },
+
   {
     path: 'wallet',
     loadChildren: () => import('./wallet/wallet.module').then(m => m.WalletModule),

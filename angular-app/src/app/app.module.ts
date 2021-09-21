@@ -18,8 +18,8 @@ import { ComerciosAliadosModule } from './gana-puntos/comercios-aliados/comercio
 import { ActualizarCedulaModule } from './gana-puntos/actualizar-cedula/actualizar-cedula.module';
 import { ComoRedimirModule } from './gana-puntos/como-redimir/como-redimir.module'
 import { EscaneaYaModule } from './gana-puntos/escanea-ya/escanea-ya.module';
-import { CookieModule } from 'ngx-cookie';
 import { AuthInterceptor } from './auth.interceptor';
+import { CookieModule } from 'ngx-cookie';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 
