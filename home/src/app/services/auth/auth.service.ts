@@ -55,9 +55,7 @@ export class AuthService {
           this.cookieService.put('frbtkn', idToken, {});
           this.drupalAuth(idToken)
           .subscribe((response) => {
-            this.cookieService.put('DRUPAL_SESSION', response.access_token, {});
-            this.cookieService.put('__session', response.access_token, {});
-            this.setDrupalToken(response.access_token);
+            this.setDrupalSession(response.access_token);
             return this.getFireStoreUserDocument(user.uid)
             .then(userDocument => {
               const res = this.setCurrentUser(UserDAO.snapshotToUser(userDocument));
@@ -66,6 +64,12 @@ export class AuthService {
           });
         }).catch(error => console.error(error));
       });
+    }
+
+    private setDrupalSession(token: string): void {
+      this.cookieService.put('DRUPAL_SESSION', token, {});
+      this.cookieService.put('__session', token, {});
+      this.setDrupalToken(token);
     }
 
     getFireStoreUserDocument(userId: string): Promise<any> {
@@ -116,10 +120,16 @@ export class AuthService {
     }
 
     loginUserByCustomToken (token:string) {
+      //alert(token);
       auth().signInWithCustomToken(token)
-      .then(userCredential=> {        
+      .then(userCredential => {
         userCredential.user.getIdToken()
-        .then(response => this.drupalAuth(response)).catch(error => console.error(error));
+        .then(token => {
+          this.drupalAuth(token)
+          .subscribe(response => {
+            this.setDrupalSession(response.access_token);
+          })
+        }).catch(error => console.error(error));
       }).catch(error => console.error(error));
     }
   }
