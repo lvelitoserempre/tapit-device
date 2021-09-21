@@ -33,9 +33,9 @@ export class TypeTextPipe implements PipeTransform {
         return 'De Maltas a puntos';
       case 'maltasExpiration':
         return 'Por Maltas vencidas';
-      case 'tapIt_cuponera_Product':
-        return 'Por otros conceptos';
       case 'tapit_cuponera_product_refund':
+        return 'Por otros conceptos';
+      case 'tapit_cuponera_product_purchase':
         return 'Por otros conceptos';
       default:
         return '';

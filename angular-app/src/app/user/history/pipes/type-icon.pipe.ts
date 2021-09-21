@@ -33,9 +33,9 @@ export class TypeIconPipe implements PipeTransform {
         return 'close.svg';
       case 'maltasExpiration':
         return 'close.svg';
-      case 'tapIt_cuponera_Product':
-        return 'heart.svg';
       case 'tapit_cuponera_product_refund':
+        return 'heart.svg';
+      case 'tapit_cuponera_product_purchase':
         return 'heart.svg';
       default:
         return '';
