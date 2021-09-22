@@ -17,7 +17,17 @@ export class DrupalService {
 
   getPage(page:string): Observable<any[]> {
     const headers = this.getHeaders();
-    return this.httpClient.get(`${environment.drupal?.url}${environment.drupal?.newApiPath}?alias=/${page}`, headers)
+    return this.httpClient.get(`${environment.drupal?.url}${environment.drupal?.v1ApiPath}?alias=/${page}`, headers)
+    .pipe(map(response => this.processResponse(response)));
+  }
+
+  getWebViewPage(page:string): Observable<any[]> {
+    const headers = {
+      headers: {
+        'x-token': environment.drupal?.token
+      }
+    }
+    return this.httpClient.get(`${environment.drupal?.url}${environment.drupal?.v2ApiPath}?alias=/${page}&userType=logged`, headers)
     .pipe(map(response => this.processResponse(response)));
   }
 

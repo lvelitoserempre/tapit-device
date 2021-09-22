@@ -118,18 +118,4 @@ export class AuthService {
     setDrupalToken(token:string) {
       this.drupalToken.next({data: token})
     }
-
-    loginUserByCustomToken (token:string) {
-      //alert(token);
-      auth().signInWithCustomToken(token)
-      .then(userCredential => {
-        userCredential.user.getIdToken()
-        .then(token => {
-          this.drupalAuth(token)
-          .subscribe(response => {
-            this.setDrupalSession(response.access_token);
-          })
-        }).catch(error => console.error(error));
-      }).catch(error => console.error(error));
-    }
   }

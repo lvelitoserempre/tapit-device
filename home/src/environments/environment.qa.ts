@@ -34,8 +34,8 @@ export const environment = {
   facebookPixelId: '1374695322930119',
   drupal:{
     url: 'https://qa-content.abi-rewards.de',
-    oldApiPath: '/api/homepage',
-    newApiPath: '/api/v1/pages',
+    v1ApiPath: '/api/v1/pages',
+    v2ApiPath: '/api/v2/pages',
     apiAuth: '/oauth/token',
     token: 'a697c03d-b6da-45bd-9418-e05f727010bc',
     client_id: 'd5f111fb-6ab8-482b-8053-780931ed2453'

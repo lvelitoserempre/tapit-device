@@ -95,14 +95,19 @@ export class HomeComponent {
       this.ngxService.stopAll();
     });
     this.getHomePage();
-    const search = new URLSearchParams(window.location.search);
-    if (search.get('source')) {
-      this.isOnWebView = true;
-    }
   }
 
   getHomePage(): void {
-    this.drupalService.getPage('home')
+    const search = new URLSearchParams(window.location.search);
+    const source = search.get('source')
+    let service;
+    if (source) {
+      this.isOnWebView = true;
+      service = this.drupalService.getWebViewPage('home');
+    } else {
+      service = this.drupalService.getPage('home')
+    }
+    service
     .pipe(map(sections => this.fillPlaceholders(sections)))
     .subscribe(sections => {
       this.sections = sections;

@@ -84,16 +84,6 @@ export class AppComponent implements OnInit {
     const source = search.get('source');
     if (source) {
       this.isOnWebView = true;
-      if (source == 'android') {
-        // @ts-ignore
-        var customToken = await window.Android.getCustomToken();
-        this._authService.loginUserByCustomToken (customToken);
-      }
-      if (source == 'ios') {
-        if ((window as any).webkit && (window as any).webkit.messageHandlers) {
-          (window as any).webkit.messageHandlers.getCustomToken.postMessage({});
-        }
-      }
     } else {
       this.redirect();
     }
