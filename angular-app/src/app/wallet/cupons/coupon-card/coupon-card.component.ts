@@ -20,9 +20,11 @@ export class CouponCardComponent implements OnInit {
     this.checkStatus();
    }
 
-  checkStatus(){
-    if(this.status === 'Deactivated'){
+  checkStatus() {
+    if (this.status === 'Deactivated') {
       this.currentStatus = "Desactivado"
+    } else if (this.status === 'Expired') {
+      this.currentStatus = "Expirado"
     } else {
       this.currentStatus = "Canjeado"
     }

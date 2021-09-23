@@ -71,7 +71,7 @@ export class CuponsComponent implements OnInit, AfterViewInit {
       this.couponsPage = this.couponsPage + 1;
 
       response.map(e => {
-        if(e.status === 'Active') {
+        if (e.status === 'Active') {
 
           let date = new Date(e.dateEnd * 1000);
           let deactivationDate = moment(date).format('DD/MMM/YY');
@@ -94,6 +94,15 @@ export class CuponsComponent implements OnInit, AfterViewInit {
             'status': e.status
           }
           this.consumeds.push(elToPush);
+        } else if (e.status === 'Expired') {
+          let date = new Date(e.expiration * 1000);
+          let dateToShow = moment(date).format('DD/MM/YY');
+          let elToPush = {
+            'brand': e.tapitCouponDrupal || '',
+            'date': dateToShow,
+            'status': e.status
+          }
+          this.consumeds.push(elToPush);
         } else {
           let date = new Date(e.deactivatedAt * 1000);
           let dateToShow = moment(date).format('DD/MM/YY');
@@ -106,7 +115,7 @@ export class CuponsComponent implements OnInit, AfterViewInit {
         }
       })
 
-      if(this.consumeds.length === 0 && this.promoteds.length === 0){
+      if (this.consumeds.length === 0 && this.promoteds.length === 0) {
         this.noCoupons = true;
       } else {
         this.noCoupons = false;
