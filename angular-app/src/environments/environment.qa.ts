@@ -25,6 +25,7 @@ export const environment = {
       activatePromo: '/v1/coupon-wallet/coupons/activate',
       deactivateCoupon: '/v1/coupon-wallet/coupons/deactivate',
       getCoupons: '/v1/coupon-wallet/coupons',
+      redeem: '/v1/promotions/redeem',
       getPocs: '/v1/pointsOfConsumption/',
     }
   },

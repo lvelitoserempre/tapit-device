@@ -29,6 +29,16 @@ const routes: Routes = [
   },
 
   {
+    path: 'promocodigos',
+    loadChildren: () => import('./gana-puntos/promo-codigos/promo-codigos.module').then(m => m.PromoCodigosModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'escanea',
+    loadChildren: () => import('./qrcode-reader/qrcode-reader.module').then(m => m.QrcodeReaderModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'wallet',
     loadChildren: () => import('./wallet/wallet.module').then(m => m.WalletModule),
     canActivate: [AuthGuard, RemoteConfigGuard]

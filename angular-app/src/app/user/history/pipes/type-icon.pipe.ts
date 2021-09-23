@@ -11,17 +11,19 @@ export class TypeIconPipe implements PipeTransform {
         return 'starship.svg';
       case 'userCreated':
         return 'starship.svg';
-      case 'promoCode':
+      case 'promocode':
         return 'ticket.svg';
       case 'promoCuponeraAguila':
         return 'ticket.svg';  
-      case 'referral':
+      case 'referralByCode':
         return 'users.svg';
       case 'qrCode':
         return 'qrcode.svg';
       case 'purchase':
         return 'cart.svg';
-      case 'games':
+      case 'Games':
+        return 'trophy.svg';
+      case 'quiz':
         return 'trophy.svg';
       case 'invoice':
         return 'invoice.svg';
@@ -29,10 +31,14 @@ export class TypeIconPipe implements PipeTransform {
         return 'heart.svg';
       case 'maltasMigration':
         return 'check.svg';
+      case 'pcr_accumulation':
+        return 'check.svg';
       case 'redemption':
         return 'close.svg';
       case 'maltasExpiration':
         return 'close.svg';
+      case 'tapIt_cuponera_Product':
+        return 'heart.svg';
       case 'tapit_cuponera_product_refund':
         return 'heart.svg';
       case 'tapit_cuponera_product_purchase':

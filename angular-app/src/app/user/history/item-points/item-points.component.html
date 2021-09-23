@@ -5,15 +5,13 @@
         </p>
     </div>
     <div class="col-span-6 historial__icon">
-        <img src="assets/images/historial/{{item.originType | typeIcon}}"/>
+        <img src="assets/images/historial/{{item.originType | typeIcon}}" />
     </div>
     <div class="col-span-12 sm:col-span-12 lg:col-span-3 xl:col-span-3">
-        <img src="assets/images/historial/{{item.originType | typeColor}}" class="inline-block"/>
-        <span
-            class="font-bold text-xl sm:text-lg" 
-            [ngClass]="{ 'text-primary-500': (item.originType !== 'redemption' || item.originType !== 'maltasExpiration' || item.originType !== 'tapit_cuponera_product_purchase'), 'text-neutral-900': (item.originType === 'redemption' || item.originType === 'maltasExpiration' || item.originType === 'tapit_cuponera_product_purchase')}"
-        > {{(item.originType === 'redemption' || item.originType === 'maltasExpiration' || item.originType === 'tapit_cuponera_product_purchase') ? '' : '+'}}{{item.quantity | number : '1.0'}} pts</span>
-
+        <img src="assets/images/historial/{{item.originType | typeColor}}" class="inline-block" />
+        <span class="font-bold text-xl sm:text-lg"
+            [ngClass]="{'text-primary-500': (item.quantity > 0), 'text-neutral-900': (item.quantity < 0)}">
+            {{(item.quantity > 0) ? '+' : ''}}{{item.quantity | number : '1.0'}} pts</span>
     </div>
     <div class="col-span-6 sm:col-span-6 lg:col-span-5 xl:col-span-5 text-left">
         <p class="m-0 text-xs sm:text-base">

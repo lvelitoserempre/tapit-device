@@ -1,0 +1,37 @@
+<div
+  class="container mx-auto mt-6 md:block border-4 border-white bg-neutral-100 shadow-md relative overflow-hidden h-full">
+  <ngx-loading [show]="loading"></ngx-loading>
+  <div class="lg:grid lg:grid-flow-col lg:auto-cols-auto">
+    <div class="p-4">
+      <h2 class="text-bg text-left ml-2">
+        <span class="text-bg text-left text-primary-500">
+          <a class="goBackBtn text-black" href="javascript: history.go(-1)">&lsaquo;</a> Ingresando </span>promo códigos
+      </h2>
+      <p class="text-neutral-800 mx-4 my-4 text-sm">
+        Descubre los diferentes códigos que tenemos con nuestras iniciativas, ingresalos y gana puntos ¡No dejes de
+        sumar!
+      </p>
+    </div>
+    <div>
+      <img class="hidden lg:block float-right" src="assets/images/ganapuntos/promo-code-l.png"
+        alt="Promo códigos">
+      <img class="block mx-auto lg:hidden" src="assets/images/ganapuntos/promo-code-l-mob.png"
+        alt="Promo códigos">
+    </div>
+  </div>
+  <div class="grid grid-row-3 ">
+    <div class="mx-auto w-3/4 lg:w-4/12">
+      <input id="codigo" name="codigo"
+        class="app-input border-2 border-neutral-600 mb-4 sm:ml-0 mt-4 m-auto w-full lg:-mt-12" [(ngModel)]="codigo"
+        type="text">
+    </div>
+    <div>
+      <p class="text-neutral-800 text-sm text-center"> Ingresa el código que obtuviste para ganar puntos</p>
+    </div>
+    <div class="mx-auto">
+      <button type="button" class="app-button bg-primary-500 mt-4 mb-20 lg:mx-auto sm:ml-0"
+        (click)="redeemPromoCode()">OBTENER
+        PUNTOS</button>
+    </div>
+  </div>
+</div>

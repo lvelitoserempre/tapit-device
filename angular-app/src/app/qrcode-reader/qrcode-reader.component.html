@@ -1,0 +1,19 @@
+<div class="container mx-auto py-4 mt-4 relative">
+  <ngx-loading [show]="loading"></ngx-loading>
+  <h2 class="text-bg text-left my-4 ml-2">
+    <span class="text-bg text-left text-primary-500">
+      <a class="goBackBtn text-black" href="javascript: history.go(-1)">&lsaquo;</a> Escanea </span>Tapas
+  </h2>
+
+  <div id="video" class="flex justify-center items-center bg-neutral-200">
+    <qr-scanner class="my-8" [debug]="false" [canvasWidth]="300" [canvasHeight]="300" [stopAfterScan]="false"
+      [updateTime]="500">
+    </qr-scanner>
+  </div>
+
+  <p class="text-neutral-800 mx-8 my-4 text-xs">
+    Si has encontrado un código QR de Tap It en tus productos, aquí puedes escanearlo. Asegúrate de contar con
+    suficiente luz para la correcta lectura del código. <span class="text-black">Solo puedes escanear 30 tapas por
+      mes</span>
+  </p>
+</div>

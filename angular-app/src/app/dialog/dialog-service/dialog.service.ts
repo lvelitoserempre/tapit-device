@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {DialogComponent} from 'src/app/dialog/dialog.component';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {Observable, of} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { DialogComponent } from 'src/app/dialog/dialog.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,10 @@ export class DialogService {
 
   showErrorMessage(message: string): Observable<MatDialogRef<DialogComponent>> {
     return of(this.showMessage('error', 'ERROR', message, 'ACEPTAR'));
+  }
+
+  showMessageError(title: string, message: string, buttonOne: string, redirectUrl?: string): Observable<MatDialogRef<DialogComponent>> {
+    return of(this.showMessage('error', title, message, buttonOne, redirectUrl));
   }
 
   showMessage(type: string, title: string, message: string, buttonOne: string, redirectUrl?: string): MatDialogRef<DialogComponent> {
