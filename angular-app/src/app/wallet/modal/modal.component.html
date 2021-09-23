@@ -3,7 +3,7 @@
     <div class="flex justify-end mb-2">
       <img class="cursor-pointer" src="../../assets/images/close.svg" (click)="closeModal()" alt="">
     </div>
-    <div class="md:w-3/6 lg:w-11/12 m-0-auto">
+    <div class="md:w-5/6 lg:w-11/12 m-0-auto">
 
       <!-- show promo modal -->
       <div *ngIf="showActivatePromo">
@@ -33,14 +33,14 @@
       </div>
 
       <div *ngIf="showActiveRedeem">
-        <p class="w-full text-xl font-bold text-primary-500 pt-10 mb-4 text-center">
+        <img class="mx-auto my-10 w-48" src="assets/images/beers.png" alt="successful redeemed">
+        <p class="w-full text-xl font-bold text-primary-500 mb-4 text-center">
           Canjeaste tu cupón exitosamente
         </p>
         <p class="w-full text-center text-xl font-bold px-8 pb-14 relative">¡Beer Lover disfruta tu pola!</p>
-        <img class="mx-auto my-10" src="assets/images/beers.png" alt="successful redeemed">
         <div class="flex mt-16">
           <a
-            class="text-xs inline-block text-md tracking-wider text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-4/6 m-auto uppercase cursor-pointer"
+            class="text-base inline-block text-md tracking-wider text-center text-white my-2 mb-10 py-4 bg-primary-500 rounded-full w-4/6 m-auto uppercase cursor-pointer"
             href="/app/wallet/coupons">VOLVER A MIS CUPONES</a>
         </div>
       </div>
