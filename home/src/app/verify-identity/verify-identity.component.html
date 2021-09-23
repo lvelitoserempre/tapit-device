@@ -1,6 +1,6 @@
 <ng-template #verifyIdentity let-modal>
   <div class='flex justify-center items-center bg-black bg-opacity-60 fixed top-0 w-full h-full z-10 overflow-y-auto'>
-    <div class='flex justify-center items-center bg-modal w-full sm:w-2/4 md:w-2/5 lg:w-2/5 xl:w-3/12 bg-white p-10 rounded-2xl text-center'>
+    <div *ngIf="flagOpenModal" class='flex justify-center items-center bg-modal w-full sm:w-2/4 md:w-2/5 lg:w-2/5 xl:w-3/12 bg-white p-10 rounded-2xl text-center'>
       <section *ngIf="!isDocumentValid" class="px-0 md:px-0 lg:px-12 xl:px-8">
         <p class="text-lg xl:text-xl font-fs-bold inline-block title_text">
           ¡Hola Beer Lover! 👋
@@ -46,7 +46,7 @@
           <a href="https://tapit.com.co/terms.html" target="_blank" class="text-primary-500 font-bold"><u>Aplican Términos y Condiciones.</u></a>
         </p>
         <button type="button" class="uppercase bg-primary-500 px-4 py-3 rounded-xl text-white w-full mt-4 font-fs-bold" (click)="isDocumentValid = true;">
-            ¡Empezar ya!
+          ¡Empezar ya!
         </button>
       </section>  
       <section *ngIf="isDocumentValid" class="px-0 md:px-0 lg:px-12 xl:px-8">
@@ -155,7 +155,7 @@
               Descubre Tap It
           </button>
           </form>
-        </section>
+      </section>
     </div>
   </div>
 </ng-template>

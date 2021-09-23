@@ -72,12 +72,13 @@ export class VerifyIdentityComponent {
       this.textError = null;
     }
   }
-
+  
   openVerifyIdentity(user_id: string) {
     this._authService.getFireStoreUserDocument(user_id)
     .then(userDocument => {
       const userData = UserDAO.snapshotToUser(userDocument)
       if ((!userData.identity) && (userData.identityType === 'NO-ID')) {
+        this.flagOpenModal = true;
         this.openModal(this.verifyIdentity)
       }
     })
