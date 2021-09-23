@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
   private setGTagManager() {
     const s = this.doc.createElement('script');
     s.type = 'text/javascript';
-    s.src = "https://maps.googleapis.com/maps/api/js?key="+environment.firebase.config.apiKey;
+    s.src = "https://maps.googleapis.com/maps/api/js?key="+environment.firebase.config.apiKey+"&libraries=geometry";
     const head = this.doc.getElementsByTagName('body')[0];
     head.appendChild(s);
   }

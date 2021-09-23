@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { PocMapService } from './poc-map.service';
 
 @Component({
   selector: 'app-poc-map',
@@ -45,55 +46,34 @@ export class PocMapComponent implements OnInit {
     minZoom: 8,
   }
 
-  constructor(private route: ActivatedRoute, private router: Router, private location: Location) {
-    this.markers = [
-      {
-        position: {
-          lat: 4.6533326,
-          lng: -74.083652,
-        },
-        info: 'Avenida Coayacán',
-        title: 'La Chilanguita',
-        image: 'https://co-tc-shopper.s3.amazonaws.com/Tipos%20de%20Tienda/Mini_mercado_3%20%281%29.jpg',
-        tag: 'Bar',
-        options: {
-          icon: this.image
-        },
-        status: 'active'
-      },
-      {
-        position: {
-          lat: 4.674710056281398,
-          lng: -74.10891231091537,
-        },
-        info: 'Costa Verde S/N',
-        title: 'Restaurant Cala',
-        image: 'https://co-tc-shopper.s3.amazonaws.com/Tipos%20de%20Tienda/Mini_mercado_3%20%281%29.jpg',
-        tag: 'Restaurant',
-        options: {
-          icon: this.image
-        },
-        status: ''
-      },
-      {
-        position: {
-          lat: 4.638609067175679,
-          lng: -74.08264859361135,
-        },
-        info: 'Avenida Grau 678, Miraflores',
-        title: 'Las Brujas de Cachiche',
-        image: 'https://co-tc-shopper.s3.amazonaws.com/Tipos%20de%20Tienda/Mini_mercado_3%20%281%29.jpg',
-        tag: 'Bar',
-        options: {
-          icon: this.image
-        },
-        status: ''
-      }
-    ];
+  constructor(private route: ActivatedRoute, private router: Router, private location: Location, private pocService: PocMapService) {
+    this.markers = [];
+
+    this.pocService.getPocs(11.2178,-74.1829,'21',5000).subscribe((res:any) => {
+      res.data.items.forEach(element => {
+        let item = {
+          tag: element.categories,
+          id: element.id,
+          info: element.location.address,
+          title: element.name,
+          options: {
+            icon: this.image
+          },
+          image: element.images,
+          distance: (google.maps.geometry.spherical.computeDistanceBetween( new google.maps.LatLng(element.location.latitude, element.location.longitude), new google.maps.LatLng(this.center.lat,this.center.lng)) / 1000).toFixed(1) + " km",
+          position: {
+            lat: element.location.latitude,
+            lng: element.location.longitude
+          },
+          status: ''
+        };
+        this.markers.push(item);
+      });
+    });
 
     this.center = {
-      lat: 4.6533326,
-      lng: -74.083652,
+      lat: 11.2178,
+      lng: -74.1829,
     };
 
     this.itemNumber = 'width: '+this.markers.length * 100+'vw; transform: translateX('+this.margin+');';
@@ -151,6 +131,15 @@ export class PocMapComponent implements OnInit {
 
   goBack() {
     this.router.navigate([this.url], { queryParams: {id: this.idToGet}});
+  }
+
+  refresh() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+    });
   }
 
   sliderChange(i: string) {

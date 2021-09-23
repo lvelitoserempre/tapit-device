@@ -234,3 +234,13 @@
     color: rgb(107, 114, 128);
   }
 }
+
+.refresh {
+  z-index: 20;
+  right: 59px;
+  top: 10px;
+
+  .block.box-border {
+    height: 40px;
+  }
+}
