@@ -1,6 +1,6 @@
 <div class="tab-content p-5 bg-white">
   <div class="flex mt-5 md:mt-10 mb-2 md:pr-3 md:pl-3">
-    <div class="md:w-1/5"></div>
+    <!--<div class="md:w-1/5"></div>-->
     <div class="md:w-2/3">
       <p class="text-xl font-bold leading-8 mb-2">Canjea en tu tienda más cercana, <span class="text-primary-500">muestra el código QR al tendero y disfruta tu pola.</span></p>
       <p class="text-xs text-neutral-700">Paga con puntos</p>
@@ -24,6 +24,7 @@
   </div>
 
   <div *ngIf="!noProducts" class="flex">
+    <!--
     <div class="hidden md:block md:w-1/5 pr-6">
       <div class="mt-16">
         <p class="text-xs px-3 border-neutral-500 border-b-2 pb-1">FILTRAR POR:</p>
@@ -37,7 +38,9 @@
         </div>
       </div>
     </div>
+    -->
     <div class="w-full md:w-4/5">
+      <!--
       <div class="flex md:justify-end justify-between mb-3 lg:mb-8">
         <div>
           <div class="flex items-center relative md:hidden">
@@ -79,6 +82,7 @@
           </div>
         </div>
       </div>
+      -->
       <div class="container grid grid-cols-6 md:grid-cols-12 gap-5">
         <div *ngFor="let product of products; let i = index" class="pt-1 pb-2 md:pb-5 flex list-product--item col-span-3 md:col-span-3">
           <app-shop-card
