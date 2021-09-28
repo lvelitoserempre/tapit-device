@@ -31,6 +31,7 @@ export class ModalComponent implements OnInit, OnChanges {
   promoExpirationDate;
   btnMessage: string;
   urlToSend: String;
+  titleTosend: String;
   showActivatePromo: boolean = false;
   showActiveCouppon: boolean = false;
   showActiveWarning: boolean = false;
@@ -72,6 +73,8 @@ export class ModalComponent implements OnInit, OnChanges {
       let date = new Date(this.item[0].expiration * 1000);
       this.promoExpirationDate = moment(date).format('DD/MMM/YY');
 
+      this.titleTosend = this.item[0].title;
+
       if(this.item[0].type === 'Product'){
         this.btnMessage = "Confirma y paga con puntos"
         this.urlToSend = 'wallet/shop'
@@ -94,7 +97,7 @@ export class ModalComponent implements OnInit, OnChanges {
       this.showActiveSuccess = false;
       this.cameFromList = false;
       this.errorMessage = false;
-
+      this.titleTosend = this.item[0].title;
       this.qrcode = this.currentItem[0].qrcode;
       this.couponId = this.currentItem[0].id;
       this.activePromoItem = {'qrBase64': this.currentItem[0].qr, 'code': this.qrcode};

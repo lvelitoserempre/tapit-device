@@ -197,9 +197,7 @@
 }
 
 .btn-tag {
-  background: #FFE2D6;
-  border: 1px solid #FF5005;
-  border-radius: 8px;
+  color: #9F9A99;
   line-height: 22px;
 }
 
@@ -243,4 +241,21 @@
   .block.box-border {
     height: 40px;
   }
+
+  &-centered {
+    z-index: 20;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 18px;
+
+    .block.box-border {
+      height: 32px;
+      border-radius: 8px;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+  }
+}
+
+.calc-height {
+  height: calc(100% - 60px);
 }

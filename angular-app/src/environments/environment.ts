@@ -28,6 +28,7 @@ export const environment = {
       getCoupons: '/v1/coupon-wallet/coupons',
       redeem: '/v1/promotions/redeem',
       getPocs: '/v1/pointsOfConsumption/',
+      getPromos: '/v1/coupon-wallet/promotions-location/',
     }
   },
   marketUrl: 'https://market-dev.tapit.com.co/api/vtexid/pub/logout?scope=bavariacotest&returnUrl=https://market-dev.tapit.com.co',

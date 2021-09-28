@@ -1,7 +1,17 @@
 <div class="g-map">
+  <div class="w-full py-3 hidden md:block">
+    <p class="text-xl font-bold leading-8 mb-2">En esta sección puedes ubicar los puntos para canjear la promoción: <span class="text-primary-500">{{offerTitle}}</span></p>
+  </div>
   <div class="g-map--body">
-    <div class="g-map--body__left active">
-      <button class="uppercase my-2 mx-2 rounded-full bg-primary-500 text-neutral-100 w-1/4 text-center p-2 text-xs font-bold tracking-wider border-2" (click)="goBack()">Regresar</button>
+    <div class="g-map--body__left active pr-8">
+      <div class="flex justify-between">
+        <button class="uppercase flex my-2 mx-2 rounded-full items-center h-9 bg-primary-500 text-neutral-100 text-center py-2 px-4 text-xs font-bold tracking-wider border-2" (click)="goBack()">
+          <svg width="22" height="24" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.9975 5.49921H3.40745L6.70745 2.20921C6.89576 2.02091 7.00155 1.76551 7.00155 1.49921C7.00155 1.23291 6.89576 0.977513 6.70745 0.789209C6.51915 0.600905 6.26376 0.495117 5.99745 0.495117C5.73115 0.495117 5.47576 0.600905 5.28745 0.789209L0.287455 5.78921C0.196414 5.88431 0.125049 5.99646 0.0774549 6.11921C-0.0225631 6.36267 -0.0225631 6.63575 0.0774549 6.87921C0.125049 7.00196 0.196414 7.11411 0.287455 7.20921L5.28745 12.2092C5.38042 12.3029 5.49102 12.3773 5.61288 12.4281C5.73474 12.4789 5.86544 12.505 5.99745 12.505C6.12947 12.505 6.26017 12.4789 6.38203 12.4281C6.50389 12.3773 6.61449 12.3029 6.70745 12.2092C6.80118 12.1162 6.87558 12.0056 6.92635 11.8838C6.97711 11.7619 7.00325 11.6312 7.00325 11.4992C7.00325 11.3672 6.97711 11.2365 6.92635 11.1146C6.87558 10.9928 6.80118 10.8822 6.70745 10.7892L3.40745 7.49921H10.9975C11.2627 7.49921 11.517 7.39385 11.7046 7.20632C11.8921 7.01878 11.9975 6.76443 11.9975 6.49921C11.9975 6.23399 11.8921 5.97964 11.7046 5.7921C11.517 5.60457 11.2627 5.49921 10.9975 5.49921Z" fill="white"/>
+          </svg>  
+          Regresar
+        </button>
+      </div>
       <!-- <div class="pointer-events-auto w-full hidden lg:inline-flex flex-shrink-0 px-10 py-4">
         <button class="rounded-full bg-secondary-500 text-neutral-100  inline-flex flex-1 justify-between items-center py-2 px-4 text-sm">
           <span>¿Qué quieres hacer hoy?</span>
@@ -12,13 +22,13 @@
       </div> -->
       <div class="g-map--body__items flex flex-col px-0 md:px-4 lg:px-4 md:py-4 py-0 flex-1 pointer-events-auto md:overflow-auto">
         <div class="pt-0 pb-2 g-map--body__slider" [style]="itemNumber">
-          <div class="item-map px-1 mx-2 py-1 md:w-11/12 md:mx-auto relative {{marker.status}}" id="{{marker.id}}" *ngFor="let marker of markers;  let i = index">
+          <div class="item-map px-1 mx-2 py-1 md:w-full md:mx-auto relative {{marker.status}}" id="{{marker.id}}" *ngFor="let marker of markers;  let i = index">
             <div class="item-map--img">
               <img [src]="marker.image" [alt]="marker.title" class="w-full h-full object-cover">
             </div>
             <div class="item-map--cont px-3">
               <div class="flex justify-between py-2">
-                <p class="text-xs text-primary-500 btn-tag py-0.5 px-2">{{ marker.tag }}</p>
+                <p class="text-xs text-gray py-0.5 btn-tag pr-2">{{ marker.tag }}</p>
                 <p class="font-bold flex km-text"><img class="mr-2 md:text-sm" src="../../assets/images/pin-orange.svg" /> {{marker.distance}}</p>
               </div>
               <div class="my-2 flex justify-between items-center">
@@ -29,15 +39,21 @@
                 <svg class="text-primary-500 block md:hidden" (click)="sliderMove(i)" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M16.0659 12.2308L11.4725 7.63747C11.3718 7.53593 11.252 7.45533 11.12 7.40033C10.988 7.34533 10.8464 7.31702 10.7034 7.31702C10.5604 7.31702 10.4188 7.34533 10.2867 7.40033C10.1547 7.45533 10.0349 7.53593 9.9342 7.63746C9.73242 7.84044 9.61917 8.11501 9.61917 8.40121C9.61917 8.68742 9.73242 8.96199 9.9342 9.16496L13.7692 13L9.93419 16.835C9.73242 17.0379 9.61917 17.3125 9.61917 17.5987C9.61917 17.8849 9.73242 18.1595 9.93419 18.3625C10.0354 18.4629 10.1555 18.5423 10.2875 18.5962C10.4195 18.6501 10.5608 18.6775 10.7034 18.6766C10.8459 18.6775 10.9873 18.6501 11.1193 18.5962C11.2513 18.5423 11.3713 18.4629 11.4725 18.3625L16.0659 13.7691C16.1674 13.6684 16.248 13.5486 16.303 13.4166C16.358 13.2846 16.3863 13.143 16.3863 13C16.3863 12.857 16.358 12.7154 16.303 12.5833C16.248 12.4513 16.1674 12.3315 16.0659 12.2308Z" fill="currentColor"></path>
                 </svg>
-                <svg class="text-primary-500 hidden md:block" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- <svg class="text-primary-500 hidden md:block" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M16.0659 12.2308L11.4725 7.63747C11.3718 7.53593 11.252 7.45533 11.12 7.40033C10.988 7.34533 10.8464 7.31702 10.7034 7.31702C10.5604 7.31702 10.4188 7.34533 10.2867 7.40033C10.1547 7.45533 10.0349 7.53593 9.9342 7.63746C9.73242 7.84044 9.61917 8.11501 9.61917 8.40121C9.61917 8.68742 9.73242 8.96199 9.9342 9.16496L13.7692 13L9.93419 16.835C9.73242 17.0379 9.61917 17.3125 9.61917 17.5987C9.61917 17.8849 9.73242 18.1595 9.93419 18.3625C10.0354 18.4629 10.1555 18.5423 10.2875 18.5962C10.4195 18.6501 10.5608 18.6775 10.7034 18.6766C10.8459 18.6775 10.9873 18.6501 11.1193 18.5962C11.2513 18.5423 11.3713 18.4629 11.4725 18.3625L16.0659 13.7691C16.1674 13.6684 16.248 13.5486 16.303 13.4166C16.358 13.2846 16.3863 13.143 16.3863 13C16.3863 12.857 16.358 12.7154 16.303 12.5833C16.248 12.4513 16.1674 12.3315 16.0659 12.2308Z" fill="currentColor"></path>
-                </svg>
-                <div class="w-full h-full absolute z-100 left-0 top-0 hidden md:block" (click)="sliderChange(i)"></div>
+                </svg> -->
+                <div class="w-full calc-height absolute z-40 left-0 top-0 hidden md:block" (click)="sliderChange(i)"></div>
               </div>
               
               
               <hr class="w-full my-1 border-neutral-300">
-              <button class="uppercase my-2 rounded-full bg-primary-500 text-neutral-100 w-full text-center p-2 text-xs font-bold tracking-wider border-2">MÁS INFORMACIÓN</button>
+              <div class="relative py-2 grid grid-cols-4 gap-4">
+                <p *ngIf="marker.phone != ''" class="col-span-2 text-sm py-0">{{marker.phone}}</p>
+                <p *ngIf="marker.cell != ''" class="col-span-2 text-sm py-0">{{marker.cell}}</p>
+                <p *ngIf="marker.mail != ''" class="col-span-2 text-sm py-0">{{marker.mail}}</p>
+                <p *ngIf="marker.instagram != ''" class="col-span-2 text-sm py-0">{{marker.instagram}}</p>
+              </div>
+              <button class="uppercase my-2 mx-0 rounded-full bg-white text-black border-2 border-black w-full text-center p-2 text-xs font-bold uppercase z-50" (click)="navigatePromo(marker.position.lat,marker.position.lng)">¿Cómo llegar?</button>
             </div>
           </div>
         </div>
@@ -46,8 +62,7 @@
     <div class="g-map--body__right relative">
       <google-map style="width: 100%; height: 100%" [zoom]="zoom"
       [center]="center"
-      [options]="options"
-      (boundsChanged)="getCenter()">
+      [options]="options">
         <map-marker
           #markerElem="mapMarker"
           *ngFor="let marker of markers; let i = index"
@@ -58,9 +73,10 @@
           (mapClick)="sliderChange(i)"
         >
         </map-marker>
+        <map-info-window><b class="font-bold text-sm px-2 text-black">{{ infoContent }}</b></map-info-window>
       </google-map>
-      <div class="absolute inline-block refresh">
-        <span class="block box-border cursor-pointer relative w-full text-base px-3 mb-1 bg-white shadow flex justify-center content-center items-center" (click)="refresh()">Cargar de Nuevo</span>
+      <div class="absolute refresh-centered">
+        <button class="block box-border rounded-4 cursor-pointer relative w-full h-12 text-base px-4 mb-1 bg-white shadow flex justify-center text-black font-bold content-center items-center" (click)="refresh()">Buscar en tu área</button>
       </div>
       <div class="absolute w-12 h-28 controls">
         <span class="block box-border cursor-pointer relative w-full h-12 text-2xl mb-1 bg-white shadow flex justify-center content-center items-center" (click)="zoomIn()">+</span>

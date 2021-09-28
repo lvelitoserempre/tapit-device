@@ -17,6 +17,7 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
   promoPage: number = 1;
   actualPage: number;
   idToCompare: string;
+  center: google.maps.LatLngLiteral;
   noPromos: boolean = false;
   public onlineOffline: boolean = window.navigator.onLine;
 
@@ -24,7 +25,12 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
     private promoService: PromosService,
     private loadingService: LoadingService,
     private route: ActivatedRoute
-  ) { }
+  ) {
+    this.center = {
+      lat: 11.2295,
+      lng: -74.2069,
+    };
+  }
 
   // to add content from the next page of the API
   onScroll() {
@@ -34,7 +40,7 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
         this.actualPage = parseInt(response.page);
         return response.data.forEach(e => this.promos.push(e));
       }, err => {
-        console.log(err);
+        console.error();
       });
     } else {
       return
@@ -43,24 +49,26 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
     this.loadingService.show();
-    this.promosSubscription = this.promoService.getPromos(this.promoPage).subscribe((res: any) => {
+    navigator.geolocation.getCurrentPosition(this.setPosition,this.getError);
+    this.promosSubscription = this.promoService.getPromosLocation(this.promoPage, this.center.lat, this.center.lng).subscribe((res: any) => {
       let response = res;
-      
+
       if(response.length === 0){
         this.noPromos = true;
       } else {
         this.noPromos = false;
       }
 
-      this.promos = response.data;
+      this.promos = response.items;
       this.totalPages = response.pager_total;
       this.actualPage = parseInt(response.page)
       this.loadingService.hide();
+
     }, err => {
       this.loadingService.hide();
       this.noPromos = true;
-      console.log(err);
-    })
+      console.error();
+    });
 
     this.route.queryParams.subscribe(params => {
       if(params['id']){
@@ -79,6 +87,19 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
       });
     });
   }
+
+  setPosition(position): void {
+    this.center = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    }
+  }
+
+  getError(error): void {
+    console.log('this is the error from location: ',error);
+  }
+
+
 
   ngOnDestroy(): void {
     this.promosSubscription.unsubscribe();

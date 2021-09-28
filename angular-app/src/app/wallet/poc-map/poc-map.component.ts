@@ -1,22 +1,25 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { PocMapService } from './poc-map.service';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-poc-map',
   templateUrl: './poc-map.component.html',
   styleUrls: ['./poc-map.component.scss']
 })
-export class PocMapComponent implements OnInit {
+export class PocMapComponent implements OnInit, AfterViewInit {
   @ViewChild(MapInfoWindow, { static: false }) infoWindow: MapInfoWindow;
+  @ViewChildren(MapMarker) mapMarkers: QueryList<MapMarker>;
   @ViewChild(GoogleMap, { static: false }) map: GoogleMap;
   infoContent = '';
   itemNumber: string = 'width: 100vw; transform: translateX(0);';
   margin: number = 0;
   idToGet: string;
   url: string;
+  offerTitle: string;
 
   image: any = {
     url: "../../assets/images/pin.svg",
@@ -33,7 +36,7 @@ export class PocMapComponent implements OnInit {
   };
   
   markers: Array<any>;
-  zoom = 12;
+  zoom = 14;
   center: google.maps.LatLngLiteral;
   markerOptions: google.maps.MarkerOptions = {
     icon: this.image
@@ -42,14 +45,52 @@ export class PocMapComponent implements OnInit {
     zoomControl: false,
     scrollwheel: false,
     disableDoubleClickZoom: true,
-    maxZoom: 15,
-    minZoom: 8,
+    maxZoom: 18,
+    minZoom: 12,
+    styles: [
+      {
+        "elementType": "labels.text",
+        "stylers": [
+          {
+            "visibility": "simplified"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "transit",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      }
+    ]
   }
 
-  constructor(private route: ActivatedRoute, private router: Router, private location: Location, private pocService: PocMapService) {
+  constructor(private route: ActivatedRoute, private loadingService: LoadingService, private router: Router, private location: Location, private pocService: PocMapService) {
+    this.loadingService.show();
     this.markers = [];
+    this.center = {
+      lat: 11.2178,
+      lng: -74.1829,
+    };
+  }
 
-    this.pocService.getPocs(11.2178,-74.1829,'21',5000).subscribe((res:any) => {
+  getCenter(): void {
+   
+    console.log('this is the center: ',this.center);
+  }
+
+  getPocs(): void {
+    this.pocService.getPocs(this.center.lat,this.center.lng,this.idToGet,5000).subscribe((res:any) => {
       res.data.items.forEach(element => {
         let item = {
           tag: element.categories,
@@ -60,27 +101,26 @@ export class PocMapComponent implements OnInit {
             icon: this.image
           },
           image: element.images,
-          distance: (google.maps.geometry.spherical.computeDistanceBetween( new google.maps.LatLng(element.location.latitude, element.location.longitude), new google.maps.LatLng(this.center.lat,this.center.lng)) / 1000).toFixed(1) + " km",
+          distance: (element.distance / 1000).toFixed(2) + " km",
           position: {
             lat: element.location.latitude,
             lng: element.location.longitude
           },
-          status: ''
+          status: '',
+          phone: element.contactInformation.phoneNumber,
+          cell: element.contactInformation.mobileNumber,
+          mail: element.contactInformation.email,
+          instagram: element.contactInformation.instagram,
         };
         this.markers.push(item);
       });
+      if(this.markers.length) {
+        this.markers[0].status = 'active';
+        this.infoContent = this.markers[0].title;
+      }
+      this.itemNumber = 'width: '+this.markers.length * 100+'vw; transform: translateX('+this.margin+');';
+      this.loadingService.hide();
     });
-
-    this.center = {
-      lat: 11.2178,
-      lng: -74.1829,
-    };
-
-    this.itemNumber = 'width: '+this.markers.length * 100+'vw; transform: translateX('+this.margin+');';
-  }
-
-  getCenter(): void {
-    console.log('this is the center: ',this.map.getCenter());
   }
 
   ngOnInit(): void {
@@ -94,7 +134,20 @@ export class PocMapComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
         this.idToGet = params.id;
         this.url = params.url;
+        this.offerTitle = params.title;
+        this.getPocs();
       });
+  }
+
+  ngAfterViewInit(): void {
+    this.mapMarkers.changes.subscribe(markers => {
+        if(markers.toArray().length > 0){
+          this.infoWindow.open(this.mapMarkers.toArray()[0])
+          this.mapMarkers.toArray()[0].marker.setIcon(this.bigImage);
+        } else {
+          this.infoWindow.close();
+        }
+    });
   }
 
   trackUser() {
@@ -103,7 +156,7 @@ export class PocMapComponent implements OnInit {
         this.showTrackingPosition(position);
       });
     } else {
-      alert("Geolocation is not supported by this browser.");
+      return
     }
   }
 
@@ -134,12 +187,23 @@ export class PocMapComponent implements OnInit {
   }
 
   refresh() {
-    navigator.geolocation.getCurrentPosition((position) => {
+    this.loadingService.show();
+    this.markers = [];
+    this.infoWindow.close();
+    this.infoContent = '';
       this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
+        lat: this.map.getCenter().lat(),
+        lng: this.map.getCenter().lng()
       };
-    });
+      this.getPocs();
+  }
+
+  navigatePromo(lat,lng) {
+    if(this.center.lat == lat && this.center.lng == lng) {
+      return false;
+    }
+    let url = 'https://www.google.com/maps/dir/'+this.center.lat+','+this.center.lng+'/'+lat+','+lng;
+    window.open(url, '_blank').focus();
   }
 
   sliderChange(i: string) {
@@ -147,5 +211,11 @@ export class PocMapComponent implements OnInit {
     this.markers[i].status = 'active';
     this.itemNumber = 'width: '+this.markers.length * 100+'vw; transform: translateX(-'+parseInt(i) * 100+'vw);';
     this.center = this.markers[i].position;
+    this.infoContent = this.mapMarkers.toArray()[i].marker.title;
+    this.mapMarkers.toArray().forEach((marker) => {
+      marker.marker.setIcon(this.image);
+    });
+    this.mapMarkers.toArray()[i].marker.setIcon(this.bigImage);
+    this.infoWindow.open(this.mapMarkers.toArray()[i])
   }
 }
