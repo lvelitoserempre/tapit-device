@@ -86,7 +86,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'user/profile',
+    redirectTo: 'user/profile/editar-perfil',
     canActivate: [AuthGuard]
   }
 ];

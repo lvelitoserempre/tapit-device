@@ -21,18 +21,7 @@ export class PromoCodigosComponent implements OnInit {
     private dialogService: DialogService,
   ) { }
 
-  observerToken() {
-    this.observerTokenSubs = this._authSvc.token$.subscribe(token => {
-      this.promoCodService.getHeaders(token);
-    });
-  }
-
   ngOnInit(): void {
-    if (!this._authSvc.tokenCustom) {
-      this.observerToken();
-    } else {
-      this.promoCodService.getHeaders(this._authSvc.tokenCustom);
-    }
   }
 
   redeemPromoCode() {
@@ -46,10 +35,9 @@ export class PromoCodigosComponent implements OnInit {
       (error: any) => {
         this.clearInput();
         this.loading = false;
-        console.log(JSON.stringify(error));
         switch (error.error.status) {
           case 422:
-            return this.dialogService.showMessageError('¡Algo salió mal!', 'El código ingresado ya fue escaneado o expiró.', 'INTENTAR DE NUEVO');
+            return this.dialogService.showMessageError('¡Algo salió mal!', 'El código ingresado ya fue redimido o expiró.', 'INTENTAR DE NUEVO');
 
           case 404:
             return this.dialogService.showMessageError('¡Algo salió mal!', 'No fue posible encontrar este código 🙁', 'INTENTAR DE NUEVO');

@@ -1,6 +1,5 @@
 import { Component, ViewChild, ViewEncapsulation, OnInit, Renderer2 } from '@angular/core';
 import { QrScannerComponent } from 'angular2-qrscanner';
-import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { DialogService } from '../dialog/dialog-service/dialog.service';
 import { QrcodeReaderService } from './qrcode-reader.service';
@@ -13,7 +12,6 @@ import { QrcodeReaderService } from './qrcode-reader.service';
 })
 export class QRcodeReaderComponent implements OnInit {
   @ViewChild(QrScannerComponent) QrScannerComponent: QrScannerComponent;
-  observerTokenSubs: Subscription = null;
   loading: boolean = false;
 
   constructor(
@@ -23,89 +21,117 @@ export class QRcodeReaderComponent implements OnInit {
     private _authSvc: AuthService
   ) { }
 
-  observerToken() {
-    this.observerTokenSubs = this._authSvc.token$.subscribe(token => {
-      this.qrcodeService.getHeaders(token);
-    });
-  }
-
-  ngOnInit() {
-    if (!this._authSvc.tokenCustom) {
-      this.observerToken();
-    } else {
-      this.qrcodeService.getHeaders(this._authSvc.tokenCustom);
-    }
-  }
+  ngOnInit() { }
 
   ngAfterViewInit(): void {
     const _Qr: any = this.QrScannerComponent;
     this.startScanning(_Qr);
-    _Qr.capturedQr
-      .subscribe((result) => {
-        //console.log('result', result);
-        document.querySelector("#video > qr-scanner > div > video").setAttribute('style', 'display: none');
-        this.loading = true;
-        this.qrcodeService.sendCode(result).subscribe((res: any) => {
+    _Qr.capturedQr.subscribe((result) => {
+      document.querySelector("#video > qr-scanner > canvas").setAttribute('style', 'display: none');
+      this.loading = true;
+      this.qrcodeService.sendCode(result).subscribe((res: any) => {
+        this.loading = false;
+        const message: string = 'Obtuviste ' + res.data.points + ' puntos';
+        this.dialogService.showMessage('information', message, '¡Has escaneado exitosamente tu código!', 'CONTINUAR');
+        this.reloadCam();
+      },
+        (error: any) => {
           this.loading = false;
-          document.querySelector("#video > qr-scanner > div > video").setAttribute('style', 'display: block');
-          const message: string = 'Obtuviste ' + res.data.points + ' puntos';
-          this.dialogService.showMessage('information', message, '¡Has escaneado exitosamente tu código!', 'CONTINUAR');
-        },
-          (error: any) => {
-            this.loading = false;
-            document.querySelector("#video > qr-scanner > div > video").setAttribute('style', 'display: block');
-            //console.log(JSON.stringify(error));
-            switch (error.error.status) {
-              case 422:
-                return this.dialogService.showMessageError('¡Algo salió mal!', 'El código ingresado ya fue escaneado o expiró.', 'INTENTAR DE NUEVO');
+          switch (error.error.status) {
+            case 422:
+              this.reloadCam();
+              return this.dialogService.showMessageError('¡Algo salió mal!', 'El código ingresado ya fue escaneado o expiró.', 'INTENTAR DE NUEVO');
 
-              case 404:
-                return this.dialogService.showMessageError('¡Algo salió mal!', 'No fue posible encontrar este código 🙁', 'INTENTAR DE NUEVO');
+            case 404:
+              this.reloadCam();
+              return this.dialogService.showMessageError('¡Algo salió mal!', 'No fue posible encontrar este código 🙁', 'INTENTAR DE NUEVO');
 
-              default:
-                console.error('error');
-                return this.dialogService.showMessageError('¡Lo sentimos!', 'Hubo un error, inténtalo más tarde.', 'INTENTAR DE NUEVO');
-            }
+            default:
+              this.reloadCam();
+              console.error('error');
+              return this.dialogService.showMessageError('¡Lo sentimos!', 'Hubo un error, inténtalo más tarde.', 'INTENTAR DE NUEVO');
           }
-        );
-      });
+        }
+      );
+    });
+  }
+
+  reloadCam() {
+    const _Qr: any = this.QrScannerComponent;
+    _Qr.getMediaDevices().then((devices) => {
+      const videoDevices: MediaDeviceInfo[] = [];
+      for (const device of devices) {
+        if (device.kind.toString() === 'videoinput') {
+          videoDevices.push(device);
+        }
+      }
+
+      if (videoDevices.length > 0) {
+        let chosenDev;
+        for (const dev of videoDevices) {
+          if (dev.label.includes('back')) {
+            chosenDev = dev;
+            break;
+          }
+        }
+        if (chosenDev) {
+          _Qr.chooseCamera.next(chosenDev);
+        } else {
+          _Qr.chooseCamera.next(videoDevices[0]);
+        }
+        const constraints = {
+          audio: false,
+          video: {
+            facingMode: 'environment',
+            width: { ideal: 300 },
+            height: { ideal: 300 }
+          }
+        }
+
+        navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+          _Qr.setStream(stream);
+        })
+      }
+    });
+    document.querySelector("#video > qr-scanner > div > video").setAttribute('style', 'display: block');
   }
 
   startScanning(_Qr: any) {
-    _Qr.foundCameras
-      .subscribe((devices) => {
-        const videoDevices: MediaDeviceInfo[] = [];
-        for (const device of devices) {
-          if (device.kind.toString() === 'videoinput') {
-            videoDevices.push(device);
+    _Qr.foundCameras.subscribe((devices) => {
+      const videoDevices: MediaDeviceInfo[] = [];
+      for (const device of devices) {
+        if (device.kind.toString() === 'videoinput') {
+          videoDevices.push(device);
+        }
+      }
+
+      if (videoDevices.length > 0) {
+        const constraints = {
+          audio: false,
+          video: {
+            facingMode: 'environment',
+            width: { ideal: 300 },
+            height: { ideal: 300 }
           }
         }
-        //console.log('videoDevices', videoDevices);
 
-        if (videoDevices.length > 0) {
-          const constraints = {
-            audio: false,
-            video: {
-              facingMode: 'environment',
-              width: { ideal: 300 },
-              height: { ideal: 300 }
-            }
-          }
-
-          if (!_Qr.videoElement) {
-            _Qr.videoElement = this.renderer.createElement('video');
-            _Qr.videoElement.setAttribute('muted', 'true');
-            _Qr.videoElement.setAttribute('autoplay', 'true');
-            _Qr.videoElement.setAttribute('playsinline', 'true');
-            //_Qr.videoWrapper.nativeElement.setAttribute('class', 'mirrored');
-            this.renderer.appendChild(_Qr.videoWrapper.nativeElement, _Qr.videoElement);
-          }
-
-          navigator.mediaDevices.getUserMedia(constraints)
-            .then(stream => {
-              _Qr.setStream(stream);
-            });
+        if (!_Qr.videoElement) {
+          _Qr.videoElement = this.renderer.createElement('video');
+          _Qr.videoElement.setAttribute('muted', 'true');
+          _Qr.videoElement.setAttribute('autoplay', 'true');
+          _Qr.videoElement.setAttribute('playsinline', 'true');
+          this.renderer.appendChild(_Qr.videoWrapper.nativeElement, _Qr.videoElement);
         }
-      });
+
+        navigator.mediaDevices.getUserMedia(constraints)
+          .then(stream => {
+            _Qr.setStream(stream);
+          });
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.QrScannerComponent.videoElement;
   }
 }

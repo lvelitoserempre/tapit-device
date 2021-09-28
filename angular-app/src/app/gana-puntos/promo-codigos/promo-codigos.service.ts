@@ -1,13 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
-import firestore = firebase.firestore;
-import auth = firebase.auth;
 
 @Injectable({
   providedIn: 'root'
@@ -20,25 +14,10 @@ export class PromoCodigosService {
   ) { }
 
   sendCode(bodyString: string): Observable<any> {
-    let body = { content: bodyString };
-    return from(auth().currentUser.getIdToken())
-      .pipe(mergeMap(token =>
-        this.http.post(
-          this.api + environment.firebase.functions.redeem,
-          body,
-          {
-            headers:
-              this.getHeaders(token)
-          }
-        )));
-  }
-
-  getHeaders(token: any): HttpHeaders {
-    const headers = new HttpHeaders({
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
-    });
-    return headers;
+    const body = { content: bodyString };
+    return this.http.post(
+      this.api + environment.firebase.functions.redeem,
+      body
+    )
   }
 }
