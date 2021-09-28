@@ -137,6 +137,14 @@ export class HomeComponent {
             })
           })
         }
+      } else {
+        for (const element of section.elements) {
+          if (element.link == null) {
+            element.link = {
+              uri : ''
+            }
+          }
+        }
       }
     }
     return sections

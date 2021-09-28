@@ -41,6 +41,7 @@ export class ModalComponent implements OnInit, OnChanges {
   showProduct: boolean = false;
   confirmDeactivation: boolean = false;
   errorMessage: boolean = false;
+  errorMessageText: boolean = false;
   isLoading: boolean = false;
   largeText: boolean = false;
   public checkCollection;
@@ -123,8 +124,8 @@ export class ModalComponent implements OnInit, OnChanges {
     this.isLoading = true
     this.showActivatePromo = false;
 
-    this.promosService.activatePromo(this.item[0].promotion_id).subscribe(res => {
-      let response = res;
+    this.promosService.activatePromo(this.item[0].promotion_id)
+    .subscribe(response => {
 
       this.activePromoItem = response;
       this.qrcode = this.activePromoItem.code;
@@ -134,10 +135,11 @@ export class ModalComponent implements OnInit, OnChanges {
 
       this.dataLayerConfirmation('confirm_and_pay_with_points')
 
-    }, err => {
+    }, error => {
       this.errorMessage = true;
       this.isLoading = false;
-      console.error(err)
+      this.errorMessageText = error.error.data;
+      console.error(error)
     });
   }
 
@@ -156,10 +158,11 @@ export class ModalComponent implements OnInit, OnChanges {
       this.isLoading = false;
 
       this.dataLayerQR('cancel_coupon', 'deactivateCoupon');
-    }, err => {
+    }, error => {
       this.errorMessage = true;
       this.isLoading = false;
-      console.error(err);
+      this.errorMessageText = error.error.data;
+      console.error(error)
     })
       
   }
