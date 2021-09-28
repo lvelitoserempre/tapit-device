@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, OnChanges, EventEmitter, Inject } from '@angular/core';
+import { Component, Input, OnInit, Output, OnChanges, EventEmitter, Inject, ViewChild, ElementRef } from '@angular/core';
 import { PromosService } from '../promos/promos.service';
 import { CuponsService } from '../cupons/cupons.service';
 import * as moment from 'moment';
@@ -9,6 +9,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import auth = firebase.auth;
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AnalyticsService } from '../../services/anaylitics/analytics.service'
 
 @Component({
   selector: 'app-modal',
@@ -21,6 +22,7 @@ export class ModalComponent implements OnInit, OnChanges {
   @Input() cardType: string;
   @Output() close: EventEmitter<boolean> = new EventEmitter();
   @Output("reloadItemsParent") reloadItemsParent: EventEmitter<any> = new EventEmitter();
+  @ViewChild('closeIcon') closeIcon: ElementRef;
 
   item;
   activePromoItem;
@@ -44,7 +46,7 @@ export class ModalComponent implements OnInit, OnChanges {
   public item$: any[];
 
 
-  constructor(@Inject(DOCUMENT) private document: Document, private promosService: PromosService, private cuponService: CuponsService, private fireStore: AngularFirestore) {
+  constructor(@Inject(DOCUMENT) private document: Document, private promosService: PromosService, private cuponService: CuponsService, private fireStore: AngularFirestore, private analyticsService: AnalyticsService) {
   }
 
   ngOnInit(): void {
@@ -126,6 +128,9 @@ export class ModalComponent implements OnInit, OnChanges {
       this.couponId = this.activePromoItem.id_coupon;
       this.showActiveCouppon = true;
       this.isLoading = false;
+
+      this.dataLayerConfirmation('confirm_and_pay_with_points')
+
     }, err => {
       this.errorMessage = true;
       this.isLoading = false;
@@ -146,6 +151,8 @@ export class ModalComponent implements OnInit, OnChanges {
       this.showActiveWarning = false;
       this.showActiveSuccess = true;
       this.isLoading = false;
+
+      this.dataLayerQR('cancel_coupon', 'deactivateCoupon');
     }, err => {
       this.errorMessage = true;
       this.isLoading = false;
@@ -182,21 +189,77 @@ export class ModalComponent implements OnInit, OnChanges {
     } else {
       this.showActiveCouppon = true;
       this.showActiveWarning = false;
+      this.dataLayerQR('dont_cancel', 'deactivateCoupon')
     }
   }
 
   showWarning() {
+    
+    this.dataLayerQR('deactivate_coupons', 'qrCuponera');
+
     this.showActiveCouppon = false;
     this.showActiveWarning = true;
   }
 
   closeModal() {
+    
+    if(this.showActivatePromo) {
+      this.dataLayerConfirmation('close');
+    } else if(this.showActiveCouppon){
+      this.dataLayerQR('close', 'deactivateCoupon');
+    } else if(this.errorMessage){
+      this.dataLayerError('close');
+    }
+
     if(this.showActiveRedeem) {
       this.launchReload();
     }
     this.close.emit(false);
     this.showActiveRedeem = false;
     clearInterval(this.checkCollection);
+  }
+
+  seeStoresEvent(){
+    this.showActivatePromo ? this.dataLayerConfirmation('see_stores') : this.dataLayerQR('see_stores', 'qr_cuponera');
+  }
+
+  couponSuccessBtn(){
+    this.dataLayerQR('see_coupons', 'couponSuccess')
+  }
+
+  dataLayerConfirmation(action: string) {
+
+    this.analyticsService.pushEvent({
+      'event': 'confirmationCuponera',
+      'coupon_type': this.item[0].type === 'Product' ? 'redeem_in_stores' : 'day_promotions',
+      'product': this.item[0].title, 
+      'product_id': this.item[0].promotion_id, 
+      'promo': this.item[0].promotion, 
+      'points': this.item[0].points, 
+      'action': action 
+    })
+  }
+
+  dataLayerQR(action: string, event: string){
+    this.analyticsService.pushEvent({
+      'event': event,
+      'coupon_type': this.activePromoItem.type === 'Product' ? 'redeem_in_stores' : 'day_promotions',
+      'product': this.activePromoItem.title, 
+      'product_id': this.activePromoItem.promotion_id,
+      'promo': this.activePromoItem.promotion, 
+      'points': this.activePromoItem.points, 
+      'action': action,
+      'code_id': this.activePromoItem.code
+    })
+  }
+
+  dataLayerError(action){
+    this.analyticsService.pushEvent({
+      'event': 'error',
+      'error_type': 'redeem_in_stores',
+      'section': 'my_coupons',
+      'action': action
+    })
   }
 
 }

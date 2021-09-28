@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, AfterViewInit, ElementRef } from '@angular/core';
+import { AnalyticsService } from '../../../services/anaylitics/analytics.service'
 
 @Component({
   selector: 'app-shop-card',
@@ -25,7 +26,7 @@ export class ShopCardComponent implements OnInit, AfterViewInit {
   currentItem: any;
   cardType: string;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef, private analyticsService: AnalyticsService) { }
 
   ngOnInit(): void {}
 
@@ -40,8 +41,19 @@ export class ShopCardComponent implements OnInit, AfterViewInit {
       this.currentItem = this.products.filter((item: any) =>{
         return item.promotion_id === this.id
       });
+      this.dataLayerEvent();
     }
-    console.log(this.currentItem)
+  }
+
+  dataLayerEvent() {
+    this.analyticsService.pushEvent({
+      'event': 'cuponera',
+      'section': 'redeem_in_stores',
+      'product': this.currentItem[0].title, 
+      'product_id': this.currentItem[0].promotion_id,
+      'promo': this.currentItem[0].promotion, 
+      'points': this.currentItem[0].points 
+    })
   }
 
   closeModal(e){

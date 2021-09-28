@@ -1,7 +1,7 @@
 <div class="modal--info" id="modal--info" *ngIf="visible">
   <div class="modal--info__cont bg-white shadow-2xl md:shadow-sm">
     <div class="flex justify-end mb-2">
-      <img class="cursor-pointer" src="../../assets/images/close.svg" (click)="closeModal()" alt="">
+      <img class="cursor-pointer close-button" #closeIcon src="../../assets/images/close.svg" (click)="closeModal()" alt="">
     </div>
     <div class="md:w-5/6 lg:w-11/12 m-0-auto">
 
@@ -24,10 +24,10 @@
         <p class="text-base text-color-gray px-8 mb-14">Al cancelar el cupón, tus puntos serán regresados a tu cuenta.</p>
         <div class="flex mt-16">
           <a
-            class="text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-white text-primary-500 rounded-full w-full uppercase cursor-pointer"
+            class="cancel-coupon text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-white text-primary-500 rounded-full w-full uppercase cursor-pointer"
             (click)="deactivateCoupon()">CANCELA CUPÓN</a>
           <a
-            class="text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
+            class="no-cancel-coupon text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
             (click)="returnToCoupon()">NO CANCELAR</a>
         </div>
       </div>
@@ -40,7 +40,8 @@
         <p class="w-full text-center text-xl font-bold px-8 pb-14 relative">¡Beer Lover disfruta tu pola!</p>
         <div class="flex mt-16">
           <a
-            class="text-base inline-block text-md tracking-wider text-center text-white my-2 mb-10 py-4 bg-primary-500 rounded-full w-4/6 m-auto uppercase cursor-pointer"
+          (click)="couponSuccessBtn()"
+            class="coupon-success text-base inline-block text-md tracking-wider text-center text-white my-2 mb-10 py-4 bg-primary-500 rounded-full w-4/6 m-auto uppercase cursor-pointer"
             href="/app/wallet/coupons">VOLVER A MIS CUPONES</a>
         </div>
       </div>
@@ -54,7 +55,7 @@
         <p class="text-base text-color-gray px-8 mb-14">Te esperamos con más pomociones que podrían gustarte.</p>
         <div class="flex mt-16">
           <a href="/app/wallet/coupons"
-            class="text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
+            class="deactivate-success text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
             >VER CUPONES</a>
         </div>
       </div>
@@ -82,7 +83,7 @@
           <p class="text-center text-neutral-600 mt-3">Ha ocurrido un error intentalo mas tarde</p>
         </div>
 
-        <a class="text-sm inline-block text-md text-center text-white font-bold my-2 py-2 bg-primary-500 rounded-full w-full uppercase cursor-pointer mt-12 mb-10"
+        <a (click)="dataLayerError('go_back_to_my_coupons')" class="error-button text-sm inline-block text-md text-center text-white font-bold my-2 py-2 bg-primary-500 rounded-full w-full uppercase cursor-pointer mt-12 mb-10"
           href="/app/wallet/coupons">Regresar a mis Cupones</a>
       </div>
 
@@ -107,7 +108,7 @@
                 Pts.</span></p>
                 <div class="text-right pt-1">
                   <div class="mb-1 flex items-center justify-end mb-2">
-                    <a class="text-xs uppercase text-neutral-800 underline leading-none pr-2 mt-1" [routerLink]="'/wallet/map'" [queryParams]="{ id: this.item[0].promotion_id, url: urlToSend}">Ver tiendas</a>
+                    <a class="see-stores text-xs uppercase text-neutral-800 underline leading-none pr-2 mt-1" [routerLink]="'/wallet/map'" [queryParams]="{ id: this.item[0].promotion_id, url: urlToSend}">Ver tiendas</a>
                     <img src="../../assets/images/tienda.svg" alt="" />
                   </div>
                   <p class="text-sm uppercase text-neutral-800">Vigencia {{promoExpirationDate || item[0].date}}</p>
@@ -127,7 +128,7 @@
           </div>
           <div class="text-rigth pt-1">
             <div class="mb-1 flex items-center justify-end mb-2">
-              <a class="text-xs uppercase text-neutral-800 underline leading-none pr-2 mt-1" [routerLink]="'/wallet/map'" [queryParams]="{ id: couponId, url: 'wallet/coupons'}">Ver tiendas</a>
+              <a id="qrview" class="text-xs uppercase text-neutral-800 underline leading-none pr-2 mt-1" [routerLink]="'/wallet/map'" [queryParams]="{ id: couponId, url: 'wallet/coupons'}" (click)="seeStoresEvent()">Ver tiendas</a>
               <img src="../../assets/images/tienda.svg" alt="">
             </div>
             <p class="text-sm uppercase text-neutral-800">Vigencia {{promoExpirationDate || item[0].date}}</p>
@@ -140,11 +141,14 @@
         class="text-sm inline-block text-md text-center text-white font-bold my-2 py-2 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
         (click)="activatePromo()">{{btnMessage}}</a>
       <a *ngIf="showActivatePromo"
-        class="text-sm inline-block text-md text-center text-primary-500 font-bold py-2 rounded-full w-full uppercase underline cursor-pointer"
+        class="text-sm inline-block text-md text-center text-primary-500 font-bold py-2 rounded-full w-full uppercase underline cursor-pointer close-button"
+        #closeIcon
         (click)="closeModal()">cerrar</a>
 
       <a *ngIf="showActiveCouppon"
+        id="qrview"
         class="text-sm inline-block text-md text-center text-white font-bold my-2 py-2 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
+        (click)="dataLayerQR('go_back_to_my_coupons', 'qrCuponera')"
         href="/app/wallet/coupons">Volver a mis Cupones</a>
       <a *ngIf="showActiveCouppon"
         class="text-sm inline-block text-md text-center text-primary-500 font-bold py-2 rounded-full w-full uppercase underline cursor-pointer" (click)="showWarning()">desactivar

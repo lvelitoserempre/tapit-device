@@ -1,5 +1,6 @@
 import { Input } from '@angular/core';
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
+import { AnalyticsService } from '../../../services/anaylitics/analytics.service'
 
 @Component({
   selector: 'app-promo-card',
@@ -18,7 +19,7 @@ export class PromoCardComponent implements OnInit, AfterViewInit {
   currentItem: any;
   cardType: string;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef, private analyticsService: AnalyticsService) { }
 
   ngOnInit(): void {
   }
@@ -34,7 +35,19 @@ export class PromoCardComponent implements OnInit, AfterViewInit {
       this.currentItem = this.promos.filter((item: any) => {
         return item.promotion_id === this.id
       })
+      this.dataLayerEvent();
     }
+  }
+
+  dataLayerEvent() {
+    this.analyticsService.pushEvent({
+      'event': 'cuponera',
+      'section': 'day_promotions',
+      'product': this.currentItem[0].title, 
+      'product_id': this.currentItem[0].promotion_id, 
+      'promo': this.currentItem[0].promotion, 
+      'points': this.currentItem[0].points 
+    })
   }
 
   closeModal(e) {

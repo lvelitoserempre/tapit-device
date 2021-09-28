@@ -30,8 +30,8 @@ export const environment = {
     }
   },
   marketUrl: 'https://market.qa.tapit.com.co/api/vtexid/pub/logout?scope=bavariaco&returnUrl=https://market.qa.tapit.com.co',
-  googleAnalyticsId: 'UA-159252784-5',
-  googleTagManagerId: 'GTM-MGL9B93',
+  googleAnalyticsId: 'UA-196920262-1', //'UA-159252784-5',
+  googleTagManagerId: 'GTM-NFCC7RC', //'GTM-MGL9B93',
   facebookPixelId: '1374695322930119',
   drupal:{
     url: 'https://qa-content.abi-rewards.de',

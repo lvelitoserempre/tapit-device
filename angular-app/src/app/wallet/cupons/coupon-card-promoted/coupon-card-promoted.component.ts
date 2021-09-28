@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AnalyticsService } from '../../../services/anaylitics/analytics.service'
 
 @Component({
   selector: 'app-coupon-card-promoted',
@@ -24,7 +25,7 @@ export class CouponCardPromotedComponent implements OnInit, AfterViewInit {
   currentItem: any;
   cardType: string;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef, private analyticsService: AnalyticsService) { }
 
   ngOnInit(): void {
       this.title = this.brandData.brand.name;
@@ -43,6 +44,17 @@ export class CouponCardPromotedComponent implements OnInit, AfterViewInit {
   openModal(btnType: string) {
     this.myModal = true;
     this.cardType = btnType;
+
+    this.analyticsService.pushEvent({
+      'event': 'myCoupons',
+      'coupon_type': 'redeem_in_stores',
+      'product': this.currentItem[0].title,
+      'product_id': this.currentItem[0].id, 
+      'promo': this.currentItem[0].description, 
+      'points': this.currentItem[0].points,
+      'action': btnType === 'coupon' ? 'show_code' : 'deactivate_coupon',
+      'code_id': this.currentItem[0].qrcode
+    })
   }
 
   reloadItemsParent() {

@@ -24,4 +24,13 @@ export class AnalyticsService {
   sendCustomEvent(event) {
     ga('send', event);
   }
+
+  pushEvent(event){
+
+    const dataLayer = window['dataLayer']; 
+
+    if(dataLayer && dataLayer instanceof Array){
+      dataLayer.push(event);
+    }
+  }
 }
