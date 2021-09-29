@@ -30,6 +30,10 @@ export class ModalComponent implements OnInit, OnChanges {
   couponId;
   promoExpirationDate;
   btnMessage: string;
+  pointsText: string;
+  cancellationText: string;
+  couponCancellationSucces: string;
+  cancellationConfirmText: string;
   urlToSend: String;
   titleTosend: String;
   showActivatePromo: boolean = false;
@@ -76,14 +80,6 @@ export class ModalComponent implements OnInit, OnChanges {
 
       this.titleTosend = this.item[0].title;
 
-      if(this.item[0].type === 'Product'){
-        this.btnMessage = "Confirma y paga con puntos"
-        this.urlToSend = 'wallet/shop'
-      } else if (this.item[0].type === 'Promotion'){
-        this.btnMessage = "Confirma y activa promo"
-        this.urlToSend = 'wallet/promos'
-      }
-
       if(this.item[0].title.length > 7 || this.item[0].promotion.length > 7){
         this.largeText = true;
       } else {
@@ -104,6 +100,8 @@ export class ModalComponent implements OnInit, OnChanges {
       this.activePromoItem = {'qrBase64': this.currentItem[0].qr, 'code': this.qrcode};
       this.checkCollection = setInterval(this.listenFirebase, 1000);
 
+      
+
     } else if (this.cardType === 'deactivate') {
       this.item = this.currentItem;
       this.showActivatePromo = false;
@@ -117,6 +115,37 @@ export class ModalComponent implements OnInit, OnChanges {
       this.couponId = this.currentItem[0].id;
       this.activePromoItem = {'qrBase64': this.currentItem[0].qr, 'code': this.qrcode};
     }
+
+    if(this.cardType === 'promo'){
+      if(this.item[0].type === 'Product'){
+        this.btnMessage = "Redime con puntos";
+        this.pointsText = "Llévala por"
+        this.cancellationText = "Cancelar cupón"
+        this.cancellationConfirmText = 'Si cancelas este cupon, tus puntos serán regresados a tu cuenta.'
+        this.couponCancellationSucces = 'Tus puntos estan de nuevo en tu cuenta'
+        this.urlToSend = 'wallet/shop'
+      } else if (this.item[0].type === 'Promotion'){
+        this.btnMessage = "Activar Promo"
+        this.pointsText = "Ganas"
+        this.cancellationText = "Cancelar promo"
+        this.cancellationConfirmText = 'Si cancelas la promo, no sumas puntos para tu próxima pola'
+        this.couponCancellationSucces = 'Sigue canjeando promociones ¡Cuándo quieras!'
+        this.urlToSend = 'wallet/promos'
+      }
+    } else {
+      if(this.currentItem[0].type === 'Product'){
+        this.pointsText = 'Usaste';
+        this.cancellationText = 'Cancelar Cupon'
+        this.cancellationConfirmText = 'Si cancelas este cupon, tus puntos serán regresados a tu cuenta.'
+        this.couponCancellationSucces = 'Tus puntos estan de nuevo en tu cuenta'
+      } else if (this.currentItem[0].type === 'Promotion'){
+        this.pointsText = 'Ganas';
+        this.cancellationText = 'Cancelar Promo'
+        this.cancellationConfirmText = 'Si cancelas la promo, no sumas puntos para tu próxima pola'
+        this.couponCancellationSucces = 'Sigue canjeando promociones ¡Cuándo quieras!'
+      }
+    }
+
   }
 
   activatePromo() {
@@ -134,6 +163,14 @@ export class ModalComponent implements OnInit, OnChanges {
       this.isLoading = false;
 
       this.dataLayerConfirmation('confirm_and_pay_with_points')
+
+      if(this.activePromoItem.type === 'Product'){
+        this.pointsText = "Usaste"
+        this.cancellationText = "Cancelar cupón"
+      } else if (this.activePromoItem.type === 'Promotion'){
+        this.pointsText = "Ganas"
+        this.cancellationText = "Cancelar promo"
+      }
 
     }, error => {
       this.errorMessage = true;

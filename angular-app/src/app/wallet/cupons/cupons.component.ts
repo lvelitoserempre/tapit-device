@@ -81,7 +81,8 @@ export class CuponsComponent implements OnInit, AfterViewInit {
             'qrcode': e.code,
             'id': e.id_coupon,
             'brand': e.tapitCouponDrupal || '',
-            'date': deactivationDate
+            'date': deactivationDate,
+            'type': e.type
           }
           this.promoteds.push(elToPush);
         } else if(e.status === 'Redeemed') {
@@ -91,7 +92,8 @@ export class CuponsComponent implements OnInit, AfterViewInit {
           let elToPush = {
             'brand': e.tapitCouponDrupal || '',
             'date': deactivationDate,
-            'status': e.status
+            'status': e.status,
+            'type': e.type
           }
           this.consumeds.push(elToPush);
         } else if (e.status === 'Expired') {
@@ -100,7 +102,8 @@ export class CuponsComponent implements OnInit, AfterViewInit {
           let elToPush = {
             'brand': e.tapitCouponDrupal || '',
             'date': dateToShow,
-            'status': e.status
+            'status': e.status,
+            'type': e.type
           }
           this.consumeds.push(elToPush);
         } else {
@@ -109,7 +112,8 @@ export class CuponsComponent implements OnInit, AfterViewInit {
           let elToPush = {
             'brand': e.tapitCouponDrupal || '',
             'date': dateToShow,
-            'status': e.status
+            'status': e.status,
+            'type': e.type
           }
           this.consumeds.push(elToPush);
         }

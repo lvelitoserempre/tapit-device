@@ -12,7 +12,10 @@ export class CouponCardComponent implements OnInit {
   @Input() description: string;
   @Input() points: string;
   @Input() status: string;
-  public currentStatus: string
+  @Input() type: string;
+  public currentStatus: string;
+  pointsText: string;
+  redeemedPromo: boolean = false;
   
   constructor() { }
 
@@ -27,6 +30,12 @@ export class CouponCardComponent implements OnInit {
       this.currentStatus = "Expirado"
     } else {
       this.currentStatus = "Canjeado"
+      if(this.type === 'Product'){
+        this.pointsText = 'Usaste'
+      } else {
+        this.redeemedPromo = true;
+        this.pointsText = 'Ganaste'
+      }
     }
   }
 

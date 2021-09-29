@@ -7,8 +7,7 @@
 
       <!-- show promo modal -->
       <div *ngIf="showActivatePromo">
-        <h2 class="font-bold text-xl mb-1 leading-none lg:mb-6 lg:text-center">Confirma y canjea en tu tienda mas
-          cercana</h2>
+        <h2 class="font-bold text-xl mb-1 leading-none lg:mb-6">Canjéala en la tienda</h2>
 
         <div class="img-bg">
           <div class="w-10/12 bg-neutral-100 border-4 border-white m-auto flex image-bg">
@@ -19,44 +18,44 @@
 
       <div *ngIf="showActiveWarning">
         <p class="text-xl font-bold py-10 mb-1 text-center">
-          ¿Estás seguro de que quieres cancelar el cupón?
+          ¿Estás seguro?
         </p>
-        <p class="text-base text-color-gray px-8 mb-14">Al cancelar el cupón, tus puntos serán regresados a tu cuenta.</p>
+        <img class="mx-auto my-10 w-48" src="assets/images/info.png" alt="successful redeemed">
+        <p class="text-base text-color-gray px-8 mb-14 text-center w-4/5 mx-auto">{{cancellationConfirmText}}</p>
         <div class="flex mt-16">
           <a
             class="cancel-coupon text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-white text-primary-500 rounded-full w-full uppercase cursor-pointer"
             (click)="deactivateCoupon()">CANCELA CUPÓN</a>
           <a
             class="no-cancel-coupon text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
-            (click)="returnToCoupon()">NO CANCELAR</a>
+            (click)="returnToCoupon()">USARLO</a>
         </div>
       </div>
 
       <div *ngIf="showActiveRedeem">
-        <img class="mx-auto my-10 w-48" src="assets/images/beers.png" alt="successful redeemed">
         <p class="w-full text-xl font-bold text-primary-500 mb-4 text-center">
-          Canjeaste tu cupón exitosamente
+          Tu canje fue exitoso
         </p>
-        <p class="w-full text-center text-xl font-bold px-8 pb-14 relative">¡Beer Lover disfruta tu pola!</p>
+        <p class="w-full text-center text-xl font-bold px-8 pb-14 relative">¡Disfruta tu pola!</p>
+        <img class="mx-auto my-10 w-48" src="assets/images/beers.png" alt="successful redeemed">
         <div class="flex mt-16">
           <a
           (click)="couponSuccessBtn()"
             class="coupon-success text-base inline-block text-md tracking-wider text-center text-white my-2 mb-10 py-4 bg-primary-500 rounded-full w-4/6 m-auto uppercase cursor-pointer"
-            href="/app/wallet/coupons">VOLVER A MIS CUPONES</a>
+            href="/app/wallet/coupons">CONTINUAR</a>
         </div>
       </div>
 
       <div *ngIf="showActiveSuccess">
         <p class="text-xl font-bold pt-10 pb-6 mb-1 text-center">
-          Tu cupón fue cancelado
+          Cancelamos tú cupón
         </p>
         <img class="mx-auto mb-10" src="../../assets/images/success.png" alt="">
-        <p class="text-base text-color-gray px-8 mb-2">Te reembolsamos 240 puntos, ahora tienes 2500 Pts.</p>
-        <p class="text-base text-color-gray px-8 mb-14">Te esperamos con más pomociones que podrían gustarte.</p>
+        <p class="text-base text-color-gray px-8 mb-2 text text-center">{{couponCancellationSucces}}</p>
         <div class="flex mt-16">
           <a href="/app/wallet/coupons"
             class="deactivate-success text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
-            >VER CUPONES</a>
+            >CONTINUAR</a>
         </div>
       </div>
 
@@ -64,8 +63,7 @@
 
       <!-- show activated promo modal -->
       <div *ngIf="showActiveCouppon">
-        <h2 class="font-bold text-xl mb-1 leading-none lg:mb-6 lg:text-center">Muestrale este codigo al tendero para que
-          lo escanee</h2>
+        <h2 class="font-bold text-xl mb-1 leading-none lg:mb-6 ">Lleva este código contigo a la tienda</h2>
 
         <div>
           <img class="m-auto w-12/12 h-auto promo-image" src={{activePromoItem.qrBase64}} alt="">
@@ -82,49 +80,31 @@
 
       <div *ngIf="showActivatePromo || showActiveCouppon" class="detail m-0-auto w-11/12">
 
-        <div *ngIf="largeText">
+        <div>
           <div class="grid grid-cols-1">
-            <h3 class="text-xl font-bold leading-none">{{item[0].title}}</h3>
-              <h3 class="text-xl font-bold leading-none text-primary-500">{{item[0].promotion}}</h3>
-              <p class="text-sm mt-1">{{item[0].detail_description || item[0].description}}</p>
+            <h3 class="text-xl font-bold leading-none">{{item[0].title}} {{item[0].promotion}}</h3>
+              <p class="text-sm mt-1 text-black font-bold">{{item[0].detail_description || item[0].description}}</p>
           </div>
           <div class="grid grid-cols-2">
-              <p> <span class="text-xs">Gana hasta</span> <span
-                class="text-sm inline-block text-md text-center text-primary-500 font-bold my-2 ml-1 px-2 border-primaryt-500 rounded-full points">{{item[0].points}}
+              <p> <span class="text-sm text-neutral-900">{{pointsText}}</span> <span
+                class="bg-primary-500 text-xs inline-block text-md text-center text-white font-bold my-2 ml-1 px-3 border-primaryt-500 rounded-full points">{{item[0].points}}
                 Pts.</span></p>
                 <div class="text-right pt-1">
                   <div class="mb-1 flex items-center justify-end mb-2">
-                    <a class="see-stores text-xs uppercase text-neutral-800 underline leading-none pr-2 mt-1" [routerLink]="'/wallet/map'" [queryParams]="{ id: this.item[0].promotion_id, title: titleTosend, url: urlToSend}">Ver tiendas</a>
-                    <img src="../../assets/images/tienda.svg" alt="" />
+                    <div class="text-primary-500 border-tienda rounded-md py-1 px-2 flex items-center">
+                      <a class="flex items-center justify-end mr-1 text-sm" [routerLink]="'/wallet/map'" [queryParams]="{ id: this.item[0].promotion_id, title: titleTosend, url: urlToSend}">Dónde canjearlo</a>
+                    <img src="../../assets/images/vector-tiendas.svg" alt="" />
+                    </div>
                   </div>
                   <p class="text-sm uppercase text-neutral-800">Vigencia {{promoExpirationDate || item[0].date}}</p>
                   <a class="text-xs text-neutral-600 underline cursor-pointer" href={{item[0].terms}}>Términos y Condiciones</a>
                 </div>
             </div>
         </div>
-
-        <div *ngIf="!largeText" class="flex justify-between">
-          <div class="w-1/2 md:w-2/3">
-            <h3 class="text-xl font-bold leading-none">{{item[0].title}} <span
-                class="text-primary-500">{{item[0].promotion}}</span></h3>
-            <p class="text-sm mt-1">{{item[0].detail_description || item[0].description}}</p>
-            <p> <span class="text-xs">Gana hasta</span> <span
-                class="text-sm inline-block text-md text-center text-primary-500 font-bold my-2 ml-1 px-2 border-primaryt-500 rounded-full points">{{item[0].points}}
-                Pts.</span></p>
-          </div>
-          <div class="text-rigth pt-1">
-            <div class="mb-1 flex items-center justify-end mb-2">
-              <a id="qrview" class="text-xs uppercase text-neutral-800 underline leading-none pr-2 mt-1" [routerLink]="'/wallet/map'" [queryParams]="{ id: couponId, url: 'wallet/coupons', title: titleTosend}" (click)="seeStoresEvent()">Ver tiendas</a>
-              <img src="../../assets/images/tienda.svg" alt="">
-            </div>
-            <p class="text-sm uppercase text-neutral-800">Vigencia {{promoExpirationDate || item[0].date}}</p>
-            <a class="text-xs text-neutral-600 underline cursor-pointer" href={{item[0].terms}}>Términos y Condiciones</a>
-          </div>
-        </div>
       </div>
 
-      <a *ngIf="showActivatePromo"
-        class="text-sm inline-block text-md text-center text-white font-bold my-2 py-2 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
+        <a *ngIf="showActivatePromo"
+        class="text-sm block text-md text-center text-white font-bold my-2 py-2 bg-primary-500 rounded-full w-3/4 mx-auto uppercase cursor-pointer"
         (click)="activatePromo()">{{btnMessage}}</a>
       <a *ngIf="showActivatePromo"
         class="text-sm inline-block text-md text-center text-primary-500 font-bold py-2 rounded-full w-full uppercase underline cursor-pointer close-button"
@@ -135,10 +115,9 @@
         id="qrview"
         class="text-sm inline-block text-md text-center text-white font-bold my-2 py-2 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
         (click)="dataLayerQR('go_back_to_my_coupons', 'qrCuponera')"
-        href="/app/wallet/coupons">Volver a mis Cupones</a>
+        href="/app/wallet/coupons">Ir a mis Cupones</a>
       <a *ngIf="showActiveCouppon"
-        class="text-sm inline-block text-md text-center text-primary-500 font-bold py-2 rounded-full w-full uppercase underline cursor-pointer" (click)="showWarning()">desactivar
-        cupon</a>
+        class="text-sm inline-block text-md text-center text-primary-500 font-bold py-2 rounded-full w-full uppercase underline cursor-pointer" (click)="showWarning()" (click)="showWarning()">{{cancellationText}}</a>
 
          <!-- show error message modal -->
       <div *ngIf="errorMessage">
@@ -147,7 +126,7 @@
         <div>
           <img class="m-auto w-12/12 h-auto promo-image" src="assets/images/error.svg" alt="">
           <p class="text-center font-bold mt-4">Algo ha salido mal!</p>
-          <p class="text-center text-neutral-600 mt-3">Ha ocurrido un error intentalo mas tarde</p>
+          <p class="text-center text-neutral-600 mt-3">{{errorMessageText}}</p>
         </div>
 
         <a (click)="dataLayerError('go_back_to_my_coupons')" class="error-button text-sm inline-block text-md text-center text-white font-bold my-2 py-2 bg-primary-500 rounded-full w-full uppercase cursor-pointer mt-12 mb-10"

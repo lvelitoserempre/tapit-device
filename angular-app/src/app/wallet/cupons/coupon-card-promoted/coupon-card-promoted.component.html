@@ -11,9 +11,9 @@
     <div class="pl-4 pt-4 w-full">
       <p class="text-xl font-bold leading-8">{{title}}</p>
       <p class="text-xs leading-none">{{description}}</p>
-      <p class="text-sm font-bold mt-2 leading-none">{{points}} Pts.</p>
-      <button class="uppercase mt-6 rounded-full bg-primary-500 text-neutral-100 w-full text-center p-3 text-xs font-bold tracking-wider border-2" (click)="openModal('couppon')">mostrar código al tendero</button>
-      <button class="uppercase mt-4 rounded-full w-full text-center text-xs tracking-wider underline" (click)="openModal('deactivate')">desactiva cupón</button>
+      <p class="text-sm mt-2 leading-none text-neutral-800"><span>{{pointsText}} </span> <span class="font-bold bg-primary-500 text-white rounded-full py-1 px-2">{{points}} Pts.</span></p>
+      <button class="uppercase mt-6 rounded-full bg-primary-500 text-neutral-100 w-full text-center p-3 text-xs font-bold tracking-wider border-2" (click)="openModal('couppon')">redimir codigo</button>
+      <button class="uppercase mt-4 rounded-full w-full text-center text-xs tracking-wider underline" (click)="openModal('deactivate')">cancelar</button>
     </div>
   </div>
 </div>

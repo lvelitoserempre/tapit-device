@@ -1,11 +1,11 @@
 <div class="">
-  <div class="flex items-start border-b-2 border-neutral-500 p-5">
+  <div class="flex items-center border-b-2 border-neutral-500 p-5">
     <img src="{{imgUrl}}" alt="botellita" style="max-height: 80px;" />
     <div class="pl-4 w-full">
       <p class="text-xs text-neutral-500 font-bold uppercase leading-none">{{currentStatus}} el {{date}}</p>
-      <p class="text-xl font-bold leading-8">{{title}}</p>
+      <p class="text-xl font-bold leading-8 pb-1">{{title}}</p>
       <p class="text-xs text-neutral-700 leading-none">{{description}}</p>
-      <p class="text-sm p-1 mt-2 leading-none rounded-full text-center bg-secondary-500 text-neutral-100 w-1/3">{{points}} pts.</p>
+      <p class="text-sm pt-4 leading-none"> <span class="text-neutral-800">{{pointsText}} </span> <span class="rounded-full text-center bg-secondary-500 text-neutral-100 py-1 px-4" [ngClass]="{'bg-primary-500': redeemedPromo, 'bg-secondary-500': !redeemedPromo}">{{points}} pts.</span></p>
     </div>
   </div>
 </div>
