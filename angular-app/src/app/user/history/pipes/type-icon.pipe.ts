@@ -43,6 +43,8 @@ export class TypeIconPipe implements PipeTransform {
         return 'heart.svg';
       case 'tapit_cuponera_product_purchase':
         return 'heart.svg';
+      case 'redemtionModoOn':
+        return 'ticket.svg';
       default:
         return '';
     }
