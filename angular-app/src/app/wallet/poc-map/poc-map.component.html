@@ -1,6 +1,6 @@
 <div class="g-map">
   <div class="w-full py-3 hidden md:block">
-    <p class="text-xl font-bold leading-8 mb-2">En esta sección puedes ubicar los puntos para canjear la promoción: <span class="text-primary-500">{{offerTitle}}</span></p>
+    <p class="text-xl font-bold leading-8 mb-2">Aquí encuentras los lugares para canjear tu promo: <span class="text-primary-500">{{offerTitle}}</span></p>
   </div>
   <div class="g-map--body">
     <div class="g-map--body__left active pr-8">
@@ -9,7 +9,7 @@
           <svg width="22" height="24" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10.9975 5.49921H3.40745L6.70745 2.20921C6.89576 2.02091 7.00155 1.76551 7.00155 1.49921C7.00155 1.23291 6.89576 0.977513 6.70745 0.789209C6.51915 0.600905 6.26376 0.495117 5.99745 0.495117C5.73115 0.495117 5.47576 0.600905 5.28745 0.789209L0.287455 5.78921C0.196414 5.88431 0.125049 5.99646 0.0774549 6.11921C-0.0225631 6.36267 -0.0225631 6.63575 0.0774549 6.87921C0.125049 7.00196 0.196414 7.11411 0.287455 7.20921L5.28745 12.2092C5.38042 12.3029 5.49102 12.3773 5.61288 12.4281C5.73474 12.4789 5.86544 12.505 5.99745 12.505C6.12947 12.505 6.26017 12.4789 6.38203 12.4281C6.50389 12.3773 6.61449 12.3029 6.70745 12.2092C6.80118 12.1162 6.87558 12.0056 6.92635 11.8838C6.97711 11.7619 7.00325 11.6312 7.00325 11.4992C7.00325 11.3672 6.97711 11.2365 6.92635 11.1146C6.87558 10.9928 6.80118 10.8822 6.70745 10.7892L3.40745 7.49921H10.9975C11.2627 7.49921 11.517 7.39385 11.7046 7.20632C11.8921 7.01878 11.9975 6.76443 11.9975 6.49921C11.9975 6.23399 11.8921 5.97964 11.7046 5.7921C11.517 5.60457 11.2627 5.49921 10.9975 5.49921Z" fill="white"/>
           </svg>  
-          Regresar
+          Volver
         </button>
       </div>
       <!-- <div class="pointer-events-auto w-full hidden lg:inline-flex flex-shrink-0 px-10 py-4">
@@ -79,7 +79,7 @@
         <button class="block box-border rounded-4 cursor-pointer relative w-full h-12 text-base px-4 mb-1 bg-white shadow flex justify-center text-black font-bold content-center items-center border-2 border-black" (click)="refresh()">Buscar en tu área</button>
       </div>
       <div class="absolute w-12 h-28 controls">
-        <span class="block box-border cursor-pointer relative w-full h-12 text-2xl mb-1 bg-white shadow flex justify-center content-center items-center rounded-4 border-2 border-black" (click)="setCenterMap()">
+        <span class="block box-border cursor-pointer relative w-full h-12 text-2xl mb-1 bg-white shadow flex justify-center content-center items-center rounded-4 border border-black" (click)="setCenterMap()">
           <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M11.0117 19.9763C15.43 19.9763 19.0117 16.3666 19.0117 11.9138C19.0117 7.46102 15.43 3.85132 11.0117 3.85132C6.59344 3.85132 3.01172 7.46102 3.01172 11.9138C3.01172 16.3666 6.59344 19.9763 11.0117 19.9763Z" stroke="#000000" stroke-width="2"/>
             <path d="M11.0117 6.62925V1.82507" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
@@ -88,8 +88,8 @@
             <path d="M1.00061 11.9138H5.76758" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
           </svg>                       
         </span>
-        <span class="block box-border cursor-pointer relative w-full h-12 text-2xl mb-1 bg-white shadow flex justify-center content-center items-center rounded-4 border-2 border-black" (click)="zoomIn()">+</span>
-        <span class="block box-border cursor-pointer relative w-full h-12 text-2xl bg-white shadow flex justify-center content-center items-center rounded-4 border-2 border-black" (click)="zoomOut()">-</span> 
+        <span class="block box-border cursor-pointer relative w-full h-12 text-2xl mb-1 bg-white shadow flex justify-center content-center items-center rounded-4 border border-black" (click)="zoomIn()">+</span>
+        <span class="block box-border cursor-pointer relative w-full h-12 text-2xl bg-white shadow flex justify-center content-center items-center rounded-4 border border-black" (click)="zoomOut()">-</span> 
       </div>
     </div>
     <!-- <div class="g-map--body__footer lg:hidden">

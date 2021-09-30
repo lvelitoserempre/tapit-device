@@ -59,18 +59,16 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
       };
     localStorage.setItem('userLat', String(this.center.lat));
     localStorage.setItem('userLng', String(this.center.lng));
-    console.log(localStorage.getItem('userLat'));
       this.getPromos();
     }, (error) => {
-      console.log(error);
-      this.getPromos();
+      this.noPromos = true;
+      this.loadingService.hide();
     });
     this.route.queryParams.subscribe(params => {
       if(params['id']){
         this.idToCompare = params.id;
       }
     });
-    console.log(this.center);
   }
 
   ngAfterViewInit(): void {
@@ -87,8 +85,10 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
     this.promosSubscription = this.promoService.getPromosLocation(this.promoPage, this.center.lat, this.center.lng).subscribe((res: any) => {
       let response = res;
 
-      if(response.length === 0){
+      if(response.items.length === 0){
         this.noPromos = true;
+        this.loadingService.hide();
+        return false;
       } else {
         this.noPromos = false;
       }
