@@ -224,12 +224,12 @@
 }
 
 .controls {
-  left: 20px;
-  bottom: 20px;
+  right: 20px;
+  bottom: 40px;
 
   .bg-white {
     background: rgba(255,255,255);
-    color: rgb(107, 114, 128);
+    color: #000;
   }
 }
 
@@ -258,4 +258,13 @@
 
 .calc-height {
   height: calc(100% - 60px);
+}
+
+.box-border {
+  border-radius: 8px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.text-black {
+  color: #000;
 }

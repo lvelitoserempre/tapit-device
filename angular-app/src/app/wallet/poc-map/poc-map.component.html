@@ -76,11 +76,20 @@
         <map-info-window><b class="font-bold text-sm px-2 text-black">{{ infoContent }}</b></map-info-window>
       </google-map>
       <div class="absolute refresh-centered">
-        <button class="block box-border rounded-4 cursor-pointer relative w-full h-12 text-base px-4 mb-1 bg-white shadow flex justify-center text-black font-bold content-center items-center" (click)="refresh()">Buscar en tu área</button>
+        <button class="block box-border rounded-4 cursor-pointer relative w-full h-12 text-base px-4 mb-1 bg-white shadow flex justify-center text-black font-bold content-center items-center border-2 border-black" (click)="refresh()">Buscar en tu área</button>
       </div>
       <div class="absolute w-12 h-28 controls">
-        <span class="block box-border cursor-pointer relative w-full h-12 text-2xl mb-1 bg-white shadow flex justify-center content-center items-center" (click)="zoomIn()">+</span>
-        <span class="block box-border cursor-pointer relative w-full h-12 text-2xl bg-white shadow flex justify-center content-center items-center" (click)="zoomOut()">-</span> 
+        <span class="block box-border cursor-pointer relative w-full h-12 text-2xl mb-1 bg-white shadow flex justify-center content-center items-center rounded-4 border-2 border-black" (click)="setCenterMap()">
+          <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.0117 19.9763C15.43 19.9763 19.0117 16.3666 19.0117 11.9138C19.0117 7.46102 15.43 3.85132 11.0117 3.85132C6.59344 3.85132 3.01172 7.46102 3.01172 11.9138C3.01172 16.3666 6.59344 19.9763 11.0117 19.9763Z" stroke="#000000" stroke-width="2"/>
+            <path d="M11.0117 6.62925V1.82507" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+            <path d="M11.0117 22.0039V17.1997" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16.2556 11.9138H21.0225" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+            <path d="M1.00061 11.9138H5.76758" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+          </svg>                       
+        </span>
+        <span class="block box-border cursor-pointer relative w-full h-12 text-2xl mb-1 bg-white shadow flex justify-center content-center items-center rounded-4 border-2 border-black" (click)="zoomIn()">+</span>
+        <span class="block box-border cursor-pointer relative w-full h-12 text-2xl bg-white shadow flex justify-center content-center items-center rounded-4 border-2 border-black" (click)="zoomOut()">-</span> 
       </div>
     </div>
     <!-- <div class="g-map--body__footer lg:hidden">

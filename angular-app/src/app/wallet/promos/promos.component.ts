@@ -30,6 +30,9 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
       lat: 11.2295,
       lng: -74.2069,
     };
+    localStorage.clear();
+    localStorage.setItem('baseLat', String(this.center.lat));
+    localStorage.setItem('baseLng', String(this.center.lng));
   }
 
   // to add content from the next page of the API
@@ -49,7 +52,38 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
     this.loadingService.show();
-    navigator.geolocation.getCurrentPosition(this.setPosition,this.getError);
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+    localStorage.setItem('userLat', String(this.center.lat));
+    localStorage.setItem('userLng', String(this.center.lng));
+    console.log(localStorage.getItem('userLat'));
+      this.getPromos();
+    }, (error) => {
+      console.log(error);
+      this.getPromos();
+    });
+    this.route.queryParams.subscribe(params => {
+      if(params['id']){
+        this.idToCompare = params.id;
+      }
+    });
+    console.log(this.center);
+  }
+
+  ngAfterViewInit(): void {
+    this.cards.changes.subscribe(cards => {
+      cards.forEach(element => {
+        if(element.id == this.idToCompare) {
+          element.openModal('promo');
+        }
+      });
+    });
+  }
+
+  getPromos(): void {
     this.promosSubscription = this.promoService.getPromosLocation(this.promoPage, this.center.lat, this.center.lng).subscribe((res: any) => {
       let response = res;
 
@@ -69,30 +103,6 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
       this.noPromos = true;
       console.error();
     });
-
-    this.route.queryParams.subscribe(params => {
-      if(params['id']){
-        this.idToCompare = params.id;
-      }
-    });
-
-  }
-
-  ngAfterViewInit(): void {
-    this.cards.changes.subscribe(cards => {
-      cards.forEach(element => {
-        if(element.id == this.idToCompare) {
-          element.openModal('promo');
-        }
-      });
-    });
-  }
-
-  setPosition(position): void {
-    this.center = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude
-    }
   }
 
   getError(error): void {
@@ -102,6 +112,8 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
   ngOnDestroy(): void {
+    let body = document.querySelector('body');
+    body.classList.remove('modal-open');
     this.promosSubscription.unsubscribe();
   }
 

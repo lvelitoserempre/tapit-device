@@ -47,6 +47,7 @@ export class PocMapComponent implements OnInit, AfterViewInit {
     disableDoubleClickZoom: true,
     maxZoom: 18,
     minZoom: 12,
+    disableDefaultUI: true,
     styles: [
       {
         "elementType": "labels.text",
@@ -78,10 +79,18 @@ export class PocMapComponent implements OnInit, AfterViewInit {
   constructor(private route: ActivatedRoute, private loadingService: LoadingService, private router: Router, private location: Location, private pocService: PocMapService) {
     this.loadingService.show();
     this.markers = [];
-    this.center = {
-      lat: 11.2178,
-      lng: -74.1829,
-    };
+    if(localStorage.getItem('userLat')) {
+      this.center = {
+        lat: parseFloat(localStorage.getItem('userLat')),
+        lng: parseFloat(localStorage.getItem('userLng'))
+      };
+    } else {
+      this.center = {
+        lat: parseFloat(localStorage.getItem('baseLat')),
+        lng: parseFloat(localStorage.getItem('baseLng'))
+      };
+    }
+    console.log(this.center);
   }
 
   getCenter(): void {
@@ -124,13 +133,6 @@ export class PocMapComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
-      this.trackUser;
-    });
     this.route.queryParams.subscribe(params => {
         this.idToGet = params.id;
         this.url = params.url;
@@ -196,6 +198,21 @@ export class PocMapComponent implements OnInit, AfterViewInit {
         lng: this.map.getCenter().lng()
       };
       this.getPocs();
+  }
+  
+  setCenterMap() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+    }, (error) => {
+      console.log(error);
+      this.center = {
+        lat: parseFloat(localStorage.getItem('baseLat')),
+        lng: parseFloat(localStorage.getItem('baseLng'))
+      }
+    });
   }
 
   navigatePromo(lat,lng) {
