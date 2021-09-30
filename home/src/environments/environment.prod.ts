@@ -39,7 +39,7 @@ export const environment = {
     v2ApiPath: '/api/v2/pages',
     apiAuth: '/oauth/token',
     token: 'e572e1c3-516f-462a-9688-20370f77b598',
-    client_id: 'fe1b0adf-19fe-464a-9f5a-a247e564e505'
+    client_id: '10b16998-d0d9-4d10-a20f-5bff1d99df7b'
   },
   ssoApp: 'https://sso.tapit.com.co/v3/tapit.sso.main.js',
   marketUrl: 'https://market.tapit.com.co',
