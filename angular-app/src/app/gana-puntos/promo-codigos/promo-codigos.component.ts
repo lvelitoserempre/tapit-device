@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
 import { DialogService } from 'src/app/dialog/dialog-service/dialog.service';
 import { PromoCodigosService } from './promo-codigos.service';
 
@@ -11,13 +9,11 @@ import { PromoCodigosService } from './promo-codigos.service';
   styleUrls: ['./promo-codigos.component.scss']
 })
 export class PromoCodigosComponent implements OnInit {
-  observerTokenSubs: Subscription = null;
   loading: boolean = false;
   codigo: string = '';
 
   constructor(
     private promoCodService: PromoCodigosService,
-    private _authSvc: AuthService,
     private dialogService: DialogService,
   ) { }
 

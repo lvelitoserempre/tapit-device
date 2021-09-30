@@ -27,29 +27,36 @@ export class QRcodeReaderComponent implements OnInit {
     const _Qr: any = this.QrScannerComponent;
     this.startScanning(_Qr);
     _Qr.capturedQr.subscribe((result) => {
-      document.querySelector("#video > qr-scanner > canvas").setAttribute('style', 'display: none');
+      _Qr.videoElement.setAttribute("hidden", true);
       this.loading = true;
       this.qrcodeService.sendCode(result).subscribe((res: any) => {
         this.loading = false;
         const message: string = 'Obtuviste ' + res.data.points + ' puntos';
-        this.dialogService.showMessage('information', message, '¡Has escaneado exitosamente tu código!', 'CONTINUAR');
-        this.reloadCam();
+        this.dialogService.showMessage('information', message, '¡Has escaneado exitosamente tu código!', 'CONTINUAR').afterClosed().subscribe(result => {
+          this.reloadCam();
+        });
       },
         (error: any) => {
           this.loading = false;
           switch (error.error.status) {
             case 422:
-              this.reloadCam();
-              return this.dialogService.showMessageError('¡Algo salió mal!', 'El código ingresado ya fue escaneado o expiró.', 'INTENTAR DE NUEVO');
+              this.dialogService.showMessage('error', '¡Algo salió mal!', 'El código ingresado ya fue escaneado o expiró.', 'INTENTAR DE NUEVO').afterClosed().subscribe(result => {
+                this.reloadCam();
+              });
+              return true;
 
             case 404:
-              this.reloadCam();
-              return this.dialogService.showMessageError('¡Algo salió mal!', 'No fue posible encontrar este código 🙁', 'INTENTAR DE NUEVO');
+              this.dialogService.showMessage('error', '¡Algo salió mal!', 'No fue posible encontrar este código 🙁', 'INTENTAR DE NUEVO').afterClosed().subscribe(result => {
+                this.reloadCam();
+              });
+              return true;
 
             default:
-              this.reloadCam();
               console.error('error');
-              return this.dialogService.showMessageError('¡Lo sentimos!', 'Hubo un error, inténtalo más tarde.', 'INTENTAR DE NUEVO');
+              this.dialogService.showMessage('error', '¡Lo sentimos!', 'Hubo un error, inténtalo más tarde.', 'INTENTAR DE NUEVO').afterClosed().subscribe(result => {
+                this.reloadCam();
+              });
+              return true;
           }
         }
       );
@@ -58,6 +65,8 @@ export class QRcodeReaderComponent implements OnInit {
 
   reloadCam() {
     const _Qr: any = this.QrScannerComponent;
+    _Qr.canvasHidden = true;
+    _Qr.videoElement.setAttribute("hidden", true);
     _Qr.getMediaDevices().then((devices) => {
       const videoDevices: MediaDeviceInfo[] = [];
       for (const device of devices) {
