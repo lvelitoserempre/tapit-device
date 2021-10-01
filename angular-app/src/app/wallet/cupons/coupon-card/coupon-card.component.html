@@ -5,7 +5,8 @@
       <p class="text-xs text-neutral-500 font-bold uppercase leading-none">{{currentStatus}} el {{date}}</p>
       <p class="text-xl font-bold leading-8 pb-1">{{title}}</p>
       <p class="text-xs text-neutral-700 leading-none">{{description}}</p>
-      <p class="text-sm pt-4 leading-none"> <span class="text-neutral-800">{{pointsText}} </span> <span class="rounded-full text-center bg-secondary-500 text-neutral-100 py-1 px-4" [ngClass]="{'bg-primary-500': redeemedPromo, 'bg-secondary-500': !redeemedPromo}">{{points}} pts.</span></p>
+      <p class="text-sm pt-4 leading-none"> <span class="text-neutral-800">{{pointsText}} </span> <span class="rounded-full text-center bg-secondary-500 text-neutral-100 py-1 px-4 border-redeem"><b class="font-bold">{{points}}</b> pts.</span></p>
+      <!-- <p class="text-sm pt-4 leading-none"> <span class="text-neutral-800">{{pointsText}} </span> <span class="rounded-full text-center bg-secondary-500 text-neutral-100 py-2 px-4" [ngClass]="{'bg-primary-500': redeemedPromo, 'bg-secondary-500': !redeemedPromo}">{{points}} pts.</span></p> -->
     </div>
   </div>
 </div>

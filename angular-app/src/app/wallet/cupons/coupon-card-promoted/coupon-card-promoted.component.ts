@@ -20,6 +20,7 @@ export class CouponCardPromotedComponent implements OnInit, AfterViewInit {
   public points: string;
   public colorBg: string;
   public couponId: string;
+  public product: boolean = false;
 
   public modal;
   myModal = false;
@@ -40,8 +41,9 @@ export class CouponCardPromotedComponent implements OnInit, AfterViewInit {
 
       if(this.currentItem[0].type === 'Product'){
         this.pointsText = 'Usaste'
+        this.product = true;
       } else {
-        this.pointsText = 'Ganaste'
+        this.pointsText = 'Ganas'
       }
   }
 

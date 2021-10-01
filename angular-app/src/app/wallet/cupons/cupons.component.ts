@@ -70,6 +70,8 @@ export class CuponsComponent implements OnInit, AfterViewInit {
       this.totalPages = res.totalPages;
       this.couponsPage = this.couponsPage + 1;
 
+      console.log('this is the info they are sending me',response);
+
       response.map(e => {
         if (e.status === 'Active') {
 
