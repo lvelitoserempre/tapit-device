@@ -15,4 +15,8 @@ export class ShopsService {
   getProduct(page): Observable<any>{
     return this.http.get(`${environment.drupal.url}${environment.drupal.promoPath}?page=${page}&type=product`)
   }
+
+  getProductLocation(page, lat, lng): Observable<any> {
+    return this.http.post(`${environment.firebase.functions.url}${environment.firebase.functions.getPromos}`, { latitude: lat, longitude: lng, radiusInM: 150000, pageLength: 10, pageNumber: `${page}`, type: 'Product' });
+  }
 }

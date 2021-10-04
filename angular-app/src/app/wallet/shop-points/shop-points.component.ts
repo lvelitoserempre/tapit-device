@@ -42,6 +42,10 @@ export class ShopPointsComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     this.loadingService.show();
     if(localStorage.getItem('userLat')) {
+      this.center = {
+        lat: parseFloat(localStorage.getItem('userLat')),
+        lng: parseFloat(localStorage.getItem('userLng'))
+      };
       this.loadProducts();
     } else {
       this.loadingService.show();
@@ -68,9 +72,9 @@ export class ShopPointsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   loadProducts(): void {
-    this.productSubscription = this.productService.getProduct(this.productPage).subscribe((res: any) => {
+    this.productSubscription = this.productService.getProductLocation(this.productPage, this.center.lat, this.center.lng).subscribe((res: any) => {
       let response = res;
-      this.products = response.data;
+      this.products = response.items;
       this.totalPages = response.pager_total;
       this.actualPage = parseInt(response.page);
       
