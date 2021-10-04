@@ -51,6 +51,16 @@ export class ModalComponent implements OnInit, OnChanges {
   public checkCollection;
   public item$: any[];
 
+  error = {
+    '003':'¡Ups! Este cupón ya ha sido redimido',
+    '002': '¡Ups! Este cupón ya se te ha sido asignado',
+    '004': '¡Ups! Este cupón ya ha sido asignado',
+    '007': '¡Ups! El número de teléfono es requerido',
+    '010': '¡Ups! Este cupón ya no esta disponible',
+    '013': '¡Ups! Este cupón ya no existe',
+    '024': '¡Ups! Ya llegaste al límite de cupones',
+  }
+
 
   constructor(@Inject(DOCUMENT) private document: Document, private promosService: PromosService, private cuponService: CuponsService, private fireStore: AngularFirestore, private analyticsService: AnalyticsService) {
   }
@@ -115,33 +125,35 @@ export class ModalComponent implements OnInit, OnChanges {
       this.couponId = this.currentItem[0].id;
       this.activePromoItem = {'qrBase64': this.currentItem[0].qr, 'code': this.qrcode};
     }
-
-    if(this.cardType === 'promo'){
-      if(this.item[0].type === 'Product'){
+    //console.log();
+    const selectedItem = this.item[0];
+    const currentItem = this.currentItem[0];
+    if (this.cardType === 'promo') {
+      if (selectedItem.type === 'Product') {
         this.btnMessage = "Redime con puntos";
         this.pointsText = "Llévala por"
         this.cancellationText = "Cancelar cupón"
-        this.cancellationConfirmText = 'Si cancelas este cupon, tus puntos serán regresados a tu cuenta.'
-        this.couponCancellationSucces = 'Tus puntos estan de nuevo en tu cuenta'
+        this.cancellationConfirmText = 'Si cancelas el cupón, devolvemos <span class="text-primary-500">'+selectedItem.points+' puntos</span> a tu cuenta.'
+        this.couponCancellationSucces = 'Tus puntos están de nuevo en tu cuenta'
         this.urlToSend = 'wallet/shop'
-      } else if (this.item[0].type === 'Promotion'){
+      } else if (selectedItem.type === 'Promotion') {
         this.btnMessage = "Activar Promo"
         this.pointsText = "Ganas"
         this.cancellationText = "Cancelar promo"
-        this.cancellationConfirmText = 'Si cancelas la promo, no sumas puntos para tu próxima pola'
+        this.cancellationConfirmText = 'Si cancelas la promo, no sumas puntos para tu próxima pola.'
         this.couponCancellationSucces = 'Sigue canjeando promociones ¡Cuándo quieras!'
         this.urlToSend = 'wallet/promos'
       }
     } else {
-      if(this.currentItem[0].type === 'Product'){
+      if (currentItem.type === 'Product') {
         this.pointsText = 'Usaste';
-        this.cancellationText = 'Cancelar Cupon'
-        this.cancellationConfirmText = 'Si cancelas este cupon, tus puntos serán regresados a tu cuenta.'
-        this.couponCancellationSucces = 'Tus puntos estan de nuevo en tu cuenta'
-      } else if (this.currentItem[0].type === 'Promotion'){
+        this.cancellationText = 'Cancelar cupón'
+        this.cancellationConfirmText = 'Si cancelas el cupón, devolvemos <span class="text-primary-500">'+currentItem.points+' puntos</span> a tu cuenta.'
+        this.couponCancellationSucces = 'Tus puntos están de nuevo en tu cuenta.'
+      } else if (currentItem.type === 'Promotion') {
         this.pointsText = 'Ganas';
         this.cancellationText = 'Cancelar Promo'
-        this.cancellationConfirmText = 'Si cancelas la promo, no sumas puntos para tu próxima pola'
+        this.cancellationConfirmText = 'Si cancelas la promo, no sumas puntos para tu próxima pola.'
         this.couponCancellationSucces = 'Sigue canjeando promociones ¡Cuándo quieras!'
       }
     }
@@ -149,7 +161,6 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   activatePromo() {
-
     this.isLoading = true
     this.showActivatePromo = false;
 
@@ -175,7 +186,7 @@ export class ModalComponent implements OnInit, OnChanges {
     }, error => {
       this.errorMessage = true;
       this.isLoading = false;
-      this.errorMessageText = error.error.data;
+      this.errorMessageText = this.error[error.error.message]?this.error[error.error.message]:error.error.message;
       console.error(error)
     });
   }
@@ -198,7 +209,7 @@ export class ModalComponent implements OnInit, OnChanges {
     }, error => {
       this.errorMessage = true;
       this.isLoading = false;
-      this.errorMessageText = error.error.data;
+      this.errorMessageText = this.error[error.error.message]?this.error[error.error.message]:error.error.message;
       console.error(error)
     })
       
@@ -271,7 +282,6 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   dataLayerConfirmation(action: string) {
-
     this.analyticsService.pushEvent({
       'event': 'confirmationCuponera',
       'coupon_type': this.item[0].type === 'Product' ? 'redeem_in_stores' : 'day_promotions',

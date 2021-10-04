@@ -21,7 +21,7 @@
           ¿Estás seguro?
         </p>
         <img class="mx-auto my-10 w-48" src="assets/images/info.png" alt="successful redeemed">
-        <p class="text-base text-color-gray px-8 mb-14 text-center w-4/5 mx-auto">{{cancellationConfirmText}}</p>
+        <p class="text-base text-color-gray px-8 mb-14 text-center w-4/5 mx-auto" [innerHTML]="cancellationConfirmText">{{cancellationConfirmText}}</p>
         <div class="flex mt-16">
           <a
             class="cancel-coupon text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-white text-primary-500 rounded-full w-full uppercase cursor-pointer"
@@ -67,7 +67,7 @@
 
         <div>
           <img class="m-auto w-12/12 h-auto promo-image" src={{activePromoItem.qrBase64}} alt="">
-          <p class="text-center text-neutral-600">[ {{activePromoItem.code}} ]</p>
+          <p class="text-center text-neutral-600">{{activePromoItem.code}}</p>
         </div>
       </div>
 
