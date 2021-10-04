@@ -19,6 +19,7 @@ export class ShopPointsComponent implements OnInit, OnDestroy, AfterViewInit {
   actualPage: number;
   idToCompare: string;
   noProducts: boolean = false;
+  center: google.maps.LatLngLiteral;
   public onlineOffline: boolean = window.navigator.onLine;
 
   constructor(private productService: ShopsService, private loadingService: LoadingService, private route: ActivatedRoute) { 
@@ -40,6 +41,33 @@ export class ShopPointsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
     this.loadingService.show();
+    if(localStorage.getItem('userLat')) {
+      this.loadProducts();
+    } else {
+      this.loadingService.show();
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.center = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+      localStorage.setItem('userLat', String(this.center.lat));
+      localStorage.setItem('userLng', String(this.center.lng));
+      this.loadProducts();
+      }, (error) => {
+        this.noProducts = true;
+        this.loadingService.hide();
+      });
+    }
+    
+
+    this.route.queryParams.subscribe(params => {
+      if(params['id']){
+        this.idToCompare = params.id;
+      }
+    });
+  }
+
+  loadProducts(): void {
     this.productSubscription = this.productService.getProduct(this.productPage).subscribe((res: any) => {
       let response = res;
       this.products = response.data;
@@ -58,12 +86,6 @@ export class ShopPointsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.noProducts = true;
       console.log(err);
     })
-
-    this.route.queryParams.subscribe(params => {
-      if(params['id']){
-        this.idToCompare = params.id;
-      }
-    });
   }
 
   ngOnDestroy(): void {

@@ -166,10 +166,10 @@
     }
 
     &__items {
-      height: calc(100vh - 216px);
+      height: calc(100vh - 165px);
 
       @media (min-width: 1024px) {
-        height: calc(100vh - 256px);
+        height: calc(100vh - 165px);
       }
 
       @media (max-width: 768px) {

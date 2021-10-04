@@ -139,6 +139,7 @@ export class PocMapComponent implements OnInit, AfterViewInit {
         this.offerTitle = params.title;
         this.getPocs();
       });
+    this.trackUser();
   }
 
   ngAfterViewInit(): void {

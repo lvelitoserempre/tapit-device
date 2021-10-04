@@ -26,13 +26,7 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
     private loadingService: LoadingService,
     private route: ActivatedRoute
   ) {
-    this.center = {
-      lat: 11.2295,
-      lng: -74.2069,
-    };
     localStorage.clear();
-    localStorage.setItem('baseLat', String(this.center.lat));
-    localStorage.setItem('baseLng', String(this.center.lng));
   }
 
   // to add content from the next page of the API

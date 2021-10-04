@@ -26,6 +26,7 @@ export class CuponsComponent implements OnInit, AfterViewInit {
   idToCompare: string;
   noCoupons: boolean = false;
   public onlineOffline: boolean = window.navigator.onLine;
+  center: google.maps.LatLngLiteral;
 
   constructor(
     private couponService: CuponsService,
@@ -41,7 +42,23 @@ export class CuponsComponent implements OnInit, AfterViewInit {
         this.idToCompare = params.id;
       }
     });
-    this.loadCoupons();
+    if(localStorage.getItem('userLat')) {
+      this.loadCoupons();
+    } else {
+      this.loadingService.show();
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.center = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+      localStorage.setItem('userLat', String(this.center.lat));
+      localStorage.setItem('userLng', String(this.center.lng));
+      this.loadCoupons();
+      }, (error) => {
+        this.noCoupons = true;
+        this.loadingService.hide();
+      });
+    }
   }
 
   ngAfterViewInit(): void {
@@ -69,8 +86,6 @@ export class CuponsComponent implements OnInit, AfterViewInit {
       this.actualPage = this.couponsPage;
       this.totalPages = res.totalPages;
       this.couponsPage = this.couponsPage + 1;
-
-      console.log('this is the info they are sending me',response);
 
       response.map(e => {
         if (e.status === 'Active') {
