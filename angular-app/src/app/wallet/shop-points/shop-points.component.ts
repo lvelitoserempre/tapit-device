@@ -19,6 +19,7 @@ export class ShopPointsComponent implements OnInit, OnDestroy, AfterViewInit {
   actualPage: number;
   idToCompare: string;
   noProducts: boolean = false;
+  noLocationPermission = false;
   center: google.maps.LatLngLiteral;
   public onlineOffline: boolean = window.navigator.onLine;
 
@@ -48,7 +49,6 @@ export class ShopPointsComponent implements OnInit, OnDestroy, AfterViewInit {
       };
       this.loadProducts();
     } else {
-      this.loadingService.show();
       navigator.geolocation.getCurrentPosition((position) => {
         this.center = {
           lat: position.coords.latitude,
@@ -58,7 +58,7 @@ export class ShopPointsComponent implements OnInit, OnDestroy, AfterViewInit {
       localStorage.setItem('userLng', String(this.center.lng));
       this.loadProducts();
       }, (error) => {
-        this.noProducts = true;
+        this.noLocationPermission = true;
         this.loadingService.hide();
       });
     }
@@ -78,8 +78,9 @@ export class ShopPointsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.totalPages = response.pager_total;
       this.actualPage = parseInt(response.page);
       
-      if(response.length === 0){
+      if(this.products.length === 0){
         this.noProducts = true;
+        this.loadingService.hide();
       } else {
         this.noProducts = false;
       }
@@ -88,7 +89,7 @@ export class ShopPointsComponent implements OnInit, OnDestroy, AfterViewInit {
     }, err => {
       this.loadingService.hide();
       this.noProducts = true;
-      console.log(err);
+      console.error(err);
     })
   }
 

@@ -25,6 +25,7 @@ export class CuponsComponent implements OnInit, AfterViewInit {
   couponsPage: number = 0;
   idToCompare: string;
   noCoupons: boolean = false;
+  noLocationPermission = false;
   public onlineOffline: boolean = window.navigator.onLine;
   center: google.maps.LatLngLiteral;
 
@@ -32,11 +33,12 @@ export class CuponsComponent implements OnInit, AfterViewInit {
     private couponService: CuponsService,
     private loadingService: LoadingService,
     private route: ActivatedRoute
-  ) {
-    this.loadingService.show();
-  }
+  ) { }
 
   ngOnInit(): void {
+
+    this.loadingService.show();
+
     this.route.queryParams.subscribe(params => {
       if(params['id']){
         this.idToCompare = params.id;
@@ -45,7 +47,6 @@ export class CuponsComponent implements OnInit, AfterViewInit {
     if(localStorage.getItem('userLat')) {
       this.loadCoupons();
     } else {
-      this.loadingService.show();
       navigator.geolocation.getCurrentPosition((position) => {
         this.center = {
           lat: position.coords.latitude,
@@ -55,7 +56,7 @@ export class CuponsComponent implements OnInit, AfterViewInit {
       localStorage.setItem('userLng', String(this.center.lng));
       this.loadCoupons();
       }, (error) => {
-        this.noCoupons = true;
+        this.noLocationPermission = true;
         this.loadingService.hide();
       });
     }
@@ -138,6 +139,7 @@ export class CuponsComponent implements OnInit, AfterViewInit {
 
       if (this.consumeds.length === 0 && this.promoteds.length === 0) {
         this.noCoupons = true;
+        this.loadingService.hide();
       } else {
         this.noCoupons = false;
       }

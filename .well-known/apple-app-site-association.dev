@@ -1,22 +1,14 @@
 {
     "applinks": {
+        "apps": [],
         "details": [
             {
-              "appIDs": [ "WMB8HCJXS9.com.abinbev.tapit.qa" ],
-              "components": [
-                {
-                  "/": "/earnpoints",
-                  "comment": "We are currently matching any url"
-                },
-                {
-                  "/": "/app/user/profile/share",
-                  "comment": "We are currently matching any url"
-                },
-                {
-                  "/": "/*",
-                  "comment": "We are currently matching any url"
-                }
-              ]
+                "appID": "WMB8HCJXS9.com.abinbev.tapit.pre",
+                "paths": ["NOT / _/*", "/*", "app/auth/recovery-password?/*"]
+            },
+            {
+                "appID": "WMB8HCJXS9.com.abinbev.tapit.debug",
+                "paths": ["NOT / _/*", "/*", "app/auth/recovery-password?/*"]
             }
         ]
     }

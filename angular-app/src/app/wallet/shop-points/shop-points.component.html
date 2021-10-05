@@ -1,16 +1,24 @@
 <div class="tab-content p-5 bg-white">
-  <div class="flex mt-5 md:mt-10 mb-2 md:pr-3 md:pl-3">
+  <div *ngIf="!noLocationPermission" class="flex mt-5 md:mt-10 mb-2 md:pr-3 md:pl-3">
     <!--<div class="md:w-1/5"></div>-->
     <div class="md:w-2/3">
       <p class="text-xl font-bold leading-8 mb-2">Elige tu pola, págala con puntos <span class="text-primary-500">y ve por ella a la tienda</span></p>
     </div>
   </div>
 
-  <div *ngIf="noProducts && onlineOffline" class="w-1/4 m-auto pt-16 pb-16 flex flex-col justify-center items-center text-center">
-    <div class="bg-primary-100 p-6 inline-block border rounded-full">
+  <div *ngIf="noProducts && onlineOffline" class="md:w-1/4 m-auto pt-16 pb-16 flex flex-col justify-center items-center text-center">
+    <div class="bg-primary-100 p-6 inline-block border-0 rounded-full">
       <img src="assets/images/no-product.svg" alt="cupon image">
     </div>
     <p class="text-neutral-700 bold pt-4">Aún no tienes promos para redimir </p>
+  </div>
+
+  <div *ngIf="noLocationPermission" class="md:w-1/4 m-auto pt-16 pb-16 flex flex-col justify-center items-center text-center">
+    <div class="bg-primary-100 p-6 inline-block border-0 rounded-full">
+      <img src="assets/images/location.svg" alt="cupon image">
+    </div>
+    <p class="text-neutral-700 bold pt-4">¿Dónde estás?</p>
+    <p>Activa tu ubicación para descubir nuestros lugares </p>
   </div>
 
   <div *ngIf="!onlineOffline" class="w-1/4 m-auto pt-16 pb-16 flex flex-col justify-center items-center text-center">
@@ -21,7 +29,7 @@
     <p class="text-xs">Conéctate a una red para que puedas ver todas las promos que tenemos para ti. </p>
   </div>
 
-  <div *ngIf="!noProducts" class="flex">
+  <div *ngIf="!noProducts && !noLocationPermission" class="flex">
     <!--
     <div class="hidden md:block md:w-1/5 pr-6">
       <div class="mt-16">

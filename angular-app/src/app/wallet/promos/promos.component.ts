@@ -19,6 +19,7 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
   idToCompare: string;
   center: google.maps.LatLngLiteral;
   noPromos: boolean = false;
+  noLocationPermission: boolean = false;
   public onlineOffline: boolean = window.navigator.onLine;
 
   constructor(
@@ -55,7 +56,7 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
     localStorage.setItem('userLng', String(this.center.lng));
       this.getPromos();
     }, (error) => {
-      this.noPromos = true;
+      this.noLocationPermission = true;
       this.loadingService.hide();
     });
     this.route.queryParams.subscribe(params => {
@@ -95,7 +96,7 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
     }, err => {
       this.loadingService.hide();
       this.noPromos = true;
-      console.error();
+      console.error(err);
     });
   }
 

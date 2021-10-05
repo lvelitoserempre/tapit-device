@@ -1,5 +1,5 @@
 <div class="tab-content bg-white">
-  <div class="flex mt-5 md:mt-12 mb-2 pr-5 pl-5 md:pr-3 md:pl-3">
+  <div *ngIf="!noLocationPermission" class="flex mt-5 md:mt-12 mb-2 pr-5 pl-5 md:pr-3 md:pl-3">
     <!--<div class="hidden md:block md:w-1/5 pr-6"></div>-->
     <div class="w-full md:w-4/5">
       <p class="text-xl font-bold leading-8 mb-2">
@@ -8,12 +8,21 @@
     </div>
   </div>
 
-  <div *ngIf="noCoupons && onlineOffline" class="w-1/4 m-auto pt-16 pb-16 flex flex-col justify-center items-center text-center">
-    <div class="bg-primary-100 p-6 inline-block border rounded-full">
+  <div *ngIf="noCoupons && onlineOffline" class="md:w-1/4 m-auto pt-16 pb-16 flex flex-col justify-center items-center text-center">
+    <div class="bg-primary-100 p-6 inline-block border-0 rounded-full">
       <img src="assets/images/no-coupon.svg" alt="cupon image">
     </div>
     <p class="text-neutral-700 bold pt-4">Conoce nuestras promociones, agregalas a tus cupones y redimelas en la tienda
     </p>
+    <button class="uppercase mt-6 rounded-full bg-primary-500 text-neutral-100 w-full text-center py-2 px-3 text-xs font-bold tracking-wider border-2" [routerLink]="'/wallet/promos'">ver promos</button>
+  </div>
+
+  <div *ngIf="noLocationPermission" class="md:w-1/4 m-auto pt-16 pb-16 flex flex-col justify-center items-center text-center">
+    <div class="bg-primary-100 p-6 inline-block border-0 rounded-full">
+      <img src="assets/images/location.svg" alt="cupon image">
+    </div>
+    <p class="text-neutral-700 bold pt-4">¿Dónde estás?</p>
+    <p>Activa tu ubicación para descubir nuestros lugares </p>
   </div>
 
   <div *ngIf="!onlineOffline" class="w-1/4 m-auto pt-16 pb-16 flex flex-col justify-center items-center text-center">
@@ -24,7 +33,7 @@
     <p class="text-xs">Conéctate a una red para que puedas ver todas las promos que tenemos para ti. </p>
   </div>
 
-  <div *ngIf="!noCoupons" class="flex pr-5 pl-5 md:pr-3 md:pl-3">
+  <div *ngIf="!noCoupons && !noLocationPermission" class="flex pr-5 pl-5 md:pr-3 md:pl-3">
     <!--
     <div class="hidden md:block md:w-1/5 pr-6">
       <div class="mt-16">
