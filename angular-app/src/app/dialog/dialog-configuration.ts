@@ -1,5 +1,5 @@
 export interface DialogConfiguration {
-  type: 'error' | 'information';
+  type: 'error' | 'information' | 'errorCodes' | 'informationCodes';
   icon?: string;
   title?: string;
   subtitle?: string;

@@ -17,8 +17,7 @@ export class PromoCodigosComponent implements OnInit {
     private dialogService: DialogService,
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   redeemPromoCode() {
     this.loading = true;
@@ -26,17 +25,17 @@ export class PromoCodigosComponent implements OnInit {
       this.clearInput();
       this.loading = false;
       const message: string = 'Obtuviste ' + res.data.points + ' puntos';
-      this.dialogService.showMessage('information', message, '¡Has redimido exitosamente tu código!', 'CONTINUAR')
+      this.dialogService.showMessageOK('informationCodes', message, '¡Has redimido exitosamente tu promocódigo!', 'CONTINUAR')
     },
       (error: any) => {
         this.clearInput();
         this.loading = false;
         switch (error.error.status) {
           case 422:
-            return this.dialogService.showMessageError('¡Algo salió mal!', 'El código ingresado ya fue redimido o expiró.', 'INTENTAR DE NUEVO');
+            return this.dialogService.showMessageError('¡Algo salió mal!', 'El promocódigo ingresado ya fue redimido o expiró.', 'INTENTAR DE NUEVO');
 
           case 404:
-            return this.dialogService.showMessageError('¡Algo salió mal!', 'No fue posible encontrar este código 🙁', 'INTENTAR DE NUEVO');
+            return this.dialogService.showMessageError('¡Algo salió mal!', 'No fue posible encontrar este promocódigo 🙁', 'INTENTAR DE NUEVO');
 
           default:
             console.error('error');
@@ -47,6 +46,6 @@ export class PromoCodigosComponent implements OnInit {
   }
 
   clearInput() {
-    this.codigo = null;
+    this.codigo = '';
   }
 }

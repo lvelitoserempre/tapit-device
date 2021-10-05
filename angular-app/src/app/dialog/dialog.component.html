@@ -5,27 +5,65 @@
 </header>
 
 <section class="px-5 pb-5 break-words">
-  <div *ngIf="dialogConfig.type==='information'" class="">
+  <div *ngIf="dialogConfig.type==='information'">
     <div class="my-8">
-      <img class="mx-auto" src="assets/images/like.svg" style="max-width: 108px">
+      <img class="mx-auto" src="assets/images/like.svg">
     </div>
 
     <h1 *ngIf="dialogConfig.title" class="font-fs-bold text-center text-lg mb-4">{{dialogConfig.title }}</h1>
 
     <p class="font-fs-regular text-neutral-800 text-sm sm:text-base mb-8 text-center">{{dialogConfig.message }}</p>
 
-    <button [mat-dialog-close]="true" class="app-button bg-primary-500 w-full font-fs-bold">{{ dialogConfig.buttonOne }}</button>
+    <button [mat-dialog-close]="true" class="app-button bg-primary-500 w-full font-fs-bold">{{ dialogConfig.buttonOne
+      }}</button>
   </div>
 
-  <div *ngIf="dialogConfig.type==='error'" class="">
+  <div *ngIf="dialogConfig.type==='error'">
     <div class="my-8">
-      <img class="mx-auto" src="assets/images/alert-error.png" style="max-width: 108px">
+      <img class="mx-auto" src="assets/images/alert-error.png">
     </div>
 
     <h1 *ngIf="dialogConfig.title" class="font-fs-bold text-center text-lg mb-4">{{dialogConfig.title }}</h1>
 
     <p class="font-fs-regular text-neutral-800 text-sm sm:text-base mb-8 text-center">{{dialogConfig.message }}</p>
 
-    <button [mat-dialog-close]="true" class="app-button bg-primary-500 w-full font-fs-bold">{{ dialogConfig.buttonOne }}</button>
+    <button [mat-dialog-close]="true" class="app-button bg-primary-500 w-full font-fs-bold">{{ dialogConfig.buttonOne
+      }}</button>
+  </div>
+
+  <div *ngIf="dialogConfig.type==='informationCodes'">
+    <div class="my-8">
+      <img class="mx-auto" src="assets/images/okC.png">
+    </div>
+
+    <h1 *ngIf="dialogConfig.title" class="font-fs-bold text-center text-lg mb-4">{{dialogConfig.title }}</h1>
+
+    <p class="font-fs-regular text-neutral-800 text-sm sm:text-base mb-8 text-center">{{dialogConfig.message }}</p>
+
+    <div class="flex justify-center	">
+      <button [mat-dialog-close]="true" class="app-button bg-primary-500 w-auto font-fs-bold">
+        <p class="mx-3">
+          {{ dialogConfig.buttonOne }}
+        </p>
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="dialogConfig.type==='errorCodes'">
+    <div class="my-8">
+      <img class="mx-auto" src="assets/images/errorC.png">
+    </div>
+
+    <h1 *ngIf="dialogConfig.title" class="font-fs-bold text-center text-lg mb-4">{{dialogConfig.title }}</h1>
+
+    <p class="font-fs-regular text-neutral-800 text-sm sm:text-base mb-8 text-center">{{dialogConfig.message }}</p>
+    
+    <div class="flex justify-center	">
+      <button [mat-dialog-close]="true" class="app-button bg-primary-500 w-auto font-fs-bold">
+        <p class="mx-3">
+          {{ dialogConfig.buttonOne }}
+        </p>
+      </button>
+    </div>
   </div>
 </section>

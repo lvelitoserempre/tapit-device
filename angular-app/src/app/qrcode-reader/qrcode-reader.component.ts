@@ -1,6 +1,5 @@
 import { Component, ViewChild, ViewEncapsulation, OnInit, Renderer2 } from '@angular/core';
 import { QrScannerComponent } from 'angular2-qrscanner';
-import { AuthService } from '../auth/auth.service';
 import { DialogService } from '../dialog/dialog-service/dialog.service';
 import { QrcodeReaderService } from './qrcode-reader.service';
 
@@ -13,48 +12,65 @@ import { QrcodeReaderService } from './qrcode-reader.service';
 export class QRcodeReaderComponent implements OnInit {
   @ViewChild(QrScannerComponent) QrScannerComponent: QrScannerComponent;
   loading: boolean = false;
+  isMobile: boolean = false;
+  isDesktop: boolean = false;
 
   constructor(
     private renderer: Renderer2,
     private qrcodeService: QrcodeReaderService,
     private dialogService: DialogService,
-    private _authSvc: AuthService
   ) { }
 
-  ngOnInit() { }
+  detectMobileDevice() {
+    if (window.navigator.userAgent.match(/Android/i)) {
+      this.isMobile = true;
+    } else if (window.navigator.userAgent.match(/iPhone/i) || window.navigator.userAgent.match(/iPad/i)) {
+      this.isMobile = true;
+    } else {
+      this.isDesktop = true;
+    }
+  }
+
+  ngOnInit() {
+    this.detectMobileDevice();
+  }
 
   ngAfterViewInit(): void {
     const _Qr: any = this.QrScannerComponent;
     this.startScanning(_Qr);
     _Qr.capturedQr.subscribe((result) => {
-      _Qr.videoElement.setAttribute("hidden", true);
+      _Qr.videoElement.setAttribute('style', 'display: none');
       this.loading = true;
       this.qrcodeService.sendCode(result).subscribe((res: any) => {
         this.loading = false;
         const message: string = 'Obtuviste ' + res.data.points + ' puntos';
-        this.dialogService.showMessage('information', message, '¡Has escaneado exitosamente tu código!', 'CONTINUAR').afterClosed().subscribe(result => {
+        this.dialogService.showMessageOK('informationCodes', message, '¡Has escaneado exitosamente tu código!', 'CONTINUAR').afterClosed().subscribe(result => {
           this.reloadCam();
+          _Qr.videoElement.setAttribute('style', 'display: block');
         });
       },
         (error: any) => {
           this.loading = false;
           switch (error.error.status) {
             case 422:
-              this.dialogService.showMessage('error', '¡Algo salió mal!', 'El código ingresado ya fue escaneado o expiró.', 'INTENTAR DE NUEVO').afterClosed().subscribe(result => {
+              this.dialogService.showMessageOK('errorCodes', '¡Algo salió mal!', 'El código ingresado ya fue escaneado o expiró.', 'INTENTAR DE NUEVO').afterClosed().subscribe(result => {
                 this.reloadCam();
+                _Qr.videoElement.setAttribute('style', 'display: block');
               });
               return true;
 
             case 404:
-              this.dialogService.showMessage('error', '¡Algo salió mal!', 'No fue posible encontrar este código 🙁', 'INTENTAR DE NUEVO').afterClosed().subscribe(result => {
+              this.dialogService.showMessageOK('errorCodes', '¡Algo salió mal!', 'No fue posible encontrar este código 🙁', 'INTENTAR DE NUEVO').afterClosed().subscribe(result => {
                 this.reloadCam();
+                _Qr.videoElement.setAttribute('style', 'display: block');
               });
               return true;
 
             default:
               console.error('error');
-              this.dialogService.showMessage('error', '¡Lo sentimos!', 'Hubo un error, inténtalo más tarde.', 'INTENTAR DE NUEVO').afterClosed().subscribe(result => {
+              this.dialogService.showMessageOK('errorCodes', '¡Lo sentimos!', 'Hubo un error, inténtalo más tarde.', 'INTENTAR DE NUEVO').afterClosed().subscribe(result => {
                 this.reloadCam();
+                _Qr.videoElement.setAttribute('style', 'display: block');
               });
               return true;
           }
@@ -91,18 +107,28 @@ export class QRcodeReaderComponent implements OnInit {
         const constraints = {
           audio: false,
           video: {
+            zoom: 2.5,
             facingMode: 'environment',
             width: { ideal: 300 },
             height: { ideal: 300 }
           }
         }
 
-        navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-          _Qr.setStream(stream);
-        })
+        navigator.mediaDevices.getUserMedia(constraints)
+          .then(stream => {
+            const [track] = stream.getVideoTracks();
+            const settings = track.getSettings();
+
+            if (!('zoom' in settings)) {
+              console.warn('Zoom is not supported by ' + track.label + settings);
+            } else {
+              console.warn('Zoom is not supported by ' + track.label + settings);
+            }
+
+            _Qr.setStream(stream);
+          })
       }
     });
-    document.querySelector("#video > qr-scanner > div > video").setAttribute('style', 'display: block');
   }
 
   startScanning(_Qr: any) {
@@ -118,6 +144,7 @@ export class QRcodeReaderComponent implements OnInit {
         const constraints = {
           audio: false,
           video: {
+            zoom: 2.5,
             facingMode: 'environment',
             width: { ideal: 300 },
             height: { ideal: 300 }
@@ -134,6 +161,15 @@ export class QRcodeReaderComponent implements OnInit {
 
         navigator.mediaDevices.getUserMedia(constraints)
           .then(stream => {
+            const [track] = stream.getVideoTracks();
+            const settings = track.getSettings();
+
+            if (!('zoom' in settings)) {
+              console.warn('Zoom is not supported by ' + track.label + settings);
+            } else {
+              console.warn('Zoom is not supported by ' + track.label + settings);
+            }
+
             _Qr.setStream(stream);
           });
       }

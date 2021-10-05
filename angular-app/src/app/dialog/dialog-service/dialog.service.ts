@@ -15,10 +15,6 @@ export class DialogService {
     return of(this.showMessage('error', 'ERROR', message, 'ACEPTAR'));
   }
 
-  showMessageError(title: string, message: string, buttonOne: string, redirectUrl?: string): Observable<MatDialogRef<DialogComponent>> {
-    return of(this.showMessage('error', title, message, buttonOne, redirectUrl));
-  }
-
   showMessage(type: string, title: string, message: string, buttonOne: string, redirectUrl?: string): MatDialogRef<DialogComponent> {
     const dialog = this.dialog.open(DialogComponent, {
       panelClass: ['app-dialog'],
@@ -38,5 +34,22 @@ export class DialogService {
     }
 
     return dialog;
+  }
+
+  showMessageOK(type: string, title: string, message: string, buttonOne: string): MatDialogRef<DialogComponent> {
+    const dialog = this.dialog.open(DialogComponent, {
+      panelClass: ['app-dialog'],
+      data: {
+        type: type,
+        title: title,
+        message: message,
+        buttonOne: buttonOne
+      }
+    });
+    return dialog;
+  }
+
+  showMessageError(title: string, message: string, buttonOne: string): Observable<MatDialogRef<DialogComponent>> {
+    return of(this.showMessageOK('errorCodes', title, message, buttonOne));
   }
 }
