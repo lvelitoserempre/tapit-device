@@ -50,9 +50,11 @@ export class ModalComponent implements OnInit, OnChanges {
   largeText: boolean = false;
   public checkCollection;
   public item$: any[];
+  errorTitle = 'Error del sistema';
+  isInfo:boolean = false;
 
   error = {
-    '003':'¡Ups! Este cupón ya ha sido redimido',
+    '003': '¡Ups! Puedes puede volver a activar esta promoción el ',
     '002': '¡Ups! Este cupón ya se te ha sido asignado',
     '004': '¡Ups! Este cupón ya ha sido asignado',
     '007': '¡Ups! El número de teléfono es requerido',
@@ -60,7 +62,6 @@ export class ModalComponent implements OnInit, OnChanges {
     '013': '¡Ups! Este cupón ya no existe',
     '024': '¡Ups! Ya llegaste al límite de cupones',
   }
-
 
   constructor(@Inject(DOCUMENT) private document: Document, private promosService: PromosService, private cuponService: CuponsService, private fireStore: AngularFirestore, private analyticsService: AnalyticsService) {
   }
@@ -110,8 +111,6 @@ export class ModalComponent implements OnInit, OnChanges {
       this.activePromoItem = {'qrBase64': this.currentItem[0].qr, 'code': this.qrcode};
       this.checkCollection = setInterval(this.listenFirebase, 1000);
 
-      
-
     } else if (this.cardType === 'deactivate') {
       this.item = this.currentItem;
       this.showActivatePromo = false;
@@ -125,7 +124,6 @@ export class ModalComponent implements OnInit, OnChanges {
       this.couponId = this.currentItem[0].id;
       this.activePromoItem = {'qrBase64': this.currentItem[0].qr, 'code': this.qrcode};
     }
-    //console.log();
     const selectedItem = this.item[0];
     const currentItem = this.currentItem[0];
     if (this.cardType === 'promo') {
@@ -186,7 +184,15 @@ export class ModalComponent implements OnInit, OnChanges {
     }, error => {
       this.errorMessage = true;
       this.isLoading = false;
-      this.errorMessageText = this.error[error.error.message]?this.error[error.error.message]:error.error.message;
+      let errorMessage = this.error[error.error.message]?this.error[error.error.message]:error.error.message;
+      this.errorTitle = "Error del sistema";
+      this.isInfo = false;
+      if (error.error.message == '003') {
+        errorMessage = this.error[error.error.message] + moment(error.error.data.assignmentAvailable* 1000).format('DD/MM/YY HH:mm');
+        this.errorTitle = "Redimiste recientemente esta promoción";
+        this.isInfo = true;
+      }
+      this.errorMessageText = errorMessage;
       console.error(error)
     });
   }
@@ -209,10 +215,18 @@ export class ModalComponent implements OnInit, OnChanges {
     }, error => {
       this.errorMessage = true;
       this.isLoading = false;
-      this.errorMessageText = this.error[error.error.message]?this.error[error.error.message]:error.error.message;
+      let errorMessage = this.error[error.error.message]?this.error[error.error.message]:error.error.message;
+      this.errorTitle = "Error del sistema";
+      this.isInfo = false;
+      if (error.error.message == '003') {
+        errorMessage = this.error[error.error.message] + moment(error.error.data.assignmentAvailable* 1000).format('DD/MM/YY HH:mm');
+        this.errorTitle = "Redimiste recientemente esta promoción";
+        this.isInfo = true;
+      }
+      this.errorMessageText = errorMessage;
       console.error(error)
     })
-      
+
   }
 
   listenFirebase = () => {
@@ -248,7 +262,7 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   showWarning() {
-    
+
     this.dataLayerQR('deactivate_coupons', 'qrCuponera');
 
     this.showActiveCouppon = false;
@@ -256,7 +270,7 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   closeModal() {
-    
+
     if(this.showActivatePromo) {
       this.dataLayerConfirmation('close');
     } else if(this.showActiveCouppon){
@@ -285,11 +299,11 @@ export class ModalComponent implements OnInit, OnChanges {
     this.analyticsService.pushEvent({
       'event': 'confirmationCuponera',
       'coupon_type': this.item[0].type === 'Product' ? 'redeem_in_stores' : 'day_promotions',
-      'product': this.item[0].title, 
-      'product_id': this.item[0].promotion_id, 
-      'promo': this.item[0].promotion, 
-      'points': this.item[0].points, 
-      'action': action 
+      'product': this.item[0].title,
+      'product_id': this.item[0].promotion_id,
+      'promo': this.item[0].promotion,
+      'points': this.item[0].points,
+      'action': action
     })
   }
 
@@ -297,10 +311,10 @@ export class ModalComponent implements OnInit, OnChanges {
     this.analyticsService.pushEvent({
       'event': event,
       'coupon_type': this.activePromoItem.type === 'Product' ? 'redeem_in_stores' : 'day_promotions',
-      'product': this.activePromoItem.title, 
+      'product': this.activePromoItem.title,
       'product_id': this.activePromoItem.promotion_id,
-      'promo': this.activePromoItem.promotion, 
-      'points': this.activePromoItem.points, 
+      'promo': this.activePromoItem.promotion,
+      'points': this.activePromoItem.points,
       'action': action,
       'code_id': this.activePromoItem.code
     })

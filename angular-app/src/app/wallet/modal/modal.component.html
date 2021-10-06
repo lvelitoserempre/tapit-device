@@ -121,16 +121,17 @@
 
          <!-- show error message modal -->
       <div *ngIf="errorMessage">
-        <h2 class="font-bold text-xl mb-1 leading-none lg:mb-6 lg:text-center">Error del sistema</h2>
+        <h2 class="font-bold text-xl mb-1 leading-none lg:mb-6 lg:text-center">{{errorTitle}}</h2>
 
         <div>
-          <img class="m-auto w-12/12 h-auto promo-image" src="assets/images/error.svg" alt="">
-          <p class="text-center font-bold mt-4">Algo ha salido mal!</p>
+          <img *ngIf="!isInfo" class="m-auto w-12/12 h-auto promo-image" src="assets/images/error.svg" alt="">
+          <img *ngIf="isInfo" class="m-auto w-12/12 h-auto promo-image" src="assets/images/info.png" alt="">
+          <p *ngIf="!isInfo" class="text-center font-bold mt-4">Algo ha salido mal!</p>
           <p class="text-center text-neutral-600 mt-3">{{errorMessageText}}</p>
         </div>
 
         <a (click)="dataLayerError('go_back_to_my_coupons')" class="error-button text-sm inline-block text-md text-center text-white font-bold my-2 py-2 bg-primary-500 rounded-full w-full uppercase cursor-pointer mt-12 mb-10"
-          href="/app/wallet/coupons">Regresar a mis Cupones</a>
+          href="/app/wallet/coupons">Ir a mis Cupones</a>
       </div>
       
     </div>
