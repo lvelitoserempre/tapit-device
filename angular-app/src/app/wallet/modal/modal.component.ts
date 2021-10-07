@@ -273,8 +273,12 @@ export class ModalComponent implements OnInit, OnChanges {
 
     if(this.showActivatePromo) {
       this.dataLayerConfirmation('close');
+    } else if(this.showActiveSuccess){
+      this.dataLayerQR('close', 'deactivateCouponSuccess');
     } else if(this.showActiveCouppon){
-      this.dataLayerQR('close', 'deactivateCoupon');
+      this.dataLayerQR('close', 'qrCuponera');
+    } else if(this.showActiveRedeem){
+      this.dataLayerQR('close', 'couponSuccess');
     } else if(this.errorMessage){
       this.dataLayerError('close');
     }
@@ -311,10 +315,10 @@ export class ModalComponent implements OnInit, OnChanges {
     this.analyticsService.pushEvent({
       'event': event,
       'coupon_type': this.activePromoItem.type === 'Product' ? 'redeem_in_stores' : 'day_promotions',
-      'product': this.activePromoItem.title,
-      'product_id': this.activePromoItem.promotion_id,
-      'promo': this.activePromoItem.promotion,
-      'points': this.activePromoItem.points,
+      'product': this.item[0].title, 
+      'product_id': this.item[0].promotion_id,
+      'promo': this.item[0].description, 
+      'points': this.item[0].points,
       'action': action,
       'code_id': this.activePromoItem.code
     })

@@ -54,7 +54,7 @@
         <p class="text-base text-color-gray px-8 mb-2 text text-center">{{couponCancellationSucces}}</p>
         <div class="flex mt-16">
           <a href="/app/wallet/coupons"
-            class="deactivate-success text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-full uppercase cursor-pointer"
+            class="deactivate-success text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-full uppercase cursor-pointer" (click)="dataLayerQR('see_coupons', 'deactivateCouponSuccess')"
             >CONTINUAR</a>
         </div>
       </div>
@@ -92,7 +92,7 @@
                 <div class="text-right pt-1">
                   <div class="mb-1 flex items-center justify-end mb-2">
                     <div class="text-primary-500 border-tienda rounded-md py-1 px-2 flex items-center">
-                      <a class="flex items-center justify-end mr-1 text-sm" [routerLink]="'/wallet/map'" [queryParams]="{ id: this.item[0].promotion_id, title: titleTosend, url: urlToSend}">Dónde canjearlo</a>
+                      <a class="flex items-center justify-end mr-1 text-sm" [routerLink]="'/wallet/map'" [queryParams]="{ id: this.item[0].promotion_id, title: titleTosend, url: urlToSend}" (click)="seeStoresEvent()">Dónde canjearlo</a>
                     <img src="../../assets/images/vector-tiendas.svg" alt="" />
                     </div>
                   </div>
@@ -117,7 +117,7 @@
         (click)="dataLayerQR('go_back_to_my_coupons', 'qrCuponera')"
         href="/app/wallet/coupons">Ir a mis Cupones</a>
       <a *ngIf="showActiveCouppon"
-        class="text-sm inline-block text-md text-center text-primary-500 font-bold py-2 rounded-full w-full uppercase underline cursor-pointer" (click)="showWarning()" (click)="showWarning()">{{cancellationText}}</a>
+        class="text-sm inline-block text-md text-center text-primary-500 font-bold py-2 rounded-full w-full uppercase underline cursor-pointer" (click)="showWarning()">{{cancellationText}}</a>
 
          <!-- show error message modal -->
       <div *ngIf="errorMessage">

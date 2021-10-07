@@ -62,7 +62,7 @@ export class CouponCardPromotedComponent implements OnInit, AfterViewInit {
       'product_id': this.currentItem[0].id, 
       'promo': this.currentItem[0].description, 
       'points': this.currentItem[0].points,
-      'action': btnType === 'coupon' ? 'show_code' : 'deactivate_coupon',
+      'action': btnType === 'couppon' ? 'show_code' : 'deactivate_coupon',
       'code_id': this.currentItem[0].qrcode
     })
   }
