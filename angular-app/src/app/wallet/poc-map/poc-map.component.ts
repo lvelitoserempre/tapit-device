@@ -90,7 +90,6 @@ export class PocMapComponent implements OnInit, AfterViewInit {
         lng: parseFloat(localStorage.getItem('baseLng'))
       };
     }
-    console.log(this.center);
   }
 
   getCenter(): void {
@@ -198,22 +197,16 @@ export class PocMapComponent implements OnInit, AfterViewInit {
         lat: this.map.getCenter().lat(),
         lng: this.map.getCenter().lng()
       };
+      localStorage.setItem('userLat', String(this.map.getCenter().lat()));
+      localStorage.setItem('userLng', String(this.map.getCenter().lng()));
       this.getPocs();
   }
   
   setCenterMap() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
-    }, (error) => {
-      console.log(error);
-      this.center = {
-        lat: parseFloat(localStorage.getItem('baseLat')),
-        lng: parseFloat(localStorage.getItem('baseLng'))
-      }
-    });
+    this.center = {
+      lat: parseFloat(localStorage.getItem('userLat')),
+      lng: parseFloat(localStorage.getItem('userLng'))
+    };
   }
 
   navigatePromo(lat,lng) {
