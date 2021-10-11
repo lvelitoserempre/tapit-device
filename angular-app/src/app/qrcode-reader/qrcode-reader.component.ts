@@ -107,7 +107,7 @@ export class QRcodeReaderComponent implements OnInit {
         const constraints = {
           audio: false,
           video: {
-            zoom: 2.5,
+            zoom: 3.5,
             facingMode: 'environment',
             width: { ideal: 300 },
             height: { ideal: 300 }
@@ -144,7 +144,7 @@ export class QRcodeReaderComponent implements OnInit {
         const constraints = {
           audio: false,
           video: {
-            zoom: 2.5,
+            zoom: 3.5,
             facingMode: 'environment',
             width: { ideal: 300 },
             height: { ideal: 300 }

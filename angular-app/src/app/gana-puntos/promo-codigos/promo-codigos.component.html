@@ -8,22 +8,22 @@
           <a class="goBackBtn text-black" href="javascript: history.go(-1)">&lsaquo;</a> Ingresando </span>promo códigos
       </h2>
       <p class="text-neutral-800 mx-4 my-4 text-sm">
-        Descubre los diferentes códigos que tenemos con nuestras iniciativas, ingrésalos y gana puntos ¡No dejes de
-        sumar!
+        Para que siempre conozcas nuestras iniciativas participa y gana promo códigos ¡Síguenos en nuestras redes y no
+        te pierdas nuestro newsletter!
       </p>
     </div>
     <div>
-      <img class="hidden lg:block float-right" src="assets/images/ganapuntos/promo-code-l.png"
-        alt="Promo códigos">
-      <img class="block mx-auto lg:hidden" src="assets/images/ganapuntos/promo-code-l-mob.png"
-        alt="Promo códigos">
+      <picture>
+        <source class="float-right" media="(min-width: 768px)" srcset="assets/images/ganapuntos/promo-code-l.png">
+        <img class="mx-auto" src="assets/images/ganapuntos/promo-code-l-mob.png" alt="Promo códigos">
+      </picture>
     </div>
   </div>
   <div class="grid grid-row-3 ">
     <div class="mx-auto w-3/4 lg:w-4/12">
       <input id="codigo" name="codigo"
-        class="app-input border-2 border-neutral-600 text-center mb-4 sm:ml-0 mt-4 m-auto w-full lg:-mt-4" [(ngModel)]="codigo"
-        type="text">
+        class="app-input border-2 border-neutral-600 text-center mb-4 sm:ml-0 mt-4 m-auto w-full lg:-mt-4"
+        [(ngModel)]="codigo" type="text">
     </div>
     <div>
       <p class="text-neutral-800 text-sm text-center"> Ingresa el código que obtuviste para ganar puntos</p>

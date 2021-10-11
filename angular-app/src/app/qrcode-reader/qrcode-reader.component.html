@@ -17,18 +17,28 @@
       mes</span>
   </p>
 
+  <div *ngIf="isMobile" class="flex flex-col justify-center text-center mx-auto">
+    <p class="text-neutral-800 mx-8 my-4 text-xs">¿Tienes problemas para escanear tus tapas?</p>
+    <a href="http://onelink.to/yv6rmg"
+      class="rounded-2xl bg-primary-500 text-white cursor-pointer flex items-center m-auto py-3 px-4"
+      target="_blank">¡DESCARGA LA APP!
+    </a>
+  </div>
+
   <div *ngIf="isDesktop" class="flex flex-col justify-center text-center w-4/5 mx-auto">
     <h2 *ngIf="isDesktop" class="text-neutral-800 font-md text-center">Descarga la app y comienza a escanear ya</h2>
     <div *ngIf="isDesktop" class="flex flex-row justify-center w-2/5 mx-auto mt-4">
       <a id="isMobile" href="https://apps.apple.com/us/app/tapit/id1481852424?ls=1" target="_blank"
         class="rounded-2xl bg-primary-500 text-white cursor-pointer flex items-center m-auto w-2/5">
-        <img class="ml-6 mr-2 w-6 my-2" style="width:24px; height:27px;" src="https://bavariaco.vteximg.com.br/arquivos/ios-fix-icon.png" alt="Logo App Store">
+        <img class="ml-6 mr-2 w-6 my-2" style="width:24px; height:27px;"
+          src="https://bavariaco.vteximg.com.br/arquivos/ios-fix-icon.png" alt="Logo App Store">
         <p class="text-sm">App Store</p>
       </a>
 
       <a id="isMobile" href="https://play.google.com/store/apps/details?id=com.abinbev.tapit" target="_blank"
         class="rounded-2xl bg-primary-500 text-white cursor-pointer flex items-center m-auto w-2/5">
-        <img class="ml-6 mr-2 w-6 my-2" src="https://bavariaco.vteximg.com.br/arquivos/android-fix-icon.png" alt="Logo PLay Store">
+        <img class="ml-6 mr-2 w-6 my-2" src="https://bavariaco.vteximg.com.br/arquivos/android-fix-icon.png"
+          alt="Logo PLay Store">
         <p class="text-sm">Google Play</p>
       </a>
     </div>

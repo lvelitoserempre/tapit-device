@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [v2.2.0] - 
+### Added
+- Added components QR code reader and promo code input
+
 ## [v2.1.0] - To be released
 ### Added
 - The user can now add a CTA in drupal that leads the user to a section in the homepage
@@ -17,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Web allows a parameter in URL that will redirect to that page
 - Added components /gana-puntos, /actualizar-cedula, /como-redimir, /comercios-aliados at Angular-app
 - Added options at menu header /home app && /angular-app, adjust styles & icons
+- Added components QR code reader and promo code input
 ### Changed
 - CTA for internal sections won't change URL in order to avoid redirection on user login
 - Fixed the description on banner sections that wasn't displaying the copy text
