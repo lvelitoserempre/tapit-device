@@ -132,7 +132,7 @@ export class ModalComponent implements OnInit, OnChanges {
         this.pointsText = "Llévala por"
         this.cancellationText = "Cancelar cupón"
         this.cancellationConfirmText = 'Si cancelas el cupón, devolvemos <span class="text-primary-500">'+selectedItem.points+' puntos</span> a tu cuenta.'
-        this.couponCancellationSucces = 'Tus puntos están de nuevo en tu cuenta'
+        this.couponCancellationSucces = `Tus <span class="text-primary-500">${selectedItem.points} puntos</span> están de nuevo en tu cuenta`
         this.urlToSend = 'wallet/shop'
       } else if (selectedItem.type === 'Promotion') {
         this.btnMessage = "Activar Promo"
@@ -147,7 +147,7 @@ export class ModalComponent implements OnInit, OnChanges {
         this.pointsText = 'Usaste';
         this.cancellationText = 'Cancelar cupón'
         this.cancellationConfirmText = 'Si cancelas el cupón, devolvemos <span class="text-primary-500">'+currentItem.points+' puntos</span> a tu cuenta.'
-        this.couponCancellationSucces = 'Tus puntos están de nuevo en tu cuenta.'
+        this.couponCancellationSucces = `Tus <span class="text-primary-500">${currentItem.points} puntos</span> están de nuevo en tu cuenta`
       } else if (currentItem.type === 'Promotion') {
         this.pointsText = 'Ganas';
         this.cancellationText = 'Cancelar Promo'

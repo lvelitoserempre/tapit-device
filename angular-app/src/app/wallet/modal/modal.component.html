@@ -51,7 +51,7 @@
           Cancelamos tú cupón
         </p>
         <img class="mx-auto mb-10" src="../../assets/images/success.png" alt="">
-        <p class="text-base text-color-gray px-8 mb-2 text text-center">{{couponCancellationSucces}}</p>
+        <p class="text-base text-color-gray px-8 mb-2 text text-center" [innerHTML]="couponCancellationSucces">{{couponCancellationSucces}}</p>
         <div class="flex mt-16">
           <a href="/app/wallet/coupons"
             class="deactivate-success text-sm inline-block text-md text-center text-white font-bold my-2 py-4 bg-primary-500 rounded-full w-full uppercase cursor-pointer" (click)="dataLayerQR('see_coupons', 'deactivateCouponSuccess')"
