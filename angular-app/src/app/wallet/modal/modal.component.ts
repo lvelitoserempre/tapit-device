@@ -369,6 +369,7 @@ export class ModalComponent implements OnChanges {
     if(this.showActivatePromo) {
       this.dataLayerConfirmation('close');
     } else if(this.showActiveSuccess){
+      this.launchReload();
       this.dataLayerQR('close', 'deactivateCouponSuccess');
     } else if(this.showActiveCouppon){
       this.dataLayerQR('close', 'qrCuponera');
