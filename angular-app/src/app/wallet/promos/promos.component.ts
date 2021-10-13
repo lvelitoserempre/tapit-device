@@ -26,9 +26,7 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
     private promoService: PromosService,
     private loadingService: LoadingService,
     private route: ActivatedRoute
-  ) {
-    localStorage.clear();
-  }
+  ) {}
 
   // to add content from the next page of the API
   onScroll() {
@@ -47,18 +45,26 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
     this.loadingService.show();
-    navigator.geolocation.getCurrentPosition((position) => {
+    if(localStorage.getItem('userLat')) {
       this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
-    localStorage.setItem('userLat', String(this.center.lat));
-    localStorage.setItem('userLng', String(this.center.lng));
+        lat: parseFloat(localStorage.getItem('userLat')),
+        lng: parseFloat(localStorage.getItem('userLng'))
+      }
       this.getPromos();
-    }, (error) => {
-      this.noLocationPermission = true;
-      this.loadingService.hide();
-    });
+    } else {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.center = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+      localStorage.setItem('userLat', String(this.center.lat));
+      localStorage.setItem('userLng', String(this.center.lng));
+        this.getPromos();
+      }, (error) => {
+        this.noLocationPermission = true;
+        this.loadingService.hide();
+      });
+    }
     this.route.queryParams.subscribe(params => {
       if(params['id']){
         this.idToCompare = params.id;
