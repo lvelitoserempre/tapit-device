@@ -388,7 +388,7 @@ export class ModalComponent implements OnChanges {
   }
 
   seeStoresEvent(){
-    this.showActivatePromo ? this.dataLayerConfirmation('see_stores') : this.dataLayerQR('see_stores', 'qr_cuponera');
+    this.showActivatePromo ? this.dataLayerConfirmation('see_stores') : this.dataLayerQR('see_stores', 'qrCuponera');
   }
 
   couponSuccessBtn(){
@@ -412,8 +412,8 @@ export class ModalComponent implements OnChanges {
       'event': event,
       'coupon_type': this.activePromoItem.type === 'Product' ? 'redeem_in_stores' : 'day_promotions',
       'product': this.item[0].title,
-      'product_id': this.item[0].promotion_id,
-      'promo': this.item[0].description,
+      'product_id': this.item[0].promotion_id || this.item[0].id,
+      'promo': this.item[0].promotion || this.item[0].description,
       'points': this.item[0].points,
       'action': action,
       'code_id': this.activePromoItem.code
