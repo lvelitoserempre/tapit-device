@@ -109,7 +109,9 @@ export class PromosComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy(): void {
     let body = document.querySelector('body');
     body.classList.remove('modal-open');
-    this.promosSubscription.unsubscribe();
+    if(this.promosSubscription) {
+      this.promosSubscription.unsubscribe();
+    }
   }
 
 }

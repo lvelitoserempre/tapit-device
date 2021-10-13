@@ -94,7 +94,9 @@ export class ShopPointsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    this.productSubscription.unsubscribe();
+    if(this.productSubscription) {
+      this.productSubscription.unsubscribe();
+    }
   }
 
   ngAfterViewInit(): void {
