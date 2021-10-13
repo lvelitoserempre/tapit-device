@@ -45,6 +45,8 @@ export class TypeIconPipe implements PipeTransform {
         return 'heart.svg';
       case 'redemtionModoOn':
         return 'ticket.svg';
+      case 'tapit_cuponera_refund_expiration':
+        return 'ticket.svg';
       default:
         return '';
     }

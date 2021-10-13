@@ -45,6 +45,8 @@ export class TypeTextPipe implements PipeTransform {
         return 'Por otros conceptos';
       case 'redemtionModoOn':
         return 'Por canjear una promoción';
+      case 'tapit_cuponera_refund_expiration':
+        return 'Por otros conceptos';
       default:
         return '';
     }
