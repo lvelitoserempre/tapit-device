@@ -1,3 +1,9 @@
 .border-redeem {
     border: 3px solid #cfcfcf;
 }
+
+.block-removable {
+    @media (max-width: 325px) {
+        display: block;
+      }
+}

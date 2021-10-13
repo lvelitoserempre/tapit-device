@@ -36,7 +36,7 @@
                   <h3 class="font-bold text-base">{{marker.title}}</h3>
                   <p class="text-xs">{{marker.info}}</p>
                 </div>
-                <svg class="text-primary-500 block md:hidden" (click)="sliderMove(i)" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="text-primary-500 block chevron-user md:hidden" (click)="sliderMove(i)" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M16.0659 12.2308L11.4725 7.63747C11.3718 7.53593 11.252 7.45533 11.12 7.40033C10.988 7.34533 10.8464 7.31702 10.7034 7.31702C10.5604 7.31702 10.4188 7.34533 10.2867 7.40033C10.1547 7.45533 10.0349 7.53593 9.9342 7.63746C9.73242 7.84044 9.61917 8.11501 9.61917 8.40121C9.61917 8.68742 9.73242 8.96199 9.9342 9.16496L13.7692 13L9.93419 16.835C9.73242 17.0379 9.61917 17.3125 9.61917 17.5987C9.61917 17.8849 9.73242 18.1595 9.93419 18.3625C10.0354 18.4629 10.1555 18.5423 10.2875 18.5962C10.4195 18.6501 10.5608 18.6775 10.7034 18.6766C10.8459 18.6775 10.9873 18.6501 11.1193 18.5962C11.2513 18.5423 11.3713 18.4629 11.4725 18.3625L16.0659 13.7691C16.1674 13.6684 16.248 13.5486 16.303 13.4166C16.358 13.2846 16.3863 13.143 16.3863 13C16.3863 12.857 16.358 12.7154 16.303 12.5833C16.248 12.4513 16.1674 12.3315 16.0659 12.2308Z" fill="currentColor"></path>
                 </svg>
                 <!-- <svg class="text-primary-500 hidden md:block" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +47,7 @@
               
               
               <hr class="w-full my-1 border-neutral-300">
-              <div class="relative py-2 grid grid-cols-4 gap-4">
+              <div class="hidden lg:block relative py-2 grid grid-cols-4 gap-4">
                 <p *ngIf="marker.phone != ''" class="col-span-2 text-sm py-0">{{marker.phone}}</p>
                 <p *ngIf="marker.cell != ''" class="col-span-2 text-sm py-0">{{marker.cell}}</p>
                 <p *ngIf="marker.mail != ''" class="col-span-2 text-sm py-0">{{marker.mail}}</p>

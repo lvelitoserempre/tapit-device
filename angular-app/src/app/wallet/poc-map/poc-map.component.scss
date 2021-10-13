@@ -268,3 +268,15 @@
 .text-black {
   color: #000;
 }
+
+.chevron-user {
+  border: 2px solid #fff;
+    border-radius: 100%;
+    /* padding: 10px; */
+    box-shadow: 0px 0px 2px 3px rgb(0 0 0 / 3%);
+    box-sizing: border-box;
+    transform: translateX(21px);
+    background: white;
+    height: 32px;
+    width: 32px;
+}
