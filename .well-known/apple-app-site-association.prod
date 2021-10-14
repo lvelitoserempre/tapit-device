@@ -3,12 +3,7 @@
         "details": [
             {
               "appIDs": [ "WMB8HCJXS9.com.abinbev.tapit" ],
-              "components": [
-                {
-                  "/": "/*",
-                  "comment": "We are currently matching any url"
-                }
-              ]
+              "paths": ["NOT /app/auth/*", "/*"]
             }
         ]
     }

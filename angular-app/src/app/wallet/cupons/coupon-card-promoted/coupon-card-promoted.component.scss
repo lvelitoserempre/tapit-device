@@ -7,7 +7,11 @@
 }
 
 .image-limit {
-    @media (max-width: 375px) {
-        max-width: 150px;
+    @media (max-width: 768px) {
+        max-width: 90px;
+    }
+
+    img{
+        max-height: 188px;
     }
 }

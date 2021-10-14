@@ -4,11 +4,11 @@
         "details": [
             {
                 "appID": "WMB8HCJXS9.com.abinbev.tapit.pre",
-                "paths": ["NOT / _/*", "/*", "app/auth/recovery-password?/*"]
+                "paths": ["NOT /app/auth/*", "/*"]
             },
             {
                 "appID": "WMB8HCJXS9.com.abinbev.tapit.debug",
-                "paths": ["NOT / _/*", "/*", "app/auth/recovery-password?/*"]
+                "paths": ["NOT /app/auth/*", "/*"]
             }
         ]
     }
