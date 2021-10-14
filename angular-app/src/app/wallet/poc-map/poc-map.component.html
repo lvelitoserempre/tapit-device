@@ -27,11 +27,11 @@
               <img [src]="marker.image" [alt]="marker.title" class="w-full h-full object-cover">
             </div>
             <div class="item-map--cont px-3">
-              <div class="flex justify-between py-2">
+              <div class="flex justify-between py-1 md:py-2">
                 <p class="text-xs text-gray py-0.5 btn-tag pr-2">{{ marker.tag }}</p>
                 <p class="font-bold flex km-text"><img class="mr-2 md:text-sm" src="../../assets/images/pin-orange.svg" /> {{marker.distance}}</p>
               </div>
-              <div class="my-2 flex justify-between items-center">
+              <div class="my-1 md:my-2 flex justify-between items-center">
                 <div>
                   <h3 class="font-bold text-base">{{marker.title}}</h3>
                   <p class="text-xs">{{marker.info}}</p>
@@ -47,7 +47,7 @@
               
               
               <hr class="w-full my-1 border-neutral-300">
-              <div class="hidden lg:block relative py-2 grid grid-cols-4 gap-4">
+              <div class="hidden lg:block relative py-1 md:py-2 grid grid-cols-4 gap-4">
                 <p *ngIf="marker.phone != ''" class="col-span-2 text-sm py-0">{{marker.phone}}</p>
                 <p *ngIf="marker.cell != ''" class="col-span-2 text-sm py-0">{{marker.cell}}</p>
                 <p *ngIf="marker.mail != ''" class="col-span-2 text-sm py-0">{{marker.mail}}</p>
