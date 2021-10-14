@@ -36,7 +36,7 @@ export class CouponCardPromotedComponent implements OnInit, AfterViewInit {
       this.points = this.brandData.points;
       this.imgUrl = this.brandData.image;
       this.couponId = this.id;
-      this.colorBg = 'bg-'+this.brandData.brand.color + '-500 pb-5 pl-2 pr-2 pt-5 rounded-md';
+      this.colorBg = 'bg-'+this.brandData.brand.color + '-500 pb-5 pl-2 pr-2 pt-5 rounded-md image-limit';
       this.currentItem = [{ 'description': this.description, 'id': this.couponId, 'title': this.title, 'points': this.points, 'qr': this.qr, 'qrcode': this.qrcode,'date': this.date, 'type': this.type }];
 
       if(this.currentItem[0].type === 'Product'){

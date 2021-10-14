@@ -5,3 +5,9 @@
 .border-secondary {
     border: 1px solid #FF5005;
 }
+
+.image-limit {
+    @media (max-width: 375px) {
+        max-width: 150px;
+    }
+}
