@@ -24,8 +24,8 @@ export class RemoteConfigService {
     };
   
     remoteConfig().defaultConfig = {
-      discover_enabled: false,
-      wallet_enabled: false,
+      discover_enabled: true,
+      wallet_enabled: true,
       microgifting_enabled: false
     };
   
