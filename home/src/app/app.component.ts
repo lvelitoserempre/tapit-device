@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { ScriptService } from './services/script.service';
 import { environment } from '../environments/environment';
 import { PLATFORM_ID } from '@angular/core';
@@ -11,6 +11,9 @@ import { DrupalService } from './services/drupal.service';
 import { ActivatedRoute } from '@angular/router';
 import { VerifyIdentityComponent } from './verify-identity/verify-identity.component';
 import { RemoteConfigService } from './services/remote-config.service';
+import { ReferralModalComponent } from './referral-modal/referral-modal.component'
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 declare var setupGTM: any;
 declare var ga: any;
@@ -19,10 +22,12 @@ declare var ga: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   isOnWebView = false;
   @ViewChild('ageGate') private ageGate: AgeGateComponent;
   @ViewChild('verifyIdentity') private verifyIdentity: VerifyIdentityComponent;
+  public haveReferral: boolean = false;
+  public SS0: any;
 
   constructor(
     private scriptService: ScriptService,
@@ -32,13 +37,18 @@ export class AppComponent implements OnInit {
     private _authService: AuthService,
     private drupalService: DrupalService,
     private route: ActivatedRoute,
-    private remoteConfigService: RemoteConfigService
+    private remoteConfigService: RemoteConfigService,
+    private http: HttpClient
   ) {
     this.ngxService.start();
     if (isPlatformBrowser(this.platformId)) {
       this.loadSSOScript();
       this.setUpStats();
     }
+  }
+
+  private getReferral(token: string): Observable<any>  {
+    return this.http.get(`${environment.firebase.functions.url}${environment.referral}`, { headers: { authorization: `Bearer ${ token }`}})
   }
 
   private loadSSOScript(): void {
@@ -48,7 +58,6 @@ export class AppComponent implements OnInit {
       window.configTapitSso = () => {
         this.openSso();
         ssoApp.onFlowCompleted().subscribe((response: any) => {
-          this.ngxService.start();
           const firestoreUser = response.userCredential.user;
           this._authService.setCurrentSessionData(firestoreUser)
           .then(()=> {
@@ -97,6 +106,11 @@ export class AppComponent implements OnInit {
       }, error => console.error(error));
     }
     this.ngxService.stopAll();
+    this.getReferral(this.cookies.get('frbtkn')).subscribe(res => {
+      if(res.data.referralCodeShow) {
+        this.haveReferral = true;
+      };
+    });
   }
 
   private setUpStats() {
@@ -126,5 +140,9 @@ export class AppComponent implements OnInit {
         }
       },
     });
+  }
+
+  public closeModal(): void {
+    this.haveReferral = false;
   }
 }

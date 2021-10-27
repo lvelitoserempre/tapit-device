@@ -25,6 +25,7 @@ export const environment = {
       xeerpa: '/v1/xeerpa'
     }
   },
+  referral: '/v2/user/referral',
   googleTagManagerId: 'GTM-NFCC7RC',
   googleAnalyticsId: 'UA-159252784-6',
   hosting: 'https://tapit-sso-qa.web.app/v3',

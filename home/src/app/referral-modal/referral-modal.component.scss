@@ -1,0 +1,24 @@
+@import "../../assets/styles/colors.scss";
+
+.bg-modal {
+//   background-image: url('/assets/images/verify/bg-modal.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+
+  &__close {
+      right: 24px;
+      top: 16px;
+  }
+}
+
+
+.error {
+    border-color: #F85464 !important;
+}
+
+.errorMessage {
+    display: block !important;
+    color: #F85464;
+}
+

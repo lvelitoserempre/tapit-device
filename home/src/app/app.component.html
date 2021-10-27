@@ -3,4 +3,5 @@
 <app-footer *ngIf="!isOnWebView"></app-footer>
 <app-age-gate #ageGate></app-age-gate>
 <app-verify-identity #verifyIdentity></app-verify-identity>
+<app-referral-modal *ngIf="haveReferral" (close)="closeModal()" #referral></app-referral-modal>
 <ngx-ui-loader></ngx-ui-loader>

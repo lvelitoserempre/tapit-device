@@ -30,6 +30,7 @@ import {
 import { BrowserCookiesModule } from 'ngx-cookie-universal';
 import { VerifyIdentityComponent } from './verify-identity/verify-identity.component';
 import { CookieModule } from 'ngx-cookie';
+import { ReferralModalComponent } from './referral-modal/referral-modal.component';
 
 
 registerLocaleData(localeEs, 'es-CO');
@@ -62,6 +63,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     FooterComponent,
     AgeGateComponent,
     VerifyIdentityComponent,
+    ReferralModalComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
