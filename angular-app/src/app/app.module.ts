@@ -22,6 +22,7 @@ import { AuthInterceptor } from './auth.interceptor';
 import { CookieModule } from 'ngx-cookie';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { MissionsComponent } from './missions/missions.component';
 
 
 registerLocaleData(localeEs, 'es-CO');
@@ -31,6 +32,7 @@ registerLocaleData(localeEs, 'es-CO');
     AppComponent,
     AppHeaderComponent,
     AppFooterComponent,
+    MissionsComponent,
   ],
   imports: [
     BrowserModule,

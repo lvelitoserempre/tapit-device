@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { RemoteConfigGuard } from './remote-config.guard';
 import { PocDetailComponent } from './wallet/poc-detail/poc-detail.component';
+import { MissionsComponent } from './missions/missions.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,11 @@ const routes: Routes = [
   {
     path: 'wallet',
     loadChildren: () => import('./wallet/wallet.module').then(m => m.WalletModule),
+    canActivate: [AuthGuard, RemoteConfigGuard]
+  },
+  {
+    path: 'missions',
+    component: MissionsComponent,
     canActivate: [AuthGuard, RemoteConfigGuard]
   },
   {
